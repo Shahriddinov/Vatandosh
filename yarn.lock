@@ -5634,9 +5634,9 @@
     "ms" "^2.0.0"
 
 "i18next@^22.4.10", "i18next@>= 19.0.0":
-  "integrity" "sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA=="
-  "resolved" "https://registry.npmjs.org/i18next/-/i18next-22.4.10.tgz"
-  "version" "22.4.10"
+  "integrity" "sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ=="
+  "resolved" "https://registry.npmjs.org/i18next/-/i18next-22.4.11.tgz"
+  "version" "22.4.11"
   dependencies:
     "@babel/runtime" "^7.20.6"
 
