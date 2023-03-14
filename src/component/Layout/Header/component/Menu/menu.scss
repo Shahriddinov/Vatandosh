@@ -1,0 +1,41 @@
+@import url(../../../../../assets//style/global.scss);
+
+.navbar {
+  width: 100%;
+  z-index: 9;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
+}
+
+.menu {
+  width: 100%;
+  max-width: 802px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &_link {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5d6b8a;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .menu {
+    display: none;
+  }
+}

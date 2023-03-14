@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&display=swap");
+
+$colorGrey: #5d6b8a;
+$colorTitle: #065ea9;
+$ButtonBackground: #eaedf6;
+$colorText: #12022f;
+$colorBlack: #10131b;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+}
+
+body {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #656b70;
+  overflow: inherit !important;
+}
+
+.gray-scale {
+  filter: grayscale(100%);
+}
+
+.page-wrapper1 {
+  background-image: url("../images/body-bg.png");
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba($color: #000000, $alpha: 0.3);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: rgba($color: #000000, $alpha: 0);
+}
+
+@mixin fontStyles($weight, $size, $line-height, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+}
