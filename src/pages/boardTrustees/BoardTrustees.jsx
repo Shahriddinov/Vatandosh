@@ -14,9 +14,8 @@ const BoardTrustees = () => {
   }
   return (
 
-    <div className="council-trustees ">
-      <CouncilHero/>
-
+    
+  
     <div className="council-trustees">
       <CouncilHero  {...heroData}/>
       <CouncilComposition/>
