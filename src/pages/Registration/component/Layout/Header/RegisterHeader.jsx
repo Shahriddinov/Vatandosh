@@ -5,11 +5,22 @@ import tel from "../../../../../assets/images/icons/Phone-auth.svg";
 import { CiGlobe } from 'react-icons/ci';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import background from "../../../../../assets/images/register/header-background-image.svg";
+import i18next from "i18next";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 
 export default function RegisterHeader() {
   const [activeLangBar, setactiveLangBar] = useState(false);
-  console.log(activeLangBar);
+
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.language.language);
+
+  const handleChangeLng = (lng) => {
+    i18next.changeLanguage(lng);
+    dispatch(languageChange(lng));
+    setactiveLangBar(false);
+  };
 
   return (
     <header className="auth-header">
@@ -34,13 +45,13 @@ export default function RegisterHeader() {
             <div className="auth-header-nav-lang">
               <div className="auth-header-nav-lang-wrapper" onClick={() => setactiveLangBar((el) => !el)}>
                 <CiGlobe className="auth-header-nav-lang-icon" />
-                <span>Uz</span>
+                <span>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
                 <IoMdArrowDropdown className="auth-header-nav-lang-iconArrow" />
               </div>
               <div className="auth-header-nav-lang-bar" style={activeLangBar ? { display: "flex" } : null}>
-                <p>Uz</p>
-                <p>Ru</p>
-                <p>En</p>
+                <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>Uz</p>
+                <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>Ru</p>
+                <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>En</p>
               </div>
 
             </div>
