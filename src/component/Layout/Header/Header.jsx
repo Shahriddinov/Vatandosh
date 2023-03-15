@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 import Logo from "../../../assets/images/Logos.svg";
+import Logos from "../../../assets/images/LogoWhrite.svg";
 import burger from "../../../assets/images/icons/burger.svg";
 import Phone from "../../../assets/images/phone.svg";
 import Message from "../../../assets/images/Message.svg";
@@ -23,7 +24,7 @@ import Navbar from "./component/navbar/Navbar";
 const Header = () => {
   const [activeSidebar, setactiveSidebar] = useState(false);
   const { pathname } = useLocation();
-
+  const [activeLang, setactiveLang] = useState(false);
   const { grayScale } = useContext(GrayContext);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
@@ -43,7 +44,7 @@ const Header = () => {
       <div className="header">
         <div className="header_navbar">
           <div className="header_navbar_left">
-            <img src={Logo} alt="logo" />
+            <img src={pathname === "/about" ? Logos : Logo} alt="logo" />
           </div>
           <div className="header_navbar_phone">
             <img src={Phone} alt="phone" />
