@@ -1,3 +1,3 @@
-import About from "./About.lsx";
+import About from "./About";
 
 export default About

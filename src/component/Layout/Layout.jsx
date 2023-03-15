@@ -47,7 +47,7 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={pathname === "/" ? "page-wrapper1" : "page-wrapper2"}>
+      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about": "page-wrapper2" }>
         {pathname === "/portal" ? (
           <HeaderPortal />
         ) : (

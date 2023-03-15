@@ -44,6 +44,18 @@ body {
 //   background-size: contain, 376px 376px;
 // }
 
+.page-about {
+  width: 100%;
+  height: 400px;
+  background-color: #065ea9;
+  background-image: url("../../assets/images/pattern-top.png"),
+   url("../../assets/images/bottom.png");
+    
+  background-repeat: no-repeat;
+
+  background-position: left top, right bottom;
+}
+
 .container {
   width: 100%;
   max-width: 1300px;

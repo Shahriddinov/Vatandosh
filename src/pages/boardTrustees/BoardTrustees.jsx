@@ -8,7 +8,7 @@ import ContactUs from '../../component/ContactUs/ContactUs'
 
 const BoardTrustees = () => {
   return (
-    <div className="council-trustees">
+    <div className="council-trustees ">
       <CouncilHero/>
       <CouncilComposition/>
       <ContactUs/>
