@@ -10,8 +10,7 @@ const About = lazy(()=> import("./pages/About"));
 const BoardTrustees = lazy(()=> import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(()=> import("./pages/compatriots"));
 const Registration = lazy(() => import("./pages/Registration"));
-const About = lazy(() => import("./pages/About"));
-const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
+
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
