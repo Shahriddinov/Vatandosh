@@ -1,0 +1,64 @@
+.council-composition {
+    padding: 70px 0;
+    background-image: url("../../../../assets/images/body-bg.png");
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    &__item {
+        border-radius: 12px 12px 0px 0px;
+    }
+
+    &__title {
+        margin-bottom: 30px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: #065EA9;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 172px;
+        margin: 0 auto;
+        padding: 12px;
+        background-color: #E3F0FF;
+        border-radius: 16px;
+        border: 0;
+
+    }
+
+    &__btn--span {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #065EA9;
+    }
+}
+
+@media (max-width:900px) {
+    .council-composition {    
+        &__list {
+            grid-template-columns: repeat(2, minmax(250px, 380px));
+            justify-content: space-between;
+        }
+    }
+}
+
+@media (max-width:575px) {
+    .council-composition {    
+        &__list {
+            grid-template-columns: repeat(1, minmax(200px, 380px));
+            justify-content: center;
+        }
+    }
+}
