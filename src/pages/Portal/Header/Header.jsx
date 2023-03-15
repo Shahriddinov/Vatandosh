@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
 import Navbar from "./Navbar";
@@ -19,6 +19,8 @@ import Globe from "../../../assets/images/Globe.png";
 import { CgClose } from "react-icons/cg";
 
 const HeaderPortal = () => {
+  const scrollRef = useRef(0);
+  const [isFixed, setFixed] = useState(false);
   const [activeSidebar, setactiveSidebar] = useState(false);
   const { pathname } = useLocation();
 
@@ -32,12 +34,28 @@ const HeaderPortal = () => {
   };
 
   useEffect(() => {
+    scrollRef.current = window.pageYOffset;
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      scrollRef.current = window.pageYOffset;
+
+      if (scrollRef.current > 0) {
+        setFixed(true);
+      } else {
+        setFixed(false);
+      }
+    });
+  }, [scrollRef.current]);
+
+  useEffect(() => {
     if (activeSidebar) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "scroll";
   }, [activeSidebar]);
 
   return (
-    <div className="portal-head">
+    <div className={`portal-head ${isFixed ? "portal-fixed" : ""}`}>
       <div className="header">
         <div className="header_navbar">
           <div className="header_navbar_left">

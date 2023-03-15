@@ -13,9 +13,16 @@
 }
 
 .portal-head {
+  height: 85px;
+  width: 100%;
+  position: fixed;
+  top: 0;
   z-index: 999;
-  height: 168px;
   outline: none;
+
+  &.portal-fixed {
+    background: #00081c;
+  }
 
   a {
     text-decoration: none;

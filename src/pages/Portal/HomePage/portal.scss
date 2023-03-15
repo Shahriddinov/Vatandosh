@@ -1,5 +1,6 @@
 .portal {
   width: 100%;
+  padding-top: 180px;
 }
 
 .background-gif {
@@ -8,7 +9,7 @@
   position: fixed;
   top: 0;
   background-color: #002630;
-  background-image: url("../../../assets/images/portal/globe.gif");
+  background-image: url("../../../assets/images/portal/globe1.gif");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -267,6 +268,7 @@
 }
 
 .portal-body-bottom {
+  position: relative;
   margin: 190px 0 55px 0;
 
   button {
