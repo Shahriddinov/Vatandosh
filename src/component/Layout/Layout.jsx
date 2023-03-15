@@ -49,11 +49,12 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about": "page-wrapper2" }>
+      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about" : pathname === "/registration" ? "registerBackground" : "page-wrapper2"}>
         {pathname === "/portal" ? (
           <HeaderPortal />
         ) : (
-          <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+          pathname === "/registration" ? <RegisterHeader />
+            : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
         )}
         <div className="page-content">{children}</div>
         {pathname === "/portal" ? "" : pathname === "/registration" ? <RegisterFooter /> : <Footer />}
