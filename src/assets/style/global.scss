@@ -3,6 +3,7 @@
 $colorGrey: #5d6b8a;
 $colorTitle: #065ea9;
 $ButtonBackground: #eaedf6;
+$colorLight: #FFFFFF;
 $colorText: #12022f;
 $colorBlack: #10131b;
 
@@ -30,6 +31,10 @@ body {
 
 .page-wrapper1 {
   background-image: url("../images/body-bg.png");
+}
+
+.registerBackground {
+  background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
 }
 
 // .page-portal {

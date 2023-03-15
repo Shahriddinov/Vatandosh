@@ -4,6 +4,8 @@ import Footer from "./Footer/Footer";
 import { useLocation } from "react-router";
 import NetworkError from "../NetworkError/NetworkError";
 import HeaderPortal from "../../pages/Portal/Header/Header";
+import RegisterHeader from "../../pages/Registration/component/Layout/Header/RegisterHeader";
+import RegisterFooter from "../../pages/Registration/component/Layout/Footer/RegisterFooter";
 
 export const GrayContext = createContext();
 
@@ -54,7 +56,7 @@ const Layout = (props) => {
           <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
         )}
         <div className="page-content">{children}</div>
-        {pathname === "/portal" ? "" : <Footer />}
+        {pathname === "/portal" ? "" : pathname === "/registration" ? <RegisterFooter /> : <Footer />}
       </div>
     </GrayContext.Provider>
   );
