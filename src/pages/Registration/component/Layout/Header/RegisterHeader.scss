@@ -1,0 +1,117 @@
+@import "../../../../../assets/style/global.scss";
+
+.auth-header {
+  position: relative;
+  padding-top: 20px;
+  height: 70px;
+
+  &-backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &>p {
+      width: 116px;
+      @include fontStyles(600, 14px, 17px, $colorLight);
+    }
+  }
+
+  &-nav {
+    display: flex;
+    gap: 30px;
+
+    &-link {
+      display: flex;
+      gap: 20px;
+
+
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+
+        &>img {
+          width: 20px;
+          height: 20px;
+          object-fit: cover;
+        }
+
+        &>span {
+          @include fontStyles(400, 14px, 17px, $colorLight);
+        }
+      }
+    }
+
+    &-lang {
+      position: relative;
+
+      &-wrapper {
+        padding: 10px 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 12px;
+        background-color: $colorLight;
+        cursor: pointer;
+
+      }
+
+      &-icon {
+        width: 20px;
+        height: 20px;
+        color: #062A49;
+      }
+
+      &-iconArrow {
+        width: 16px;
+        height: 16px;
+        color: #062A49;
+      }
+
+      &>span {
+        display: flex;
+        align-items: center;
+        @include fontStyles(400, 14px, 17px, #062A49);
+      }
+
+      &-bar {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        width: 70px;
+        right: 0;
+        top: 50px;
+        border-radius: 12px;
+        background-color: $colorLight;
+        z-index: 10;
+        overflow: hidden;
+
+        &>p {
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+          cursor: pointer;
+        }
+
+        &>p:hover {
+          background-color: grey;
+          color: $colorLight;
+        }
+      }
+    }
+  }
+}

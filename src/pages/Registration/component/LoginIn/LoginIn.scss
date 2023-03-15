@@ -1,0 +1,18 @@
+@import "../../../../assets/style/global.scss";
+
+.auth {
+
+  height: 500px;
+
+  &-desc {
+
+    &>h2 {
+      @include fontStyles(600, 46px, 54px, $colorLight);
+    }
+
+    &>p {
+      @include fontStyles(700, 22px, 27px, $colorLight);
+
+    }
+  }
+}
