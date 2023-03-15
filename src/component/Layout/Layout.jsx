@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { useLocation } from "react-router";
 import NetworkError from "../NetworkError/NetworkError";
+import HeaderPortal from "../../pages/Portal/Header/Header";
 
 export const GrayContext = createContext();
 
@@ -47,7 +48,11 @@ const Layout = (props) => {
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
       <div className={pathname === "/" ? "page-wrapper1" : "page-wrapper2"}>
-        <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+        {pathname === "/portal" ? (
+          <HeaderPortal />
+        ) : (
+          <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+        )}
         <div className="page-content">{children}</div>
         {pathname === "/portal" ? "" : <Footer />}
       </div>
