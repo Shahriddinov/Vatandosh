@@ -1,0 +1,30 @@
+.chat-modal {
+  display: none;
+  position: absolute;
+  width: 332px;
+  height: 600px;
+  left: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+
+  svg {
+    &:last-child {
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+}
+
+.chat-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
