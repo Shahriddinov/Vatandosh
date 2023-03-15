@@ -34,7 +34,8 @@ const Menu = () => {
                         {t("about")}
                     </Link>
                     <ul className="main">
-                        <li>Biz haqimizda</li>
+                        <li>
+                           Biz haqimizda</li>
                         <li>Vasiylik Kengashi</li>
 
                     </ul>
@@ -57,19 +58,6 @@ const Menu = () => {
                         {t("projects")}
                     </Link>
                     <ul className="main">
-                        <li>Yangiliklar</li>
-                        <li>Tadbirlar</li>
-                        <li>Mediateka</li>
-                        <li>Infografika</li>
-                        <li>Vatandoshlar jurnali</li>
-
-                    </ul>
-                </motion.li>
-                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
-                    <Link to="/" className="menu_link">
-                        {t("contects")}
-                    </Link>
-                    <ul className="main">
                         <li>Barcha loyihalar</li>
                         <li>“Kun oilasi” rukni</li>
                         <li>“Sportchi vatandsohlar” rukni</li>
@@ -80,10 +68,24 @@ const Menu = () => {
 
                     </ul>
                 </motion.li>
-                <motion.li whileTap={{scale: 0.6}} className="menu_item">
+                <motion.li whileTap={{scale: 0.6}} className="menu_item ">
+                    <Link to="/" className="menu_link">
+                        {t("contects")}
+                    </Link>
+
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("information")}
                     </Link>
+                    <ul className="main">
+                        <li>Yangiliklar</li>
+                        <li>Tadbirlar</li>
+                        <li>Mediateka</li>
+                        <li>Infografika</li>
+                        <li>Vatandoshlar jurnali</li>
+
+                    </ul>
                 </motion.li>
                 <motion.li whileTap={{scale: 0.6}} className="menu_item">
                     <Link to="/" className="menu_link">
