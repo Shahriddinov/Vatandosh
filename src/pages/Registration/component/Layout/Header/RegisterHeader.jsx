@@ -24,7 +24,6 @@ export default function RegisterHeader() {
 
   return (
     <header className="auth-header">
-      <img className="auth-header-backgroundImage" src={background} alt="" />
       <div className="container">
         <div className="auth-header-wrapper">
           <div className="auth-header-logo">
@@ -53,7 +52,6 @@ export default function RegisterHeader() {
                 <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>Ru</p>
                 <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>En</p>
               </div>
-
             </div>
           </nav>
         </div>
