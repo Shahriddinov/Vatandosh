@@ -4,7 +4,6 @@ import mail from "../../../../../assets/images/icons/mail.svg";
 import tel from "../../../../../assets/images/icons/Phone-auth.svg";
 import { CiGlobe } from 'react-icons/ci';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import background from "../../../../../assets/images/register/header-background-image.svg";
 import i18next from "i18next";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
