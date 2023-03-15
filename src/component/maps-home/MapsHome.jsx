@@ -27,7 +27,7 @@ const MapsHome = () => {
 
             el.classList.add("active")
             if(data.includes(el.id)) {
-                el.style.fill = "#939699"
+                el.style.fill = "#93C5FD"
             }
         })
 
@@ -40,9 +40,9 @@ const MapsHome = () => {
             const mapsData = svgRef.current["childNodes"][0]["childNodes"][0]["childNodes"][0]["childNodes"]
             mapsData.forEach(el => {
                 if(data.includes(el.id)) {
-                    el.style.fill = "#939699"
+                    el.style.fill = "#93C5FD"
                 }else {
-                    el.style.fill = "#4B5157"
+                    el.style.fill = "#fff"
                 }
             })
         }

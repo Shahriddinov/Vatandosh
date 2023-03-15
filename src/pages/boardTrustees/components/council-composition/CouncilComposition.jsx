@@ -1,5 +1,5 @@
 import React from 'react'
-import "./council-composition.scss"
+import "./councilComposition.scss"
 
 import img1 from "../../../../assets/images/about/concil-card-img.png"
 import img2 from "../../../../assets/images/about/council-card-img2.png"
