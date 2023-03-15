@@ -5,13 +5,6 @@
   padding-bottom: 30px;
   position: relative;
 
-  &-backgroundImage {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 9;
-  }
-
   .container {
     height: 100%;
     display: flex;
