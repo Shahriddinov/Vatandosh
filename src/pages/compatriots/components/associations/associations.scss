@@ -1,0 +1,55 @@
+.associations {
+    padding: 60px 0;
+    background-image: url("../../../../assets/images/body-bg.png");
+
+    &__title {
+        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: #065EA9;
+    }
+
+    &__accordions {
+        padding: 0px 20px 22.5px 20px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+        border-radius: 16px;
+    }
+
+    &__accordion {
+        padding-top: 22.5px;
+        border-bottom: 1px solid #EAEDF6;
+        border-radius: 7px;
+    }
+
+    &__accordion_header {
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22.5px;
+        cursor: pointer;
+    }
+
+    &__accordion_header--button {
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+    }
+
+    &__accordion_body{
+        height: 100%;
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s linear;
+    }
+
+    &__accordion_body--active {
+        max-height: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: all .3s linear;
+    }
+}

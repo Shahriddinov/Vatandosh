@@ -8,52 +8,31 @@ export const sliderData =  [
     {
         id:1,
         imgUrl: img1,
-        title: "Avtotransport vositalari haqida ma’lumot"
+        title: "Virtual murojaat"
     },
     {
         id:2,
         imgUrl: img2,
-        title: "Doimiy yashash joyidan ro‘yxatdan o‘tish"
+        title: "Bo‘sh ish o‘rinlari"
     },
     {
         id:3,
         imgUrl: img3,
-        title: "Xaydovchilik guvohnomasini yangilash"
+        title: "Statistik ma’lumotlar"
     },
     {
         id:4,
         imgUrl: img4,
-        title: "Avtotransport vositalari haqida ma’lumot"
+        title: "Tadbirlar jadvali"
     },
     {
         id:5,
         imgUrl: img5,
-        title: "Xaydovchilik guvohnomasini yangilash"
+        title: "Eng ko‘p beriladigan savollar"
     },
     {
         id:6,
         imgUrl: img1,
-        title: "Avtotransport vositalari haqida ma’lumot"
-    },
-    {
-        id:7,
-        imgUrl: img2,
-        title: "Doimiy yashash joyidan ro‘yxatdan o‘tish"
-    },
-    {
-        id:8,
-        imgUrl: img3,
-        title: "Xaydovchilik guvohnomasini yangilash"
-    },
-    {
-        id:9,
-        imgUrl: img4,
-        title: "Avtotransport vositalari haqida ma’lumot"
-    },
-    {
-        id:10,
-        imgUrl: img5,
-        title: "Xaydovchilik guvohnomasini yangilash"
-    },
-   
+        title: "Elektron xizmatlar"
+    },   
 ]
