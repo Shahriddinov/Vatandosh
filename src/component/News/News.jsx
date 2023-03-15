@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
 
 import "./News.scss";
 
@@ -12,11 +16,9 @@ import icon6 from "../../assets/images/icons/6.png";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
 
 const News = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsSlice.newsData.data);
@@ -86,7 +88,9 @@ const News = () => {
             <div className="goto-system">
               <h4>{t("system")}</h4>
               <div>
-                <button>{t("switch")}</button>
+                <button onClick={() => navigate("/portal")}>
+                  {t("switch")}
+                </button>
               </div>
             </div>
             <div className="our-projects">

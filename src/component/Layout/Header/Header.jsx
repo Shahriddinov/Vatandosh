@@ -90,7 +90,7 @@ const Header = () => {
             <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
           </button>
           <div className="header_navbar_language">
-            <img src={Globe} alt="global" />
+            {/*<img src={Globe} alt="global" />*/}
             <select
               className="header_navbar_language_selects"
               value={language}

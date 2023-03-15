@@ -1,5 +1,5 @@
 import React from 'react'
-import "./council-card.scss"
+import "./councilCard.scss"
 import phone from "../../../../assets/images/about/Phone.svg"
 import mail from "../../../../assets/images/about/mail.svg"
 

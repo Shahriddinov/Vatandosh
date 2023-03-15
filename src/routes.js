@@ -8,13 +8,18 @@ import HomePage from "./pages/Portal/HomePage/HomePage";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(()=> import("./pages/About"));
 const BoardTrustees = lazy(()=> import("./pages/boardTrustees/BoardTrustees"));
+const PublicAssociations = lazy(()=> import("./pages/compatriots"));
+const Registration = lazy(() => import("./pages/Registration"));
+
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
     {path: "", element: Home,},
     {path: "/about", element: About},
     {path: "/about/council-trustees", element: BoardTrustees},
-    { path: "/portal", element: HomePage },
+    {path: "/compatriots/public-associations", element: PublicAssociations},
+    { path: "/registration", element: Registration },
+    { path: "/portal", element: HomePage }
 ];
 
 const RoutesContainer = () => (

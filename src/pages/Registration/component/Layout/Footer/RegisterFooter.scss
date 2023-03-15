@@ -1,0 +1,26 @@
+@import "../../../../../assets/style/global.scss";
+
+.auth-footer {
+  height: 80px;
+  padding-bottom: 30px;
+  position: relative;
+
+  &-backgroundImage {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &>span {
+      @include fontStyles(300, 14px, 17px, $colorLight);
+    }
+  }
+
+}

@@ -1,7 +1,7 @@
 .maps_home {
     padding-top: 15px;
     height: 768px;
-    background-color: #062A49;
+    background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
     position: relative;
 
     &__container {
@@ -39,7 +39,7 @@
     .maps_home {
         padding-top: 15px;
         height: auto;
-        background-color: transparent;
+        background: transparent;
         position: relative;
 
         &__container {
@@ -114,7 +114,7 @@
     overflow: auto;
     transform-origin: top left;
     padding: 1px 0;
-    background-color: #062A49;
+    background-color: transparent;
     &::-webkit-scrollbar {
         width: 0;
         height: 0;
@@ -124,7 +124,7 @@
 .maps__inner svg{
     width: 1160px !important;
     height: 614px;
-    background-color: #062A49;
+    background-color: transparent;
     transform-origin: top left;
     overflow: auto;
 
@@ -136,8 +136,8 @@
 
 .maps__inner svg path,
 .maps__inner svg polygon{
-    fill: #4B5157;
-    stroke: black;
+    fill: #fff;
+    stroke: rgba(0, 0, 0, 0.5);
     stroke-width: 0.1px;
     cursor: pointer;
 }
@@ -152,7 +152,7 @@
     .maps__inner svg{
         width: 100% !important;
         height: 600px;
-        background-color: #062A49;
+        background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
     }
 }
 
@@ -160,7 +160,7 @@
     .maps__inner svg{
         width: 800px !important;
         height: 480px;
-        background-color: #062A49;
+        background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
     }
 }
 
