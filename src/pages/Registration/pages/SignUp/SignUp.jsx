@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const LoginUp = () => {
+export const SignUp = () => {
   return (
-    <div className="loginUp">
+    <div className="signup">
         Login up
     </div>
   )

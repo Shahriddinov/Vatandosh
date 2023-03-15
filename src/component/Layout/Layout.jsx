@@ -4,8 +4,8 @@ import Footer from "./Footer/Footer";
 import { useLocation } from "react-router";
 import NetworkError from "../NetworkError/NetworkError";
 import HeaderPortal from "../../pages/Portal/Header/Header";
-import RegisterHeader from "../../pages/Registration/component/Layout/Header/RegisterHeader";
-import RegisterFooter from "../../pages/Registration/component/Layout/Footer/RegisterFooter";
+import RegisterHeader from "../../pages/Registration/pages/Layout/Header/RegisterHeader";
+import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/RegisterFooter";
 
 export const GrayContext = createContext();
 
@@ -49,15 +49,15 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about" : pathname === "/registration" ? "registerBackground" : "page-wrapper2"}>
+      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about" : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" ? "registerBackground" : "page-wrapper2"}>
         {pathname === "/portal" ? (
           <HeaderPortal />
         ) : (
-          pathname === "/registration" ? <RegisterHeader />
-            : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+          pathname === "/registration" ? <RegisterHeader /> 
+            : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" ? <RegisterHeader/> : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
         )}
         <div className="page-content">{children}</div>
-        {pathname === "/portal" ? "" : pathname === "/registration" ? <RegisterFooter /> : <Footer />}
+        {pathname === "/portal" ? "" : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" ? <RegisterFooter /> : <Footer />}
       </div>
     </GrayContext.Provider>
   );

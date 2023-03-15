@@ -1,6 +1,6 @@
-import "./LoginIn.scss";
+import "./SignIn.scss";
 
-export const LoginIn = () => {
+export const SignIn = () => {
     return (
         <div className="auth">
             <div className="auth-desc">

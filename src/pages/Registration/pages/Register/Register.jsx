@@ -81,7 +81,7 @@ const Register = () => {
                     <h2>Ro'yxatdan O'ting</h2>
                     <p>Iltimos ma'lumotlaringizni kiriting</p>
                 </div>
-                <form autocomplete="off" method="post" action="" className='form'>
+                <form autoComplete="off" method="post" action="" className='form'>
                     <div className="profile__photo">
                         <div className="profile__img">
                             <img src={formData.profilePhoto} alt="" className={formData.profilePhoto === DefaultProfilePic ? '' : 'width100'}/>
