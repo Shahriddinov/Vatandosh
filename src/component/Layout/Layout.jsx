@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import NetworkError from "../NetworkError/NetworkError";
 import HeaderPortal from "../../pages/Portal/Header/Header";
 import RegisterHeader from "../../pages/Registration/pages/Layout/Header/RegisterHeader";
