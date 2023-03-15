@@ -12,7 +12,7 @@ const Home = lazy(() => import("./pages/Home"));
 const About = lazy(()=> import("./pages/About"));
 const BoardTrustees = lazy(()=> import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(()=> import("./pages/compatriots"));
-
+const StatesFriendshipSociety = lazy(()=> import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety"));
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
@@ -20,6 +20,7 @@ const routes = [
     {path: "/about", element: About},
     {path: "/about/council-trustees", element: BoardTrustees},
     {path: "/compatriots/public-associations", element: PublicAssociations},
+    {path: "/compatriots/public-associations/:country", element: StatesFriendshipSociety},
     { path: "/portal", element: HomePage },
     { path: "/registration/register", element: Register },
     { path: "/registration/signup", element: SignUp },
