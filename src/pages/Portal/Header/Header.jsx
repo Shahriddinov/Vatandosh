@@ -185,23 +185,26 @@ const HeaderPortal = () => {
               style={activeLangBar ? { display: "flex" } : null}
             >
               <p
-                onClick={(e) =>
-                  handleChangeLng(e.target.innerText.toLowerCase())
-                }
+                onClick={(e) => {
+                  handleChangeLng(e.target.innerText.toLowerCase());
+                  setactiveLangBar((el) => !el);
+                }}
               >
                 Uz
               </p>
               <p
-                onClick={(e) =>
-                  handleChangeLng(e.target.innerText.toLowerCase())
-                }
+                onClick={(e) => {
+                  handleChangeLng(e.target.innerText.toLowerCase());
+                  setactiveLangBar((el) => !el);
+                }}
               >
                 Ru
               </p>
               <p
-                onClick={(e) =>
-                  handleChangeLng(e.target.innerText.toLowerCase())
-                }
+                onClick={(e) => {
+                  handleChangeLng(e.target.innerText.toLowerCase());
+                  setactiveLangBar((el) => !el);
+                }}
               >
                 En
               </p>
