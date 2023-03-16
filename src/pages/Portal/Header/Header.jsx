@@ -15,10 +15,12 @@ import burger from "../../../assets/images/icons/burger.svg";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
 import Music from "../../../assets/images/Music.png";
-import Globe from "../../../assets/images/Globe.png";
+import { CiGlobe } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const HeaderPortal = () => {
+  const [activeLangBar, setactiveLangBar] = useState(false);
   const scrollRef = useRef(0);
   const [isFixed, setFixed] = useState(false);
   const [activeSidebar, setactiveSidebar] = useState(false);
@@ -167,17 +169,43 @@ const HeaderPortal = () => {
               />
             </svg>
           </motion.button>
-          <div className="header_navbar_language">
-            <img src={Globe} alt="global" />
-            <select
-              className="header_navbar_language_selects"
-              value={language}
-              onChange={(e) => handleChangeLng(e.target.value)}
+          <div className="auth-header-nav-lang">
+            <div
+              className="auth-header-nav-lang-wrapper"
+              onClick={() => setactiveLangBar((el) => !el)}
             >
-              <option value="uz">Uz</option>
-              <option value="ru">Ru</option>
-              <option value="en">En</option>
-            </select>
+              <CiGlobe className="auth-header-nav-lang-icon" />
+              <span>
+                {language.split("")[0].toUpperCase() + language.split("")[1]}
+              </span>
+              <IoMdArrowDropdown className="auth-header-nav-lang-iconArrow" />
+            </div>
+            <div
+              className="auth-header-nav-lang-bar"
+              style={activeLangBar ? { display: "flex" } : null}
+            >
+              <p
+                onClick={(e) =>
+                  handleChangeLng(e.target.innerText.toLowerCase())
+                }
+              >
+                Uz
+              </p>
+              <p
+                onClick={(e) =>
+                  handleChangeLng(e.target.innerText.toLowerCase())
+                }
+              >
+                Ru
+              </p>
+              <p
+                onClick={(e) =>
+                  handleChangeLng(e.target.innerText.toLowerCase())
+                }
+              >
+                En
+              </p>
+            </div>
           </div>
           <button
             className="header_navbar_eye burger"
