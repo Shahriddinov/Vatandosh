@@ -29,19 +29,20 @@ const Menu = () => {
             <ul className="menu">
 
 
-                <li  className="menu_item hov">
+                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/about" className="menu_link">
                         {t("about")}
                     </Link>
                     <ul className="main">
-                        <li >Biz haqimizda</li>
+                        <li>
+                           Biz haqimizda</li>
                         <li>Vasiylik Kengashi</li>
 
                     </ul>
 
 
-                </li>
-                <li className="menu_item hov">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("citizin")}
                     </Link>
@@ -51,8 +52,8 @@ const Menu = () => {
                         <li>Jamoat birlashmalar tadbirlari</li>
 
                     </ul>
-                </li>
-                <li className="menu_item hov">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("projects")}
                     </Link>
@@ -66,14 +67,14 @@ const Menu = () => {
                         <li>“Xorijdagi vatandosh tashkilot” loyihasi</li>
 
                     </ul>
-                </li>
-                <li className="menu_item ">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item ">
                     <Link to="/" className="menu_link">
                         {t("contects")}
                     </Link>
 
-                </li>
-                <li className="menu_item hov">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("information")}
                     </Link>
@@ -85,18 +86,18 @@ const Menu = () => {
                         <li>Vatandoshlar jurnali</li>
 
                     </ul>
-                </li>
-                <li className="menu_item">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item">
                     <Link to="/" className="menu_link">
                         {t("link")}
                     </Link>
-                </li>
-                <li className="menu_item">
+                </motion.li>
+                <motion.li whileTap={{scale: 0.6}} className="menu_item">
                     ...
-                </li>
+                </motion.li>
             </ul>
         </div>
     );
 };
 
-export default Menu
+export default Menu;

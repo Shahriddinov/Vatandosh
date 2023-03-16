@@ -11,7 +11,7 @@ const About = () => {
     return (
         <div className="about">
             <CouncilHero  {...heroData}/>
-    </div>
-  );
+        </div>
+    );
 };
 export default About;

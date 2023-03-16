@@ -45,10 +45,6 @@
     box-sizing: border-box;
     border-radius: 50%;
     overflow-x: hidden;
-
-    &:hover .upload__photo {
-        opacity: 1;
-    }
 }
 
 .profile__img {
@@ -73,13 +69,6 @@
     height: 44px;
     margin-top: -44px;
     width: 100%;
-    opacity: 0.0;
-    pointer-events: none;
-    transition: all 2ms ease-out;
-
-    img {
-        cursor: pointer;
-    }
 }
 
 .input__fields {
@@ -120,27 +109,11 @@
     }
 
     select {
-        -webkit-appearance: none;  /* for webkit (safari, chrome) compatibility */
-        -moz-appearance: none; /* for firefox compatibility */
-        appearance: none;
-    }
-
-    option {
-        background-color: #FFFFFF;
-        color: #5D6B8A;
+        margin-left: -4px;
     }
 
     input[type-file] {
         display: none;
-    }
-
-    input[type=date]::-webkit-calendar-picker-indicator {
-        right: 22px;
-        margin-top: -20px;
-        width: 24px;
-        height: 24px;
-        z-index: 11;
-        opacity: 0;
     }
 }
 
@@ -156,27 +129,6 @@
     position: relative;
 }
 
-.required__star {
-    position: absolute;
-    right: 6px;
-    top: 6px;
-}
-
-.select {
-    position: absolute;
-    border: none;
-    background: none;
-    right: 22px;
-    top: 0;
-    bottom: 0;
-    transition: all 2ms ease-out;
-    pointer-events: none;
-
-    &:hover {
-        filter: invert(25%) sepia(85%) saturate(1580%) hue-rotate(189deg) brightness(89%) contrast(96%);
-    }
-}
-
 .upload {
     position: absolute;
     border: none;
@@ -185,14 +137,13 @@
     top: 0;
     bottom: 0;
     transition: all 2ms ease-out;
-    cursor: pointer;
 
     &:hover {
         filter: invert(25%) sepia(85%) saturate(1580%) hue-rotate(189deg) brightness(89%) contrast(96%);
     }
 }
 
-.termsCheck {
+.terms {
     display: flex;
     gap: 9px;
     margin-top: 10px;
@@ -201,13 +152,11 @@
     span {
         color: #065EA9;
         text-decoration: underline;
-        cursor: pointer;
     }
 }
 
 .checkbox {
     margin-top: 6px;
-    cursor: pointer;
 }
 
 .checked {
@@ -241,7 +190,7 @@
     border: none;
     letter-spacing: -0.0075em;
     color: #FFFFFF;
-    cursor: pointer;
+
 }
 
 
