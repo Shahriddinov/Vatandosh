@@ -12,6 +12,7 @@ import Music from "../../../assets/images/Music.png";
 import Search from "../../../assets/images/search.png";
 import Eye from "../../../assets/images/EyeGlass.png";
 import EyeWhrite from "../../../assets/images/EyeWhrite.png";
+import Globe from "../../../assets/images/Globe.png";
 import {CgClose} from "react-icons/cg";
 import {motion} from "framer-motion";
 import Menu from "./component/Menu/Menu";
