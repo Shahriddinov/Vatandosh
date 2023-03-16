@@ -4,13 +4,11 @@ import "./Hero.scss";
 import Aos from "aos";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
-// import video from "../../assets/images/videos/video1.mp4";
-import { HiOutlineArrowRight, HiOutlineArrowLeft } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
 
 import "./Hero.scss";
 
-// import SliderVideo from "../../assets/images/videos/video.mp4";
+import SliderVideo from "../../assets/images/slider/slider_video.mp4";
 
 const Hero = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -46,23 +44,34 @@ const Hero = () => {
     <section className="hero">
       <div className="hero__container container">
         <div className="hero__slider">
-          <div
-            className={`hero__slider-item ${slideIndex === 0 ? "active" : ""}`}
-          >
-            <div className="slider-left-bottom">
-              {/*<video autoPlay muted loop>*/}
-              {/*  /!*<source src={SliderVideo} />*!/*/}
-              {/*</video>*/}
-             <p>#{t("lates")}</p>
-              <h3>{t("dialog1")}</h3>
-              <button>{t("more")}</button>
-              <div
-                className={`navigation-line ${
-                  slideIndex === 0 ? "active" : ""
-                }`}
-              ></div>
+          {true ? (
+            <div className="hero__slider-video">
+              <video autoPlay muted loop>
+                <source src={SliderVideo} />
+              </video>
+              <div className="slider-left-bottom">
+                <p>#{t("lates")}</p>
+                <h3>{t("dialog1")}</h3>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className={`hero__slider-item ${
+                slideIndex === 0 ? "active" : ""
+              }`}
+            >
+              <div className="slider-left-bottom">
+                <p>#{t("lates")}</p>
+                <h3>{t("dialog1")}</h3>
+                <button>{t("more")}</button>
+                <div
+                  className={`navigation-line ${
+                    slideIndex === 0 ? "active" : ""
+                  }`}
+                ></div>
+              </div>
+            </div>
+          )}
           <div
             className={`hero__slider-item ${slideIndex === 1 ? "active" : ""}`}
           >
