@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 // Import Swiper styles
@@ -7,14 +7,21 @@ import "swiper/css/pagination";
 
 import { Navigation, } from "swiper";
 
-import { sliderData } from './data';
-
 import "./interactive-services.scss"
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInteractiveServices } from '../../reduxToolkit/peacefulSlice/peacefulExtraReducer';
 
 
 const InteractiveServices = () => {
     const {t} = useTranslation()
+    const dispatch = useDispatch()
+    const data = useSelector(state => state.peaceful.interactiveServices)
+    const lan = useSelector((state) => state.language.language);
+
+    useEffect(() => {
+        dispatch(getInteractiveServices())
+    },[])
 
   return (
     <section className='interactive_services'>
@@ -73,17 +80,19 @@ const InteractiveServices = () => {
                         className="mySwiper"
                     >
                         {
-                            sliderData.map(el => (
+                            data?.map(el => (
                                 <SwiperSlide key={el.id} className='interactive_services__slider-item'>
-                                    <div className="interactive_services__slider--card slider_card">
-                                        <div className="slider_card__img">
-                                            <img src={el.imgUrl} alt="" />
+                                   <a className="slider_link" href={el.link} target='blank'>
+                                        <div className="interactive_services__slider--card slider_card">
+                                            <div className="slider_card__img">
+                                                <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.img}`} alt={el[`title_${lan}`]} />
+                                            </div>
+                                            
+                                            <h4 className="slider_card__title">
+                                                {el[`title_${lan}`]}
+                                            </h4>
                                         </div>
-                                        
-                                        <h4 className="slider_card__title">
-                                            {el.title}
-                                        </h4>
-                                    </div>
+                                   </a>
                                 </SwiperSlide>
                             ))
                         }

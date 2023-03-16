@@ -18,6 +18,8 @@ const Layout = (props) => {
     localStorage.getItem("grayMode") ? localStorage.getItem("grayMode") : false
   );
 
+  const registerHeader = pathname.split("/")[1]
+
   const changeSpeakSwitcher = (value) => {
     setSpeaker(value);
   };
@@ -53,11 +55,10 @@ const Layout = (props) => {
         {pathname === "/portal" ? (
           <HeaderPortal />
         ) : (
-          pathname === "/registration" ? <RegisterHeader /> 
-            : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" ? <RegisterHeader/> : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+          registerHeader === "registration" ? <RegisterHeader /> : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
         )}
         <div className="page-content">{children}</div>
-        {pathname === "/portal" ? "" : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" ? <RegisterFooter /> : <Footer />}
+        {registerHeader === "registration" ? <RegisterFooter /> : <Footer />}
       </div>
     </GrayContext.Provider>
   );
