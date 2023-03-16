@@ -1,18 +1,266 @@
 @import "../../../../assets/style/global.scss";
 
 .auth {
+  padding: 10px 0;
+  height: calc(100vh - 70px - 80px);
+  display: flex;
 
-  height: 500px;
+  &-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &-desc {
+    width: 100%;
+    max-width: 528px;
 
     &>h2 {
+      padding-right: 57px;
       @include fontStyles(600, 46px, 54px, $colorLight);
     }
 
     &>p {
-      @include fontStyles(700, 22px, 27px, $colorLight);
+      margin-top: 30px;
+      @include fontStyles(400, 18px, 32px, rgba(255, 255, 255, 0.65));
+      letter-spacing: -0.015em;
+    }
+  }
 
+  &-form {
+    height: 100%;
+    max-height: 597px;
+    width: 508px;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: $colorLight;
+    border-radius: 20px;
+
+    &-title {
+      &>h3 {
+        @include fontStyles(700, 22px, 27px, $colorTitle);
+      }
+
+      &>p {
+        margin-top: 6px;
+        letter-spacing: -0.01em;
+        @include fontStyles(400, 14px, 20px, $colorGrey);
+      }
+    }
+
+    &-inputs {
+      display: grid;
+
+      &-passwordInput {
+        position: relative;
+
+        &>input {
+          width: 90% !important;
+        }
+
+        &-eyeIcon {
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          transform: translateY(-50%);
+          top: 50%;
+          right: 20px;
+          color: #000000;
+          cursor: pointer;
+        }
+      }
+
+      &-sendMail {
+        margin-bottom: 38px;
+        text-align: end;
+        letter-spacing: -0.01em;
+        @include fontStyles(400, 12px, 14px, #55A4E8);
+      }
+
+      &>label:first-child {
+        margin-bottom: 24px;
+      }
+
+      &>label {
+        padding: 12px 20px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #EAEDF6;
+        border-radius: 6px;
+
+        &:hover {
+          background: #E3F0FF;
+          border: 1px solid #EAEDF6;
+        }
+
+        &>span {
+          margin-bottom: 6px;
+          letter-spacing: -0.01em;
+          @include fontStyles(400, 12px, 14px, $colorGrey);
+        }
+
+        &>input {
+          width: 100%;
+          height: 20px;
+          border: none;
+          letter-spacing: -0.01em;
+          @include fontStyles(400, 16px, 20px, $colorGrey);
+          outline: none;
+          background: transparent;
+        }
+      }
+
+      &-emailInput {
+        border-color: $colorTitle !important;
+
+        &-signup {
+          margin: 0 0 8px 0 !important;
+        }
+      }
+
+      &-checkbox {
+        margin: 20px 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-input {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &>input {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(93, 107, 138, 0.5);
+          }
+
+          &>span {
+            letter-spacing: -0.01em;
+            @include fontStyles(500, 14px, 20px, $colorTitle);
+          }
+        }
+
+        &-forgetPassword>a {
+          text-decoration: none;
+          letter-spacing: -0.01em;
+          @include fontStyles(500, 14px, 20px, #FF5C00);
+        }
+      }
+
+      &-passwordInput-changePassword {
+        margin-bottom: 16px !important;
+      }
+
+      &-submitBtn {
+        padding: 16px 0;
+        background-color: $colorTitle;
+        border: none;
+        border-radius: 32px;
+        @include fontStyles(700, 16px, 24px, $colorLight);
+        cursor: pointer;
+
+        &-changePassword {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+
+  &-signup {
+    height: auto;
+    gap: 34px;
+  }
+
+  &-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-tosignup {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      &>span,
+      a {
+        @include fontStyles(500, 16px, 24px, $colorGrey);
+      }
+
+      &>a {
+        color: $colorTitle;
+      }
+    }
+
+    &-list {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+
+      &-item {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $ButtonBackground;
+        border-radius: 50%;
+
+        &-facebook {
+          align-items: end;
+          background: linear-gradient(135deg, #2AA4F4 14.98%, #007AD9 91.54%);
+        }
+
+        &-oneid {
+          background: #4825C2;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-height: 730px) {
+  .auth {
+    &-form {
+
+      &-title>p {
+        margin: 0;
+      }
+
+      &-inputs {
+
+        &-submitBtn {
+          padding: 12px 0;
+        }
+
+        &>label {
+          padding: 6px 14px;
+        }
+
+        &-emailInput {
+          margin-bottom: 10px !important;
+        }
+
+        &-checkbox {
+          margin: 10px 10px;
+        }
+      }
+
+    }
+
+    &-links {
+      &-list {
+        margin-bottom: 10px;
+
+        &-item {
+          width: 40px;
+          height: 40px;
+        }
+      }
     }
   }
 }
