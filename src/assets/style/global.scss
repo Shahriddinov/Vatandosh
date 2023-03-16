@@ -42,6 +42,15 @@ body {
   background-position: top left, right bottom;
 
 }
+.searches{
+  background: rgba(255, 255, 255, 0.2)!important;
+  backdrop-filter: blur(15px)!important;
+  ::placeholder{
+    color: white!important;
+
+  }
+
+}
 
 .page-portal {
   height: 100vh;
