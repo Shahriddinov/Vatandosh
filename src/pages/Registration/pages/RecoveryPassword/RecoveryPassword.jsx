@@ -1,7 +1,6 @@
-
 import "../SignIn/SignIn.scss";
 
-export const SignUp = () => {
+export default function RecoveryPassword() {
 
   return (
     <div className="auth">
@@ -17,9 +16,8 @@ export const SignUp = () => {
           </div>
           <div className="auth-form auth-signup">
             <div className="auth-form-title">
-              <h3>Ro’yxatdan o’tish</h3>
-              <p>Hisob ochish uchun email pochtangizni kiriting va biz sizga
-                tashdiqlash kodini yuboramiz</p>
+              <h3>Parolni tiklash</h3>
+              <p>Hisobingiz bilan bog'langan email pochtangizni kiriting va parolingizni tiklash uchun tasdiqlash kodini yuboramiz.</p>
             </div>
             <form className="auth-form-inputs">
               <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
