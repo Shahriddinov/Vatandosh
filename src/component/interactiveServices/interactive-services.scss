@@ -17,6 +17,12 @@
         width: 330px ;
         min-height: 230px;
     }
+
+    .slider_link {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+    }
 }
 
 .slider_controls {
@@ -54,6 +60,7 @@
     font-size: 32px;
     line-height: 39px;
     color: #065EA9;
+
 }
 
 .section_title::after {

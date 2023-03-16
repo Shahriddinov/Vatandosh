@@ -18,6 +18,8 @@ const Layout = (props) => {
     localStorage.getItem("grayMode") ? localStorage.getItem("grayMode") : false
   );
 
+  const registerHeader = pathname.split("/")[1]
+
   const changeSpeakSwitcher = (value) => {
     setSpeaker(value);
   };
