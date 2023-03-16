@@ -93,6 +93,8 @@
         background-color: $colorLight;
         z-index: 10;
         overflow: hidden;
+        box-shadow: 1px 1px 10px 1px,
+          -1px -1px 10px 1px rgb(255, 251, 251);
 
         &>p {
           width: 100%;

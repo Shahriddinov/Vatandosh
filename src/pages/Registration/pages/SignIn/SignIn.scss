@@ -223,9 +223,10 @@
   }
 }
 
-@media only screen and (max-height: 730px) {
+@media only screen and (max-height: 690px) {
   .auth {
     &-form {
+      height: auto;
 
       &-title>p {
         margin: 0;
@@ -259,6 +260,16 @@
         &-item {
           width: 40px;
           height: 40px;
+
+          &-facebook>img {
+            width: 14px;
+            height: 30px;
+          }
+
+          &-oneid>img {
+            width: 34px;
+
+          }
         }
       }
     }
