@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
+import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 import ChatModal from "../PortalChatModal/ChatModal";
 
 import "./portal.scss";
@@ -8,7 +11,17 @@ import "./portal.scss";
 const HomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
+
   const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    dispatch(getContact());
+  }, []);
 
   return (
     <div className="portal">
@@ -53,7 +66,7 @@ const HomePage = () => {
               >
                 <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
               </svg>
-              <a href="#">
+              <a href={contactData?.instagram}>
                 <svg
                   width="17"
                   height="17"
@@ -69,7 +82,7 @@ const HomePage = () => {
                   />
                 </svg>
               </a>
-              <a href="#">
+              <a href={contactData?.twitter}>
                 <svg
                   width="18"
                   height="15"
@@ -85,7 +98,7 @@ const HomePage = () => {
                   />
                 </svg>
               </a>
-              <a href="#">
+              <a href={contactData?.facebook}>
                 <svg
                   width="10"
                   height="18"

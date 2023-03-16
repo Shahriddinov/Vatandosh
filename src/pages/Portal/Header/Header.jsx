@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { GrayContext } from "../../../component/Layout/Layout";
+import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 
 import "./header.scss";
 
@@ -29,6 +30,9 @@ const HeaderPortal = () => {
   const { grayScale } = useContext(GrayContext);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -37,6 +41,7 @@ const HeaderPortal = () => {
 
   useEffect(() => {
     scrollRef.current = window.pageYOffset;
+    dispatch(getContact());
   }, []);
 
   useEffect(() => {
@@ -80,10 +85,10 @@ const HeaderPortal = () => {
               />
             </svg>
             <a
-              href="tel: +998(55)502-22-99"
+              href={`tel: ${contactData?.phone}`}
               className="header_navbar_phone_number"
             >
-              +998(55)502-22-99
+              {contactData?.phone}
             </a>
           </div>
           <div className="header_navbar_email">
@@ -102,10 +107,10 @@ const HeaderPortal = () => {
               />
             </svg>
             <a
-              href="mailto: info@vatandoshlarfondi.uz"
+              href={`mailto: ${contactData?.email}`}
               className="header_navbar_phone_number"
             >
-              info@vatandoshlarfondi.uz
+              {contactData?.email}
             </a>
           </div>
 
