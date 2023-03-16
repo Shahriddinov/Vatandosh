@@ -2,22 +2,18 @@ import React from 'react'
 import "./councilCard.scss"
 import phone from "../../../../assets/images/about/Phone.svg"
 import mail from "../../../../assets/images/about/mail.svg"
-import { useSelector } from 'react-redux'
 
-const CouncilCard = ({trustee}) => {
-    const lan = useSelector((state) => state.language.language);
-
-    console.log(trustee);
+const CouncilCard = ({name,img,job}) => {
   return (
     <div className='council-card'>
         <div className="council-card__img-box">
-            <img className="council-card__img" src={`https://vatanparvarbackend.napaautomotive.uz/storage/${trustee?.img}`} alt={trustee[`position_${lan}`]}  />
+            <img className="council-card__img" src={img} alt=""  />
         </div>
 
         <div className="council-card__body">
             <h3 className="council-card__title">
-                <span className="council-card__title--span">{trustee[`position_${lan}`]}</span>
-                <span>{trustee[`name_${lan}`]}</span>
+                <span className="council-card__title--span">{job}</span>
+                <span>{name}</span>
             </h3>
 
             <ul className="council-card__list">
@@ -25,14 +21,14 @@ const CouncilCard = ({trustee}) => {
                     <span className="council-card__item--icon">
                         <img src={phone} alt="" />
                     </span>
-                    <span>{trustee?.phone}</span>
+                    <span>+998(55) 502-22-99</span>
                 </li>
 
                 <li className="council-card__item">
                     <span className="council-card__item--icon">
-                        <img src={mail} alt="email" />
+                        <img src={mail} alt="" />
                     </span>
-                    <span>{trustee?.email}</span>
+                    <span>sattarov@vatandoshlarfondi.uz</span>
                 </li>
             </ul>
         </div>

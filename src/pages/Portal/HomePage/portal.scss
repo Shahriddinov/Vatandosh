@@ -1,6 +1,5 @@
 .portal {
   width: 100%;
-  padding-top: 180px;
 }
 
 .background-gif {
@@ -9,7 +8,7 @@
   position: fixed;
   top: 0;
   background-color: #002630;
-  background-image: url("../../../assets/images/portal/globe2.gif");
+  background-image: url("../../../assets/images/portal/globe.gif");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -52,7 +51,7 @@
   align-items: center;
   gap: 25px;
 
-  & > svg {
+  svg {
     &:last-child {
       transform: rotate(180deg);
     }
@@ -68,17 +67,6 @@
     line-height: 60px;
     color: #fff;
     letter-spacing: 0.03em;
-
-    span {
-      background: -webkit-linear-gradient(
-        45deg,
-        #055da8 15%,
-        #3ea6ff 50%,
-        #055da8 85.5%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
   }
 
   p {
@@ -270,6 +258,7 @@
   a {
     width: 190px;
     text-decoration: none;
+    text-transform: lowercase;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -278,7 +267,6 @@
 }
 
 .portal-body-bottom {
-  position: relative;
   margin: 190px 0 55px 0;
 
   button {
@@ -292,98 +280,5 @@
     color: #fff;
     background: #065ea9;
     cursor: pointer;
-    outline: none;
-  }
-}
-
-@media (max-width: 1024px) {
-  .portal-body-middle {
-    flex-direction: column;
-    position: relative;
-  }
-
-  .navbar-side {
-    width: 100%;
-    height: auto;
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-      height: 0;
-    }
-
-    ul {
-      display: flex;
-      gap: 30px;
-    }
-  }
-
-  .social-media {
-    position: absolute;
-    right: 0;
-    bottom: -95px;
-    order: 3;
-    flex-direction: row;
-
-    a {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #065ea9;
-      border-radius: 50%;
-    }
-
-    & > svg {
-      &:first-child {
-        display: none;
-      }
-
-      &:nth-child(2) {
-        display: none;
-      }
-
-      &:nth-child(6) {
-        display: none;
-      }
-
-      &:last-child {
-        display: none;
-      }
-    }
-  }
-
-  .portal-body-bottom {
-    margin: 50px 0 40px 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .portal-body-middle {
-    h2 {
-      font-size: 24px;
-      line-height: 36px;
-    }
-  }
-
-  .social-media {
-    gap: 10px;
-    bottom: -200px;
-  }
-
-  .navbar-side {
-    display: none;
-  }
-
-  .header-sideBar-navlist-item {
-    height: auto !important;
-
-    a {
-      text-transform: uppercase;
-    }
-  }
-
-  .portal-body-bottom {
-    margin-top: 160px;
   }
 }

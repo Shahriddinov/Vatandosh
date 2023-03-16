@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getInteractiveServices, getPeaceful } from "./peacefulExtraReducer"
+import { getPeaceful } from "./peacefulExtraReducer"
 
 
 
 const initialState = {
     peacefulData: [],
-    interactiveServices: [],
-    interactiveServicesLoading:false,
     loading: false,
     error: "",
 }
@@ -30,18 +28,6 @@ const peacefullSlice = createSlice({
             .addCase(getPeaceful.rejected, (state,{error}) => {
                 state.error = error.message
                 state.loading = false
-            });
-        build
-            .addCase(getInteractiveServices.pending, (state) => {
-                state.interactiveServicesLoading = true
-            })
-            .addCase(getInteractiveServices.fulfilled, (state,{payload}) => {
-                state.interactiveServicesLoading = false
-                state.interactiveServices = payload.data
-            })
-            .addCase(getInteractiveServices.rejected, (state,action) => {
-                state.interactiveServicesLoading = false
-                state.error = action.error.message
             })
     }
 })

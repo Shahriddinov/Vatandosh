@@ -34,49 +34,32 @@ body {
 }
 
 .registerBackground {
-  width: 100%;
-  height: 100vh;
-  background-image: url("../../assets/images/register/header-background-image.svg"), url("../../assets/images/register/footer-background-image.svg"), linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
-  background-repeat: no-repeat;
-  background-size: 480px 484, 515px 521px, cover;
-  background-position: top left, right bottom;
-
-}
-.searches{
-  background: rgba(255, 255, 255, 0.2)!important;
-  backdrop-filter: blur(15px)!important;
-  ::placeholder{
-    color: white!important;
-
-  }
-
+  background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
 }
 
-.page-portal {
-  height: 100vh;
-  background-color: #002630;
-  background-image: url("../../assets/images/portal/globe.gif"),
-    url("../../assets/images/portal/ellipse.png"),
-    url("../../assets/images/portal/ellipse.png"),
-    url("../../assets/images/portal/ellipse.png");
-  background-repeat: no-repeat;
-  background-position: center center, -100px -80px;
-  background-size: contain, 376px 376px;
-}
+// .page-portal {
+//   height: 100vh;
+//   background-color: #002630;
+//   background-image: url("../../assets/images/portal/globe.gif"),
+//     url("../../assets/images/portal/ellipse.png"),
+//     url("../../assets/images/portal/ellipse.png"),
+//     url("../../assets/images/portal/ellipse.png");
+//   background-repeat: no-repeat;
+//   background-position: center center, -100px -80px;
+//   background-size: contain, 376px 376px;
+// }
 
 .page-about {
   width: 100%;
   height: 420px;
+
   background-color: #065ea9;
   background-image: url("../../assets/images/pattern-top.png"),
-    url("../../assets/images/bottom.png");
+   url("../../assets/images/bottom.png");
 
   background-repeat: no-repeat;
 
   background-position: left top, right bottom;
-}
-.colors{
-  color: white!important;
 }
 
 .container {

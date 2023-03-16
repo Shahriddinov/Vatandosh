@@ -15,10 +15,13 @@ import burger from "../../../assets/images/icons/burger.svg";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
 import Music from "../../../assets/images/Music.png";
-import Globe from "../../../assets/images/Globe.png";
+import { CiGlobe } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
+import { IoMdArrowDropdown } from "react-icons/io";
+import Globe from "../../../assets/images/Globe.png";
 
 const HeaderPortal = () => {
+  const [activeLangBar, setactiveLangBar] = useState(false);
   const scrollRef = useRef(0);
   const [isFixed, setFixed] = useState(false);
   const [activeSidebar, setactiveSidebar] = useState(false);

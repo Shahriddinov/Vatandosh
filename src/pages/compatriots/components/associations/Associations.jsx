@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import arrowRight from "../../../../assets/images/compatriots/chevron-left.svg"
 import { Link } from 'react-router-dom'
-import { dataCoun } from './data'
-import "./associations.scss"
 
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -9,72 +8,96 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import "./associations.scss"
+import { dataCoun } from './data'
+
 const Associations = () => {
-    const [expanded, setExpanded] = React.useState("");
+    const [active,setActive] = useState(0)
+    const [expanded, setExpanded] = React.useState(false);
 
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-
+    const handleChange = (panel) => (event, isExpanded) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   return (
-    <div className='associations'>
+    <section className='associations'>
         <div className="associations__container container">
             <div className="associations__inner">
                 <h2 className="associations__title">Birlashmalar</h2>
-                <ul className="associations__accordions">
-                {
-                    dataCoun.map(el => (
-                        <Accordion 
-                        variant="li" component="li"
-                        className={`associations__accordion`} 
-                        expanded={expanded === el.panel} 
-                        style={{margin: expanded === el.panel && 0,boxShadow:"transparent",padding:"0"}} 
-                        onChange={handleChange(el.panel)}
-                        key={el.id}
-                        >
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon style={{color: el.panel === expanded ? "#065EA9" : ""}}/>}
-                                aria-controls="panel4bh-content"
-                                id="panel4bh-header"
-                                className='associations__accordion_header'
-                                >
-
-                                <Typography
-                                variant="span" component="span"
-                                className='associations__accordion_header--span' 
-                                sx={{flexShrink: 0 }}
-                                style={{color: el.panel === expanded ? "#065EA9" : ""}}
-                                >
-                                    {el.title}
-                                </Typography>
-                            </AccordionSummary>
-
-                            <AccordionDetails>
-                                <ul className='associations__accordion_body'>
-                                    <li className="associations__accordion_item">
-                                        1. Qirgʼiziston-Oʼzbekiston doʼstlik <Link className='associations__accordion_item--link' to="/compatriots/public-associations/use-uzbekistan">jamiyati</Link>
-                                    </li>
-                                    <li className="associations__accordion_item">
-                                        2.Qirg‘iziston Respublikasi o‘zbek milliy madaniyat <Link className='associations__accordion_item--link' to="/">markazi</Link>
-                                    </li>
-                                    <li className="associations__accordion_item">
-                                        4. Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat <Link className='associations__accordion_item--link' to="/">markazi</Link>
-                                    </li>
-                                    <li className="associations__accordion_item">
-                                        1. Qirgʼiziston-Oʼzbekiston doʼstlik <Link className='associations__accordion_item--link' to="/">jamiyati</Link>
-                                    </li>
-                                    <li className="associations__accordion_item">
-                                        5. O‘sh shahar o‘zbek milliy markazi” jamoat birlashmasi
-                                    </li>
-                                </ul>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))
-                }
-                </ul>
+                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        General settings
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+                        Aliquam eget maximus est, id dignissim quam.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2bh-content"
+                    id="panel2bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Users</Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        You are currently not an owner
+                    </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
+                        varius pulvinar diam eros in elit. Pellentesque convallis laoreet
+                        laoreet.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel3bh-content"
+                    id="panel3bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>
+                        Advanced settings
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary' }}>
+                        Filtering has been entirely disabled for whole web server
+                    </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel4bh-content"
+                    id="panel4bh-header"
+                    >
+                    <Typography sx={{ width: '33%', flexShrink: 0 }}>Personal data</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography>
+                        Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
+                        amet egestas eros, vitae egestas augue. Duis vel est augue.
+                    </Typography>
+                    </AccordionDetails>
+                </Accordion>
             </div>
         </div>
-    </div>
+    </section>
   )
 }
 

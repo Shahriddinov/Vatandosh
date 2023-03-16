@@ -1,10 +1,15 @@
 import React, { useState, useRef } from 'react'
+import Select from '@mui/material/Select'
 import '../../../../assets/style/global.scss'
 import './register.scss'
 import DefaultProfilePic from '../../../../assets/images/icons/profile.svg'
 import CameraIcon from '../../../../assets/images/icons/camera.svg'
 import UploadIcon from '../../../../assets/images/icons/upload.svg'
 import Checkmark from '../../../../assets/images/icons/check.svg'
+import ChevronDown from '../../../../assets/images/icons/chevrondown.svg'
+import Star from '../../../../assets/images/icons/star.svg'
+import Canlendar from '../../../../assets/images/icons/calendar.svg'
+import Terms from '../Terms/Terms'
 
 const Register = () => {
 
@@ -25,15 +30,41 @@ const Register = () => {
         agree: false
     });
 
+    const [modal, setModal] = useState(false)
+
+    const toggleModal = () => {
+        setModal(!modal)  
+    }
+
     const fileInputRef = useRef(null);
     const photoInputRef = useRef(null);
-
+    const genderSelectorRef = useRef(null);
+    const countrySelectorRef = useRef(null);
+    const nationalitySelectorRef = useRef(null);
+    const datePickerRef = useRef(null);
+    
     const handleUploadButtonClick = () => {
         fileInputRef.current.click();
     };
 
     const handlePhotoUploadClick = () => {
         photoInputRef.current.click();
+    };
+
+    const handleGenderSelector = () => {
+        genderSelectorRef.current.click();
+    };
+
+    const handleCountrySelector = () => {
+        countrySelectorRef.current.click();
+    };
+
+    const handleNationalitySelector = () => {
+        nationalitySelectorRef.current.click();
+    };
+
+    const handleDatePicker = () => {
+        datePickerRef.current.click();
     };
     
     const handleFileChange = (event) => {
@@ -75,7 +106,7 @@ const Register = () => {
     };
 
     return (
-        <div className='container'>
+        <div className='container position__relative'>
             <div className="registration__form">
                 <div className="form__title">
                     <h2>Ro'yxatdan O'ting</h2>
@@ -101,7 +132,7 @@ const Register = () => {
                     </div>
                     <div className="form__right">
                         <div className="input__fields">
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="familyName">Familiyasi</label>
                                 <input
                                     type="text"
@@ -112,6 +143,7 @@ const Register = () => {
                                     spellCheck="false"
                                     required
                                 />
+                                <img src={Star} alt="" className='required__star'/>
                             </div>
                             <div className="input">
                                 <label htmlFor="firstName">Ismi</label>
@@ -135,29 +167,43 @@ const Register = () => {
                                     spellCheck="false"
                                 />
                             </div>
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="dateBorn">Tug'ilgan sana</label>
                                 <input
-                                type="date"
-                                id="dateBorn"
-                                name="dateBorn"
-                                value={formData.dateBorn}
-                                onChange={handleInputChange}
+                                    ref={datePickerRef}
+                                    type="date"
+                                    id="dateBorn"
+                                    name="dateBorn"
+                                    value={formData.dateBorn}
+                                    onChange={handleInputChange}
                                 />
+                                <button className="select" type='button'>
+                                    <img src={Canlendar} alt="" onClick={() => { document.getElementById("date-picker").click(); }}/>
+                                </button>
                             </div>
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="nationality">Millati</label>
-                                <input
-                                type="text"
-                                id="nationality"
-                                name="nationality"
-                                value={formData.nationality}
-                                onChange={handleInputChange}
-                                />
+                                <select
+                                    id="nationality"
+                                    name="nationality"
+                                    value={formData.nationality}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="" ref={nationalitySelectorRef}></option>
+                                    <option value="uzbek">O'zbek</option>
+                                    <option value="tajik">Tojik</option>
+                                    <option value="karakalpak">Qoraqalpoq</option>
+                                    <option value="kazakh">Qozoq</option>
+                                    <option value="kyrgyz">Qirg'iz</option>
+                                </select>
+                                <button className="select" type='button'>
+                                    <img src={ChevronDown} alt="" onClick={handleNationalitySelector}/>
+                                </button>
                             </div>
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="gender">Jinsi</label>
                                 <select
+                                    ref={genderSelectorRef}
                                     id="gender"
                                     name="gender"
                                     value={formData.gender}
@@ -167,6 +213,9 @@ const Register = () => {
                                     <option value="male">Erkak</option>
                                     <option value="female">Ayol</option>
                                 </select>
+                                <button className="select" type='button' onClick={handleGenderSelector}>
+                                    <img src={ChevronDown} alt="" />
+                                </button>
                             </div>
                             <div className="input">
                                 <label htmlFor="address">O'zbekistondagi manzilingiz</label>
@@ -177,9 +226,10 @@ const Register = () => {
                                     onChange={handleInputChange}
                                 />
                             </div>
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="livingCountry">Xorijiy davlat</label>
                                 <select
+                                    ref={countrySelectorRef}
                                     id='livingCountry'
                                     name="livingCountry"
                                     value={formData.livingCountry}
@@ -190,6 +240,9 @@ const Register = () => {
                                     <option value="female">USA</option>
                                     <option value="other">Canada</option>
                                 </select>
+                                <button className="select" type='button' onClick={handleCountrySelector}>
+                                    <img src={ChevronDown} alt="" />
+                                </button>
                             </div>
                             <div className="input">
                                 <label htmlFor="job">Faoliyat turi</label>
@@ -201,7 +254,7 @@ const Register = () => {
                                     onChange={handleInputChange}
                                 />
                             </div>
-                            <div className="input">
+                            <div className="input position__relative">
                                 <label htmlFor="jobAddress">Manzil</label>
                                 <textarea
                                     id="jobAddress"
@@ -210,6 +263,7 @@ const Register = () => {
                                     onChange={handleInputChange}
                                     required
                                 />
+                                <img src={Star} alt="" className='required__star'/>
                             </div>
                             <div className="input">
                                 <label htmlFor="phoneNumber">Telefon raqamingiz</label>
@@ -239,7 +293,7 @@ const Register = () => {
                                 </button>
                             </div>
                         </div>  
-                        <div className="terms">
+                        <div className="termsCheck">
                             <div className="checkbox" onClick={handleCheckbox}>
                                 {formData.agree ? 
                                     <div className="checked">
@@ -249,12 +303,13 @@ const Register = () => {
                                     <div className="unchechecked" />
                                 }
                             </div>
-                            <p>Ro'yxatdan otish davomida <span>Foydalanish shartlari</span> bilan tanishib chiqdim va shaxsiy ma’lumotlarimdan foydalanilishiga roziman</p>
+                            <p>Ro'yxatdan otish davomida <span onClick={toggleModal}>Foydalanish shartlari</span> bilan tanishib chiqdim va shaxsiy ma’lumotlarimdan foydalanilishiga roziman</p>
                         </div>
                         <button className='submit' type='submit'>Saqlash</button>
                     </div>  
                 </form>
             </div>
+            {modal && <Terms toggleModal={toggleModal} handleCheckbox={handleCheckbox}/>}
         </div>
     )
 }

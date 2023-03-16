@@ -5,6 +5,12 @@
   padding-top: 20px;
   height: 70px;
 
+  &-backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   &-wrapper {
     display: flex;
     justify-content: space-between;
