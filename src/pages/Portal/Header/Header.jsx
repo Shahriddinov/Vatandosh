@@ -169,19 +169,19 @@ const HeaderPortal = () => {
               />
             </svg>
           </motion.button>
-          <div className="auth-header-nav-lang">
+          <div className="portal-header-lang">
             <div
-              className="auth-header-nav-lang-wrapper"
+              className="portal-header-lang-wrapper"
               onClick={() => setactiveLangBar((el) => !el)}
             >
-              <CiGlobe className="auth-header-nav-lang-icon" />
+              <CiGlobe className="portal-header-lang-icon" />
               <span>
                 {language.split("")[0].toUpperCase() + language.split("")[1]}
               </span>
-              <IoMdArrowDropdown className="auth-header-nav-lang-iconArrow" />
+              <IoMdArrowDropdown className="portal-header-lang-iconArrow" />
             </div>
             <div
-              className="auth-header-nav-lang-bar"
+              className="portal-header-lang-bar"
               style={activeLangBar ? { display: "flex" } : null}
             >
               <p
