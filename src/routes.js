@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import App from "./App";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import HomePage from "./pages/Portal/HomePage/HomePage";
@@ -16,6 +15,7 @@ const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() => import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety"));
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
+const PublicAssociationEvents = lazy(() => import("./pages/PublicAssociationEvents/PublicAssociationEvents"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
   { path: "", element: Home, },
@@ -29,6 +29,7 @@ const routes = [
   { path: "/registration/signin", element: SignIn },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
+  { path: "/compatriots/public-association-events", element: PublicAssociationEvents },
 ];
 
 const RoutesContainer = () => (
