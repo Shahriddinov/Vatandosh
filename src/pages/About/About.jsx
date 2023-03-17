@@ -8,6 +8,7 @@ import Fond from "../../assets/images/fond.png"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
 import SliderVideo from "../../assets/images/slider/slider_video.mp4";
 import Table from "./component/Table/Table";
+import Header from "../../component/Layout/Header/Header";
 
 const About = () => {
     const heroData = {
@@ -17,6 +18,7 @@ const About = () => {
     }
     return (
         <div className="about ">
+            <Header/>
             <CouncilHero  {...heroData}/>
             <div className="about_card container">
                 <div className="about_card_left">
