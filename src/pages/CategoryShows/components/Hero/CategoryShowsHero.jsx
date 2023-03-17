@@ -1,5 +1,6 @@
 import "./CategoryShowsHero.scss";
 import { MdArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function CategoryShowsHero() {
   return (
@@ -7,7 +8,7 @@ export default function CategoryShowsHero() {
       <div className="container">
         <div className="shows-hero-desc">
           <div className="shows-hero-desc-url">
-            <span>Asosiy sahifa</span>
+            <Link to="/">Asosiy sahifa</Link>
             <MdArrowRight className="shows-hero-desc-url-arrow" />
             <span>Turkum ko'rsatuvlar</span>
           </div>

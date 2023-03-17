@@ -39,7 +39,9 @@
         color: #FFFFFF;
       }
 
-      &>span {
+      &>span,
+      a {
+        text-decoration: none;
         letter-spacing: 0.2px;
         @include fontStyles(700, 14px, 17px, #FFFFFF);
       }
