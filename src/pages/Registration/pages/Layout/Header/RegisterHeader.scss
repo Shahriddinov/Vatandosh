@@ -26,6 +26,15 @@
     display: flex;
     gap: 30px;
 
+    &-burger {
+      display: none;
+      padding: 8px 12px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background-color: $colorLight;
+    }
+
     &-link {
       display: flex;
       gap: 20px;
@@ -107,6 +116,22 @@
           background-color: grey;
           color: $colorLight;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .auth-header {
+    &-nav {
+      gap: 10px;
+
+      &-burger {
+        display: flex;
+      }
+
+      &-link {
+        display: none;
       }
     }
   }
