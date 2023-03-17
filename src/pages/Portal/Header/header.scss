@@ -29,11 +29,67 @@
   }
 
   .header {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
     padding: 1rem;
     border-bottom: 1px solid #eaedf642;
+
+    .portal-header-lang {
+      position: relative;
+
+      &-wrapper {
+        padding: 10px 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 12px;
+        background-color: #065ea9;
+        cursor: pointer;
+
+        & > span {
+          display: flex;
+          align-items: center;
+          @include fontStyles(400, 14px, 17px, #fff);
+        }
+      }
+
+      &-icon {
+        width: 20px;
+        height: 20px;
+        color: #fff;
+      }
+
+      &-iconArrow {
+        width: 16px;
+        height: 16px;
+        color: #fff;
+      }
+
+      &-bar {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        width: 76px;
+        right: 0;
+        top: 45px;
+        border-radius: 12px;
+        background-color: #065ea9;
+        z-index: 10;
+        overflow: hidden;
+
+        & > p {
+          width: 100%;
+          text-align: center;
+          padding: 5px;
+          color: #fff;
+          cursor: pointer;
+          background-color: #065ea9;
+        }
+
+        & > p:hover {
+          background-color: #3f8dd1;
+        }
+      }
+    }
 
     &_navbar {
       display: flex;
@@ -131,25 +187,26 @@
         align-items: center;
         position: relative;
 
-        gap: 10px;
         width: 73px;
         height: 40px;
 
         background: #065ea9;
         border-radius: 12px;
-        &_global {
-          position: absolute;
+
+        img {
+          margin-left: 20px;
         }
+
         &_selects {
           width: 73px;
           height: 40px;
           border-radius: 12px;
           background: #065ea9;
-          padding: 10px;
+          padding: 6px;
           outline: none;
           grid-area: 5px;
-          border: 1px solid white;
           color: white;
+          border: none;
         }
       }
 
@@ -160,7 +217,7 @@
         &-closeIcon {
           width: 20px;
           height: 20px;
-          color: $colorGrey;
+          color: #fff;
         }
       }
     }
@@ -363,6 +420,10 @@
   }
 }
 
+.mobile-phone-and-email {
+  display: none;
+}
+
 .overlay {
   display: none;
   transition: 0.3s all;
@@ -384,31 +445,61 @@
   background: #00081c;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1024px) {
   .portal-head {
-    height: 90px;
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid #eaedf61a;
-
     .header {
       padding: 20px 1rem;
       position: relative;
-      border: none;
 
+      &_navbar {
+        justify-content: left;
+        gap: 15px;
+
+        .first-flag {
+          margin-left: auto;
+        }
+
+        & > .header_navbar_phone {
+          display: none;
+        }
+
+        & > .header_navbar_email {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .mobile-phone-and-email {
+    display: flex;
+    margin-top: 15px !important;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .portal-head {
+    .header {
       &-sideBar {
         display: block;
       }
 
-      &_navbar {
-        justify-content: left;
-        gap: 5px;
+      .portal-header-lang {
+        display: none;
+      }
 
-        & > div:not(:first-child) {
+      &_navbar {
+        gap: 0;
+
+        .burger {
+          display: block;
+        }
+
+        &_flags {
           display: none;
         }
 
-        & > img {
+        &_search {
           display: none;
         }
 
@@ -416,35 +507,11 @@
           margin-left: auto;
         }
 
-        &_search {
+        &_language {
           display: none;
         }
-
-        .burger {
-          display: flex;
-
-          svg {
-            color: #fff;
-          }
-        }
       }
-    }
-  }
 
-  .overlay {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .portal-head {
-    // background: #00081c;
-
-    .overlay {
-      display: none;
-    }
-
-    .header {
       .activeSideBar {
         bottom: 0;
       }
@@ -501,5 +568,9 @@
         }
       }
     }
+  }
+
+  .mobile-phone-and-email {
+    display: none;
   }
 }

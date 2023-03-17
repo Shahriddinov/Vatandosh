@@ -9,7 +9,7 @@
   position: fixed;
   top: 0;
   background-color: #002630;
-  background-image: url("../../../assets/images/portal/globe1.gif");
+  background-image: url("../../../assets/images/portal/globe2.gif");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -31,8 +31,8 @@
     position: absolute;
     top: 0;
     background: url("../../../assets/images/portal/ellipse.png"),
-      url("../../../assets/images/portal/ellipse.png"),
-      url("../../../assets/images/portal/ellipse.png");
+    url("../../../assets/images/portal/ellipse.png"),
+    url("../../../assets/images/portal/ellipse.png");
     background-repeat: no-repeat;
     background-size: 376px 376px, 550px 550px, 338px 338px;
     background-position: -120px -90px, 80px 70vh, 85vw 30vh;
@@ -52,7 +52,7 @@
   align-items: center;
   gap: 25px;
 
-  svg {
+  & > svg {
     &:last-child {
       transform: rotate(180deg);
     }
@@ -68,6 +68,17 @@
     line-height: 60px;
     color: #fff;
     letter-spacing: 0.03em;
+
+    span {
+      background: -webkit-linear-gradient(
+                      45deg,
+                      #055da8 15%,
+                      #3ea6ff 50%,
+                      #055da8 85.5%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   p {
@@ -114,9 +125,9 @@
 
   &::-webkit-scrollbar-thumb {
     background: linear-gradient(
-      180deg,
-      rgba(217, 217, 217, 0.42) 0%,
-      #d9d9d9 100%
+                    180deg,
+                    rgba(217, 217, 217, 0.42) 0%,
+                    #d9d9d9 100%
     );
   }
 
@@ -136,121 +147,121 @@
 
     &:first-child {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/5.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/5.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(2) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/1.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/1.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(3) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/2.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/2.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(4) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/3.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/3.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(5) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/4.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/4.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(6) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/1.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/1.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(7) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/3.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/3.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(8) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/4.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/4.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(9) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/5.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/5.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:nth-child(10) {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/2.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/2.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
 
     &:last-child {
       background-image: linear-gradient(
-          90deg,
-          #000017 20%,
-          rgba(0, 0, 0, 0) 100%
-        ),
-        url("../../../assets/images/portal/4.png");
+                      90deg,
+                      #000017 20%,
+                      rgba(0, 0, 0, 0) 100%
+      ),
+      url("../../../assets/images/portal/4.png");
       background-repeat: no-repeat;
       background-position: left, right;
     }
@@ -259,7 +270,6 @@
   a {
     width: 190px;
     text-decoration: none;
-    text-transform: lowercase;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -282,5 +292,98 @@
     color: #fff;
     background: #065ea9;
     cursor: pointer;
+    outline: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .portal-body-middle {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .navbar-side {
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    ul {
+      display: flex;
+      gap: 30px;
+    }
+  }
+
+  .social-media {
+    position: absolute;
+    right: 0;
+    bottom: -95px;
+    order: 3;
+    flex-direction: row;
+
+    a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #065ea9;
+      border-radius: 50%;
+    }
+
+    & > svg {
+      &:first-child {
+        display: none;
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:nth-child(6) {
+        display: none;
+      }
+
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  .portal-body-bottom {
+    margin: 50px 0 40px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-body-middle {
+    h2 {
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+
+  .social-media {
+    gap: 10px;
+    bottom: -200px;
+  }
+
+  .navbar-side {
+    display: none;
+  }
+
+  .header-sideBar-navlist-item {
+    height: auto !important;
+
+    a {
+      text-transform: uppercase;
+    }
+  }
+
+  .portal-body-bottom {
+    margin-top: 160px;
   }
 }

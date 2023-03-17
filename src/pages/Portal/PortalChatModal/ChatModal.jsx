@@ -4,9 +4,9 @@ import "./chatModal.scss";
 
 import logo from "../../../assets/images/Logo.png";
 
-const ChatModal = () => {
+const ChatModal = ({ showChat, setShowChat }) => {
   return (
-    <div className="chat-modal">
+    <div className={`chat-modal ${showChat ? "show-chat" : ""}`}>
       <div className="chat-header">
         <svg
           width="8"
@@ -15,10 +15,11 @@ const ChatModal = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="4" cy="4" r="4" fill="#065EA9" fill-opacity="0.9" />
+          <circle cx="4" cy="4" r="4" fill="#065EA9" fillOpacity="0.9" />
         </svg>
         <span>Напишите нам</span>
         <svg
+          onClick={() => setShowChat(!showChat)}
           width="12"
           height="12"
           viewBox="0 0 12 12"
@@ -28,25 +29,25 @@ const ChatModal = () => {
           <path
             d="M1 1L11 11"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
           <path
             d="M11 1L1 11"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
       </div>
       <div className="chat-body">
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" width="86" />
         <h3>VATANDOSHLAR</h3>
         <h4>JAMOAT FONDI</h4>
         <p>Задайте вопрос - мы ответим на почту или здесь.</p>
       </div>
       <div className="chat-footer">
-        <input type="text" />
+        <input type="text" placeholder="Сообщение..." />
         <svg
           width="16"
           height="16"
