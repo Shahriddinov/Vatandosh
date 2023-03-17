@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Footer";
 import FooterBottom from "../../footerBottom/FooterBottom";
+import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 
 import logoImg from "../../../assets/images/icons/logo.png";
 
@@ -13,6 +15,15 @@ import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
+
+  useEffect(() => {
+    dispatch(getContact());
+  }, []);
 
   return (
     <div className="footer">
@@ -71,22 +82,27 @@ const Footer = () => {
               <div className="footer-right">
                 <h5>{t("footerOurContacts")}</h5>
                 <p>
-                  <FiPhone /> <a href="tel: 0800-120-55 55">0800-120-55 55</a>
+                  <FiPhone />{" "}
+                  <a href={`tel: ${contactData?.phone}`}>
+                    {contactData?.phone}
+                  </a>
                 </p>
                 <p>
                   <HiOutlineMail />{" "}
-                  <a href="mailto: info@Vatandoshlar">info@Vatandoshlar</a>
+                  <a href={`mailto: ${contactData?.email}`}>
+                    {contactData?.email}
+                  </a>
                 </p>
                 <div className="icons">
-                  <div>
+                  <a href={contactData?.facebook}>
                     <FaFacebookF />
-                  </div>
-                  <div>
+                  </a>
+                  <a href={contactData?.twitter}>
                     <FaTwitter />
-                  </div>
-                  <div>
+                  </a>
+                  <a href={contactData?.instagram}>
                     <RiInstagramFill />
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -35,18 +35,20 @@ body {
 
 .registerBackground {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url("../../assets/images/register/header-background-image.svg"), url("../../assets/images/register/footer-background-image.svg"), linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
   background-repeat: no-repeat;
   background-size: 480px 484, 515px 521px, cover;
   background-position: top left, right bottom;
 
 }
-.searches{
-  background: rgba(255, 255, 255, 0.2)!important;
-  backdrop-filter: blur(15px)!important;
-  ::placeholder{
-    color: white!important;
+
+.searches {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(15px) !important;
+
+  ::placeholder {
+    color: white !important;
 
   }
 
@@ -66,7 +68,7 @@ body {
 
 .page-about {
   width: 100%;
-  height: 420px;
+
   background-color: #065ea9;
   background-image: url("../../assets/images/pattern-top.png"),
     url("../../assets/images/bottom.png");
@@ -75,8 +77,9 @@ body {
 
   background-position: left top, right bottom;
 }
-.colors{
-  color: white!important;
+
+.colors {
+  color: white !important;
 }
 
 .container {
@@ -116,4 +119,50 @@ body {
   font-size: $size;
   line-height: $line-height;
   color: $color;
+}
+
+@media (max-width: 1001px) {
+  .page-about {
+    background-image: url("../../assets/images/pattern-md.png"),
+    url("../../assets/images/bottom-md.png");
+    background-position: left top, right 190px;
+  }
+}
+
+@media (max-width:700px) {
+  .page-about {
+    background-image: url("../../assets/images/pattern-md.png"),
+    url("../../assets/images/bottom-sm.png");
+    background-position: -100% -100%, right 190px;
+  }
+}
+
+@media (max-width: 644px) {
+  .page-about {
+    background-position: -100% -100%, right 205px;
+  }
+}
+
+@media (max-width:576px) {
+  .page-about {
+    background-position: -100% -100%, right 13%;
+  }
+}
+
+@media (max-width:460px) {
+  .page-about {
+    background-position: -100% -100%, right 14%;
+  }
+}
+
+@media (max-width:425px) {
+  .page-about {
+    background-position: -100% -100%, right 16%;
+  }
+}
+
+@media (max-width: 365px) {
+  .page-about {
+    background-position: -100% -100%, right 17%;
+  }
 }

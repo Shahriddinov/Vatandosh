@@ -20,5 +20,21 @@
       @include fontStyles(300, 14px, 17px, $colorLight);
     }
   }
+}
 
+@media only screen and (max-width:476px) {
+  .auth-footer {
+    height: auto;
+    padding-bottom: 20px;
+
+    &-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+
+      &>img {
+        margin-top: 20px;
+      }
+    }
+  }
 }
