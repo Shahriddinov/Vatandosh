@@ -3,7 +3,8 @@ import "./menu.scss";
 import {motion} from "framer-motion";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-
+import type { MenuProps } from 'antd';
+import { Button, Dropdown } from 'antd';
 const Menu = () => {
     const navbarRef = useRef();
     const scrollRef = useRef(null);
@@ -24,24 +25,40 @@ const Menu = () => {
         });
     }, [scrollRef.current]);
 
+
+
+    const items: MenuProps['items'] = [
+        {
+            key: '1',
+            label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    Biz haqimizda
+                </a>
+            ),
+        },
+        {
+            key: '2',
+            label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                    Vasiylik Kengashi
+                </a>
+            ),
+        },
+
+    ];
+
     return (
         <div className={`navbar ${isFixed ? "fixed" : ""}`} ref={navbarRef}>
             <ul className="menu">
 
-
-                <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
-                    <Link to="/about" className="menu_link">
-                        {t("about")}
-                    </Link>
-                    <ul className="main">
-                        <li>
-                           Biz haqimizda</li>
-                        <li>Vasiylik Kengashi</li>
-
-                    </ul>
+                    <Dropdown menu={{ items }} placement="bottom" arrow className="menu_item hov">
+                        <Link to="/about" className="menu_link">
+                            {t("about")}
+                        </Link>
+                    </Dropdown>
 
 
-                </motion.li>
+                {/*</motion.li>*/}
                 <motion.li whileTap={{scale: 0.6}} className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("citizin")}
