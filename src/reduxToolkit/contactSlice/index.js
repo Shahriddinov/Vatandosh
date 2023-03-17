@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getContact } from "./extraReducer";
+import { getContact, sendContact } from "./extraReducer";
 
 const initialState = {
   loading: false,
   contactData: {},
+  sendData: null,
   error: null,
 };
 
@@ -23,6 +24,20 @@ const contactSlice = createSlice({
       })
       .addCase(getContact.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      });
+
+    build
+      .addCase(sendContact.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(sendContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.sendData = action.payload;
+        alert("The contact has sent successfully");
+      })
+      .addCase(sendContact.rejected, (state, action) => {
+        state.loading = true;
         state.error = action.error.message;
       });
   },
