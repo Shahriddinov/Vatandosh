@@ -18,7 +18,7 @@ const Layout = (props) => {
     localStorage.getItem("grayMode") ? localStorage.getItem("grayMode") : false
   );
 
-  const registerHeader = pathname.split("/")[1]
+  const registerHeader = pathname.split("/")[1];
 
   const changeSpeakSwitcher = (value) => {
     setSpeaker(value);
@@ -51,14 +51,48 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={registerHeader.includes("registration") ? "registerBackground" : "page-wrapper1"}>
-        {registerHeader.includes("portal") ? (
+      <div
+        className={
+          pathname === "/"
+            ? "page-wrapper1"
+            : pathname === "/about"
+            ? "page-about"
+            : pathname === "/about/council-trustees"
+            ? "page-about"
+            : pathname === "/registration/register" ||
+              pathname === "/registration/signup" ||
+              pathname === "/registration/signin" ||
+              pathname === "/registration/recovery-password" ||
+              pathname === "/registration/change-password"
+            ? "registerBackground"
+            : "page-wrapper2"
+        }
+      >
+        {pathname === "/portal" ? (
           <HeaderPortal />
+        ) : pathname === "/registration" ? (
+          <RegisterHeader />
+        ) : pathname === "/registration/register" ||
+          pathname === "/registration/signup" ||
+          pathname === "/registration/signin" ||
+          pathname === "/registration/recovery-password" ||
+          pathname === "/registration/change-password" ? (
+          <RegisterHeader />
         ) : (
-          registerHeader.includes("registration") ? <RegisterHeader /> : null
+          <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
         )}
         <div className="page-content">{children}</div>
-        {registerHeader.includes("portal") ? null : registerHeader.includes("registration")? <RegisterFooter /> : <Footer />}
+        {pathname === "/portal" ? (
+          ""
+        ) : pathname === "/registration/register" ||
+          pathname === "/registration/signup" ||
+          pathname === "/registration/signin" ||
+          pathname === "/registration/recovery-password" ||
+          pathname === "/registration/change-password" ? (
+          <RegisterFooter />
+        ) : (
+          <Footer />
+        )}
       </div>
     </GrayContext.Provider>
   );
