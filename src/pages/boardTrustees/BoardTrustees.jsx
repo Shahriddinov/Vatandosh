@@ -7,6 +7,7 @@ import CouncilComposition from './components/council-composition/CouncilComposit
 import ContactUs from '../../component/ContactUs/ContactUs'
 import { useDispatch } from 'react-redux'
 import { getAllTrustees } from '../../reduxToolkit/trusteesSlice/trusteesAsyncThunk'
+import Header from '../../component/Layout/Header/Header'
 
 const BoardTrustees = () => {
 
@@ -22,7 +23,8 @@ const BoardTrustees = () => {
   },[])
   
   return (
-    <div className="council-trustees">
+    <div className="council-trustees page-about">
+      <Header/>
       <CouncilHero  {...heroData}/>
       <CouncilComposition/>
       <ContactUs/>

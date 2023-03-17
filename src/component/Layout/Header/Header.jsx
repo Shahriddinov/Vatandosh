@@ -44,7 +44,7 @@ const Header = () => {
     }, [activeSidebar]);
 
     return (
-        <div className="head">
+        <header className="head">
             <div className="header">
                 <div className="header_navbar">
                     <div className="header_navbar_left">
@@ -133,8 +133,8 @@ const Header = () => {
                     onClick={() => setactiveSidebar(!activeSidebar)}
                 ></div>
             </div>
-            {pathname === "/portal" ? "" : <Menu/>}
-        </div>
+            {pathname.split("/")[1].includes("portal") ? "" : <Menu/>}
+        </header>
     );
 };
 
