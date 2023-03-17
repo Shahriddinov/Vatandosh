@@ -197,7 +197,7 @@
           cursor: pointer;
         }
 
-        & > input {
+        &>input {
           padding: 0 50px 0 14px;
           width: 100%;
           height: 100%;
@@ -273,7 +273,7 @@
             color: #000000;
           }
 
-          & > span {
+          &>span {
             white-space: nowrap;
             word-break: keep-all;
             @include fontStyles(400, 16px, 26px, #000000);
@@ -301,7 +301,7 @@
         justify-content: space-between;
         border-top: 2px solid #f0f2f9;
 
-        & > div {
+        &>div {
           padding: 20px 0;
         }
 
@@ -388,11 +388,11 @@
       &_navbar {
         justify-content: left;
 
-        & > div:not(:first-child) {
+        &>div:not(:first-child) {
           display: none;
         }
 
-        & > img {
+        &>img {
           display: none;
         }
 
@@ -442,10 +442,8 @@
 
         &-connection {
           width: 100%;
-          padding-top: 15px;
           flex-direction: column;
           gap: 15px;
-          border-top: 1px solid #f0f2f9;
 
           &-action {
             &-img {

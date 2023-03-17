@@ -7,6 +7,7 @@ import language from "./languageSlice";
 import mapSlice from "./mapSlice";
 import trustees from "./trusteesSlice";
 import contactSlice from "./contactSlice";
+import categoryShows from "./categoryShowsSlice/categoryShowsSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     mapSlice,
     trustees,
     contactSlice,
+    categoryShows
   },
 });
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
+import CategoryShows from "./pages/CategoryShows/CategoryShows";
 import HomePage from "./pages/Portal/HomePage/HomePage";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
@@ -29,6 +30,7 @@ const routes = [
   { path: "/registration/signin", element: SignIn },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
+  { path: "/category-shows", element: CategoryShows },
 ];
 
 const RoutesContainer = () => (
