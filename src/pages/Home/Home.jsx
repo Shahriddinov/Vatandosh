@@ -9,6 +9,7 @@ import Partners from "../../component/partners/Partners";
 import { useDispatch} from "react-redux";
 import { getPeaceful } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 import ContactUs from "../../component/ContactUs/ContactUs";
+import Header from "../../component/Layout/Header/Header";
 
 const Home = () => {
 
@@ -21,6 +22,8 @@ const Home = () => {
 
     return (
         <div className='home'>
+            <Header/>
+            
             <Hero/>
             <News/>
             <Peaceful/>

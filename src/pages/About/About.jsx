@@ -1,6 +1,7 @@
 import React from "react";
 import "./About.scss";
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
+import Header from "../../component/Layout/Header/Header";
 
 const About = () => {
     const heroData = {
@@ -9,7 +10,8 @@ const About = () => {
         pagePath: "Biz haqimizda",
     }
     return (
-        <div className="about">
+        <div className="about page-about">
+            <Header/>
             <CouncilHero  {...heroData}/>
         </div>
     );

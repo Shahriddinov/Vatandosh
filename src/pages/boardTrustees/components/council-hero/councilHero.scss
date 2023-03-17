@@ -21,6 +21,15 @@
 
     &__breadcrumb_nav {
         display: flex;
+    }
+
+    &__breadcrumb_sm {
+        display: none;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    &__breadcrumb_md {
         justify-content: flex-end;
     }
 
@@ -51,5 +60,50 @@
         letter-spacing: 0.2px;
         color: #ffffff;
         opacity: 0.6;
+    }
+}
+
+@media (max-width:576px) {
+    .council-hero {
+        padding: 10px 0 20px 0;
+    
+        &__title {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    
+        &__desc {
+            margin-bottom: 0px;
+            font-size: 14px;
+            line-height: 17px;
+        }
+    
+        &__breadcrumb_sm {
+            display: block;
+        }
+
+        &__breadcrumb_md {
+            display: none;
+        }
+    
+        &__breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    
+        &__breadcrumb_item {
+            gap: 8px;
+        }
+    
+        &__breadcrumb_link {
+            font-size: 12px;
+            line-height: 15px;
+        }
+    
+        .breadcrumb_item_active {
+            font-size: 12px;
+            line-height: 15px;
+        }
     }
 }

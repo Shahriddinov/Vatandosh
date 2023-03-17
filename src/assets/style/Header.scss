@@ -1,9 +1,11 @@
 @import "../style/global.scss";
 
 .head {
+  position: relative;
   z-index: 999;
   height: 168px;
   outline: none;
+
 
   .header {
     width: 100%;
@@ -165,9 +167,9 @@
       width: 100%;
       position: fixed;
       border-top: 1px solid #f0f2f9;
-      top: -200vh;
+      top: -300vh;
       left: 0;
-      z-index: -10;
+      z-index: 10;
       background-color: #ffffff;
       transition: 0.5s all;
       overflow: scroll;
@@ -375,9 +377,9 @@
 
     .header {
       padding: 20px 1rem;
-      background-color: #ffffff;
       position: relative;
       border: none;
+      background-color: rgba(6, 93, 169, 0.5);
 
       &-sideBar {
         display: block;

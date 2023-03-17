@@ -51,15 +51,14 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={pathname === "/" ? "page-wrapper1" : pathname === "/about" ? "page-about" : pathname === "/about/council-trustees" ? "page-about" : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" || pathname === "/registration/recovery-password" || pathname === "/registration/change-password" ? "registerBackground" : "page-wrapper2"}>
-        {pathname === "/portal" ? (
+      <div className={registerHeader.includes("registration") ? "registerBackground" : "page-wrapper1"}>
+        {registerHeader.includes("portal") ? (
           <HeaderPortal />
         ) : (
-          pathname === "/registration" ? <RegisterHeader />
-            : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" || pathname === "/registration/recovery-password" || pathname === "/registration/change-password" ? <RegisterHeader /> : <Header speaker={speaker} changeSpeakSwitcher={changeSpeakSwitcher} />
+          registerHeader.includes("registration") ? <RegisterHeader /> : null
         )}
         <div className="page-content">{children}</div>
-        {pathname === "/portal" ? "" : pathname === "/registration/register" || pathname === "/registration/signup" || pathname === "/registration/signin" || pathname === "/registration/recovery-password" || pathname === "/registration/change-password" ? <RegisterFooter /> : <Footer />}
+        {registerHeader.includes("portal") ? null : registerHeader.includes("registration")? <RegisterFooter /> : <Footer />}
       </div>
     </GrayContext.Provider>
   );
