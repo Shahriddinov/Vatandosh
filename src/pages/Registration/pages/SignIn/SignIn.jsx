@@ -48,7 +48,7 @@ export const SignIn = () => {
                   <span>Qurilmani eslab qolish</span>
                 </div>
                 <div className="auth-form-inputs-checkbox-forgetPassword">
-                  <Link to="#">Parolni unutdingizmi?</Link>
+                  <Link to="/registration/recovery-password">Parolni unutdingizmi?</Link>
                 </div>
               </div>
               <button type="submit" className="auth-form-inputs-submitBtn">Profilga kirish</button>
@@ -70,7 +70,7 @@ export const SignIn = () => {
               </div>
               <div className="auth-links-tosignup">
                 <span>Hali ro’yxatdan o’tmaganmisiz?</span>
-                <Link to="/signup">Ro’yxatdan o’ting</Link>
+                <Link to="/registration/signup">Ro’yxatdan o’ting</Link>
               </div>
             </div>
           </div>

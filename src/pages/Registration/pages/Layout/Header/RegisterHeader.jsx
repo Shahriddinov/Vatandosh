@@ -8,6 +8,7 @@ import i18next from "i18next";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
+import burger from "../../../../../assets/images/icons/burger.svg";
 
 export default function RegisterHeader() {
   const [activeLangBar, setactiveLangBar] = useState(false);
@@ -51,6 +52,10 @@ export default function RegisterHeader() {
                 <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>Ru</p>
                 <p onClick={(e) => handleChangeLng(e.target.innerText.toLowerCase())}>En</p>
               </div>
+            </div>
+
+            <div className="auth-header-nav-burger">
+              <img src={burger} alt="burger" />
             </div>
           </nav>
         </div>
