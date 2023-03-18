@@ -1,19 +1,31 @@
 import React, {useEffect, useRef, useState} from "react";
-import "./menus.scss";
+import "./menun.scss";
 import {motion} from "framer-motion";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
-
-const Menus = () => {
+const Menun = () => {
     const navbarRef = useRef();
     const scrollRef = useRef(null);
-    const [isFixed, setFixed] = useState(false);
+    const [isFixeds, setFixeds] = useState(false);
     const {t} = useTranslation();
+
+    useEffect(() => {
+        scrollRef.current = document.querySelector(".navbar").offsetTop + 18;
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset >= 92) {
+                setFixeds(true);
+            } else {
+                setFixeds(false);
+            }
+        });
+    }, [scrollRef.current]);
+
 
     const [about, setAbout] = React.useState(null);
     const openAbout = Boolean(about);
@@ -62,23 +74,10 @@ const Menus = () => {
 
 
 
-    useEffect(() => {
-        scrollRef.current = document.querySelector(".navbar").offsetTop + 18;
-    }, []);
-
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.pageYOffset >= 92) {
-                setFixed(true);
-            } else {
-                setFixed(false);
-            }
-        });
-    }, [scrollRef.current]);
 
 
     return (
-        <div className={`navbar ${isFixed ? "fixed" : ""}`} ref={navbarRef}>
+        <div className={`navbar ${isFixeds ? "fixed" : ""}`} ref={navbarRef}>
             <ul className="menu">
 
                 <li className="menu_item hov">
@@ -213,4 +212,4 @@ const Menus = () => {
     );
 };
 
-export default Menus;
+export default Menun;

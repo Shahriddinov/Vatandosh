@@ -1907,7 +1907,7 @@
 
 "@mui/x-date-pickers@^6.0.2":
   version "6.0.2"
-  resolved "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-6.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/@mui/x-date-pickers/-/x-date-pickers-6.0.2.tgz#277e14e2a8dd0983d395e72a486b0544bd1c08c9"
   integrity sha512-FfGLOqRnv1PTOyRpZjVMy2+0se2O0z8OjXG239GnMBna2Xj6G1UMHwfGqYT5oCbNor6uej+5f+p4h/9fcOFNuw==
   dependencies:
     "@babel/runtime" "^7.20.13"
@@ -3071,7 +3071,7 @@ ansi-styles@^5.0.0:
 
 antd@^5.3.1:
   version "5.3.1"
-  resolved "https://registry.npmjs.org/antd/-/antd-5.3.1.tgz"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-5.3.1.tgz#f28ccd7959f0060e6b0e89a1852340ada5c328ca"
   integrity sha512-PaGlqMsINgyR5CMeqwnMqupXOKqSY/MdLXgKg4m1Z+3IByIx5XZGg53FNDviE/3jp+ClgFya9eGKQ67i3Q5phQ==
   dependencies:
     "@ant-design/colors" "^7.0.0"

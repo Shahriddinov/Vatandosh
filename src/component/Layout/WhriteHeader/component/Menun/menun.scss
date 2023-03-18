@@ -14,7 +14,7 @@
 
   .menu {
     &_link {
-      color: $colorGrey;
+      color: $colorGrey!important;
     }
   }
 }
@@ -33,10 +33,10 @@
   }
 
   &_link {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #ffffff;
+    color: #ffffff!important;
     cursor: pointer;
   }
 

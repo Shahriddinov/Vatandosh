@@ -31,7 +31,7 @@
     &-url {
       display: flex;
       align-items: center;
-      gap: 8px;
+      // gap: 5px;
 
       &-arrow {
         width: 15px;
@@ -71,6 +71,36 @@
     &-desc {
       width: 100%;
       max-width: 564px;
+
+      &-title {
+        @include fontStyles(700, 24px, 29px, #FFFFFF);
+
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .shows-hero {
+    padding: 0;
+    height: 560px;
+
+    &::before {
+      height: 650px;
+    }
+
+    &-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 164px;
+
+      &-url {
+
+        &>span,
+        a {
+          @include fontStyles(400, 12px, 15px, #FFFFFF);
+        }
+      }
 
       &-title {
         @include fontStyles(700, 24px, 29px, #FFFFFF);
