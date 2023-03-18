@@ -4,6 +4,7 @@ import Header from '../../component/Layout/Header/Header'
 import SiteHero from '../../component/siteHero/SiteHero'
 import ContactUs from '../../component/ContactUs/ContactUs'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 
 const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -19,7 +20,7 @@ const PublicAssociationEvents = () => {
   return (
     <>
       <div className='public-association-events'>
-        <Header />
+        <WhriteHeader />
 
         <SiteHero {...dataHero} />
         <main className='main container'>
@@ -32,7 +33,6 @@ const PublicAssociationEvents = () => {
           </div>
         </main>
       </div>
-      <ContactUs />
     </>
   )
 }

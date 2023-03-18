@@ -7,6 +7,7 @@ import ContactUs from '../../../component/ContactUs/ContactUs'
 import CompositionEvent from "../components/compatriotsEvents/CompatriotsEvents"
 
 import "./statesFriendshipSociety.scss"
+import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 
 const StatesFriendshipSociety = () => {
   const dataHero = {
@@ -20,7 +21,7 @@ const StatesFriendshipSociety = () => {
   }
   return (
     <div className='state-friendship-society'>
-      <Header/>
+      <WhriteHeader/>
 
       <main className='main'>
         <SiteHero {...dataHero}/>
