@@ -22,7 +22,7 @@ const Home = () => {
 
     return (
         <div className='home'>
-            {/* <Header/> */}
+            <Header/>
             
             <Hero/>
             <News/>

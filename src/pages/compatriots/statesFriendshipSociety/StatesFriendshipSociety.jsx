@@ -27,7 +27,6 @@ const StatesFriendshipSociety = () => {
         <StatesFriendshipInfo/>
         <OfferStatesFriendship/>
         <CompositionEvent/>
-        <ContactUs />
       </main>
     </div>
   )

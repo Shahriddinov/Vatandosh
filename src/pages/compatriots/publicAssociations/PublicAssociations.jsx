@@ -1,10 +1,8 @@
 import React from 'react'
 import CouncilHero from '../../boardTrustees/components/council-hero/CouncilHero'
 import Associations from '../components/associations/Associations'
-import ContactUs from '../../../component/ContactUs/ContactUs'
 
 import "./publicAssociations.scss"
-import Header from '../../../component/Layout/Header/Header'
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 
 const PublicAssociations = () => {
@@ -16,12 +14,12 @@ const PublicAssociations = () => {
 
     return (
         <div className='public-associations'>
-            <div className="page_about">
+            <div className="page-about">
                 <WhriteHeader/>
                 <CouncilHero {...heroData}/>
             </div>
+            
             <Associations/>
-            {/*</main>*/}
         </div>
     )
 }
