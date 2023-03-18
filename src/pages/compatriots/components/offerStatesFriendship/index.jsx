@@ -14,9 +14,9 @@ const OfferStatesFriendship = () => {
             <div className="offer-state-friendship__inner">
               <div className="offer-state-friendship__box_img">
                 <picture>
-                  <source media="(min-width:1000px)" srcset={imgXl}/>
-                  <source media="(min-width:680px)" srcset={imgMd}/>
-                  <source media="(min-width:400px)" srcset={imgXl}/>
+                  <source media="(min-width:1000px)" srcSet={imgXl}/>
+                  <source media="(min-width:680px)" srcSet={imgMd}/>
+                  <source media="(min-width:400px)" srcSet={imgXl}/>
                   <img className='offer-state-friendship__img' src={imgSm} alt="Img"/>
                 </picture>
               </div>
