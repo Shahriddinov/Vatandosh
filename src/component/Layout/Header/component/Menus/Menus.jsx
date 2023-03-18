@@ -17,11 +17,26 @@ const Menus = () => {
 
     const [about, setAbout] = React.useState(null);
     const openAbout = Boolean(about);
+
+    const [citizin, setCitizin] = React.useState(null);
+    const openCitizin = Boolean(citizin);
+
+
+
     const handleClickAbout = (event) => {
         setAbout(event.currentTarget);
     };
     const handleCloseAbout = () => {
         setAbout(null);
+    };
+
+
+
+    const handleClickCitizin = (event) => {
+        setCitizin(event.currentTarget);
+    };
+    const handleCloseCitizin = () => {
+        setCitizin(null);
     };
 
 
@@ -71,19 +86,45 @@ const Menus = () => {
                     </Menu>
                 </li>
 
-
-
                 <li className="menu_item hov">
-                    <Link to="/" className="menu_link">
+                    <Button
+                        id="basic-button"
+                        aria-controls={openCitizin ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openCitizin ? 'true' : undefined}
+                        onClick={handleClickCitizin}
+                        className="menu_link"
+                    >
                         {t("citizin")}
-                    </Link>
-                    <ul className="main">
-                        <li>Jamoat birlashmalar</li>
-                        <li>Turkum ko'rsatuvlar</li>
-                        <li>Jamoat birlashmalar tadbirlari</li>
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={citizin}
+                        open={openCitizin}
+                        onClose={handleCloseCitizin}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar</MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>Turkum ko'rsatuvlar</MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar tadbirlari</MenuItem>
 
-                    </ul>
+                    </Menu>
                 </li>
+
+
+                {/*<li className="menu_item hov">*/}
+                {/*    <Link to="/" className="menu_link">*/}
+                {/*        {t("citizin")}*/}
+                {/*    </Link>*/}
+                {/*    <ul className="main">*/}
+                {/*        <li>Jamoat birlashmalar</li>*/}
+                {/*        <li>Turkum ko'rsatuvlar</li>*/}
+                {/*        <li>Jamoat birlashmalar tadbirlari</li>*/}
+
+                {/*    </ul>*/}
+                {/*</li>*/}
                 <li className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("projects")}
