@@ -12,8 +12,10 @@ export default function CategoryShowsHero() {
             <MdArrowRight className="shows-hero-desc-url-arrow" />
             <span>Turkum ko'rsatuvlar</span>
           </div>
-          <h1 className="shows-hero-desc-title">Turkum ko'rsatuvlar</h1>
-          <p className="shows-hero-desc-text">Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, </p>
+          <div className="div shows-hero-desc-wrapper">
+            <h1 className="shows-hero-desc-title">Turkum ko'rsatuvlar</h1>
+            <p className="shows-hero-desc-text">Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, </p>
+          </div>
         </div>
       </div>
     </div>

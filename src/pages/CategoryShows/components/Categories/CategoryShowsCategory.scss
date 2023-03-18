@@ -3,10 +3,9 @@
 .showscategory {
   padding: 60px 0;
   background-color: transparent;
-  display: grid;
-  gap: 30px;
 
   &-title {
+    margin-bottom: 30px;
     @include fontStyles(700, 32px, 39px, $colorTitle);
   }
 
@@ -18,4 +17,14 @@
     flex-wrap: wrap;
 
   }
+}
+
+@media only screen and (max-width: 460px) {
+  .showscategory {
+    &-title {
+      margin-bottom: 20px;
+      @include fontStyles(700, 24px, 29px, $colorTitle);
+    }
+  }
+
 }
