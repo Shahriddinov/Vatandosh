@@ -20,6 +20,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Header from "../../component/Layout/Header/Header";
+import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 
 const About = () => {
     const heroData = {
@@ -30,7 +31,7 @@ const About = () => {
     return (
         <div className="about ">
             <div className="page-about">
-                <Header/>
+                <WhriteHeader/>
                 <CouncilHero  {...heroData}/>
             </div>
             <div className="about_card container">
