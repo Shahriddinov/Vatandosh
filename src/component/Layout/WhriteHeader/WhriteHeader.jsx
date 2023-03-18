@@ -14,7 +14,7 @@ import EyeWhrite from "../../../assets/images/EyeWhrite.png";
 import Globe from "../../../assets/images/Globe.png";
 import { CgClose } from "react-icons/cg";
 import { motion } from "framer-motion";
-import Menu from "./component/Menu/Menu";
+import Menu from "./component/Menun/Menun";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
@@ -23,6 +23,7 @@ import Navbar from "./component/navbar/Navbar";
 import { useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
+import Menun from "./component/Menun/Menun";
 
 const WhriteHeader = () => {
     const [activeSidebar, setactiveSidebar] = useState(false);
@@ -141,7 +142,7 @@ const WhriteHeader = () => {
                     onClick={() => setactiveSidebar(!activeSidebar)}
                 ></div>
             </div>
-            {pathname.split("/")[1].includes("portal") ? "" : <Menu />}
+            {pathname.split("/")[1].includes("portal") ? "" : <Menun />}
         </header>
     );
 };
