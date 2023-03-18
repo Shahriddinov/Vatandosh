@@ -23,11 +23,12 @@ const BoardTrustees = () => {
   },[])
   
   return (
-    <div className="council-trustees page-about">
-      <Header/>
-      <CouncilHero  {...heroData}/>
+    <div className="council-trustees">
+      <div className="page-about">
+          <Header/>
+          <CouncilHero  {...heroData}/>
+      </div>
       <CouncilComposition/>
-      <ContactUs/>
     </div>
   )
 }

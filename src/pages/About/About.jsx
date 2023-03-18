@@ -4,10 +4,21 @@ import CardImg from "../../assets/images/about-Card.svg"
 import Rais from "../../assets/images/Rais.svg"
 import Urinbosar from "../../assets/images/Substitute.jpg"
 import Video from "../../assets/images/slider/slider_video.mp4"
-import Fond from "../../assets/images/fond.png"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
+import  Photo1 from "../../assets/images/photo1.png"
+import  Photo2 from "../../assets/images/photo2.png"
+import  Photo3 from "../../assets/images/photo3.png"
 import SliderVideo from "../../assets/images/slider/slider_video.mp4";
 import Table from "./component/Table/Table";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import Header from "../../component/Layout/Header/Header";
 
 const About = () => {
@@ -18,8 +29,10 @@ const About = () => {
     }
     return (
         <div className="about ">
-            <Header/>
-            <CouncilHero  {...heroData}/>
+            <div className="page-about">
+                <Header/>
+                <CouncilHero  {...heroData}/>
+            </div>
             <div className="about_card container">
                 <div className="about_card_left">
                     <img src={CardImg} alt="cardImg"/>
@@ -157,6 +170,31 @@ const About = () => {
                 Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish
                 bizning oliy maqsadimizdir
             </div>
+            <div className="about_caruosel">
+                <Swiper
+                    // install Swiper modules
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={50}
+                    slidesPerView={4}
+                    // navigation
+                    // pagination={{ clickable: true }}
+                    // scrollbar={{ draggable: true }}
+
+                    onSlideChange={() => console.log('slide change')}
+                >
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo2} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo3} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
+
+                </Swiper>
+            </div>
+
         </div>
     );
 };
