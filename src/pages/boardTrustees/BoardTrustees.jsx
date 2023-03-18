@@ -8,6 +8,7 @@ import ContactUs from '../../component/ContactUs/ContactUs'
 import { useDispatch } from 'react-redux'
 import { getAllTrustees } from '../../reduxToolkit/trusteesSlice/trusteesAsyncThunk'
 import Header from '../../component/Layout/Header/Header'
+import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 
 const BoardTrustees = () => {
 
@@ -25,7 +26,7 @@ const BoardTrustees = () => {
   return (
     <div className="council-trustees">
       <div className="page-about">
-          <Header/>
+          <WhriteHeader/>
           <CouncilHero  {...heroData}/>
       </div>
       <CouncilComposition/>
