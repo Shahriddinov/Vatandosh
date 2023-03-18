@@ -30,6 +30,13 @@
       button {
         color: #fff;
         background: #065ea9;
+        border: 1px solid #eaedf6;
+        transition: 0.3s;
+
+        &:hover {
+          background: #fff;
+          color: #065ea9;
+        }
       }
     }
 
@@ -38,6 +45,12 @@
         color: #065ea9;
         background: #ffffff;
         border: 1px solid #eaedf6;
+        transition: 0.3s;
+
+        &:hover {
+          color: #fff;
+          background: #065ea9;
+        }
       }
     }
 
@@ -201,6 +214,12 @@
           background: #ffffff;
           border-radius: 15px;
           cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            background: #065ea9;
+            color: #fff;
+          }
         }
       }
 
@@ -247,7 +266,14 @@
           border-radius: 15px;
           color: #fff;
           background: #065ea9;
-          border: none;
+          border: 1px solid #065ea9;
+          cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            background: #fff;
+            color: #065ea9;
+          }
         }
       }
     }

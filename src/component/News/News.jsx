@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
+import Card from "../card/Card";
 
 import "./News.scss";
 
@@ -14,15 +15,11 @@ import icon4 from "../../assets/images/icons/4.png";
 import icon5 from "../../assets/images/icons/5.png";
 import icon6 from "../../assets/images/icons/6.png";
 
-import { BsFillCalendarEventFill } from "react-icons/bs";
-import { IoEye } from "react-icons/io5";
-
 const News = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsSlice.newsData.data);
-  const lan = useSelector((state) => state.language.language);
 
   useEffect(() => {
     dispatch(getNews());
@@ -47,37 +44,7 @@ const News = () => {
           <div className="latest-news">
             <div className="news-cards">
               {newsData?.map((news) => (
-                <div className="single-card" key={news.id}>
-                  <div className="img-container">
-                    <img
-                      src={`https://vatanparvarbackend.napaautomotive.uz/storage/${news.img}`}
-                      alt={news[`title_${lan}`]}
-                    />
-                  </div>
-                  <div className="news-information">
-                    <Link to="/">
-                      <h5 className="news__card-title">
-                        {news[`title_${lan}`]}
-                      </h5>
-                      <p
-                        className="news__card-text"
-                        dangerouslySetInnerHTML={{
-                          __html: news[`text_${lan}`],
-                        }}
-                      />
-                    </Link>
-                  </div>
-                  <div className="card-footer">
-                    <div className="news-date">
-                      <BsFillCalendarEventFill />
-                      <span>{news.date}</span>
-                    </div>
-                    <div className="news-views">
-                      <IoEye />
-                      <span>{news.viewers}</span>
-                    </div>
-                  </div>
-                </div>
+                <Card key={news.id} {...news} />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>

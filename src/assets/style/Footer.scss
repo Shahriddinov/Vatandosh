@@ -92,9 +92,19 @@
           border-radius: 50%;
           border: 1px solid #fff;
           cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            background: #fff;
+
+            svg {
+              color: #062a49;
+            }
+          }
 
           svg {
             color: #fff;
+            font-size: 18px;
           }
         }
       }
