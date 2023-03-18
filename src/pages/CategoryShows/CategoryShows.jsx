@@ -6,7 +6,6 @@ import CategoryShowsHero from './components/Hero/CategoryShowsHero'
 export default function CategoryShows() {
   return (
     <div className='categoryshows'>
-      <Header />
       <CategoryShowsHero />
       <CategoryShowsCategory />
     </div>
