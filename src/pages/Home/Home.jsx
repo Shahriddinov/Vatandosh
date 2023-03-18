@@ -30,7 +30,6 @@ const Home = () => {
             <InteractiveServices/>
             <MapsHome/>
             <Partners/>
-            <ContactUs />
         </div>
     )
 };

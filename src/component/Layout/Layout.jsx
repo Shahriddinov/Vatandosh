@@ -64,7 +64,7 @@ const Layout = (props) => {
           <HeaderPortal />
         ) : registerHeader.includes("registration") ? (
           <RegisterHeader />
-        ) : null}
+        ) : <Header/>}
         <div className="page-content">{children}</div>
         {registerHeader.includes("portal") ? null : registerHeader.includes(
             "registration"
