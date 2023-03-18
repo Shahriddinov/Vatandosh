@@ -48,7 +48,7 @@ const Header = () => {
             <div className="header">
                 <div className="header_navbar">
                     <div className="header_navbar_left">
-                        <img src={pathname === "/about" ? Logos : pathname === "/about/council-trustees" ? Logos : Logo}
+                        <img src={Logo}
                             alt="logo" />
                     </div>
                     <div className="header_navbar_phone">
@@ -59,7 +59,7 @@ const Header = () => {
                     </div>
                     <div className="header_navbar_phone">
                         <img src={Message} alt="message" />
-                        <div className={pathname === "/about" ? "header_navbar_phone_number colors" : pathname === "/about/council-trustees" ? "header_navbar_phone_number colors" : "header_navbar_phone_number"}>
+                        <div className="header_navbar_phone_number">
                             info@vatandoshlarfondi.uz
                         </div>
                     </div>
@@ -82,7 +82,7 @@ const Header = () => {
                         className="header_navbar_flags"
                         alt="music"
                     />
-                    <label className={pathname === "/about/council-trustees" ? "header_navbar_search searches" : pathname === "/about" ? "header_navbar_search searches" : "header_navbar_search"}>
+                    <label className="header_navbar_search">
                         <input
                             type="text"
                             className="header_navbar_search_inputs"
@@ -95,17 +95,17 @@ const Header = () => {
                         />
                     </label>
                     <button
-                        className={pathname === "/about" ? "header_navbar_eye searches" : pathname === "/about/council-trustees" ? "header_navbar_eye searches" : "header_navbar_eye"} onClick={() => grayScale()}>
-                        <motion.img whileTap={{ scale: 0.6 }} src={pathname === "/about" ? EyeWhrite : pathname === "/about/council-trustees" ? EyeWhrite : Eye} alt="eye" />
+                        className="header_navbar_eye" onClick={() => grayScale()}>
+                        <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
                     </button>
 
                     <div className="header_navbar_language">
-                        <div className={pathname === "/about" ? "header_navbar_language-wrapper searches" : pathname === "/about/council-trustees" ? "header_navbar_language-wrapper searches" : "header_navbar_language-wrapper"} onClick={() => setactiveLang((el) => !el)}>
+                        <div className="header_navbar_language-wrapper" onClick={() => setactiveLang((el) => !el)}>
                             <CiGlobe className="header_navbar_language-icon" />
                             <span style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
                             <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
                         </div>
-                        <div className={pathname === "/about" ? "header_navbar_language-bar searches" : pathname === "/about/council-trustees" ? "header_navbar_language-bar searches" : "header_navbar_language-bar"} style={activeLang ? { display: "flex" } : null}>
+                        <div className="header_navbar_language-bar" style={activeLang ? { display: "flex" } : null}>
                             <p onClick={(e) => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
