@@ -1,10 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import App from "./App";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import CategoryShows from "./pages/CategoryShows/CategoryShows";
-import HomePage from "./pages/Portal/HomePage/HomePage";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
 import Register from "./pages/Registration/pages/Register/Register";
@@ -25,7 +23,7 @@ const routes = [
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
   { path: "/compatriots/public-associations/:country", element: StatesFriendshipSociety },
-  { path: "/portal", element: HomePage },
+  { path: "/portal", element: Portal },
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },
   { path: "/registration/signin", element: SignIn },
