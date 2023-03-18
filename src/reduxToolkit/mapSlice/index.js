@@ -33,7 +33,6 @@ const mapSlice = createSlice({
             .addCase(getCountries.fulfilled, (state,{payload}) => {
                 state.countries = payload.data;
                 state.countriesLoading = false;
-                console.log(payload.data);
             }) 
             .addCase(getCountries.rejected, (state,action) => {
                 state.error = action.error.message

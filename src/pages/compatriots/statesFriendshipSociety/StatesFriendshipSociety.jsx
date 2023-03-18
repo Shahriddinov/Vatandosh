@@ -1,8 +1,12 @@
 import React from 'react'
-
-import "./statesFriendshipSociety.scss"
+import OfferStatesFriendship from "../components/offerStatesFriendship"
 import Header from '../../../component/Layout/Header/Header'
 import SiteHero from '../../../component/siteHero/SiteHero'
+import StatesFriendshipInfo from '../components/statesFriendshipInfo'
+import ContactUs from '../../../component/ContactUs/ContactUs'
+import CompositionEvent from "../components/compatriotsEvents/CompatriotsEvents"
+
+import "./statesFriendshipSociety.scss"
 
 const StatesFriendshipSociety = () => {
   const dataHero = {
@@ -20,6 +24,10 @@ const StatesFriendshipSociety = () => {
 
       <main className='main'>
         <SiteHero {...dataHero}/>
+        <StatesFriendshipInfo/>
+        <OfferStatesFriendship/>
+        <CompositionEvent/>
+        <ContactUs />
       </main>
     </div>
   )

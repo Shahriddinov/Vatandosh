@@ -17,7 +17,7 @@ const Associations = () => {
   };
 
   return (
-    <div className='associations'>
+    <section className='associations'>
         <div className="associations__container container">
             <div className="associations__inner">
                 <h2 className="associations__title">Birlashmalar</h2>
@@ -74,7 +74,7 @@ const Associations = () => {
                 </ul>
             </div>
         </div>
-    </div>
+    </section>
   )
 }
 
