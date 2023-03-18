@@ -1,0 +1,146 @@
+@import "../../assets/style/global";
+
+.about {
+
+  &_card {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5% !important;
+
+    &_left {
+      width: 50%;
+      display: flex;
+      //align-items: center;
+      &_boss {
+
+        &_level {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 15px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.2px;
+          color: $colorGrey;
+
+        }
+
+        &_name {
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 29px;
+          color: $colorTitle;
+        }
+      }
+
+      .sub {
+        margin-top: 20%;
+      }
+
+    }
+
+    &_right {
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      .tops {
+        width: 50%;
+        margin-top: 10%;
+        margin-bottom: 5%;
+      }
+
+      &_text {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        color: $colorTitle;
+        gap: 20px;
+
+        &_info {
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
+          color: $colorGrey;
+
+        }
+      }
+
+      &_title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.2px;
+        color: $colorGrey;
+      }
+
+    }
+  }
+
+  &_videos {
+    margin-top: 50px;
+    margin-bottom: -8px;
+
+    &_links {
+      width: 100%;
+    }
+  }
+
+  &_activity {
+    width: 100%;
+    background-color: $colorTitle;
+    background-image: url("../../assets/images/flowerLeft.png"),
+    url("../../assets/images/flower.svg"), url("../../assets/images/flowerBottom.svg");
+    background-repeat: no-repeat;
+    background-position: left bottom 25%, right top, bottom right 25%;
+
+
+    &_infos{
+      &_fon {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        display: flex;
+        align-items: center;
+        padding-top: 3%;
+        color: white;
+      }
+     &_flexs{
+       display: flex;
+       align-items: center;
+       gap: 10px;
+       margin-top: 5%;
+       &_dot{
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         background-color: white;
+       }
+       &_keep{
+         font-weight: 700;
+         font-size: 16px;
+         line-height: 19px;
+         display: flex;
+         align-items: center;
+         letter-spacing: 0.2px;
+         color: white;
+       }
+     }
+    }
+  }
+  &_fatherland{
+    margin-top: 6%;
+    padding:0 16%;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: $colorTitle;
+  }
+  &_caruosel{
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+}

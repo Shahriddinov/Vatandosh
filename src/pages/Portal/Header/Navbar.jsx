@@ -18,7 +18,6 @@ const activeLanguage = localStorage.getItem("language")
   : "uz";
 
 const Navbar = ({ activeSidebar }) => {
-  const [activeLinkBar, setactiveLinkBar] = useState(-1);
   const [activeLng, setActiveLng] = useState(activeLanguage);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -88,7 +87,7 @@ const Navbar = ({ activeSidebar }) => {
                 <li
                   key={index}
                   className="header-sideBar-navlist-item"
-                  style={activeLinkBar === index ? { height: "auto" } : null}
+                  style={{ height: "auto" }}
                 >
                   <Link to="/">{el}</Link>
                 </li>

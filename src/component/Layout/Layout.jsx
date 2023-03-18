@@ -18,7 +18,7 @@ const Layout = (props) => {
     localStorage.getItem("grayMode") ? localStorage.getItem("grayMode") : false
   );
 
-  const registerHeader = pathname.split("/")[1]
+  const registerHeader = pathname.split("/")[1];
 
   const changeSpeakSwitcher = (value) => {
     setSpeaker(value);
@@ -51,14 +51,28 @@ const Layout = (props) => {
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
       <NetworkError />
-      <div className={registerHeader.includes("registration") ? "registerBackground" : "page-wrapper1"}>
+      <div
+        className={
+          registerHeader.includes("registration")
+            ? "registerBackground"
+            : registerHeader.includes("portal")
+            ? ""
+            : "page-wrapper1"
+        }
+      >
         {registerHeader.includes("portal") ? (
           <HeaderPortal />
-        ) : (
-          registerHeader.includes("registration") ? <RegisterHeader /> : null
-        )}
+        ) : registerHeader.includes("registration") ? (
+          <RegisterHeader />
+        ) : <Header/>}
         <div className="page-content">{children}</div>
-        {registerHeader.includes("portal") ? null : registerHeader.includes("registration")? <RegisterFooter /> : <Footer />}
+        {registerHeader.includes("portal") ? null : registerHeader.includes(
+            "registration"
+          ) ? (
+          <RegisterFooter />
+        ) : (
+          <Footer />
+        )}
       </div>
     </GrayContext.Provider>
   );
