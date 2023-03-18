@@ -22,12 +22,26 @@ const Menus = () => {
     const openCitizin = Boolean(citizin);
 
 
+    const [information, setInformation] = React.useState(null);
+    const openInformation = Boolean(information);
+
+
+    const [project, setProject] = React.useState(null);
+    const openProject = Boolean(project);
+
 
     const handleClickAbout = (event) => {
         setAbout(event.currentTarget);
     };
     const handleCloseAbout = () => {
         setAbout(null);
+    };
+
+    const handleClickInformation = (event) => {
+        setInformation(event.currentTarget);
+    };
+    const handleCloseInformation = () => {
+        setInformation(null);
     };
 
 
@@ -37,6 +51,13 @@ const Menus = () => {
     };
     const handleCloseCitizin = () => {
         setCitizin(null);
+    };
+
+    const handleClickProject = (event) => {
+        setProject(event.currentTarget);
+    };
+    const handleCloseProject = () => {
+        setProject(null);
     };
 
 
@@ -113,33 +134,36 @@ const Menus = () => {
                     </Menu>
                 </li>
 
-
-                {/*<li className="menu_item hov">*/}
-                {/*    <Link to="/" className="menu_link">*/}
-                {/*        {t("citizin")}*/}
-                {/*    </Link>*/}
-                {/*    <ul className="main">*/}
-                {/*        <li>Jamoat birlashmalar</li>*/}
-                {/*        <li>Turkum ko'rsatuvlar</li>*/}
-                {/*        <li>Jamoat birlashmalar tadbirlari</li>*/}
-
-                {/*    </ul>*/}
-                {/*</li>*/}
                 <li className="menu_item hov">
-                    <Link to="/" className="menu_link">
+                    <Button
+                        id="basic-button"
+                        aria-controls={openProject ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openProject ? 'true' : undefined}
+                        onClick={handleClickProject}
+                        className="menu_link"
+                    >
                         {t("projects")}
-                    </Link>
-                    <ul className="main">
-                        <li>Barcha loyihalar</li>
-                        <li>“Kun oilasi” rukni</li>
-                        <li>“Sportchi vatandsohlar” rukni</li>
-                        <li>“Sportchi vatandsohlar” rukni</li>
-                        <li>Sara durdona</li>
-                        <li>“Xorijdagi milliy oshxona” loyihasi</li>
-                        <li>“Xorijdagi vatandosh tashkilot” loyihasi</li>
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={project}
+                        open={openProject}
+                        onClose={handleCloseProject}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleCloseProject}>Barcha loyihalar</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>“Kun oilasi” rukni</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>“Sportchi vatandsohlar” rukni</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>Sara durdona</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>“Xorijdagi milliy oshxona” loyihasi</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>“Xorijdagi vatandosh tashkilot” loyihasi</MenuItem>
 
-                    </ul>
+                    </Menu>
                 </li>
+
                 <li className="menu_item ">
                     <Link to="/" className="menu_link">
                         {t("contects")}
@@ -147,18 +171,35 @@ const Menus = () => {
 
                 </li>
                 <li className="menu_item hov">
-                    <Link to="/" className="menu_link">
+                    <Button
+                        id="basic-button"
+                        aria-controls={openInformation ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openInformation ? 'true' : undefined}
+                        onClick={handleClickInformation}
+                        className="menu_link"
+                    >
                         {t("information")}
-                    </Link>
-                    <ul className="main">
-                        <li>Yangiliklar</li>
-                        <li>Tadbirlar</li>
-                        <li>Mediateka</li>
-                        <li>Infografika</li>
-                        <li>Vatandoshlar jurnali</li>
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={information}
+                        open={openInformation}
+                        onClose={handleCloseInformation}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleCloseInformation}>Yangiliklar</MenuItem>
+                        <MenuItem onClick={handleCloseInformation}>Tadbirlar</MenuItem>
+                        <MenuItem onClick={handleCloseInformation}>Mediateka</MenuItem>
+                        <MenuItem onClick={handleCloseInformation}>Infografika</MenuItem>
+                        <MenuItem onClick={handleCloseInformation}>Vatandoshlar jurnali</MenuItem>
 
-                    </ul>
+                    </Menu>
                 </li>
+
+
                 <li className="menu_item">
                     <Link to="/" className="menu_link">
                         {t("link")}
