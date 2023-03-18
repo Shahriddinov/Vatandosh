@@ -1,0 +1,21 @@
+@import "../../../../assets/style/global.scss";
+
+.showscategory {
+  padding: 60px 0;
+  background-color: transparent;
+  display: grid;
+  gap: 30px;
+
+  &-title {
+    @include fontStyles(700, 32px, 39px, $colorTitle);
+  }
+
+  &-list {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+
+  }
+}

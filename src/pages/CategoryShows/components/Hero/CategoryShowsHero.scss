@@ -1,0 +1,81 @@
+@import "../../../../assets/style/global.scss";
+
+.shows-hero {
+  padding-top: 122px;
+  position: relative;
+  height: 572px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 740px;
+    z-index: 0;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../../../assets/images/category-shows/hero-background.jfif");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+  }
+
+  &-desc {
+    z-index: 1;
+    width: 454px;
+
+    &-url {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &-arrow {
+        width: 15px;
+        height: 15px;
+        color: #FFFFFF;
+      }
+
+      &>span,
+      a {
+        text-decoration: none;
+        letter-spacing: 0.2px;
+        @include fontStyles(700, 14px, 17px, #FFFFFF);
+      }
+    }
+
+    &-title {
+      margin: 10px 0 20px;
+      @include fontStyles(800, 36px, 44px, #FFFFFF);
+    }
+
+    &-text {
+      letter-spacing: 0.2px;
+      @include fontStyles(500, 16px, 19px, #FFFFFF);
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .shows-hero {
+    padding-top: 60px;
+    height: 304px;
+
+    &::before {
+      height: 394px;
+    }
+
+    &-desc {
+      width: 100%;
+      max-width: 564px;
+
+      &-title {
+        @include fontStyles(700, 24px, 29px, #FFFFFF);
+
+      }
+    }
+  }
+}

@@ -22,7 +22,6 @@ body {
   font-size: 14px;
   line-height: 26px;
   color: #656b70;
-  overflow: inherit !important;
 }
 
 .gray-scale {
@@ -124,7 +123,7 @@ body {
 @media (max-width: 1001px) {
   .page-about {
     background-image: url("../../assets/images/pattern-md.png"),
-    url("../../assets/images/bottom-md.png");
+      url("../../assets/images/bottom-md.png");
     background-position: left top, right 190px;
   }
 }
@@ -132,7 +131,7 @@ body {
 @media (max-width:700px) {
   .page-about {
     background-image: url("../../assets/images/pattern-md.png"),
-    url("../../assets/images/bottom-sm.png");
+      url("../../assets/images/bottom-sm.png");
     background-position: -100% -100%, right 190px;
   }
 }
