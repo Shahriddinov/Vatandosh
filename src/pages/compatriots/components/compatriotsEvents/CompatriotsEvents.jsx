@@ -54,6 +54,7 @@ const CompatriotsEvents = () => {
               <Swiper
                   slidesPerView={4}
                   spaceBetween={30}
+                  loop={true}
                   modules={[Navigation]}
                   navigation={{
                       prevEl: ".slider_controls___left",
@@ -76,9 +77,13 @@ const CompatriotsEvents = () => {
                           spaceBetween: 30,
                           },
                       1300: {
-                      slidesPerView: 4,
+                      slidesPerView: 3,
                       spaceBetween: 30,
                       },
+                      1400: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                        },
                   }}
                   className="mySwiper"
               >
