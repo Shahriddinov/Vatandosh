@@ -15,7 +15,7 @@ import EyeWhrite from "../../../assets/images/EyeWhrite.png";
 import Globe from "../../../assets/images/Globe.png";
 import { CgClose } from "react-icons/cg";
 import { motion } from "framer-motion";
-import Menu from "./component/Menu/Menu";
+import Menus from "./component/Menus/Menus";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
@@ -142,7 +142,7 @@ const Header = () => {
                     onClick={() => setactiveSidebar(!activeSidebar)}
                 ></div>
             </div>
-            {pathname.split("/")[1].includes("portal") ? "" : <Menu />}
+            {pathname.split("/")[1].includes("portal") ? "" : <Menus />}
         </header>
     );
 };

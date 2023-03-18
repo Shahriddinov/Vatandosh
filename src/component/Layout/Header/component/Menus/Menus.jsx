@@ -1,15 +1,30 @@
 import React, {useEffect, useRef, useState} from "react";
-import "./menu.scss";
+import "./menus.scss";
 import {motion} from "framer-motion";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
-import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
-const Menu = () => {
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
+const Menus = () => {
     const navbarRef = useRef();
     const scrollRef = useRef(null);
     const [isFixed, setFixed] = useState(false);
     const {t} = useTranslation();
+
+    const [about, setAbout] = React.useState(null);
+    const openAbout = Boolean(about);
+    const handleClickAbout = (event) => {
+        setAbout(event.currentTarget);
+    };
+    const handleCloseAbout = () => {
+        setAbout(null);
+    };
+
+
 
     useEffect(() => {
         scrollRef.current = document.querySelector(".navbar").offsetTop + 18;
@@ -26,39 +41,38 @@ const Menu = () => {
     }, [scrollRef.current]);
 
 
-
-    const items: MenuProps['items'] = [
-        {
-            key: '1',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                    Biz haqimizda
-                </a>
-            ),
-        },
-        {
-            key: '2',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                    Vasiylik Kengashi
-                </a>
-            ),
-        },
-
-    ];
-
     return (
         <div className={`navbar ${isFixed ? "fixed" : ""}`} ref={navbarRef}>
             <ul className="menu">
 
-                    <Dropdown menu={{ items }} placement="bottom" arrow className="menu_item hov">
-                        <Link to="/about" className="menu_link">
-                            {t("about")}
-                        </Link>
-                    </Dropdown>
+                <li className="menu_item hov">
+                    <Button
+                        id="basic-button"
+                        aria-controls={openAbout ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openAbout ? 'true' : undefined}
+                        onClick={handleClickAbout}
+                        className="menu_link"
+                    >
+                        {t("about")}
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={about}
+                        open={openAbout}
+                        onClose={handleCloseAbout}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem href="/about" onClick={handleCloseAbout}>Biz haqimizda</MenuItem>
+                        <MenuItem onClick={handleCloseAbout}>Vasiylik Kengashi</MenuItem>
+
+                    </Menu>
+                </li>
 
 
-                {/*</motion.li>*/}
+
                 <li className="menu_item hov">
                     <Link to="/" className="menu_link">
                         {t("citizin")}
@@ -117,4 +131,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Menus;

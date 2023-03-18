@@ -53,7 +53,7 @@ const Menu = () => {
 
                     <Dropdown menu={{ items }} placement="bottom" arrow className="menu_item hov">
                         <Link to="/about" className="menu_link">
-                            {t("about")}
+
                         </Link>
                     </Dropdown>
 
