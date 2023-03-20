@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
 import "./NewsDetail.scss";
 import { MdArrowRight } from "react-icons/md";
-import img from '../../assets/images/news-detail-img.png';
+import img from '../../assets/images/photo2.png';
 import { LatestNews, PopularTags } from "../../component";
 
 export default function NewsDetail() {
