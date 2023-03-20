@@ -54,7 +54,6 @@ const PublicAssociationEvents = () => {
           <Paginator />
         </main>
       </div>
-      <ContactUs />
     </>
   )
 }

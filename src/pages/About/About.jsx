@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./About.scss";
 import CardImg from "../../assets/images/about-Card.svg"
 import Rais from "../../assets/images/Rais.svg"
@@ -14,7 +15,6 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -23,6 +23,8 @@ import Header from "../../component/Layout/Header/Header";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 
 const About = () => {
+    const state = useLocation()
+    console.log(state);
     const heroData = {
         title: "Biz haqimizda",
         description: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
