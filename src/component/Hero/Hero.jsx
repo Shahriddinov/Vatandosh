@@ -36,7 +36,7 @@ const Hero = () => {
   let slideInterval;
 
   const autoPlay = () => {
-    slideInterval = setInterval(handleRight, 5000);
+    slideInterval = setInterval(handleRight, 8000);
   };
 
   useEffect(() => {
@@ -52,24 +52,53 @@ const Hero = () => {
     return null;
   }
 
-  console.log(sliderData);
-
   return (
     <section className="hero">
       <div className="hero__container container">
         <div className="hero__slider">
-          {sliderData?.map((slider) =>
-            slider.img ? (
-              <div
-                className={`hero__slider-item ${
-                  slideIndex === slider?.id ? "active" : ""
-                }`}
-                style={{
-                  backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${slider?.img})`,
-                }}
-                key={slider?.id}
-              >
-                <div className="slider-left-bottom">
+          {sliderData?.map((slider) => (
+            <div
+              className={`hero__slider-box ${
+                slideIndex === slider?.id ? "active" : ""
+              }`}
+              key={slider.id}
+            >
+              {slider.img ? (
+                <div
+                  className={`hero__slider-item`}
+                  style={{
+                    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${slider?.img})`,
+                  }}
+                ></div>
+              ) : (
+                <div className={`hero__slider-video`}>
+                  <video autoPlay muted loop>
+                    <source
+                      src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                        JSON.parse(slider?.video)[
+                          JSON.parse(slider?.video).length - 1
+                        ]?.download_link
+                      }`}
+                    />
+                  </video>
+                </div>
+              )}
+              <div className="hero__slider-left-bottom">
+                <span>#{slider[`title_${lan}`]}</span>
+                <h3
+                  dangerouslySetInnerHTML={{
+                    __html: slider[`text_${lan}`],
+                  }}
+                />
+                <button>{t("more")}</button>
+                <div
+                  className={`navigation-line ${
+                    slideIndex === slider?.id ? "active" : ""
+                  }`}
+                ></div>
+              </div>
+              {/* {slider.img ? (
+                <div className="hero__slider-left-bottom">
                   <span>#{slider[`title_${lan}`]}</span>
                   <h3
                     dangerouslySetInnerHTML={{
@@ -83,22 +112,8 @@ const Hero = () => {
                     }`}
                   ></div>
                 </div>
-              </div>
-            ) : (
-              <div
-                className={`hero__slider-video ${
-                  slideIndex === slider?.id ? "active" : ""
-                }`}
-                key={slider?.id}
-              >
-                <video autoPlay muted loop>
-                  <source
-                    src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
-                      JSON.parse(slider?.video)[0]?.download_link
-                    }`}
-                  />
-                </video>
-                <div className="slider-left-bottom">
+              ) : (
+                <div className="hero__slider-left-bottom">
                   <span>#{slider[`title_${lan}`]}</span>
                   <h3
                     dangerouslySetInnerHTML={{
@@ -106,9 +121,9 @@ const Hero = () => {
                     }}
                   />
                 </div>
-              </div>
-            )
-          )}
+              )} */}
+            </div>
+          ))}
         </div>
         <div className="hero__bottom">
           <div className="hero__bottom-right">

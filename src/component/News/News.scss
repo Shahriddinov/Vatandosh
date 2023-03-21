@@ -247,6 +247,8 @@
 
 @media (max-width: 500px) {
   .news {
+    padding-top: 40px;
+
     .all-btn {
       display: none;
     }
@@ -271,11 +273,5 @@
         background-position: -70px -70px, 250px 110px, center center;
       }
     }
-  }
-}
-
-@media (max-width: 440px) {
-  .news {
-    padding-top: 30px;
   }
 }
