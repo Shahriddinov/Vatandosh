@@ -17,6 +17,7 @@ const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() => import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety"));
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
 const PublicAssociationEvents = lazy(() => import("./pages/PublicAssociationEvents/PublicAssociationEvents"));
+const Projects = lazy(() => import("./pages/Projects"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
   { path: "", element: Home, },
@@ -33,6 +34,7 @@ const routes = [
   { path: "/category-shows", element: CategoryShows },
   { path: "/compatriots/public-association-events", element: PublicAssociationEvents },
   { path: "/news-detail/:id", element: NewsDetail },
+  { path: "/projects", element: Projects },
 ];
 
 const RoutesContainer = () => (
