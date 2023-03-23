@@ -14,7 +14,7 @@
 
   .menu {
     &_link {
-      color: $colorGrey!important;
+      color: $colorGrey !important;
     }
   }
 }
@@ -36,7 +36,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #ffffff!important;
+    color: #ffffff !important;
     cursor: pointer;
   }
 
@@ -118,7 +118,17 @@
     z-index: 2;
 
   }
+  &_links {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1E202C;
+  }
 }
+
+
 
 @media only screen and (max-width: 1000px) {
   .menu {

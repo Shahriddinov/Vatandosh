@@ -36,7 +36,7 @@ const About = () => {
             </div>
             <div className="about_card container">
                 <div className="about_card_left">
-                    <img src={CardImg} alt="cardImg"/>
+                    <img className="about_card_left_img" src={CardImg} alt="cardImg"/>
                 </div>
                 <div className="about_card_right">
                     <div className="about_card_right_text">Fondnig vazifasi va maqsadi</div>

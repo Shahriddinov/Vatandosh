@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+
 const Menun = () => {
     const navbarRef = useRef();
     const scrollRef = useRef(null);
@@ -57,7 +58,6 @@ const Menun = () => {
     };
 
 
-
     const handleClickCitizin = (event) => {
         setCitizin(event.currentTarget);
     };
@@ -71,9 +71,6 @@ const Menun = () => {
     const handleCloseProject = () => {
         setProject(null);
     };
-
-
-
 
 
     return (
@@ -100,8 +97,16 @@ const Menun = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem href="/about" onClick={handleCloseAbout}>Biz haqimizda</MenuItem>
-                        <MenuItem onClick={handleCloseAbout}>Vasiylik Kengashi</MenuItem>
+                        <MenuItem onClick={handleCloseAbout}>
+                            <Link to="/about" className="menu_links">
+                                Biz haqimizda
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseAbout}>
+                            <Link to="/about/council-trustees" className="menu_links">
+                                Vasiylik Kengashi</Link>
+
+                        </MenuItem>
 
                     </Menu>
                 </li>
@@ -126,9 +131,16 @@ const Menun = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar</MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>Turkum ko'rsatuvlar</MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar tadbirlari</MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}> <Link to="/compatriots/public-associations"
+                                                                      className="menu_links">
+                            Jamoat birlashmalar</Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}> <Link to="/category-shows" className="menu_links">
+                            Turkum ko'rsatuvlar</Link></MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>
+                            <Link to="/compatriots/public-association-events" className="menu_links">
+                                Jamoat birlashmalar tadbirlari</Link>
+                        </MenuItem>
 
                     </Menu>
                 </li>

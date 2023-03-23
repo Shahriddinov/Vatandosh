@@ -45,7 +45,6 @@ const Menus = () => {
     };
 
 
-
     const handleClickCitizin = (event) => {
         setCitizin(event.currentTarget);
     };
@@ -59,7 +58,6 @@ const Menus = () => {
     const handleCloseProject = () => {
         setProject(null);
     };
-
 
 
     useEffect(() => {
@@ -79,16 +77,16 @@ const Menus = () => {
 
     return (
         <div className={`navbar ${isFixed ? "fixed" : ""}`} ref={navbarRef}>
-            <ul className="menu">
+            <ul className="menus">
 
-                <li className="menu_item hov">
+                <li className="menus_item hov">
                     <Button
                         id="basic-button"
                         aria-controls={openAbout ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openAbout ? 'true' : undefined}
                         onClick={handleClickAbout}
-                        className="menu_link"
+                        className="menus_link"
                     >
                         {t("about")}
                     </Button>
@@ -101,20 +99,28 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem href="/about" onClick={handleCloseAbout}>Biz haqimizda</MenuItem>
-                        <MenuItem onClick={handleCloseAbout}>Vasiylik Kengashi</MenuItem>
+                        <MenuItem onClick={handleCloseAbout}>
+                            <Link to="/about" className="menus_links">
+                                Biz haqimizda
+
+                            </Link>
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseAbout}>
+                            <Link to="/about/council-trustees" className="menus_links">
+                                Vasiylik Kengashi</Link>
+                        </MenuItem>
 
                     </Menu>
                 </li>
 
-                <li className="menu_item hov">
+                <li className="menus_item hov">
                     <Button
                         id="basic-button"
                         aria-controls={openCitizin ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openCitizin ? 'true' : undefined}
                         onClick={handleClickCitizin}
-                        className="menu_link"
+                        className="menus_link"
                     >
                         {t("citizin")}
                     </Button>
@@ -127,21 +133,34 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar</MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>Turkum ko'rsatuvlar</MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>Jamoat birlashmalar tadbirlari</MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>
+                            <Link to="/compatriots/public-associations" className="menus_links">
+                                Jamoat birlashmalar</Link>
+
+
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>
+                            <Link to="/category-shows" className="menus_links">
+                                Turkum ko'rsatuvlar</Link>
+
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseCitizin}>
+                            <Link to="/compatriots/public-association-events" className="menus_links">
+                                Jamoat birlashmalar tadbirlari</Link>
+
+                        </MenuItem>
 
                     </Menu>
                 </li>
 
-                <li className="menu_item hov">
+                <li className="menus_item hov">
                     <Button
                         id="basic-button"
                         aria-controls={openProject ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openProject ? 'true' : undefined}
                         onClick={handleClickProject}
-                        className="menu_link"
+                        className="menus_link"
                     >
                         {t("projects")}
                     </Button>
@@ -164,22 +183,25 @@ const Menus = () => {
                     </Menu>
                 </li>
 
-                <li className="menu_item ">
-                    <Link to="/" className="menu_link">
+                <li className="menus_item ">
+                    <Link to="/" className="menus_link">
                         {t("contects")}
                     </Link>
 
                 </li>
-                <li className="menu_item hov">
+                <li className="menus_item hov">
                     <Button
                         id="basic-button"
                         aria-controls={openInformation ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openInformation ? 'true' : undefined}
                         onClick={handleClickInformation}
-                        className="menu_link"
+                        className="menus_link"
                     >
-                        {t("information")}
+                        <Link to="/" className="menus_link">
+                            {t("information")}
+                        </Link>
+
                     </Button>
                     <Menu
                         id="basic-menu"
@@ -200,12 +222,12 @@ const Menus = () => {
                 </li>
 
 
-                <li className="menu_item">
-                    <Link to="/" className="menu_link">
+                <li className="menus_item">
+                    <Link to="/" className="menus_link">
                         {t("link")}
                     </Link>
                 </li>
-                <li className="menu_item">
+                <li className="menus_item">
                     ...
                 </li>
             </ul>

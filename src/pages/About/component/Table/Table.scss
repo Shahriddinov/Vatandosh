@@ -34,4 +34,7 @@
   &_next{
     margin-top: 3%;
   }
+  @media only screen and (max-width: 1000px){
+    display: none;
+  }
 }
