@@ -173,7 +173,11 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseProject}>Barcha loyihalar</MenuItem>
+                        <MenuItem onClick={handleCloseProject}>
+                            <Link to="/projects" className="menus_links">
+                                Barcha loyihalar</Link>
+
+                        </MenuItem>
                         <MenuItem onClick={handleCloseProject}>“Kun oilasi” rukni</MenuItem>
                         <MenuItem onClick={handleCloseProject}>“Sportchi vatandsohlar” rukni</MenuItem>
                         <MenuItem onClick={handleCloseProject}>Sara durdona</MenuItem>
