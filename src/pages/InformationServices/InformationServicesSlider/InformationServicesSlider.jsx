@@ -24,7 +24,7 @@ export const InformationServicesSlider = () => {
     let slideInterval
 
     const autoPlay = () => {
-        slideInterval = setInterval(handleRight, 5000)
+        slideInterval = setInterval(handleRight, 8000)
     }
 
     useEffect(() => {
@@ -35,27 +35,25 @@ export const InformationServicesSlider = () => {
     return (
         <div className='main-hero'>
             {data.map(card => (
-                <>
-                    <div
-                        className={`main-hero-slider ${card.id === img ? 'active' : ''}`}
-                        key={card.id}
-                        style={{
-                            backgroundImage: `url(${card.img})`,
-                        }}>
-                        <h2>{card.title}</h2>
-                        <div className={`navigation-line ${card.id === img ? 'active' : ''}`} />
-                        <div className='main-hero-slider-bottom'>
-                            <div className='main-hero-slider-bottomCalendar'>
-                                <span><BsFillCalendarMinusFill /></span>
-                                <p>{card.data}</p>
-                            </div>
-                            <div className='main-hero-slider-bottomBtns'>
-                                <button onClick={handleLeft}><AiOutlineLeft size={18} /> </button>
-                                <button onClick={handleRight}><AiOutlineRight size={18} /> </button>
-                            </div>
+                <div
+                    className={`main-hero-slider ${card.id === img ? 'active' : ''}`}
+                    key={card.id}
+                    style={{
+                        backgroundImage: `url(${card.img})`,
+                    }}>
+                    <h2>{card.title}</h2>
+                    <div className={`navigation-line ${card.id === img ? 'active' : ''}`} />
+                    <div className='main-hero-slider-bottom'>
+                        <div className='main-hero-slider-bottomCalendar'>
+                            <span><BsFillCalendarMinusFill /></span>
+                            <p>{card.data}</p>
+                        </div>
+                        <div className='main-hero-slider-bottomBtns'>
+                            <button onClick={handleLeft}><AiOutlineLeft size={18} /> </button>
+                            <button onClick={handleRight}><AiOutlineRight size={18} /> </button>
                         </div>
                     </div>
-                </>
+                </div>
             ))}
         </div>
     )

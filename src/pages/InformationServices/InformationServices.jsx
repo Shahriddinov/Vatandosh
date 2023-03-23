@@ -5,10 +5,13 @@ import { InformationServicesSlider } from './InformationServicesSlider/Informati
 import { InformationServicesHero } from './InformationServicesHero/InformationServicesHero'
 
 const InformationServices = () => {
-    const pagePath = [
-        { id: 1, label: "Asosiy sahifa", path: "/" },
-        { id: 2, label: "Yangiliklar", path: "/information-service/news" },
-    ]
+    const pagePath = {
+        title: 'Yangiliklar',
+        path: [
+            { id: 1, label: "Asosiy sahifa", path: "/" },
+            { id: 2, label: "Yangiliklar", path: "/information-service/news" },
+        ]
+    }
     return (
         <div className='news-page '>
             <Header />
