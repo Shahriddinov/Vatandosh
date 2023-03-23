@@ -95,7 +95,7 @@
     background-position: left bottom 25%, right top, bottom right 25%;
 
 
-    &_infos{
+    &_infos {
       &_fon {
         font-weight: 700;
         font-size: 32px;
@@ -105,32 +105,36 @@
         padding-top: 3%;
         color: white;
       }
-     &_flexs{
-       display: flex;
-       align-items: center;
-       gap: 10px;
-       margin-top: 5%;
-       &_dot{
-         width: 10px;
-         height: 10px;
-         border-radius: 50%;
-         background-color: white;
-       }
-       &_keep{
-         font-weight: 700;
-         font-size: 16px;
-         line-height: 19px;
-         display: flex;
-         align-items: center;
-         letter-spacing: 0.2px;
-         color: white;
-       }
-     }
+
+      &_flexs {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 5%;
+
+        &_dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: white;
+        }
+
+        &_keep {
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 19px;
+          display: flex;
+          align-items: center;
+          letter-spacing: 0.2px;
+          color: white;
+        }
+      }
     }
   }
-  &_fatherland{
+
+  &_fatherland {
     margin-top: 6%;
-    padding:0 16%;
+    padding: 0 16%;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -139,8 +143,83 @@
     text-align: center;
     color: $colorTitle;
   }
-  &_caruosel{
+
+  &_caruosel {
     margin-bottom: 5%;
     margin-top: 5%;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    overflow: hidden;
+    &_card {
+      display: block;
+
+      &_left {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &_img {
+          width: 1000%;
+        }
+
+        &_boss {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+
+          &_level {
+            margin-top: 5%;
+            margin-bottom: 5%;
+          }
+        }
+
+        &_substitute {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      &_right {
+        width: 100%;
+
+        &_text {
+          margin-top: 5%;
+        }
+
+        &_title {
+          margin-top: 2%;
+        }
+      }
+    }
+    &_activity {
+      width: 100%;
+      background-color: $colorTitle;
+      background-image: url("../../assets/images/flower.svg");
+      background-repeat: no-repeat;
+      background-position: center right;
+      padding-bottom: 5%;
+
+      &_infos {
+
+        &_flexs {
+          gap: 22px;
+
+          &_dot {
+            width: 12px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+          }
+        }
+
+
+        &_fon {
+          display: none;
+        }
+      }
+    }
+
   }
 }

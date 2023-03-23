@@ -12,6 +12,7 @@
         border: 1px solid #EAEDF6;
     }
 
+
     .css-wjh20t-MuiPagination-ul {
         column-gap: 20px;
     }
@@ -19,7 +20,12 @@
     .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
         border-radius: inherit;
         background-color: white;
+        color: #065EA9;
         border-bottom: 1px solid #065EA9;
+    }
+
+    .css-bf9wz-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected:hover {
+        color: white !important;
     }
 
 

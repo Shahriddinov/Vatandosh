@@ -2,22 +2,23 @@
     position: relative;
     width: 100%;
     background-color: transparent;
+
 }
 
-// .public-association-events-before {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     z-index: 0;
-//     width: 100%;
-//     height: 740px;
-//     background-image: url("../../assets/images/compatriots/publicAssociationEventsBG.png");
-//     background-repeat: no-repeat;
-//     background-size: cover;
-//     background-position: top center;
-//     content: "";
-// }
+.public-association-events-card {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
 
+.public-association-events-title {
+    margin-top: 60px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #065EA9;
+}
 
 @media(min-width: 1600px) {
     .public-association-events-before {
@@ -63,7 +64,7 @@
 
 @media(min-width: 4000px) {
     .public-association-events-before {
-        background-position: center -1100px !important; 
+        background-position: center -1100px !important;
     }
 }
 

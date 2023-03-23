@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import './PublicAssociationEvents.scss'
-import Header from '../../component/Layout/Header/Header'
 import SiteHero from '../../component/siteHero/SiteHero'
 import Card from '../../component/card/Card'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,8 +7,6 @@ import { getNews } from '../../reduxToolkit/newsSlice/extraReducer'
 import { Paginator } from '../../component/Pagination/Pagination'
 import bg from '../../assets/images/compatriots/publicAssociationEventsBG.png'
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
-
-const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const PublicAssociationEvents = () => {
 
@@ -31,7 +28,8 @@ const PublicAssociationEvents = () => {
   return (
     <>
       <div className='public-association-events-before' style={{
-        position: 'absolute', top: '0',
+        position: 'absolute',
+        top: '0',
         left: '0',
         zIndex: '0',
         width: '100%',
@@ -48,9 +46,12 @@ const PublicAssociationEvents = () => {
         <SiteHero {...dataHero} />
 
         <main className='main container'>
-          {newsData?.map(card => (
-            <Card key={card.id} {...card} />
-          ))}
+          <h2 className='public-association-events-title'>Jamoat birlashmalar tadbirlari</h2>
+          <div className='public-association-events-card'>
+            {newsData?.map(card => (
+              <Card key={card.id} {...card} />
+            ))}
+          </div>
           <Paginator />
         </main>
       </div>

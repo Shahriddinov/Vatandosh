@@ -3,7 +3,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import phone from "../../../../../assets/images/icons/Phone.svg";
@@ -82,10 +82,13 @@ const Navbar = ({ activeSidebar }) => {
                   </p>
                   <div className="header-sideBar-navlist-item-links">
                     <NavLink className="header-sideBar-navlist-item-link" to="">
-                      Biz haqimizda
+                      <Link to="/about" className="menus_links">
+                        Biz haqimizda
+                      </Link>
                     </NavLink>
                     <NavLink className="header-sideBar-navlist-item-link" to="">
-                      {el} kengashi
+                      <Link to="/about/council-trustees" className="menus_links">
+                        Vasiylik Kengashi</Link>
                     </NavLink>
                   </div>
                 </li>

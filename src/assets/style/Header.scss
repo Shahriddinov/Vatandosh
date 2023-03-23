@@ -346,7 +346,7 @@
     }
 
     .activeSideBar {
-      top: 90px;
+      top: 88px;
     }
   }
 }
@@ -379,6 +379,7 @@
       padding: 20px 1rem;
       position: relative;
       border: none;
+      background-color: white;
 
       &-sideBar {
         display: block;

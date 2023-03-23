@@ -44,7 +44,7 @@ const Header = () => {
     }, [activeSidebar]);
 
     return (
-        <header className="head">
+        <header className="head" style={activeSidebar ? { background: "#FFFFFF" } : null}>
             <div className="header">
                 <div className="header_navbar">
                     <div className="header_navbar_left">

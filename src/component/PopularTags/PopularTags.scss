@@ -1,0 +1,37 @@
+@import "../../assets/style/global.scss";
+
+.populartags {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+  border-radius: 15px;
+
+  &-title {
+    padding: 16px 15px 17px;
+    padding-bottom: 17px;
+    @include fontStyles(600, 14px, 17px, $colorGrey);
+    border-bottom: 1px solid #EAEDF6;
+  }
+
+  &-tags {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &-tag {
+    padding: 4px 8px;
+    background: #E3F0FF;
+    border-radius: 5px;
+    @include fontStyles(400, 12px, 15px, $colorTitle);
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .populartags {
+    &-tag {
+      padding: 8px 12px;
+    }
+  }
+}

@@ -6,9 +6,7 @@ import Rais from "../../assets/images/Rais.svg"
 import Urinbosar from "../../assets/images/Substitute.jpg"
 import Video from "../../assets/images/slider/slider_video.mp4"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
-import  Photo1 from "../../assets/images/photo1.png"
-import  Photo2 from "../../assets/images/photo2.png"
-import  Photo3 from "../../assets/images/photo3.png"
+
 import SliderVideo from "../../assets/images/slider/slider_video.mp4";
 import Table from "./component/Table/Table";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -21,6 +19,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Header from "../../component/Layout/Header/Header";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
+import Gallery2 from "../../assets/images/projects/gallery2.png";
+import Gallery3 from "../../assets/images/projects/gallery3.png";
+import Gallery4 from "../../assets/images/projects/gallery4.png";
 
 const About = () => {
     const state = useLocation()
@@ -30,6 +31,26 @@ const About = () => {
         description: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
         pagePath: "Biz haqimizda",
     }
+    const swiperParams = {
+        breakpoints: {
+            360: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+            },
+            670: {
+                slidesPerView: 2,
+                spaceBetween: 0,
+            },
+            1000: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+            },
+            1300: {
+                slidesPerView: 4,
+                spaceBetween: 0,
+            },
+        },
+    }
     return (
         <div className="about ">
             <div className="page-about">
@@ -38,7 +59,7 @@ const About = () => {
             </div>
             <div className="about_card container">
                 <div className="about_card_left">
-                    <img src={CardImg} alt="cardImg"/>
+                    <img className="about_card_left_img" src={CardImg} alt="cardImg"/>
                 </div>
                 <div className="about_card_right">
                     <div className="about_card_right_text">Fondnig vazifasi va maqsadi</div>
@@ -175,26 +196,19 @@ const About = () => {
             </div>
             <div className="about_caruosel">
                 <Swiper
-                    // install Swiper modules
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={50}
                     slidesPerView={4}
-                    // navigation
-                    // pagination={{ clickable: true }}
-                    // scrollbar={{ draggable: true }}
-
-                    onSlideChange={() => console.log('slide change')}
+                    centeredSlides={true}
+                    initialSlide={2}
+                    {...swiperParams}
                 >
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo2} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo3} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Photo1} alt=""/></SwiperSlide>
-
+                    <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery3} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery4} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery3} alt=""/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery4} alt=""/></SwiperSlide>
                 </Swiper>
             </div>
 

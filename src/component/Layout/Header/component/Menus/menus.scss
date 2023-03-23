@@ -13,9 +13,9 @@
 
 }
 
-.menu {
+.menus {
   width: 100%;
-  max-width: 802px;
+  max-width: 902px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -24,6 +24,7 @@
 
   a {
     text-decoration: none;
+
   }
 
   &_link {
@@ -33,6 +34,7 @@
     color: #5d6b8a!important;
     cursor: pointer;
   }
+
 
   ul, li {
     margin: 0;
@@ -112,10 +114,18 @@
     z-index: 2;
 
   }
+  &_links{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #1E202C;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
-  .menu {
+  .menus {
     display: none;
   }
 }
