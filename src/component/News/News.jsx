@@ -8,21 +8,19 @@ import Card from "../card/Card";
 
 import "./News.scss";
 
-import icon1 from "../../assets/images/icons/1.png";
-import icon2 from "../../assets/images/icons/2.png";
-import icon3 from "../../assets/images/icons/3.png";
-import icon4 from "../../assets/images/icons/4.png";
-import icon5 from "../../assets/images/icons/5.png";
-import icon6 from "../../assets/images/icons/6.png";
+import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 
 const News = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const projectMenu = useSelector((state) => state.peaceful.menuData);
+  const lan = useSelector((state) => state.language.language);
 
   useEffect(() => {
     dispatch(getNews());
+    dispatch(getProjectsMenu());
   }, []);
 
   return (
@@ -63,30 +61,19 @@ const News = () => {
             <div className="our-projects">
               <h4>{t("project")}</h4>
               <ul>
-                <li>
-                  <img src={icon1} alt="icon1" />
-                  <span>{t("day")}</span>
-                </li>
-                <li>
-                  <img src={icon2} alt="icon2" />
-                  <span>{t("athlete")}</span>
-                </li>
-                <li>
-                  <img src={icon3} alt="icon3" />
-                  <span>{t("young")}</span>
-                </li>
-                <li>
-                  <img src={icon4} alt="icon4" />
-                  <span>{t("best")}</span>
-                </li>
-                <li>
-                  <img src={icon5} alt="icon5" />
-                  <span>{t("national")}</span>
-                </li>
-                <li>
-                  <img src={icon6} alt="icon6" />
-                  <span>{t("abroad")}</span>
-                </li>
+                {projectMenu.map((project) => {
+                  return (
+                    <li key={project.id}>
+                      <Link to="/">
+                        <img
+                          src={`https://vatanparvarbackend.napaautomotive.uz/storage/${project.logo}`}
+                          alt="icon"
+                        />
+                        <span>{project[`menu_${lan}`]}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
               <div>
                 <button>{t("participation")}</button>
