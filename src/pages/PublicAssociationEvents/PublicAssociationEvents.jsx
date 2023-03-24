@@ -4,7 +4,7 @@ import SiteHero from '../../component/siteHero/SiteHero'
 import Card from '../../component/card/Card'
 import { useDispatch, useSelector } from 'react-redux'
 import { getNews } from '../../reduxToolkit/newsSlice/extraReducer'
-import { Paginator } from '../../component/Pagination/Pagination'
+import { Paginator } from '../../component/Paginator/Paginator'
 import bg from '../../assets/images/compatriots/publicAssociationEventsBG.png'
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 
