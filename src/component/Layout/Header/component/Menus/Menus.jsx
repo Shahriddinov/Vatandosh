@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./menus.scss";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -104,7 +103,7 @@ const Menus = () => {
                     >
                         {
                             navLinks[0].links?.map((el, index) => {
-                                return <MenuItem onClick={handleCloseAbout}>
+                                return <MenuItem key={index} onClick={handleCloseAbout}>
                                     <Link to={el.url} className="menus_links">{el.title}</Link>
                                 </MenuItem>
                             })
@@ -135,7 +134,7 @@ const Menus = () => {
                     >
                         {
                             navLinks[1].links?.map((el, index) => {
-                                return <MenuItem onClick={handleCloseAbout}>
+                                return <MenuItem onClick={handleCloseAbout} key={index}>
                                     <Link to={el.url} className="menus_links">{el.title}</Link>
                                 </MenuItem>
                             })
@@ -166,7 +165,7 @@ const Menus = () => {
                     >
                         {
                             navLinks[2].links?.map((el, index) => {
-                                return <MenuItem onClick={handleCloseAbout}>
+                                return <MenuItem key={index} onClick={handleCloseAbout}>
                                     <Link to={el.url} className="menus_links">{el.title}</Link>
                                 </MenuItem>
                             })
@@ -204,7 +203,7 @@ const Menus = () => {
                         }}
                     > {
                             navLinks[4].links?.map((el, index) => {
-                                return <MenuItem onClick={handleCloseAbout}>
+                                return <MenuItem key={index} onClick={handleCloseAbout}>
                                     <Link to={el.url} className="menus_links">{el.title}</Link>
                                 </MenuItem>
                             })
