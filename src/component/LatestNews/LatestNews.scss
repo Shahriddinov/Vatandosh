@@ -20,11 +20,15 @@
     gap: 15px;
 
     &-item {
-      height: 55px;
-      display: flex;
-      gap: 12px;
+      &-link {
+        height: 55px;
+        display: flex;
+        gap: 12px;
+        text-decoration: none;
 
-      &-img > img {
+      }
+
+      &-img>img {
         height: 100%;
         width: 65px;
         object-fit: cover;
@@ -57,13 +61,14 @@
             align-items: center;
             gap: 5px;
 
-            & > span {
+            &>span {
               @include fontStyles(400, 8px, 20px, $colorGrey);
             }
 
-            & > svg {
+            &>svg {
               width: 12px;
               height: 12px;
+              color: $colorGrey;
             }
           }
         }
@@ -86,7 +91,7 @@
       &-item {
         height: 80px;
 
-        &-img > img {
+        &-img>img {
           width: 106px;
         }
 
@@ -107,11 +112,11 @@
               align-items: center;
               gap: 5px;
 
-              & > span {
+              &>span {
                 @include fontStyles(400, 8px, 20px, $colorGrey);
               }
 
-              & > svg {
+              &>svg {
                 width: 12px;
                 height: 12px;
               }
