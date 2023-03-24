@@ -18,7 +18,7 @@ const Card = (props) => {
         />
       </div>
       <div className="news-information">
-        <Link to="/">
+        <Link to={`/news-detail/${props.id}`}>
           <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
           <p
             className="news__card-text"
