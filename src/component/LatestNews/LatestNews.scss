@@ -1,8 +1,8 @@
 @import "../../assets/style/global.scss";
 
-.latest-news {
+.latest_news {
   width: 100%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
   border-radius: 15px;
 
@@ -10,7 +10,7 @@
     padding: 16px 15px 17px;
     padding-bottom: 17px;
     @include fontStyles(600, 14px, 17px, $colorGrey);
-    border-bottom: 1px solid #EAEDF6;
+    border-bottom: 1px solid #eaedf6;
   }
 
   &-list {
@@ -24,7 +24,7 @@
       display: flex;
       gap: 12px;
 
-      &-img>img {
+      &-img > img {
         height: 100%;
         width: 65px;
         object-fit: cover;
@@ -57,11 +57,11 @@
             align-items: center;
             gap: 5px;
 
-            &>span {
+            & > span {
               @include fontStyles(400, 8px, 20px, $colorGrey);
             }
 
-            &>svg {
+            & > svg {
               width: 12px;
               height: 12px;
             }
@@ -72,8 +72,8 @@
   }
 }
 
-@media only screen and (max-width:768px) {
-  .latest-news {
+@media only screen and (max-width: 768px) {
+  .latest_news {
     &-title {
       padding: 10px 11px 12px;
       font-size: 24px;
@@ -86,7 +86,7 @@
       &-item {
         height: 80px;
 
-        &-img>img {
+        &-img > img {
           width: 106px;
         }
 
@@ -107,11 +107,11 @@
               align-items: center;
               gap: 5px;
 
-              &>span {
+              & > span {
                 @include fontStyles(400, 8px, 20px, $colorGrey);
               }
 
-              &>svg {
+              & > svg {
                 width: 12px;
                 height: 12px;
               }
@@ -121,5 +121,4 @@
       }
     }
   }
-
 }
