@@ -21,26 +21,29 @@ const ContactUs = () => {
   return (
     <div className="contact-us">
       <div className="contact-container container">
-        <h3>{t("footerContactUs")}</h3>
-        <form onSubmit={handleSumbit} ref={formRef}>
-          <input
-            type="text"
-            placeholder={t("footerName")}
-            onChange={(e) =>
-              setDataContact((prev) => ({ ...prev, name: e.target.value }))
-            }
-            required
-          />
-          <input
-            type="text"
-            placeholder="+998"
-            onChange={(e) =>
-              setDataContact((prev) => ({ ...prev, phone: e.target.value }))
-            }
-            required
-          />
-          <button type="submit">{t("footerSend")}</button>
-        </form>
+        <div className="contact-inner">
+          <h3>{t("footerContactUs")}</h3>
+
+          <form onSubmit={handleSumbit} ref={formRef}>
+            <input
+              type="text"
+              placeholder={t("footerName")}
+              onChange={(e) =>
+                setDataContact((prev) => ({ ...prev, name: e.target.value }))
+              }
+              required
+            />
+            <input
+              type="text"
+              placeholder="+998"
+              onChange={(e) =>
+                setDataContact((prev) => ({ ...prev, phone: e.target.value }))
+              }
+              required
+            />
+            <button type="submit">{t("footerSend")}</button>
+          </form>
+        </div>
       </div>
     </div>
   );

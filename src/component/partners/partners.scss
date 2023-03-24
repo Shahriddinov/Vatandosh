@@ -111,6 +111,12 @@ $colorGreyText: #656b70;
   transition: all 0.5s linear;
 }
 
+.slick-slider {
+  .slick-arrow {
+    display: none !important;
+  }
+}
+
 .partner {
   display: flex !important;
   align-items: center !important;
