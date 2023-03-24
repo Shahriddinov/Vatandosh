@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getNews, getOneNews } from "./extraReducer";
 
 const initialState = {
-  loading: true,
+  loadingNews: true,
+  loadingOneNews: true,
   newsData: [],
   oneData: [],
   error: null,
@@ -17,28 +18,29 @@ const newsSlice = createSlice({
     // Get all news
     builder
       .addCase(getNews.pending, (state) => {
-        state.loading = true;
+        state.loadingNews = true;
       })
       .addCase(getNews.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingNews = false;
         state.newsData = action.payload;
       })
       .addCase(getNews.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingNews = false;
         state.error = action.error.message;
       });
 
     // Get one news
     builder
       .addCase(getOneNews.pending, (state) => {
-        state.loading = true;
+        state.loadingOneNews = true;
+        state.error = null
       })
       .addCase(getOneNews.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingOneNews = false;
         state.oneData = action.payload;
       })
       .addCase(getOneNews.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingOneNews = false;
         state.error = action.error.message;
       });
   },
