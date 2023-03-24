@@ -20,7 +20,7 @@ import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { GrayContext } from "../Layout";
 import Navbar from "./component/navbar/Navbar";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Menun from "./component/Menun/Menun";
@@ -47,10 +47,10 @@ const WhriteHeader = () => {
         <header className="head">
             <div className="header">
                 <div className="header_navbar">
-                    <div className="header_navbar_left">
+                    <Link to="/" className="header_navbar_left">
                         <img src={Logos}
-                             alt="logo" />
-                    </div>
+                            alt="logo" />
+                    </Link>
                     <div className="header_navbar_phone">
                         <img src={Phone} alt="phone" />
                         <div

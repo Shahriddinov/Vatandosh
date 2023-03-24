@@ -1,19 +1,22 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./menus.scss";
-import {motion} from "framer-motion";
-import {useTranslation} from "react-i18next";
-import {Link} from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { NavBarLinks } from "../../../../NavBarLinks";
 
 
 const Menus = () => {
+    const navLinks = NavBarLinks();
+
     const navbarRef = useRef();
     const scrollRef = useRef(null);
     const [isFixed, setFixed] = useState(false);
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [about, setAbout] = React.useState(null);
     const openAbout = Boolean(about);
@@ -88,7 +91,7 @@ const Menus = () => {
                         onClick={handleClickAbout}
                         className="menus_link"
                     >
-                        {t("about")}
+                        {navLinks[0].title}
                     </Button>
                     <Menu
                         id="basic-menu"
@@ -99,16 +102,13 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseAbout}>
-                            <Link to="/about" className="menus_links">
-                                Biz haqimizda
-
-                            </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseAbout}>
-                            <Link to="/about/council-trustees" className="menus_links">
-                                Vasiylik Kengashi</Link>
-                        </MenuItem>
+                        {
+                            navLinks[0].links?.map((el, index) => {
+                                return <MenuItem onClick={handleCloseAbout}>
+                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                </MenuItem>
+                            })
+                        }
 
                     </Menu>
                 </li>
@@ -122,7 +122,7 @@ const Menus = () => {
                         onClick={handleClickCitizin}
                         className="menus_link"
                     >
-                        {t("citizin")}
+                        {navLinks[1].title}
                     </Button>
                     <Menu
                         id="basic-menu"
@@ -133,22 +133,13 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseCitizin}>
-                            <Link to="/compatriots/public-associations" className="menus_links">
-                                Jamoat birlashmalar</Link>
-
-
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>
-                            <Link to="/category-shows" className="menus_links">
-                                Turkum ko'rsatuvlar</Link>
-
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseCitizin}>
-                            <Link to="/compatriots/public-association-events" className="menus_links">
-                                Jamoat birlashmalar tadbirlari</Link>
-
-                        </MenuItem>
+                        {
+                            navLinks[1].links?.map((el, index) => {
+                                return <MenuItem onClick={handleCloseAbout}>
+                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                </MenuItem>
+                            })
+                        }
 
                     </Menu>
                 </li>
@@ -162,7 +153,7 @@ const Menus = () => {
                         onClick={handleClickProject}
                         className="menus_link"
                     >
-                        {t("projects")}
+                        {navLinks[2].title}
                     </Button>
                     <Menu
                         id="basic-menu"
@@ -173,17 +164,13 @@ const Menus = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseProject}>
-                            <Link to="/projects" className="menus_links">
-                                Barcha loyihalar</Link>
-
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseProject}>“Kun oilasi” rukni</MenuItem>
-                        <MenuItem onClick={handleCloseProject}>“Sportchi vatandsohlar” rukni</MenuItem>
-                        <MenuItem onClick={handleCloseProject}>Sara durdona</MenuItem>
-                        <MenuItem onClick={handleCloseProject}>“Xorijdagi milliy oshxona” loyihasi</MenuItem>
-                        <MenuItem onClick={handleCloseProject}>“Xorijdagi vatandosh tashkilot” loyihasi</MenuItem>
-
+                        {
+                            navLinks[2].links?.map((el, index) => {
+                                return <MenuItem onClick={handleCloseAbout}>
+                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                </MenuItem>
+                            })
+                        }
                     </Menu>
                 </li>
 
@@ -203,7 +190,7 @@ const Menus = () => {
                         className="menus_link"
                     >
                         <Link to="/" className="menus_link">
-                            {t("information")}
+                            {navLinks[4].title}
                         </Link>
 
                     </Button>
@@ -215,12 +202,13 @@ const Menus = () => {
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
                         }}
-                    >
-                        <MenuItem onClick={handleCloseInformation}>Yangiliklar</MenuItem>
-                        <MenuItem onClick={handleCloseInformation}>Tadbirlar</MenuItem>
-                        <MenuItem onClick={handleCloseInformation}>Mediateka</MenuItem>
-                        <MenuItem onClick={handleCloseInformation}>Infografika</MenuItem>
-                        <MenuItem onClick={handleCloseInformation}>Vatandoshlar jurnali</MenuItem>
+                    > {
+                            navLinks[4].links?.map((el, index) => {
+                                return <MenuItem onClick={handleCloseAbout}>
+                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                </MenuItem>
+                            })
+                        }
 
                     </Menu>
                 </li>

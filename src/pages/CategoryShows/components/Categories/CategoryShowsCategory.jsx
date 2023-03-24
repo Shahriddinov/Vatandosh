@@ -7,7 +7,6 @@ import "./CategoryShowsCategory.scss";
 export default function CategoryShowsCategory() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.categoryShows.categoriesData.data);
-  console.log(data);
 
   useEffect(() => {
     dispatch(getCategoryShows())

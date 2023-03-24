@@ -163,6 +163,7 @@
     }
 
     &-sideBar {
+      max-height: 80vh;
       display: none;
       width: 100%;
       position: fixed;
@@ -172,7 +173,7 @@
       z-index: 10;
       background-color: #ffffff;
       transition: 0.5s all;
-      overflow: scroll;
+      overflow-y: scroll;
 
       &-wrapper {
         border-top: 1px solid #f0f2f9;

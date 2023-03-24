@@ -13,7 +13,7 @@ import Music from "../../../../../assets/images/Music.png";
 import { useDispatch } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+import { NavBarLinks } from "../../../../NavBarLinks";
 
 const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
@@ -22,7 +22,6 @@ const activeLanguage = localStorage.getItem("language")
 const Navbar = ({ activeSidebar }) => {
   const [activeLinkBar, setactiveLinkBar] = useState(-1);
   const [activeLng, setActiveLng] = useState(activeLanguage);
-  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const languageList = [
@@ -50,14 +49,7 @@ const Navbar = ({ activeSidebar }) => {
         </form>
         <div className="header-sideBar-navlinks">
           <ul className="header-sideBar-navlist">
-            {[
-              t("about"),
-              t("citizin"),
-              t("projects"),
-              t("contects"),
-              t("information"),
-              t("link"),
-            ].map((el, index) => {
+            {NavBarLinks()?.map((el, index) => {
               return (
                 <li
                   key={index}
@@ -68,9 +60,8 @@ const Navbar = ({ activeSidebar }) => {
                     className="header-sideBar-navlist-item-title"
                     onClick={() =>
                       setactiveLinkBar((el) => (el === index ? -1 : index))
-                    }
-                  >
-                    {el}{" "}
+                    }>
+                    {el.title}{" "}
                     <IoIosArrowDown
                       className="header-sideBar-navlist-item-arrowIcon"
                       style={
@@ -81,12 +72,13 @@ const Navbar = ({ activeSidebar }) => {
                     />
                   </p>
                   <div className="header-sideBar-navlist-item-links">
-                    <NavLink className="header-sideBar-navlist-item-link" to="">
-                      Biz haqimizda
-                    </NavLink>
-                    <NavLink className="header-sideBar-navlist-item-link" to="">
-                      {el} kengashi
-                    </NavLink>
+                    {
+                      el.links?.map((link, index) => {
+                        return <NavLink key={index} className="header-sideBar-navlist-item-link" to={link.url}>
+                          {link.title}
+                        </NavLink>
+                      })
+                    }
                   </div>
                 </li>
               );
@@ -127,9 +119,8 @@ const Navbar = ({ activeSidebar }) => {
           <ul className="header-sideBar-bottom-lang">
             {languageList.map((el) => (
               <li
-                className={`header-sideBar-bottom-lang-item ${
-                  activeLng === el.type ? "langActive" : ""
-                }`}
+                className={`header-sideBar-bottom-lang-item ${activeLng === el.type ? "langActive" : ""
+                  }`}
                 key={el.id}
                 onClick={() => changeLanguage(el.type)}
               >
