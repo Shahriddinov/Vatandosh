@@ -12,19 +12,19 @@ const InformationServicesComponent = () => {
       <h2 className="informationServicesComponent-title">Axborot xizmati</h2>
       <ul className="informationServicesComponent-list">
         <li>
-          <span><BsFillCalendarHeartFill size={22} /></span>
+          <span><BsFillCalendarHeartFill size={18} /></span>
           <Link>Yangiliklar</Link>
         </li>
         <li>
-          <span><TfiGallery size={22} /></span>
+          <span><TfiGallery size={18} /></span>
           <Link>Mediateka</Link>
         </li>
         <li>
-          <span><MdOutlineIncompleteCircle size={22} /></span>
+          <span><MdOutlineIncompleteCircle size={18} /></span>
           <Link>Infografika</Link>
         </li>
         <li>
-          <span><GiOpenBook size={22} /></span>
+          <span><GiOpenBook size={18} /></span>
           <Link>Vatandoshlar jurnali</Link>
         </li>
       </ul>
