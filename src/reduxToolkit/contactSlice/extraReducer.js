@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { GET_CONTACT } from "../../services/api/utils";
-import { SEND_CONTACT } from "../../services/api/utils";
+import { GET_CONTACT, SEND_CONTACT } from "../../services/api/utils";
 
 export const sendContact = createAsyncThunk("sendContact", async (payload) => {
   return await axios

@@ -24,7 +24,7 @@ const Home = () => {
 
       <Hero />
       <News />
-      {/* <Peaceful/> */}
+      <Peaceful />
       <InteractiveServices />
       <MapsHome />
       <Partners />

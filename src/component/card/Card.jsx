@@ -9,6 +9,9 @@ import { IoEye } from "react-icons/io5";
 
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
+
+  const tags = props.tegs.split(",");
+
   return (
     <div className="single-card">
       <div className="img-container">
@@ -27,6 +30,11 @@ const Card = (props) => {
             }}
           />
         </Link>
+      </div>
+      <div className="tags-box">
+        {tags.map((tag) => (
+          <div className="tag-item">{tag}</div>
+        ))}
       </div>
       <div className="card-footer">
         <div className="news-date">
