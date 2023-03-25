@@ -32,20 +32,20 @@ const InformationServices = () => {
             <main className="main container">
                 <InformationServicesHero pagePath={pagePath} />
                 <div className="main-content">
-                    <div className="main-content-left">
+                    <div className="main-content-slider">
                         <InformationServicesSlider />
-                        <div className="main-content-left-cards">
-                            {newsData?.map((card) => (
-                                <div className="main-content-left-card" key={card.id}>
-                                    <Card {...card} />
-                                </div>
-                            ))}
-                        </div>
                     </div>
                     <div className="main-content-right">
                         <InformationServicesComponent />
                         <LatestNews />
                         <PopularTags />
+                    </div>
+                    <div className="main-content-cards">
+                        {newsData?.map((card) => (
+                            <div className="main-content-card" key={card.id}>
+                                <Card {...card} />
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <Paginator />
