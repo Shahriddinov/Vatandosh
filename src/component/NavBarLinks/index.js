@@ -53,7 +53,9 @@ export const NavBarLinks = () => {
       ],
     },
     {
+
       title: t("link"),
+      url: "/contact"
     },
   ];
 };

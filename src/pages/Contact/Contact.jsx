@@ -4,11 +4,12 @@ import { MdArrowRight } from "react-icons/md";
 import "./Contact.scss";
 import flag from '../../assets/images/icons/uzbek-flag.svg';
 import { FaLocationArrow } from 'react-icons/fa';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import { useRef, useState } from "react";
 
 export default function Contact() {
+  const lan = useSelector((state) => state.language.language);
   const dispatch = useDispatch();
   const formRef = useRef();
   const [dataContact, setDataContact] = useState({ name: "", phone: "" });
@@ -73,7 +74,8 @@ export default function Contact() {
           </div>
         </div>
         <div className="contact-map">
-          <a className="contact-map-navigation" href="https://goo.gl/maps/FNqgiPrRzpRgjN3K6">
+          <iframe className="contact-map-iframe" src={`https://yandex.uz/map-widget/v1/-/CCUBAVbA3C?scroll=false&lang=${lan}`} frameBorder={0} allowFullScreen={true}></iframe>
+          <a target={"_blank"} className="contact-map-navigation" href={`https://yandex.uz/map-widget/v1/-/CCUBAVbA3C?scroll=false&lang=${lan}`}>
             <FaLocationArrow />
             Найти кампус
           </a>
