@@ -40,6 +40,7 @@ export const InformationServicesSlider = () => {
                     key={card.id}
                     style={{
                         backgroundImage: `url(${card.img})`,
+                        backgroundPosition: 'center'
                     }}>
                     <h2>{card.title}</h2>
                     <div className={`navigation-line ${card.id === img ? 'active' : ''}`} />
