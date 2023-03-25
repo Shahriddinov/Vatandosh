@@ -1,0 +1,40 @@
+.informationServicesComponent {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+  border-radius: 15px;
+  margin-bottom: 30px;
+
+  &-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 17px;
+    color: #5d6b8a;
+    padding: 24px 0 16px 16px;
+  }
+
+  &-list {
+    li {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 20px 20px;
+      border-bottom: 1px solid #eaedf6;
+
+      a {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 17px;
+        color: #5d6b8a;
+        text-decoration: none;
+        margin-bottom: 7px;
+      }
+
+      span {
+        color: #065ea9;
+        margin-right: 14px;
+      }
+    }
+    li:nth-last-child(1) {
+      border-bottom: none;
+    }
+  }
+}

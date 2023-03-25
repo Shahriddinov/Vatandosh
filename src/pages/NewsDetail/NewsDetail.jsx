@@ -1,30 +1,30 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import {useSelector } from "react-redux";
+import { Link,} from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
 import "./NewsDetail.scss";
 import { MdArrowRight } from "react-icons/md";
-import img from "../../assets/images/photo2.png";
-import { LatestNews, PopularTags } from "../../component";
-import { getOneNews } from "../../reduxToolkit/newsSlice/extraReducer";
+import { LatestNews, PopularTags, Spinner } from "../../component";
+import NotFound from "../404";
+import { useNewsDataFetching } from "./hooks/useNewsDetailFetching";
 
 export default function NewsDetail() {
-  const [activeData, setactiveData] = useState(false);
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.newsSlice.oneData);
   const lan = useSelector((state) => state.language.language);
+  const {loading,pathErrText,data} = useNewsDataFetching()
 
-  useEffect(() => {
-    dispatch(getOneNews(id));
-  }, [id]);
+  if(loading) {
+    return (
+      <div className="spinner_box">
+        <Spinner/>
+      </div>
+    )
+  }
 
-  useEffect(() => {
-    setactiveData(data)
-  }, [data])
+  if(pathErrText) {
+    return <NotFound/>
+  }
 
   return (
-    activeData ?
+    data ?
       <div className="newsdetail">
         <Header />
         <div className="container">
@@ -33,7 +33,7 @@ export default function NewsDetail() {
               <PopularTags />
             </div>
             <div className="newsdetail-title">
-              <h1 className="newsdetail-title-text">{activeData[`title_${lan}`]}</h1>
+              <h1 className="newsdetail-title-text">{data[`title_${lan}`]}</h1>
               <div className="newsdetail-title-url">
                 <Link to="/">Asosiy sahifa</Link>
                 <MdArrowRight />
@@ -46,11 +46,11 @@ export default function NewsDetail() {
             <div className="newsdetail-main">
               <div className="newsdetail-main-desc">
                 <div className="newsdetail-main-desc-img">
-                  <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${activeData?.img}`} alt="" />
+                  <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${data?.img}`} alt="" />
                 </div>
                 <div className="newsdetail-main-desc-texts"
                   dangerouslySetInnerHTML={{
-                    __html: activeData[`text_${lan}`]
+                    __html: data[`text_${lan}`]
                   }}>
                 </div>
               </div>

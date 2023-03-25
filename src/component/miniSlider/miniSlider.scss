@@ -1,7 +1,7 @@
 .compatriots-events {
     padding: 30px 0 64px 0;
     background-color: #fff;
-    background-image: url("../../../../assets/images/body-bg.png");
+    background-image: url("../../assets/images/body-bg.png");
 
     &__header {
         display: flex;
@@ -18,7 +18,7 @@
 
     &__slider_item {
         display: block;
-        width: 360px ;
+        width: 100%;
         min-height: 230px;
         border: 1px solid rgba(234, 237, 246, 0.7);
         box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
