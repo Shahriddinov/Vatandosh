@@ -234,6 +234,7 @@
             text-transform: uppercase;
             @include fontStyles(600, 14px, 17px, #000000);
             cursor: pointer;
+            text-decoration: none;
           }
 
           &-arrowIcon {

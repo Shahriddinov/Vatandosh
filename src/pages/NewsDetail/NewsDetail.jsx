@@ -1,26 +1,34 @@
-import {useSelector } from "react-redux";
-import { Link,} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, } from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
 import "./NewsDetail.scss";
 import { MdArrowRight } from "react-icons/md";
 import { LatestNews, PopularTags, Spinner } from "../../component";
 import NotFound from "../404";
 import { useNewsDataFetching } from "./hooks/useNewsDetailFetching";
+import { BsFillCalendar2EventFill } from "react-icons/bs";
+import { AiFillEye } from "react-icons/ai";
+import { useEffect, useState } from "react";
 
 export default function NewsDetail() {
   const lan = useSelector((state) => state.language.language);
-  const {loading,pathErrText,data} = useNewsDataFetching()
+  const { loading, pathErrText, data } = useNewsDataFetching();
+  const [galleryMainImg, setgalleryMainImg] = useState(null);
 
-  if(loading) {
+  useEffect(() => {
+    if (data?.imgs) setgalleryMainImg(JSON.parse(data?.imgs)[0]);
+  }, [data])
+
+  if (loading) {
     return (
       <div className="spinner_box">
-        <Spinner/>
+        <Spinner />
       </div>
     )
   }
 
-  if(pathErrText) {
-    return <NotFound/>
+  if (pathErrText) {
+    return <NotFound />
   }
 
   return (
@@ -37,7 +45,7 @@ export default function NewsDetail() {
               <div className="newsdetail-title-url">
                 <Link to="/">Asosiy sahifa</Link>
                 <MdArrowRight />
-                <Link to="/news">Yangiliklar</Link>
+                <Link to="/information-service/news">Yangiliklar</Link>
                 <MdArrowRight />
                 <span>batafsil</span>
               </div>
@@ -48,12 +56,46 @@ export default function NewsDetail() {
                 <div className="newsdetail-main-desc-img">
                   <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${data?.img}`} alt="" />
                 </div>
+                <div className="newsdetail-main-desc-action">
+                  <div className="newsdetail-main-desc-action-date-viewers">
+                    <div className="newsdetail-main-desc-action-date">
+                      <BsFillCalendar2EventFill />
+                      <span>{data.created_at?.split("T")[0]}</span>
+                    </div>
+                    <div className="newsdetail-main-desc-action-viewers">
+                      <AiFillEye />
+                      <span>{data.viewers}</span>
+                    </div>
+                  </div>
+                  <div className="newsdetail-main-desc-action-tags">
+                    {
+                      data?.tegs.split(",").map((el, index) => {
+                        return <span key={index}>{el}</span>
+                      })
+                    }
+                  </div>
+                </div>
                 <div className="newsdetail-main-desc-texts"
                   dangerouslySetInnerHTML={{
                     __html: data[`text_${lan}`]
                   }}>
                 </div>
+                <div className="newsdetail-main-desc-gallery">
+                  <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${galleryMainImg}`} alt="error" className="newsdetail-main-desc-gallery-mainImg" />
+                  <div className="newsdetail-main-desc-gallery-list">
+                    {
+                      data.imgs ?
+                        JSON.parse(data.imgs).map((el, index) => {
+                          return <img key={index} src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el}`} alt="error"
+                            className="newsdetail-main-desc-gallery-list-item"
+                            onClick={() => setgalleryMainImg(el)} />
+                        })
+                        : null
+                    }
+                  </div>
+                </div>
               </div>
+
               <div className="newsdetail-main-news-tags">
                 <LatestNews />
                 <div className="newsdetail-desktop-tags">

@@ -44,7 +44,8 @@ export const NavBarLinks = () => {
       ]
     },
     {
-      title: t("link")
+      title: t("link"),
+      url: "/contact"
     },
   ]
 

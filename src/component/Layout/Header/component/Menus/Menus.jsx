@@ -174,7 +174,7 @@ const Menus = () => {
                 </li>
 
                 <li className="menus_item ">
-                    <Link to="/" className="menus_link">
+                    <Link to="" className="menus_link">
                         {t("contects")}
                     </Link>
 
@@ -188,7 +188,7 @@ const Menus = () => {
                         onClick={handleClickInformation}
                         className="menus_link"
                     >
-                        <Link to="/" className="menus_link">
+                        <Link to="" className="menus_link">
                             {navLinks[4].title}
                         </Link>
 
@@ -214,12 +214,9 @@ const Menus = () => {
 
 
                 <li className="menus_item">
-                    <Link to="/" className="menus_link">
+                    <Link to="/contact" className="menus_link">
                         {t("link")}
                     </Link>
-                </li>
-                <li className="menus_item">
-                    ...
                 </li>
             </ul>
         </div>
