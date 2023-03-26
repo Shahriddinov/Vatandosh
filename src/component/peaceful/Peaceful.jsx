@@ -80,7 +80,7 @@ const Peaceful = () => {
                                 {
                                     peacefulData.map(el => (
                                         <SwiperSlide key={el?.id} className='peaceful__slider-item' >
-                                            <div className="peaceful__slider_card" style={{backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${el?.img})`}}>
+                                            <div className="peaceful__slider_card" style={{backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${el?.image})`}}>
                                                 <div className="peaceful__card_inner">
                                                     <div className="peaceful__slider_card--body">
                                                         <a href="/" className="peaceful__slider_card--link">{el?.hashTag}</a>
@@ -96,7 +96,6 @@ const Peaceful = () => {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </SwiperSlide>
                                     ))
                                 }

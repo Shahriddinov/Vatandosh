@@ -8,6 +8,7 @@ import mapSlice from "./mapSlice";
 import trustees from "./trusteesSlice";
 import contactSlice from "./contactSlice";
 import sliderSlice from "./sliderSlice";
+import associationSlice from "./associationsSlice";
 import categoryShows from "./categoryShowsSlice/categoryShowsSlice";
 
 const store = configureStore({
@@ -20,7 +21,8 @@ const store = configureStore({
     trustees,
     contactSlice,
     sliderSlice,
-    categoryShows
+    categoryShows,
+    associationSlice
   },
 });
 

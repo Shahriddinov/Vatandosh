@@ -2,7 +2,6 @@ import React from 'react'
 import imgXl from "../../../../assets/images/compatriots/state-friendship-img.png"
 import imgMd from "../../../../assets/images/compatriots/state-friendship-img-md.png"
 import imgSm from "../../../../assets/images/compatriots/state-friendship-img-sm.png"
-import avatar from "../../../../assets/images/compatriots/round.svg"
 
 import "./offerStatesFriendship.scss"
 
@@ -32,30 +31,7 @@ const OfferStatesFriendship = () => {
                   tashqi o'zgarishlarga chaqmoq tezligida javob berish, tez qaror qabul qilish, yorqin bo'lish, birinchi bo'lish zarurligini taqozo etadi. Barkamollik, ehtiyotkorlik, mehnatsevarlik - bunda bizga yordam beradigan xususiyatlar,
                 </p>
 
-                <b className="offer-state-friendship__text2">
-                  “Toshkilotning” asosida maqsad va vazifalari Ikki davlat va ikki millat dustligini
-                </b>
-
-                <div className="offer-state-friendship__personals">
-                  <ul className="offer-state-friendship__avatars_list">
-                    <li className="offer-state-friendship__avatars_item">
-                      <img className="offer-state-friendship__avatars_item--img" src={avatar} alt="avatar"  />
-                    </li>
-
-                    <li className="offer-state-friendship__avatars_item">
-                      <img className="offer-state-friendship__avatars_item--img" src={avatar} alt="avatar"  />
-                    </li>
-
-                    <li className="offer-state-friendship__avatars_item">
-                      <img className="offer-state-friendship__avatars_item--img" src={avatar} alt="avatar"  />
-                    </li>
-                  </ul>
-
-                  <div className="offer-state-friendship__personals_content">
-                    <span className='offer-state-friendship__personals_content--count'>10+</span>
-                    <span className='offer-state-friendship__personals_content--text'>Xodimlar</span>
-                  </div>
-                </div>
+                <b className="offer-state-friendship__workers">Xodimlar soni 10+</b>
               </div>
             </div>
         </div>
