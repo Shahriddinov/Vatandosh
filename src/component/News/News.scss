@@ -233,7 +233,8 @@
 
     &__body {
       .latest-news {
-        .news-cards {
+        .news-cards,
+        .events-cards {
           grid-template-columns: repeat(2, 1fr);
           gap: 20px;
         }
@@ -254,7 +255,8 @@
       flex-direction: column;
 
       .latest-news {
-        .news-cards {
+        .news-cards,
+        .events-cards {
           grid-template-columns: repeat(2, 1fr);
           gap: 20px;
         }
@@ -285,7 +287,8 @@
       }
 
       .latest-news {
-        .news-cards {
+        .news-cards,
+        .events-cards {
           grid-template-columns: repeat(1, 1fr);
           gap: 20px;
         }
