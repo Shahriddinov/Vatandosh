@@ -24,15 +24,20 @@
 
     .news-btn {
       button {
-        color: #fff;
-        background: #065ea9;
+        color: #065ea9;
+        background: #fff;
         border: 1px solid #eaedf6;
         transition: 0.3s;
 
         &:hover {
-          background: #fff;
-          color: #065ea9;
+          color: #fff;
+          background: #065ea9;
         }
+      }
+
+      .active-btn {
+        color: #fff;
+        background: #065ea9;
       }
     }
 
@@ -47,6 +52,11 @@
           color: #fff;
           background: #065ea9;
         }
+      }
+
+      .active-btn {
+        color: #fff;
+        background: #065ea9;
       }
     }
 
@@ -83,9 +93,19 @@
 
     .latest-news {
       .news-cards {
-        display: grid;
+        display: none;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+      }
+
+      .events-cards {
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .active-card {
+        display: grid;
       }
     }
 
