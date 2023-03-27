@@ -45,10 +45,12 @@ import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import Gallery2 from "../../assets/images/projects/gallery2.png";
 import Gallery3 from "../../assets/images/projects/gallery3.png";
 import Gallery4 from "../../assets/images/projects/gallery4.png";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
     const state = useLocation()
     console.log(state);
+    const {t} = useTranslation();
     const heroData = {
         title: "Biz haqimizda",
         description: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
