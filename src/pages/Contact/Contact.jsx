@@ -7,8 +7,8 @@ import { SiMetrodeparis } from 'react-icons/si';
 import { BiWalk } from 'react-icons/bi';
 import { RiCloseFill } from 'react-icons/ri';
 import { useDispatch, useSelector } from "react-redux";
-import { sendContact } from "../../reduxToolkit/contactSlice/extraReducer";
-import { useRef, useState } from "react";
+import { getContact, sendContact } from "../../reduxToolkit/contactSlice/extraReducer";
+import { useEffect, useRef, useState } from "react";
 
 export default function Contact() {
   const lan = useSelector((state) => state.language.language);
@@ -16,6 +16,11 @@ export default function Contact() {
   const formRef = useRef();
   const [dataContact, setDataContact] = useState({ name: "", phone: "" });
   const [activeMapNavigationBar, setactiveMapNavigationBar] = useState(true);
+  const contactData = useSelector(state => state.contactSlice?.contactData);
+
+  useEffect(() => {
+    dispatch(getContact());
+  }, [])
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -57,22 +62,25 @@ export default function Contact() {
                   </div>
                 </form>
               </div>
-              <div className="contact-action-address">
-                <div className="contact-action-address-item">
-                  <span>Адрес</span>
-                  <strong>100096. Toshkent sh. Muqimiy ko`chasi 166</strong>
-                </div>
-                <div className="contact-action-address-item">
-                  <span>Часы работы</span>
-                  <strong>Понедельник - Пятница 09:00 - 18:00</strong>
-                  <strong>Суббота 09:00 - 13:00</strong>
-                </div>
-                <div className="contact-action-address-item">
-                  <span>Контактная информация</span>
-                  <a href="tel:+998555022299">+998 (55) 502-22-99</a>
-                  <a href="mailto:info@vatandoshlarfondi.uz">info@vatandoshlarfondi.uz</a>
-                </div>
-              </div>
+              {
+                contactData ?
+                  <div className="contact-action-address">
+                    <div className="contact-action-address-item">
+                      <span>Адрес</span>
+                      <strong>{contactData[`address_${lan}`]}</strong>
+                    </div>
+                    <div className="contact-action-address-item">
+                      <span>Часы работы</span>
+                      <strong>{contactData[`openinghours_${lan}`]}</strong>
+                    </div>
+                    <div className="contact-action-address-item">
+                      <span>Контактная информация</span>
+                      <a href={`tel:${contactData.phone}`}>{contactData.phone}</a>
+                      <a href={`mailto:${contactData.email}`}>{contactData.email}</a>
+                    </div>
+                  </div>
+                  : null
+              }
             </div>
           </div>
         </div>

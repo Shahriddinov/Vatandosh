@@ -8,7 +8,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function LatestNews() {
   const dispatch = useDispatch();
-  const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const newsData = useSelector((state) => state.newsSlice.newsData);
   const lan = useSelector((state) => state.language.language);
   const { id } = useParams();
 
