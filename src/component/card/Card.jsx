@@ -10,7 +10,7 @@ import { IoEye } from "react-icons/io5";
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
 
-  const tags = props.tegs.split(",");
+  const tags = props.tags.split(",");
 
   return (
     <div className="single-card">
