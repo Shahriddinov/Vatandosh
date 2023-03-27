@@ -26,6 +26,7 @@ function Anthem(props) {
                         Bag'ri keng o'zbekning o'chmas iymoni,Erkin, yosh avlodlar senga zo'r qanot!Istiqlol mash'ali
                         tinchlik posboni,Xaqsevar, ona yurt, mangu bo'l obod! <br/>
 
+
                         Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!Ulug' xalq qudrati jo'sh
                         urgan zamon,Olamni mahliyo aylagan diyor! <br/>
                     </div>
