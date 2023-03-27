@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './projects.scss'
 import SliderData from './data'
+import Gallery from './gallery'
 
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,12 +30,41 @@ import Gallery4 from '../../assets/images/projects/gallery4.png'
 const Projects = () => {
 
     const sliderRef = useRef(null);
+    const swiperRef = useRef(null);
 
     const [numVisibleDivs, setNumVisibleDivs] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextSlide = () => {
+        // get the Swiper instance
+        const swiper = swiperRef.current.swiper;
+
+        // slide to the next slide
+        swiper.slideNext();
+    };
+
+    const prevSlide = () => {
+        // get the Swiper instance
+        const swiper = swiperRef.current.swiper;
+    
+        // slide to the previous slide
+        swiper.slidePrev();
+    };
+
+    const goToSlide = (index) => {
+        // get the Swiper instance
+        const swiper = swiperRef.current.swiper;
+
+        // slide to the specified index
+        swiper.slideTo(index);
+
+        // update the current index state
+        setCurrentIndex(index);
+    };
 
     useEffect(() => {
         const handleResize = () => {
-        if (window.innerWidth <= 375) {
+        if (window.innerWidth <= 650) {
             setNumVisibleDivs(3);
         } else {
             setNumVisibleDivs(SliderData.length);
@@ -105,6 +135,14 @@ const Projects = () => {
             1000: {
               slidesPerView: 3,
               spaceBetween: 0,
+              navigation: {
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
             },
             1300: {
               slidesPerView: 4,
@@ -147,13 +185,10 @@ const Projects = () => {
                                 <div className="slider__element" key={element.id}>
                                     <div className="hashtag">
                                         <div className="hashtag__images">
-                                            <div className="images__left">
-                                                <img src={element.image1} alt="" />
-                                                <img src={element.image2} alt="" />
-                                            </div>
-                                            <div className="images__right">
-                                                <img src={element.image3} alt="" />
-                                            </div>
+                                            <img src={element.image1} alt="" />
+                                            <img src={element.image2} alt="" />
+                                            <img src={element.image3} alt="" />
+                                            <img src={element.image1} alt="" />
                                         </div>
                                         <div className="hashtag__info">
                                             <h4>"{element.title}" rukni</h4>
@@ -190,21 +225,42 @@ const Projects = () => {
                 </div>
             </div>
             <div className="projects__caruosel">
+                <div className="container carousel__title">
+                    <h1>Fotogalereya</h1>
+                </div>
                 <Swiper
+                    ref={swiperRef}
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={50}
                     slidesPerView={4}
                     centeredSlides={true}
-                    initialSlide={2}
+                    initialSlide={1}
+                    onSlideChange={swiper => setCurrentIndex(swiper.activeIndex)}
+                    loop={true}
                     {...swiperParams}
                 >
-                    <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery3} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery4} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery3} alt=""/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery4} alt=""/></SwiperSlide>
+                    {Gallery.map((obj, index) => {
+                        return (
+                            <SwiperSlide key={index}>
+                                <img src={obj.image} alt="" className='gallery__img'/>
+                            </SwiperSlide>
+                        )
+                    })}
+                    {/* <SwiperSlide><img src={Gallery2} alt="" className='gallery__img'/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery3} alt="" className='gallery__img'/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery4} alt="" className='gallery__img'/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery2} alt="" className='gallery__img'/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery3} alt="" className='gallery__img'/></SwiperSlide>
+                    <SwiperSlide><img src={Gallery4} alt="" className='gallery__img'/></SwiperSlide> */}
                 </Swiper>
+                <div className="carousel__pagination carousel__buttons">
+                    <button className='carousel__button' onClick={prevSlide}><FiChevronLeft/></button>
+                    <button className='carousel__button'>{currentIndex}</button>
+                    <button className='carousel__button'>{currentIndex + 1}</button>
+                    <button className='carousel__button'>...</button>
+                    <button className='carousel__button'>{Gallery.length}</button>
+                    <button className='carousel__button' onClick={nextSlide}><FiChevronRight/></button>
+                </div>
             </div>
         </div>
     )
