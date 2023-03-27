@@ -51,5 +51,8 @@
   "aboutUzbekistan": "O’zbekiston haqida vizual malumot",
   "participationProject": "Viktorina va loyihalarga qatnashish",
   "electronCommunity": "Jamoat birlashmalari elektron restri",
-  "compatriotsValunteer": "Vatandosh valantyorlar"
+  "compatriotsValunteer": "Vatandosh valantyorlar",
+  "modalText1" : "Ro'yxatga olingan vatandoshlar",
+  "modalText2" : "Yangiliklar",
+  "modalText3" : "Tadbirlar"
 }

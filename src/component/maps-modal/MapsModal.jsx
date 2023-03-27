@@ -57,14 +57,14 @@ const MapsModal = ({changeActive,countryCode}) => {
 
                                         <ul className='maps_modal__body_list'>
                                             <li className='maps_modal__body_text'>
-                                                <span className='maps_modal__body_text--span'>Зарегистрировано соотечественники</span>
+                                                <span className='maps_modal__body_text--span'>{t("modalText1")}</span>
                                                 <span style={{whiteSpace: "nowrap"}}>: 221</span>
                                             </li>
                                             <li className='maps_modal__body_text'>
-                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>Новости</span>
+                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>{t("modalText2")}</span>
                                                 <span style={{whiteSpace: "nowrap"}}>: 1</span></li>
                                             <li className='maps_modal__body_text'>
-                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>Voqealar</span>
+                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>{t("modalText3")}</span>
                                                 <span style={{whiteSpace: "nowrap"}}>: 2</span>
                                             </li>
                                         </ul>

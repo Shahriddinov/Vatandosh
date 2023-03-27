@@ -51,5 +51,8 @@
   "aboutUzbekistan": "Visual information about uzbekistan",
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
-  "compatriotsValunteer": "Compatriot valantiors"
+  "compatriotsValunteer": "Compatriot valantiors",
+  "modalText1" : "Registered compatriots",
+  "modalText2" : "News",
+  "modalText3" : "Events"
 }

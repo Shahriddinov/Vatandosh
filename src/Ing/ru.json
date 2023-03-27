@@ -51,5 +51,9 @@
   "aboutUzbekistan": "Визуальная информация об узбекистане",
   "participationProject": "Участие в викторинах и проектах",
   "electronCommunity": "Электронный реестр общественных объединений",
-  "compatriotsValunteer": "Соотечественники-валентайны"
+  "compatriotsValunteer": "Соотечественники-валентайны",
+  "modalText1" : "Зарегистрировано соотечественники",
+  "modalText2" : "Новости",
+  "modalText3" : "События"
+
 }
