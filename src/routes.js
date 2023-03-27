@@ -29,7 +29,7 @@ const routes = [
   { path: "/about", element: About },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:country", element: StatesFriendshipSociety },
+  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
   { path: "/portal", element: Portal },
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },

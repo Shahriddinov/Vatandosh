@@ -1,37 +1,28 @@
-import React from 'react'
-import imgXl from "../../../../assets/images/compatriots/state-friendship-img.png"
-import imgMd from "../../../../assets/images/compatriots/state-friendship-img-md.png"
-import imgSm from "../../../../assets/images/compatriots/state-friendship-img-sm.png"
-
 import "./offerStatesFriendship.scss"
+import { useSelector } from 'react-redux'
 
-const OfferStatesFriendship = () => {
-
+const OfferStatesFriendship = (props) => {
+  const lng = useSelector(state => state.language.language)
   return (
     <section className='offer-state-friendship'>
         <div className="offer-state-friendship__container container">
             <div className="offer-state-friendship__inner">
               <div className="offer-state-friendship__box_img">
-                <picture>
-                  <source media="(min-width:1000px)" srcSet={imgXl}/>
-                  <source media="(min-width:680px)" srcSet={imgMd}/>
-                  <source media="(min-width:400px)" srcSet={imgXl}/>
-                  <img className='offer-state-friendship__img' src={imgSm} alt="Img"/>
-                </picture>
+                <img className='offer-state-friendship__img' src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.company_photo}`} alt={props[`title_${lng}`]}/>
               </div>
 
               <div className="offer-state-friendship__content">
                 <h2 className="offer-state-friendship__title">
-                  Biz bilan ishlash orqali tajribangizni
-                  va sarmoyangizni oshiring
+                  {props[`info_title_${lng}`]}
                 </h2>
 
-                <p className="offer-state-friendship__text1">
-                  Biz hayotning zamonaviy ritmi ekanligini tushunamiz
-                  tashqi o'zgarishlarga chaqmoq tezligida javob berish, tez qaror qabul qilish, yorqin bo'lish, birinchi bo'lish zarurligini taqozo etadi. Barkamollik, ehtiyotkorlik, mehnatsevarlik - bunda bizga yordam beradigan xususiyatlar,
-                </p>
+                <p className="offer-state-friendship__text1"
+                  dangerouslySetInnerHTML={{
+                    __html: props[`info_${lng}`],
+                  }} 
+                />
 
-                <b className="offer-state-friendship__workers">Xodimlar soni 10+</b>
+                <b className="offer-state-friendship__workers">Xodimlar soni {props.company_workers}+</b>
               </div>
             </div>
         </div>

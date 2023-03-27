@@ -14,7 +14,7 @@ import "./miniSlider.scss"
 
 
 export const MiniSlider = ({title}) => {
-  const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const newsData = useSelector((state) => state.newsSlice.newsData);
 
   const dispatch = useDispatch()
 
@@ -57,26 +57,18 @@ export const MiniSlider = ({title}) => {
                   0: {
                       slidesPerView: 1,
                   },
-                  768: {
-                      slidesPerView: 2,
-                      spaceBetween: 10,
+                  500: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
                   },
-                  992: {
-                  slidesPerView: 2,
+                  800: {
+                  slidesPerView: 3,
                   spaceBetween: 18,
                   },
-                  1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 30,
-                      },
-                  1300: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                  },
-                  1400: {
+                  1060: {
                     slidesPerView: 4,
-                    spaceBetween: 30,
-                    },
+                    spaceBetween: 20,
+                  },
               }}
               className="mySwiper"
           >
