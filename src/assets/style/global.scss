@@ -27,6 +27,9 @@ body {
 .gray-scale {
   filter: grayscale(100%);
 }
+a{
+  text-decoration: none;
+}
 
 .home {
   background-image: url("../images/body-bg.png");

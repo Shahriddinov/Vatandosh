@@ -52,6 +52,9 @@
   "participationProject": "Viktorina va loyihalarga qatnashish",
   "electronCommunity": "Jamoat birlashmalari elektron restri",
   "compatriotsValunteer": "Vatandosh valantyorlar",
+  "modalText1" : "Ro'yxatga olingan vatandoshlar",
+  "modalText2" : "Yangiliklar",
+  "modalText3" : "Tadbirlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi"

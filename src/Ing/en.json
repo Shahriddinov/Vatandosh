@@ -52,6 +52,9 @@
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
   "compatriotsValunteer": "Compatriot valantiors",
+  "modalText1" : "Registered compatriots",
+  "modalText2" : "News",
+  "modalText3" : "Events",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees"
