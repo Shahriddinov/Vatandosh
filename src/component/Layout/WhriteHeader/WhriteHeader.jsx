@@ -37,6 +37,9 @@ const WhriteHeader = () => {
         i18next.changeLanguage(lng);
         dispatch(languageChange(lng));
     };
+    const contactData = useSelector(
+        (state) => state.contactSlice.contactData.data
+    );
 
     useEffect(() => {
         if (activeSidebar) document.body.style.overflow = "hidden";
@@ -51,18 +54,18 @@ const WhriteHeader = () => {
                         <img src={Logos}
                             alt="logo" />
                     </Link>
-                    <div className="header_navbar_phone">
+                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
                         <img src={Phone} alt="phone" />
                         <div
                             className="header_navbar_phone_number colors">+998(55)502-22-99
                         </div>
-                    </div>
-                    <div className="header_navbar_phone">
+                    </a>
+                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
                         <img src={Message} alt="message" />
                         <div className="header_navbar_phone_number colors">
                             info@vatandoshlarfondi.uz
                         </div>
-                    </div>
+                    </a>
 
                     <motion.img
                         whileTap={{ scale: 0.6 }}

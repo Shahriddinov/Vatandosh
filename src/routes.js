@@ -21,6 +21,9 @@ const PublicAssociationEvents = lazy(() => import("./pages/PublicAssociationEven
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() => import("./pages/InformationServices/InformationServices"));
 const NotFound = lazy(() => import("./pages/404"));
+const Flags = lazy(()=> import("./pages/Symbols/Flag"))
+const Anthem = lazy(()=> import("./pages/Symbols/Anthem"))
+const Coat = lazy(()=> import("./pages/Symbols/Coat"))
 const routes = [
   { path: "", element: Home, },
   { path: "/about", element: About },
@@ -39,6 +42,9 @@ const routes = [
   { path: "/news-detail/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
+  {path: "/flag", element: Flags},
+  {path: "/anthem", element: Anthem},
+  {path: "/coat", element: Coat}
 ];
 
 const RoutesContainer = () => (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 
 import Logo from "../../../assets/images/Logos.svg";
@@ -13,23 +13,23 @@ import Search from "../../../assets/images/search.png";
 import Eye from "../../../assets/images/EyeGlass.png";
 import EyeWhrite from "../../../assets/images/EyeWhrite.png";
 import Globe from "../../../assets/images/Globe.png";
-import { CgClose } from "react-icons/cg";
-import { motion } from "framer-motion";
+import {CgClose} from "react-icons/cg";
+import {motion} from "framer-motion";
 import Menus from "./component/Menus/Menus";
-import { useDispatch, useSelector } from "react-redux";
-import { languageChange } from "../../../reduxToolkit/languageSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {languageChange} from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
-import { GrayContext } from "../Layout";
+import {GrayContext} from "../Layout";
 import Navbar from "./component/navbar/Navbar";
-import { Link, useLocation } from "react-router-dom";
-import { CiGlobe } from "react-icons/ci";
-import { IoMdArrowDropdown } from "react-icons/io";
+import {Link, useLocation} from "react-router-dom";
+import {CiGlobe} from "react-icons/ci";
+import {IoMdArrowDropdown} from "react-icons/io";
 
 const Header = () => {
     const [activeSidebar, setactiveSidebar] = useState(false);
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const [activeLang, setactiveLang] = useState(false);
-    const { grayScale } = useContext(GrayContext);
+    const {grayScale} = useContext(GrayContext);
     const dispatch = useDispatch();
     const language = useSelector((state) => state.language.language);
 
@@ -37,6 +37,9 @@ const Header = () => {
         i18next.changeLanguage(lng);
         dispatch(languageChange(lng));
     };
+    const contactData = useSelector(
+        (state) => state.contactSlice.contactData.data
+    );
 
     useEffect(() => {
         if (activeSidebar) document.body.style.overflow = "hidden";
@@ -44,44 +47,50 @@ const Header = () => {
     }, [activeSidebar]);
 
     return (
-        <header className="head" style={activeSidebar ? { background: "#FFFFFF" } : null}>
+        <header className="head" style={activeSidebar ? {background: "#FFFFFF"} : null}>
             <div className="header">
                 <div className="header_navbar">
                     <Link to="/" className="header_navbar_left">
                         <img src={Logo}
-                            alt="logo" />
+                             alt="logo"/>
                     </Link>
-                    <div className="header_navbar_phone">
-                        <img src={Phone} alt="phone" />
+                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
+                        <img src={Phone} alt="phone"/>
                         <div
-                            className="header_navbar_phone_number">+998(55)502-22-99
+                            className="header_navbar_phone_number">
+                            +998(55)502-22-99
                         </div>
-                    </div>
-                    <div className="header_navbar_phone">
-                        <img src={Message} alt="message" />
+                    </a>
+                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
+                        <img src={Message} alt="message"/>
                         <div className="header_navbar_phone_number">
                             info@vatandoshlarfondi.uz
                         </div>
-                    </div>
-
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Flag}
-                        className="header_navbar_flags"
-                        alt="flag"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Blazon}
-                        className="header_navbar_flags"
-                        alt="blazon"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Music}
-                        className="header_navbar_flags"
-                        alt="music"
-                    />
+                    </a>
+                    <a href="/flag">
+                        <motion.img
+                            whileTap={{scale: 0.6}}
+                            src={Flag}
+                            className="header_navbar_flags"
+                            alt="flag"
+                        />
+                    </a>
+                    <a href="/coat">
+                        <motion.img
+                            whileTap={{scale: 0.6}}
+                            src={Blazon}
+                            className="header_navbar_flags"
+                            alt="blazon"
+                        />
+                    </a>
+                    <a href="/anthem">
+                        <motion.img
+                            whileTap={{scale: 0.6}}
+                            src={Music}
+                            className="header_navbar_flags"
+                            alt="music"
+                        />
+                    </a>
                     <label className="header_navbar_search">
                         <input
                             type="text"
@@ -96,16 +105,17 @@ const Header = () => {
                     </label>
                     <button
                         className="header_navbar_eye" onClick={() => grayScale()}>
-                        <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
+                        <motion.img whileTap={{scale: 0.6}} src={Eye} alt="eye"/>
                     </button>
 
                     <div className="header_navbar_language">
                         <div className="header_navbar_language-wrapper" onClick={() => setactiveLang((el) => !el)}>
-                            <CiGlobe className="header_navbar_language-icon" />
-                            <span style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
-                            <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
+                            <CiGlobe className="header_navbar_language-icon"/>
+                            <span
+                                style={{color: "white"}}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
+                            <IoMdArrowDropdown className="header_navbar_language-iconArrow"/>
                         </div>
-                        <div className="header_navbar_language-bar" style={activeLang ? { display: "flex" } : null}>
+                        <div className="header_navbar_language-bar" style={activeLang ? {display: "flex"} : null}>
                             <p onClick={(e) => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
@@ -125,9 +135,9 @@ const Header = () => {
                         onClick={() => setactiveSidebar(!activeSidebar)}
                     >
                         {activeSidebar ? (
-                            <CgClose className="burger-closeIcon" />
+                            <CgClose className="burger-closeIcon"/>
                         ) : (
-                            <img src={burger} alt="error" />
+                            <img src={burger} alt="error"/>
                         )}
                     </button>
                 </div>
@@ -142,7 +152,7 @@ const Header = () => {
                     onClick={() => setactiveSidebar(!activeSidebar)}
                 ></div>
             </div>
-            {pathname.split("/")[1].includes("portal") ? "" : <Menus />}
+            {pathname.split("/")[1].includes("portal") ? "" : <Menus/>}
         </header>
     );
 };

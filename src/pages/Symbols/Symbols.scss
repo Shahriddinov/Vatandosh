@@ -1,0 +1,34 @@
+.symbol{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3%;
+  &_title{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.2px;
+    color: #656B70;
+    margin-top: 3%;
+    margin-bottom: 5%;
+  }
+  &_text{
+    width: 50%;
+    &_poets{
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      color: #062A49;
+    }
+    &_post{
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 30px;
+      letter-spacing: 0.2px;
+      color: #656B70;
+      margin-top: 3%;
+      margin-bottom: 5%;
+    }
+  }
+}
