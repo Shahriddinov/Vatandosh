@@ -21,7 +21,7 @@ const associationSlice = createSlice({
             })
             .addCase(getAssociations.fulfilled, (state,{payload}) => {
                 state.associationLoading = false;
-                state.associationData = payload.data;
+                state.associationData = payload;
             })
             .addCase(getAssociations.rejected, (state,{error} )=> {
                 state.associationLoading = false;
@@ -34,7 +34,7 @@ const associationSlice = createSlice({
             })
             .addCase(getAssociationsCategory.fulfilled, (state,{payload}) => {
                 state.associationCategoryLoading = false;
-                state.associationCategoryData = payload.data;
+                state.associationCategoryData = payload;
             })
             .addCase(getAssociationsCategory.rejected, (state,{error} )=> {
                 state.associationCategoryLoading = false;

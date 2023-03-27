@@ -19,7 +19,7 @@ const sliderSlice = createSlice({
       })
       .addCase(getSlider.fulfilled, (state, action) => {
         state.loading = false;
-        state.sliderData = action.payload.data;
+        state.sliderData = action.payload;
       })
       .addCase(getSlider.rejected, (state, action) => {
         state.loading = false;

@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from "../../component/Layout/Header/Header";
 import Vector from "../../assets/images/home/Vector.svg";
+import Madhiya from "../../assets/images/ozbekiston-respublikasi-davlat-madhiyasi-madhiya_(chaqqon.net).mp3"
 import "./Symbols.scss"
-
+import ReactAudioPlayer from 'react-audio-player';
 function Anthem(props) {
     return (
         <>
@@ -28,6 +29,12 @@ function Anthem(props) {
                         Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!Ulug' xalq qudrati jo'sh
                         urgan zamon,Olamni mahliyo aylagan diyor! <br/>
                     </div>
+                    <ReactAudioPlayer
+                        className="symbol_text_audio"
+                        src={Madhiya}
+                        autoPlay
+                        controls
+                    />
                 </div>
             </div>
         </>

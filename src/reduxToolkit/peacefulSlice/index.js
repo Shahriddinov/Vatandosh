@@ -27,7 +27,7 @@ const peacefullSlice = createSlice({
       })
       .addCase(getPeaceful.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.peacefulData = payload.data;
+        state.peacefulData = payload;
       })
       .addCase(getPeaceful.rejected, (state, { error }) => {
         state.error = error.message;
@@ -41,7 +41,7 @@ const peacefullSlice = createSlice({
       })
       .addCase(getInteractiveServices.fulfilled, (state, { payload }) => {
         state.interactiveServicesLoading = false;
-        state.interactiveServices = payload.data;
+        state.interactiveServices = payload;
       })
       .addCase(getInteractiveServices.rejected, (state, action) => {
         state.interactiveServicesLoading = false;
@@ -55,7 +55,7 @@ const peacefullSlice = createSlice({
       })
       .addCase(getProjectsMenu.fulfilled, (state, action) => {
         state.menuLoading = false;
-        state.menuData = action.payload.data;
+        state.menuData = action.payload;
       })
       .addCase(getProjectsMenu.rejected, (state, action) => {
         state.menuLoading = false;

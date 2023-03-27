@@ -15,6 +15,7 @@ const Hero = () => {
   const lan = useSelector((state) => state.language.language);
 
   const sliderData = useSelector((state) => state.sliderSlice.sliderData);
+  const error = useSelector((state) => state.sliderSlice.error);
   const loading = useSelector((state) => state.sliderSlice.loading);
 
   const handleLeft = () => {
@@ -51,6 +52,11 @@ const Hero = () => {
   if (loading) {
     return null;
   }
+  
+  if(error) {
+    return <p className="">{error}</p>
+  }
+
 
   return (
     <section className="hero">

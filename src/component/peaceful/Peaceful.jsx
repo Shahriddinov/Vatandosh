@@ -14,12 +14,16 @@ import { useTranslation } from "react-i18next";
 const Peaceful = () => {
     const peacefulData = useSelector((state) => state.peaceful.peacefulData);
     const loading = useSelector((state) => state.peaceful.loading);
+    const error = useSelector((state) => state.peaceful.error);
 
     const lng = useSelector((state) => state.language.language);
     const { t } = useTranslation();
 
     if (loading) {
         return null;
+    }
+    if(error) {
+        return <p>{error}</p>
     }
 
     return (

@@ -7,10 +7,10 @@ import { Link, NavLink } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import phone from "../../../../../assets/images/icons/Phone.svg";
-import Flag from "../../../../../assets/images/Flag.png";
-import Blazon from "../../../../../assets/images/blazon.png";
-import Music from "../../../../../assets/images/Music.png";
-import { useDispatch } from "react-redux";
+import Flag from "../../../../../assets/images/Flag.svg";
+import Blazon from "../../../../../assets/images/blazon.svg";
+import Music from "../../../../../assets/images/Music.svg";
+import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { NavBarLinks } from "../../../../NavBarLinks";
@@ -29,6 +29,10 @@ const Navbar = ({ activeSidebar }) => {
     { id: 2, label: "Русский", type: "ru" },
     { id: 3, label: "English", type: "en" },
   ];
+
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
 
   const changeLanguage = (lng) => {
     dispatch(languageChange(lng));
@@ -87,33 +91,39 @@ const Navbar = ({ activeSidebar }) => {
             })}
           </ul>
           <div className="header-sideBar-connection">
-            <div className="header-sideBar-connection-item">
+            <a href={`tel: ${contactData?.phone}`} className="header-sideBar-connection-item">
               <img src={phone} alt="phone" />
               <span>0800-120-55 55</span>
-            </div>
-            <div className="header-sideBar-connection-item">
+            </a>
+            <a href={`mailto: ${contactData?.email}`} className="header-sideBar-connection-item">
               <HiOutlineMail className="header-sideBar-connection-item-icon" />
               <span>info@Vatandoshlar</span>
-            </div>
+            </a>
             <div className="header-sideBar-connection-action">
-              <motion.img
-                whileTap={{ scale: 0.6 }}
-                src={Flag}
-                className="header-sideBar-connection-action-img"
-                alt="flag"
-              />
-              <motion.img
-                whileTap={{ scale: 0.6 }}
-                src={Blazon}
-                className="header-sideBar-connection-action-img"
-                alt="blazon"
-              />
-              <motion.img
-                whileTap={{ scale: 0.6 }}
-                src={Music}
-                className="header-sideBar-connection-action-img"
-                alt="music"
-              />
+              <Link to="/flag">
+                <motion.img
+                  whileTap={{ scale: 0.6 }}
+                  src={Flag}
+                  className="header-sideBar-connection-action-img"
+                  alt="flag"
+                />
+              </Link>
+              <Link to="/coat">
+                <motion.img
+                  whileTap={{ scale: 0.6 }}
+                  src={Blazon}
+                  className="header-sideBar-connection-action-img"
+                  alt="blazon"
+                />
+              </Link>
+              <Link to="/anthem">
+                <motion.img
+                  whileTap={{ scale: 0.6 }}
+                  src={Music}
+                  className="header-sideBar-connection-action-img"
+                  alt="music"
+                />
+              </Link>
             </div>
           </div>
         </div>
