@@ -15,18 +15,28 @@ const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(() => import("./pages/compatriots"));
-const StatesFriendshipSociety = lazy(() => import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety"));
+const StatesFriendshipSociety = lazy(() =>
+  import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
+);
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
-const PublicAssociationEvents = lazy(() => import("./pages/PublicAssociationEvents/PublicAssociationEvents"));
+const PublicAssociationEvents = lazy(() =>
+  import("./pages/PublicAssociationEvents/PublicAssociationEvents")
+);
 const Projects = lazy(() => import("./pages/Projects"));
-const InformationServices = lazy(() => import("./pages/InformationServices/InformationServices"));
+const InformationServices = lazy(() =>
+  import("./pages/InformationServices/InformationServices")
+);
+const Mediateka = lazy(() => import("./component/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
 const routes = [
-  { path: "", element: Home, },
+  { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:country", element: StatesFriendshipSociety },
+  {
+    path: "/compatriots/public-associations/:country",
+    element: StatesFriendshipSociety,
+  },
   { path: "/portal", element: Portal },
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },
@@ -34,11 +44,15 @@ const routes = [
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
   { path: "/category-shows", element: CategoryShows },
-  { path: "/compatriots/public-association-events", element: PublicAssociationEvents },
+  {
+    path: "/compatriots/public-association-events",
+    element: PublicAssociationEvents,
+  },
   { path: "/information-service/news", element: InformationServices },
   { path: "/news-detail/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
+  { path: "/mediateka", element: Mediateka },
 ];
 
 const RoutesContainer = () => (

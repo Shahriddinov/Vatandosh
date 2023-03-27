@@ -10,6 +10,7 @@ import contactSlice from "./contactSlice";
 import sliderSlice from "./sliderSlice";
 import categoryShows from "./categoryShowsSlice/categoryShowsSlice";
 import eventsSlice from "./eventsSlice";
+import mediatekaSlice from "./mediatekaSlice";
 
 const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
     contactSlice,
     sliderSlice,
     categoryShows,
+    mediatekaSlice,
   },
 });
 
