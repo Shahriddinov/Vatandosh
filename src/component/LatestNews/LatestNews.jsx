@@ -16,6 +16,7 @@ export default function LatestNews() {
     dispatch(getNews());
   }, []);
 
+
   return (
     <div className="latest_news">
       <h4 className="latest_news-title">So‘ngi yangiliklar</h4>
@@ -26,7 +27,7 @@ export default function LatestNews() {
               <Link to={`/news-detail/${el.id}`} className="latest_news-list-item-link">
                 <div className="latest_news-list-item-img">
                   <img
-                    src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.img}`}
+                    src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.image}`}
                     alt=""
                   />
                 </div>
