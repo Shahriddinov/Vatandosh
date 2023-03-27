@@ -69,7 +69,7 @@ export default function NewsDetail() {
                   </div>
                   <div className="newsdetail-main-desc-action-tags">
                     {
-                      data?.tegs.split(",").map((el, index) => {
+                      data?.tags.split(",").map((el, index) => {
                         return <span key={index}>{el}</span>
                       })
                     }
