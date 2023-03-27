@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, } from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
 import "./NewsDetail.scss";
@@ -12,15 +12,23 @@ import { useEffect, useState } from "react";
 import { RiFacebookFill, RiInstagramFill } from "react-icons/ri";
 import { FaTelegramPlane } from "react-icons/fa";
 import filled from '../../assets/images/icons/filled-icon.svg';
+import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 
 export default function NewsDetail() {
   const lan = useSelector((state) => state.language.language);
+  const contactData = useSelector(state => state.contactSlice?.contactData);
+
   const { loading, pathErrText, data } = useNewsDataFetching();
   const [galleryMainImg, setgalleryMainImg] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data?.imgs) setgalleryMainImg(JSON.parse(data?.imgs)[0]);
-  }, [data])
+  }, [data]);
+
+  useEffect(() => {
+    dispatch(getContact());
+  }, [])
 
   if (loading) {
     return (
@@ -83,37 +91,43 @@ export default function NewsDetail() {
                     __html: data[`text_${lan}`]
                   }}>
                 </div>
-                <div className="newsdetail-main-desc-gallery">
-                  <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${galleryMainImg ? galleryMainImg : JSON.parse(data.imgs)[0]}`} alt="error" className="newsdetail-main-desc-gallery-mainImg" />
-                  <ul className="newsdetail-main-desc-gallery-list">
-                    {
-                      data.imgs ?
-                        JSON.parse(data.imgs).map((el, index) => {
-                          return <li key={index}>
-                            <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el}`} alt="error"
-                              className="newsdetail-main-desc-gallery-list-item"
-                              onClick={() => setgalleryMainImg(el)} />
-                          </li>
-                        })
-                        : null
-                    }
-                  </ul>
-                </div>
+                {
+                  data.imgs ?
+                    <div className="newsdetail-main-desc-gallery">
+                      <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${galleryMainImg ? galleryMainImg : JSON.parse(data?.imgs)[0]}`} alt="error" className="newsdetail-main-desc-gallery-mainImg" />
+                      <div className="newsdetail-main-desc-gallery-list-wrapper">
+                        <ul className="newsdetail-main-desc-gallery-list">
+                          {
+                            data.imgs ?
+                              JSON.parse(data.imgs).map((el, index) => {
+                                return <li key={index}>
+                                  <img src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el}`} alt="error"
+                                    className="newsdetail-main-desc-gallery-list-item"
+                                    onClick={() => setgalleryMainImg(el)} />
+                                </li>
+                              })
+                              : null
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                    : null
+                }
                 <div className="newsdetail-main-desc-share">
                   <div className="newsdetail-main-desc-share-list">
                     <a href="https://www.google.com" className="newsdetail-main-desc-share-list-item">
                       <img src={filled} alt="" />
                     </a>
-                    <a href="https://www.google.com" className="newsdetail-main-desc-share-list-item">
+                    <a href={contactData.facebook} className="newsdetail-main-desc-share-list-item">
                       <RiFacebookFill />
                     </a>
-                    <a href="https://www.google.com" className="newsdetail-main-desc-share-list-item">
+                    <a href={contactData.twitter} className="newsdetail-main-desc-share-list-item">
                       <BsTwitter />
                     </a>
-                    <a href="https://www.google.com" className="newsdetail-main-desc-share-list-item">
+                    <a href={contactData.telegram} className="newsdetail-main-desc-share-list-item">
                       <FaTelegramPlane />
                     </a >
-                    <a href="https://www.google.com" className="newsdetail-main-desc-share-list-item">
+                    <a href={contactData.instagram} className="newsdetail-main-desc-share-list-item">
                       <RiInstagramFill />
                     </a>
                   </div>
