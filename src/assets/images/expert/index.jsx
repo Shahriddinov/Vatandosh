@@ -1,0 +1,5 @@
+export {default as LogoIcon} from './logo.svg'
+export {default as PhoneIcon} from './phone.svg'
+export {default as EmailIcon } from './email.svg'
+export {default as GlobeIcon} from './globe.svg'
+export {default as ExitIcon} from './exit.svg'
