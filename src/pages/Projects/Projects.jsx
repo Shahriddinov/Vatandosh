@@ -246,12 +246,6 @@ const Projects = () => {
                             </SwiperSlide>
                         )
                     })}
-                    {/* <SwiperSlide><img src={Gallery2} alt="" className='gallery__img'/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery3} alt="" className='gallery__img'/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery4} alt="" className='gallery__img'/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery2} alt="" className='gallery__img'/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery3} alt="" className='gallery__img'/></SwiperSlide>
-                    <SwiperSlide><img src={Gallery4} alt="" className='gallery__img'/></SwiperSlide> */}
                 </Swiper>
                 <div className="carousel__pagination carousel__buttons">
                     <button className='carousel__button' onClick={prevSlide}><FiChevronLeft/></button>
