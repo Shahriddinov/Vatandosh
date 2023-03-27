@@ -19,6 +19,10 @@
       align-items: center;
       justify-content: space-between;
 
+      &>a {
+        text-decoration: none;
+      }
+
       &_phone {
         display: flex;
         gap: 10px;
@@ -390,7 +394,11 @@
       &_navbar {
         justify-content: left;
 
-        &>div:not(:first-child) {
+        &>div {
+          display: none;
+        }
+
+        &>a:not(:first-child) {
           display: none;
         }
 
