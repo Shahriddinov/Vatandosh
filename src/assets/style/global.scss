@@ -3,7 +3,7 @@
 $colorGrey: #5d6b8a;
 $colorTitle: #065ea9;
 $ButtonBackground: #eaedf6;
-$colorLight: #FFFFFF;
+$colorLight: #ffffff;
 $colorText: #12022f;
 $colorBlack: #10131b;
 
@@ -24,6 +24,10 @@ body {
   color: #656b70;
 }
 
+a {
+  text-decoration: none;
+}
+
 .gray-scale {
   filter: grayscale(100%);
 }
@@ -38,11 +42,12 @@ a{
 .registerBackground {
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/images/register/header-background-image.svg"), url("../../assets/images/register/footer-background-image.svg"), linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
+  background-image: url("../../assets/images/register/header-background-image.svg"),
+    url("../../assets/images/register/footer-background-image.svg"),
+    linear-gradient(131.1deg, #338cda 16%, rgba(88, 172, 244, 0.88) 82.17%);
   background-repeat: no-repeat;
   background-size: 480px 484, 515px 521px, cover;
   background-position: top left, right bottom;
-
 }
 
 .searches {
@@ -51,9 +56,7 @@ a{
 
   ::placeholder {
     color: white !important;
-
   }
-
 }
 
 .page-portal {
@@ -131,7 +134,7 @@ a{
   }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
   .page-about {
     background-image: url("../../assets/images/pattern-md.png"),
       url("../../assets/images/bottom-sm.png");
@@ -145,19 +148,19 @@ a{
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .page-about {
     background-position: -100% -100%, right 13%;
   }
 }
 
-@media (max-width:460px) {
+@media (max-width: 460px) {
   .page-about {
     background-position: -100% -100%, right 14%;
   }
 }
 
-@media (max-width:425px) {
+@media (max-width: 425px) {
   .page-about {
     background-position: -100% -100%, right 16%;
   }
