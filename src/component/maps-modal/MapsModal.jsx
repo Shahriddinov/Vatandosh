@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 const MapsModal = ({changeActive,countryCode}) => {
     const mapData= useSelector(state => state.mapSlice.mapData)
+    const error= useSelector(state => state.mapSlice.error)
     const mapLoading= useSelector(state => state.mapSlice.mapDataLoading)
     const countries= useSelector(state => state.mapSlice.countries)
     const lng = useSelector(state => state.language.language)
@@ -20,6 +21,10 @@ const MapsModal = ({changeActive,countryCode}) => {
             changeActive(false)
         }
     }
+
+    if(error) {
+        return <p>{error}</p>
+      }
     
     return (
         <div className='maps_modal' onClickCapture={handleClick}>

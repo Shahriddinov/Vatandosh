@@ -19,7 +19,7 @@ const eventSlice = createSlice({
       })
       .addCase(getEvents.fulfilled, (state, action) => {
         state.loading = false;
-        state.eventsData = action.payload.data;
+        state.eventsData = action.payload;
       })
       .addCase(getEvents.rejected, (state, action) => {
         state.loading = false;

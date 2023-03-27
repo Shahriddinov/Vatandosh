@@ -34,7 +34,6 @@ const MapsHome = () => {
         dispatch(getCountries())
     },[])
 
-
     const changeActive = (val) => {
         if(svgRef.current) {
             const mapsData = svgRef.current["childNodes"][0]["childNodes"][0]["childNodes"][0]["childNodes"]
