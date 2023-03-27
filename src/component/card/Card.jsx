@@ -16,7 +16,7 @@ const Card = (props) => {
     <div className="single-card">
       <div className="img-container">
         <img
-          src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.img}`}
+          src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.image}`}
           alt={props[`title_${lan}`]}
         />
       </div>
@@ -32,18 +32,22 @@ const Card = (props) => {
         </Link>
       </div>
       <div className="tags-box">
-        {tags.map((tag) => (
-          <div className="tag-item">{tag}</div>
-        ))}
+        <div className="animation-box">
+          {tags.map((tag, id) => (
+            <div className="tag-item" key={id}>
+              {tag}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props.date}</span>
+          <span>{props.data}</span>
         </div>
         <div className="news-views">
           <IoEye />
-          <span>{props.viewers}</span>
+          <span>{props.viewers === null ? 0 : props.viewers}</span>
         </div>
       </div>
     </div>

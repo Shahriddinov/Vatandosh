@@ -9,10 +9,12 @@ import trustees from "./trusteesSlice";
 import contactSlice from "./contactSlice";
 import sliderSlice from "./sliderSlice";
 import categoryShows from "./categoryShowsSlice/categoryShowsSlice";
+import eventsSlice from "./eventsSlice";
 
 const store = configureStore({
   reducer: {
     newsSlice,
+    eventsSlice,
     partnersSlice,
     peaceful,
     language,
@@ -20,7 +22,7 @@ const store = configureStore({
     trustees,
     contactSlice,
     sliderSlice,
-    categoryShows
+    categoryShows,
   },
 });
 

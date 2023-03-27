@@ -2,6 +2,7 @@ export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
 
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
+export const GET_EVENTS_URL = `${baseUrl}/events`;
 export const GET_PARTNERS_URL = `${baseUrl}/sponsrs`;
 export const GET_PEACEFUL_URL = `${baseUrl}/columns`;
 export const GET_PROJECTS_MENU = `${baseUrl}/column-menus`;
