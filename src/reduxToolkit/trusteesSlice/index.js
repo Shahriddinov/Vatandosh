@@ -19,7 +19,7 @@ const trusteesSlice = createSlice({
                 state.allTrusteesLoading = true;
             })
             .addCase(getAllTrustees.fulfilled, (state,{payload}) => {
-                state.allTrustees = payload.data;
+                state.allTrustees = payload;
                 state.allTrusteesLoading = false;
             })
             .addCase(getAllTrustees.rejected, (state,{error}) => {

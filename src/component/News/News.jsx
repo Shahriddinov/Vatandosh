@@ -15,8 +15,10 @@ const News = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const newsData = useSelector((state) => state.newsSlice.newsData);
+  const error = useSelector((state) => state.newsSlice.error);
   const eventsData = useSelector((state) => state.eventsSlice.eventsData);
+  const errorEvents = useSelector((state) => state.eventsSlice.error);
   const projectMenu = useSelector((state) => state.peaceful.menuData);
   const lan = useSelector((state) => state.language.language);
   const [activeCard, setActiveCard] = useState(true);
@@ -26,6 +28,10 @@ const News = () => {
     dispatch(getEvents());
     dispatch(getProjectsMenu());
   }, []);
+
+  if(error || errorEvents) {
+    return <p>{error}</p>
+  }
 
   return (
     <section className="news">
