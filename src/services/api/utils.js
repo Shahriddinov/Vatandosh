@@ -12,6 +12,8 @@ export const GET_MAP_DATA_URL = `${baseUrl}/country_relationship/`;
 export const GET_COUNTRIES = `${baseUrl}/countries`;
 export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
+export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`
+export const GET_ASSOCIATIONS_CATEGORY = `${baseUrl}/assosiationcategory`
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

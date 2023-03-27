@@ -99,10 +99,25 @@
     }
 
     &__body_text{
-        display: block;
+        display: flex;
+        align-items: center;
         padding-top: 10px;
         font-size: 16px;
         line-height: 19px;
+        
+    }
+
+    &__body_text--span {
+        display: block;
+        height: 21px;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+
+
+
+    &__body_text--span::-webkit-scrollbar {
+        display: none;
     }
 
     &__body_btn {
@@ -185,12 +200,13 @@
 
         &__body_text{
             display: block;
+            width: 253px !important;
             padding-top: 12px;
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
             font-size: 14px;
-            line-height: 125%;
+            line-height: 19px;
             letter-spacing: 0.2px;
             color: #4B5157;
         }

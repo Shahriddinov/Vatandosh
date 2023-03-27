@@ -4,20 +4,54 @@
     background-image: url("../../../../assets/images/body-bg.png");
 
     &__inner {
-        display: flex;
-        align-items: center;
-        gap: 68px;   
+        background: #FFFFFF;
+        box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.1);
+        border-radius: 15px; 
     }
 
-    &__inner_img {
-        width: 260px;
-        height: 260px;
+    &__box1 {
+        padding: 30px 40px;
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        border-bottom: 1px solid #E7EFF7;
+    }
+
+    &__box1_img {
+        width: 140px;
+        height: 140px;
+    }
+
+    &__company_logo {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    &__company_name {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: #213B5D;
+    }
+
+    &__box2 {
+        padding: 30px 40px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__user_img {
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
+        overflow: hidden;
     }
 
     &__user {
-        width: 260px;
-        height: 260px;
+        width: 180px;
+        height: 180px;
         object-fit: cover;
         border-radius: 50%;
     }
@@ -32,8 +66,8 @@
         display: block;
         margin-bottom: 5px;
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.2px;
         color: #4B5157;
     }
@@ -47,29 +81,86 @@
     }
 }
 
-
-@media(max-width: 601px) {
+@media(max-width: 1000px) {
     .friendship-info {
-        padding: 30px 0;
-    
-        &__inner {
-            display: flex;
+        &__company_name {
+            font-size: 23px;
+            line-height: 24px;
+        }
+    }
+}
+
+
+@media(max-width: 600px) {
+    .friendship-info {
+        padding: 0 0;
+
+        &__container {
+            padding: 0;
+        }
+
+        &__box1 {
+            padding: 30px 20px;
+            gap: 25px;
+        }
+
+        &__company_name {
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+        &__box2 {
+            padding: 30px 20px;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;   
         }
     
-        &__inner_img {
-            width: 260px;
-            height: 260px;
+        &__user_img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
         }
     
         &__user {
-            width: 260px;
-            height: 260px;
+            width: 180px;
+            height: 180px;
+        }
+    }
+}
+
+@media(max-width: 400px) {
+    .friendship-info {
+
+        &__box1 {
+            gap: 20px;
+        }
+
+        &__box1_img {
+            width: 80px;
+            height: 80px;
+        }
+    
+        &__company_logo {
+            width: 80px;
+            height: 80px;
             object-fit: cover;
+        }
+    
+        &__box2 {
+            flex-direction: column;
+            gap: 20px;   
+        }
+    
+        &__user_img {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
+        }
+    
+        &__user {
+            width: 100px;
+            height: 100px;
         }
     
         &__list {

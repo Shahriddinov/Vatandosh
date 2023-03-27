@@ -23,6 +23,7 @@
         width: 565px;
         height: 370px;
         object-fit: fill;
+        overflow: hidden;
         border-radius: 15px;
     }
 
@@ -45,56 +46,11 @@
         line-height: 27px;
     }
 
-    &__text2 {
+    &__workers {
         display: block;
-        margin-bottom: 30px;
-        font-weight: 700;
-        line-height: 17px;
-        color: #656B70;
-    }
-
-    &__personals {
-        display: flex;
-        gap: 20px;
-    }
-
-    &__avatars_list {
-        position: relative;
-        width: 170px;
-        height: 70px;
-    }
-
-    &__avatars_item {
-        position: absolute;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-    }
-
-    &__avatars_item:nth-child(2){
-        left: 50px;
-    } 
-
-    &__avatars_item:nth-child(3){
-        left: 100px;
-    } 
-
-    &__avatars_item--img {
-        width: 70px;
-        height: 70px;
-        object-fit: fill;
-        border-radius: 50%;
-    }
-
-    &__personals_content {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 34px;
-    }
-
-    &__personals_content--count {
-        display: block;
-        color: #F58634;
+        font-size: 18px;
+        line-height: 22px;
+        color: #213B5D;
     }
 }
 
@@ -202,12 +158,10 @@
         }
     
         &__text1 {
+            margin-bottom: 20px;
             font-weight: 400;
             font-size: 16px;
         }
- 
-        &__text2 {
-            margin-bottom: 30px;
-        }
+
     }
 }
