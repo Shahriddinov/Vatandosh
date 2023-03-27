@@ -157,25 +157,109 @@
     }
 
     &-navigation {
+      width: 250px;
+      padding: 20px 24px;
       position: absolute;
-      padding: 12px 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      @include fontStyles(500, 14px, 24px, $colorTitle);
       background: #FFFFFF;
-      border-radius: 16px;
       z-index: 10;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      box-shadow: 0 6px 12px rgb(0 0 0 / 8%);
+      transition: all 0.5s;
+      scale: 1;
 
-      &>svg {
+      &-closeIcon {
         width: 20px;
         height: 20px;
-        color: $colorTitle;
+        color: $colorGrey;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
       }
+
+      &-title {
+        margin-bottom: 10px;
+
+        &>h3 {
+          white-space: nowrap;
+          word-break: keep-all;
+          @include fontStyles(600, 16px, 20px, #196DFF);
+        }
+
+        &>p {
+          padding: 4px 0;
+          @include fontStyles(400, 12px, 14px, $colorGrey);
+        }
+      }
+
+      &-marsh {
+        display: grid;
+        gap: 10px;
+
+        &-item {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          &>svg {
+            width: 20px;
+            height: 20px;
+            color: red;
+          }
+
+          &>span {
+            @include fontStyles(500, 14px, 16px, #000000);
+          }
+
+          &-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+
+            &:hover {
+
+              &>svg,
+              span {
+                color: red;
+              }
+            }
+
+            &>span {
+              @include fontStyles(600, 14px, 16px, #196DFF);
+            }
+
+            &>svg {
+              width: 16px;
+              height: 16px;
+              color: #196DFF;
+            }
+          }
+        }
+      }
+
+      &-btns {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &>a {
+          text-align: center;
+          text-decoration: none;
+          border-radius: 10px;
+          background-color: #196DFF;
+          @include fontStyles(500, 14px, 32px, #FFFFFF);
+        }
+
+        &>a:last-child {
+          background-color: #F3F6FC;
+          color: #196DFF;
+        }
+      }
+
     }
   }
 }
