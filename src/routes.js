@@ -38,6 +38,7 @@ const routes = [
   { path: "/about/Direction", element: Direction },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
+  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
   {
     path: "/compatriots/public-associations/:country",
     element: StatesFriendshipSociety,
