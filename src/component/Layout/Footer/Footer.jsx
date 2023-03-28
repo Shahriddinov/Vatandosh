@@ -19,7 +19,7 @@ const Footer = () => {
   const dispatch = useDispatch();
 
   const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
+    (state) => state.contactSlice.contactData
   );
 
   useEffect(() => {

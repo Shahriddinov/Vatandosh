@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 const MapsModal = ({changeActive,countryCode}) => {
     const mapData= useSelector(state => state.mapSlice.mapData)
+    const error= useSelector(state => state.mapSlice.error)
     const mapLoading= useSelector(state => state.mapSlice.mapDataLoading)
     const countries= useSelector(state => state.mapSlice.countries)
     const lng = useSelector(state => state.language.language)
@@ -20,9 +21,11 @@ const MapsModal = ({changeActive,countryCode}) => {
             changeActive(false)
         }
     }
-    
 
-    console.log(mapData);
+    if(error) {
+        return <p>{error}</p>
+      }
+    
     return (
         <div className='maps_modal' onClickCapture={handleClick}>
 
@@ -58,9 +61,17 @@ const MapsModal = ({changeActive,countryCode}) => {
                                         </div>
 
                                         <ul className='maps_modal__body_list'>
-                                            <li className='maps_modal__body_text'>Зарегистрировано твенники: 1</li>
-                                            <li className='maps_modal__body_text'>Новости:: 1</li>
-                                            <li className='maps_modal__body_text'>События: 2</li>
+                                            <li className='maps_modal__body_text'>
+                                                <span className='maps_modal__body_text--span'>{t("modalText1")}</span>
+                                                <span style={{whiteSpace: "nowrap"}}>: 221</span>
+                                            </li>
+                                            <li className='maps_modal__body_text'>
+                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>{t("modalText2")}</span>
+                                                <span style={{whiteSpace: "nowrap"}}>: 1</span></li>
+                                            <li className='maps_modal__body_text'>
+                                                <span className='maps_modal__body_text--span' style={{width:"70px"}}>{t("modalText3")}</span>
+                                                <span style={{whiteSpace: "nowrap"}}>: 2</span>
+                                            </li>
                                         </ul>
 
                                         <button type='button' className="maps_modal__body_btn">Barchasini ko‘rish</button>

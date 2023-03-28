@@ -52,6 +52,9 @@
   "participationProject": "Viktorina va loyihalarga qatnashish",
   "electronCommunity": "Jamoat birlashmalari elektron restri",
   "compatriotsValunteer": "Vatandosh valantyorlar",
+  "modalText1" : "Ro'yxatga olingan vatandoshlar",
+  "modalText2" : "Yangiliklar",
+  "modalText3" : "Tadbirlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi"
@@ -76,5 +79,61 @@
     "item5": "Sara durdona",
     "item6": "“Xorijdagi milliy oshxona” loyihasi",
     "item7": "“Xorijdagi vatandosh tashkilot” loyihasi"
+  }, 
+  "aboutPage": {
+    "section1" : {
+      "htext": "Biz haqimizda",
+      "ptext": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
+      "foottext1": "Asosiy sahifa",
+      "foottext2": "Biz haqimizda"
+    },
+    "section2": {
+      "htext1": "Fondnig vazifasi va maqsadi",
+      "ptext1-1": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
+      "ptext1-2": "Mamlakatda",
+      "ptext1-3": "Yurtdoshimiz",
+      "ptext1-4": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish.",
+      "htext2": "Fondnig tashkil topishi hamda tarixi haqida",
+      "p-text2": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish. Fondnig tashkil topishi hamda tarixi haqida Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan Boshqaruv raisi Boshqaruv raisi o‘rinbosari Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Sattarov Odiljon Berdimuradovich Tursunov Rovshan Xamidullayevich",
+      "person1-info": "Boshqaruv raisi",
+      "person2-info": "Boshqaruv raisi o‘rinbosari"
+    },
+    "section3": {
+      "htext1": "Fond faoliyatining asosiy yo‘nalishlari",
+      "card1-left": "Jamoat birlashmalari bilan hamkorlik aloqalarini yo‘lga qo‘yish va rivojlantirish",
+      "card2-left": "O‘zbek tili, madaniyati va an’analarini saqlab qolish va rivojlantirish",
+      "card3-left": "Migratsiya va ta’lim sohalarida shartnomaviy-huquqiy hamkorlikni kengaytirish",
+      "card4-left": "Vatandoshlar tomonidan tashkil etilgan jamoat birlashmalari faoliyatini rag‘batlantirish",
+      "card5-left": "Vatandoshlarga madaniy-ma’rifiy tadbirlarni tashkil etishda ko‘maklashish",
+      "card6-left": "Vatandoshlarimizni yurtimiz nufuzini oshirishga qaratilgan ilmiy, ijodiy izlanishlarini qo‘llab-quvvatlash",
+      "card1-right": "Vatandoshlarning huquq va erkinliklarini himoya qilishga ko‘maklashish Vatandoshlarning huquq va erkinliklarini himoya qilishga ko‘maklashish",
+      "card2-right": "Yurtimizning boy ilmiy, madaniy va ma’naviy merosini keng targ‘ib qilish",
+      "card3-right": "Murakkab hayotiy vaziyatga tushib qolgan vatandoshlarni ijtimoiy qo‘llab-quvvatlash va huquqiy yordam ko‘rsatishga ko‘maklashish",
+      "card4-right": "Xorijda o‘zbek milliy madaniy markazlarini tashkil etishda amaliy yordam ko‘rsatish",
+      "card5-right": "Vatandoshlarimizni respublika oliy ta’lim muassasalarida o‘zbek tili yo‘nalishi bo‘yicha ta’lim olishlariga ko‘mak ko‘rsatish",
+      "card6-right": "Vatandoshlarni O‘zbekiston hududida tadbirkorlik, investitsiyaviy, ilmiy, madaniy va ma’rifiy faoliyat bilan shug‘ullanishga faol jalb qilish"
+    },
+    "section4": {
+      "htext1": "Fond tuzilmasi",
+      "cardntk": "Nazorat-taftish komissiyasi",
+      "cardvk": "Vasiylik kengashi",
+      "cardfb": "Fond boshqaruvi",
+      "cardy": "Yordamchi",
+      "cardbr": "Boshqaruv raisi",
+      "carda": "Axborot",
+      "cardby": "Bosh yuristkonsult",
+      "cardb": "Boshqaruv",
+      "cardsh": "Strategik tahlil",
+      "cardmk": "Matbuot kotibi",
+      "cardxb": "Xodimlar bilan",
+      "cardv": "Vatandoshlarni",
+      "cardv2": "Vatandoshlar",
+      "cardmm": "Madaniy-ma’rifiy",
+      "cardbb": "Bosh buhgalter"
+    },
+    "section5": {
+      "htext1": "Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir"
+    }
+
   }
 }

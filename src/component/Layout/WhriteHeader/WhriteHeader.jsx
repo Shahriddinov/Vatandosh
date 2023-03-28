@@ -1,20 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import Logo from "../../../assets/images/Logos.svg";
 import burger from "../../../assets/images/icons/burger.svg";
 import Logos from "../../../assets/images/LogoWhrite.svg";
 import Phone from "../../../assets/images/whritePhone.png";
 import Message from "../../../assets/images/MessageWhrite.svg";
-import Flag from "../../../assets/images/Flag.png";
-import Blazon from "../../../assets/images/blazon.png";
+import Flag from "../../../assets/images/Flag.svg";
+import Blazon from "../../../assets/images/blazon.svg";
 import Music from "../../../assets/images/WhriteMusic.svg";
 import Search from "../../../assets/images/SearchWhrite.svg";
-import Eye from "../../../assets/images/EyeGlass.png";
 import EyeWhrite from "../../../assets/images/EyeWhrite.png";
-import Globe from "../../../assets/images/Globe.png";
 import { CgClose } from "react-icons/cg";
 import { motion } from "framer-motion";
-import Menu from "./component/Menun/Menun";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
@@ -37,6 +33,9 @@ const WhriteHeader = () => {
         i18next.changeLanguage(lng);
         dispatch(languageChange(lng));
     };
+    const contactData = useSelector(
+        (state) => state.contactSlice.contactData.data
+    );
 
     useEffect(() => {
         if (activeSidebar) document.body.style.overflow = "hidden";
@@ -51,37 +50,43 @@ const WhriteHeader = () => {
                         <img src={Logos}
                             alt="logo" />
                     </Link>
-                    <div className="header_navbar_phone">
+                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
                         <img src={Phone} alt="phone" />
                         <div
                             className="header_navbar_phone_number colors">+998(55)502-22-99
                         </div>
-                    </div>
-                    <div className="header_navbar_phone">
+                    </a>
+                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
                         <img src={Message} alt="message" />
                         <div className="header_navbar_phone_number colors">
                             info@vatandoshlarfondi.uz
                         </div>
-                    </div>
+                    </a>
 
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Flag}
-                        className="header_navbar_flags"
-                        alt="flag"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Blazon}
-                        className="header_navbar_flags"
-                        alt="blazon"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Music}
-                        className="header_navbar_flags"
-                        alt="music"
-                    />
+                    <Link to="/flag">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Flag}
+                            className="header_navbar_flags"
+                            alt="flag"
+                        />
+                    </Link>
+                    <Link to="/coat">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Blazon}
+                            className="header_navbar_flags"
+                            alt="blazon"
+                        />
+                    </Link>
+                    <Link to="/anthem">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Music}
+                            className="header_navbar_flags"
+                            alt="music"
+                        />
+                    </Link>
                     <label className="header_navbar_search searches">
                         <input
                             type="text"

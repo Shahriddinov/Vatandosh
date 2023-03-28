@@ -21,6 +21,7 @@ const mapSlice = createSlice({
             .addCase(mapGetData.fulfilled, (state,{payload} ) => {
                 state.mapDataLoading = false
                 state.mapData = payload.data
+                console.log(payload.data);
             })
             .addCase(mapGetData.rejected, (state,action) => {
                 state.mapDataLoading = false
@@ -31,7 +32,7 @@ const mapSlice = createSlice({
                 state.countriesLoading = true
             })   
             .addCase(getCountries.fulfilled, (state,{payload}) => {
-                state.countries = payload.data;
+                state.countries = payload;
                 state.countriesLoading = false;
             }) 
             .addCase(getCountries.rejected, (state,action) => {

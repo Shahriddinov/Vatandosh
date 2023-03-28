@@ -46,8 +46,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 4;
-      line-clamp: 4;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
       margin-top: 8px;
       color: #5d6b8a;
@@ -57,15 +57,23 @@
   .tags-box {
     width: 100%;
     max-width: 300px;
-    display: flex;
-    gap: 8px;
+    height: 60px;
+    position: relative;
     padding: 12px 0;
     overflow-x: auto;
     border-left: 15px solid white;
     border-right: 15px solid white;
 
     &::-webkit-scrollbar {
-      height: 1px;
+      height: 0;
+    }
+
+    .animation-box {
+      display: flex;
+      gap: 8px;
+      position: absolute;
+      transform: translateX(110%);
+      animation: moveTags 15s linear infinite;
     }
 
     .tag-item {
@@ -73,6 +81,7 @@
       padding: 4px 10px;
       border-radius: 5px;
       background: #e3f0ff;
+      cursor: pointer;
     }
   }
 
@@ -102,6 +111,15 @@
         font-size: 1rem;
       }
     }
+  }
+}
+
+@keyframes moveTags {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 

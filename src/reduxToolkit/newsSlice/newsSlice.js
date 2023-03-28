@@ -23,6 +23,7 @@ const newsSlice = createSlice({
       .addCase(getNews.fulfilled, (state, action) => {
         state.loadingNews = false;
         state.newsData = action.payload;
+        console.log(action.payload);
       })
       .addCase(getNews.rejected, (state, action) => {
         state.loadingNews = false;

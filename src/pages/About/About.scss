@@ -86,54 +86,68 @@
     }
   }
 
-  &_activity {
-    width: 100%;
-    background-color: $colorTitle;
-    background-image: url("../../assets/images/flowerLeft.png"),
-    url("../../assets/images/flower.svg"), url("../../assets/images/flowerBottom.svg");
-    background-repeat: no-repeat;
-    background-position: left bottom 25%, right top, bottom right 25%;
+  &_direction {
+    &_fon {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 39px;
+      display: flex;
+      align-items: center;
+      padding-top: 3%;
+      color: $colorTitle;
+    }
+
+    &_cards {
+      margin-top: 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &_boxs {
+        width: 45%;
+        padding: 15px;
+        background: #F0F2F9;
+        border-radius: 20px;
+        position: relative;
+        margin-bottom: 5%;
+
+        &_describtion {
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
+          color: $colorTitle;
+          margin-top: 2%;
+          margin-bottom: 5%;
 
 
-    &_infos {
-      &_fon {
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        display: flex;
-        align-items: center;
-        padding-top: 3%;
-        color: white;
-      }
-
-      &_flexs {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 5%;
-
-        &_dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background-color: white;
         }
 
-        &_keep {
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 19px;
-          display: flex;
-          align-items: center;
-          letter-spacing: 0.2px;
-          color: white;
+        &_img {
+          position: absolute;
+          right: 0;
+          bottom: 0;
         }
       }
     }
   }
 
+  &_fon {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+    padding-top: 3%;
+    color: white;
+  }
+
+  .increase {
+    margin-bottom: 5%;
+  }
+
+
   &_fatherland {
-    margin-top: 6%;
+
     padding: 0 16%;
     font-weight: 700;
     font-size: 24px;
@@ -151,6 +165,7 @@
 
   @media only screen and (max-width: 1000px) {
     overflow: hidden;
+
     &_card {
       display: block;
 
@@ -193,33 +208,14 @@
         }
       }
     }
-    &_activity {
-      width: 100%;
-      background-color: $colorTitle;
-      background-image: url("../../assets/images/flower.svg");
-      background-repeat: no-repeat;
-      background-position: center right;
-      padding-bottom: 5%;
 
-      &_infos {
-
-        &_flexs {
-          gap: 22px;
-
-          &_dot {
-            width: 12px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: white;
-          }
-        }
-
-
-        &_fon {
-          display: none;
-        }
+    >&_direction {
+      
+      .cards {
+        display: flex;
+        flex-direction: column;
       }
-    }
 
+    }
   }
 }

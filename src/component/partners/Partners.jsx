@@ -17,7 +17,8 @@ const Partners = () => {
   const [activeslider, setActiveSlader] = useState({ nav1: null, nav2: null, })
 
   const dispatch = useDispatch();
-  const partnersData = useSelector((state) => state.partnersSlice.partnersData.data);
+  const partnersData = useSelector((state) => state.partnersSlice.partnersData);
+  const error = useSelector((state) => state.partnersSlice.error);
 
   const lng = useSelector(state => state.language.language)
   const {t} = useTranslation()
@@ -84,6 +85,10 @@ const Partners = () => {
       nav2: sliderRef2.current
     }))
   }, []);
+
+  if(error) {
+    return <p>{error}</p>
+  }
 
   return (
     <section className="partner_section">

@@ -52,6 +52,9 @@
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
   "compatriotsValunteer": "Compatriot valantiors",
+  "modalText1" : "Registered compatriots",
+  "modalText2" : "News",
+  "modalText3" : "Events",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees"
@@ -76,5 +79,61 @@
     "item5": "Sara is a masterpiece",
     "item6": "“National cuisine abroad” project",
     "item7": "“Overseas compatriot organization” project"
+  },
+  "aboutPage": {
+    "section1" : {
+      "htext": "About us",
+      "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
+      "foottext1": "Main page",
+      "foottext2": "About us"
+    },
+    "section2": {
+      "htext1": "Function and purpose of Fondnig",
+      "ptext1-1": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
+      "ptext1-2": "In the country",
+      "ptext1-3": "Our countryman",
+      "ptext1-4": "Further embed compatriots living abroad around their historical homeland, exalting in their hearts and minds a sense of pride in the land.",
+      "htext2": "About the foundation and history of Fonding",
+      "p-text2": "Further embed compatriots living abroad around their historical homeland, exalting in their hearts and minds a sense of pride in the land. About the formation and history of Fondnig, further embezzlement of compatriots living abroad around their historical homeland, exaltation of a sense of pride in the land in their hearts and minds, preservation of national identity, support of compatriots and their compatriots and the deputy chairman of the board to further embezzle compatriots living abroad around their historical homeland, exalting a sense of pride in the land in their hearts and minds, , one of the main goals of the Foundation is the effective orientation of the potential of our compatriots operating in various fields to the development of our country. One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, maintain national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country. Sattarov Odiljon Berdimuradovich Tursunov Rovshan Khamidullayevich",
+      "person1-info": "Chairman of the board",
+      "person2-info": "Deputy chairman of the board"
+    },
+    "section3": {
+      "htext1": "Main areas of activity of the foundation",
+      "card1-left": "Establishment and development of cooperation with public associations",
+      "card2-left": "Preservation and development of Uzbek language, culture and traditions",
+      "card3-left": "Expansion of contractual-legal cooperation in the fields of migration and education",
+      "card4-left": "Promotion of the activities of Public Associations organized by compatriots",
+      "card5-left": "Assistance to compatriots in organizing cultural and educational events",
+      "card6-left": "Support our compatriots for scientific, creative research aimed at increasing the prestige of our country",
+      "card1-right": "Assistance in the protection of the rights and freedoms of compatriots assistance in the protection of the rights and freedoms of compatriots",
+      "card2-right": "Wide promotion of the rich scientific, cultural and spiritual heritage of our country",
+      "card3-right": "Assistance in providing social support and legal assistance to compatriots who are in a difficult life situation",
+      "card4-right": "Providing practical assistance in establishing Uzbek national cultural centers abroad",
+      "card5-right": "Support our compatriots to receive education in the direction of Uzbek language in higher educational institutions of the Republic",
+      "card6-right": "Active involvement of compatriots in business, investment, scientific, cultural and educational activities on the territory of Uzbekistan"
+    },
+    "section4": {
+      "htext1": "Foundation structure",
+      "cardntk": "Control-inspection commission",
+      "cardvk": "Board of trustees",
+      "cardfb": "Fund management",
+      "cardy": "Assistant",
+      "cardbr": "Chairman of the board",
+      "carda": "Information",
+      "cardby": "Chief juristconsult",
+      "cardb": "Management",
+      "cardsh": "Strategic analysis",
+      "cardmk": "Press secretary",
+      "cardxb": "With personnel",
+      "cardv": "The compatriots were",
+      "cardv2": "Compatriots",
+      "cardmm": "Cultural-educational",
+      "cardbb": "Chief accountant"
+    },
+    "section5": {
+      "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
+    }
+
   }
 }

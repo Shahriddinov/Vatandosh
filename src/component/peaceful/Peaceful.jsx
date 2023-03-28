@@ -14,12 +14,16 @@ import { useTranslation } from "react-i18next";
 const Peaceful = () => {
     const peacefulData = useSelector((state) => state.peaceful.peacefulData);
     const loading = useSelector((state) => state.peaceful.loading);
+    const error = useSelector((state) => state.peaceful.error);
 
     const lng = useSelector((state) => state.language.language);
     const { t } = useTranslation();
 
     if (loading) {
         return null;
+    }
+    if(error) {
+        return <p>{error}</p>
     }
 
     return (
@@ -103,33 +107,28 @@ const Peaceful = () => {
                                 }}
                                 className="mySwiper"
                             >
-                                {peacefulData.map((el) => (
-                                    <SwiperSlide key={el.id} className="peaceful__slider-item">
-                                        <div
-                                            className="peaceful__slider_card"
-                                            style={{
-                                                backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${el.img})`,
-                                            }}
-                                        >
-                                            <div className="peaceful__card_inner">
-                                                <div className="peaceful__slider_card--body">
-                                                    <a href="/" className="peaceful__slider_card--link">
-                                                        {el.hashTag}
-                                                    </a>
+                                {
+                                    peacefulData.map(el => (
+                                        <SwiperSlide key={el?.id} className='peaceful__slider-item' >
+                                            <div className="peaceful__slider_card" style={{backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${el?.image})`}}>
+                                                <div className="peaceful__card_inner">
+                                                    <div className="peaceful__slider_card--body">
+                                                        <a href="/" className="peaceful__slider_card--link">{el?.hashTag}</a>
 
                                                     <p className="peaceful__slider_card--text">
                                                         {el[`title_${lng}`].slice(0, 60)}...
                                                     </p>
                                                 </div>
 
-                                                <div className="peaceful__slider__card--footer">
-                                                    <img src={calendar} alt="Calendar" />
-                                                    <b>{el?.date}</b>
+                                                    <div className="peaceful__slider__card--footer">
+                                                        <img src={calendar} alt="Calendar" />
+                                                        <b>{el?.date}</b>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </SwiperSlide>
-                                ))}
+                                        </SwiperSlide>
+                                    ))
+                                }
                             </Swiper>
                         </div>
                     </div>

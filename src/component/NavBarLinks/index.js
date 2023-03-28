@@ -47,7 +47,7 @@ export const NavBarLinks = () => {
           url: "/information-service/news",
         },
         { title: t("information_items.item2"), url: "/" },
-        { title: t("information_items.item3"), url: "/" },
+        { title: t("information_items.item3"), url: "/mediateka" },
         { title: t("information_items.item4"), url: "/" },
         { title: t("information_items.item5"), url: "/" },
       ],

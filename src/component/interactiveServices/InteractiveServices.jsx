@@ -17,14 +17,21 @@ const InteractiveServices = () => {
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const data = useSelector(state => state.peaceful.interactiveServices)
+    const error = useSelector(state => state.peaceful.error)
     const lan = useSelector((state) => state.language.language);
+
 
     useEffect(() => {
         dispatch(getInteractiveServices())
     },[])
 
+    if(error) {
+        return <p>{error}</p>
+    }
+
   return (
     <section className='interactive_services'>
+        
         <div className="interactive_services__inner">
             <div className="container">
                 <div className="interactive_services__header">

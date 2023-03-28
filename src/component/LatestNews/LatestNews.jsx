@@ -8,13 +8,14 @@ import { Link, useParams } from "react-router-dom";
 
 export default function LatestNews() {
   const dispatch = useDispatch();
-  const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const newsData = useSelector((state) => state.newsSlice.newsData);
   const lan = useSelector((state) => state.language.language);
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getNews());
   }, []);
+
 
   return (
     <div className="latest_news">
@@ -26,7 +27,7 @@ export default function LatestNews() {
               <Link to={`/news-detail/${el.id}`} className="latest_news-list-item-link">
                 <div className="latest_news-list-item-img">
                   <img
-                    src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.img}`}
+                    src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.image}`}
                     alt=""
                   />
                 </div>

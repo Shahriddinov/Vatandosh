@@ -1,18 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-
+import { useContext, useEffect, useState } from "react";
 
 import Logo from "../../../assets/images/Logos.svg";
 import burger from "../../../assets/images/icons/burger.svg";
-import Logos from "../../../assets/images/LogoWhrite.svg";
 import Phone from "../../../assets/images/phone.svg";
 import Message from "../../../assets/images/Message.svg";
-import Flag from "../../../assets/images/Flag.png";
-import Blazon from "../../../assets/images/blazon.png";
-import Music from "../../../assets/images/Music.png";
+import Flag from "../../../assets/images/Flag.svg";
+import Blazon from "../../../assets/images/blazon.svg";
+import Music from "../../../assets/images/Music.svg";
 import Search from "../../../assets/images/search.png";
 import Eye from "../../../assets/images/EyeGlass.png";
-import EyeWhrite from "../../../assets/images/EyeWhrite.png";
-import Globe from "../../../assets/images/Globe.png";
 import { CgClose } from "react-icons/cg";
 import { motion } from "framer-motion";
 import Menus from "./component/Menus/Menus";
@@ -37,6 +33,9 @@ const Header = () => {
         i18next.changeLanguage(lng);
         dispatch(languageChange(lng));
     };
+    const contactData = useSelector(
+        (state) => state.contactSlice.contactData.data
+    );
 
     useEffect(() => {
         if (activeSidebar) document.body.style.overflow = "hidden";
@@ -51,37 +50,43 @@ const Header = () => {
                         <img src={Logo}
                             alt="logo" />
                     </Link>
-                    <div className="header_navbar_phone">
+                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
                         <img src={Phone} alt="phone" />
                         <div
-                            className="header_navbar_phone_number">+998(55)502-22-99
+                            className="header_navbar_phone_number">
+                            +998(55)502-22-99
                         </div>
-                    </div>
-                    <div className="header_navbar_phone">
+                    </a>
+                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
                         <img src={Message} alt="message" />
                         <div className="header_navbar_phone_number">
                             info@vatandoshlarfondi.uz
                         </div>
-                    </div>
-
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Flag}
-                        className="header_navbar_flags"
-                        alt="flag"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Blazon}
-                        className="header_navbar_flags"
-                        alt="blazon"
-                    />
-                    <motion.img
-                        whileTap={{ scale: 0.6 }}
-                        src={Music}
-                        className="header_navbar_flags"
-                        alt="music"
-                    />
+                    </a>
+                    <a href="/flag">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Flag}
+                            className="header_navbar_flags"
+                            alt="flag"
+                        />
+                    </a>
+                    <a href="/coat">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Blazon}
+                            className="header_navbar_flags"
+                            alt="blazon"
+                        />
+                    </a>
+                    <a href="/anthem">
+                        <motion.img
+                            whileTap={{ scale: 0.6 }}
+                            src={Music}
+                            className="header_navbar_flags"
+                            alt="music"
+                        />
+                    </a>
                     <label className="header_navbar_search">
                         <input
                             type="text"
@@ -102,7 +107,8 @@ const Header = () => {
                     <div className="header_navbar_language">
                         <div className="header_navbar_language-wrapper" onClick={() => setactiveLang((el) => !el)}>
                             <CiGlobe className="header_navbar_language-icon" />
-                            <span style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
+                            <span
+                                style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
                             <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
                         </div>
                         <div className="header_navbar_language-bar" style={activeLang ? { display: "flex" } : null}>
