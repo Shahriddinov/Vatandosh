@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
 import { MdArrowRight } from "react-icons/md";
 import "./Contact.scss";
-import flag from '../../assets/images/icons/uzbek-flag.svg';
 import { SiMetrodeparis } from 'react-icons/si';
 import { BiWalk } from 'react-icons/bi';
 import { RiCloseFill } from 'react-icons/ri';

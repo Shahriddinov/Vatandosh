@@ -109,7 +109,6 @@ const Menus = () => {
                     >
                         {
                             navLinks[0].links?.map((el, index) => {
-                                console.log(el)
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
                                     <div className="navMenuInnerWrapper">
                                         <img src={el.icon} alt="icons" />
@@ -146,10 +145,10 @@ const Menus = () => {
                         {
                             navLinks[1].links?.map((el, index) => {
                                 return <MenuItem onClick={handleCloseAbout} key={index}>
-                                <div className="navMenuInnerWrapper">
-                                    <img src={el.icon} alt="icons" />
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
-                                </div>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -184,7 +183,7 @@ const Menus = () => {
                                     <div className="navMenuInnerWrapper">
                                         <img src={el.icon} alt="icons" />
                                         <Link to={el.url} className="menus_links">{el.title}</Link>
-                                    </div>    
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -226,7 +225,7 @@ const Menus = () => {
                                     <div className="navMenuInnerWrapper">
                                         <img src={el.icon} alt="icons" />
                                         <Link to={el.url} className="menus_links">{el.title}</Link>
-                                    </div>    
+                                    </div>
                                 </MenuItem>
                             })
                         }
