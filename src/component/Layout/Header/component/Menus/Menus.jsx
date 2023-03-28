@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { NavBarLinks } from "../../../../NavBarLinks";
 
 
+
 const Menus = () => {
     const navLinks = NavBarLinks();
 
@@ -35,6 +36,8 @@ const Menus = () => {
     const handleClickAbout = (event) => {
         setAbout(event.currentTarget);
     };
+
+
     const handleCloseAbout = () => {
         setAbout(null);
     };
@@ -62,6 +65,8 @@ const Menus = () => {
     };
 
 
+
+
     useEffect(() => {
         scrollRef.current = document.querySelector(".navbar").offsetTop + 18;
     }, []);
@@ -87,7 +92,7 @@ const Menus = () => {
                         aria-controls={openAbout ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openAbout ? 'true' : undefined}
-                        onClick={handleClickAbout}
+                        onMouseOver={handleClickAbout}
                         className="menus_link"
                     >
                         {navLinks[0].title}
@@ -99,12 +104,17 @@ const Menus = () => {
                         onClose={handleCloseAbout}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseAbout
                         }}
                     >
                         {
                             navLinks[0].links?.map((el, index) => {
+                                console.log(el)
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -118,7 +128,7 @@ const Menus = () => {
                         aria-controls={openCitizin ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openCitizin ? 'true' : undefined}
-                        onClick={handleClickCitizin}
+                        onMouseOver={handleClickCitizin}
                         className="menus_link"
                     >
                         {navLinks[1].title}
@@ -130,12 +140,16 @@ const Menus = () => {
                         onClose={handleCloseCitizin}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseCitizin
                         }}
                     >
                         {
                             navLinks[1].links?.map((el, index) => {
                                 return <MenuItem onClick={handleCloseAbout} key={index}>
+                                <div className="navMenuInnerWrapper">
+                                    <img src={el.icon} alt="icons" />
                                     <Link to={el.url} className="menus_links">{el.title}</Link>
+                                </div>
                                 </MenuItem>
                             })
                         }
@@ -149,7 +163,7 @@ const Menus = () => {
                         aria-controls={openProject ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openProject ? 'true' : undefined}
-                        onClick={handleClickProject}
+                        onMouseOver={handleClickProject}
                         className="menus_link"
                     >
                         {navLinks[2].title}
@@ -161,12 +175,16 @@ const Menus = () => {
                         onClose={handleCloseProject}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseProject
                         }}
                     >
                         {
                             navLinks[2].links?.map((el, index) => {
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>    
                                 </MenuItem>
                             })
                         }
@@ -185,7 +203,7 @@ const Menus = () => {
                         aria-controls={openInformation ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openInformation ? 'true' : undefined}
-                        onClick={handleClickInformation}
+                        onMouseOver={handleClickInformation}
                         className="menus_link"
                     >
                         <Link to="" className="menus_link">
@@ -200,11 +218,15 @@ const Menus = () => {
                         onClose={handleCloseInformation}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseInformation,
                         }}
                     > {
                             navLinks[4].links?.map((el, index) => {
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>    
                                 </MenuItem>
                             })
                         }

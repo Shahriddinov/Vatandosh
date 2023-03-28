@@ -40,6 +40,12 @@
   "footerSelections": "Tanlovlar",
   "footerService": "Axborot xizmati",
   "footerContact": "Bog‘lanish",
+  "footerFamily": "“Kun oilasi” rukni",
+  "footerSport": "“Sportchi vatandsohlar” rukni",
+  "footerYoung": "“Yosh vatandoshlar” rukni",
+  "footerPrecious": "“Sara durdona” rukni",
+  "footerOverseaDish": "“Xorijdagi milliy oshxona” rukni",
+  "footerOverseaOrganization": "“Xorijdagi vatandosh tashkilot” rukni",
   "footerOurContacts": "Bizning kontaktlarimiz",
   "uzLearning": "O’zbek tilini onlayn o’rganish",
   "applyUniversity": "O’zbek OTMlariga hujjat topshirish",
@@ -57,7 +63,9 @@
   "modalText3" : "Tadbirlar",
   "about_items": {
     "item1": "Biz haqimizda",
-    "item2": "Vasiylik kengashi"
+    "item2": "Vasiylik kengashi",
+    "item3": "Rahbariyat",
+    "item4": "Fondning asosiy yo'nalishlari"
   },
   "citizin_items": {
     "item1": "Jamoat birlashmalar",

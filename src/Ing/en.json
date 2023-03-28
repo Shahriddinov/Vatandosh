@@ -40,6 +40,12 @@
   "footerSelections": "Selections",
   "footerService": "Information Service",
   "footerContact": "Contact",
+  "footerFamily": "“Family of the day” rukni",
+  "footerSport": "“Sports compatriots” rukni",
+  "footerYoung": "“Young compatriots” rukni",
+  "footerPrecious": "“Sara durdona” rukni",
+  "footerOverseaDish": "“National cuisine abroad” rukni",
+  "footerOverseaOrganization": "“Overseas compatriot organization” rukni",
   "footerOurContacts": "Our contacts",
   "uzLearning": "Learning uzbek online",
   "applyUniversity": "Submission of documents to uzbek universities",
@@ -57,7 +63,9 @@
   "modalText3" : "Events",
   "about_items": {
     "item1": "About us",
-    "item2": "Board of trustees"
+    "item2": "Board of trustees",
+    "item3": "Managment",
+    "item4": "The main directions of the foundation"
   },
   "citizin_items": {
     "item1": "Public associations",
