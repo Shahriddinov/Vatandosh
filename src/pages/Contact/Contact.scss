@@ -88,14 +88,39 @@
       }
 
       &-numberInput {
-        padding: 0 16px;
-        height: 48px;
         display: flex;
         align-items: center;
+        padding: 0 16px;
+        height: 48px;
         border-radius: 15px;
         border: 1px solid #EAEDF6;
 
+        &>div {
+          width: 40px;
+          height: 40px;
+
+          &>select {
+            display: none;
+          }
+
+          .PhoneInputCountryIcon {
+            display: flex;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+
+            &>svg,
+            img {
+              width: 28px;
+              height: 28px;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+          }
+        }
+
         &>input {
+          width: 100%;
           border: none;
           border-radius: 0;
         }
