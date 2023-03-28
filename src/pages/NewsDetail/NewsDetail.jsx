@@ -136,7 +136,9 @@ export default function NewsDetail() {
               </div>
 
               <div className="newsdetail-main-news-tags">
-                <LatestNews />
+                <div className="newsdetail-main-news">
+                  <LatestNews />
+                </div>
                 <div className="newsdetail-desktop-tags">
                   <PopularTags />
                 </div>

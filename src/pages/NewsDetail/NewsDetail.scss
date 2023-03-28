@@ -124,7 +124,7 @@
 
           &>span {
             padding: 8px 16px;
-            @include fontStyles(400, 16px, 19px, $colorTitle);
+            @include fontStyles(400, 16px, 19px, $colorTitle !important);
             background: #E3F0FF;
             border-radius: 5px;
             cursor: pointer;
@@ -143,6 +143,7 @@
         }
 
         &-list {
+          margin-top: 15px;
           max-width: 100%;
           height: 140px;
           display: flex;
@@ -211,7 +212,6 @@
   }
 }
 
-
 @media only screen and (max-width: 800px) {
   .newsdetail {
 
@@ -260,6 +260,125 @@
 
       &-news-tags {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .newsdetail {
+    .container {
+      padding: 0;
+    }
+
+    &-desktop-tags {
+      display: block;
+    }
+
+    &-tablet-tags {
+      display: none;
+
+    }
+
+    &-title {
+      padding: 0 20px;
+
+      &-text {
+        @include fontStyles(700, 24px, 29px, #062A49);
+      }
+
+      &-url {
+
+        &>a,
+        span {
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+    }
+
+    &-main {
+      gap: 30px;
+      flex-direction: column;
+
+      &-desc {
+        &>div:not(:first-child) {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        &-img {
+          height: 240px;
+
+          &>img {
+            border-radius: 0;
+          }
+        }
+
+        &-action {
+          padding: 15px 0;
+
+          & span {
+            @include fontStyles(400, 14px, 17px, $colorGrey);
+
+          }
+
+          &-tags {
+            gap: 15px;
+            width: 100%;
+            flex-wrap: nowrap;
+            overflow-x: scroll;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar {
+              display: none;
+            }
+
+            &>span {
+              white-space: nowrap;
+              word-break: keep-all;
+              padding: 6px 12px;
+              color: $colorTitle;
+            }
+          }
+        }
+
+        &-gallery {
+          padding: 20px 0 0 !important;
+
+          &-mainImg {
+            height: 240px;
+            border-radius: 0;
+          }
+
+          &-list {
+            padding-left: 20px;
+            height: 90px;
+            gap: 15px;
+
+            &-item {
+              width: 90px;
+            }
+          }
+        }
+
+        &-share {
+          margin: 0;
+          border: none;
+
+          &-list {
+            flex-wrap: wrap;
+          }
+        }
+      }
+
+      &-news-tags {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      &-news {
+        display: none;
       }
     }
   }
