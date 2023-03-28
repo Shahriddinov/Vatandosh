@@ -38,6 +38,14 @@
     margin-top: 3%;
   }
   @media only screen and (max-width: 1000px){
-    display: none;
+    overflow-y: scroll;
+    &_control{
+      width: 100%;
+      &_all{
+        width: 100%;
+        padding: 25px 30px;
+      }
+    }
+
   }
 }

@@ -31,11 +31,15 @@ const NotFound = lazy(() => import("./pages/404"));
 const Flags = lazy(()=> import("./pages/Symbols/Flag"))
 const Anthem = lazy(()=> import("./pages/Symbols/Anthem"))
 const Coat = lazy(()=> import("./pages/Symbols/Coat"))
-const Direction = lazy(()=> import("./pages/About/component/BasicDirection"))
+const Direction = lazy(()=> import("./pages/About/component/Direction/BasicDirection"));
+const Management = lazy(()=> import("./pages/About/component/Management/Management"))
+
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
+  { path: "/about/management", element: Management },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
   { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },

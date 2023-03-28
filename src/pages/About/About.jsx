@@ -24,6 +24,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
 import {getSlider} from "../../reduxToolkit/sliderSlice/extraReducer";
 import Spinner from "../../component/Spinner";
+import {baseServerUrl} from "../../services/api/utils";
 
 const About = () => {
     const state = useLocation()
@@ -38,7 +39,6 @@ const About = () => {
         description: `${t("aboutPage.section1.ptext")}`,
         pagePath: `${t("aboutPage.section1.foottext2")}`,
     }
-
 
 
     const swiperParams = {
@@ -65,7 +65,7 @@ const About = () => {
         dispatch(getSlider());
     }, []);
 
-    if(loading) {
+    if (loading) {
         return <Spinner/>
     }
 
@@ -77,7 +77,8 @@ const About = () => {
             </div>
             <div className="about_card container">
                 <div className="about_card_left">
-                    <img className="about_card_left_img" src={CardImg} alt="cardImg"/>
+                    <div className="about_card_left_much">
+                        <img className="about_card_left_much_img" src={CardImg} alt="cardImg"/></div>
                 </div>
                 <div className="about_card_right">
                     <div className="about_card_right_text">{t("aboutPage.section2.htext1")}</div>
@@ -93,34 +94,14 @@ const About = () => {
 
                 </div>
 
-                <div className="about_card_left">
-                    <div className="about_card_left_boss">
-                        <img className="sub" src={Rais} alt="Rais"/>
-                        <div className="about_card_left_boss_level">{t("aboutPage.section2.person1-info")}</div>
-                        <div className="about_card_left_boss_name">Sattarov Odiljon Berdimuradovich</div>
-                    </div>
-                    <div className="about_card_left_substitute">
-                        <img className="sub" src={Urinbosar} alt=""/>
-                        <div className="about_card_left_boss_level">{t("aboutPage.section2.person2-info")}</div>
-                        <div className="about_card_left_boss_name">Tursunov Rovshan Xamidullayevich</div>
-                    </div>
 
-                </div>
-                <div className="about_card_right">
-                    <div className="about_card_right_text tops">{t("aboutPage.section2.htext2")}</div>
-                    <div className="about_card_right_title toptext">
-                        {t("aboutPage.section2.p-text2")}
-                    </div>
-
-
-                </div>
             </div>
             <div className="about_videos">
                 <div>
 
                     <video autoPlay muted loop className="about_videos_links">
                         <source
-                            src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                            src={`${baseServerUrl}/${
                                 JSON.parse(sliderData?.[1]?.video)[0].download_link
                             }`}
                         />
