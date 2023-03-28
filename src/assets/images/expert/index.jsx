@@ -3,3 +3,13 @@ export {default as PhoneIcon} from './phone.svg'
 export {default as EmailIcon } from './email.svg'
 export {default as GlobeIcon} from './globe.svg'
 export {default as ExitIcon} from './exit.svg'
+export {default as BgExpert} from './bgexpert.png';
+export {default as Person} from './person.png'
+export {default as PersonOne} from './person1.png'
+export {default as PersonTwo} from './person2.png'
+export {default as PersonThree} from './person3.png'
+export {default as PersonFour} from './person4.png';
+export {default as ExcludeIcon} from './exclude.svg'
+export {default as CouncilImage} from './council.png'
+export {default as Globe} from './globes.svg'
+export {default as UserIcon} from './user.svg'

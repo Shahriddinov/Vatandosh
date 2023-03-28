@@ -1,0 +1,17 @@
+.nav {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  li {
+    margin: 0 25px;
+  }
+}
