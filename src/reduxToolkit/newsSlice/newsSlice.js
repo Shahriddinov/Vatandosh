@@ -23,7 +23,7 @@ const newsSlice = createSlice({
       .addCase(getNews.fulfilled, (state, action) => {
         state.loadingNews = false;
         state.newsData = action.payload;
-        console.log(action.payload);
+        console.log(action);
       })
       .addCase(getNews.rejected, (state, action) => {
         state.loadingNews = false;
@@ -34,7 +34,7 @@ const newsSlice = createSlice({
     builder
       .addCase(getOneNews.pending, (state) => {
         state.loadingOneNews = true;
-        state.error = null
+        state.error = null;
       })
       .addCase(getOneNews.fulfilled, (state, action) => {
         state.loadingOneNews = false;
