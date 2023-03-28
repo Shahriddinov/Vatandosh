@@ -10,6 +10,7 @@ function Coat(props) {
             <Header/>
             <div className="symbol container">
                 <img src={Coats} alt=""/>
+                <div className="symbol_coat">O‘zbekiston Respublikasi Davlat gerbi </div>
                 <div className="symbol_title">
                     "O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida"gi Qonun 1992 yil 2 iyulda O‘zbekiston
                     Respublikasi Oliy Kengashining X sessiyasida qabul qilingan.

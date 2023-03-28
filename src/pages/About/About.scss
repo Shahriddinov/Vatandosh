@@ -11,6 +11,14 @@
       width: 50%;
       display: flex;
       //align-items: center;
+      &_much {
+        width: 90%;
+
+        &_img {
+          width: 100%;
+        }
+      }
+
       &_boss {
 
         &_level {
@@ -174,9 +182,13 @@
         display: flex;
         justify-content: space-between;
 
-        &_img {
-          width: 1000%;
+        &_much {
+          width: 100%;
+          &_img {
+            width: 100%;
+          }
         }
+
 
         &_boss {
           width: 45%;
@@ -209,8 +221,8 @@
       }
     }
 
-    >&_direction {
-      
+    > &_direction {
+
       .cards {
         display: flex;
         flex-direction: column;
