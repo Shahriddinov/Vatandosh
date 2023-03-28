@@ -27,12 +27,13 @@ import "../About.scss"
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 import CouncilHero from "../../boardTrustees/components/council-hero/CouncilHero";
 import {useTranslation} from "react-i18next";
+
 function BasicDirection(props) {
     const {t} = useTranslation();
     const heroData = {
-        title: `${t("aboutPage.section1.htext")}`,
-        description: `${t("aboutPage.section1.ptext")}`,
-        pagePath: `${t("aboutPage.section1.foottext2")}`,
+        title: `Fond faoliyatining asosiy yo‘nalishlari`,
+        description: `Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.`,
+        pagePath: `Yo'nalishlar`,
     }
     const Ditrections = [
         {
@@ -106,7 +107,7 @@ function BasicDirection(props) {
                 <CouncilHero  {...heroData}/>
             </div>
 
-            <div className="about_direction_cards">
+            <div className="about_direction_cards container">
                 {Ditrections.map((item, index) => (
 
                     <div key={index} className="about_direction_cards_boxs">

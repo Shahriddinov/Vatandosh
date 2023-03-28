@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import "./About.scss";
 import CardImg from "../../assets/images/about-Card.svg"
@@ -6,31 +6,7 @@ import Rais from "../../assets/images/Rais.svg"
 import Urinbosar from "../../assets/images/Substitute.jpg"
 import Video from "../../assets/images/slider/slider_video.mp4"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
-import Partner from "../../assets/images/partner.svg"
-import Partners from "../../assets/images/partnerWhite.svg"
-import Law from "../../assets/images/huquq.svg"
-import Laws from "../../assets/images/huquqWhite.svg"
-import Til from "../../assets/images/til.svg"
-import Language from "../../assets/images/language.svg"
-import Book from "../../assets/images/book.svg"
-import BookWhite from "../../assets/images/bookWhite.svg"
-import Student from "../../assets/images/student.svg"
-import Students from "../../assets/images/studentWhite.svg"
-import Child from "../../assets/images/childs.svg"
-import Childs from "../../assets/images/childsWhite.svg"
-import Home from "../../assets/images/home/Home.svg"
-import Homes from "../../assets/images/home/HomeWhite.svg"
-import Togather from "../../assets/images/home/Togather.svg"
-import Togathers from "../../assets/images/home/TogetherWhite.svg"
-import StarBag from "../../assets/images/home/starBag.svg"
-import StarBags from "../../assets/images/home/starBagWhite.svg"
-import Latter from "../../assets/images/home/latter.svg"
-import Latters from "../../assets/images/home/latterWhite.svg"
-import ThreeStar from "../../assets/images/home/threeStar.svg"
-import ThreeStars from "../../assets/images/home/threeStarWhite.svg"
-import Char from "../../assets/images/home/Char.svg"
-import Chars from "../../assets/images/home/CharWhite.svg"
-import SliderVideo from "../../assets/images/slider/slider_video.mp4";
+
 import Table from "./component/Table/Table";
 import {Navigation, Pagination, Scrollbar, A11y} from 'swiper';
 
@@ -45,17 +21,27 @@ import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import Gallery2 from "../../assets/images/projects/gallery2.png";
 import Gallery3 from "../../assets/images/projects/gallery3.png";
 import Gallery4 from "../../assets/images/projects/gallery4.png";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
+import {getSlider} from "../../reduxToolkit/sliderSlice/extraReducer";
+import Spinner from "../../component/Spinner";
 
 const About = () => {
     const state = useLocation()
-    console.log(state);
+    const dispatch = useDispatch();
+
+    const sliderData = useSelector((state) => state.sliderSlice.sliderData);
+    const loading = useSelector((state) => state.sliderSlice.loading);
+
     const {t} = useTranslation();
     const heroData = {
         title: `${t("aboutPage.section1.htext")}`,
         description: `${t("aboutPage.section1.ptext")}`,
         pagePath: `${t("aboutPage.section1.foottext2")}`,
     }
+
+
+
     const swiperParams = {
         breakpoints: {
             360: {
@@ -76,71 +62,14 @@ const About = () => {
             },
         },
     }
-    const Ditrections = [
-        {
-            imgs: Partner,
-            title: `${t("aboutPage.section3.card1-left")}`,
-            backgroundImg: Partners
-        },
-        {
-            imgs: Law,
-            title: `${t("aboutPage.section3.card1-right")}`,
-            backgroundImg: Laws
-        },
-        {
-            imgs: Til,
-            title: `${t("aboutPage.section3.card2-left")}`,
-            backgroundImg: Language
-        },
-        {
-            imgs: Book,
-            title: `${t("aboutPage.section3.card2-right")}`,
-            backgroundImg: BookWhite
-        },
-        {
-            imgs: Student,
-            title: `${t("aboutPage.section3.card3-left")}`,
-            backgroundImg: Students
-        },
-        {
-            imgs: Child,
-            title: `${t("aboutPage.section3.card3-right")}`,
-            backgroundImg: Childs
-        } ,
-        {
-            imgs: Home,
-            title: `${t("aboutPage.section3.card4-left")}`,
-            backgroundImg: Homes
-        },
+    useEffect(() => {
+        dispatch(getSlider());
+    }, []);
 
-        {
-            imgs: Togather,
-            title:  `${t("aboutPage.section3.card4-right")}`,
-            backgroundImg: Togathers
-        },
-        {
-            imgs: StarBag,
-            title: `${t("aboutPage.section3.card5-left")}`,
-            backgroundImg: StarBags
-        },
-        {
-            imgs: Latter,
-            title: `${t("aboutPage.section3.card5-right")}`,
-            backgroundImg: Latters
-        },
-        {
-            imgs: ThreeStar,
-            title: `${t("aboutPage.section3.card6-left")}`,
-            backgroundImg: ThreeStars
-        },
-        {
-            imgs: Char,
-            title: `${t("aboutPage.section3.card6-right")}`,
-            backgroundImg: Chars
-        },
+    if(loading) {
+        return <Spinner/>
+    }
 
-
-    ]
     return (
         <div className="about ">
             <div className="page-about">
@@ -154,7 +83,7 @@ const About = () => {
                 <div className="about_card_right">
                     <div className="about_card_right_text">{t("aboutPage.section2.htext1")}</div>
                     <div className="about_card_right_title">
-                    {t("aboutPage.section2.ptext1-1")}
+                        {t("aboutPage.section2.ptext1-1")}
                     </div>
                     <div className="about_card_right_text">105 <span
                         className="about_card_right_text_info">{t("aboutPage.section2.ptext1-2")}</span> 2.4 mln <span
@@ -188,35 +117,53 @@ const About = () => {
                 </div>
             </div>
             <div className="about_videos">
-                <video autoPlay muted loop className="about_videos_links">
-                    <source src={Video}/>
-                </video>
+                <div>
+
+                    <video autoPlay muted loop className="about_videos_links">
+                        <source
+                            src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                                JSON.parse(sliderData?.[1]?.video)[0].download_link
+                            }`}
+                        />
+                    </video>
+                </div>
             </div>
             <div className="about_direction container">
                 <div className="about_direction_fon">
-                    {t("aboutPage.section3.htext1")}
+                    Fondnig tashkil topishi hamda tarixi haqida
                 </div>
                 <div className="about_direction_cards">
-                    {Ditrections.map((item, index)=>(
-
-                        <div key={index} className="about_direction_cards_boxs" >
-
-                            <img src={item.imgs} alt="partner"/>
-                            <div className="about_direction_cards_boxs_describtion">{item.title}</div>
-                            <img className="about_direction_cards_boxs_img" src={item.backgroundImg} alt=""/>
-                        </div>
-                    ))}
-
+                    <p className="about_direction_cards_information">
+                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
+                        ularning
+                        qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,
+                        vatandoshlar va ular tomonidan <br/>
+                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
+                        ularning
+                        qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,
+                        vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli
+                        sohalarda
+                        faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali
+                        yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat qilayotgan
+                        vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt
+                        bilan
+                        faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular
+                        tomonidan
+                        tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan
+                        vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning
+                        asosiy
+                        maqsadlaridan biri hisoblanadi.
+                    </p>
 
                 </div>
             </div>
             <div className="">
                 <div className="page-about increase ">
 
-                  <div className="container">
-                      <div className="about_fon">{t("aboutPage.section4.htext1")}</div>
-                      <Table/>
-                  </div>
+                    <div className="container">
+                        <div className="about_fon">{t("aboutPage.section4.htext1")}</div>
+                        <Table/>
+                    </div>
 
                 </div>
                 <div className="about_fatherland container">

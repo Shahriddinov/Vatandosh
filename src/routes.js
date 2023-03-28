@@ -35,7 +35,7 @@ const Direction = lazy(()=> import("./pages/About/component/BasicDirection"))
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
-  { path: "/about/Direction", element: Direction },
+  { path: "/about/direction", element: Direction },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
   { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
