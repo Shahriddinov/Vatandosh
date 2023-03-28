@@ -7,6 +7,7 @@ import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import "./Hero.scss";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { baseServerUrl } from "../../services/api/utils";
 
 const Hero = () => {
   const dispatch = useDispatch();
@@ -52,11 +53,10 @@ const Hero = () => {
   if (loading) {
     return null;
   }
-  
-  if(error) {
-    return <p className="">{error}</p>
-  }
 
+  if (error) {
+    return <p className="">{error}</p>;
+  }
 
   return (
     <section className="hero">
@@ -73,14 +73,14 @@ const Hero = () => {
                 <div
                   className={`hero__slider-item`}
                   style={{
-                    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${slider?.img})`,
+                    backgroundImage: `url(${baseServerUrl}/${slider?.img})`,
                   }}
                 ></div>
               ) : (
                 <div className={`hero__slider-video`}>
                   <video autoPlay muted loop>
                     <source
-                      src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                      src={`${baseServerUrl}/${
                         JSON.parse(slider?.video)[
                           JSON.parse(slider?.video).length - 1
                         ]?.download_link

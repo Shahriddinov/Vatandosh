@@ -6,6 +6,7 @@ import "./card.scss";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
+import { baseServerUrl } from "../../services/api/utils";
 
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
@@ -16,7 +17,7 @@ const Card = (props) => {
     <div className="single-card">
       <div className="img-container">
         <img
-          src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.image}`}
+          src={`${baseServerUrl}/${props.image}`}
           alt={props[`title_${lan}`]}
         />
       </div>
