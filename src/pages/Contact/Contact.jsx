@@ -9,6 +9,7 @@ import { RiCloseFill } from 'react-icons/ri';
 import { useDispatch, useSelector } from "react-redux";
 import { getContact, sendContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import { useEffect, useRef, useState } from "react";
+import PhoneInput from 'react-phone-number-input'
 
 export default function Contact() {
   const lan = useSelector((state) => state.language.language);
@@ -52,10 +53,10 @@ export default function Contact() {
                 <h2 className="contact-action-title">Форма заявки для связи с нами</h2>
                 <form className="contact-action-form" ref={formRef} onSubmit={handleSumbit}>
                   <input className="contact-action-form-nameInput" type="text" placeholder="Ваше имя" minLength={3} maxLength={50} required onChange={(e) => setDataContact((prev) => ({ ...prev, name: e.target.value }))} />
-                  <label htmlFor="" className="contact-action-form-numberInput">
-                    <img src={flag} alt="" />
-                    <input type="tel" placeholder="+998" required pattern="^[0-9\-\+]{9,15}$" onChange={(e) => setDataContact((prev) => ({ ...prev, phone: e.target.value }))} />
-                  </label>
+                  <PhoneInput className="contact-action-form-numberInput"
+                    placeholder="Enter phone number"
+                    value={dataContact.phone}
+                    onChange={(e) => setDataContact((prev) => ({ ...prev, phone: e?.value }))} />
                   <textarea name="" id="" className="contact-action-form-areaInput" required placeholder="Qoshimcha ma’lumot" onChange={(e) => setDataContact((prev) => ({ ...prev, text: e.target.value }))}></textarea>
                   <div className="contact-action-form-btn-wrapper">
                     <button className="contact-action-form-btn" type="submit">Отправить</button>
