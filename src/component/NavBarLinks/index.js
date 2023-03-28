@@ -30,9 +30,9 @@ export const NavBarLinks = () => {
       title: t("about"),
       links: [
         { title: t("about_items.item1"), url: "/about", icon:aboutUsIcon },
-        { title: t("about_items.item3"), url: "/", icon:managementIcon },
+        { title: t("about_items.item3"), url: "/about/management", icon:managementIcon },
         { title: t("about_items.item2"), url: "/about/council-trustees", icon:botIcon },
-        { title: t("about_items.item4"), url: "/about/council-trustees", icon:mainRoutesIcon },
+        { title: t("about_items.item4"), url: "/about/direction", icon:mainRoutesIcon },
       ],
     },
     {
