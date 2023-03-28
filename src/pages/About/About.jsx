@@ -4,7 +4,6 @@ import "./About.scss";
 import CardImg from "../../assets/images/about-Card.svg"
 import Rais from "../../assets/images/Rais.svg"
 import Urinbosar from "../../assets/images/Substitute.jpg"
-import Video from "../../assets/images/slider/slider_video.mp4"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
 
 import Table from "./component/Table/Table";
