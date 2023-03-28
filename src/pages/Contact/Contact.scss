@@ -88,9 +88,9 @@
       }
 
       &-numberInput {
+        padding: 0 16px;
         display: flex;
         align-items: center;
-        padding: 0 16px;
         height: 48px;
         border-radius: 15px;
         border: 1px solid #EAEDF6;
@@ -120,6 +120,7 @@
         }
 
         &>input {
+          height: 100%;
           width: 100%;
           border: none;
           border-radius: 0;
