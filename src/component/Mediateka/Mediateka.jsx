@@ -11,6 +11,8 @@ import {
   getVideos,
   getVideosMenus,
 } from "../../reduxToolkit/mediatekaSlice/extraReducer";
+import Spinner from "../Spinner/Spinner";
+import { baseServerUrl } from "../../services/api/utils";
 
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -32,6 +34,7 @@ const Mediateka = () => {
   const imageMenusData = useSelector(
     (state) => state.mediatekaSlice.imageMenusData
   );
+  const loading = useSelector((state) => state.mediatekaSlice.loading);
 
   const handleChange = (event) => {
     setCategoryId(event.target.value);
@@ -43,6 +46,10 @@ const Mediateka = () => {
     dispatch(getImages());
     dispatch(getImagesMenus());
   }, []);
+
+  if (loading) {
+    <Spinner />;
+  }
 
   return (
     <div className="mediateka">
@@ -145,7 +152,7 @@ const Mediateka = () => {
                 <div key={video.id} className="mediateka__video-card">
                   <div className="mediateka__video-container">
                     <iframe
-                      src={`https://www.youtube.com/embed/${video.video_url}`}
+                      src={`https://www.youtube.com/embed/${video.video_url}?showinfo=0`}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -170,7 +177,7 @@ const Mediateka = () => {
                 <div key={image.id} className="mediateka__image-card">
                   <div className="mediateka__image-container">
                     <img
-                      src={`https://vatanparvarbackend.napaautomotive.uz/storage/${image.image}`}
+                      src={`${baseServerUrl}/${image.image}`}
                       alt="mediatake"
                     />
                   </div>
@@ -179,7 +186,7 @@ const Mediateka = () => {
                 <div key={image.id} className="mediateka__image-card">
                   <div className="mediateka__image-container">
                     <img
-                      src={`https://vatanparvarbackend.napaautomotive.uz/storage/${image.image}`}
+                      src={`${baseServerUrl}/${image.image}`}
                       alt="mediatake"
                     />
                   </div>

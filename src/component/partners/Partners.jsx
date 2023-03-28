@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
 import { getPartners } from "../../reduxToolkit/partnersSlice/extraReducer";
@@ -10,18 +10,19 @@ import "slick-carousel/slick/slick-theme.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { baseServerUrl } from "../../services/api/utils";
 
 const Partners = () => {
   const sliderRef = useRef();
   const sliderRef2 = useRef();
-  const [activeslider, setActiveSlader] = useState({ nav1: null, nav2: null, })
+  const [activeslider, setActiveSlader] = useState({ nav1: null, nav2: null });
 
   const dispatch = useDispatch();
   const partnersData = useSelector((state) => state.partnersSlice.partnersData);
   const error = useSelector((state) => state.partnersSlice.error);
 
-  const lng = useSelector(state => state.language.language)
-  const {t} = useTranslation()
+  const lng = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
 
   const handleNext = () => {
     sliderRef.current.slickNext();
@@ -45,8 +46,8 @@ const Partners = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     pauseOnHover: true,
-    swipeToSlide:true,
-    focusOnSelect:true,
+    swipeToSlide: true,
+    focusOnSelect: true,
     autoplay: true,
     autoplaySpeed: 5000,
     cssEase: "linear",
@@ -55,39 +56,39 @@ const Partners = () => {
         breakpoint: 1200,
         settings: {
           slidesToShow: 4,
-        }
+        },
       },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 
   useEffect(() => {
     dispatch(getPartners());
-    setActiveSlader(prev => ({
-      nav1: sliderRef.current, 
-      nav2: sliderRef2.current
-    }))
+    setActiveSlader((prev) => ({
+      nav1: sliderRef.current,
+      nav2: sliderRef2.current,
+    }));
   }, []);
 
-  if(error) {
-    return <p>{error}</p>
+  if (error) {
+    return <p>{error}</p>;
   }
 
   return (
@@ -108,20 +109,26 @@ const Partners = () => {
           </div>
         </div>
 
-        <Slider 
+        <Slider
           asNavFor={activeslider.nav2}
-          ref={slider =>  (sliderRef.current = slider)} 
+          ref={(slider) => (sliderRef.current = slider)}
           {...settings}
         >
           {partnersData?.map((partner) => (
             <div className="content" key={partner.id}>
               <div className="text">
-                <h3 className="content_title" dangerouslySetInnerHTML={{ __html: partner[`title_${lng}`] }} />
-                <p className="content_text" dangerouslySetInnerHTML={{ __html: partner[`text_${lng}`] }} />
+                <h3
+                  className="content_title"
+                  dangerouslySetInnerHTML={{ __html: partner[`title_${lng}`] }}
+                />
+                <p
+                  className="content_text"
+                  dangerouslySetInnerHTML={{ __html: partner[`text_${lng}`] }}
+                />
               </div>
               <div className="image">
                 <img
-                  src={`https://vatanparvarbackend.napaautomotive.uz/storage/${partner.img}`}
+                  src={`${baseServerUrl}/${partner.img}`}
                   alt={partner.title_uz}
                 />
               </div>
@@ -131,18 +138,20 @@ const Partners = () => {
         <div className="horizontal__line" />
 
         <div className="partners">
-          <Slider 
-          asNavFor={activeslider.nav1}
-            ref={slider =>  (sliderRef2.current = slider)} 
+          <Slider
+            asNavFor={activeslider.nav1}
+            ref={(slider) => (sliderRef2.current = slider)}
             {...settings2}
           >
-            {
-              partnersData?.map(el => (
-                <div className="partner" key={el.id}>
-                  <img className="partner__img" src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.logoImg}`} alt="" />
-                </div>
-              ))
-            }
+            {partnersData?.map((el) => (
+              <div className="partner" key={el.id}>
+                <img
+                  className="partner__img"
+                  src={`${baseServerUrl}/${el.logoImg}`}
+                  alt=""
+                />
+              </div>
+            ))}
           </Slider>
         </div>
       </div>

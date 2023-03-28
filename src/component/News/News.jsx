@@ -10,6 +10,7 @@ import "./News.scss";
 
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 import { getEvents } from "../../reduxToolkit/eventsSlice/extraReducer";
+import { baseServerUrl } from "../../services/api/utils";
 
 const News = () => {
   const navigate = useNavigate();
@@ -29,8 +30,8 @@ const News = () => {
     dispatch(getProjectsMenu());
   }, []);
 
-  if(error || errorEvents) {
-    return <p>{error}</p>
+  if (error || errorEvents) {
+    return <p>{error}</p>;
   }
 
   return (
@@ -94,7 +95,7 @@ const News = () => {
                     <li key={project.id}>
                       <Link to="/">
                         <img
-                          src={`https://vatanparvarbackend.napaautomotive.uz/storage/${project.logo}`}
+                          src={`${baseServerUrl}/${project.logo}`}
                           alt="icon"
                         />
                         <span>{project[`menu_${lan}`]}</span>
