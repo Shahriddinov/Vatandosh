@@ -124,6 +124,10 @@ const Header = () => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
                             }}>En</p>
+                            <p onClick={(e) => {
+                                handleChangeLng(e.target.innerText.toLowerCase());
+                                setactiveLang((el) => !el)
+                            }}>Ўз</p>
                         </div>
                     </div>
                     <button

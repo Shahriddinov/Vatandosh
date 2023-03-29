@@ -18,7 +18,7 @@ const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
   const loading = useSelector((state) => state.peaceful.loading);
   const error = useSelector((state) => state.peaceful.error);
-
+  console.log(peacefulData)
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
