@@ -31,6 +31,12 @@ const NotFound = lazy(() => import("./pages/404"));
 const Flags = lazy(() => import("./pages/Symbols/Flag"));
 const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
 const Coat = lazy(() => import("./pages/Symbols/Coat"));
+const Direction = lazy(() =>
+  import("./pages/About/component/Direction/BasicDirection")
+);
+const Management = lazy(() =>
+  import("./pages/About/component/Management/Management")
+);
 
 const routes = [
   { path: "", element: Home },

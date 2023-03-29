@@ -11,8 +11,8 @@ import sliderSlice from "./sliderSlice";
 import associationSlice from "./associationsSlice";
 import categoryShows from "./categoryShowsSlice/categoryShowsSlice";
 import eventsSlice from "./eventsSlice";
-import mediatekaSlice from "./mediatekaSlice";
 import informationServicesSlice from "./informationServicesSlice/informationServicesSlice";
+import mediatekaSlice from "./mediatekaSlice";
 
 const store = configureStore({
   reducer: {
@@ -28,8 +28,8 @@ const store = configureStore({
     categoryShows,
 
     associationSlice,
-    mediatekaSlice,
     informationServicesSlice,
+    mediatekaSlice,
   },
 });
 

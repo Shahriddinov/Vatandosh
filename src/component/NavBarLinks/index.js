@@ -126,6 +126,7 @@ export const NavBarLinks = () => {
           url: "/",
           icon: coountryManIcon,
         },
+        { title: t("information_items.item5"), url: "/" },
       ],
     },
     {
