@@ -29,7 +29,7 @@ export default function LatestNews() {
               el.id !== id && (
                 <li key={el.id} className="latest_news-list-item">
                   <Link
-                    to={`/news-detail/${el.id}`}
+                    to={`/news/${el.id}`}
                     className="latest_news-list-item-link"
                   >
                     <div className="latest_news-list-item-img">

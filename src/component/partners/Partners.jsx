@@ -11,6 +11,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
+import Aos from "aos";
 
 const Partners = () => {
   const sliderRef = useRef();
@@ -80,6 +81,10 @@ const Partners = () => {
   };
 
   useEffect(() => {
+    Aos.init({duration: 2000})
+  }, []);
+
+  useEffect(() => {
     dispatch(getPartners());
     setActiveSlader((prev) => ({
       nav1: sliderRef.current,
@@ -115,7 +120,9 @@ const Partners = () => {
           {...settings}
         >
           {partnersData?.map((partner) => (
-            <div className="content" key={partner.id}>
+            <div className="content" key={partner.id} data-aos="zoom-in-down"
+                 data-aos-easing="ease-out-cubic"
+                 data-aos-duration="1000">
               <div className="text">
                 <h3
                   className="content_title"
@@ -144,7 +151,10 @@ const Partners = () => {
             {...settings2}
           >
             {partnersData?.map((el) => (
-              <div className="partner" key={el.id}>
+              <div className="partner" key={el.id}
+                   data-aos="zoom-out-up"
+                   data-aos-easing="ease-out-cubic"
+                   data-aos-duration="1000">
                 <img
                   className="partner__img"
                   src={`${baseServerUrl}/${el.logoImg}`}

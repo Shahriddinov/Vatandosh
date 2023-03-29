@@ -11,6 +11,8 @@ import "./peaceful.scss";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
+import React, {useEffect} from "react";
+import Aos from "aos";
 
 const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
@@ -19,6 +21,10 @@ const Peaceful = () => {
 
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    Aos.init({duration: 2000})
+  }, []);
 
   if (loading) {
     return null;
@@ -84,6 +90,7 @@ const Peaceful = () => {
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
+
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",
@@ -109,7 +116,9 @@ const Peaceful = () => {
                 className="mySwiper"
               >
                 {peacefulData.map((el) => (
-                  <SwiperSlide key={el?.id} className="peaceful__slider-item">
+                  <SwiperSlide key={el?.id} className="peaceful__slider-item"  data-aos="zoom-out-up"
+                               data-aos-easing="ease-out-cubic"
+                               data-aos-duration="1000">
                     <div
                       className="peaceful__slider_card"
                       style={{

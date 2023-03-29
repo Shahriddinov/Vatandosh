@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getInteractiveServices } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 import { baseServerUrl } from "../../services/api/utils";
+import Aos from "aos";
 
 const InteractiveServices = () => {
   const { t } = useTranslation();
@@ -19,6 +20,11 @@ const InteractiveServices = () => {
   const data = useSelector((state) => state.peaceful.interactiveServices);
   const error = useSelector((state) => state.peaceful.error);
   const lan = useSelector((state) => state.language.language);
+
+
+  useEffect(() => {
+    Aos.init({duration: 2000})
+  }, []);
 
   useEffect(() => {
     dispatch(getInteractiveServices());
@@ -112,6 +118,9 @@ const InteractiveServices = () => {
                 <SwiperSlide
                   key={el.id}
                   className="interactive_services__slider-item"
+                  data-aos="zoom-in-down"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="1000"
                 >
                   <a className="slider_link" href={el.link} target="blank">
                     <div className="interactive_services__slider--card slider_card">
