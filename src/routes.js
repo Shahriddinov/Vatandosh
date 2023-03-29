@@ -28,17 +28,19 @@ const InformationServices = lazy(() =>
 );
 const Mediateka = lazy(() => import("./component/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
-const Flags = lazy(() => import("./pages/Symbols/Flag"))
-const Anthem = lazy(() => import("./pages/Symbols/Anthem"))
-const Coat = lazy(() => import("./pages/Symbols/Coat"))
-
+const Flags = lazy(() => import("./pages/Symbols/Flag"));
+const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
+const Coat = lazy(() => import("./pages/Symbols/Coat"));
 
 const routes = [
-  { path: "", element: Home, },
+  { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
+  {
+    path: "/compatriots/public-associations/:categoryId",
+    element: StatesFriendshipSociety,
+  },
   {
     path: "/compatriots/public-associations/:country",
     element: StatesFriendshipSociety,
@@ -61,7 +63,7 @@ const routes = [
   { path: "/flag", element: Flags },
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
-  { path: "/mediateka", element: Mediateka },
+  { path: "/information-service/mediateka", element: Mediateka },
 ];
 
 const RoutesContainer = () => (
