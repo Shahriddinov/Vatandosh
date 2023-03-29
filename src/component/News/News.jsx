@@ -77,7 +77,8 @@ const News = () => {
           <div className="latest-news" >
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}   >
               {newsData?.map((news) => (
-                <Card key={news.id} {...news}  />
+
+                <Card key={news.id} {...news} pathUrl="news" />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>
