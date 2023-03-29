@@ -182,7 +182,7 @@ const Menun = () => {
               <MenuItem onClick={handleCloseProject} key={el?.id}>
                 <div className="navMenuInnerWrapper">
                   <img src={`${baseServerUrl + "/" + el?.logo}`} alt="icons" />
-                  <Link to={`/projects/columns?=${el?.id}`}>
+                  <Link to={`/projects/columns?=${el?.id}`} className="menus_links">
                     {el[`menu_${lan}`]}
                   </Link>
                 </div>

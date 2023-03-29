@@ -8,7 +8,7 @@ import Card from "../../component/card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
-import { Paginator } from "../../component/Paginator/Paginator";
+import { Paginator } from "../../component/Pagination/Pagination";
 // import Spinner from "../../component/Spinner/Spinner";
 import { useParams } from "react-router-dom";
 import { getInf } from "../../reduxToolkit/informationServicesSlice/extraReducer";

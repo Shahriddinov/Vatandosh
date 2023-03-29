@@ -43,10 +43,10 @@ export const NavBarLinks = () => {
           url: "/compatriots/public-associations",
           icon: paIcon
         },
-        { title: t("citizin_items.item2"), url: "/category-shows", icon: categoryShowIcon },
+        { title: t("citizin_items.item2"), url: "/compatriots/categoryshows", icon: categoryShowIcon },
         {
           title: t("citizin_items.item3"),
-          url: "/compatriots/public-association-events",
+          url: "/compatriots/publicevents",
           icon: publicEventsIcon
         },
       ],
@@ -55,12 +55,6 @@ export const NavBarLinks = () => {
       title: t("projects"),
       links: [
         { title: t("projects_items.item1"), url: "/projects", icon: allProjectsIcon },
-        { title: t("projects_items.item2"), url: "/projects", icon: familyIcon },
-        { title: t("projects_items.item3"), url: "/projects", icon: sportIcon },
-        { title: t("projects_items.item4"), url: "/projects", icon: youngIcon },
-        { title: t("projects_items.item5"), url: "/projects", icon: preciousIcon },
-        { title: t("projects_items.item6"), url: "/projects", icon: fndIcon },
-        { title: t("projects_items.item7"), url: "/projects", icon: overseaIcon },
       ],
     },
     {

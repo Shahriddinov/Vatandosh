@@ -7,12 +7,15 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { NavBarLinks } from "../../../../NavBarLinks";
+import {baseServerUrl} from "../../../../../services/api/utils";
+import {useSelector} from "react-redux";
 
 
 
 const Menus = () => {
     const navLinks = NavBarLinks();
-
+    const data = useSelector((store) => store.singleSlice.projectsData);
+    const lan = useSelector((state) => state.language.language);
     const navbarRef = useRef();
     const scrollRef = useRef(null);
     const [isFixed, setFixed] = useState(false);
@@ -221,7 +224,7 @@ const Menus = () => {
               <MenuItem onClick={handleCloseProject} key={el?.id}>
                 <div className="navMenuInnerWrapper">
                   <img src={`${baseServerUrl + "/" + el?.logo}`} alt="icons" />
-                  <Link to={`/projects/columns?=${el?.id}`}>
+                  <Link to={`/projects/columns?=${el?.id}`} className="menus_links">
                     {el[`menu_${lan}`]}
                   </Link>
                 </div>
