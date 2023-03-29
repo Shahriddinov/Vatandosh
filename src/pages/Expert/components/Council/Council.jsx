@@ -1,42 +1,42 @@
 import {
   CouncilImage,
   UserIcon,
-  Globe
+  Globe,
 } from "../../../../assets/images/expert";
 import "./Council.scss";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const data = [
   {
     id: 1,
     country: "Rossiya",
-    number: 24
+    number: 24,
   },
   {
     id: 2,
     country: "Turkiya",
-    number: 18
+    number: 18,
   },
   {
     id: 3,
     country: "Germaniya",
-    number: 16
+    number: 16,
   },
   {
     id: 4,
     country: "Rossiya",
-    number: 8
+    number: 8,
   },
   {
     id: 5,
     country: "Malayziya",
-    number: 4
+    number: 4,
   },
   {
     id: 6,
     country: "Rossiya",
-    number: 2
-  }
+    number: 2,
+  },
 ];
 
 function Council() {

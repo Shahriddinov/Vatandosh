@@ -1,16 +1,19 @@
-import './Navbar.scss'
+import "./Navbar.scss";
 import {
   EmailIcon,
   ExitIcon,
   LogoIcon,
-  PhoneIcon
+  PhoneIcon,
 } from "../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation();
+  const editClass = location.pathname;
   return (
-    <div className="navbar">
+    <div className="navbar-page">
       <div className="container">
         <div className="navbar-list">
           <img src={LogoIcon} alt="" className="navbar-icon" />
@@ -18,13 +21,21 @@ function Navbar() {
         </div>
         <ul className="navbar-list">
           <li className="navbar-item">
-            <a href="tel:+998555022299" className="navbar-link">
+            <a
+              href="tel:+998555022299"
+              className={
+                editClass === "/expert" ? `navbar-link` : `navbar--link`
+              }>
               <img src={PhoneIcon} alt="" className="navbar-icon" />
               +998(55)502-22-99
             </a>
           </li>
           <li className="navbar-item">
-            <a href="mailto:info@vatandoshlarfondi.uz" className="navbar-link">
+            <a
+              href="mailto:info@vatandoshlarfondi.uz"
+              className={
+                editClass === "/expert" ? `navbar-link` : `navbar--link`
+              }>
               <img src={EmailIcon} alt="" className="navbar-icon" />
               info@vatandoshlarfondi.uz
             </a>

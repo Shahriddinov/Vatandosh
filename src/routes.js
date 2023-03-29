@@ -5,7 +5,7 @@ import ScrollTop from "./hoc/ScrollTop";
 import CategoryShows from "./pages/CategoryShows/CategoryShows";
 import Contact from "./pages/Contact/Contact";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
-import AboutCouncil from './pages/AboutCouncil/AboutCouncil';
+import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
@@ -39,7 +39,7 @@ const routes = [
   { path: "/compatriots/public-associations", element: PublicAssociations },
   {
     path: "/compatriots/public-associations/:country",
-    element: StatesFriendshipSociety
+    element: StatesFriendshipSociety,
   },
   { path: "/portal", element: Portal },
   { path: "/registration/register", element: Register },
@@ -50,7 +50,7 @@ const routes = [
   { path: "/category-shows", element: CategoryShows },
   {
     path: "/compatriots/public-association-events",
-    element: PublicAssociationEvents
+    element: PublicAssociationEvents,
   },
   { path: "/information-service/news", element: InformationServices },
   { path: "/news-detail/:id", element: NewsDetail },
@@ -59,8 +59,8 @@ const routes = [
   { path: "/flag", element: Flags },
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
-  {path:"/expert", element:ExpertCouncil},
-  {path:"/expert/council/about", element:AboutCouncil}
+  { path: "/expert", element: ExpertCouncil },
+  { path: "/expert/council/about", element: AboutCouncil },
 ];
 
 const RoutesContainer = () => (
