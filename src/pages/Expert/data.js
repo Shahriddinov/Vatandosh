@@ -1,4 +1,12 @@
-import { Person, PersonFour, PersonOne, PersonThree, PersonTwo } from "../../assets/images/expert";
+import {
+  Person,
+  PersonFour,
+  PersonOne,
+  PersonThree,
+  PersonTwo,
+  NewsOne,
+  NewsTwo
+} from "../../assets/images/expert";
 
 export const data = [
   {
@@ -66,3 +74,4 @@ export const data = [
     images: PersonFour
   }
 ];
+

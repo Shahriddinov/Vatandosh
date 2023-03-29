@@ -5,6 +5,7 @@ import ScrollTop from "./hoc/ScrollTop";
 import CategoryShows from "./pages/CategoryShows/CategoryShows";
 import Contact from "./pages/Contact/Contact";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
+import AboutCouncil from './pages/AboutCouncil/AboutCouncil';
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
@@ -58,7 +59,8 @@ const routes = [
   { path: "/flag", element: Flags },
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
-  {path:"/expert", element:ExpertCouncil}
+  {path:"/expert", element:ExpertCouncil},
+  {path:"/expert/council/about", element:AboutCouncil}
 ];
 
 const RoutesContainer = () => (
