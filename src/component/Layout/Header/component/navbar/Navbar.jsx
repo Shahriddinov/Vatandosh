@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { NavBarLinks } from "../../../../NavBarLinks";
+import {languageList} from '../../../data.js'
 
 const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
@@ -24,13 +25,7 @@ const Navbar = ({ activeSidebar }) => {
   const [activeLng, setActiveLng] = useState(activeLanguage);
   const dispatch = useDispatch();
 
-  const languageList = [
-    { id: 1, label: "O‘zbekcha", type: "uz" },
-    { id: 2, label: "Русский", type: "ru" },
-    { id: 3, label: "English", type: "en" },
-    { id: 4, label: "Ўзбекча", type: "Ўз" },
-  ];
-  console.log(languageList)
+
 
   const contactData = useSelector(
     (state) => state.contactSlice.contactData.data

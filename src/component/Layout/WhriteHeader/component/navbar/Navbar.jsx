@@ -28,7 +28,7 @@ const Navbar = ({ activeSidebar }) => {
     { id: 1, label: "O‘zbekcha", type: "uz" },
     { id: 2, label: "Русский", type: "ru" },
     { id: 3, label: "English", type: "en" },
-    { id: 4, label: "Ўзбекча", type: "Ўз" },
+    { id: 4, label: "Ўзбекча", type: "oz" },
   ];
 
   const contactData = useSelector(

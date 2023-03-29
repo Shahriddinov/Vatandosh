@@ -20,6 +20,8 @@ import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Menun from "./component/Menun/Menun";
+import { languageList } from "../data";
+
 
 const WhriteHeader = () => {
     const [activeSidebar, setactiveSidebar] = useState(false);
@@ -32,6 +34,7 @@ const WhriteHeader = () => {
     const handleChangeLng = (lng) => {
         i18next.changeLanguage(lng);
         dispatch(languageChange(lng));
+        setactiveLang((el) => !el)
     };
     const contactData = useSelector(
         (state) => state.contactSlice.contactData.data
@@ -111,7 +114,14 @@ const WhriteHeader = () => {
                             <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
                         </div>
                         <div className="header_navbar_language-bar searches" style={activeLang ? { display: "flex" } : null}>
-                            <p onClick={(e) => {
+                            {
+                                languageList.map((el,index) => (
+                                    <p key={index} onClick={() => 
+                                        handleChangeLng(el.type)
+                                    }>{el.label}</p>
+                                ))
+                            }
+                            {/* <p onClick={(e) => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
                             }}>Uz</p>
@@ -126,7 +136,7 @@ const WhriteHeader = () => {
                             <p onClick={(e) => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
-                            }}>Ўз</p>
+                            }}>Ўз</p> */}
                         </div>
                     </div>
                     <button
