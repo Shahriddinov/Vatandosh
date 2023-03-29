@@ -19,6 +19,9 @@ export const GET_MEDIA_VIDOES = `${baseUrl}/mediateka-videos`;
 export const GET_MEDIA_IMAGES = `${baseUrl}/mediateka-images`;
 export const GET_MEDIA_VIDOES_MENUS = `${baseUrl}/mediateka-video-menus`;
 export const GET_MEDIA_IMAGES_MENUS = `${baseUrl}/mediateka-image-menus`;
+export const GET_SINGLE_PAGINATION = baseUrl + "/";
+export const GET_COLUMN_COUNT = `${baseUrl}/columns/page/`;
+export const GET_COLUMNS_MENU = `${baseUrl}/column-menus`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

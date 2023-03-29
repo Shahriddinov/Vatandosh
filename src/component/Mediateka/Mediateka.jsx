@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../Layout/Header/Header";
-import { Paginator } from "../Paginator/Paginator";
 import {
   getImages,
   getImagesMenus,
@@ -20,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import "./mediateka.scss";
+import { Paginator } from "../Pagination/Pagination";
 
 const Mediateka = () => {
   const dispatch = useDispatch();

@@ -22,14 +22,21 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Menun from "./component/Menun/Menun";
 import { languageList } from "../data";
 
+import Spinner from "../../Spinner/Spinner";
 
 const WhriteHeader = () => {
-    const [activeSidebar, setactiveSidebar] = useState(false);
-    const { pathname } = useLocation();
-    const [activeLang, setactiveLang] = useState(false);
-    const { grayScale } = useContext(GrayContext);
-    const dispatch = useDispatch();
-    const language = useSelector((state) => state.language.language);
+  const projectsMenuLoading = useSelector(
+    (store) => store.singleSlice.projectsLoading
+  );
+  const associationMenuLoading = useSelector(
+    (store) => store.singleSlice.projectsLoading
+  );
+  const [activeSidebar, setactiveSidebar] = useState(false);
+  const { pathname } = useLocation();
+  const [activeLang, setactiveLang] = useState(false);
+  const { grayScale } = useContext(GrayContext);
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.language.language);
 
     const handleChangeLng = (lng) => {
         i18next.changeLanguage(lng);
@@ -45,26 +52,38 @@ const WhriteHeader = () => {
         else document.body.style.overflow = "inherit";
     }, [activeSidebar]);
 
-    return (
-        <header className="head">
-            <div className="header">
-                <div className="header_navbar">
-                    <Link to="/" className="header_navbar_left">
-                        <img src={Logos}
-                            alt="logo" />
-                    </Link>
-                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
-                        <img src={Phone} alt="phone" />
-                        <div
-                            className="header_navbar_phone_number colors">+998(55)502-22-99
-                        </div>
-                    </a>
-                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
-                        <img src={Message} alt="message" />
-                        <div className="header_navbar_phone_number colors">
-                            info@vatandoshlarfondi.uz
-                        </div>
-                    </a>
+  if (projectsMenuLoading) {
+    return <Spinner/>;
+
+  } else if (associationMenuLoading) {
+    return <Spinner />;
+  }
+
+  return (
+    <header className="head">
+      <div className="header">
+        <div className="header_navbar">
+          <Link to="/" className="header_navbar_left">
+            <img src={Logos} alt="logo" />
+          </Link>
+          <a
+            href={`tel: ${contactData?.phone}`}
+            className="header_navbar_phone"
+          >
+            <img src={Phone} alt="phone" />
+            <div className="header_navbar_phone_number colors">
+              +998(55)502-22-99
+            </div>
+          </a>
+          <a
+            href={`mailto: ${contactData?.email}`}
+            className="header_navbar_phone"
+          >
+            <img src={Message} alt="message" />
+            <div className="header_navbar_phone_number colors">
+              info@vatandoshlarfondi.uz
+            </div>
+          </a>
 
                     <Link to="/flag">
                         <motion.img

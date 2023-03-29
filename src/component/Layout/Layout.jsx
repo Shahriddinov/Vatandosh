@@ -6,10 +6,12 @@ import NetworkError from "../NetworkError/NetworkError";
 import HeaderPortal from "../../pages/Portal/Header/Header";
 import RegisterHeader from "../../pages/Registration/pages/Layout/Header/RegisterHeader";
 import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/RegisterFooter";
+import { useProjectsData } from "./hooks/useProjectsData";
 
 export const GrayContext = createContext();
 
 const Layout = (props) => {
+  const { error } = useProjectsData();
   const { pathname } = useLocation();
   const { children } = props;
   const [text, setText] = useState("");
@@ -47,6 +49,10 @@ const Layout = (props) => {
     };
     //eslint-disable-next-line
   }, [speaker]);
+
+  if (error) {
+    return <b>{error}</b>;
+  }
 
   return (
     <GrayContext.Provider value={{ isGray, grayScale }}>
