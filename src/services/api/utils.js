@@ -1,5 +1,6 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
-
+export const baseServerUrl =
+    "https://vatanparvarbackend.napaautomotive.uz/storage";
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
