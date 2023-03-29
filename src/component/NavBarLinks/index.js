@@ -71,22 +71,29 @@ export const NavBarLinks = () => {
         {
           title: t("information_items.item2"),
           url: "/information-service/events",
+          icon: eventsIcon,
         },
         {
           title: t("information_items.item3"),
-          url: "/mediateka",
+          url: "/information-service/mediateka",
+          icon: mediaIcon,
         },
         {
           title: t("information_items.item4"),
           url: "/information-service/infographics",
+          icon: graphIcon,
+        },
+        {
+          title: t("information_items.item5"),
+          url: "/",
+          icon: coountryManIcon,
         },
         { title: t("information_items.item5"), url: "/" },
       ],
     },
     {
-
       title: t("link"),
-      url: "/contact"
+      url: "/contact",
     },
   ];
 };

@@ -8,10 +8,15 @@ import Card from "../../component/card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
-import { Paginator } from "../../component/Pagination/Pagination";
-// import Spinner from "../../component/Spinner/Spinner";
+import { Paginator } from "../../component/Paginator/Paginator";
 import { useParams } from "react-router-dom";
 import { getInf } from "../../reduxToolkit/informationServicesSlice/extraReducer";
+
+import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
+import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
+import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
+import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
+import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
 
 const InformationServices = () => {
   const data = useSelector((state) => state.informationServicesSlice.data);
@@ -22,12 +27,45 @@ const InformationServices = () => {
   const { pageName } = useParams();
 
   const pagePath = {
-    title: `${pageName}`,
+    title: `${pageName[0].toUpperCase()}${pageName.slice(1)}`,
     path: [
       { id: 1, label: "Asosiy sahifa", path: "/" },
       { id: 2, label: "Yangiliklar ", path: "/information-service/news" },
     ],
   };
+
+  const pathPages = [
+    {
+      id: 1,
+      path: "Tadbirlar",
+      icon: eventsIcon,
+      link: "events",
+    },
+    {
+      id: 2,
+      path: "Mediateka",
+      icon: mediaIcon,
+      link: "mediateka",
+    },
+    {
+      id: 3,
+      path: "Infografika",
+      icon: graphIcon,
+      link: "infographics",
+    },
+    {
+      id: 4,
+      path: "Vatandoshlar jurnali",
+      icon: coountryManIcon,
+      link: "compatriotMagazine",
+    },
+    {
+      id: 5,
+      path: "Yangiliklar",
+      icon: newsIcon,
+      link: "news",
+    },
+  ];
 
   useEffect(() => {
     dispatch(getInf(pageName));
@@ -47,7 +85,7 @@ const InformationServices = () => {
             <InformationServicesSlider />
           </div>
           <div className="main-content-right">
-            <InformationServicesComponent />
+            <InformationServicesComponent pathPages={pathPages} />
             <LatestNews />
             <PopularTags />
           </div>
