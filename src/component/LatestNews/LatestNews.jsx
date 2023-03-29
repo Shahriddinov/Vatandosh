@@ -13,9 +13,10 @@ export default function LatestNews() {
   const lan = useSelector((state) => state.language.language);
   const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(getNews());
-  }, []);
+
+    useEffect(() => {
+        dispatch(getNews());
+    }, [dispatch]);
 
   return (
     <div className="latest_news">

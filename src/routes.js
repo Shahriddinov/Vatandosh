@@ -36,10 +36,8 @@ const Management = lazy(() => import("./pages/About/component/Management/Managem
 
 
 const routes = [
-  { path: "", element: Home },
+  { path: "", element: Home, },
   { path: "/about", element: About },
-  { path: "/about/direction", element: Direction },
-  { path: "/about/management", element: Management },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
   { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
