@@ -1,7 +1,7 @@
 import uz from "../../Ing/uz.json";
 import ru from "../../Ing/ru.json";
 import en from "../../Ing/en.json";
-
+import ўз from "../../Ing/ўз.json";
 
 export const resorce = {
     uz: {
@@ -12,5 +12,8 @@ export const resorce = {
     },
     en: {
         translation: en,
+    },
+    ўз: {
+        translation: ўз,
     }
 }
