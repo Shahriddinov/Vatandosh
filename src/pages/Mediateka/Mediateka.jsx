@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import Header from "../Layout/Header/Header";
-import { Paginator } from "../Paginator/Paginator";
+import Header from "../../component/Layout/Header/Header";
+import { Paginator } from "../../component/Paginator/Paginator";
 import {
   getImages,
   getImagesMenus,
   getVideos,
   getVideosMenus,
 } from "../../reduxToolkit/mediatekaSlice/extraReducer";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../component/Spinner/Spinner";
 import { baseServerUrl } from "../../services/api/utils";
 
 import Select from "@mui/material/Select";

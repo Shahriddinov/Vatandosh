@@ -26,14 +26,17 @@ const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
 );
-const Mediateka = lazy(() => import("./component/Mediateka/Mediateka"));
+const Mediateka = lazy(() => import("./pages/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
-const Flags = lazy(() => import("./pages/Symbols/Flag"))
-const Anthem = lazy(() => import("./pages/Symbols/Anthem"))
-const Coat = lazy(() => import("./pages/Symbols/Coat"))
-const Direction = lazy(() => import("./pages/About/component/Direction/BasicDirection"));
-const Management = lazy(() => import("./pages/About/component/Management/Management"))
-
+const Flags = lazy(() => import("./pages/Symbols/Flag"));
+const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
+const Coat = lazy(() => import("./pages/Symbols/Coat"));
+const Direction = lazy(() =>
+  import("./pages/About/component/Direction/BasicDirection")
+);
+const Management = lazy(() =>
+  import("./pages/About/component/Management/Management")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -42,7 +45,10 @@ const routes = [
   { path: "/about/management", element: Management },
   { path: "/about/council-trustees", element: BoardTrustees },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
+  {
+    path: "/compatriots/public-associations/:categoryId",
+    element: StatesFriendshipSociety,
+  },
   {
     path: "/compatriots/public-associations/:country",
     element: StatesFriendshipSociety,
