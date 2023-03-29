@@ -16,13 +16,38 @@ const PublicAssociations = () => {
         pagePath: "Jamoat birlashmalar",
     }
 
-    if(associationLoading && associationCategoryLoading) {
+
+    if(associationLoading ) {
         return (
             <div className="spinner_box">
                 <Spinner/>
             </div>
         )
+    }else if(associationCategoryLoading) {
+        return (
+            <div className="spinner_box">
+                <Spinner/>
+            </div>
+        )
+    }else if(error) {
+        return <p>{error}</p>
     }
+
+    const data = associationData.map((el,index) => {
+        const categories = []
+
+        for(let i = 0; i < associationCategoryData?.length; i++) {
+            if(el?.id === associationCategoryData[i]?.country_uz * 1) {
+                categories.push(associationCategoryData[i])
+            }
+        }
+
+        return {
+            ...el,
+            panel: `panel${index}`,
+            categories
+        }
+    })
 
     return (
         <div className='public-associations'>
@@ -31,7 +56,7 @@ const PublicAssociations = () => {
                 <CouncilHero {...heroData}/>
             </div>
 
-            <Associations/>
+            <Associations data = {data}/>
         </div>
     )
 }

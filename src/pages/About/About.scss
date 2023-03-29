@@ -11,6 +11,14 @@
       width: 50%;
       display: flex;
       //align-items: center;
+      &_much {
+        width: 90%;
+
+        &_img {
+          width: 100%;
+        }
+      }
+
       &_boss {
 
         &_level {
@@ -97,11 +105,20 @@
       color: $colorTitle;
     }
 
+
     &_cards {
       margin-top: 5%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      &_information{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.2px;
+        color: #5D6B8A;
+        margin-bottom: 5%;
+      }
 
       &_boxs {
         width: 45%;
@@ -164,7 +181,13 @@
   }
 
   @media only screen and (max-width: 1000px) {
-    overflow: hidden;
+
+      .cards {
+        display: flex;
+        flex-direction: column;
+      }
+
+
 
     &_card {
       display: block;
@@ -174,9 +197,13 @@
         display: flex;
         justify-content: space-between;
 
-        &_img {
-          width: 1000%;
+        &_much {
+          width: 100%;
+          &_img {
+            width: 100%;
+          }
         }
+
 
         &_boss {
           width: 45%;
@@ -209,13 +236,6 @@
       }
     }
 
-    >&_direction {
-      
-      .cards {
-        display: flex;
-        flex-direction: column;
-      }
 
-    }
   }
 }

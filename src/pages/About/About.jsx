@@ -1,36 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import "./About.scss";
 import CardImg from "../../assets/images/about-Card.svg"
 import Rais from "../../assets/images/Rais.svg"
 import Urinbosar from "../../assets/images/Substitute.jpg"
-import Video from "../../assets/images/slider/slider_video.mp4"
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
-import Partner from "../../assets/images/partner.svg"
-import Partners from "../../assets/images/partnerWhite.svg"
-import Law from "../../assets/images/huquq.svg"
-import Laws from "../../assets/images/huquqWhite.svg"
-import Til from "../../assets/images/til.svg"
-import Language from "../../assets/images/language.svg"
-import Book from "../../assets/images/book.svg"
-import BookWhite from "../../assets/images/bookWhite.svg"
-import Student from "../../assets/images/student.svg"
-import Students from "../../assets/images/studentWhite.svg"
-import Child from "../../assets/images/childs.svg"
-import Childs from "../../assets/images/childsWhite.svg"
-import Home from "../../assets/images/home/Home.svg"
-import Homes from "../../assets/images/home/HomeWhite.svg"
-import Togather from "../../assets/images/home/Togather.svg"
-import Togathers from "../../assets/images/home/TogetherWhite.svg"
-import StarBag from "../../assets/images/home/starBag.svg"
-import StarBags from "../../assets/images/home/starBagWhite.svg"
-import Latter from "../../assets/images/home/latter.svg"
-import Latters from "../../assets/images/home/latterWhite.svg"
-import ThreeStar from "../../assets/images/home/threeStar.svg"
-import ThreeStars from "../../assets/images/home/threeStarWhite.svg"
-import Char from "../../assets/images/home/Char.svg"
-import Chars from "../../assets/images/home/CharWhite.svg"
-import SliderVideo from "../../assets/images/slider/slider_video.mp4";
+
 import Table from "./component/Table/Table";
 import {Navigation, Pagination, Scrollbar, A11y} from 'swiper';
 
@@ -45,15 +20,28 @@ import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import Gallery2 from "../../assets/images/projects/gallery2.png";
 import Gallery3 from "../../assets/images/projects/gallery3.png";
 import Gallery4 from "../../assets/images/projects/gallery4.png";
+import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
+import {getSlider} from "../../reduxToolkit/sliderSlice/extraReducer";
+import Spinner from "../../component/Spinner";
+import {baseServerUrl} from "../../services/api/utils";
+import Aos from "aos";
 
 const About = () => {
     const state = useLocation()
-    console.log(state);
+    const dispatch = useDispatch();
+
+    const sliderData = useSelector((state) => state.sliderSlice.sliderData);
+    const loading = useSelector((state) => state.sliderSlice.loading);
+
+    const {t} = useTranslation();
     const heroData = {
-        title: "Biz haqimizda",
-        description: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
-        pagePath: "Biz haqimizda",
+        title: `${t("aboutPage.section1.htext")}`,
+        description: `${t("aboutPage.section1.ptext")}`,
+        pagePath: `${t("aboutPage.section1.foottext2")}`,
     }
+
+
     const swiperParams = {
         breakpoints: {
             360: {
@@ -74,73 +62,18 @@ const About = () => {
             },
         },
     }
-    const Ditrections = [
-        {
-            imgs: Partner,
-            title: "Jamoat birlashmalari bilan hamkorlik aloqalarini yo‘lga qo‘yish va rivojlantirish",
-            backgroundImg: Partners
-        },
-        {
-            imgs: Law,
-            title: "Vatandoshlarning huquq va erkinliklarini himoya qilishga ko‘maklashish Vatandoshlarning\n" +
-                "                            huquq va erkinliklarini himoya qilishga ko‘maklashish",
-            backgroundImg: Laws
-        },
-        {
-            imgs: Til,
-            title: "O‘zbek tili, madaniyati va an’analarini saqlab qolish va rivojlantirish",
-            backgroundImg: Language
-        },
-        {
-            imgs: Book,
-            title: "Yurtimizning boy ilmiy, madaniy va ma’naviy merosini keng targ‘ib qilish",
-            backgroundImg: BookWhite
-        },
-        {
-            imgs: Student,
-            title: "Migratsiya va ta’lim sohalarida shartnomaviy-huquqiy hamkorlikni kengaytirish",
-            backgroundImg: Students
-        },
-        {
-            imgs: Child,
-            title: "Murakkab hayotiy vaziyatga tushib qolgan vatandoshlarni ijtimoiy qo‘llab-quvvatlash va huquqiy yordam ko‘rsatishga ko‘maklashish",
-            backgroundImg: Childs
-        } ,
-        {
-            imgs: Home,
-            title: "Vatandoshlar tomonidan tashkil etilgan jamoat birlashmalari faoliyatini rag‘batlantirish",
-            backgroundImg: Homes
-        },
+    useEffect(() => {
+        Aos.init({duration: 2000})
+    }, []);
 
-        {
-            imgs: Togather,
-            title: "Xorijda o‘zbek milliy madaniy markazlarini tashkil etishda amaliy yordam ko‘rsatish",
-            backgroundImg: Togathers
-        },
-        {
-            imgs: StarBag,
-            title: "Vatandoshlarga madaniy-ma’rifiy tadbirlarni tashkil\n" +
-                "etishda ko‘maklashish",
-            backgroundImg: StarBags
-        },
-        {
-            imgs: Latter,
-            title: "Vatandoshlarimizni respublika oliy ta’lim muassasalarida o‘zbek tili yo‘nalishi bo‘yicha ta’lim olishlariga ko‘mak ko‘rsatish",
-            backgroundImg: Latters
-        },
-        {
-            imgs: ThreeStar,
-            title: "Vatandoshlarimizni yurtimiz nufuzini oshirishga qaratilgan ilmiy, ijodiy izlanishlarini qo‘llab-quvvatlash",
-            backgroundImg: ThreeStars
-        },
-        {
-            imgs: Char,
-            title: "Vatandoshlarni O‘zbekiston hududida tadbirkorlik, investitsiyaviy, ilmiy, madaniy va ma’rifiy faoliyat bilan shug‘ullanishga faol jalb qilish",
-            backgroundImg: Chars
-        },
+    useEffect(() => {
+        dispatch(getSlider());
+    }, []);
 
+    if (loading) {
+        return <Spinner/>
+    }
 
-    ]
     return (
         <div className="about ">
             <div className="page-about">
@@ -149,104 +82,84 @@ const About = () => {
             </div>
             <div className="about_card container">
                 <div className="about_card_left">
-                    <img className="about_card_left_img" src={CardImg} alt="cardImg"/>
+                    <div className="about_card_left_much" >
+                        <img className="about_card_left_much_img" data-aos="fade-up" src={CardImg} alt="cardImg"/></div>
                 </div>
-                <div className="about_card_right">
-                    <div className="about_card_right_text">Fondnig vazifasi va maqsadi</div>
+                <div className="about_card_right"
+                     data-aos="fade-up"
+                     data-aos-anchor="#example-anchor"
+                     data-aos-offset="500"
+                     data-aos-duration="2000">
+                    <div className="about_card_right_text">{t("aboutPage.section2.htext1")}</div>
                     <div className="about_card_right_title">
-                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
-                        ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab
-                        qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli
-                        sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga
-                        samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.
+                        {t("aboutPage.section2.ptext1-1")}
                     </div>
                     <div className="about_card_right_text">105 <span
-                        className="about_card_right_text_info">Mamlakatda</span> 2.4 mln <span
-                        className="about_card_right_text_info">Yurtdoshimiz</span></div>
-                    <div className="about_card_right_title">Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani
-                        atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini
-                        yuksaltirish.
+                        className="about_card_right_text_info">{t("aboutPage.section2.ptext1-2")}</span> 2.4 mln <span
+                        className="about_card_right_text_info">{t("aboutPage.section2.ptext1-3")}</span></div>
+                    <div className="about_card_right_title">
+                        {t("aboutPage.section2.ptext1-4")}
                     </div>
 
                 </div>
 
-                <div className="about_card_left">
-                    <div className="about_card_left_boss">
-                        <img className="sub" src={Rais} alt="Rais"/>
-                        <div className="about_card_left_boss_level">Boshqaruv raisi</div>
-                        <div className="about_card_left_boss_name">Sattarov Odiljon Berdimuradovich</div>
-                    </div>
-                    <div className="about_card_left_substitute">
-                        <img className="sub" src={Urinbosar} alt=""/>
-                        <div className="about_card_left_boss_level">Boshqaruv raisi o‘rinbosari</div>
-                        <div className="about_card_left_boss_name">Tursunov Rovshan Xamidullayevich</div>
-                    </div>
 
-                </div>
-                <div className="about_card_right">
-                    <div className="about_card_right_text tops">Fondnig tashkil topishi hamda tarixi haqida</div>
-                    <div className="about_card_right_title toptext">
-                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
-                        ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish.
-                        Fondnig tashkil topishi hamda tarixi haqida
-                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
-                        ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab
-                        qolish, vatandoshlar va ular tomonidan
-                        Boshqaruv raisi
-                        Boshqaruv raisi o‘rinbosari
-                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
-                        ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab
-                        qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli
-                        sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga
-                        samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat
-                        qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va
-                        ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,
-                        vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli
-                        sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga
-                        samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.
-                        Sattarov Odiljon Berdimuradovich
-                        Tursunov Rovshan Xamidullayevich
-                    </div>
-
-
-                </div>
             </div>
             <div className="about_videos">
-                <video autoPlay muted loop className="about_videos_links">
-                    <source src={Video}/>
-                </video>
+                <div  >
+
+                    <video autoPlay muted loop className="about_videos_links">
+                        <source
+                            src={`${baseServerUrl}/${
+                                JSON.parse(sliderData?.[1]?.video)[0].download_link
+                            }`}
+                        />
+                    </video>
+                </div>
             </div>
-            <div className="about_direction container">
+            <div className="about_direction container"
+                 data-aos="zoom-in"
+                 data-aos-easing="ease-out-cubic"
+                 data-aos-duration="1000">
                 <div className="about_direction_fon">
-                    Fond faoliyatining asosiy yo‘nalishlari
+                    Fondnig tashkil topishi hamda tarixi haqida
                 </div>
                 <div className="about_direction_cards">
-                    {Ditrections.map((item, index)=>(
-
-                        <div key={index} className="about_direction_cards_boxs" >
-
-                            <img src={item.imgs} alt="partner"/>
-                            <div className="about_direction_cards_boxs_describtion">{item.title}</div>
-                            <img className="about_direction_cards_boxs_img" src={item.backgroundImg} alt=""/>
-                        </div>
-                    ))}
-
+                    <p className="about_direction_cards_information">
+                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
+                        ularning
+                        qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,
+                        vatandoshlar va ular tomonidan <br/>
+                        Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish,
+                        ularning
+                        qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,
+                        vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli
+                        sohalarda
+                        faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali
+                        yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat qilayotgan
+                        vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt
+                        bilan
+                        faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular
+                        tomonidan
+                        tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan
+                        vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning
+                        asosiy
+                        maqsadlaridan biri hisoblanadi.
+                    </p>
 
                 </div>
             </div>
             <div className="">
                 <div className="page-about increase ">
 
-                  <div className="container">
-                      <div className="about_fon">Fond tuzilmasi</div>
-                      <Table/>
-                  </div>
+                    <div className="container">
+                        <div className="about_fon">{t("aboutPage.section4.htext1")}</div>
+                        <Table />
+                    </div>
 
                 </div>
                 <div className="about_fatherland container">
-                    Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini
-                    yuksaltirish, milliy o‘zlikni saqlab qolish
-                    bizning oliy maqsadimizdir
+                    {t("aboutPage.section5.htext1")}
                 </div>
                 <div className="about_caruosel">
                     <Swiper
@@ -255,6 +168,9 @@ const About = () => {
                         slidesPerView={4}
                         centeredSlides={true}
                         initialSlide={2}
+                        data-aos="zoom-in"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000"
                         {...swiperParams}
                     >
                         <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>

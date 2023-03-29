@@ -87,7 +87,7 @@ const Menun = () => {
                         aria-controls={openAbout ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openAbout ? 'true' : undefined}
-                        onClick={handleClickAbout}
+                        onMouseOver={handleClickAbout}
                         className="menu_link"
                     >
                         {navLinks[0].title}
@@ -99,12 +99,16 @@ const Menun = () => {
                         onClose={handleCloseAbout}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseAbout
                         }}
                     >
                         {
                             navLinks[0].links?.map((el, index) => {
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -118,7 +122,7 @@ const Menun = () => {
                         aria-controls={openCitizin ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openCitizin ? 'true' : undefined}
-                        onClick={handleClickCitizin}
+                        onMouseOver={handleClickCitizin}
                         className="menu_link"
                     >
                         {navLinks[1].title}
@@ -130,12 +134,16 @@ const Menun = () => {
                         onClose={handleCloseCitizin}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseCitizin
                         }}
                     >
                         {
                             navLinks[1].links?.map((el, index) => {
                                 return <MenuItem onClick={handleCloseAbout} key={index}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -149,7 +157,7 @@ const Menun = () => {
                         aria-controls={openProject ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openProject ? 'true' : undefined}
-                        onClick={handleClickProject}
+                        onMouseOver={handleClickProject}
                         className="menu_link"
                     >
                         {navLinks[2].title}
@@ -161,12 +169,16 @@ const Menun = () => {
                         onClose={handleCloseProject}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseProject
                         }}
                     >
                         {
                             navLinks[2].links?.map((el, index) => {
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }
@@ -186,7 +198,7 @@ const Menun = () => {
                         aria-controls={openInformation ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={openInformation ? 'true' : undefined}
-                        onClick={handleClickInformation}
+                        onMouseOver={handleClickInformation}
                         className="menu_link"
                     >
                         {navLinks[4].title}
@@ -198,11 +210,15 @@ const Menun = () => {
                         onClose={handleCloseInformation}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
+                            onMouseLeave: handleCloseProject
                         }}
                     >{
                             navLinks[4].links?.map((el, index) => {
                                 return <MenuItem key={index} onClick={handleCloseAbout}>
-                                    <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    <div className="navMenuInnerWrapper">
+                                        <img src={el.icon} alt="icons" />
+                                        <Link to={el.url} className="menus_links">{el.title}</Link>
+                                    </div>
                                 </MenuItem>
                             })
                         }

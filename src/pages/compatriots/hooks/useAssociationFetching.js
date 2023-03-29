@@ -4,7 +4,7 @@ import { getAssociations, getAssociationsCategory } from "../../../reduxToolkit/
 
 
 export const useAssociationFetching = () => {
-    const associationData = useSelector(store => store.associationSlice.associationData);;
+    const associationData = useSelector(store => store.associationSlice.associationData);
     const associationCategoryData = useSelector(store => store.associationSlice.associationCategoryData);
     const associationLoading = useSelector(store => store.associationSlice.associationLoading);
     const associationCategoryLoading = useSelector(store => store.associationSlice.associationCategoryLoading);

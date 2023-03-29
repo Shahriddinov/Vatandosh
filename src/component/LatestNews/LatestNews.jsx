@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
 import { Link, useParams } from "react-router-dom";
+import { baseServerUrl } from "../../services/api/utils";
 
 export default function LatestNews() {
   const dispatch = useDispatch();
@@ -28,14 +29,11 @@ export default function LatestNews() {
               el.id !== id && (
                 <li key={el.id} className="latest_news-list-item">
                   <Link
-                    to={`/news-detail/${el.id}`}
+                    to={`/news/${el.id}`}
                     className="latest_news-list-item-link"
                   >
                     <div className="latest_news-list-item-img">
-                      <img
-                        src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.image}`}
-                        alt=""
-                      />
+                      <img src={`${baseServerUrl}/${el.image}`} alt="" />
                     </div>
                     <div className="latest_news-list-item-desc">
                       <p className="latest_news-list-item-desc-text">

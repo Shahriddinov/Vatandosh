@@ -4,71 +4,75 @@ import Top from "../../../../assets/images/top.png"
 import Next from "../../../../assets/images/next.png"
 import BottonIcon from "../../../../assets/images/bottomIcon.png"
 import Alls from "../../../../assets/images/alls.png"
+import { useTranslation } from 'react-i18next';
 
 function Table(props) {
+    const {t} = useTranslation();
     return (
-        <div className="table">
+        <div className="table" data-aos="zoom-out"
+             data-aos-easing="ease-out-cubic"
+             data-aos-duration="1000">
             <div className="table_control">
                 <div className="table_control_all">
-                    Nazorat-taftish komissiyasi
+                    {t("aboutPage.section4.cardntk")}
                 </div>
                 <img src={Top} alt=""/>
                 <div className="table_control_all">
-                    Vasiylik kengashi
+                    {t("aboutPage.section4.cardvk")}
                 </div>
             </div>
             <img className="table_next" src={Next} alt=""/>
             <div className="table_control">
                 <div className="table_control_all">
-                    Fond boshqaruvi
+                    {t("aboutPage.section4.cardfb")}
                 </div>
             </div>
             <img className="table_next" src={BottonIcon} alt=""/>
 
             <div className="table_control">
                 <div className="table_control_all">
-                    Yordamchi
+                    {t("aboutPage.section4.cardy")}
                 </div>
                 <img src={Top} alt=""/>
                 <div className="table_control_all">
-                    Boshqaruv raisi
+                    {t("aboutPage.section4.cardbr")}
                 </div>
             </div>
             <img className="table_next" src={Next} alt=""/>
 
             <div className="table_control">
                 <div className="table_control_all increase">
-                    Axborat ...
+                    {t("aboutPage.section4.carda")} ...
                 </div>
                 <div className="table_control_all increase">
-                    Bosh yuristkonsult
+                    {t("aboutPage.section4.cardby")}
                 </div>
                 <div className="table_control_all increase">
-                    Boshqaruv ....
+                    {t("aboutPage.section4.cardb")} ....
                 </div>
                 <div className="table_control_all increase">
-                    Strategik tahlil...
+                    {t("aboutPage.section4.cardsh")} ...
                 </div>
                 <div className="table_control_all">
-                    Matbuot kotibis
+                    {t("aboutPage.section4.cardmk")}
                 </div>
             </div>
             <img src={Alls} alt=""/>
             <div className="table_control">
                 <div className="table_control_all increase">
-                    Xodimlar bilan ...
+                    {t("aboutPage.section4.cardxb")} ...
                 </div>
                 <div className="table_control_all increase">
-                   Vatandoshlarni ...
+                    {t("aboutPage.section4.cardv")} ...
                 </div>
                 <div className="table_control_all increase">
-                    Vatandoshlar ....
+                    {t("aboutPage.section4.cardv2")} ....
                 </div>
                 <div className="table_control_all increase">
-                    Madaniy-ma’rifiy...
+                    {t("aboutPage.section4.cardmm")} ...
                 </div>
                 <div className="table_control_all">
-                    Bosh buhgalter
+                    {t("aboutPage.section4.cardbb")}
                 </div>
             </div>
         </div>

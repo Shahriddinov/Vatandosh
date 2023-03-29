@@ -1,4 +1,6 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
+export const baseServerUrl =
+  "https://vatanparvarbackend.napaautomotive.uz/storage";
 
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
@@ -14,6 +16,10 @@ export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
 export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`;
 export const GET_ASSOCIATIONS_CATEGORY = `${baseUrl}/assosiationcategory`;
+export const GET_MEDIA_VIDOES = `${baseUrl}/mediateka-videos`;
+export const GET_MEDIA_IMAGES = `${baseUrl}/mediateka-images`;
+export const GET_MEDIA_VIDOES_MENUS = `${baseUrl}/mediateka-video-menus`;
+export const GET_MEDIA_IMAGES_MENUS = `${baseUrl}/mediateka-image-menus`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
