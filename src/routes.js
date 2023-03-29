@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import CategoryShows from "./pages/CategoryShows/CategoryShows";
 import Contact from "./pages/Contact/Contact";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
@@ -13,27 +12,28 @@ import { SignUp } from "./pages/Registration/pages/SignUp/SignUp";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
+const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
 const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() =>
   import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
 );
 const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
-const PublicAssociationEvents = lazy(() =>
-  import("./pages/PublicAssociationEvents/PublicAssociationEvents")
-);
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
 );
 const Mediateka = lazy(() => import("./component/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
-const Flags = lazy(()=> import("./pages/Symbols/Flag"))
-const Anthem = lazy(()=> import("./pages/Symbols/Anthem"))
-const Coat = lazy(()=> import("./pages/Symbols/Coat"))
-const Direction = lazy(()=> import("./pages/About/component/Direction/BasicDirection"));
-const Management = lazy(()=> import("./pages/About/component/Management/Management"))
-
+const Flags = lazy(() => import("./pages/Symbols/Flag"));
+const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
+const Coat = lazy(() => import("./pages/Symbols/Coat"));
+const Direction = lazy(() =>
+  import("./pages/About/component/Direction/BasicDirection")
+);
+const Management = lazy(() =>
+  import("./pages/About/component/Management/Management")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -41,8 +41,13 @@ const routes = [
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
   { path: "/about/council-trustees", element: BoardTrustees },
+  { path: "/compatriots/:pageUrl", element: SinglePage },
+  { path: "/projects/:pageUrl", element: SinglePage },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
+  {
+    path: "/compatriots/public-associations/:categoryId",
+    element: StatesFriendshipSociety,
+  },
   {
     path: "/compatriots/public-associations/:country",
     element: StatesFriendshipSociety,
@@ -53,18 +58,13 @@ const routes = [
   { path: "/registration/signin", element: SignIn },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
-  { path: "/category-shows", element: CategoryShows },
-  {
-    path: "/compatriots/public-association-events",
-    element: PublicAssociationEvents,
-  },
   { path: "/information-service/news", element: InformationServices },
   { path: "/news-detail/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
-  {path: "/flag", element: Flags},
-  {path: "/anthem", element: Anthem},
-  {path: "/coat", element: Coat},
+  { path: "/flag", element: Flags },
+  { path: "/anthem", element: Anthem },
+  { path: "/coat", element: Coat },
   { path: "/mediateka", element: Mediateka },
 ];
 

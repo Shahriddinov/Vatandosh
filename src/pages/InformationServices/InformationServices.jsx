@@ -9,48 +9,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
-import { Paginator } from "../../component/Paginator/Paginator";
+import { Paginator } from "../../component/Pagination/Pagination";
 
 const InformationServices = () => {
-    const newsData = useSelector((state) => state.newsSlice.newsData.data);
-    const dispatch = useDispatch();
+  const newsData = useSelector((state) => state.newsSlice.newsData.data);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getNews());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]);
 
-    const pagePath = {
-        title: "Yangiliklar",
-        path: [
-            { id: 1, label: "Asosiy sahifa", path: "/" },
-            { id: 2, label: "Yangiliklar ", path: "/information-service/news" },
-        ],
-    };
-    return (
-        <div className="news-page ">
-            <Header />
-            <main className="main container">
-                <InformationServicesHero pagePath={pagePath} />
-                <div className="main-content">
-                    <div className="main-content-slider">
-                        <InformationServicesSlider />
-                    </div>
-                    <div className="main-content-right">
-                        <InformationServicesComponent />
-                        <LatestNews />
-                        <PopularTags />
-                    </div>
-                    <div className="main-content-cards">
-                        {newsData?.map((card) => (
-                            <div className="main-content-card" key={card.id}>
-                                <Card {...card} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <Paginator />
-            </main>
+  const pagePath = {
+    title: "Yangiliklar",
+    path: [
+      { id: 1, label: "Asosiy sahifa", path: "/" },
+      { id: 2, label: "Yangiliklar ", path: "/information-service/news" },
+    ],
+  };
+  return (
+    <div className="news-page ">
+      <Header />
+      <main className="main container">
+        <InformationServicesHero pagePath={pagePath} />
+        <div className="main-content">
+          <div className="main-content-slider">
+            <InformationServicesSlider />
+          </div>
+          <div className="main-content-right">
+            <InformationServicesComponent />
+            <LatestNews />
+            <PopularTags />
+          </div>
+          <div className="main-content-cards">
+            {newsData?.map((card) => (
+              <div className="main-content-card" key={card.id}>
+                <Card {...card} />
+              </div>
+            ))}
+          </div>
         </div>
-    );
+        <Paginator />
+      </main>
+    </div>
+  );
 };
 export default InformationServices;
