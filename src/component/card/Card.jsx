@@ -8,7 +8,7 @@ import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
 import { baseServerUrl } from "../../services/api/utils";
 
-const Card = (props) => {
+const Card = (props, pathUrl) => {
   const lan = useSelector((state) => state.language.language);
 
   const tags = props.tags.split(",");
@@ -22,7 +22,7 @@ const Card = (props) => {
         />
       </div>
       <div className="news-information">
-        <Link to={`/news-detail/${props.id}`}>
+        <Link to={`/${pathUrl}/${props.id}`}>
           <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
           <p
             className="news__card-text"
