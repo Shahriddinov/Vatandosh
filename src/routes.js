@@ -23,7 +23,7 @@ const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
 );
-const Mediateka = lazy(() => import("./component/Mediateka/Mediateka"));
+const Mediateka = lazy(() => import("./pages/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
 const Flags = lazy(()=> import("./pages/Symbols/Flag"))
 const Anthem = lazy(()=> import("./pages/Symbols/Anthem"))
@@ -41,7 +41,10 @@ const routes = [
   { path: "/compatriots/:pageUrl", element: SinglePage },
   { path: "/projects/:pageUrl", element: SinglePage },
   { path: "/compatriots/public-associations", element: PublicAssociations },
-  { path: "/compatriots/public-associations/:categoryId", element: StatesFriendshipSociety },
+  {
+    path: "/compatriots/public-associations/:categoryId",
+    element: StatesFriendshipSociety,
+  },
   {
     path: "/compatriots/public-associations/:country",
     element: StatesFriendshipSociety,

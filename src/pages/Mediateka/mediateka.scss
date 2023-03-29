@@ -311,10 +311,34 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .mediateka {
+    &__close-btn {
+      right: 100px;
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .mediateka {
+    &__close-btn {
+      right: 80px;
+    }
+  }
+}
+
 @media (max-width: 1000px) {
   .mediateka {
     &__top {
       margin-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .mediateka {
+    &__close-btn {
+      right: 60px;
     }
   }
 }
@@ -328,35 +352,53 @@
     &__images {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
-}
 
-@media (max-width: 615px) {
-  .mediateka {
-    &__category-select {
-      .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        width: 200px !important;
+    &__header {
+      flex-direction: column;
+    }
+
+    &__btns {
+      width: 100%;
+
+      & > div {
+        width: 50%;
+
+        button {
+          width: 100%;
+        }
       }
     }
-  }
-}
 
-@media (max-width: 560px) {
-  .mediateka {
     &__category-select {
+      width: 100%;
+
       .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        width: 150px !important;
+        width: 100% !important;
       }
     }
-  }
-}
 
-@media (max-width: 510px) {
-  .mediateka {
-    &__category-select {
-      .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        width: 120px !important;
-      }
+    &__video-modal-container {
+      margin-top: 70px;
+      width: 90vw;
+    }
+
+    &__close-btn {
+      top: 50px;
+      right: 40px;
+    }
+
+    &__right-arrow,
+    &__left-arrow {
+      position: absolute;
+      top: 50px;
+    }
+
+    &__left-arrow {
+      left: 40px;
+    }
+
+    &__right-arrow {
+      left: 110px;
     }
   }
 }
@@ -385,16 +427,7 @@
 @media (max-width: 480px) {
   .mediateka {
     &__header {
-      flex-direction: column;
       gap: 20px;
-    }
-
-    &__category-select {
-      width: 100%;
-
-      .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-        width: 100% !important;
-      }
     }
   }
 }
