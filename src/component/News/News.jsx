@@ -7,6 +7,8 @@ import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
 import Card from "../card/Card";
 
 import "./News.scss";
+import Aos from "aos";
+
 
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 import { getEvents } from "../../reduxToolkit/eventsSlice/extraReducer";
@@ -24,6 +26,15 @@ const News = () => {
   const lan = useSelector((state) => state.language.language);
   const [activeCard, setActiveCard] = useState(true);
 
+
+
+
+
+  useEffect(() => {
+    Aos.init({duration: 2000})
+  }, []);
+
+
   useEffect(() => {
     dispatch(getNews());
     dispatch(getEvents());
@@ -34,12 +45,15 @@ const News = () => {
     return <p>{error}</p>;
   }
 
+
+
+
   return (
     <section className="news">
       <div className="news__container container">
         <h2 className="news__header">{t("news")}</h2>
         <div className="news__btns">
-          <div className="news-btn" data-aos="fade-up">
+          <div className="news-btn"  >
             <button
               className={activeCard ? "active-btn" : ""}
               onClick={() => setActiveCard(true)}
@@ -47,7 +61,7 @@ const News = () => {
               {t("news")}
             </button>
           </div>
-          <div className="events-btn">
+          <div className="events-btn" >
             <button
               className={!activeCard ? "active-btn" : ""}
               onClick={() => setActiveCard(false)}
@@ -60,10 +74,10 @@ const News = () => {
           </div>
         </div>
         <div className="news__body">
-          <div className="latest-news">
-            <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
+          <div className="latest-news" >
+            <div className={`news-cards ${activeCard ? "active-card" : ""}`}   >
               {newsData?.map((news) => (
-                <Card key={news.id} {...news} />
+                <Card key={news.id} {...news}  />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>

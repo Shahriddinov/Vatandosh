@@ -25,6 +25,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getSlider} from "../../reduxToolkit/sliderSlice/extraReducer";
 import Spinner from "../../component/Spinner";
 import {baseServerUrl} from "../../services/api/utils";
+import Aos from "aos";
 
 const About = () => {
     const state = useLocation()
@@ -62,6 +63,10 @@ const About = () => {
         },
     }
     useEffect(() => {
+        Aos.init({duration: 2000})
+    }, []);
+
+    useEffect(() => {
         dispatch(getSlider());
     }, []);
 
@@ -77,10 +82,14 @@ const About = () => {
             </div>
             <div className="about_card container">
                 <div className="about_card_left">
-                    <div className="about_card_left_much">
-                        <img className="about_card_left_much_img" src={CardImg} alt="cardImg"/></div>
+                    <div className="about_card_left_much" >
+                        <img className="about_card_left_much_img" data-aos="fade-up" src={CardImg} alt="cardImg"/></div>
                 </div>
-                <div className="about_card_right">
+                <div className="about_card_right"
+                     data-aos="fade-up"
+                     data-aos-anchor="#example-anchor"
+                     data-aos-offset="500"
+                     data-aos-duration="2000">
                     <div className="about_card_right_text">{t("aboutPage.section2.htext1")}</div>
                     <div className="about_card_right_title">
                         {t("aboutPage.section2.ptext1-1")}
@@ -97,7 +106,7 @@ const About = () => {
 
             </div>
             <div className="about_videos">
-                <div>
+                <div  >
 
                     <video autoPlay muted loop className="about_videos_links">
                         <source
@@ -108,7 +117,10 @@ const About = () => {
                     </video>
                 </div>
             </div>
-            <div className="about_direction container">
+            <div className="about_direction container"
+                 data-aos="zoom-in"
+                 data-aos-easing="ease-out-cubic"
+                 data-aos-duration="1000">
                 <div className="about_direction_fon">
                     Fondnig tashkil topishi hamda tarixi haqida
                 </div>
@@ -142,7 +154,7 @@ const About = () => {
 
                     <div className="container">
                         <div className="about_fon">{t("aboutPage.section4.htext1")}</div>
-                        <Table/>
+                        <Table />
                     </div>
 
                 </div>
@@ -156,6 +168,9 @@ const About = () => {
                         slidesPerView={4}
                         centeredSlides={true}
                         initialSlide={2}
+                        data-aos="zoom-in"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000"
                         {...swiperParams}
                     >
                         <SwiperSlide><img src={Gallery2} alt=""/></SwiperSlide>
