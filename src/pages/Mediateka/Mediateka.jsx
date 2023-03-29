@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import Header from "../Layout/Header/Header";
+import Header from "../../component/Layout/Header/Header";
 import {
   getImages,
   getImagesMenus,
   getVideos,
   getVideosMenus,
 } from "../../reduxToolkit/mediatekaSlice/extraReducer";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../component/Spinner/Spinner";
 import { baseServerUrl } from "../../services/api/utils";
 
 import Select from "@mui/material/Select";
@@ -19,7 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import "./mediateka.scss";
-import { Paginator } from "../Pagination/Pagination";
+import { Paginator } from "../../component/Pagination/Pagination";
 
 const Mediateka = () => {
   const dispatch = useDispatch();

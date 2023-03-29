@@ -54,7 +54,7 @@ const InformationServices = () => {
           <div className="main-content-cards">
             {data.map((card) => (
               <div className="main-content-card" key={card.id}>
-                <Card {...card} />
+                <Card {...card} pathUrl="news" />
               </div>
             ))}
           </div>
