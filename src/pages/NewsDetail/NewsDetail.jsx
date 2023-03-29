@@ -7,7 +7,7 @@ import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import Detail from "../../component/Detail/Detail";
 
 export default function NewsDetail() {
-  const { loading, pathErrText, data } = useNewsDataFetching();
+  const { loading, error, data } = useNewsDataFetching();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function NewsDetail() {
     )
   }
 
-  if (pathErrText) {
+  if (error) {
     return <NotFound />
   }
 
