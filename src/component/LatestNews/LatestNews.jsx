@@ -30,11 +30,22 @@ export default function LatestNews() {
               el.id !== id && (
                 <li key={el.id} className="latest_news-list-item">
                   <Link
+<<<<<<<<< Temporary merge branch 1
+                    to={`/news-detail/${el.id}`}
+                    className="latest_news-list-item-link"
+                  >
+                    <div className="latest_news-list-item-img">
+                      <img
+                        src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el.image}`}
+                        alt=""
+                      />
+=========
                     to={`/news/${el.id}`}
                     className="latest_news-list-item-link"
                   >
                     <div className="latest_news-list-item-img">
                       <img src={`${baseServerUrl}/${el.image}`} alt="" />
+>>>>>>>>> Temporary merge branch 2
                     </div>
                     <div className="latest_news-list-item-desc">
                       <p className="latest_news-list-item-desc-text">
