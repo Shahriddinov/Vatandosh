@@ -10,7 +10,6 @@ const SiteHero = ({ data }) => {
   const lan = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
-  console.log(data);
   return (
     <div className="site-hero">
       <div className="site-hero__container container">
