@@ -17,6 +17,7 @@ import eventsIcon from "../../assets/images/navMenuIcons/informationService/even
 import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
 import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
 import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
+import { useTranslation } from "react-i18next";
 
 const InformationServices = () => {
   const data = useSelector((state) => state.informationServicesSlice.data);
@@ -25,43 +26,43 @@ const InformationServices = () => {
   );
   const dispatch = useDispatch();
   const { pageName } = useParams();
+  const { t } = useTranslation();
 
   const pagePath = {
-    title: `${pageName[0].toUpperCase()}${pageName.slice(1)}`,
+    title: `${t(pageName)}`,
     path: [
-      { id: 1, label: "Asosiy sahifa", path: "/" },
-      { id: 2, label: "Yangiliklar ", path: "/information-service/news" },
+      { id: 1, label: `${t("mainPage")}`, path: "/" },
+      { id: 2, label: `${t(pageName)}`, path: `/information-service/${pageName}` },
     ],
   };
-
   const pathPages = [
     {
       id: 1,
-      path: "Tadbirlar",
+      path: `${t("event")}`,
       icon: eventsIcon,
-      link: "events",
+      link: "event",
     },
     {
       id: 2,
-      path: "Mediateka",
+      path: `${t("mediateka")}`,
       icon: mediaIcon,
       link: "mediateka",
     },
     {
       id: 3,
-      path: "Infografika",
+      path: `${t("infographics")}`,
       icon: graphIcon,
       link: "infographics",
     },
     {
       id: 4,
-      path: "Vatandoshlar jurnali",
+      path: `${t("countrymanMagazine")}`,
       icon: coountryManIcon,
       link: "compatriotMagazine",
     },
     {
       id: 5,
-      path: "Yangiliklar",
+      path: `${t("news")}`,
       icon: newsIcon,
       link: "news",
     },
