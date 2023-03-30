@@ -1,0 +1,89 @@
+@import "../../../assets/style/global.scss";
+
+.registeritem {
+  &-title {
+    margin-bottom: 30px;
+    @include fontStyles(600, 20px, 24px, $colorBlack);
+  }
+
+  &-borderLeft {
+    padding-left: 30px;
+    border-left: 1px solid #EAEDF6;
+  }
+
+  &-btnWrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: end;
+  }
+
+  &-submitBtn {
+    padding: 12px 22px;
+    background: #065EA9;
+    border-radius: 5px;
+    border: none;
+    @include fontStyles(500, 14px, 24px, #FFFFFF);
+    cursor: pointer;
+  }
+
+  &-label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &>p {
+      @include fontStyles(400, 14px, 17px, #000000);
+
+      &>span {
+        color: #FF5656;
+      }
+    }
+
+    &>div {
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid #EAEDF6;
+      border-radius: 6px;
+
+      &>input {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        @include fontStyles(400, 16px, 19px, #10131B);
+
+        &::placeholder {
+          @include fontStyles(400, 16px, 19px, #9D9D9D);
+        }
+      }
+
+      &>img {
+        width: 24px;
+        height: 24px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &-addForm {
+    margin-top: 20px;
+    height: 48px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #EAEDF6;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &>svg {
+      width: 24px;
+      height: 24px;
+      color: #065EA9;
+    }
+  }
+}
