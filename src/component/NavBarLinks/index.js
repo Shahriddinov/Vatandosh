@@ -90,7 +90,7 @@ export const NavBarLinks = () => {
         },
         {
           title: t("information_items.item2"),
-          url: "/information-service/event",
+          url: "/information-service/events",
           icon: eventsIcon,
         },
         {

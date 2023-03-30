@@ -38,9 +38,9 @@ const InformationServices = () => {
   const pathPages = [
     {
       id: 1,
-      path: `${t("event")}`,
+      path: `${t("events")}`,
       icon: eventsIcon,
-      link: "event",
+      link: "events",
     },
     {
       id: 2,
@@ -83,7 +83,7 @@ const InformationServices = () => {
         <InformationServicesHero pagePath={pagePath} />
         <div className="main-content">
           <div className="main-content-slider">
-            <InformationServicesSlider />
+            <InformationServicesSlider data={data} />
           </div>
           <div className="main-content-right">
             <InformationServicesComponent pathPages={pathPages} />
@@ -93,7 +93,7 @@ const InformationServices = () => {
           <div className="main-content-cards">
             {data.map((card) => (
               <div className="main-content-card" key={card.id}>
-                <Card {...card} />
+                <Card {...card} pathUrl={pageName} />
               </div>
             ))}
           </div>
