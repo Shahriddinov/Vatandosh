@@ -169,14 +169,14 @@
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.2px;
-
+    
     h3 {
         text-transform: uppercase;
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
     }
-
+    
     button {
         width: max-content;
         padding: 12px 22px;
@@ -188,6 +188,7 @@
         border-radius: 16px;
         border: none;
         cursor: pointer;
+        z-index: 12;
     }
 }
 
@@ -272,6 +273,11 @@
 
 .rotate180 {
     transform: rotate(180deg);
+}
+
+.display__none {
+    display: none;
+    position: absolute;
 }
 
 @media (max-width: 1000px) {
