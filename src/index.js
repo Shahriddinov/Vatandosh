@@ -15,12 +15,11 @@ import i18 from "./services/i18n/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <Suspense fallback="">
-      <Provider store={store}>
-        <Routes />
-      </Provider>
-    </Suspense>
-    
+  <Suspense fallback="">
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </Suspense>
   // <React.StrictMode>
   // </React.StrictMode>
 );

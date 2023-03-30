@@ -1,5 +1,6 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
-
+export const baseServerUrl =
+    "https://vatanparvarbackend.napaautomotive.uz/storage";
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
@@ -12,12 +13,16 @@ export const GET_MAP_DATA_URL = `${baseUrl}/country_relationship/`;
 export const GET_COUNTRIES = `${baseUrl}/countries`;
 export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
-export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`
-export const GET_ASSOCIATIONS_CATEGORY = `${baseUrl}/assosiationcategory`
+export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`;
+export const GET_ASSOCIATIONS_CATEGORY = `${baseUrl}/assosiationcategory`;
 export const GET_MEDIA_VIDOES = `${baseUrl}/mediateka-videos`;
 export const GET_MEDIA_IMAGES = `${baseUrl}/mediateka-images`;
 export const GET_MEDIA_VIDOES_MENUS = `${baseUrl}/mediateka-video-menus`;
 export const GET_MEDIA_IMAGES_MENUS = `${baseUrl}/mediateka-image-menus`;
+export const GET_SINGLE_PAGINATION = baseUrl + "/";
+export const GET_COLUMN_COUNT = `${baseUrl}/columns/page/`;
+export const GET_COLUMNS_MENU = `${baseUrl}/column-menus`;
+export const GET_DIRECTION = `${baseUrl}/directions`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

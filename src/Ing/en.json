@@ -40,6 +40,12 @@
   "footerSelections": "Selections",
   "footerService": "Information Service",
   "footerContact": "Contact",
+  "footerFamily": "“Family of the day” rukni",
+  "footerSport": "“Sports compatriots” rukni",
+  "footerYoung": "“Young compatriots” rukni",
+  "footerPrecious": "“Sara durdona” rukni",
+  "footerOverseaDish": "“National cuisine abroad” rukni",
+  "footerOverseaOrganization": "“Overseas compatriot organization” rukni",
   "footerOurContacts": "Our contacts",
   "uzLearning": "Learning uzbek online",
   "applyUniversity": "Submission of documents to uzbek universities",
@@ -51,13 +57,19 @@
   "aboutUzbekistan": "Visual information about uzbekistan",
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
-  "compatriotsValunteer": "Compatriot valantiors",
-  "modalText1" : "Registered compatriots",
-  "modalText2" : "News",
-  "modalText3" : "Events",
+  "compatriotsValunteer": "Compatriot volunteer",
+  "modalText1": "Registered compatriots",
+  "modalText2": "News",
+  "modalText3": "Events",
+  "infographics": "Infographic",
+  "mediateka": "Media",
+  "mainPage": "Main page",
+  "countrymanMagazine": "Countryman magazine",
   "about_items": {
     "item1": "About us",
-    "item2": "Board of trustees"
+    "item2": "Board of trustees",
+    "item3": "Management",
+    "item4": "The main directions of the foundation"
   },
   "citizin_items": {
     "item1": "Public associations",
@@ -67,8 +79,8 @@
   "information_items": {
     "item1": "News",
     "item2": "Events",
-    "item3": "Mediatheca",
-    "item4": "Infographics",
+    "item3": "Media",
+    "item4": "Infographic",
     "item5": "Countryman magazine"
   },
   "projects_items": {
@@ -81,7 +93,7 @@
     "item7": "“Overseas compatriot organization” project"
   },
   "aboutPage": {
-    "section1" : {
+    "section1": {
       "htext": "About us",
       "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
       "foottext1": "Main page",
@@ -134,6 +146,5 @@
     "section5": {
       "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
     }
-
   }
 }

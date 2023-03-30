@@ -35,3 +35,18 @@
     }
   }
 }
+
+@media only screen and (max-width:500px) {
+  .populartags {
+
+    &-title {
+      padding: 19px 16px;
+      @include fontStyles(700, 18px, 22px, $colorGrey);
+    }
+
+    &-tag {
+      padding: 6px 12px;
+      @include fontStyles(400, 14px, 17px, $colorTitle);
+    }
+  }
+}

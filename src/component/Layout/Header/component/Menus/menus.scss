@@ -10,7 +10,6 @@
   top: 0;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: #fff;
-
 }
 
 .menus {
@@ -24,18 +23,18 @@
 
   a {
     text-decoration: none;
-
   }
 
   &_link {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #5d6b8a!important;
+    color: #5d6b8a !important;
     cursor: pointer;
   }
 
-  ul, li {
+  ul,
+  li {
     margin: 0;
     padding: 0;
   }
@@ -44,7 +43,6 @@
     position: absolute;
     z-index: 1;
     border-radius: 10px;
-
   }
 
   .main li {
@@ -55,16 +53,15 @@
     padding: 5px 10px;
     //border: 1px solid black;
     //height: 30px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     line-height: 30px;
     background-color: white;
 
-    -webkit-transition: all .5s ease-in-out;
-
+    -webkit-transition: all 0.5s ease-in-out;
   }
 
   .main li:nth-child(odd) {
-
     -webkit-transform-origin: top;
     border-bottom: 1px solid black;
     -webkit-transform: perspective(350px) rotateX(-90deg);
@@ -109,17 +106,24 @@
   .hov {
     position: relative;
 
-
     z-index: 2;
-
   }
-  &_links{
+  &_links {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
     cursor: pointer;
     text-decoration: none;
-    color: #1E202C;
+    color: #1e202c;
+  }
+}
+
+.navMenuInnerWrapper {
+  display: flex;
+  gap: 12px;
+  img{
+    width: 18px;
+    height: 18px;
   }
 }
 

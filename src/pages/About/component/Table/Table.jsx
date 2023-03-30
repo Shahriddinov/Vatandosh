@@ -9,7 +9,9 @@ import { useTranslation } from 'react-i18next';
 function Table(props) {
     const {t} = useTranslation();
     return (
-        <div className="table">
+        <div className="table" data-aos="zoom-out"
+             data-aos-easing="ease-out-cubic"
+             data-aos-duration="1000">
             <div className="table_control">
                 <div className="table_control_all">
                     {t("aboutPage.section4.cardntk")}

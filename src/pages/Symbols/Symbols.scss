@@ -10,11 +10,29 @@
     line-height: 25px;
     letter-spacing: 0.2px;
     color: #656B70;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-bottom: 5%;
   }
+
   &_text{
     width: 50%;
+    &_title{
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      letter-spacing: 0.2px;
+      color: #656B70;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    &_start{
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+      color: #062A49;
+      margin-top: 5%;
+    }
+
     &_poets{
       font-weight: 700;
       font-size: 18px;
@@ -32,6 +50,33 @@
     }
     &_audio{
       width: 100%;
+      margin-bottom: 5%;
+    }
+
+  }
+  &_coat{
+    display: none;
+  }
+  @media only screen and (max-width: 1000px){
+    &_text{
+      width: 100%;
+    }
+    .flay{
+      width: 100%;
+    }
+    &_allSym{
+      padding: 5%;
+      //width: 100%;
+
+
+    }
+    &_coat{
+      display: flex;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      color: #062A49;
+      margin-top: 5%;
       margin-bottom: 5%;
     }
   }

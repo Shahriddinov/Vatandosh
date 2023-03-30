@@ -1,4 +1,4 @@
-import i18next from "i18next";
+
 import {initReactI18next} from "react-i18next";
 import { resorce } from "./resorce";
 import i18n from "i18next";

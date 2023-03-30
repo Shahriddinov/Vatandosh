@@ -9,12 +9,16 @@ function Anthem(props) {
         <>
             <Header/>
             <div className="symbol container">
-                <img src={Vector} alt=""/>
-                <div className="symbol_title">
-                    "O'zbekiston Respublikasining davlat madhiyasi to'g'risida"gi Qonun1992-yil 10-dekabrda O'zbekiston
-                    Respublikasi Oliy Kengashiningo'n birinchi sessiyasida qabul qilingan
-                </div>
+                <img className="symbol_allSym" src={Vector} alt=""/>
+
                 <div className="symbol_text">
+                    <div className="symbol_text_start">
+                        O'zbekiston Respublikasining davlat madhiyasi
+                    </div>
+                    <div className="symbol_text_title">
+                        "O'zbekiston Respublikasining davlat madhiyasi to'g'risida"gi Qonun1992-yil 10-dekabrda O'zbekiston
+                        Respublikasi Oliy Kengashiningo'n birinchi sessiyasida qabul qilingan
+                    </div>
                     <div className="symbol_text_poets">Mutal Burhonov musiqasi Abdulla Oripov so'zi</div>
                     <div className="symbol_text_post">
                         Serquyosh hur o'lkam, elga baxt, najot,Sen o'zing do'stlarga yo'ldosh, mehribon!Yashnagay to
