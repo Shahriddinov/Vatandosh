@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import SiteHero from "../../component/siteHero/SiteHero";
 import IntroSection from "./components/IntroSection/IntroSection";
-import bgImg from "../../assets/images/bg-img.png";
-import bgImg2 from "../../assets/images/compatriots/page-bg.png";
 
 import "./singlePage.scss";
 import { Spinner } from "../../component";

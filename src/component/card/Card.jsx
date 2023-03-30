@@ -12,7 +12,6 @@ const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
 
   const tags = props?.tags?.split(",");
-
   return (
     <div
       className="single-card"

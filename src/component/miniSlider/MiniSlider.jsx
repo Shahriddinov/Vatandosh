@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 import "./miniSlider.scss";
 
-export const MiniSlider = ({ title }) => {
+export const MiniSlider = ({ title, pathUrl }) => {
   const eventsData = useSelector((state) => state.eventsSlice.eventsData);
 
   const dispatch = useDispatch();
@@ -97,7 +97,7 @@ export const MiniSlider = ({ title }) => {
                 key={news.id}
                 className="compatriots-events__slider-list"
               >
-                <Card {...news} />
+                <Card {...news} pathUrl={pathUrl} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -2,7 +2,6 @@ import React from "react";
 import OfferStatesFriendship from "../components/offerStatesFriendship";
 import SiteHero from "../../../component/siteHero/SiteHero";
 import StatesFriendshipInfo from "../components/statesFriendshipInfo";
-import bgImg from "../../../assets/images/compatriots/chehiya.png";
 
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 import { MiniSlider } from "../../../component/miniSlider/MiniSlider";
@@ -13,10 +12,11 @@ import { useAssociationFetching } from "../hooks/useAssociationFetching";
 import "./statesFriendshipSociety.scss";
 import { Spinner } from "../../../component";
 import { useParams } from "react-router-dom";
-import data from "../../Projects/data";
 import { useSelector } from "react-redux";
 
 const StatesFriendshipSociety = () => {
+  const lan = useSelector((state) => state.language.language);
+
   const {
     associationData,
     associationCategoryData,
@@ -29,17 +29,9 @@ const StatesFriendshipSociety = () => {
   const { t } = useTranslation();
 
   if (associationLoading) {
-    return (
-      <div className="spinner_box">
-        <Spinner />
-      </div>
-    );
+    return <Spinner position={"full"} />;
   } else if (associationCategoryLoading) {
-    return (
-      <div className="spinner_box">
-        <Spinner />
-      </div>
-    );
+    return <Spinner position={"full"} />;
   } else if (error) {
     return <p>{error}</p>;
   }
@@ -52,17 +44,8 @@ const StatesFriendshipSociety = () => {
   );
 
   const dataHero = {
-    title: categoryData[`title_${lng}`],
-    description: countryData[`info_${lng}`],
-    pagePath: [
-      { id: 1, label: "Asosiy sahifa", path: "/" },
-      {
-        id: 1,
-        label: t("citizin_items.item3"),
-        path: "/compatriots/public-associations",
-      },
-      { id: 1, label: categoryData[`title_${lng}`], path: null },
-    ],
+    [`menu_${lan}`]: categoryData[`title_${lng}`],
+    [`info_${lan}`]: countryData[`info_${lng}`],
   };
 
   return (
@@ -75,13 +58,13 @@ const StatesFriendshipSociety = () => {
           }}
         >
           <WhriteHeader />
-          <SiteHero {...dataHero} />
+          <SiteHero data={dataHero} />
         </div>
 
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
           <OfferStatesFriendship {...categoryData} />
-          <MiniSlider title={`${t("event")}`} />
+          <MiniSlider title={`${t("event")}`} pathUrl="events" />
         </main>
       </div>
     </>

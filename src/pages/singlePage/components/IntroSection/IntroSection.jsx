@@ -4,7 +4,6 @@ import "./introSection.scss";
 import { useSelector } from "react-redux";
 import { Paginator } from "../../../../component/Pagination/Pagination";
 import { useSinglePaginationData } from "../../hooks/useSinglePaginationData";
-import { Spinner } from "../../../../component";
 import { getPaginationCount } from "../../extraFunck";
 
 const IntroSection = ({ data }) => {
@@ -35,7 +34,7 @@ const IntroSection = ({ data }) => {
           }
 
           {paginationData?.total === 0 ? (
-            <p className="">Ma'lumot mavjud emas </p>
+            <p>Ma'lumot mavjud emas </p>
           ) : (
             <>
               <ul
@@ -47,7 +46,7 @@ const IntroSection = ({ data }) => {
               >
                 {paginationData["0"].data?.map((el) => (
                   <li className="single-intro-section__item" key={el.id}>
-                    <Card {...el} />
+                    <Card {...el} pathUrl={pageUrl} />
                   </li>
                 ))}
               </ul>
