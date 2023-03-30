@@ -18,7 +18,7 @@ export const MiniSlider = ({ title, pathUrl }) => {
 
   useEffect(() => {
     dispatch(getEvents());
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className="compatriots-events">

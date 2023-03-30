@@ -12,7 +12,7 @@ export const useNewsDataFetching = () => {
 
     useEffect(() => {
         dispatch(getDetailData({ page, id }));
-    }, [id, dispatch])
+    }, [id, dispatch, page])
 
     return { data, loading, error }
 }
