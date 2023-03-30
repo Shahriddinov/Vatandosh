@@ -7,7 +7,7 @@ import {
 } from "../../services/api/utils";
 
 export const getCompatriotsMenu = createAsyncThunk(
-  "get/column-menu",
+  "get/compatriots-menu",
   async (payload) => {
     return await axios({
       method: "GET",
@@ -16,15 +16,12 @@ export const getCompatriotsMenu = createAsyncThunk(
   }
 );
 
-export const getColumnMenu = createAsyncThunk(
-  "get/compatriots-menu",
-  async () => {
-    return await axios({
-      method: "GET",
-      url: GET_COLUMNS_MENU,
-    }).then((res) => res.data);
-  }
-);
+export const getColumnMenu = createAsyncThunk("get/column-menu", async () => {
+  return await axios({
+    method: "GET",
+    url: GET_COLUMNS_MENU,
+  }).then((res) => res.data);
+});
 
 export const getSinglePagination = createAsyncThunk(
   "get/eventsSize",
