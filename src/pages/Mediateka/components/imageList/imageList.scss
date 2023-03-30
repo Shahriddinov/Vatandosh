@@ -1,0 +1,45 @@
+.mediateka {
+  &__images {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mediateka {
+    &__images {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .mediateka {
+    &__images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .mediateka {
+    &__images {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
