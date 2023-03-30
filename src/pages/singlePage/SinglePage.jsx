@@ -12,7 +12,7 @@ import { useSingleData } from "./hooks/useSingleData";
 import { useEffect } from "react";
 
 export const SinglePage = () => {
-  const { projectsMenuLoading, data } = useSingleData();
+  const { projectsMenuLoading, data, compatriotsMenuLoading } = useSingleData();
   const { pageUrl } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
@@ -29,20 +29,13 @@ export const SinglePage = () => {
   }, []);
 
   if (projectsMenuLoading) {
-    return (
-      <div className="spinner_box">
-        <Spinner />
-      </div>
-    );
+    return <Spinner position="full" />;
+  } else if (compatriotsMenuLoading) {
+    return <Spinner position="full" />;
   }
 
   const styles = {
-    backgroundImage:
-      pageUrl === "publicevents"
-        ? `url(${bgImg2})`
-        : pageUrl === "categoryshows"
-        ? `url(${bgImg})`
-        : `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
+    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
   };
 
   return (
@@ -51,7 +44,7 @@ export const SinglePage = () => {
         <WhriteHeader />
         <SiteHero data={data} />
       </div>
-      <IntroSection />
+      <IntroSection data={data} />
     </div>
   );
 };
