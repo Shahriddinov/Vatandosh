@@ -23,14 +23,14 @@ const StatesFriendshipSociety = () => {
     error,
     associationLoading,
     associationCategoryLoading,
+    eventsData,
+    eventsLoading,
   } = useAssociationFetching();
   const lng = useSelector((state) => state.language.language);
   const { categoryId } = useParams();
   const { t } = useTranslation();
 
-  if (associationLoading) {
-    return <Spinner position={"full"} />;
-  } else if (associationCategoryLoading) {
+  if (associationLoading || eventsLoading || associationCategoryLoading) {
     return <Spinner position={"full"} />;
   } else if (error) {
     return <p>{error}</p>;
@@ -64,7 +64,11 @@ const StatesFriendshipSociety = () => {
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
           <OfferStatesFriendship {...categoryData} />
-          <MiniSlider title={`${t("event")}`} pathUrl="events" />
+          <MiniSlider
+            title={`${t("event")}`}
+            data={eventsData}
+            fetchUrl="events"
+          />
         </main>
       </div>
     </>
