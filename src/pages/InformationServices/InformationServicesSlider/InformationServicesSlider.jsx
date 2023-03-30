@@ -8,7 +8,7 @@ export const InformationServicesSlider = () => {
   const [img, setImg] = useState(1);
 
   const handleRight = () => {
-    if (img === 3) setImg((prev) => (prev = 1));
+    if (img === 3) setImg((prev) => prev = 1);
     else setImg((prev) => ++prev);
   };
 
@@ -31,35 +31,41 @@ export const InformationServicesSlider = () => {
   return (
     <div className="main-hero">
       {data.map((card) => (
-        <div
-          className={`main-hero-slider ${card.id === img ? "active" : ""}`}
-          key={card.id}
-          style={{
-            backgroundImage: `url(${card.img})`,
-            backgroundPosition: "center",
-          }}
-        >
-          <h2>{card.title}</h2>
+        <>
           <div
-            className={`navigation-line ${card.id === img ? "active" : ""}`}
+            className={`main-hero-slider ${card.id === img ? "active" : ""}`}
+            key={card.id}
+            style={{
+              backgroundImage: `url(${card.img})`,
+              backgroundPosition: "center center",
+            }}
           />
-          <div className="main-hero-slider-bottom">
-            <div className="main-hero-slider-bottomCalendar">
-              <span>
-                <BsFillCalendarMinusFill />
-              </span>
-              <p>{card.data}</p>
+          <div className={`main-hero-slider-bottom ${card.id === img ? "active" : ""}`}>
+            <div className="main-hero-slider-bottom-title">
+              <h2>{card.title}</h2>
+              <div
+                className={`navigation-line ${card.id === img ? "active" : ""}`}
+              />
             </div>
-            <div className="main-hero-slider-bottomBtns">
-              <button aria-label="prev" onClick={handleLeft}>
-                <AiOutlineLeft size={18} />{" "}
-              </button>
-              <button aria-label="next" onClick={handleRight}>
-                <AiOutlineRight size={18} />{" "}
-              </button>
+            <div className="main-hero-slider-bottom-calendar">
+              <div className="main-hero-slider-bottom-calendarLeft">
+                <span>
+                  <BsFillCalendarMinusFill />
+                </span>
+                <p>{card.data}</p>
+              </div>
+              <div className="main-hero-slider-bottom-calendarRight">
+                <button aria-label="prev" onClick={handleLeft}>
+                  <AiOutlineLeft size={18} />{" "}
+                </button>
+                <button aria-label="next" onClick={handleRight}>
+                  <AiOutlineRight size={18} />{" "}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+
+        </>
       ))}
     </div>
   );
