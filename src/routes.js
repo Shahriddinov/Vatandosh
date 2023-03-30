@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import Contact from "./pages/Contact/Contact";
+import ExpertRegister from "./pages/ExpertRegister/ExpertRegister";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
@@ -69,6 +70,7 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
+  { path: "/expert-register", element: ExpertRegister },
 ];
 
 const RoutesContainer = () => (
