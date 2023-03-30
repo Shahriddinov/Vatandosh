@@ -172,8 +172,7 @@ const Projects = () => {
 
     return (
         <>
-            {!modalOn && window.innerWidth <= 1000 &&
-            <div className="projects">
+            <div className={modalOn && window.innerWidth <= 1000 ? "display__none" : "projects"}>
                 <div className="projects__top">
                     <WhriteHeader />
                     <CouncilHero {...heroData} />
@@ -271,7 +270,7 @@ const Projects = () => {
                         <button className='carousel__button' onClick={nextSlide}><FiChevronRight/></button>
                     </div>
                 </div>
-            </div>}
+            </div>
             {modalOn && <><WhriteHeader /><ParticipateModal toggleModal={toggleModal}/></>}
         </>
     )
