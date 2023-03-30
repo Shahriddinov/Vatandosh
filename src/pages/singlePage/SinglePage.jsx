@@ -26,9 +26,7 @@ export const SinglePage = () => {
     }
   }, []);
 
-  if (projectsMenuLoading) {
-    return <Spinner position="full" />;
-  } else if (compatriotsMenuLoading) {
+  if (projectsMenuLoading || compatriotsMenuLoading) {
     return <Spinner position="full" />;
   }
 

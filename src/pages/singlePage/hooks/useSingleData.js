@@ -22,6 +22,8 @@ export const useSingleData = () => {
   useEffect(() => {
     if (pathname.split("/")[1] === "compatriots") {
       dispatch(getCompatriotsMenu(pageUrl));
+    } else {
+      dispatch(getCompatriotsMenu("publicevents"));
     }
   }, [pageUrl]);
 
@@ -31,8 +33,6 @@ export const useSingleData = () => {
       : menuData?.find((el) => el?.id === search.slice(2) * 1)
     : { id: search.slice(2) * 1 };
 
-  // console.log(compatriotsMenuLoading);
-  // console.log(compatriotsMenu);
   return {
     projectsMenuLoading,
     data,
