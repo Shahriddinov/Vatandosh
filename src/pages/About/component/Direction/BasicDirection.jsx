@@ -107,7 +107,9 @@ function BasicDirection(props) {
                 <CouncilHero  {...heroData}/>
             </div>
 
+            <div className="about_basics container">Asosiy yo'nalishlar</div>
             <div className="about_direction_cards container">
+
                 {Ditrections.map((item, index) => (
 
                     <div key={index} className="about_direction_cards_boxs">
