@@ -36,7 +36,6 @@ export const NavBarLinks = () => {
   );
   const projectsMenu = useSelector(projectsMenuData);
   const { t } = useTranslation();
-  console.log(projectsMenu);
   return [
     {
       title: t("about"),
