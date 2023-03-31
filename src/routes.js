@@ -39,6 +39,15 @@ const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
+const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
+const ExpertRegister = lazy(() => import("./pages/ExpertRegister/ExpertRegister"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
+const ChangePassword = lazy(() => import("./pages/Registration/pages/ChangePassword/ChangePassword"));
+const RecoveryPassword = lazy(() => import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword"));
+const Register = lazy(() => import("./pages/Registration/pages/Register/Register"));
+const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
+const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 
 const routes = [
   { path: "", element: Home, },
@@ -88,6 +97,7 @@ const routes = [
     path: "/expert/employe",
     element: ExpertEmploye,
   },
+  { path: "/expert-profil", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (
