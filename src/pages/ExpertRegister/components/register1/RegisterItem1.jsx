@@ -22,7 +22,7 @@ export default function RegisterItem1({ activeBarItem }) {
                 uploadImg ? URL.createObjectURL(uploadImg) : DefaultProfilePic
               } alt="" />
               <label htmlFor="uploadimg" className="registeritem-submitBtn">
-                <input id="uploadimg" type="file" accept="image/png, image/gif, image/jpeg, image/jpg" onChange={(e) => setuploadImg(e.target.files[0])} />
+                <input required id="uploadimg" type="file" accept="image/png, image/gif, image/jpeg, image/jpg" onChange={(e) => setuploadImg(e.target.files[0])} />
                 Yangi rasm yuklang
               </label>
               <button onClick={() => setuploadImg(null)}>O‘chirish</button>
@@ -33,21 +33,21 @@ export default function RegisterItem1({ activeBarItem }) {
             <label htmlFor="" className="registeritem-label">
               <p>Familiyasi <span>*</span></p>
               <div>
-                <input type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
+                <input required type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
                 <img src={pencil} alt="" />
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
               <p>Ismi <span>*</span></p>
               <div>
-                <input type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
+                <input required type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
                 <img src={pencil} alt="" />
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
               <p>Sharifi <span>*</span></p>
               <div>
-                <input type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
+                <input required type="text" minLength={3} maxLength={30} placeholder={"Kiriting"} />
                 <img src={pencil} alt="" />
               </div>
             </label>

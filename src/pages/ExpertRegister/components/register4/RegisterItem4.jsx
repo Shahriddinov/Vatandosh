@@ -56,7 +56,7 @@ export default function RegisterItem4({ activeBarItem }) {
             <label htmlFor="" className="registeritem-label">
               <p>Maqola  fayli<span>*</span></p>
               <label htmlFor="registeritem-label-fileinput" required>
-                <input id="registeritem-label-fileinput" className="registeritem-label-fileinput" type="file" placeholder={"Kiriting"} />
+                <input required id="registeritem-label-fileinput" className="registeritem-label-fileinput" type="file" placeholder={"Kiriting"} />
                 <p>Fayl yuklang</p>
                 <img src={scripka} alt="" />
               </label>

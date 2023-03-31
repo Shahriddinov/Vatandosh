@@ -24,7 +24,7 @@ export default function RegisterItem5({ activeBarItem }) {
           <label htmlFor="" className="registeritem-label">
             <p>Taklifingiz uchun rasm<span>*</span></p>
             <label htmlFor="registeritem-label-fileinput">
-              <input id="registeritem-label-fileinput" className="registeritem-label-fileinput" type="file" minLength={3} maxLength={50} placeholder={"Kiriting"} />
+              <input required id="registeritem-label-fileinput" className="registeritem-label-fileinput" type="file" minLength={3} maxLength={50} placeholder={"Kiriting"} />
               <p>Rasm yuklang</p>
               <img src={scripka} alt="" />
             </label>
@@ -45,6 +45,7 @@ export default function RegisterItem5({ activeBarItem }) {
             <Checkbox
               checked={checked}
               onChange={handleChangeCheckbox}
+              required
               inputProps={{ 'aria-label': 'controlled' }}
             />
             <p>Hozirda shu sohada ishlayapti</p>
