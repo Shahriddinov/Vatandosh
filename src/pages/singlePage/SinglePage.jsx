@@ -25,6 +25,8 @@ export const SinglePage = () => {
       search.slice(2) !== data?.id.toString(10)
     ) {
       navigate("/not-found");
+    } else if (pageErr !== "columns") {
+      navigate("/not-found");
     }
   }, []);
 
