@@ -4,8 +4,8 @@ export const mediaPagination = (activeCard, mediaData) => {
 };
 
 export const showVideoModal = ({ mediaData, videoId }) => {
-  const leftArrow = document.querySelector(".mediateka__left-arrow");
-  const rightArrow = document.querySelector(".mediateka__right-arrow");
+  const leftArrow = document.querySelector(".video-modal__left-arrow");
+  const rightArrow = document.querySelector(".video-modal__right-arrow");
 
   const data = mediaData[0].data;
   const indexVideo = data.findIndex((el) => el.video_url === videoId);
@@ -33,8 +33,8 @@ export const slideMove = ({
   setActiveVideo,
   value,
 }) => {
-  const leftArrow = document.querySelector(".mediateka__left-arrow");
-  const rightArrow = document.querySelector(".mediateka__right-arrow");
+  const leftArrow = document.querySelector(".video-modal__left-arrow");
+  const rightArrow = document.querySelector(".video-modal__right-arrow");
 
   const data = mediaData[0].data;
   let indexVideo = data.findIndex((el) => el.video_url === activeVideo);

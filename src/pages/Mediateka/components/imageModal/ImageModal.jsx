@@ -15,10 +15,8 @@ const ImageModal = ({
   rightRef,
 }) => {
   return (
-    <div
-      className={`mediateka__image-modal ${showImageModal ? "show-modal" : ""}`}
-    >
-      <div className="mediateka__download" onClick={() => {}}>
+    <div className={`image-modal ${showImageModal ? "show-modal" : ""}`}>
+      <div className="image-modal__download" onClick={() => {}}>
         <svg
           width="17"
           height="21"
@@ -32,7 +30,7 @@ const ImageModal = ({
           />
         </svg>
       </div>
-      <div className="mediateka__share" onClick={() => {}}>
+      <div className="image-modal__share" onClick={() => {}}>
         <svg
           width="18"
           height="21"
@@ -47,7 +45,7 @@ const ImageModal = ({
         </svg>
       </div>
       <div
-        className="mediateka__image-close"
+        className="image-modal__image-close"
         onClick={() => setShowImageModal(false)}
       >
         <svg
@@ -65,19 +63,19 @@ const ImageModal = ({
       </div>
       <div
         ref={leftRef}
-        className="mediateka__left-arrow"
+        className="image-modal__left-arrow"
         onClick={() => moveSlide("left")}
       >
         <FiChevronLeft />
       </div>
       <div
         ref={rightRef}
-        className="mediateka__right-arrow"
+        className="image-modal__right-arrow"
         onClick={() => moveSlide("right")}
       >
         <FiChevronRight />
       </div>
-      <div className="mediateka__image-modal-container">
+      <div className="image-modal__image-modal-container">
         <img src={`${baseServerUrl}/${activeImage}`} alt="mediatake" />
       </div>
     </div>

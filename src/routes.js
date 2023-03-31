@@ -25,15 +25,19 @@ const InformationServices = lazy(() =>
 );
 const Mediateka = lazy(() => import("./pages/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
-const Flags = lazy(()=> import("./pages/Symbols/Flag"))
-const Anthem = lazy(()=> import("./pages/Symbols/Anthem"))
-const Coat = lazy(()=> import("./pages/Symbols/Coat"))
-const Direction = lazy(()=> import("./pages/About/component/Direction/BasicDirection"));
-const Management = lazy(()=> import("./pages/About/component/Management/Management"))
-
+const Flags = lazy(() => import("./pages/Symbols/Flag"));
+const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
+const Coat = lazy(() => import("./pages/Symbols/Coat"));
+const Direction = lazy(() =>
+  import("./pages/About/component/Direction/BasicDirection")
+);
+const Management = lazy(() =>
+  import("./pages/About/component/Management/Management")
+);
+const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 
 const routes = [
-  { path: "", element: Home, },
+  { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -62,10 +66,11 @@ const routes = [
   { path: "/:page/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
-  {path: "/flag", element: Flags},
-  {path: "/anthem", element: Anthem},
-  {path: "/coat", element: Coat},
+  { path: "/flag", element: Flags },
+  { path: "/anthem", element: Anthem },
+  { path: "/coat", element: Coat },
   { path: "/mediateka", element: Mediateka },
+  { path: "/hashtag", element: Hashtag },
 ];
 
 const RoutesContainer = () => (

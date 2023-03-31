@@ -4,18 +4,14 @@ import "./videoList.scss";
 
 const VideoList = ({ activeCard, data, categoryId, handleClick, lan }) => {
   return (
-    <div
-      className={`mediateka__videos ${
-        activeCard === "videos" ? "active-card" : ""
-      }`}
-    >
+    <div className={`videos ${activeCard === "videos" ? "active-card" : ""}`}>
       {data.map((video) => {
         return categoryId === 0 ? (
-          <div key={video.id} className="mediateka__video-card">
-            <div className="mediateka__video-container">
+          <div key={video.id} className="videos__video-card">
+            <div className="videos__video-container">
               <div
                 onClick={() => handleClick(video.video_url)}
-                className="mediateka__play-video"
+                className="videos__play-video"
               ></div>
               <iframe
                 src={`https://www.youtube.com/embed/${video.video_url}`}
@@ -24,7 +20,7 @@ const VideoList = ({ activeCard, data, categoryId, handleClick, lan }) => {
                 allowFullScreen
               />
             </div>
-            <div className="mediateka__video-name">
+            <div className="videos__video-name">
               <p
                 dangerouslySetInnerHTML={{
                   __html: video[`title_${lan}`],
@@ -33,11 +29,11 @@ const VideoList = ({ activeCard, data, categoryId, handleClick, lan }) => {
             </div>
           </div>
         ) : categoryId === parseInt(video.menu_uz) ? (
-          <div key={video.id} className="mediateka__video-card">
-            <div className="mediateka__video-container">
+          <div key={video.id} className="videos__video-card">
+            <div className="videos__video-container">
               <div
                 onClick={() => handleClick(video.video_url)}
-                className="mediateka__play-video"
+                className="videos__play-video"
               ></div>
               <iframe
                 src={`https://www.youtube.com/embed/${video.video_url}?showinfo=0`}
@@ -46,7 +42,7 @@ const VideoList = ({ activeCard, data, categoryId, handleClick, lan }) => {
                 allowFullScreen
               />
             </div>
-            <div className="mediateka__video-name">
+            <div className="videos__video-name">
               <p
                 dangerouslySetInnerHTML={{
                   __html: video[`title_${lan}`],

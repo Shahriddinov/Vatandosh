@@ -1,23 +1,21 @@
-.mediateka {
-  &__video-modal {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    top: 0;
-    left: 0;
-    background: rgba($color: #000000, $alpha: 0.9);
-    z-index: 999;
-    transform: scale(0);
-    transition: 0.3s;
+.video-modal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  top: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.9);
+  z-index: 999;
+  transform: scale(0);
+  transition: 0.3s;
 
-    &.show-modal {
-      transform: scale(1);
-      z-index: 9999;
-    }
+  &.show-modal {
+    transform: scale(1);
+    z-index: 9999;
   }
 
   &__video-modal-container {
@@ -72,7 +70,7 @@
 }
 
 @media (max-width: 768px) {
-  .mediateka {
+  .video-modal {
     &__video-modal-container {
       margin-top: 70px;
       width: 90vw;
