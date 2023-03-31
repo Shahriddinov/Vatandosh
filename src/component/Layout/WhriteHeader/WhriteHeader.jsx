@@ -30,6 +30,7 @@ const WhriteHeader = () => {
     const { grayScale } = useContext(GrayContext);
     const dispatch = useDispatch();
     const language = useSelector((state) => state.language.language);
+  
 
     const handleChangeLng = (lng) => {
         i18next.changeLanguage(lng);

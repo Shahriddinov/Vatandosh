@@ -143,6 +143,7 @@ const Projects = () => {
                     </div>
                     <Slider {...settings} ref={sliderRef}>
                         { slicedData.map((element) => {
+                            console.log(element)
                             return (
                                 <div className="slider__element" key={element.id}>
                                     <div className="hashtag">
@@ -153,6 +154,7 @@ const Projects = () => {
                                             </div>
                                             <div className="images__right">
                                                 <img src={element.image3} alt="" />
+                                                <img src={element.image4} alt="" />
                                             </div>
                                         </div>
                                         <div className="hashtag__info">

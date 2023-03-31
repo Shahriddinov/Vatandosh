@@ -31,7 +31,11 @@ const News = () => {
 
 
   useEffect(() => {
-    Aos.init({duration: 2000})
+    Aos.init({
+      duration: 2000,
+      anchorPlacement: 'bottom-top'
+
+    })
   }, []);
 
 
@@ -75,7 +79,7 @@ const News = () => {
         </div>
         <div className="news__body">
           <div className="latest-news" >
-            <div className={`news-cards ${activeCard ? "active-card" : ""}`}   >
+            <div  className={`news-cards ${activeCard ? "active-card" : ""}`}  >
               {newsData?.map((news) => (
 
                 <Card key={news.id} {...news} pathUrl="news" />
