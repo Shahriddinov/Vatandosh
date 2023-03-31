@@ -69,7 +69,8 @@ const routes = [
   { path: "/flag", element: Flags },
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
-  { path: "/mediateka", element: Mediateka },
+  { path: "/information-service/mediateka", element: Mediateka },
+  { path: "/expert-register", element: ExpertRegister },
   { path: "/hashtag", element: Hashtag },
 ];
 
