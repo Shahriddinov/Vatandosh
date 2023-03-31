@@ -2,14 +2,6 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import Contact from "./pages/Contact/Contact";
-import ExpertRegister from "./pages/ExpertRegister/ExpertRegister";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
-import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
-import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
-import Register from "./pages/Registration/pages/Register/Register";
-import { SignIn } from "./pages/Registration/pages/SignIn/SignIn";
-import { SignUp } from "./pages/Registration/pages/SignUp/SignUp";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -35,6 +27,15 @@ const Direction = lazy(() =>
 const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
+const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
+const ExpertRegister = lazy(() => import("./pages/ExpertRegister/ExpertRegister"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
+const ChangePassword = lazy(() => import("./pages/Registration/pages/ChangePassword/ChangePassword"));
+const RecoveryPassword = lazy(() => import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword"));
+const Register = lazy(() => import("./pages/Registration/pages/Register/Register"));
+const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
+const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 
 const routes = [
   { path: "", element: Home, },
@@ -71,6 +72,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
+  { path: "/expert-profil", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (
