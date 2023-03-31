@@ -72,7 +72,6 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
-  { path: "/mediateka", element: Mediateka },
   { path: "/hashtag", element: Hashtag },
 ];
 
