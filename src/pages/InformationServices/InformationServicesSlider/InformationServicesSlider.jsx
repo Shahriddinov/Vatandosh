@@ -69,7 +69,6 @@ export const InformationServicesSlider = ({ data }) => {
               </div>
             </div>
           </div>
-
         </React.Fragment>
       ))}
       <div className="main-hero-dot">

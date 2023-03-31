@@ -1,32 +1,36 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./InformationServices.scss";
 import Header from "../../component/Layout/Header/Header";
 import { InformationServicesSlider } from "./InformationServicesSlider/InformationServicesSlider";
 import { InformationServicesHero } from "./InformationServicesHero/InformationServicesHero";
 import LatestNews from "../../component/LatestNews/LatestNews";
 import Card from "../../component/card/Card";
-import { useDispatch, useSelector } from "react-redux";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
 import { Paginator } from "../../component/Pagination/Pagination";
-import { useParams } from "react-router-dom";
-import { getInf } from "../../reduxToolkit/informationServicesSlice/extraReducer";
 
 import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
 import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
 import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
 import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
 import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
-import { useTranslation } from "react-i18next";
+import Spinner from "../../component/Spinner/Spinner";
+import { useInformationServicesPagination } from './hooks/useInformationServicesPagination';
 
 const InformationServices = () => {
-  const data = useSelector((state) => state.informationServicesSlice.data);
-  const loading = useSelector(
-    (state) => state.informationServicesSlice.loading
-  );
-  const dispatch = useDispatch();
-  const { pageName } = useParams();
-  const { t } = useTranslation();
+
+
+  const {
+    paginationFetching,
+    page,
+    paginationData,
+    paginationCount,
+    paginationLoading,
+    loading,
+    data,
+    pageName,
+    t
+  } = useInformationServicesPagination()
 
   const pagePath = {
     title: `${t(pageName)}`,
@@ -56,7 +60,7 @@ const InformationServices = () => {
     },
     {
       id: 4,
-      path: `${t("countrymanMagazine")}`,
+      path: `${t("compatriotMagazine")}`,
       icon: coountryManIcon,
       link: "compatriotMagazine",
     },
@@ -68,12 +72,9 @@ const InformationServices = () => {
     },
   ];
 
-  useEffect(() => {
-    dispatch(getInf(pageName));
-  }, [dispatch, pageName]);
 
-  if (loading) {
-    return <p>Loading...</p>;
+  if (paginationLoading && loading) {
+    return <Spinner position='full' />;
   }
 
   return (
@@ -91,14 +92,26 @@ const InformationServices = () => {
             <PopularTags />
           </div>
           <div className="main-content-cards">
-            {data.map((card) => (
+            {paginationData["0"].data.map((card) => (
               <div className="main-content-card" key={card.id}>
                 <Card {...card} pathUrl={pageName} />
               </div>
             ))}
           </div>
         </div>
-        <Paginator />
+        {paginationCount >= 2
+          ? (
+            <Paginator
+              page={page}
+              paginationFetching={paginationFetching}
+              count={paginationCount}
+            />
+          )
+          : null
+        }
+        <div className="main-popular-tags">
+          <PopularTags />
+        </div>
       </main>
     </div>
   );

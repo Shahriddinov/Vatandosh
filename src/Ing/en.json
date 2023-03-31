@@ -61,6 +61,10 @@
   "modalText1" : "Registered compatriots",
   "modalText2" : "News",
   "modalText3" : "Events",
+  "mediateka" : "Media",
+  "infographics" : "Infographic",
+  "compatriotMagazine" : "Compatriot magazine",
+  "mainPage" : "Main page",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",

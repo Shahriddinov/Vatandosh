@@ -2,6 +2,7 @@
   background-image: url("../../assets/images/body-bg.png");
 
   .main {
+    margin-bottom: 30px;
     &-content {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -25,6 +26,7 @@
 
       &-card {
         max-width: 260px;
+        width: 100%;
       }
 
       &-right {
@@ -35,15 +37,25 @@
         row-gap: 30px;
       }
     }
+    &-popular-tags {
+      display: none;
+      margin-top: 30px;
+    }
   }
 
   @media (max-width: 1235px) {
     .main {
       &-content {
         &-cards {
-          justify-content: space-around;
+          justify-content: space-between;
         }
       }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .main {
+      margin-top: 30px;
     }
   }
 
@@ -55,6 +67,33 @@
         &-cards {
           grid-column: span 12;
         }
+        &-card {
+          max-width: 334px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 708px) {
+    .main {
+      &-content {
+        &-cards {
+          justify-content: center;
+        }
+        &-card {
+          max-width: 450px;
+          width: 100%;
+        }
+        &-right {
+          flex-direction: column-reverse;
+          div:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+      &-popular-tags {
+        display: block;
       }
     }
   }
