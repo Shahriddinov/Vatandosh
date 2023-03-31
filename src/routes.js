@@ -2,7 +2,11 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
+import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
 import Contact from "./pages/Contact/Contact";
+import ExpertCouncil from "./pages/Expert/ExpertCouncil";
+import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
+import ExpertRegister from "./pages/ExpertRegister/ExpertRegister";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
 import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
@@ -37,7 +41,7 @@ const Management = lazy(() =>
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 
 const routes = [
-  { path: "", element: Home },
+  { path: "", element: Home, },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -72,6 +76,18 @@ const routes = [
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
   { path: "/hashtag", element: Hashtag },
+  {
+    path: "/expert",
+    element: ExpertCouncil,
+  },
+  {
+    path: "/expert/council/about",
+    element: AboutCouncil,
+  },
+  {
+    path: "/expert/employe",
+    element: ExpertEmploye,
+  },
 ];
 
 const RoutesContainer = () => (
