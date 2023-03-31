@@ -9,15 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
 import { Paginator } from "../../component/Pagination/Pagination";
+// import Spinner from "../../component/Spinner/Spinner";
 import { useParams } from "react-router-dom";
 import { getInf } from "../../reduxToolkit/informationServicesSlice/extraReducer";
-
-import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
-import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
-import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
-import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
-import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
-import { useTranslation } from "react-i18next";
 
 const InformationServices = () => {
   const data = useSelector((state) => state.informationServicesSlice.data);
@@ -26,47 +20,14 @@ const InformationServices = () => {
   );
   const dispatch = useDispatch();
   const { pageName } = useParams();
-  const { t } = useTranslation();
 
   const pagePath = {
-    title: `${t(pageName)}`,
+    title: `${pageName}`,
     path: [
-      { id: 1, label: `${t("mainPage")}`, path: "/" },
-      { id: 2, label: `${t(pageName)}`, path: `/information-service/${pageName}` },
+      { id: 1, label: "Asosiy sahifa", path: "/" },
+      { id: 2, label: "Yangiliklar ", path: "/information-service/news" },
     ],
   };
-  const pathPages = [
-    {
-      id: 1,
-      path: `${t("events")}`,
-      icon: eventsIcon,
-      link: "events",
-    },
-    {
-      id: 2,
-      path: `${t("mediateka")}`,
-      icon: mediaIcon,
-      link: "mediateka",
-    },
-    {
-      id: 3,
-      path: `${t("infographics")}`,
-      icon: graphIcon,
-      link: "infographics",
-    },
-    {
-      id: 4,
-      path: `${t("countrymanMagazine")}`,
-      icon: coountryManIcon,
-      link: "compatriotMagazine",
-    },
-    {
-      id: 5,
-      path: `${t("news")}`,
-      icon: newsIcon,
-      link: "news",
-    },
-  ];
 
   useEffect(() => {
     dispatch(getInf(pageName));
@@ -83,17 +44,17 @@ const InformationServices = () => {
         <InformationServicesHero pagePath={pagePath} />
         <div className="main-content">
           <div className="main-content-slider">
-            <InformationServicesSlider data={data} />
+            <InformationServicesSlider />
           </div>
           <div className="main-content-right">
-            <InformationServicesComponent pathPages={pathPages} />
+            <InformationServicesComponent />
             <LatestNews />
             <PopularTags />
           </div>
           <div className="main-content-cards">
             {data.map((card) => (
               <div className="main-content-card" key={card.id}>
-                <Card {...card} pathUrl={pageName} />
+                <Card {...card} pathUrl="news" />
               </div>
             ))}
           </div>
