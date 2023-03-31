@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { GrayContext } from "../Layout";
-import Navbar from "./component/navbar/Navbar";
 import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -23,6 +22,7 @@ import Menun from "./component/Menun/Menun";
 import { languageList } from "../data";
 
 import Spinner from "../../Spinner/Spinner";
+import Navbar from "../Header/component/navbar/Navbar";
 
 const WhriteHeader = () => {
   const projectsMenuLoading = useSelector(
@@ -38,24 +38,21 @@ const WhriteHeader = () => {
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
 
-    const handleChangeLng = (lng) => {
-        i18next.changeLanguage(lng);
-        dispatch(languageChange(lng));
-        setactiveLang((el) => !el)
-    };
-    const contactData = useSelector(
-        (state) => state.contactSlice.contactData.data
-    );
+  const handleChangeLng = (lng) => {
+    i18next.changeLanguage(lng);
+    dispatch(languageChange(lng));
+    setactiveLang((el) => !el);
+  };
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
 
-    useEffect(() => {
-        if (activeSidebar) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "inherit";
-    }, [activeSidebar]);
+  useEffect(() => {
+    if (activeSidebar) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "inherit";
+  }, [activeSidebar]);
 
-  if (projectsMenuLoading) {
-    return <Spinner/>;
-
-  } else if (associationMenuLoading) {
+  if (projectsMenuLoading || associationMenuLoading) {
     return <Spinner />;
   }
 
@@ -85,104 +82,96 @@ const WhriteHeader = () => {
             </div>
           </a>
 
-                    <Link to="/flag">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Flag}
-                            className="header_navbar_flags"
-                            alt="flag"
-                        />
-                    </Link>
-                    <Link to="/coat">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Blazon}
-                            className="header_navbar_flags"
-                            alt="blazon"
-                        />
-                    </Link>
-                    <Link to="/anthem">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Music}
-                            className="header_navbar_flags"
-                            alt="music"
-                        />
-                    </Link>
-                    <label className="header_navbar_search searches">
-                        <input
-                            type="text"
-                            className="header_navbar_search_inputs"
-                            placeholder="Qidirish"
-                        />
-                        <img
-                            src={Search}
-                            className="header_navbar_search_icon"
-                            alt="search"
-                        />
-                    </label>
-                    <button
-                        className="header_navbar_eye searches" onClick={() => grayScale()}>
-                        <motion.img whileTap={{ scale: 0.6 }} src={EyeWhrite} alt="eye" />
-                    </button>
+          <Link to="/flag">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Flag}
+              className="header_navbar_flags"
+              alt="flag"
+            />
+          </Link>
+          <Link to="/coat">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Blazon}
+              className="header_navbar_flags"
+              alt="blazon"
+            />
+          </Link>
+          <Link to="/anthem">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Music}
+              className="header_navbar_flags"
+              alt="music"
+            />
+          </Link>
+          <label className="header_navbar_search searches">
+            <input
+              type="text"
+              className="header_navbar_search_inputs"
+              placeholder="Qidirish"
+            />
+            <img
+              src={Search}
+              className="header_navbar_search_icon"
+              alt="search"
+            />
+          </label>
+          <button
+            className="header_navbar_eye searches"
+            onClick={() => grayScale()}
+          >
+            <motion.img whileTap={{ scale: 0.6 }} src={EyeWhrite} alt="eye" />
+          </button>
 
-                    <div className="header_navbar_language">
-                        <div className="header_navbar_language-wrapper searches" onClick={() => setactiveLang((el) => !el)}>
-                            <CiGlobe className="header_navbar_language-icon" />
-                            <span style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
-                            <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
-                        </div>
-                        <div className="header_navbar_language-bar searches" style={activeLang ? { display: "flex" } : null}>
-                            {
-                                languageList.map((el,index) => (
-                                    <p key={index} onClick={() => 
-                                        handleChangeLng(el.type)
-                                    }>{el.label}</p>
-                                ))
-                            }
-                            {/* <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>Uz</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>Ru</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>En</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>Ўз</p> */}
-                        </div>
-                    </div>
-                    <button
-                        className="header_navbar_eye burger"
-                        onClick={() => setactiveSidebar(!activeSidebar)}
-                    >
-                        {activeSidebar ? (
-                            <CgClose className="burger-closeIcon" />
-                        ) : (
-                            <img src={burger} alt="error" />
-                        )}
-                    </button>
-                </div>
-
-                <Navbar
-                    activeSidebar={activeSidebar}
-                    setactiveSidebar={setactiveSidebar}
-                />
-
-                <div
-                    className={activeSidebar ? "overlay overlayActive" : "overlay"}
-                    onClick={() => setactiveSidebar(!activeSidebar)}
-                ></div>
+          <div className="header_navbar_language">
+            <div
+              className="header_navbar_language-wrapper searches"
+              onClick={() => setactiveLang((el) => !el)}
+            >
+              <CiGlobe className="header_navbar_language-icon" />
+              <span style={{ color: "white" }}>
+                {language.split("")[0].toUpperCase() + language.split("")[1]}
+              </span>
+              <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
             </div>
-            {pathname.split("/")[1].includes("portal") ? "" : <Menun />}
-        </header>
-    );
+            <div
+              className="header_navbar_language-bar searches"
+              style={activeLang ? { display: "flex" } : null}
+            >
+              {languageList.map((el, index) => (
+                <p key={index} onClick={() => handleChangeLng(el.type)}>
+                  {el.label}
+                </p>
+              ))}
+            </div>
+          </div>
+          <button
+            className="header_navbar_eye burger"
+            onClick={() => setactiveSidebar(!activeSidebar)}
+          >
+            {activeSidebar ? (
+              <CgClose className="burger-closeIcon" />
+            ) : (
+              <img src={burger} alt="error" />
+            )}
+          </button>
+        </div>
+
+        <Navbar
+          activeSidebar={activeSidebar}
+          setactiveSidebar={setactiveSidebar}
+        />
+
+        <div
+          className={activeSidebar ? "overlay overlayActive" : "overlay"}
+          onClick={() => setactiveSidebar(!activeSidebar)}
+        ></div>
+      </div>
+      {pathname.split("/")[1].includes("portal") ? "" : <Menun />}
+    </header>
+  );
 };
 
 export default WhriteHeader;

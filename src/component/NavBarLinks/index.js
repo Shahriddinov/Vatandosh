@@ -10,20 +10,31 @@ import paIcon from "../../assets/images/navMenuIcons/countryMan/publicAssociatio
 import publicEventsIcon from "../../assets/images/navMenuIcons/countryMan/publicEventsIcon.svg";
 //
 import allProjectsIcon from "../../assets/images/navMenuIcons/projects/allProjectsIcon.svg";
-import familyIcon from "../../assets/images/navMenuIcons/projects/familyIcon.svg";
-import sportIcon from "../../assets/images/navMenuIcons/projects/sportIcon.svg";
-import youngIcon from "../../assets/images/navMenuIcons/projects/youngIcon.svg";
-import preciousIcon from "../../assets/images/navMenuIcons/projects/preciousIcon.svg";
-import fndIcon from "../../assets/images/navMenuIcons/projects/foreignNationDishIcon.svg";
-import overseaIcon from "../../assets/images/navMenuIcons/projects/overseaOrgonization.svg";
 //
 import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
 import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
 import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
 import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
 import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
+import { useSelector } from "react-redux";
+import { baseServerUrl } from "../../services/api/utils";
+import { createSelector } from "reselect";
 
 export const NavBarLinks = () => {
+  const lan = useSelector((state) => state.language.language);
+  const projectsMenuData = createSelector(
+    (state) => state.singleSlice.projectsData,
+
+    (data) => {
+      return data.map((item) => ({
+        title: item[`menu_${lan}`],
+        url: `/projects/columns?=${item?.id}`,
+        icon: null,
+        img: `${baseServerUrl + "/" + item?.logo}`,
+      }));
+    }
+  );
+  const projectsMenu = useSelector(projectsMenuData);
   const { t } = useTranslation();
   return [
     {
@@ -75,6 +86,7 @@ export const NavBarLinks = () => {
           url: "/projects",
           icon: allProjectsIcon,
         },
+        ...projectsMenu,
       ],
     },
     {
