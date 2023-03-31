@@ -38,11 +38,11 @@ export default function ExpertRegister() {
               }
             </ul>
             <div className="expertregister-main-list">
-              {/* <RegisterItem1 /> */}
-              <RegisterItem2 />
-              {/* <RegisterItem3 />
-              <RegisterItem4 />
-              <RegisterItem5 /> */}
+              <RegisterItem1 activeBarItem={activeBarItem} />
+              <RegisterItem2 activeBarItem={activeBarItem} />
+              <RegisterItem3 activeBarItem={activeBarItem} />
+              <RegisterItem4 activeBarItem={activeBarItem} />
+              <RegisterItem5 activeBarItem={activeBarItem} />
             </div>
           </div>
         </div>

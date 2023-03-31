@@ -3,15 +3,11 @@
 .registeritem2 {
   &-form {
     &-otm {
+      display: grid;
+      gap: 20px;
 
       &:not(:first-child) {
         margin-top: 20px;
-      }
-
-      &-faculty {
-        margin-top: 20px;
-        display: flex;
-        gap: 20px;
       }
     }
   }
