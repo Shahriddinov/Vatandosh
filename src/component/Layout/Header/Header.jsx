@@ -23,105 +23,113 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { languageList } from "../data";
 
 const Header = () => {
-    const [activeSidebar, setactiveSidebar] = useState(false);
-    const { pathname } = useLocation();
-    const [activeLang, setactiveLang] = useState(false);
-    const { grayScale } = useContext(GrayContext);
-    const dispatch = useDispatch();
-    const language = useSelector((state) => state.language.language);
+  const [activeSidebar, setactiveSidebar] = useState(false);
+  const { pathname } = useLocation();
+  const [activeLang, setactiveLang] = useState(false);
+  const { grayScale } = useContext(GrayContext);
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.language.language);
 
-    const handleChangeLng = (lng) => {
-        i18next.changeLanguage(lng);
-        dispatch(languageChange(lng));
-        setactiveLang((el) => !el)
-    };
-    const contactData = useSelector(
-        (state) => state.contactSlice.contactData.data
-    );
+  const handleChangeLng = (lng) => {
+    i18next.changeLanguage(lng);
+    dispatch(languageChange(lng));
+    setactiveLang((el) => !el);
+  };
+  const contactData = useSelector(
+    (state) => state.contactSlice.contactData.data
+  );
 
-    useEffect(() => {
-        if (activeSidebar) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "inherit";
-    }, [activeSidebar]);
+  useEffect(() => {
+    if (activeSidebar) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "inherit";
+  }, [activeSidebar]);
 
-    return (
-        <header className="head" style={activeSidebar ? { background: "#FFFFFF" } : null}>
-            <div className="header">
-                <div className="header_navbar">
-                    <Link to="/" className="header_navbar_left">
-                        <img src={Logo}
-                            alt="logo" />
-                    </Link>
-                    <a href={`tel: ${contactData?.phone}`} className="header_navbar_phone">
-                        <img src={Phone} alt="phone" />
-                        <div
-                            className="header_navbar_phone_number">
-                            +998(55)502-22-99
-                        </div>
-                    </a>
-                    <a href={`mailto: ${contactData?.email}`} className="header_navbar_phone">
-                        <img src={Message} alt="message" />
-                        <div className="header_navbar_phone_number">
-                            info@vatandoshlarfondi.uz
-                        </div>
-                    </a>
-                    <a href="/flag">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Flag}
-                            className="header_navbar_flags"
-                            alt="flag"
-                        />
-                    </a>
-                    <a href="/coat">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Blazon}
-                            className="header_navbar_flags"
-                            alt="blazon"
-                        />
-                    </a>
-                    <a href="/anthem">
-                        <motion.img
-                            whileTap={{ scale: 0.6 }}
-                            src={Music}
-                            className="header_navbar_flags"
-                            alt="music"
-                        />
-                    </a>
-                    <label className="header_navbar_search">
-                        <input
-                            type="text"
-                            className="header_navbar_search_inputs"
-                            placeholder="Qidirish"
-                        />
-                        <img
-                            src={Search}
-                            className="header_navbar_search_icon"
-                            alt="search"
-                        />
-                    </label>
-                    <button
-                        className="header_navbar_eye" onClick={() => grayScale()}>
-                        <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
-                    </button>
+  return (
+    <header
+      className="head"
+      style={activeSidebar ? { background: "#FFFFFF" } : null}>
+      <div className="header">
+        <div className="header_navbar">
+          <Link to="/" className="header_navbar_left">
+            <img src={Logo} alt="logo" />
+          </Link>
+          <a
+            href={`tel: ${contactData?.phone}`}
+            className="header_navbar_phone">
+            <img src={Phone} alt="phone" />
+            <div className="header_navbar_phone_number">+998(55)502-22-99</div>
+          </a>
+          <a
+            href={`mailto: ${contactData?.email}`}
+            className="header_navbar_phone">
+            <img src={Message} alt="message" />
+            <div className="header_navbar_phone_number">
+              info@vatandoshlarfondi.uz
+            </div>
+          </a>
+          <a href="/flag">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Flag}
+              className="header_navbar_flags"
+              alt="flag"
+            />
+          </a>
+          <a href="/coat">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Blazon}
+              className="header_navbar_flags"
+              alt="blazon"
+            />
+          </a>
+          <a href="/anthem">
+            <motion.img
+              whileTap={{ scale: 0.6 }}
+              src={Music}
+              className="header_navbar_flags"
+              alt="music"
+            />
+          </a>
+          <label className="header_navbar_search">
+            <input
+              type="text"
+              className="header_navbar_search_inputs"
+              placeholder="Qidirish"
+            />
+            <img
+              src={Search}
+              className="header_navbar_search_icon"
+              alt="search"
+            />
+          </label>
+          <button className="header_navbar_eye" onClick={() => grayScale()}>
+            <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
+          </button>
 
-                    <div className="header_navbar_language">
-                        <div className="header_navbar_language-wrapper" onClick={() => setactiveLang((el) => !el)}>
-                            <CiGlobe className="header_navbar_language-icon" />
-                            <span
-                                style={{ color: "white" }}>{language.split("")[0].toUpperCase() + language.split("")[1]}</span>
-                            <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
-                        </div>
-                        <div className="header_navbar_language-bar" style={activeLang ? { display: "flex" } : null}>
-                            {
-                                languageList.map((el,index) => (
-                                    <p key={index} onClick={() => {
-                                        handleChangeLng(el.type);
-                                    }}>{el.label}</p>
-                                ))
-                            }
-                            {/* <p onClick={(e) => {
+          <div className="header_navbar_language">
+            <div
+              className="header_navbar_language-wrapper"
+              onClick={() => setactiveLang((el) => !el)}>
+              <CiGlobe className="header_navbar_language-icon" />
+              <span style={{ color: "white" }}>
+                {language.split("")[0].toUpperCase() + language.split("")[1]}
+              </span>
+              <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
+            </div>
+            <div
+              className="header_navbar_language-bar"
+              style={activeLang ? { display: "flex" } : null}>
+              {languageList.map((el, index) => (
+                <p
+                  key={index}
+                  onClick={() => {
+                    handleChangeLng(el.type);
+                  }}>
+                  {el.label}
+                </p>
+              ))}
+              {/* <p onClick={(e) => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
                             }}>Uz</p>
@@ -137,33 +145,31 @@ const Header = () => {
                                 handleChangeLng(e.target.innerText.toLowerCase());
                                 setactiveLang((el) => !el)
                             }}>oz</p> */}
-                        </div>
-                    </div>
-                    <button
-                        className="header_navbar_eye burger"
-                        onClick={() => setactiveSidebar(!activeSidebar)}
-                    >
-                        {activeSidebar ? (
-                            <CgClose className="burger-closeIcon" />
-                        ) : (
-                            <img src={burger} alt="error" />
-                        )}
-                    </button>
-                </div>
-
-                <Navbar
-                    activeSidebar={activeSidebar}
-                    setactiveSidebar={setactiveSidebar}
-                />
-
-                <div
-                    className={activeSidebar ? "overlay overlayActive" : "overlay"}
-                    onClick={() => setactiveSidebar(!activeSidebar)}
-                ></div>
             </div>
-            {pathname.split("/")[1].includes("portal") ? "" : <Menus />}
-        </header>
-    );
+          </div>
+          <button
+            className="header_navbar_eye burger"
+            onClick={() => setactiveSidebar(!activeSidebar)}>
+            {activeSidebar ? (
+              <CgClose className="burger-closeIcon" />
+            ) : (
+              <img src={burger} alt="error" />
+            )}
+          </button>
+        </div>
+
+        <Navbar
+          activeSidebar={activeSidebar}
+          setactiveSidebar={setactiveSidebar}
+        />
+
+        <div
+          className={activeSidebar ? "overlay overlayActive" : "overlay"}
+          onClick={() => setactiveSidebar(!activeSidebar)}></div>
+      </div>
+      {pathname.split("/")[1].includes("portal") ? "" : <Menus />}
+    </header>
+  );
 };
 
 export default Header;
