@@ -1,9 +1,7 @@
-.mediateka {
-  &__videos {
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
+.videos {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 
   &__video-card {
     height: 280px;
@@ -49,17 +47,13 @@
 }
 
 @media (max-width: 768px) {
-  .mediateka {
-    &__videos {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .videos {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 500px) {
-  .mediateka {
-    &__videos {
-      grid-template-columns: repeat(1, 1fr);
-    }
+  .videos {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

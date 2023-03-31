@@ -35,6 +35,7 @@ const Direction = lazy(() =>
 const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
+const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 
 const routes = [
   { path: "", element: Home, },
@@ -71,6 +72,8 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
+  { path: "/mediateka", element: Mediateka },
+  { path: "/hashtag", element: Hashtag },
 ];
 
 const RoutesContainer = () => (

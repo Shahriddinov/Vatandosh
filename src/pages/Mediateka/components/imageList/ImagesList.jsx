@@ -11,29 +11,25 @@ const ImagesList = ({
   handleImageModal,
 }) => {
   return (
-    <div
-      className={`mediateka__images ${
-        activeCard === "images" ? "active-card" : ""
-      }`}
-    >
+    <div className={`images ${activeCard === "images" ? "active-card" : ""}`}>
       {dataImage.map((image) => {
         return categoryId === 0 ? (
           <div
             key={image.id}
-            className="mediateka__image-card"
+            className="images__image-card"
             onClick={() => handleImageModal(image.image)}
           >
-            <div className="mediateka__image-container">
+            <div className="images__image-container">
               <img src={`${baseServerUrl}/${image.image}`} alt="mediatake" />
             </div>
           </div>
         ) : categoryId === parseInt(image.menu_uz) ? (
           <div
             key={image.id}
-            className="mediateka__image-card"
+            className="images__image-card"
             onClick={() => handleImageModal(image.image)}
           >
-            <div className="mediateka__image-container">
+            <div className="images__image-container">
               <img src={`${baseServerUrl}/${image.image}`} alt="mediatake" />
             </div>
           </div>

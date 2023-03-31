@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Card from "../card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents } from "../../reduxToolkit/eventsSlice/extraReducer";
 
 // Import Swiper styles
 import "swiper/css";
@@ -9,7 +11,15 @@ import "swiper/css/pagination";
 
 import "./miniSlider.scss";
 
-export const MiniSlider = ({ title, data, fetchUrl }) => {
+export const MiniSlider = ({ title }) => {
+  const eventsData = useSelector((state) => state.eventsSlice.eventsData);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, []);
+
   return (
     <section className="compatriots-events">
       <div className="container">
@@ -82,12 +92,12 @@ export const MiniSlider = ({ title, data, fetchUrl }) => {
             }}
             className="mySwiper"
           >
-            {data?.map((item) => (
+            {eventsData?.map((news) => (
               <SwiperSlide
-                key={item.id}
+                key={news.id}
                 className="compatriots-events__slider-list"
               >
-                <Card {...item} pathUrl={fetchUrl} />
+                <Card {...news} />
               </SwiperSlide>
             ))}
           </Swiper>

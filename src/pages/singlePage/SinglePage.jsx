@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import SiteHero from "../../component/siteHero/SiteHero";
 import IntroSection from "./components/IntroSection/IntroSection";
+import bgImg from "../../assets/images/bg-img.png";
+import bgImg2 from "../../assets/images/compatriots/page-bg.png";
 
 import "./singlePage.scss";
 import { Spinner } from "../../component";
@@ -10,7 +12,7 @@ import { useSingleData } from "./hooks/useSingleData";
 import { useEffect } from "react";
 
 export const SinglePage = () => {
-  const { projectsMenuLoading, data, compatriotsMenuLoading } = useSingleData();
+  const { projectsMenuLoading, data } = useSingleData();
   const { pageUrl } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
@@ -26,12 +28,21 @@ export const SinglePage = () => {
     }
   }, []);
 
-  if (projectsMenuLoading || compatriotsMenuLoading) {
-    return <Spinner position="full" />;
+  if (projectsMenuLoading) {
+    return (
+      <div className="spinner_box">
+        <Spinner />
+      </div>
+    );
   }
 
   const styles = {
-    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
+    backgroundImage:
+      pageUrl === "publicevents"
+        ? `url(${bgImg2})`
+        : pageUrl === "categoryshows"
+        ? `url(${bgImg})`
+        : `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
   };
 
   return (
@@ -40,7 +51,7 @@ export const SinglePage = () => {
         <WhriteHeader />
         <SiteHero data={data} />
       </div>
-      <IntroSection data={data} />
+      <IntroSection />
     </div>
   );
 };

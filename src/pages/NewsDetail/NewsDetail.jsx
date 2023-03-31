@@ -12,7 +12,7 @@ export default function NewsDetail() {
 
   useEffect(() => {
     dispatch(getContact());
-  }, [dispatch])
+  }, [])
 
   if (loading) {
     return (

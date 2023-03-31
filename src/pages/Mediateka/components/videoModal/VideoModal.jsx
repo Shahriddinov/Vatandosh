@@ -6,11 +6,17 @@ import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const VideoModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
   return (
-    <div className={`mediateka__video-modal ${showModal ? "show-modal" : ""}`}>
-      <div className="mediateka__left-arrow" onClick={() => moveSlide("left")}>
+    <div className={`video-modal ${showModal ? "show-modal" : ""}`}>
+      <div
+        className="video-modal__left-arrow"
+        onClick={() => moveSlide("left")}
+      >
         <FiChevronLeft />
       </div>
-      <div className="mediateka__close-btn" onClick={() => setShowModal(false)}>
+      <div
+        className="video-modal__close-btn"
+        onClick={() => setShowModal(false)}
+      >
         <svg
           width="16"
           height="16"
@@ -24,7 +30,7 @@ const VideoModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
           />
         </svg>
       </div>
-      <div className="mediateka__video-modal-container">
+      <div className="video-modal__video-modal-container">
         <iframe
           className="active-video"
           src={`https://www.youtube.com/embed/${activeVideo}`}
@@ -34,7 +40,7 @@ const VideoModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
         />
       </div>
       <div
-        className="mediateka__right-arrow"
+        className="video-modal__right-arrow"
         onClick={() => moveSlide("right")}
       >
         <FiChevronRight />

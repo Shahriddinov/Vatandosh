@@ -1,17 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  getColumnMenu,
-  getCompatriotsMenu,
-  getSinglePagination,
-} from "./singleAsyncThunk";
+import { getColumnMenu, getSinglePagination } from "./singleAsyncThunk";
 
 const initialState = {
   projectsData: [],
   paginationData: {},
-  compatriotsMenu: {},
   projectsLoading: true,
   paginationLoading: true,
-  compatriotsMenuLoading: true,
   error: null,
 };
 
@@ -44,18 +38,6 @@ const singleSlice = createSlice({
       .addCase(getSinglePagination.rejected, (state, action) => {
         state.error = action.error.message;
         state.paginationLoading = false;
-      });
-    build
-      .addCase(getCompatriotsMenu.pending, (state) => {
-        state.compatriotsMenuLoading = true;
-      })
-      .addCase(getCompatriotsMenu.fulfilled, (state, { payload }) => {
-        state.compatriotsMenu = payload;
-        state.compatriotsMenuLoading = false;
-      })
-      .addCase(getCompatriotsMenu.rejected, (state, { error }) => {
-        state.compatriotsMenuLoading = false;
-        state.error = error.message;
       });
   },
 });
