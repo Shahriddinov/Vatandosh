@@ -4,7 +4,7 @@ import DefaultProfilePic from '../../../../assets/images/icons/profile.svg';
 import pencil from "../../../../assets/images/expert/input-pencil.svg";
 import { useState } from 'react';
 
-export default function RegisterItem1() {
+export default function RegisterItem1({ activeBarItem }) {
   const [uploadImg, setuploadImg] = useState(null);
 
   const handleSubmit = (e) => {
@@ -12,7 +12,7 @@ export default function RegisterItem1() {
   }
 
   return (
-    <form className='registeritem1' onSubmit={handleSubmit}>
+    <form className={activeBarItem !== 0 ? 'registeritem1 registeritem-scaleHidden' : 'registeritem1 registeritem-scaleActive'} onSubmit={handleSubmit}>
       <div className="registeritem1-wrapper registeritem-borderLeft">
         <h3 className="registeritem-title">I. Shaxsiy ma’lumotingiz</h3>
         <div className="registeritem1-form">

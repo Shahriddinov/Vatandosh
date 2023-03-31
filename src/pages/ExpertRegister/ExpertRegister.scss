@@ -51,9 +51,7 @@
       &-item {
         height: 48px;
         display: flex;
-        align-items: center;
         gap: 12px;
-        @include fontStyles(600, 14px, 17px, $colorGrey);
         cursor: pointer;
 
         &-border {
@@ -61,7 +59,12 @@
           height: 0%;
           background: #FFFFFF;
           border-radius: 0px 2px 2px 0px;
-          transition: height 0.3s;
+          transition: height 0.1s;
+        }
+
+        &>span {
+          margin-top: 15px;
+          @include fontStyles(600, 14px, 17px, $colorGrey);
         }
       }
 
@@ -72,6 +75,7 @@
 
     &-list {
       width: 70%;
+      position: relative;
     }
   }
 }
