@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import SiteHero from "../../component/siteHero/SiteHero";
 import IntroSection from "./components/IntroSection/IntroSection";
-import bgImg from "../../assets/images/bg-img.png";
-import bgImg2 from "../../assets/images/compatriots/page-bg.png";
 
 import "./singlePage.scss";
 import { Spinner } from "../../component";
@@ -12,7 +10,7 @@ import { useSingleData } from "./hooks/useSingleData";
 import { useEffect } from "react";
 
 export const SinglePage = () => {
-  const { projectsMenuLoading, data } = useSingleData();
+  const { projectsMenuLoading, data, compatriotsMenuLoading } = useSingleData();
   const { pageUrl } = useParams();
   const { search } = useLocation();
   const navigate = useNavigate();
@@ -25,26 +23,21 @@ export const SinglePage = () => {
       search.slice(2) !== data?.id.toString(10)
     ) {
       navigate("/not-found");
-    } else if (pageErr !== "columns") {
+    } else if (
+      pageErr !== "columns" &&
+      pageErr !== "categoryshows" &&
+      pageErr !== "publicevents"
+    ) {
       navigate("/not-found");
     }
   }, []);
 
-  if (projectsMenuLoading) {
-    return (
-      <div className="spinner_box">
-        <Spinner />
-      </div>
-    );
+  if (projectsMenuLoading || compatriotsMenuLoading) {
+    return <Spinner position="full" />;
   }
 
   const styles = {
-    backgroundImage:
-      pageUrl === "publicevents"
-        ? `url(${bgImg2})`
-        : pageUrl === "categoryshows"
-        ? `url(${bgImg})`
-        : `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
+    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
   };
 
   return (
@@ -53,7 +46,7 @@ export const SinglePage = () => {
         <WhriteHeader />
         <SiteHero data={data} />
       </div>
-      <IntroSection />
+      <IntroSection data={data} />
     </div>
   );
 };

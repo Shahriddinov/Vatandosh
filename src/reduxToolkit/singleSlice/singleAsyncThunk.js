@@ -3,7 +3,18 @@ import axios from "axios";
 import {
   GET_COLUMNS_MENU,
   GET_SINGLE_PAGINATION,
+  baseUrl,
 } from "../../services/api/utils";
+
+export const getCompatriotsMenu = createAsyncThunk(
+  "get/compatriots-menu",
+  async (payload) => {
+    return await axios({
+      method: "GET",
+      url: `${baseUrl}/info${payload}`,
+    }).then((res) => res.data);
+  }
+);
 
 export const getColumnMenu = createAsyncThunk("get/column-menu", async () => {
   return await axios({
