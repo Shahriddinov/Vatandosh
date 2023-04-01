@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Pagination.scss";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";

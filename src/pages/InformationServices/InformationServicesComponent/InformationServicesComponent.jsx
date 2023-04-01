@@ -1,22 +1,40 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { BsFillCalendarHeartFill } from "react-icons/bs";
+import { TfiGallery } from "react-icons/tfi";
+import { MdOutlineIncompleteCircle } from "react-icons/md";
+import { GiOpenBook } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import "./InformationServicesComponent.scss";
 
-const InformationServicesComponent = ({ pathPages }) => {
-  const { pageName } = useParams();
-
+const InformationServicesComponent = () => {
   return (
     <div className="informationServicesComponent">
       <h2 className="informationServicesComponent-title">Axborot xizmati</h2>
       <ul className="informationServicesComponent-list">
-        {pathPages
-          .filter((link) => link.link !== pageName)
-          .map((link) => (
-            <li key={link.id}>
-              <img src={link.icon} alt="" />
-              <Link to={`/information-service/${link.link}`}>{link.path}</Link>
-            </li>
-          ))}
+        <li>
+          <span>
+            <BsFillCalendarHeartFill size={18} />
+          </span>
+          <Link>Tadbirlar</Link>
+        </li>
+        <li>
+          <span>
+            <TfiGallery size={18} />
+          </span>
+          <Link>Mediateka</Link>
+        </li>
+        <li>
+          <span>
+            <MdOutlineIncompleteCircle size={18} />
+          </span>
+          <Link>Infografika</Link>
+        </li>
+        <li>
+          <span>
+            <GiOpenBook size={18} />
+          </span>
+          <Link>Vatandoshlar jurnali</Link>
+        </li>
       </ul>
     </div>
   );

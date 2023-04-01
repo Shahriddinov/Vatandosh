@@ -11,7 +11,6 @@ import { RiFacebookFill, RiInstagramFill } from "react-icons/ri";
 import { FaTelegramPlane } from "react-icons/fa";
 import filled from '../../assets/images/icons/filled-icon.svg';
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
-import { MiniSlider } from "../miniSlider/MiniSlider";
 
 export default function Detail(data) {
   const lan = useSelector((state) => state.language.language);
@@ -25,7 +24,7 @@ export default function Detail(data) {
 
   useEffect(() => {
     dispatch(getContact());
-  }, [dispatch])
+  }, [])
 
   return (
     data ?
@@ -33,6 +32,9 @@ export default function Detail(data) {
         <Header />
         <div className="container">
           <div className="newsdetail-wrapper">
+            <div className="newsdetail-tablet-tags">
+              <PopularTags />
+            </div>
             <div className="newsdetail-title">
               <h1 className="newsdetail-title-text">{data[`title_${lan}`]}</h1>
               <div className="newsdetail-title-url">
@@ -119,12 +121,11 @@ export default function Detail(data) {
                 <div className="newsdetail-main-news">
                   <LatestNews />
                 </div>
-                <div className="newsdetail-main-tags">
+                <div className="newsdetail-desktop-tags">
                   <PopularTags />
                 </div>
               </div>
             </div>
-            <MiniSlider title={"Sizni qiziqtiradi"} />
           </div>
         </div>
       </div>

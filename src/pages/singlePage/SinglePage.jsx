@@ -23,12 +23,16 @@ export const SinglePage = () => {
       search.slice(2) !== data?.id.toString(10)
     ) {
       navigate("/not-found");
+    } else if (
+      pageErr !== "columns" &&
+      pageErr !== "categoryshows" &&
+      pageErr !== "publicevents"
+    ) {
+      navigate("/not-found");
     }
   }, []);
 
-  if (projectsMenuLoading) {
-    return <Spinner position="full" />;
-  } else if (compatriotsMenuLoading) {
+  if (projectsMenuLoading || compatriotsMenuLoading) {
     return <Spinner position="full" />;
   }
 

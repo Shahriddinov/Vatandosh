@@ -57,18 +57,14 @@
   "aboutUzbekistan": "Visual information about uzbekistan",
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
-  "compatriotsValunteer": "Compatriot volunteer",
-  "modalText1": "Registered compatriots",
-  "modalText2": "News",
-  "modalText3": "Events",
-  "infographics": "Infographic",
-  "mediateka": "Media",
-  "mainPage": "Main page",
-  "countrymanMagazine": "Countryman magazine",
+  "compatriotsValunteer": "Compatriot valantiors",
+  "modalText1" : "Registered compatriots",
+  "modalText2" : "News",
+  "modalText3" : "Events",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
-    "item3": "Management",
+    "item3": "Managment",
     "item4": "The main directions of the foundation"
   },
   "citizin_items": {
@@ -79,8 +75,8 @@
   "information_items": {
     "item1": "News",
     "item2": "Events",
-    "item3": "Media",
-    "item4": "Infographic",
+    "item3": "Mediatheca",
+    "item4": "Infographics",
     "item5": "Countryman magazine"
   },
   "projects_items": {
@@ -93,7 +89,7 @@
     "item7": "“Overseas compatriot organization” project"
   },
   "aboutPage": {
-    "section1": {
+    "section1" : {
       "htext": "About us",
       "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
       "foottext1": "Main page",
@@ -146,35 +142,6 @@
     "section5": {
       "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
     }
-  },
-  "projects_page": {
-    "hero_title": "Projects",
-    "hero_description": "To further embed compatriots living abroad around their historical homeland, to raise their sense of pride in the land in their hearts and minds, to preserve national identity, to support compatriots and public associations formed by them, to effectively direct the potential of our compatriots operating in various fields to the development of our country is one of the main goals of the foundation.",
-    "page_path": "Projects",
-    "carousel_title": "All projects",
-    "carousel_description": "You can get acquainted with the life of our compatriots living abroad!",
-    "see-more": "See more",
-    "see-less": "See less",
-    "participate": "Participare in the projects",
-    "participate_title": "Fill out an application if you have a desire to participate in our projects and become a project participant!",
-    "participate_btn": "Participate",
-    "gallery": "Photo gallery",
-    "form_title": "Participate in a project",
-    "form_name": "Full name",
-    "form_email": "Email address",
-    "form_phone": "Phone number",
-    "form_category": "Choose column",
-    "item2": "“Family of the day” ruckney",
-    "item3": "“Athlete compatriots” ruckney",
-    "item4": "“Young compatriots” ruckney",
-    "item5": "Sara is a masterpiece",
-    "item6": "“National cuisine abroad” project",
-    "item7": "“Overseas compatriot organization” project",
-    "form_about": "About you and your family",
-    "form_image": "Upload your photos",
-    "form_image_delete": "Delete",
-    "form_link": "Your social network profiles",
-    "form_cancel": "Cancel",
-    "form_submit": "Send"
+
   }
 }

@@ -2,13 +2,10 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
+import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
 import Contact from "./pages/Contact/Contact";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
-import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
-import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
-import Register from "./pages/Registration/pages/Register/Register";
-import { SignIn } from "./pages/Registration/pages/SignIn/SignIn";
-import { SignUp } from "./pages/Registration/pages/SignUp/SignUp";
+import ExpertCouncil from "./pages/Expert/ExpertCouncil";
+import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -34,6 +31,16 @@ const Direction = lazy(() =>
 const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
+const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
+const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
+const ExpertRegister = lazy(() => import("./pages/ExpertRegister/ExpertRegister"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
+const ChangePassword = lazy(() => import("./pages/Registration/pages/ChangePassword/ChangePassword"));
+const RecoveryPassword = lazy(() => import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword"));
+const Register = lazy(() => import("./pages/Registration/pages/Register/Register"));
+const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
+const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 
 const routes = [
   { path: "", element: Home, },
@@ -69,6 +76,21 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
+  { path: "/expert-register", element: ExpertRegister },
+  { path: "/hashtag", element: Hashtag },
+  {
+    path: "/expert",
+    element: ExpertCouncil,
+  },
+  {
+    path: "/expert/council/about",
+    element: AboutCouncil,
+  },
+  {
+    path: "/expert/employe",
+    element: ExpertEmploye,
+  },
+  { path: "/expert-profil", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (

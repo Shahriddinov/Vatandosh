@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import {
-  getVideos,
-  getImages,
   getVideosMenus,
   getImagesMenus,
+  getMediaPagination,
+  getImagesPagination,
 } from "./extraReducer";
 
 const initialState = {
-  loading: true,
-  videoData: [],
+  data: {},
+  dataLoading: true,
+  videoMenuLoading: true,
+  imageMenuLoading: true,
   videoMenusData: [],
-  imageData: [],
   imageMenusData: [],
   error: null,
 };
@@ -21,59 +22,45 @@ const mediatekaSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // Get videos
+    // Get videos with pagination
     builder
-      .addCase(getVideos.pending, (state) => {
-        state.loading = true;
+      .addCase(getMediaPagination.pending, (state) => {
+        state.dataLoading = true;
       })
-      .addCase(getVideos.fulfilled, (state, action) => {
-        state.loading = false;
-        state.videoData = action.payload;
+      .addCase(getMediaPagination.fulfilled, (state, action) => {
+        state.dataLoading = false;
+        state.data = action.payload;
       })
-      .addCase(getVideos.rejected, (state, action) => {
-        state.loading = false;
+      .addCase(getMediaPagination.rejected, (state, action) => {
+        state.dataLoading = false;
         state.error = action.error.message;
       });
 
     // Get videos menus
     builder
       .addCase(getVideosMenus.pending, (state) => {
-        state.loading = true;
+        state.videoMenuLoading = true;
       })
       .addCase(getVideosMenus.fulfilled, (state, action) => {
-        state.loading = false;
+        state.videoMenuLoading = false;
         state.videoMenusData = action.payload;
       })
       .addCase(getVideosMenus.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
-
-    // Get images
-    builder
-      .addCase(getImages.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getImages.fulfilled, (state, action) => {
-        state.loading = false;
-        state.imageData = action.payload;
-      })
-      .addCase(getImages.rejected, (state, action) => {
-        state.loading = false;
+        state.videoMenuLoading = false;
         state.error = action.error.message;
       });
 
     // Get images menus
     builder
       .addCase(getImagesMenus.pending, (state) => {
-        state.loading = true;
+        state.imageMenuLoading = true;
       })
       .addCase(getImagesMenus.fulfilled, (state, action) => {
-        state.loading = false;
+        state.imageMenuLoading = false;
         state.imageMenusData = action.payload;
       })
       .addCase(getImagesMenus.rejected, (state, action) => {
-        state.loading = false;
+        state.imageMenuLoading = false;
         state.error = action.error.message;
       });
   },

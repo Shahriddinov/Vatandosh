@@ -77,7 +77,7 @@
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .latest_news {
     &-title {
       padding: 10px 11px 12px;
@@ -101,45 +101,28 @@
 
         &-desc {
           &-text {
-            max-width: 431px;
             font-size: 20px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 516px) {
-  .latest_news {
-    border-radius: 0;
-
-    &-title {
-      padding: 19px 16px;
-      @include fontStyles(700, 18px, 22px, $colorGrey);
-    }
-
-    &-list {
-      &-item {
-        &-link {
-          height: 70px;
-        }
-
-        &-img>img {
-          width: 90px;
-        }
-
-        &-desc {
-          &-text {
-            @include fontStyles(700, 14px, 17px, $colorBlack);
           }
 
           &-action {
-            margin-top: 15px;
+            margin-top: 4px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             &-item {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+
               &>span {
-                @include fontStyles(400, 12px, 15px, $colorGrey);
+                @include fontStyles(400, 8px, 20px, $colorGrey);
+              }
+
+              &>svg {
+                width: 12px;
+                height: 12px;
               }
             }
           }

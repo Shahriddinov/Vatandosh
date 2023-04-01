@@ -13,6 +13,7 @@ const initialState = {
   paginationLoading: true,
   compatriotsMenuLoading: true,
   error: null,
+  paginationError: null,
 };
 
 const singleSlice = createSlice({
@@ -42,7 +43,7 @@ const singleSlice = createSlice({
         state.paginationLoading = false;
       })
       .addCase(getSinglePagination.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.paginationError = action.error.message;
         state.paginationLoading = false;
       });
     build

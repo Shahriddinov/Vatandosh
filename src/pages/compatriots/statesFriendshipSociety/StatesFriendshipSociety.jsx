@@ -2,9 +2,9 @@ import React from "react";
 import OfferStatesFriendship from "../components/offerStatesFriendship";
 import SiteHero from "../../../component/siteHero/SiteHero";
 import StatesFriendshipInfo from "../components/statesFriendshipInfo";
+import { MiniSlider } from "../../../component/miniSlider/MiniSlider";
 
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
-import { MiniSlider } from "../../../component/miniSlider/MiniSlider";
 import { useTranslation } from "react-i18next";
 
 import { useAssociationFetching } from "../hooks/useAssociationFetching";
@@ -23,14 +23,14 @@ const StatesFriendshipSociety = () => {
     error,
     associationLoading,
     associationCategoryLoading,
+    eventsData,
+    eventsLoading,
   } = useAssociationFetching();
   const lng = useSelector((state) => state.language.language);
   const { categoryId } = useParams();
   const { t } = useTranslation();
 
-  if (associationLoading) {
-    return <Spinner position={"full"} />;
-  } else if (associationCategoryLoading) {
+  if (associationLoading || eventsLoading || associationCategoryLoading) {
     return <Spinner position={"full"} />;
   } else if (error) {
     return <p>{error}</p>;
@@ -64,7 +64,11 @@ const StatesFriendshipSociety = () => {
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
           <OfferStatesFriendship {...categoryData} />
-          <MiniSlider title={`${t("event")}`} pathUrl="events" />
+          <MiniSlider
+            title={`${t("event")}`}
+            data={eventsData}
+            fetchUrl="events"
+          />
         </main>
       </div>
     </>
