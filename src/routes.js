@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
-import Contact from "./pages/Contact/Contact";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
 import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
+
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));

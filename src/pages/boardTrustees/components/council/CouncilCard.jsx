@@ -5,7 +5,7 @@ import mail from "../../../../assets/images/about/mail.svg";
 import { useSelector } from "react-redux";
 import { baseServerUrl } from "../../../../services/api/utils";
 
-const CouncilCard = ({ trustee }) => {
+const CouncilCard = ({ trusts }) => {
   const lan = useSelector((state) => state.language.language);
 
   return (
@@ -13,17 +13,17 @@ const CouncilCard = ({ trustee }) => {
       <div className="council-card__img-box">
         <img
           className="council-card__img"
-          src={`${baseServerUrl}/${trustee?.img}`}
-          alt={trustee[`position_${lan}`]}
+          src={`${baseServerUrl}/${trusts?.img}`}
+          alt={trusts[`position_${lan}`]}
         />
       </div>
 
       <div className="council-card__body">
         <h3 className="council-card__title">
           <span className="council-card__title--span">
-            {trustee[`position_${lan}`]}
+            {trusts[`position_${lan}`]}
           </span>
-          <span>{trustee[`name_${lan}`]}</span>
+          <span>{trusts[`name_${lan}`]}</span>
         </h3>
 
         <ul className="council-card__list">
@@ -31,14 +31,14 @@ const CouncilCard = ({ trustee }) => {
             <span className="council-card__item--icon">
               <img src={phone} alt="" />
             </span>
-            <span>{trustee?.phone}</span>
+            <span>{trusts?.phone}</span>
           </li>
 
           <li className="council-card__item">
             <span className="council-card__item--icon">
               <img src={mail} alt="email" />
             </span>
-            <span>{trustee?.email}</span>
+            <span>{trusts?.email}</span>
           </li>
         </ul>
       </div>

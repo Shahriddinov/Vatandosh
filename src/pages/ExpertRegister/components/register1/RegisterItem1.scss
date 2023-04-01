@@ -1,0 +1,50 @@
+@import "../../../../assets/style/global.scss";
+
+.registeritem1 {
+
+  &-form {
+    &-uploadImg {
+      &-desc {
+        margin-top: 10px;
+        @include fontStyles(400, 12px, 15px, #9D9D9D);
+      }
+
+      &-inputs {
+        display: flex;
+        align-items: center;
+
+        &>img {
+          margin-right: 20px;
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 50%;
+          background-color: $colorGrey;
+        }
+
+        &>label {
+          &>input {
+            display: none;
+          }
+        }
+
+        &>button {
+          margin-left: 10px;
+          padding: 12px 22px;
+          border: 1px solid #EB5757;
+          border-radius: 5px;
+          background-color: transparent;
+          @include fontStyles(500, 14px, 24px, #EB5757);
+          cursor: pointer;
+        }
+      }
+    }
+
+    &-input-list {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+}
