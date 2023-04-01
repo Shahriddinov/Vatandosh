@@ -147,5 +147,35 @@
       "htext1": "Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir"
     }
 
+  },
+  "projects_page": {
+    "hero_title": "Loyihalar",
+    "hero_description": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
+    "page_path": "Loyihalar",
+    "carousel_title": "Biznig barcha loyihalar",
+    "carousel_description": "Chet elda yashayotgan yurtdoshlarimizni hayoti bilan ham nafas bolishingiz mumkin!",
+    "see-more": "Ko'proq ko'rsatish",
+    "see-less": "Kamroq ko'rsatish",
+    "participate": "Loyihada ishtirok eting",
+    "participate_title": "Bizning loyihalarda ishtirok etish istagingiz bo‘lsa ariza to‘ldiriring va loyiha ishtirokchisiga aylaning!",
+    "participate_btn": "Ishtirok etish",
+    "gallery": "Fotogalereya",
+    "form_title": "Loyihalarda ishtirok etish",
+    "form_name": "F.I.SH.",
+    "form_email": "Elektron pochta mazilingiz",
+    "form_phone": "Telefon raqamingiz",
+    "form_category": "Ruknni tanlang",
+    "item2": "“Kun oilasi” rukni",
+    "item3": "“Sportchi vatandsohlar” rukni",
+    "item4": "“Yosh vatandoshlar” rukni",
+    "item5": "Sara durdona",
+    "item6": "“Xorijdagi milliy oshxona” loyihasi",
+    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
+    "form_about": "Siz va oilangiz haqida",
+    "form_image": "Rasmlaringizni yuklang",
+    "form_image_delete": "O'chirish",
+    "form_link": "Ijtimoiy tarmoqlardagi sahifalaringiz",
+    "form_cancel": "Bekor qilish",
+    "form_submit": "Yuborish"
   }
 }

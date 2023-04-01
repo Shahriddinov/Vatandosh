@@ -147,5 +147,35 @@
       "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
     }
 
+  },
+  "projects_page": {
+    "hero_title": "Projects",
+    "hero_description": "To further embed compatriots living abroad around their historical homeland, to raise their sense of pride in the land in their hearts and minds, to preserve national identity, to support compatriots and public associations formed by them, to effectively direct the potential of our compatriots operating in various fields to the development of our country is one of the main goals of the foundation.",
+    "page_path": "Projects",
+    "carousel_title": "All projects",
+    "carousel_description": "You can get acquainted with the life of our compatriots living abroad!",
+    "see-more": "See more",
+    "see-less": "See less",
+    "participate": "Participare in the projects",
+    "participate_title": "Fill out an application if you have a desire to participate in our projects and become a project participant!",
+    "participate_btn": "Participate",
+    "gallery": "Photo gallery",
+    "form_title": "Participate in a project",
+    "form_name": "Full name",
+    "form_email": "Email address",
+    "form_phone": "Phone number",
+    "form_category": "Choose column",
+    "item2": "“Family of the day” ruckney",
+    "item3": "“Athlete compatriots” ruckney",
+    "item4": "“Young compatriots” ruckney",
+    "item5": "Sara is a masterpiece",
+    "item6": "“National cuisine abroad” project",
+    "item7": "“Overseas compatriot organization” project",
+    "form_about": "About you and your family",
+    "form_image": "Upload your photos",
+    "form_image_delete": "Delete",
+    "form_link": "Your social network profiles",
+    "form_cancel": "Cancel",
+    "form_submit": "Send"
   }
 }

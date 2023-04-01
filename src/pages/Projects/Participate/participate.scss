@@ -194,6 +194,10 @@
 }
 
 @media (max-width: 650px) {
+    .participate__modal {
+        padding: 30px 16px;
+    }
+
     .form__row {
         grid-template-columns: 1fr;
     }
