@@ -1,4 +1,5 @@
 import React from "react";
+import { saveAs } from "file-saver";
 
 import { baseServerUrl } from "../../../../services/api/utils";
 
@@ -14,9 +15,16 @@ const ImageModal = ({
   leftRef,
   rightRef,
 }) => {
+  const downloadImage = () => {
+    saveAs(
+      "https://github.githubassets.com/images/modules/profile/badge--acv-64.png",
+      activeImage
+    );
+  };
+
   return (
     <div className={`image-modal ${showImageModal ? "show-modal" : ""}`}>
-      <div className="image-modal__download" onClick={() => {}}>
+      <div className="image-modal__download" onClick={downloadImage}>
         <svg
           width="17"
           height="21"
@@ -76,7 +84,9 @@ const ImageModal = ({
         <FiChevronRight />
       </div>
       <div className="image-modal__image-modal-container">
-        <img src={`${baseServerUrl}/${activeImage}`} alt="mediatake" />
+        {activeImage ? (
+          <img src={`${baseServerUrl}/${activeImage}`} alt="mediatake" />
+        ) : null}
       </div>
     </div>
   );

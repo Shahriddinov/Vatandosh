@@ -6,16 +6,17 @@ import ImageModal from "../Mediateka/components/imageModal/ImageModal";
 import ImagesList from "../Mediateka/components/imageList/ImagesList";
 import Spinner from "../../component/Spinner/Spinner";
 import { getMediaPagination } from "../../reduxToolkit/mediatekaSlice/extraReducer";
-import { mediaPagination } from "../Mediateka/extraFunc";
+import { mediaPagination, slideMove } from "../Mediateka/extraFunc";
 import { Paginator } from "../../component/Pagination/Pagination";
 import { useHashtagFetching } from "./hooks/useHashtagFetching";
 
 import "./hashtag.scss";
+import { showMediaModal } from "../Mediateka/extraFunc";
 
 const Hashtag = () => {
   const dispatch = useDispatch();
   const [showImageModal, setShowImageModal] = useState(false);
-  const [activeImage, setActiveImage] = useState(false);
+  const [activeImage, setActiveImage] = useState("");
   const [activePage, setActivePage] = useState(1);
 
   const { mediaData, dataLoading, lan } = useHashtagFetching();
@@ -35,14 +36,24 @@ const Hashtag = () => {
     return <Spinner position="full" />;
   }
 
+  const moveSlide = (value) => {
+    slideMove({
+      mediaData,
+      setActiveImage,
+      activeImage,
+      value,
+    });
+  };
+
   const handleImageModal = (imgUrl) => {
     setShowImageModal(true);
     setActiveImage(imgUrl);
+    showMediaModal({ mediaData, imgUrl });
   };
 
   const fetchingData = (page) => {
     setActivePage(page);
-    dispatch(getMediaPagination({ typeUrl, page }));
+    dispatch(getMediaPagination({ typeUrl, page, categoryId: 0 }));
   };
 
   return (
@@ -53,28 +64,15 @@ const Hashtag = () => {
           <h2>#Vatandoshimiz bilan bir kun</h2>
           <div className="hashtag__btns">
             <div className="hashtag__video-btn">
-              <button
-                // onClick={() => handleFetchClick("videos")}
-                className={typeUrl === "images" ? "active-btn" : ""}
-              >
+              <button className={typeUrl === "images" ? "active-btn" : ""}>
                 Eng mashhurlar
               </button>
             </div>
             <div className="hashtag__image-btn">
-              <button
-              // onClick={() => handleFetchClick("images")}
-              // className={activeCard === "images" ? "active-btn" : ""}
-              >
-                Eng so'ngi
-              </button>
+              <button>Eng so'ngi</button>
             </div>
             <div className="hashtag__image-btn">
-              <button
-              // onClick={() => handleFetchClick("images")}
-              // className={activeCard === "images" ? "active-btn" : ""}
-              >
-                Eng ko'p ko'rilgan
-              </button>
+              <button>Eng ko'p ko'rilgan</button>
             </div>
           </div>
         </div>
@@ -83,7 +81,7 @@ const Hashtag = () => {
             activeImage={activeImage}
             setShowImageModal={setShowImageModal}
             showImageModal={showImageModal}
-            // moveSlide={moveSlide}
+            moveSlide={moveSlide}
           />
           <ImagesList
             activeCard="images"

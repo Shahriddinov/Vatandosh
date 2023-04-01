@@ -22,7 +22,7 @@ import VideoModal from "./components/videoModal/VideoModal";
 import ImageModal from "./components/imageModal/ImageModal";
 import VideoList from "./components/videoList/VideoList";
 import ImagesList from "./components/imageList/ImagesList";
-import { mediaPagination, showVideoModal, slideMove } from "./extraFunc";
+import { mediaPagination, showMediaModal, slideMove } from "./extraFunc";
 import { useMediaFetching } from "./hooks/useMediaFetching";
 
 const Mediateka = () => {
@@ -30,8 +30,8 @@ const Mediateka = () => {
   const [activeCard, setActiveCard] = useState("videos");
   const [showModal, setShowModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
-  const [activeVideo, setActiveVideo] = useState(false);
-  const [activeImage, setActiveImage] = useState(false);
+  const [activeVideo, setActiveVideo] = useState("");
+  const [activeImage, setActiveImage] = useState("");
   const [categoryId, setCategoryId] = useState(0);
   const [activePage, setActivePage] = useState(1);
 
@@ -44,9 +44,6 @@ const Mediateka = () => {
     imageMenuLoading,
     lan,
   } = useMediaFetching();
-
-  const leftRef = useRef();
-  const rightRef = useRef();
 
   const paginationCount = mediaPagination(activeCard, mediaData);
   const typeUrl = activeCard === "videos" ? "videos" : "images";
@@ -61,6 +58,14 @@ const Mediateka = () => {
 
   const handleChange = (event) => {
     setCategoryId(event.target.value);
+    setActivePage(1);
+    dispatch(
+      getMediaPagination({
+        typeUrl: activeCard,
+        page: 1,
+        categoryId: event.target.value,
+      })
+    );
   };
 
   if (dataLoading || videoMenuLoading || imageMenuLoading) {
@@ -70,7 +75,7 @@ const Mediateka = () => {
   const handleClick = (videoId) => {
     setActiveVideo(videoId);
     setShowModal(true);
-    showVideoModal({ mediaData, leftRef, rightRef, videoId });
+    showMediaModal({ mediaData, videoId });
   };
 
   const moveSlide = (value) => {
@@ -78,27 +83,28 @@ const Mediateka = () => {
       mediaData,
       activeVideo,
       setActiveVideo,
+      setActiveImage,
+      activeImage,
       value,
-      leftRef,
-      rightRef,
     });
   };
 
   const handleImageModal = (imgUrl) => {
     setShowImageModal(true);
     setActiveImage(imgUrl);
+    showMediaModal({ mediaData, imgUrl });
   };
 
   const fetchingData = (page) => {
     setActivePage(page);
-    dispatch(getMediaPagination({ typeUrl, page }));
+    dispatch(getMediaPagination({ typeUrl, page, categoryId }));
   };
 
   const handleFetchClick = (val) => {
     setActiveCard(val);
     setCategoryId(0);
     setActivePage(1);
-    dispatch(getMediaPagination({ typeUrl: val, page: 1 }));
+    dispatch(getMediaPagination({ typeUrl: val, page: 1, categoryId: 0 }));
   };
 
   return (
