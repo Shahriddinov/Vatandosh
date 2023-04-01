@@ -3,6 +3,9 @@ import "./InformationServicesSlider.scss";
 import data from "../mock";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
+import { TbPointFilled } from "react-icons/tb";
+import { baseServerUrl } from "../../../services/api/utils";
+import { useSelector } from 'react-redux';
 
 export const InformationServicesSlider = () => {
   const [img, setImg] = useState(1);
@@ -59,8 +62,14 @@ export const InformationServicesSlider = () => {
               </button>
             </div>
           </div>
-        </div>
+
+        </React.Fragment>
       ))}
+      <div className="main-hero-dot">
+        <TbPointFilled size={20} className={img === 0 ? "activeDot" : ""} />
+        <TbPointFilled size={20} className={img === 1 ? "activeDot" : ""} />
+        <TbPointFilled size={20} className={img === 2 ? "activeDot" : ""} />
+      </div>
     </div>
   );
 };
