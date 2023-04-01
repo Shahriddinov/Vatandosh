@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Slider from "react-slick";
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './projects.scss'
@@ -7,7 +9,7 @@ import SliderData from './data'
 import Gallery from './gallery'
 import ParticipateModal from './Participate/Participate';
 
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -24,11 +26,11 @@ import Participate from '../../assets/images/projects/participate.png'
 import Pattern1 from '../../assets/images/projects/patternLeft.svg'
 import Pattern2 from '../../assets/images/projects/patternCenter.svg'
 import Pattern3 from '../../assets/images/projects/patternRight.svg'
-import Gallery2 from '../../assets/images/projects/gallery2.png'
-import Gallery3 from '../../assets/images/projects/gallery3.png'
-import Gallery4 from '../../assets/images/projects/gallery4.png'
 
 const Projects = () => {
+
+    const lng = useSelector((state) => state.language.language);
+    const { t } = useTranslation();
 
     const sliderRef = useRef(null);
     const swiperRef = useRef(null);
@@ -47,6 +49,8 @@ const Projects = () => {
 
     const [numVisibleDivs, setNumVisibleDivs] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
+    
+    console.log(currentIndex)
 
     const nextSlide = () => {
         // get the Swiper instance
@@ -62,18 +66,19 @@ const Projects = () => {
     
         // slide to the previous slide
         swiper.slidePrev();
-    };
+    }
 
-    const goToSlide = (index) => {
-        // get the Swiper instance
-        const swiper = swiperRef.current.swiper;
+    const [swiperInstance, setSwiperInstance] = useState(null);
+    const onSwiperInit = (swiper) => {
+        setSwiperInstance(swiper);
+    }
 
-        // slide to the specified index
-        swiper.slideTo(index);
-
-        // update the current index state
-        setCurrentIndex(index);
-    };
+    const onBulletClick = (index) => {
+        if (swiperInstance) {
+          swiperInstance.slideTo(index);
+        }
+    }
+    
 
     useEffect(() => {
         const handleResize = () => {
@@ -136,9 +141,13 @@ const Projects = () => {
     };
 
     const swiperParams = {
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
         breakpoints: {
             360: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 0,
             },
             670: {
@@ -152,10 +161,8 @@ const Projects = () => {
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
               },
-              pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-              },
+              loop: false,
+              autoplay: false,
             },
             1300: {
               slidesPerView: 4,
@@ -165,9 +172,9 @@ const Projects = () => {
     }
     
     const heroData = {
-        title: "Loyihalar",
-        description: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
-        pagePath: "Loyihalar",
+        title: `${t("projects_page.hero_title")}`,
+        description: `${t("projects_page.hero_description")}`,
+        pagePath: `${t("projects_page.page_path")}`,
     }
 
     return (
@@ -181,8 +188,8 @@ const Projects = () => {
                     <div className="projects__all">
                         <div className="top">
                             <div className="title">
-                                <h1>Biznig barcha loyihalar</h1>
-                                <p>Chet elda yashayotgan yurtdoshlarimizni hayoti bilan ham nafas bolishingiz mumkin!</p>
+                                <h1>{t("projects_page.carousel_title")}</h1>
+                                <p>{t("projects_page.carousel_description")}</p>
                             </div>
                             <div className="carousel__buttons">
                                 <button className="carousel__button" onClick={() => sliderRef.current.slickPrev()}>
@@ -217,12 +224,12 @@ const Projects = () => {
                         { numVisibleDivs === SliderData.length ?
                             <button className="show__more" onClick={handleShowLess}>
                                 <img src={ArrowDown} alt="" className='rotate180'/>
-                                Kamroq ko'rish
+                                {t("projects_page.see-more")}
                             </button>
                             :
                             <button className="show__more" onClick={handleShowMore}>
                                 <img src={ArrowDown} alt="" />
-                                Ko'proq ko'rish
+                                {t("projects_page.see-less")}
                             </button>
                         }
                         <div className="participate">
@@ -230,9 +237,9 @@ const Projects = () => {
                                 <img src={Pattern1} alt="" className='pattern__left'/>
                                 <img src={Pattern2} alt="" className='pattern__center'/>
                                 <img src={Pattern3} alt="" className='pattern__right'/>
-                                <h3>Loyihada ishtirok eting</h3>
-                                <p>Bizning loyihalarda ishtirok etish istagingiz bo‘lsa ariza to‘ldiriring va loyiha ishtirokchisiga aylaning!</p>
-                                <button onClick={toggleModal}>Ishtirok etish</button>
+                                <h3>{t("projects_page.participate")}</h3>
+                                <p>{t("projects_page.participate_title")}</p>
+                                <button onClick={toggleModal}>{t("projects_page.participate_btn")}</button>
                             </div>
                             <img src={Participate} alt="" className='participate__img'/>
                         </div>
@@ -240,14 +247,15 @@ const Projects = () => {
                 </div>
                 <div className="projects__caruosel">
                     <div className="container carousel__title">
-                        <h1>Fotogalereya</h1>
+                        <h1>{t("projects_page.gallery")}</h1>
                     </div>
                     <Swiper
                         ref={swiperRef}
-                        modules={[Navigation, Pagination, Scrollbar, A11y]}
+                        modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={50}
                         slidesPerView={4}
                         centeredSlides={true}
+                        onSwiper={onSwiperInit}
                         initialSlide={1}
                         onSlideChange={swiper => setCurrentIndex(swiper.activeIndex)}
                         loop={true}
@@ -263,15 +271,15 @@ const Projects = () => {
                     </Swiper>
                     <div className="carousel__pagination carousel__buttons">
                         <button className='carousel__button' onClick={prevSlide}><FiChevronLeft/></button>
-                        <button className='carousel__button'>{currentIndex}</button>
-                        <button className='carousel__button'>{currentIndex + 1}</button>
-                        <button className='carousel__button'>...</button>
-                        <button className='carousel__button'>{Gallery.length}</button>
+                        <button className={currentIndex !== Gallery.length ? 'carousel__button active__button' : 'carousel__button'} onClick={() => onBulletClick(currentIndex)}>{currentIndex}</button>
+                        <button className='carousel__button' onClick={() => onBulletClick(currentIndex + 1)}>{currentIndex + 1}</button>
+                        <button className='carousel__button' onClick={() => {if(currentIndex<Gallery.length - Math.ceil(Gallery.length / 10)){onBulletClick(currentIndex + Math.ceil(Gallery.length / 10))} else {onBulletClick(currentIndex - Math.ceil(Gallery.length / 10))}}}>...</button>
+                        <button className={currentIndex === Gallery.length ? 'carousel__button active__button' : 'carousel__button'} onClick={() => {onBulletClick(Gallery.length); setCurrentIndex(1)}}>{Gallery.length}</button>
                         <button className='carousel__button' onClick={nextSlide}><FiChevronRight/></button>
                     </div>
                 </div>
             </div>
-            {modalOn && <><WhriteHeader /><ParticipateModal toggleModal={toggleModal}/></>}
+            {modalOn && <><WhriteHeader /><ParticipateModal toggleModal={toggleModal} lng={lng} t={t}/></>}
         </>
     )
 }
