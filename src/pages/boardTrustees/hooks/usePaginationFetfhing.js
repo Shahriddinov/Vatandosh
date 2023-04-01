@@ -10,6 +10,7 @@ export const usePaginationFetching = () => {
     (state) => state.trustees.moreTrustsLoading
   );
   const { search } = useLocation();
+
   const [searchCount, setSearchCount] = useState({
     id: search ? search?.split("=")[1].split("&")[1] * 1 : 1,
     login: Date.now().toString(10).split("").reverse().join(""),
