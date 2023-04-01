@@ -137,43 +137,6 @@ const Projects = () => {
     ],
   };
 
-  const swiperParams = {
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      360: {
-        slidesPerView: 2,
-        spaceBetween: 0,
-      },
-      670: {
-        slidesPerView: 2,
-        spaceBetween: 0,
-      },
-      1000: {
-        slidesPerView: 3,
-        spaceBetween: 0,
-        navigation: {
-          prevEl: ".swiper-button-prev",
-          nextEl: ".swiper-button-next",
-        },
-        loop: false,
-        autoplay: false,
-      },
-      1300: {
-        slidesPerView: 4,
-        spaceBetween: 0,
-      },
-    },
-  };
-
-  const heroData = {
-    title: `${t("projects_page.hero_title")}`,
-    description: `${t("projects_page.hero_description")}`,
-    pagePath: `${t("projects_page.page_path")}`,
-  };
-
   return (
     <>
       <div
@@ -329,6 +292,127 @@ const Projects = () => {
               <FiChevronRight />
             </button>
           </div>
+        </div>
+      </div>
+      <Slider {...settings} ref={sliderRef}>
+        {slicedData.map((element) => {
+          return (
+            <div className="slider__element" key={element.id}>
+              <div className="hashtag">
+                <div className="hashtag__images">
+                  <img src={element.image1} alt="" />
+                  <img src={element.image2} alt="" />
+                  <img src={element.image3} alt="" />
+                  <img src={element.image1} alt="" />
+                </div>
+                <div className="hashtag__info">
+                  <h4>"{element.title}" rukni</h4>
+                  <p>{element.dataCount} ta malumot mavjud</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </Slider>
+      {numVisibleDivs === SliderData.length ? (
+        <button className="show__more" onClick={handleShowLess}>
+          <img src={ArrowDown} alt="" className="rotate180" />
+          {t("projects_page.see-more")}
+        </button>
+      ) : (
+        <button className="show__more" onClick={handleShowMore}>
+          <img src={ArrowDown} alt="" />
+          {t("projects_page.see-less")}
+        </button>
+      )}
+      <div className="participate">
+        <div className="participate__left">
+          <img src={Pattern1} alt="" className="pattern__left" />
+          <img src={Pattern2} alt="" className="pattern__center" />
+          <img src={Pattern3} alt="" className="pattern__right" />
+          <h3>{t("projects_page.participate")}</h3>
+          <p>{t("projects_page.participate_title")}</p>
+          <button onClick={toggleModal}>
+            {t("projects_page.participate_btn")}
+          </button>
+        </div>
+        <img src={Participate} alt="" className="participate__img" />
+      </div>
+      <div className="projects__caruosel">
+        <div className="container carousel__title">
+          <h1>{t("projects_page.gallery")}</h1>
+        </div>
+        <Swiper
+          ref={swiperRef}
+          modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={4}
+          centeredSlides={true}
+          onSwiper={onSwiperInit}
+          initialSlide={1}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
+          loop={true}
+          {...swiperParams}
+        >
+          {Gallery.map((obj, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <img src={obj.image} alt="" className="gallery__img" />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <div className="carousel__pagination carousel__buttons">
+          <button className="carousel__button" onClick={prevSlide}>
+            <FiChevronLeft />
+          </button>
+          <button
+            className={
+              currentIndex !== Gallery.length
+                ? "carousel__button active__button"
+                : "carousel__button"
+            }
+            onClick={() => onBulletClick(currentIndex)}
+          >
+            {currentIndex}
+          </button>
+          <button
+            className="carousel__button"
+            onClick={() => onBulletClick(currentIndex + 1)}
+          >
+            {currentIndex + 1}
+          </button>
+          <button
+            className="carousel__button"
+            onClick={() => {
+              if (
+                currentIndex <
+                Gallery.length - Math.ceil(Gallery.length / 10)
+              ) {
+                onBulletClick(currentIndex + Math.ceil(Gallery.length / 10));
+              } else {
+                onBulletClick(currentIndex - Math.ceil(Gallery.length / 10));
+              }
+            }}
+          >
+            ...
+          </button>
+          <button
+            className={
+              currentIndex === Gallery.length
+                ? "carousel__button active__button"
+                : "carousel__button"
+            }
+            onClick={() => {
+              onBulletClick(Gallery.length);
+              setCurrentIndex(1);
+            }}
+          >
+            {Gallery.length}
+          </button>
+          <button className="carousel__button" onClick={nextSlide}>
+            <FiChevronRight />
+          </button>
         </div>
       </div>
       {modalOn && (
