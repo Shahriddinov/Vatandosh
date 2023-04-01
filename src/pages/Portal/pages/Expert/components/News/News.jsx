@@ -3,7 +3,7 @@ import {
   NewsImage,
   ViewIcon,
   WhiteCalendar,
-} from "../../../../assets/images/expert";
+} from "../../../../../../assets/images/expert";
 import "./News.scss";
 import { news } from "../../news";
 

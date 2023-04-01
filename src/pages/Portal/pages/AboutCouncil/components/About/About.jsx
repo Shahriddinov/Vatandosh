@@ -7,7 +7,7 @@ import {
   TwitterIcon,
   TelegramIcon,
   InstagramIcon,
-} from "../../../../assets/images/expert";
+} from "../../../../../../assets/images/expert";
 import "./About.scss";
 
 const data = [

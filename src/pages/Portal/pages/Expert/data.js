@@ -3,10 +3,8 @@ import {
   PersonFour,
   PersonOne,
   PersonThree,
-  PersonTwo,
-  NewsOne,
-  NewsTwo
-} from "../../assets/images/expert";
+  PersonTwo
+} from "../../../../assets/images/expert";
 
 export const data = [
   {
@@ -15,7 +13,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Fransiya",
-    images: Person
+    images: Person,
   },
   {
     id: 2,
@@ -23,7 +21,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Iroq",
-    images: PersonOne
+    images: PersonOne,
   },
   {
     id: 3,
@@ -31,7 +29,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Ispaniya",
-    images: PersonTwo
+    images: PersonTwo,
   },
   {
     id: 4,
@@ -39,7 +37,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Italiya",
-    images: PersonThree
+    images: PersonThree,
   },
   {
     id: 5,
@@ -47,7 +45,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Kanada",
-    images: PersonFour
+    images: PersonFour,
   },
   {
     id: 6,
@@ -55,7 +53,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Koreya",
-    images: PersonOne
+    images: PersonOne,
   },
   {
     id: 7,
@@ -63,7 +61,7 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Tojikiston",
-    images: Person
+    images: Person,
   },
   {
     id: 8,
@@ -71,7 +69,6 @@ export const data = [
     job: "Jurnalistika",
     location: "Nyu-York, AQSH",
     country: "Turkmaniston",
-    images: PersonFour
-  }
+    images: PersonFour,
+  },
 ];
-

@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import logoImg from "../../assets/images/icons/logo.png";
+import logoImg from "../../../../assets/images/icons/logo.png";
 import { FiPhone } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
-import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
+import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
 import "./ExpertFooter.scss";
-import napaName from "../../assets/images/icons/napa.png";
+import napaName from "../../../../assets/images/icons/napa.png";
 
 const ExpertFooter = () => {
   const { t } = useTranslation();

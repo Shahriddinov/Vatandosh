@@ -2,17 +2,9 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
-import Contact from "./pages/Contact/Contact";
-import ExpertCouncil from "./pages/Expert/ExpertCouncil";
-import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
-import ExpertRegister from "./pages/ExpertRegister/ExpertRegister";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
-import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
-import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
-import Register from "./pages/Registration/pages/Register/Register";
-import { SignIn } from "./pages/Registration/pages/SignIn/SignIn";
-import { SignUp } from "./pages/Registration/pages/SignUp/SignUp";
+import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
+import AboutCouncil from "./pages/Portal/pages/AboutCouncil/AboutCouncil";
+import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -40,17 +32,25 @@ const Management = lazy(() =>
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
-const ExpertRegister = lazy(() => import("./pages/ExpertRegister/ExpertRegister"));
+const ExpertRegister = lazy(() =>
+  import("./pages/ExpertRegister/ExpertRegister")
+);
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
-const ChangePassword = lazy(() => import("./pages/Registration/pages/ChangePassword/ChangePassword"));
-const RecoveryPassword = lazy(() => import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword"));
-const Register = lazy(() => import("./pages/Registration/pages/Register/Register"));
+const ChangePassword = lazy(() =>
+  import("./pages/Registration/pages/ChangePassword/ChangePassword")
+);
+const RecoveryPassword = lazy(() =>
+  import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword")
+);
+const Register = lazy(() =>
+  import("./pages/Registration/pages/Register/Register")
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 
 const routes = [
-  { path: "", element: Home, },
+  { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },

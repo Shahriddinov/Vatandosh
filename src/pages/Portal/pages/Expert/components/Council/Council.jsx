@@ -2,7 +2,7 @@ import {
   CouncilImage,
   UserIcon,
   Globe,
-} from "../../../../assets/images/expert";
+} from "../../../../../../assets/images/expert";
 import "./Council.scss";
 import { Link } from "react-router-dom";
 

@@ -1,11 +1,11 @@
-import Navbar from "../../component/Navbar/Navbar";
-import Nav from "../../component/Nav/Nav";
+import "./ExpertCouncil.scss";
+import Navbar from "../../components/Navbar/Navbar";
+import Nav from "../../components/Nav/Nav";
 import Header from "./components/Header/Header";
+import News from "./components/News/News";
 import Expert from "./components/Expert/Expert";
 import Council from "./components/Council/Council";
-import News from './components/News/News';
-import "./ExpertCouncil.scss";
-import ExpertFooter from "../../component/ExpertFooter/ExpertFooter";
+import ExpertFooter from "../../components/ExpertFooter/ExpertFooter";
 
 function ExpertCouncil() {
   return (
@@ -18,7 +18,7 @@ function ExpertCouncil() {
       <Council />
       <Expert />
       <News />
-      {/* <ExpertFooter /> */}
+      <ExpertFooter />
     </>
   );
 }

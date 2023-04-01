@@ -1,5 +1,5 @@
+import { ArrowIcon, ExcludeIcon } from "../../../../../../assets/images/expert";
 import { data } from "../../data";
-import { ArrowIcon, ExcludeIcon } from "../../../../assets/images/expert";
 import "./Expert.scss";
 import { Link } from "react-router-dom";
 

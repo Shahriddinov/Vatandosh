@@ -1,6 +1,6 @@
+import Navbar from "../../components/Navbar/Navbar";
+import Nav from "../../components/Nav/Nav";
 import About from "./components/About/About";
-import Navbar from "../../component/Navbar/Navbar";
-import Nav from "../../component/Nav/Nav";
 
 function AboutCouncil() {
   return (

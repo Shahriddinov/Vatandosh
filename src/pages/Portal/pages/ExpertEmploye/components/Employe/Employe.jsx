@@ -6,7 +6,7 @@ import Select from "@mui/material/Select";
 import "./Employe.scss";
 import { data } from "../../../Expert/data";
 import { Link } from "react-router-dom";
-import { ArrowIcon } from "../../../../assets/images/expert";
+import { ArrowIcon } from "../../../../../../assets/images/expert";
 
 function Employe() {
   const [age, setAge] = React.useState("");
@@ -62,7 +62,7 @@ function Employe() {
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
               <Link className="employe-link" to="/expert">
-                <img src={ArrowIcon} alt="Arrow Icon"  />
+                <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
           ))}
