@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./InformationServicesSlider.scss";
-// import data from "../mock";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
 import { TbPointFilled } from "react-icons/tb";
@@ -31,6 +30,7 @@ export const InformationServicesSlider = ({ data }) => {
   useEffect(() => {
     autoPlay();
     return () => clearInterval(slideInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [img]);
 
   return (
