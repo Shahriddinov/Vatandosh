@@ -3,14 +3,30 @@ export const mediaPagination = (activeCard, mediaData) => {
   return Math.ceil(mediaData?.total / num);
 };
 
-export const showVideoModal = ({ mediaData, videoId }) => {
-  const leftArrow = document.querySelector(".video-modal__left-arrow");
-  const rightArrow = document.querySelector(".video-modal__right-arrow");
-
+export const showMediaModal = ({ mediaData, videoId, imgUrl }) => {
   const data = mediaData[0].data;
-  const indexVideo = data.findIndex((el) => el.video_url === videoId);
+  let leftArrow;
+  let rightArrow;
+  let indexMedia;
+  let activeMedia;
 
-  if (indexVideo === 0) {
+  if (videoId) {
+    leftArrow = document.querySelector(".video-modal__left-arrow");
+    rightArrow = document.querySelector(".video-modal__right-arrow");
+  } else if (imgUrl) {
+    leftArrow = document.querySelector(".image-modal__left-arrow");
+    rightArrow = document.querySelector(".image-modal__right-arrow");
+  }
+
+  if (videoId) {
+    indexMedia = data.findIndex((video) => video.video_url === videoId);
+    activeMedia = videoId;
+  } else if (imgUrl) {
+    indexMedia = data.findIndex((image) => image.image === imgUrl);
+    activeMedia = imgUrl;
+  }
+
+  if (indexMedia === 0) {
     leftArrow.style.opacity = 0.5;
     leftArrow.style.pointerEvents = "none";
   } else {
@@ -18,7 +34,7 @@ export const showVideoModal = ({ mediaData, videoId }) => {
     leftArrow.style.pointerEvents = "initial";
   }
 
-  if (indexVideo === data.length - 1) {
+  if (indexMedia === data.length - 1) {
     rightArrow.style.opacity = 0.5;
     rightArrow.style.pointerEvents = "none";
   } else {
@@ -31,23 +47,52 @@ export const slideMove = ({
   mediaData,
   activeVideo,
   setActiveVideo,
+  setActiveImage,
+  activeImage,
   value,
 }) => {
-  const leftArrow = document.querySelector(".video-modal__left-arrow");
-  const rightArrow = document.querySelector(".video-modal__right-arrow");
+  let leftArrow;
+  let rightArrow;
+  let indexMedia;
+  let activeMedia;
 
-  const data = mediaData[0].data;
-  let indexVideo = data.findIndex((el) => el.video_url === activeVideo);
-
-  if (value === "left" && indexVideo > 0) {
-    setActiveVideo(data[indexVideo - 1].video_url);
-    indexVideo -= 1;
-  } else if (value === "right" && indexVideo < data.length) {
-    setActiveVideo(data[indexVideo + 1].video_url);
-    indexVideo += 1;
+  if (activeVideo) {
+    leftArrow = document.querySelector(".video-modal__left-arrow");
+    rightArrow = document.querySelector(".video-modal__right-arrow");
+  } else if (activeImage) {
+    leftArrow = document.querySelector(".image-modal__left-arrow");
+    rightArrow = document.querySelector(".image-modal__right-arrow");
   }
 
-  if (indexVideo === 0) {
+  const data = mediaData[0].data;
+
+  if (activeVideo) {
+    indexMedia = data.findIndex((video) => video.video_url === activeVideo);
+    activeMedia = activeVideo;
+  } else if (activeImage) {
+    indexMedia = data.findIndex((image) => image.image === activeImage);
+    activeMedia = activeImage;
+  }
+
+  if (value === "left" && indexMedia > 0) {
+    if (activeVideo) {
+      setActiveVideo(data[indexMedia - 1].video_url);
+    } else {
+      setActiveImage(data[indexMedia - 1].image);
+    }
+
+    indexMedia -= 1;
+  } else {
+    if (activeVideo) {
+      setActiveVideo(data[indexMedia + 1].video_url);
+    } else {
+      setActiveImage(data[indexMedia + 1].image);
+    }
+
+    indexMedia += 1;
+  }
+
+  if (indexMedia === 0) {
     leftArrow.style.opacity = 0.5;
     leftArrow.style.pointerEvents = "none";
   } else {
@@ -55,7 +100,7 @@ export const slideMove = ({
     leftArrow.style.pointerEvents = "initial";
   }
 
-  if (indexVideo === data.length - 1) {
+  if (indexMedia === data.length - 1) {
     rightArrow.style.opacity = 0.5;
     rightArrow.style.pointerEvents = "none";
   } else {

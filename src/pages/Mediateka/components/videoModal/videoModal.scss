@@ -69,6 +69,30 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .video-modal {
+    &__video-modal-container {
+      width: 80vw;
+    }
+
+    &__close-btn {
+      right: 40px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .video-modal {
+    &__video-modal-container {
+      width: 70vw;
+    }
+
+    &__close-btn {
+      right: 50px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .video-modal {
     &__video-modal-container {
@@ -78,7 +102,6 @@
 
     &__close-btn {
       top: 50px;
-      right: 40px;
     }
 
     &__right-arrow,

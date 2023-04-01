@@ -4,39 +4,22 @@ import { baseServerUrl } from "../../../../services/api/utils";
 
 import "./imageList.scss";
 
-const ImagesList = ({
-  activeCard,
-  categoryId,
-  dataImage,
-  handleImageModal,
-}) => {
-  return (
+const ImagesList = ({ activeCard, dataImage, handleImageModal }) => {
+  return activeCard === "images" ? (
     <div className={`images ${activeCard === "images" ? "active-card" : ""}`}>
-      {dataImage.map((image) => {
-        return categoryId === 0 ? (
-          <div
-            key={image.id}
-            className="images__image-card"
-            onClick={() => handleImageModal(image.image)}
-          >
-            <div className="images__image-container">
-              <img src={`${baseServerUrl}/${image.image}`} alt="mediatake" />
-            </div>
+      {dataImage.map((image) => (
+        <div
+          key={image.id}
+          className="images__image-card"
+          onClick={() => handleImageModal(image.image)}
+        >
+          <div className="images__image-container">
+            <img src={`${baseServerUrl}/${image.image}`} alt="mediatake" />
           </div>
-        ) : categoryId === parseInt(image.menu_uz) ? (
-          <div
-            key={image.id}
-            className="images__image-card"
-            onClick={() => handleImageModal(image.image)}
-          >
-            <div className="images__image-container">
-              <img src={`${baseServerUrl}/${image.image}`} alt="mediatake" />
-            </div>
-          </div>
-        ) : null;
-      })}
+        </div>
+      ))}
     </div>
-  );
+  ) : null;
 };
 
 export default ImagesList;

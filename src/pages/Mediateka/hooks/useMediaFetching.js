@@ -25,7 +25,7 @@ export const useMediaFetching = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMediaPagination({ typeUrl: "videos", page: 1 }));
+    dispatch(getMediaPagination({ typeUrl: "videos", page: 1, categoryId: 0 }));
     dispatch(getVideosMenus());
     dispatch(getImagesMenus());
   }, []);
