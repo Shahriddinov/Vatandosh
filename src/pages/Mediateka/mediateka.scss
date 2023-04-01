@@ -1,0 +1,191 @@
+.mediateka {
+  padding-bottom: 60px;
+  background: url("../../assets/images/body-bg.png");
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      color: #065ea9;
+      font-size: 2rem;
+    }
+
+    ul {
+      display: flex;
+      gap: 8px;
+
+      li {
+        &:first-child {
+          a {
+            color: #5d6b8a;
+            font-size: 14px;
+          }
+
+          svg {
+            margin-left: 8px;
+          }
+        }
+
+        &:last-child {
+          color: #065ea9;
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+
+    button {
+      cursor: pointer;
+      padding: 12px 22px;
+      border-radius: 16px;
+      border: none;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 15px;
+
+    .active-btn {
+      background: #065ea9;
+      color: #fff;
+    }
+  }
+
+  &__video-btn {
+    button {
+      background: #e3f0ff;
+      color: #065ea9;
+    }
+  }
+
+  &__image-btn {
+    button {
+      background: #e3f0ff;
+      color: #065ea9;
+    }
+  }
+
+  &__category-select {
+    margin-left: auto;
+
+    .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+      border-radius: 16px !important;
+    }
+
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+      ul {
+        li {
+          color: #9d9d9d !important;
+          font-size: 1rem !important;
+        }
+      }
+    }
+
+    .css-14lo706 {
+      display: none;
+    }
+
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+      height: 42px !important;
+    }
+
+    .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+      width: 240px !important;
+      padding: 7px 15px !important;
+    }
+  }
+
+  .active-card {
+    display: grid;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mediateka {
+    &__close-btn {
+      right: 100px;
+    }
+  }
+}
+
+@media (max-width: 1040px) {
+  .mediateka {
+    &__close-btn {
+      right: 80px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .mediateka {
+    &__top {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .mediateka {
+    &__close-btn {
+      right: 60px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mediateka {
+    &__header {
+      flex-direction: column;
+    }
+
+    &__btns {
+      width: 100%;
+
+      & > div {
+        width: 50%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    &__category-select {
+      width: 100%;
+
+      .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .mediateka {
+    &__top {
+      flex-direction: column;
+      gap: 30px;
+
+      ul {
+        order: -1;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .mediateka {
+    &__header {
+      gap: 20px;
+    }
+  }
+}

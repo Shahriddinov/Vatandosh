@@ -11,14 +11,15 @@ import { baseServerUrl } from "../../services/api/utils";
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
 
-  const tags = props.tags.split(",");
+  const tags = props?.tags?.split(",");
 
   return (
-    <div className="single-card" 
-          data-aos="zoom-in"
-         data-aos-easing="ease-out-cubic"
-         data-aos-duration="1000"
-        >
+    <div
+      className="single-card"
+      data-aos="zoom-in"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+    >
       <div className="img-container">
         <img
           src={`${baseServerUrl}/${props.image}`}
@@ -38,7 +39,7 @@ const Card = (props) => {
       </div>
       <div className="tags-box">
         <div className="animation-box">
-          {tags.map((tag, id) => (
+          {tags?.map((tag, id) => (
             <div className="tag-item" key={id}>
               {tag}
             </div>
