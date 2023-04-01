@@ -3,16 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
-import Contact from "./pages/Contact/Contact";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
 import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
-import ExpertRegister from "./pages/ExpertRegister/ExpertRegister";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
-import ChangePassword from "./pages/Registration/pages/ChangePassword/ChangePassword";
-import RecoveryPassword from "./pages/Registration/pages/RecoveryPassword/RecoveryPassword";
-import Register from "./pages/Registration/pages/Register/Register";
-import { SignIn } from "./pages/Registration/pages/SignIn/SignIn";
-import { SignUp } from "./pages/Registration/pages/SignUp/SignUp";
+
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
