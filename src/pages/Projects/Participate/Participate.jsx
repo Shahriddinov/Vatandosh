@@ -15,9 +15,6 @@ import ImgIcon from '../../../assets/images/icons/img.svg'
 
 const Participate = (props) => {
 
-    const lng = props.lng
-    const t = props.t
-
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -81,12 +78,12 @@ const Participate = (props) => {
   return (
     <div className="black__overlay">
         <div className="participate__modal">
-            <h2>{t("projects_page.form_title")}</h2>
+            <h2>Loyihalarda ishtirok etish</h2>
             <form action="" method='post' autoComplete="off">
                 <div className="form__row">
                     <TextField 
                         id="outlined-basic" 
-                        label={t("projects_page.form_name")} 
+                        label="FISH" 
                         variant="outlined" 
                         name="name"
                         value={formData.name}
@@ -95,7 +92,7 @@ const Participate = (props) => {
                     />
                     <TextField 
                         id="outlined-basic" 
-                        label={t("projects_page.form_email")} 
+                        label="Sizning elektron manzilingiz" 
                         variant="outlined" 
                         name="email"
                         type="email"
@@ -107,7 +104,7 @@ const Participate = (props) => {
                 <div className="form__row">
                     <TextField 
                         id="outlined-basic" 
-                        label={t("projects_page.form_phone")} 
+                        label="Telefon raqamingiz" 
                         variant="outlined" 
                         name="phoneNumber"
                         value={formData.phoneNumber}
@@ -127,9 +124,9 @@ const Participate = (props) => {
                         autoComplete='off'
                     />
                     <FormControl>
-                        <InputLabel id="demo-simple-select-label">{t("projects_page.form_category")} </InputLabel>
+                        <InputLabel id="demo-simple-select-label">Ruknni tanlang</InputLabel>
                         <Select
-                            label={t("projects_page.form_category")} 
+                            label="Ruknni tanlang"
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             name="category"
@@ -138,18 +135,15 @@ const Participate = (props) => {
                             IconComponent={ExpandMoreIcon}
                             required
                         >
-                            <MenuItem value={t("projects_page.item2")}>{t("projects_page.item2")}</MenuItem>
-                            <MenuItem value={t("projects_page.item3")}>{t("projects_page.item3")}</MenuItem>
-                            <MenuItem value={t("projects_page.item4")}>{t("projects_page.item4")}</MenuItem>
-                            <MenuItem value={t("projects_page.item5")}>{t("projects_page.item5")}</MenuItem>
-                            <MenuItem value={t("projects_page.item6")}>{t("projects_page.item6")}</MenuItem>
-                            <MenuItem value={t("projects_page.item7")}>{t("projects_page.item7")}</MenuItem>
+                            <MenuItem value={'FamilyOfTheDay'}>Kun oilasi</MenuItem>
+                            <MenuItem value={'AthleticCountrymates'}>Sportchi yurtdoshlar</MenuItem>
+                            <MenuItem value={'YoungFamily'}>Yosh oila</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
                 <TextField 
                         id="outlined-multiline-flexible"
-                        label={t("projects_page.form_about")}  
+                        label="Siz va oilangiz haqida" 
                         variant="outlined" 
                         name="aboutParticipant"
                         value={formData.aboutParticipant}
@@ -163,7 +157,7 @@ const Participate = (props) => {
                     <div {...getRootProps()} className={uploadedFiles.length === 0 ? "upload__empty" : "display__none"}>
                         <input {...getInputProps()} ref={fileInputRef}/>
                         {uploadedFiles.length === 0 && <img src={ImgIcon} />}
-                        {uploadedFiles.length === 0 && <p>{t("projects_page.form_image")} </p>}
+                        {uploadedFiles.length === 0 && <p>Rasmlaringizni yuklang</p>}
                     </div>
                     )}
                 </Dropzone>
@@ -173,7 +167,7 @@ const Participate = (props) => {
                         <img src={URL.createObjectURL(file)} alt={file.name} className="uploaded__img"/>
                         <button onClick={() => handleDelete(index)}>
                             <img src={Trash} alt="" />
-                            {t("projects_page.form_image_delete")} 
+                            O'chirish
                         </button>
                     </div>
                     ))}
@@ -182,7 +176,7 @@ const Participate = (props) => {
                 <div className="url__wrapper">
                     <TextField 
                             id="outlined-basic" 
-                            label={t("projects_page.form_link")}  
+                            label="Ijtimoiy tarmoqdagi sahifalaringiz" 
                             placeholder=''
                             variant="outlined" 
                             name="links"
@@ -195,8 +189,8 @@ const Participate = (props) => {
                     <button className='add__url' onClick={handleAddInput}><img src={AddIcon} /></button>
                 </div>
                 <div className="form__buttons">
-                    <button className='cancel__button' onClick={props.toggleModal}>{t("projects_page.form_cancel")}</button>
-                    <button className='submit__button' type="submit">{t("projects_page.form_submit")}</button>
+                    <button className='cancel__button' onClick={props.toggleModal}>Bekor qilish</button>
+                    <button className='submit__button' type="submit">Yuborish</button>
                 </div>
             </form>
         </div>
