@@ -97,6 +97,7 @@ const InformationServices = () => {
               <div className="main-content-card" key={card.id}>
                 <Card {...card} pathUrl={pageName} />
               </div>
+              
             ))}
           </div>
         </div>
