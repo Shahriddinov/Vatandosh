@@ -4,7 +4,6 @@ import {
   getVideosMenus,
   getImagesMenus,
   getMediaPagination,
-  getImagesPagination,
 } from "./extraReducer";
 
 const initialState = {

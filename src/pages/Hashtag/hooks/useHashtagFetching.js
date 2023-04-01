@@ -10,7 +10,7 @@ export const useHashtagFetching = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMediaPagination({ typeUrl: "images", page: 1 }));
+    dispatch(getMediaPagination({ typeUrl: "images", page: 1, categoryId: 0 }));
   }, []);
 
   return {

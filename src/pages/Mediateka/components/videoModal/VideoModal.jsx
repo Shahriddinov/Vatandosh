@@ -31,13 +31,15 @@ const VideoModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
         </svg>
       </div>
       <div className="video-modal__video-modal-container">
-        <iframe
-          className="active-video"
-          src={`https://www.youtube.com/embed/${activeVideo}`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        {activeVideo ? (
+          <iframe
+            className="active-video"
+            src={`https://www.youtube.com/embed/${activeVideo}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : null}
       </div>
       <div
         className="video-modal__right-arrow"

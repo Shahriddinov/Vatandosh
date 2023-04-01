@@ -8,11 +8,11 @@
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: #002630;
-  background-image: url("../../../assets/images/portal/globe2.gif");
+  background-color: #00000b;
+  background-image: url("../../../assets/images/portal/globe3.gif");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  background-size: cover;
   z-index: -1;
 
   &::before {
@@ -21,7 +21,7 @@
     height: 100%;
     position: absolute;
     top: 0;
-    background: rgba($color: #000017, $alpha: 0.8);
+    background: rgba($color: #000017, $alpha: 0.6);
   }
 
   &::after {
