@@ -11,8 +11,9 @@ import "./peaceful.scss";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import Aos from "aos";
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
@@ -22,8 +23,13 @@ const Peaceful = () => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
+  const peacefulCard = useRef();
+
   useEffect(() => {
-    Aos.init({duration: 2000})
+    Aos.init({
+      duration: 2000,
+      anchorPlacement: 'bottom-top',
+    })
   }, []);
 
   if (loading) {
@@ -85,7 +91,11 @@ const Peaceful = () => {
           </div>
 
           <div className="peaceful__slider">
-            <div className="peaceful_slider__wrapper">
+            <div className="peaceful_slider__wrapper"
+                                         data-aos="zoom-out-up"
+                                 data-aos-easing="ease-out-cubic"
+                                 data-aos-duration="1000"
+            >
               <Swiper
                 slidesPerView={4}
                 spaceBetween={30}
@@ -116,34 +126,39 @@ const Peaceful = () => {
                 className="mySwiper"
               >
                 {peacefulData.map((el) => (
-                  <SwiperSlide key={el?.id} className="peaceful__slider-item"  data-aos="zoom-out-up"
-                               data-aos-easing="ease-out-cubic"
-                               data-aos-duration="1000">
-                    <div
-                      className="peaceful__slider_card"
-                      style={{
-                        backgroundImage: `url(${baseServerUrl}/${el?.image})`,
-                      }}
-                    >
-                      <div className="peaceful__card_inner">
-                        <div className="peaceful__slider_card--body">
-                          <a href="/" className="peaceful__slider_card--link">
-                            {el?.hashTag}
-                          </a>
+                    <SwiperSlide  key={el?.id} className="peaceful__slider-item"  
+                                // data-aos="zoom-out-up"
+                                //  data-aos-easing="ease-out-cubic"
+                                //  data-aos-duration="1000"
+                                ref={peacefulCard} > 
+                                  
+                      {/* <AnimationOnScroll animateIn="animate__fadeInUp" duration={2}> */}
+                        <div
+                          className="peaceful__slider_card"
+                          style={{
+                            backgroundImage: `url(${baseServerUrl}/${el?.image})`,
+                          }}
+                        >
+                          <div className="peaceful__card_inner">
+                            <div className="peaceful__slider_card--body">
+                              <a href="/" className="peaceful__slider_card--link">
+                                {el?.hashTag}
+                              </a>
 
-                          <p className="peaceful__slider_card--text">
-                            {el[`title_${lng}`].slice(0, 60)}...
-                          </p>
-                        </div>
+                              <p className="peaceful__slider_card--text">
+                                {el[`title_${lng}`].slice(0, 60)}...
+                              </p>
+                            </div>
 
-                        <div className="peaceful__slider__card--footer">
-                          <img src={calendar} alt="Calendar" />
-                          <b>{el?.date}</b>
+                            <div className="peaceful__slider__card--footer">
+                              <img src={calendar} alt="Calendar" />
+                              <b>{el?.date}</b>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
+                       {/* </AnimationOnScroll> */}
+                    </SwiperSlide>
+                ))} 
               </Swiper>
             </div>
           </div>

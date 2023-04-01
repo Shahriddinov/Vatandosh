@@ -15,7 +15,8 @@ const data = [
         dataCount: 100,
         image1 : Family1,
         image2: Family2,
-        image3 : Family3
+        image3 : Family3,
+        image4: Family1
     },
 
     {
@@ -24,7 +25,8 @@ const data = [
         dataCount: 100,
         image1 : Sport1,
         image2: Sport2,
-        image3 : Sport3
+        image3 : Sport3,
+        image4: Sport1
     },
 
     {
@@ -33,7 +35,8 @@ const data = [
         dataCount: 100,
         image1 : Young1,
         image2: Young2,
-        image3 : Young3
+        image3 : Young3,
+        image4: Young1
     },
 
     {
@@ -42,7 +45,8 @@ const data = [
         dataCount: 100,
         image1 : Family1,
         image2: Family2,
-        image3 : Family3
+        image3 : Family3,
+        image4: Family1
     },
 
     {
@@ -51,7 +55,8 @@ const data = [
         dataCount: 100,
         image1 : Sport1,
         image2: Sport2,
-        image3 : Sport3
+        image3 : Sport3,
+        image4: Sport1
     },
 
     {
@@ -60,7 +65,9 @@ const data = [
         dataCount: 100,
         image1 : Young1,
         image2: Young2,
-        image3 : Young3
+        image3 : Young3,
+        image4: Young1
+
     },
 
     {
@@ -69,7 +76,8 @@ const data = [
         dataCount: 100,
         image1 : Young1,
         image2: Sport2,
-        image3 : Family3
+        image3 : Family3,
+        image4: Family1
     },
 
     {
@@ -78,7 +86,8 @@ const data = [
         dataCount: 100,
         image1 : Family1,
         image2: Young2,
-        image3 : Sport3
+        image3 : Sport3,
+        image4: Family3
     },
 ]
 
