@@ -3028,6 +3028,11 @@ ajv@^8.0.0, ajv@^8.6.0, ajv@^8.8.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
+
 ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
   version "4.3.2"
   resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.2.tgz"
@@ -5691,6 +5696,11 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
+gsap@^3.11.5:
+  version "3.11.5"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.11.5.tgz#97ef65091f43868be387803f9db277e8cd5bd041"
+  integrity sha512-Q89nKCLgoX5xUjznh9LcaIUkz54k1voNucT1Rpf9SJNFIQznBwFqt5qUUQbeVInFyN/n18OUJkpeI6CNEDt74w==
+
 gzip-size@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/gzip-size/-/gzip-size-6.0.0.tgz"
@@ -7220,9 +7230,9 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.npmjs.org/lodash.sortby/-/lodash.sortby-4.7.0.tgz"
   integrity sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==
 
-lodash.throttle@^4.0.1:
+lodash.throttle@^4.0.1, lodash.throttle@^4.1.1:
   version "4.1.1"
-  resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
   integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
 lodash.uniq@^4.5.0:
@@ -9220,6 +9230,13 @@ rc-virtual-list@^3.4.13, rc-virtual-list@^3.4.8:
     classnames "^2.2.6"
     rc-resize-observer "^1.0.0"
     rc-util "^5.15.0"
+
+react-animation-on-scroll@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-animation-on-scroll/-/react-animation-on-scroll-5.1.0.tgz#4b69419d187bb5fdf2c4a01208d4a654ac8d883f"
+  integrity sha512-UBhlXUig+AGwDpRoqFC6qFh1mCIperwy1Pk7dJTb0XgpDzERF4f6fhoqFY2+on9Bf1n4OfUrRw4xsnKfQt6U7w==
+  dependencies:
+    lodash.throttle "^4.1.1"
 
 react-app-polyfill@^3.0.0:
   version "3.0.0"
