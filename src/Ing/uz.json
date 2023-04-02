@@ -1,4 +1,7 @@
 {
+  "Council_composition":"Kengash tarkibi",
+  "seeMore": "Ko’proq ko’rish",
+  "leadership_structure":"Rahbariyat tarkibi",
   "search": "Qidirish",
   "about": "BIZ HAQIMIZDA",
   "citizin": "VATANDOSHLAR",
@@ -65,6 +68,15 @@
   "infographics": "Infografika",
   "compatriotMagazine": "Vatandoshlar jurnali",
   "mainPage": "Asosiy sahifa",
+  "mainDirections": "Fond faoliyatining asosiy yo‘nalishlari",
+  "directions": "Yo'nalishlar",
+  "Associations": "Birlashmalar",
+  "staffCount": "Xodimlar soni",
+  "leader": "Rahbar",
+  "founding_date":"Tashkilot tashkil topgan sana",
+  "election_leader":"Rahbar saylangan sana",
+  "mediaVideo":"Video lavhalar",
+  "mediaImg":"Foto sur'atlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -125,6 +137,10 @@
       "card5-right": "Vatandoshlarimizni respublika oliy ta’lim muassasalarida o‘zbek tili yo‘nalishi bo‘yicha ta’lim olishlariga ko‘mak ko‘rsatish",
       "card6-right": "Vatandoshlarni O‘zbekiston hududida tadbirkorlik, investitsiyaviy, ilmiy, madaniy va ma’rifiy faoliyat bilan shug‘ullanishga faol jalb qilish"
     },
+    "section3-1": {
+      "htext1": "Fondnig tashkil topishi hamda tarixi haqida",
+      "ptext1": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi."
+    },
     "section4": {
       "htext1": "Fond tuzilmasi",
       "cardntk": "Nazorat-taftish komissiyasi",
@@ -147,5 +163,19 @@
       "htext1": "Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir"
     }
 
+  },
+
+  "contactPage": {
+    "contactUs": "Bog'lanish",
+    "appForm": "Biz bilan bog'lanish uchun ariza shakli",
+    "send": "Yuborish",
+    "yourName": "Sizning ismingiz",
+    "yourNumber": "Telefon raqamini kiriting",
+    "addInfo": "Qoshimcha ma’lumot",
+    "address": "Manzil",
+    "workingHours": "Ish vaqti",
+    "contactInfo": "Aloqa ma'lumotlari",
+    "houseOrg": "Uydagi tashkilotlar",
+    "warnUs": "Xato haqida xabar berish"
   }
 }

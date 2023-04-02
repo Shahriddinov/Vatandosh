@@ -1,33 +1,42 @@
-import "./offerStatesFriendship.scss"
-import { useSelector } from 'react-redux'
+import "./offerStatesFriendship.scss";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const OfferStatesFriendship = (props) => {
-  const lng = useSelector(state => state.language.language)
+  const lng = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
   return (
-    <section className='offer-state-friendship'>
-        <div className="offer-state-friendship__container container">
-            <div className="offer-state-friendship__inner">
-              <div className="offer-state-friendship__box_img">
-                <img className='offer-state-friendship__img' src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.company_photo}`} alt={props[`title_${lng}`]}/>
-              </div>
+    <section className="offer-state-friendship">
+      <div className="offer-state-friendship__container container">
+        <div className="offer-state-friendship__inner">
+          <div className="offer-state-friendship__box_img">
+            <img
+              className="offer-state-friendship__img"
+              src={`https://vatanparvarbackend.napaautomotive.uz/storage/${props.company_photo}`}
+              alt={props[`title_${lng}`]}
+            />
+          </div>
 
-              <div className="offer-state-friendship__content">
-                <h2 className="offer-state-friendship__title">
-                  {props[`info_title_${lng}`]}
-                </h2>
+          <div className="offer-state-friendship__content">
+            <h2 className="offer-state-friendship__title">
+              {props[`info_title_${lng}`]}
+            </h2>
 
-                <p className="offer-state-friendship__text1"
-                  dangerouslySetInnerHTML={{
-                    __html: props[`info_${lng}`],
-                  }} 
-                />
+            <p
+              className="offer-state-friendship__text1"
+              dangerouslySetInnerHTML={{
+                __html: props[`info_${lng}`],
+              }}
+            />
 
-                <b className="offer-state-friendship__workers">Xodimlar soni {props.company_workers}+</b>
-              </div>
-            </div>
+            <b className="offer-state-friendship__workers">
+              {t("staffCount")} {props.company_workers}+
+            </b>
+          </div>
         </div>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default OfferStatesFriendship
+export default OfferStatesFriendship;
