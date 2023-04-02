@@ -49,22 +49,14 @@ const Projects = () => {
 
     const [numVisibleDivs, setNumVisibleDivs] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
-    
-    console.log(currentIndex)
 
     const nextSlide = () => {
-        // get the Swiper instance
         const swiper = swiperRef.current.swiper;
-
-        // slide to the next slide
         swiper.slideNext();
     };
 
     const prevSlide = () => {
-        // get the Swiper instance
         const swiper = swiperRef.current.swiper;
-    
-        // slide to the previous slide
         swiper.slidePrev();
     }
 
@@ -79,14 +71,13 @@ const Projects = () => {
         }
     }
     
-
     useEffect(() => {
         const handleResize = () => {
-        if (window.innerWidth <= 650) {
-            setNumVisibleDivs(3);
-        } else {
-            setNumVisibleDivs(SliderData.length);
-        }
+            if (window.innerWidth <= 650) {
+                setNumVisibleDivs(3);
+            } else {
+                setNumVisibleDivs(SliderData.length);
+            }
         };
 
         handleResize();
@@ -147,7 +138,7 @@ const Projects = () => {
         },
         breakpoints: {
             360: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 0,
             },
             670: {
@@ -157,12 +148,12 @@ const Projects = () => {
             1000: {
               slidesPerView: 3,
               spaceBetween: 0,
-              navigation: {
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
-              },
-              loop: false,
-              autoplay: false,
+            //   navigation: {
+            //     prevEl: '.swiper-button-prev',
+            //     nextEl: '.swiper-button-next',
+            //   },
+            //   loop: false,
+            //   autoplay: false,
             },
             1300: {
               slidesPerView: 4,
@@ -224,12 +215,12 @@ const Projects = () => {
                         { numVisibleDivs === SliderData.length ?
                             <button className="show__more" onClick={handleShowLess}>
                                 <img src={ArrowDown} alt="" className='rotate180'/>
-                                {t("projects_page.see-more")}
+                                {t("projects_page.see-less")}
                             </button>
                             :
                             <button className="show__more" onClick={handleShowMore}>
                                 <img src={ArrowDown} alt="" />
-                                {t("projects_page.see-less")}
+                                {t("projects_page.see-more")}
                             </button>
                         }
                         <div className="participate">
@@ -269,14 +260,14 @@ const Projects = () => {
                             )
                         })}
                     </Swiper>
-                    <div className="carousel__pagination carousel__buttons">
+                    {/* <div className="carousel__pagination carousel__buttons">
                         <button className='carousel__button' onClick={prevSlide}><FiChevronLeft/></button>
                         <button className={currentIndex !== Gallery.length ? 'carousel__button active__button' : 'carousel__button'} onClick={() => onBulletClick(currentIndex)}>{currentIndex}</button>
                         <button className='carousel__button' onClick={() => onBulletClick(currentIndex + 1)}>{currentIndex + 1}</button>
                         <button className='carousel__button' onClick={() => {if(currentIndex<Gallery.length - Math.ceil(Gallery.length / 10)){onBulletClick(currentIndex + Math.ceil(Gallery.length / 10))} else {onBulletClick(currentIndex - Math.ceil(Gallery.length / 10))}}}>...</button>
-                        <button className={currentIndex === Gallery.length ? 'carousel__button active__button' : 'carousel__button'} onClick={() => {onBulletClick(Gallery.length); setCurrentIndex(1)}}>{Gallery.length}</button>
+                        <button className={currentIndex === Gallery.length ? 'carousel__button active__button' : 'carousel__button'} onClick={() => onBulletClick(Gallery.length)}>{Gallery.length}</button>
                         <button className='carousel__button' onClick={nextSlide}><FiChevronRight/></button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {modalOn && <><WhriteHeader /><ParticipateModal toggleModal={toggleModal} lng={lng} t={t}/></>}
