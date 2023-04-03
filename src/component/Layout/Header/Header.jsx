@@ -21,6 +21,7 @@ import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { languageList } from "../data";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const [activeSidebar, setactiveSidebar] = useState(false);
@@ -29,6 +30,7 @@ const Header = () => {
   const { grayScale } = useContext(GrayContext);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -47,7 +49,8 @@ const Header = () => {
   return (
     <header
       className="head"
-      style={activeSidebar ? { background: "#FFFFFF" } : null}>
+      style={activeSidebar ? { background: "#FFFFFF" } : null}
+    >
       <div className="header">
         <div className="header_navbar">
           <Link to="/" className="header_navbar_left">
@@ -55,13 +58,15 @@ const Header = () => {
           </Link>
           <a
             href={`tel: ${contactData?.phone}`}
-            className="header_navbar_phone">
+            className="header_navbar_phone"
+          >
             <img src={Phone} alt="phone" />
             <div className="header_navbar_phone_number">+998(55)502-22-99</div>
           </a>
           <a
             href={`mailto: ${contactData?.email}`}
-            className="header_navbar_phone">
+            className="header_navbar_phone"
+          >
             <img src={Message} alt="message" />
             <div className="header_navbar_phone_number">
               info@vatandoshlarfondi.uz
@@ -95,7 +100,7 @@ const Header = () => {
             <input
               type="text"
               className="header_navbar_search_inputs"
-              placeholder="Qidirish"
+              placeholder={t("search")}
             />
             <img
               src={Search}
@@ -110,7 +115,8 @@ const Header = () => {
           <div className="header_navbar_language">
             <div
               className="header_navbar_language-wrapper"
-              onClick={() => setactiveLang((el) => !el)}>
+              onClick={() => setactiveLang((el) => !el)}
+            >
               <CiGlobe className="header_navbar_language-icon" />
               <span style={{ color: "white" }}>
                 {language.split("")[0].toUpperCase() + language.split("")[1]}
@@ -119,13 +125,15 @@ const Header = () => {
             </div>
             <div
               className="header_navbar_language-bar"
-              style={activeLang ? { display: "flex" } : null}>
+              style={activeLang ? { display: "flex" } : null}
+            >
               {languageList.map((el, index) => (
                 <p
                   key={index}
                   onClick={() => {
                     handleChangeLng(el.type);
-                  }}>
+                  }}
+                >
                   {el.label}
                 </p>
               ))}
@@ -149,7 +157,8 @@ const Header = () => {
           </div>
           <button
             className="header_navbar_eye burger"
-            onClick={() => setactiveSidebar(!activeSidebar)}>
+            onClick={() => setactiveSidebar(!activeSidebar)}
+          >
             {activeSidebar ? (
               <CgClose className="burger-closeIcon" />
             ) : (
@@ -165,7 +174,8 @@ const Header = () => {
 
         <div
           className={activeSidebar ? "overlay overlayActive" : "overlay"}
-          onClick={() => setactiveSidebar(!activeSidebar)}></div>
+          onClick={() => setactiveSidebar(!activeSidebar)}
+        ></div>
       </div>
       {pathname.split("/")[1].includes("portal") ? "" : <Menus />}
     </header>

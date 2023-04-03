@@ -4,13 +4,18 @@ import "./councilComposition.scss";
 import CouncilCard from "../council/CouncilCard";
 import arrowDown from "../../../../assets/images/about/arrov-down.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CouncilComposition = ({ searchCount, handleFetching, trusts }) => {
+  const { t } = useTranslation();
+  console.log(trusts);
   return (
     <section className="council-composition">
       <div className="council-composition__container container">
         <div className="council-composition__inner">
-          <h2 className="council-composition__title">Kengash tarkibi</h2>
+          <h2 className="council-composition__title">
+            {t("Council_composition")}
+          </h2>
 
           <ul className="council-composition__list">
             {trusts[0]?.data?.map((el) => (
@@ -29,7 +34,7 @@ const CouncilComposition = ({ searchCount, handleFetching, trusts }) => {
             >
               <img src={arrowDown} alt="" />
               <span className="council-composition__btn--span">
-                Ko’proq ko’rish
+                {t("seeMore")}
               </span>
             </Link>
           ) : null}

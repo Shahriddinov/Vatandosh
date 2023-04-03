@@ -24,8 +24,10 @@ import VideoList from "./components/videoList/VideoList";
 import ImagesList from "./components/imageList/ImagesList";
 import { mediaPagination, showMediaModal, slideMove } from "./extraFunc";
 import { useMediaFetching } from "./hooks/useMediaFetching";
+import { useTranslation } from "react-i18next";
 
 const Mediateka = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [activeCard, setActiveCard] = useState("videos");
   const [showModal, setShowModal] = useState(false);
@@ -112,10 +114,10 @@ const Mediateka = () => {
       <Header />
       <div className="container">
         <div className="mediateka__top">
-          <h2>Mediateka</h2>
+          <h2>{t("mediateka")}</h2>
           <ul>
             <li>
-              <Link to="/">Asosiy sahifa</Link>
+              <Link to="/">{t("mainPage")}</Link>
               <svg
                 width="10"
                 height="11"
@@ -129,7 +131,7 @@ const Mediateka = () => {
                 />
               </svg>
             </li>
-            <li>Mediateka</li>
+            <li>{t("mediateka")}</li>
           </ul>
         </div>
         <div className="mediateka__header">
@@ -139,7 +141,7 @@ const Mediateka = () => {
                 onClick={() => handleFetchClick("videos")}
                 className={activeCard === "videos" ? "active-btn" : ""}
               >
-                Video lavhalar
+                {t("mediaVideo")}
               </button>
             </div>
             <div className="mediateka__image-btn">
@@ -147,7 +149,7 @@ const Mediateka = () => {
                 onClick={() => handleFetchClick("images")}
                 className={activeCard === "images" ? "active-btn" : ""}
               >
-                Foto sur'atlar
+                {t("mediaImg")}
               </button>
             </div>
           </div>
@@ -159,7 +161,7 @@ const Mediateka = () => {
                 value={categoryId}
                 onChange={handleChange}
               >
-                <MenuItem value={0}>Barchasi</MenuItem>
+                <MenuItem value={0}>{t("all")}</MenuItem>
                 {activeCard === "videos"
                   ? videoMenusData.map((videoMenu) => (
                       <MenuItem value={videoMenu.id} key={videoMenu.id}>

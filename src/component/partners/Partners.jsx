@@ -21,7 +21,7 @@ const Partners = () => {
   const dispatch = useDispatch();
   const partnersData = useSelector((state) => state.partnersSlice.partnersData);
   const error = useSelector((state) => state.partnersSlice.error);
-
+  console.log(partnersData);
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
@@ -81,7 +81,7 @@ const Partners = () => {
   };
 
   useEffect(() => {
-    Aos.init({duration: 2000})
+    Aos.init({ duration: 2000 });
   }, []);
 
   useEffect(() => {
@@ -120,9 +120,13 @@ const Partners = () => {
           {...settings}
         >
           {partnersData?.map((partner) => (
-            <div className="content" key={partner.id} data-aos="zoom-in-down"
-                 data-aos-easing="ease-out-cubic"
-                 data-aos-duration="1000">
+            <div
+              className="content"
+              key={partner.id}
+              data-aos="zoom-in-down"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
+            >
               <div className="text">
                 <h3
                   className="content_title"
@@ -151,10 +155,13 @@ const Partners = () => {
             {...settings2}
           >
             {partnersData?.map((el) => (
-              <div className="partner" key={el.id}
-                   data-aos="zoom-out-up"
-                   data-aos-easing="ease-out-cubic"
-                   data-aos-duration="1000">
+              <div
+                className="partner"
+                key={el.id}
+                data-aos="zoom-out-up"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+              >
                 <img
                   className="partner__img"
                   src={`${baseServerUrl}/${el.logoImg}`}

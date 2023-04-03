@@ -11,16 +11,16 @@ import "./peaceful.scss";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import Aos from "aos";
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
   const loading = useSelector((state) => state.peaceful.loading);
   const error = useSelector((state) => state.peaceful.error);
-  console.log(peacefulData)
+
   const lng = useSelector((state) => state.language.language);
+
   const { t } = useTranslation();
 
   const peacefulCard = useRef();
@@ -28,8 +28,8 @@ const Peaceful = () => {
   useEffect(() => {
     Aos.init({
       duration: 2000,
-      anchorPlacement: 'bottom-top',
-    })
+      anchorPlacement: "bottom-top",
+    });
   }, []);
 
   if (loading) {
@@ -91,16 +91,16 @@ const Peaceful = () => {
           </div>
 
           <div className="peaceful__slider">
-            <div className="peaceful_slider__wrapper"
-                                         data-aos="zoom-out-up"
-                                 data-aos-easing="ease-out-cubic"
-                                 data-aos-duration="1000"
+            <div
+              className="peaceful_slider__wrapper"
+              data-aos="zoom-out-up"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
             >
               <Swiper
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
-
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",
@@ -126,39 +126,41 @@ const Peaceful = () => {
                 className="mySwiper"
               >
                 {peacefulData.map((el) => (
-                    <SwiperSlide  key={el?.id} className="peaceful__slider-item"  
-                                // data-aos="zoom-out-up"
-                                //  data-aos-easing="ease-out-cubic"
-                                //  data-aos-duration="1000"
-                                ref={peacefulCard} > 
-                                  
-                      {/* <AnimationOnScroll animateIn="animate__fadeInUp" duration={2}> */}
-                        <div
-                          className="peaceful__slider_card"
-                          style={{
-                            backgroundImage: `url(${baseServerUrl}/${el?.image})`,
-                          }}
-                        >
-                          <div className="peaceful__card_inner">
-                            <div className="peaceful__slider_card--body">
-                              <a href="/" className="peaceful__slider_card--link">
-                                {el?.hashTag}
-                              </a>
+                  <SwiperSlide
+                    key={el?.id}
+                    className="peaceful__slider-item"
+                    // data-aos="zoom-out-up"
+                    //  data-aos-easing="ease-out-cubic"
+                    //  data-aos-duration="1000"
+                    ref={peacefulCard}
+                  >
+                    {/* <AnimationOnScroll animateIn="animate__fadeInUp" duration={2}> */}
+                    <div
+                      className="peaceful__slider_card"
+                      style={{
+                        backgroundImage: `url(${baseServerUrl}/${el?.image})`,
+                      }}
+                    >
+                      <div className="peaceful__card_inner">
+                        <div className="peaceful__slider_card--body">
+                          <a href="/" className="peaceful__slider_card--link">
+                            {el?.hashTag}
+                          </a>
 
-                              <p className="peaceful__slider_card--text">
-                                {el[`title_${lng}`].slice(0, 60)}...
-                              </p>
-                            </div>
-
-                            <div className="peaceful__slider__card--footer">
-                              <img src={calendar} alt="Calendar" />
-                              <b>{el?.date}</b>
-                            </div>
-                          </div>
+                          <p className="peaceful__slider_card--text">
+                            {el[`title_${lng}`].slice(0, 60)}...
+                          </p>
                         </div>
-                       {/* </AnimationOnScroll> */}
-                    </SwiperSlide>
-                ))} 
+
+                        <div className="peaceful__slider__card--footer">
+                          <img src={calendar} alt="Calendar" />
+                          <b>{el?.data}</b>
+                        </div>
+                      </div>
+                    </div>
+                    {/* </AnimationOnScroll> */}
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>
