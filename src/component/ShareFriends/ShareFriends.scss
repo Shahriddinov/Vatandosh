@@ -1,0 +1,35 @@
+@import "../../assets/style/global.scss";
+.sharefriends {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: 20px;
+
+  &-title {
+    letter-spacing: 0.2px;
+    @include fontStyles(400, 16px, 19px, #161616);
+  }
+
+  &-list {
+    display: flex;
+    gap: 20px;
+
+    &-item,
+    .react-share__ShareButton {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #deebfc !important;
+      border-radius: 50%;
+
+      & > svg,
+      img {
+        width: 20px;
+        height: 20px;
+        color: #235fad;
+      }
+    }
+  }
+}
