@@ -11,28 +11,32 @@ function Nav() {
           <li>
             <a
               href="#"
-              className={editClass === "/portal/export" ? `nav-link` : `nav--link`}>
+              className={editClass === "/export" ? `nav-link` : `nav--link`}
+            >
               ASOSIY
             </a>
           </li>
           <li>
             <a
               href="#"
-              className={editClass === "/portal/export" ? `nav-link` : `nav--link`}>
+              className={editClass === "/export" ? `nav-link` : `nav--link`}
+            >
               Ekspertlar kengashi
             </a>
           </li>
           <li>
             <a
               href="#"
-              className={editClass === "/portal/export" ? `nav-link` : `nav--link`}>
+              className={editClass === "/export" ? `nav-link` : `nav--link`}
+            >
               Takliflar
             </a>
           </li>
           <li>
             <a
               href="#"
-              className={editClass === "/portal/export" ? `nav-link` : `nav--link`}>
+              className={editClass === "/export" ? `nav-link` : `nav--link`}
+            >
               Bog‘lanish
             </a>
           </li>

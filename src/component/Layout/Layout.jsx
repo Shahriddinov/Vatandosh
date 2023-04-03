@@ -8,6 +8,8 @@ import RegisterHeader from "../../pages/Registration/pages/Layout/Header/Registe
 import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/RegisterFooter";
 import { useProjectsData } from "./hooks/useProjectsData";
 import { useSelector } from "react-redux";
+import ExpertHeader from "../../pages/Portal/components/ExpertHeader/ExpertHeader";
+import ExpertFooter from "../../pages/Portal/components/ExpertFooter/ExpertFooter";
 
 export const GrayContext = createContext();
 
@@ -23,6 +25,7 @@ const Layout = (props) => {
   );
 
   const registerHeader = pathname.split("/")[1];
+  const headerExpert = pathname.split("/");
 
   const changeSpeakSwitcher = (value) => {
     setSpeaker(value);
@@ -77,12 +80,16 @@ const Layout = (props) => {
           <HeaderPortal />
         ) : registerHeader.includes("registration") ? (
           <RegisterHeader />
+        ) : registerHeader.includes("expert") && headerExpert.length > 2 ? (
+          <ExpertHeader />
         ) : null}
         <div className="page-content">{children}</div>
         {registerHeader.includes("portal") ? null : registerHeader.includes(
             "registration"
           ) ? (
           <RegisterFooter />
+        ) : registerHeader.includes("expert") ? (
+          <ExpertFooter />
         ) : (
           <Footer />
         )}
