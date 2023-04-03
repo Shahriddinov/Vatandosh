@@ -33,7 +33,7 @@ function Navbar() {
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
               className={
-                editClass === "/export" ? `navbar--name` : `navbar--subname`
+                editClass === "/expert" ? `navbar--name` : `navbar--subname`
               }
             >
               “VATANDOSHLAR” JAMOAT FONDI
@@ -45,7 +45,7 @@ function Navbar() {
             <a
               href="tel:+998555022299"
               className={
-                editClass === "/export" ? `navbar-link` : `navbar--link`
+                editClass === "/expert" ? `navbar-link` : `navbar--link`
               }
             >
               <PhoneIcon />
@@ -56,7 +56,7 @@ function Navbar() {
             <a
               href="mailto:info@vatandoshlarfondi.uz"
               className={
-                editClass === "/export" ? `navbar-link` : `navbar--link`
+                editClass === "/expert" ? `navbar-link` : `navbar--link`
               }
             >
               <EmailIcon />
@@ -70,7 +70,7 @@ function Navbar() {
               className="navbarpage_language-wrapper"
               style={{
                 background: `${
-                  editClass === "/export"
+                  editClass === "/expert"
                     ? "rgba(255, 255, 255, 0.2)"
                     : `#065EA9`
                 }`,
@@ -90,7 +90,7 @@ function Navbar() {
                   ? {
                       display: "flex",
                       background: `${
-                        editClass === "/export"
+                        editClass === "/expert"
                           ? "rgba(255, 255, 255, 0.2)"
                           : `#065EA9`
                       }`,
@@ -112,7 +112,7 @@ function Navbar() {
           </div>
           <button
             className={
-              editClass === "/export" ? `navbar-button` : `navbar--button`
+              editClass === "/expert" ? `navbar-button` : `navbar--button`
             }
           >
             <img src={ExitIcon} alt="" className="navbar-icon" />

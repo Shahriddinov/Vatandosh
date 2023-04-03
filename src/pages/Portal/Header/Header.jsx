@@ -1,15 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
-
 import "./header.scss";
-
 import Logo from "../../../assets/images/Logo.png";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
@@ -75,8 +72,7 @@ const HeaderPortal = () => {
               height="15"
               viewBox="0 0 15 15"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -86,8 +82,7 @@ const HeaderPortal = () => {
             </svg>
             <a
               href={`tel: ${contactData?.phone}`}
-              className="header_navbar_phone_number"
-            >
+              className="header_navbar_phone_number">
               {contactData?.phone}
             </a>
           </div>
@@ -97,8 +92,7 @@ const HeaderPortal = () => {
               height="14"
               viewBox="0 0 18 14"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -108,8 +102,7 @@ const HeaderPortal = () => {
             </svg>
             <a
               href={`mailto: ${contactData?.email}`}
-              className="header_navbar_phone_number"
-            >
+              className="header_navbar_phone_number">
               {contactData?.email}
             </a>
           </div>
@@ -149,8 +142,7 @@ const HeaderPortal = () => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <circle cx="11.5" cy="11.5" r="7.5" stroke="#F0F0F0" />
               <path
                 d="M21.5 21.5L17 17"
@@ -163,15 +155,13 @@ const HeaderPortal = () => {
           <motion.button
             whileTap={{ scale: 0.6 }}
             className="header_navbar_eye"
-            onClick={() => grayScale()}
-          >
+            onClick={() => grayScale()}>
             <svg
               width="20"
               height="6"
               viewBox="0 0 20 6"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -183,8 +173,7 @@ const HeaderPortal = () => {
           <div className="portal-header-lang">
             <div
               className="portal-header-lang-wrapper"
-              onClick={() => setactiveLangBar((el) => !el)}
-            >
+              onClick={() => setactiveLangBar((el) => !el)}>
               <CiGlobe className="portal-header-lang-icon" />
               <span>
                 {language.split("")[0].toUpperCase() + language.split("")[1]}
@@ -193,38 +182,33 @@ const HeaderPortal = () => {
             </div>
             <div
               className="portal-header-lang-bar"
-              style={activeLangBar ? { display: "flex" } : null}
-            >
+              style={activeLangBar ? { display: "flex" } : null}>
               <p
                 onClick={(e) => {
                   handleChangeLng(e.target.innerText.toLowerCase());
                   setactiveLangBar((el) => !el);
-                }}
-              >
+                }}>
                 Uz
               </p>
               <p
                 onClick={(e) => {
                   handleChangeLng(e.target.innerText.toLowerCase());
                   setactiveLangBar((el) => !el);
-                }}
-              >
+                }}>
                 Ru
               </p>
               <p
                 onClick={(e) => {
                   handleChangeLng(e.target.innerText.toLowerCase());
                   setactiveLangBar((el) => !el);
-                }}
-              >
+                }}>
                 En
               </p>
             </div>
           </div>
           <button
             className="header_navbar_eye burger"
-            onClick={() => setactiveSidebar(!activeSidebar)}
-          >
+            onClick={() => setactiveSidebar(!activeSidebar)}>
             {activeSidebar ? (
               <CgClose className="burger-closeIcon" />
             ) : (
@@ -233,8 +217,7 @@ const HeaderPortal = () => {
                 height="20"
                 viewBox="0 0 20 20"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -253,8 +236,7 @@ const HeaderPortal = () => {
 
         <div
           className={activeSidebar ? "overlay overlayActive" : "overlay"}
-          onClick={() => setactiveSidebar(!activeSidebar)}
-        ></div>
+          onClick={() => setactiveSidebar(!activeSidebar)}></div>
       </div>
       <div className="mobile-phone-and-email container">
         <div className="header_navbar_phone">
@@ -263,8 +245,7 @@ const HeaderPortal = () => {
             height="15"
             viewBox="0 0 15 15"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -274,8 +255,7 @@ const HeaderPortal = () => {
           </svg>
           <a
             href="tel: +998(55)502-22-99"
-            className="header_navbar_phone_number"
-          >
+            className="header_navbar_phone_number">
             +998(55)502-22-99
           </a>
         </div>
@@ -285,8 +265,7 @@ const HeaderPortal = () => {
             height="14"
             viewBox="0 0 18 14"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -296,8 +275,7 @@ const HeaderPortal = () => {
           </svg>
           <a
             href="mailto: info@vatandoshlarfondi.uz"
-            className="header_navbar_phone_number"
-          >
+            className="header_navbar_phone_number">
             info@vatandoshlarfondi.uz
           </a>
         </div>
