@@ -18,7 +18,7 @@ function ExpertCouncil() {
       <Council />
       <Expert />
       <News />
-      <ExpertFooter />
+      {/* <ExpertFooter /> */}
     </>
   );
 }

@@ -33,7 +33,7 @@ function Navbar() {
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
               className={
-                editClass === "/portal/expert" ? `navbar--name` : `navbar--subname`
+                editClass === "/portal/export" ? `navbar--name` : `navbar--subname`
               }>
               “VATANDOSHLAR” JAMOAT FONDI
             </h4>
@@ -44,7 +44,7 @@ function Navbar() {
             <a
               href="tel:+998555022299"
               className={
-                editClass === "/portal/expert" ? `navbar-link` : `navbar--link`
+                editClass === "/portal/export" ? `navbar-link` : `navbar--link`
               }>
               <PhoneIcon />
               +998(55)502-22-99
@@ -54,7 +54,7 @@ function Navbar() {
             <a
               href="mailto:info@vatandoshlarfondi.uz"
               className={
-                editClass === "/portal/expert" ? `navbar-link` : `navbar--link`
+                editClass === "/portal/export" ? `navbar-link` : `navbar--link`
               }>
               <EmailIcon />
               info@vatandoshlarfondi.uz
@@ -67,7 +67,7 @@ function Navbar() {
               className="navbarpage_language-wrapper"
               style={{
                 background: `${
-                  editClass === "/portal/expert"
+                  editClass === "/portal/export"
                     ? "rgba(255, 255, 255, 0.2)"
                     : `#065EA9`
                 }`,
@@ -86,7 +86,7 @@ function Navbar() {
                   ? {
                       display: "flex",
                       background: `${
-                        editClass === "/portal/expert"
+                        editClass === "/portal/export"
                           ? "rgba(255, 255, 255, 0.2)"
                           : `#065EA9`
                       }`,
@@ -106,7 +106,7 @@ function Navbar() {
           </div>
           <button
             className={
-              editClass === "/portal/expert" ? `navbar-button` : `navbar--button`
+              editClass === "/portal/export" ? `navbar-button` : `navbar--button`
             }>
             <img src={ExitIcon} alt="" className="navbar-icon" />
             Kirish
