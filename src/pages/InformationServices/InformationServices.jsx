@@ -5,7 +5,6 @@ import { InformationServicesSlider } from "./InformationServicesSlider/Informati
 import { InformationServicesHero } from "./InformationServicesHero/InformationServicesHero";
 import LatestNews from "../../component/LatestNews/LatestNews";
 import Card from "../../component/card/Card";
-import { useDispatch, useSelector } from "react-redux";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
 import { Paginator } from "../../component/Pagination/Pagination";
@@ -16,11 +15,9 @@ import mediaIcon from "../../assets/images/navMenuIcons/informationService/media
 import graphIcon from "../../assets/images/navMenuIcons/informationService/graphIcon.svg";
 import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
 import Spinner from "../../component/Spinner/Spinner";
-import { useInformationServicesPagination } from './hooks/useInformationServicesPagination';
+import { useInformationServicesPagination } from "./hooks/useInformationServicesPagination";
 
 const InformationServices = () => {
-
-
   const {
     paginationFetching,
     page,
@@ -30,14 +27,18 @@ const InformationServices = () => {
     loading,
     data,
     pageName,
-    t
-  } = useInformationServicesPagination()
+    t,
+  } = useInformationServicesPagination();
 
   const pagePath = {
     title: `${pageName}`,
     path: [
       { id: 1, label: `${t("mainPage")}`, path: "/" },
-      { id: 2, label: `${t(pageName)}`, path: `/information-service/${pageName}` },
+      {
+        id: 2,
+        label: `${t(pageName)}`,
+        path: `/information-service/${pageName}`,
+      },
     ],
   };
   const pathPages = [
@@ -73,9 +74,8 @@ const InformationServices = () => {
     },
   ];
 
-
-  if (paginationLoading && loading) {
-    return <Spinner position='full' />;
+  if (paginationLoading || loading) {
+    return <Spinner position="full" />;
   }
 
   return (
@@ -97,20 +97,16 @@ const InformationServices = () => {
               <div className="main-content-card" key={card.id}>
                 <Card {...card} pathUrl={pageName} />
               </div>
-              
             ))}
           </div>
         </div>
-        {paginationCount >= 2
-          ? (
-            <Paginator
-              page={page}
-              paginationFetching={paginationFetching}
-              count={paginationCount}
-            />
-          )
-          : null
-        }
+        {paginationCount >= 2 ? (
+          <Paginator
+            page={page}
+            paginationFetching={paginationFetching}
+            count={paginationCount}
+          />
+        ) : null}
         <div className="main-popular-tags">
           <PopularTags />
         </div>
