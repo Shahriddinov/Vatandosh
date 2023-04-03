@@ -44,12 +44,56 @@
       color: #065ea9;
     }
   }
+
+  &__images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 16px;
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
   .hashtag {
     &__top {
       margin-top: 40px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hashtag {
+    &__images {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .hashtag {
+    &__images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .hashtag {
+    &__images {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

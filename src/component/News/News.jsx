@@ -65,7 +65,9 @@ const News = () => {
             </button>
           </div>
           <div className="all-btn">
-            <button>{t("all")}</button>
+            <button onClick={() => navigate("/information-service/news")}>
+              {t("all")}
+            </button>
           </div>
         </div>
         <div className="news__body">

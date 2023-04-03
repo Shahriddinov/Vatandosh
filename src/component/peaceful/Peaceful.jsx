@@ -101,6 +101,7 @@ const Peaceful = () => {
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
+
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",
