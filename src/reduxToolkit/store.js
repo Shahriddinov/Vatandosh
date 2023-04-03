@@ -14,12 +14,13 @@ import informationServicesSlice from "./informationServicesSlice/informationServ
 import mediatekaSlice from "./mediatekaSlice";
 import singleSlice from "./singleSlice";
 import tagSearchSlice from "./tagSearchSlice/tagSearchSlice";
-
+import directionSlice from "./Direction"
 const store = configureStore({
   reducer: {
     newsSlice,
     eventsSlice,
     partnersSlice,
+    directionSlice,
     peaceful,
     language,
     mapSlice,
