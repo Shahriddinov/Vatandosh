@@ -1,4 +1,7 @@
 {
+  "Council_composition":"Council composition",
+  "seeMore": "see more" ,
+  "leadership_structure":"leadership structure",
   "search": "Search",
   "about": "ABOUT US",
   "citizin": "COMPATRIOTS",
@@ -65,6 +68,15 @@
   "infographics" : "Infographic",
   "compatriotMagazine" : "Compatriot magazine",
   "mainPage" : "Main page",
+  "mainDirections": "Main areas of activity of the foundation",
+  "directions": "routes",
+  "Associations": "Associations",
+  "staffCount": "The number of employees",
+  "leader": "Leader",
+  "founding_date":"Founding date",
+  "election_leader":"Date of election of leader",
+  "mediaVideo":"Video footage",
+  "mediaImg":"Pictures",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
@@ -125,6 +137,10 @@
       "card5-right": "Support our compatriots to receive education in the direction of Uzbek language in higher educational institutions of the Republic",
       "card6-right": "Active involvement of compatriots in business, investment, scientific, cultural and educational activities on the territory of Uzbekistan"
     },
+    "section3-1": {
+      "htext1": "About the foundation and history of Fondnig",
+      "ptext1": "Further embalming compatriots living abroad around their historical homeland, exalting a sense of pride in the land in their hearts and minds, maintaining a national identity, further embalming compatriots and compatriots living abroad by them around their historical homeland, exalting a sense of pride in the land in their hearts and minds, maintaining a national identity, supporting compatriots and public associations formed by them, one of the main goals of the Foundation is the effective orientation of the potential of our compatriots operating in various fields to the development of our country. One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country."
+    },
     "section4": {
       "htext1": "Foundation structure",
       "cardntk": "Control-inspection commission",
@@ -148,34 +164,17 @@
     }
 
   },
-  "projects_page": {
-    "hero_title": "Projects",
-    "hero_description": "To further embed compatriots living abroad around their historical homeland, to raise their sense of pride in the land in their hearts and minds, to preserve national identity, to support compatriots and public associations formed by them, to effectively direct the potential of our compatriots operating in various fields to the development of our country is one of the main goals of the foundation.",
-    "page_path": "Projects",
-    "carousel_title": "All projects",
-    "carousel_description": "You can get acquainted with the life of our compatriots living abroad!",
-    "see-more": "See more",
-    "see-less": "See less",
-    "participate": "Participare in the projects",
-    "participate_title": "Fill out an application if you have a desire to participate in our projects and become a project participant!",
-    "participate_btn": "Participate",
-    "gallery": "Photo gallery",
-    "form_title": "Participate in a project",
-    "form_name": "Full name",
-    "form_email": "Email address",
-    "form_phone": "Phone number",
-    "form_category": "Choose column",
-    "item2": "“Family of the day” ruckney",
-    "item3": "“Athlete compatriots” ruckney",
-    "item4": "“Young compatriots” ruckney",
-    "item5": "Sara is a masterpiece",
-    "item6": "“National cuisine abroad” project",
-    "item7": "“Overseas compatriot organization” project",
-    "form_about": "About you and your family",
-    "form_image": "Upload your photos",
-    "form_image_delete": "Delete",
-    "form_link": "Your social network profiles",
-    "form_cancel": "Cancel",
-    "form_submit": "Send"
+  "contactPage": {
+    "contactUs": "contact us",
+    "appForm": "Application form for contacting us",
+    "send": "Send",
+    "yourName": "your name",
+    "yourNumber": "Enter phone number",
+    "addInfo": "Additional information",
+    "address": "address",
+    "workingHours": "Opening hours",
+    "contactInfo": "Contact information",
+    "houseOrg": "Organizations in the House",
+    "warnUs": "Error reporting"
   }
 }

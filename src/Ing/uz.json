@@ -1,4 +1,7 @@
 {
+  "Council_composition":"Kengash tarkibi",
+  "seeMore": "Ko’proq ko’rish",
+  "leadership_structure":"Rahbariyat tarkibi",
   "search": "Qidirish",
   "about": "BIZ HAQIMIZDA",
   "citizin": "VATANDOSHLAR",
@@ -65,6 +68,15 @@
   "infographics": "Infografika",
   "compatriotMagazine": "Vatandoshlar jurnali",
   "mainPage": "Asosiy sahifa",
+  "mainDirections": "Fond faoliyatining asosiy yo‘nalishlari",
+  "directions": "Yo'nalishlar",
+  "Associations": "Birlashmalar",
+  "staffCount": "Xodimlar soni",
+  "leader": "Rahbar",
+  "founding_date":"Tashkilot tashkil topgan sana",
+  "election_leader":"Rahbar saylangan sana",
+  "mediaVideo":"Video lavhalar",
+  "mediaImg":"Foto sur'atlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -125,6 +137,10 @@
       "card5-right": "Vatandoshlarimizni respublika oliy ta’lim muassasalarida o‘zbek tili yo‘nalishi bo‘yicha ta’lim olishlariga ko‘mak ko‘rsatish",
       "card6-right": "Vatandoshlarni O‘zbekiston hududida tadbirkorlik, investitsiyaviy, ilmiy, madaniy va ma’rifiy faoliyat bilan shug‘ullanishga faol jalb qilish"
     },
+    "section3-1": {
+      "htext1": "Fondnig tashkil topishi hamda tarixi haqida",
+      "ptext1": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi. Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi."
+    },
     "section4": {
       "htext1": "Fond tuzilmasi",
       "cardntk": "Nazorat-taftish komissiyasi",
@@ -148,34 +164,18 @@
     }
 
   },
-  "projects_page": {
-    "hero_title": "Loyihalar",
-    "hero_description": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
-    "page_path": "Loyihalar",
-    "carousel_title": "Biznig barcha loyihalar",
-    "carousel_description": "Chet elda yashayotgan yurtdoshlarimizni hayoti bilan ham nafas bolishingiz mumkin!",
-    "see-more": "Ko'proq ko'rsatish",
-    "see-less": "Kamroq ko'rsatish",
-    "participate": "Loyihada ishtirok eting",
-    "participate_title": "Bizning loyihalarda ishtirok etish istagingiz bo‘lsa ariza to‘ldiriring va loyiha ishtirokchisiga aylaning!",
-    "participate_btn": "Ishtirok etish",
-    "gallery": "Fotogalereya",
-    "form_title": "Loyihalarda ishtirok etish",
-    "form_name": "F.I.SH.",
-    "form_email": "Elektron pochta mazilingiz",
-    "form_phone": "Telefon raqamingiz",
-    "form_category": "Ruknni tanlang",
-    "item2": "“Kun oilasi” rukni",
-    "item3": "“Sportchi vatandsohlar” rukni",
-    "item4": "“Yosh vatandoshlar” rukni",
-    "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona” loyihasi",
-    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
-    "form_about": "Siz va oilangiz haqida",
-    "form_image": "Rasmlaringizni yuklang",
-    "form_image_delete": "O'chirish",
-    "form_link": "Ijtimoiy tarmoqlardagi sahifalaringiz",
-    "form_cancel": "Bekor qilish",
-    "form_submit": "Yuborish"
+
+  "contactPage": {
+    "contactUs": "Bog'lanish",
+    "appForm": "Biz bilan bog'lanish uchun ariza shakli",
+    "send": "Yuborish",
+    "yourName": "Sizning ismingiz",
+    "yourNumber": "Telefon raqamini kiriting",
+    "addInfo": "Qoshimcha ma’lumot",
+    "address": "Manzil",
+    "workingHours": "Ish vaqti",
+    "contactInfo": "Aloqa ma'lumotlari",
+    "houseOrg": "Uydagi tashkilotlar",
+    "warnUs": "Xato haqida xabar berish"
   }
 }
