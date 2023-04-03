@@ -6,6 +6,7 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { BsPlusCircleFill } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export default function RegisterItem3({ activeBarItem }) {
   const [data, setData] = useState([
@@ -50,6 +51,17 @@ export default function RegisterItem3({ activeBarItem }) {
         <div className="registeritem3-list">
           {data.map((el) => (
             <div key={el.id} className="registeritem-form">
+              <div className="registeritem-label-delete-single">
+                <AiOutlineDelete
+                  style={data.length === 1 ? { display: "none" } : null}
+                  onClick={() =>
+                    setData(
+                      (prev) =>
+                        (prev = prev.filter((item) => item.id !== el.id))
+                    )
+                  }
+                />
+              </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
                   <p>

@@ -83,7 +83,7 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
-  { path: "/expert-register", element: ExpertRegister },
+  { path: "/portal/expert-register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
     path: "/expert",
@@ -97,7 +97,7 @@ const routes = [
     path: "/expert/employe",
     element: ExpertEmploye,
   },
-  { path: "/expert-profil", element: ExpertProfile },
+  { path: "/portal/expert-profil", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (
