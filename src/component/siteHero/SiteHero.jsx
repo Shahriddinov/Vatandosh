@@ -20,7 +20,7 @@ const SiteHero = ({ data }) => {
                 {
                   <li className="site-hero__breadcrumb_item">
                     <Link className="site-hero__breadcrumb_link" to="/">
-                      {t("main_page")}
+                      {t("mainPage")}
                     </Link>
                     <img src={arrowRight} alt="breadcrumb line" />
                   </li>

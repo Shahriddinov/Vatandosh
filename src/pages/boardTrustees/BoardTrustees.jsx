@@ -5,16 +5,17 @@ import CouncilComposition from "./components/council-composition/CouncilComposit
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
 import { Spinner } from "../../component";
 import { usePaginationFetching } from "./hooks/usePaginationFetfhing";
+import { useTranslation } from "react-i18next";
 
 const BoardTrustees = () => {
   const { trusts, searchCount, handleFetching, trustsLoading } =
     usePaginationFetching();
+  const { t } = useTranslation();
 
   const heroData = {
-    title: "Vasiylik kengashi",
-    description:
-      "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
-    pagePath: "Vasiylik kengashi",
+    title: `${t("about_items.item2")}`,
+    description: `${t("aboutPage.section1.ptext")}`,
+    pagePath: `${t("about_items.item2")}`,
   };
 
   if (trustsLoading) {

@@ -13,6 +13,20 @@ const HomePage = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
+  const navbarList = [
+    { id: 1, label: t("uzLearning"), url: "/portal/export" },
+    { id: 2, label: t("applyUniversity"), url: "/" },
+    { id: 3, label: t("expertCouncil"), url: "/" },
+    { id: 4, label: t("virtualTalking"), url: "/" },
+    { id: 5, label: t("eventBase"), url: "/" },
+    { id: 6, label: t("electronLibrary"), url: "/" },
+    { id: 7, label: t("electronBook"), url: "/" },
+    { id: 8, label: t("aboutUzbekistan"), url: "/" },
+    { id: 9, label: t("participationProject"), url: "/" },
+    { id: 10, label: t("electronCommunity"), url: "/" },
+    { id: 11, label: t("compatriotsValunteer"), url: "/" },
+  ];
+
   const contactData = useSelector(
     (state) => state.contactSlice.contactData.data
   );
@@ -171,54 +185,32 @@ const HomePage = () => {
             </div>
             <div className="navbar-side">
               <ul>
-                <li>
-                  <Link to="/portal">{t("uzLearning")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("applyUniversity")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("expertCouncil")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("virtualTalking")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("eventBase")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("electronLibrary")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("electronBook")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("aboutUzbekistan")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("participationProject")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("electronCommunity")}</Link>
-                </li>
-                <li>
-                  <Link to="/portal">{t("compatriotsValunteer")}</Link>
-                </li>
+                {navbarList.map((navbar) => {
+                  return (
+                    <li key={navbar.id}>
+                      <Link to={navbar.url}>{navbar.label}</Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
           <div className="portal-body-bottom">
             <button onClick={() => setShowChat(!showChat)}>
               <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M10 0C4.47715 0 0 4.47715 0 10C0 11.8153 0.484506 13.5196 1.33127 14.9883C1.50372 15.2874 1.5333 15.6516 1.38777 15.9647L0.534056 17.8016C0.00986135 18.7933 0.727364 20 1.86159 20H10C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM6.0002 11.3C6.71817 11.3 7.3002 10.7179 7.3002 9.99995C7.3002 9.28198 6.71817 8.69995 6.0002 8.69995C5.28223 8.69995 4.7002 9.28198 4.7002 9.99995C4.7002 10.7179 5.28223 11.3 6.0002 11.3ZM14.0002 11.3C14.7182 11.3 15.3002 10.7179 15.3002 9.99995C15.3002 9.28198 14.7182 8.69995 14.0002 8.69995C13.2822 8.69995 12.7002 9.28198 12.7002 9.99995C12.7002 10.7179 13.2822 11.3 14.0002 11.3ZM10.0002 11.3C10.7182 11.3 11.3002 10.7179 11.3002 9.99995C11.3002 9.28198 10.7182 8.69995 10.0002 8.69995C9.28222 8.69995 8.7002 9.28198 8.7002 9.99995C8.7002 10.7179 9.28222 11.3 10.0002 11.3Z"
+                  fill="white"
+                />
               </svg>
-              Напишите нам
             </button>
             <ChatModal showChat={showChat} setShowChat={setShowChat} />
           </div>

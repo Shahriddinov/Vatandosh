@@ -11,16 +11,26 @@ import "./peaceful.scss";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import Aos from "aos";
 
 const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
   const loading = useSelector((state) => state.peaceful.loading);
   const error = useSelector((state) => state.peaceful.error);
+
   const lng = useSelector((state) => state.language.language);
+
   const { t } = useTranslation();
 
   const peacefulCard = useRef();
+
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+      anchorPlacement: "bottom-top",
+    });
+  }, []);
 
   if (loading) {
     return null;
@@ -91,6 +101,7 @@ const Peaceful = () => {
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
+
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",
@@ -119,8 +130,12 @@ const Peaceful = () => {
                   <SwiperSlide
                     key={el?.id}
                     className="peaceful__slider-item"
+                    // data-aos="zoom-out-up"
+                    //  data-aos-easing="ease-out-cubic"
+                    //  data-aos-duration="1000"
                     ref={peacefulCard}
                   >
+                    {/* <AnimationOnScroll animateIn="animate__fadeInUp" duration={2}> */}
                     <div
                       className="peaceful__slider_card"
                       style={{
@@ -144,6 +159,7 @@ const Peaceful = () => {
                         </div>
                       </div>
                     </div>
+                    {/* </AnimationOnScroll> */}
                   </SwiperSlide>
                 ))}
               </Swiper>
