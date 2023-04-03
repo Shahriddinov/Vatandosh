@@ -6,7 +6,6 @@ import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
 import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
 
-
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -33,17 +32,25 @@ const Management = lazy(() =>
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
-const ExpertRegister = lazy(() => import("./pages/ExpertRegister/ExpertRegister"));
+const ExpertRegister = lazy(() =>
+  import("./pages/ExpertRegister/ExpertRegister")
+);
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
-const ChangePassword = lazy(() => import("./pages/Registration/pages/ChangePassword/ChangePassword"));
-const RecoveryPassword = lazy(() => import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword"));
-const Register = lazy(() => import("./pages/Registration/pages/Register/Register"));
+const ChangePassword = lazy(() =>
+  import("./pages/Registration/pages/ChangePassword/ChangePassword")
+);
+const RecoveryPassword = lazy(() =>
+  import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword")
+);
+const Register = lazy(() =>
+  import("./pages/Registration/pages/Register/Register")
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 
 const routes = [
-  { path: "", element: Home, },
+  { path: "", element: Home },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -77,7 +84,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
-  { path: "/hashtag", element: Hashtag },
+  { path: "/hashtag/:tag", element: Hashtag },
   {
     path: "/expert",
     element: ExpertCouncil,
