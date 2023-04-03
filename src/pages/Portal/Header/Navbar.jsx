@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { AiFillInstagram } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
@@ -32,7 +30,7 @@ const Navbar = ({ activeSidebar }) => {
   const navbarList = [
     { id: 1, label: t("uzLearning"), url: "/" },
     { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/portal/expert" },
+    { id: 3, label: t("expertCouncil"), url: "/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },

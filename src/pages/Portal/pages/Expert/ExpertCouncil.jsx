@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import News from "./components/News/News";
 import Expert from "./components/Expert/Expert";
 import Council from "./components/Council/Council";
-import ExpertFooter from "../../components/ExpertFooter/ExpertFooter";
 
 function ExpertCouncil() {
   return (
@@ -18,7 +17,6 @@ function ExpertCouncil() {
       <Council />
       <Expert />
       <News />
-      {/* <ExpertFooter /> */}
     </>
   );
 }
