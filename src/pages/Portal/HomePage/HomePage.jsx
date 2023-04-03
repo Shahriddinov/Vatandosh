@@ -14,7 +14,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const navbarList = [
-    { id: 1, label: t("uzLearning"), url: "/portal/export" },
+    { id: 1, label: t("uzLearning"), url: "/" },
     { id: 2, label: t("applyUniversity"), url: "/" },
     { id: 3, label: t("expertCouncil"), url: "/" },
     { id: 4, label: t("virtualTalking"), url: "/" },
