@@ -86,7 +86,7 @@ const routes = [
   { path: "/expert-register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
-    path: "/expert",
+    path: "/portal/expert",
     element: ExpertCouncil,
   },
   {
