@@ -1,48 +1,37 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 
+import { baseServerUrl } from "../../services/api/utils";
 import Header from "../../component/Layout/Header/Header";
-import ImageModal from "../Mediateka/components/imageModal/ImageModal";
-import ImagesList from "../Mediateka/components/imageList/ImagesList";
 import Spinner from "../../component/Spinner/Spinner";
-import { getMediaPagination } from "../../reduxToolkit/mediatekaSlice/extraReducer";
-import { mediaPagination } from "../Mediateka/extraFunc";
 import { Paginator } from "../../component/Pagination/Pagination";
-import { useHashtagFetching } from "./hooks/useHashtagFetching";
 
 import "./hashtag.scss";
+import { getTagSearch } from "../../reduxToolkit/tagSearchSlice/extraReducer";
 
 const Hashtag = () => {
   const dispatch = useDispatch();
-  const [showImageModal, setShowImageModal] = useState(false);
-  const [activeImage, setActiveImage] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
-  const { mediaData, dataLoading, lan } = useHashtagFetching();
+  const tagData = useSelector((state) => state.tagSearchSlice.tagData);
+  const tagLoading = useSelector((state) => state.tagSearchSlice.loading);
+  const { tag } = useParams();
 
-  const typeUrl = "images";
-  const paginationCount = mediaPagination(typeUrl, mediaData);
+  useEffect(() => {
+    dispatch(getTagSearch(tag));
+  }, []);
 
-  if (showImageModal) {
-    document.querySelector("body").style.height = "100vh";
-    document.querySelector("body").style.overflow = "hidden";
-  } else {
-    document.querySelector("body").style.height = "initial";
-    document.querySelector("body").style.overflow = "auto";
-  }
-
-  if (dataLoading) {
+  if (tagLoading) {
     return <Spinner position="full" />;
   }
 
-  const handleImageModal = (imgUrl) => {
-    setShowImageModal(true);
-    setActiveImage(imgUrl);
-  };
+  const data = tagData.data;
+
+  const paginationCount = data.total;
 
   const fetchingData = (page) => {
     setActivePage(page);
-    dispatch(getMediaPagination({ typeUrl, page }));
   };
 
   return (
@@ -50,47 +39,38 @@ const Hashtag = () => {
       <Header />
       <div className="container">
         <div className="hashtag__top">
-          <h2>#Vatandoshimiz bilan bir kun</h2>
+          <h2>#{tag}</h2>
           <div className="hashtag__btns">
-            <div className="hashtag__video-btn">
-              <button
-                // onClick={() => handleFetchClick("videos")}
-                className={typeUrl === "images" ? "active-btn" : ""}
-              >
-                Eng mashhurlar
-              </button>
+            <div className="hashtag__image-btn">
+              <button className={true ? "active-btn" : ""}>Vatandoshlar</button>
             </div>
             <div className="hashtag__image-btn">
-              <button
-              // onClick={() => handleFetchClick("images")}
-              // className={activeCard === "images" ? "active-btn" : ""}
-              >
-                Eng so'ngi
-              </button>
+              <button>Yosh oila</button>
             </div>
             <div className="hashtag__image-btn">
-              <button
-              // onClick={() => handleFetchClick("images")}
-              // className={activeCard === "images" ? "active-btn" : ""}
-              >
-                Eng ko'p ko'rilgan
-              </button>
+              <button>Suhbat</button>
             </div>
           </div>
         </div>
         <div className="hashtag__body">
-          <ImageModal
-            activeImage={activeImage}
-            setShowImageModal={setShowImageModal}
-            showImageModal={showImageModal}
-            // moveSlide={moveSlide}
-          />
-          <ImagesList
-            activeCard="images"
-            categoryId={0}
-            handleImageModal={handleImageModal}
-            dataImage={mediaData[0].data}
-          />
+          <div className="hashtag__images">
+            {data.map((image) => (
+              <div
+                key={image.id}
+                className="hashtag__image-card"
+                onClick={() => {}}
+              >
+                <div className="hashtag__image-container">
+                  <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                    <img
+                      src={`${baseServerUrl}/${image.image}`}
+                      alt="mediatake"
+                    />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         {paginationCount >= 2 ? (
           <Paginator

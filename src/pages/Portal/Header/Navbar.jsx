@@ -29,6 +29,20 @@ const Navbar = ({ activeSidebar }) => {
     { id: 4, label: "English", type: "en" },
   ];
 
+  const navbarList = [
+    { id: 1, label: t("uzLearning"), url: "/" },
+    { id: 2, label: t("applyUniversity"), url: "/" },
+    { id: 3, label: t("expertCouncil"), url: "/" },
+    { id: 4, label: t("virtualTalking"), url: "/" },
+    { id: 5, label: t("eventBase"), url: "/" },
+    { id: 6, label: t("electronLibrary"), url: "/" },
+    { id: 7, label: t("electronBook"), url: "/" },
+    { id: 8, label: t("aboutUzbekistan"), url: "/" },
+    { id: 9, label: t("participationProject"), url: "/" },
+    { id: 10, label: t("electronCommunity"), url: "/" },
+    { id: 11, label: t("compatriotsValunteer"), url: "/" },
+  ];
+
   const changeLanguage = (lng) => {
     dispatch(languageChange(lng));
     i18next.changeLanguage(lng);
@@ -70,26 +84,14 @@ const Navbar = ({ activeSidebar }) => {
         </div>
         <div className="header-sideBar-navlinks">
           <ul className="header-sideBar-navlist">
-            {[
-              t("uzLearning"),
-              t("applyUniversity"),
-              t("expertCouncil"),
-              t("virtualTalking"),
-              t("eventBase"),
-              t("electronLibrary"),
-              t("electronBook"),
-              t("aboutUzbekistan"),
-              t("participationProject"),
-              t("electronCommunity"),
-              t("compatriotsValunteer"),
-            ].map((el, index) => {
+            {navbarList.map((navbar) => {
               return (
                 <li
-                  key={index}
+                  key={navbar.id}
                   className="header-sideBar-navlist-item"
                   style={{ height: "auto" }}
                 >
-                  <Link to="/">{el}</Link>
+                  <Link to={navbar.url}>{navbar.label}</Link>
                 </li>
               );
             })}

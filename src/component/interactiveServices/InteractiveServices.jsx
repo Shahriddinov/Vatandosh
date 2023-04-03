@@ -84,6 +84,9 @@ const InteractiveServices = () => {
         <div className="interactive_services__slider slider_box">
           <div className="slider_box__wrapper">
             <Swiper
+                  data-aos="zoom-in-down"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="1000"
               slidesPerView={4}
               spaceBetween={30}
               modules={[Navigation]}
@@ -118,9 +121,9 @@ const InteractiveServices = () => {
                 <SwiperSlide
                   key={el.id}
                   className="interactive_services__slider-item"
-                  data-aos="zoom-in-down"
-                  data-aos-easing="ease-out-cubic"
-                  data-aos-duration="1000"
+                  // data-aos="zoom-in-down"
+                  // data-aos-easing="ease-out-cubic"
+                  // data-aos-duration="1000"
                 >
                   <a className="slider_link" href={el.link} target="blank">
                     <div className="interactive_services__slider--card slider_card">

@@ -72,8 +72,8 @@
       display: flex;
       gap: 8px;
       position: absolute;
-      transform: translateX(110%);
-      animation: moveTags 15s linear infinite;
+      transform: translateX(100%);
+      animation: moveTags 40s linear infinite;
     }
 
     .tag-item {

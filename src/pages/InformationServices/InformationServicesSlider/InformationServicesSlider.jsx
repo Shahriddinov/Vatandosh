@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./InformationServicesSlider.scss";
-import data from "../mock";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
+import { TbPointFilled } from "react-icons/tb";
+import { baseServerUrl } from "../../../services/api/utils";
+import { useSelector } from 'react-redux';
 
-export const InformationServicesSlider = () => {
-  const [img, setImg] = useState(1);
+export const InformationServicesSlider = ({ data }) => {
+  const [img, setImg] = useState(0);
+
+  const lan = useSelector((state) => state.language.language);
 
   const handleRight = () => {
-    if (img === 3) setImg((prev) => (prev = 1));
+    if (img === 2) setImg((prev) => prev = 0);
     else setImg((prev) => ++prev);
   };
 
   const handleLeft = () => {
-    if (img === 1) setImg((prev) => (prev = 3));
+    if (img === 0) setImg((prev) => (prev = 2));
     else setImg((prev) => --prev);
   };
 
@@ -26,41 +30,52 @@ export const InformationServicesSlider = () => {
   useEffect(() => {
     autoPlay();
     return () => clearInterval(slideInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [img]);
 
   return (
-    <div className="main-hero">
-      {data.map((card) => (
-        <div
-          className={`main-hero-slider ${card.id === img ? "active" : ""}`}
-          key={card.id}
-          style={{
-            backgroundImage: `url(${card.img})`,
-            backgroundPosition: "center",
-          }}
-        >
-          <h2>{card.title}</h2>
-          <div
-            className={`navigation-line ${card.id === img ? "active" : ""}`}
-          />
-          <div className="main-hero-slider-bottom">
-            <div className="main-hero-slider-bottomCalendar">
-              <span>
-                <BsFillCalendarMinusFill />
-              </span>
-              <p>{card.data}</p>
-            </div>
-            <div className="main-hero-slider-bottomBtns">
-              <button aria-label="prev" onClick={handleLeft}>
-                <AiOutlineLeft size={18} />{" "}
-              </button>
-              <button aria-label="next" onClick={handleRight}>
-                <AiOutlineRight size={18} />{" "}
-              </button>
-            </div>
-          </div>
+      <div className="main-hero">
+        {data.slice(-3).map((card, i) => (
+            <React.Fragment key={card.id}>
+              <div
+                  className={`main-hero-slider ${i === img ? "active" : ""}`}
+                  key={card.id}
+                  style={{
+                    backgroundImage: `url(${baseServerUrl}/${card?.image})`,
+                    backgroundPosition: "center center",
+                  }}
+              />
+              <div className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
+                <div className="main-hero-slider-bottom-title">
+                  <h2>{card[`title_${lan}`]}</h2>
+                  <div
+                      className={`navigation-line ${i === img ? "active" : ""}`}
+                  />
+                </div>
+                <div className="main-hero-slider-bottom-calendar">
+                  <div className="main-hero-slider-bottom-calendarLeft">
+                <span>
+                  <BsFillCalendarMinusFill />
+                </span>
+                    <p>{card.data}</p>
+                  </div>
+                  <div className="main-hero-slider-bottom-calendarRight">
+                    <button aria-label="prev" onClick={handleLeft}>
+                      <AiOutlineLeft size={18} />{" "}
+                    </button>
+                    <button aria-label="next" onClick={handleRight}>
+                      <AiOutlineRight size={18} />{" "}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+        ))}
+        <div className="main-hero-dot">
+          <TbPointFilled size={20} className={img === 0 ? "activeDot" : ""} />
+          <TbPointFilled size={20} className={img === 1 ? "activeDot" : ""} />
+          <TbPointFilled size={20} className={img === 2 ? "activeDot" : ""} />
         </div>
-      ))}
-    </div>
+      </div>
   );
 };

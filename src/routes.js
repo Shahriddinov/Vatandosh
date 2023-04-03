@@ -84,7 +84,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert-register", element: ExpertRegister },
-  { path: "/hashtag", element: Hashtag },
+  { path: "/hashtag/:tag", element: Hashtag },
   {
     path: "/expert",
     element: ExpertCouncil,

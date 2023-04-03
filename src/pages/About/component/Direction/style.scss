@@ -1,5 +1,12 @@
 @import "../../../../assets/style/global";
 .about{
+  &_basics{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-top: 10% !important;
+    color: #065EA9;
+  }
   &_direction {
     &_fon {
       font-weight: 700;
