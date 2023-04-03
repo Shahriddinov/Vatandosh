@@ -12,7 +12,6 @@ import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 import "./header.scss";
 
 import Logo from "../../../assets/images/Logo.png";
-import burger from "../../../assets/images/icons/burger.svg";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
 import Music from "../../../assets/images/Music.png";
@@ -25,7 +24,6 @@ const HeaderPortal = () => {
   const scrollRef = useRef(0);
   const [isFixed, setFixed] = useState(false);
   const [activeSidebar, setactiveSidebar] = useState(false);
-  const { pathname } = useLocation();
 
   const { grayScale } = useContext(GrayContext);
   const dispatch = useDispatch();
@@ -58,7 +56,7 @@ const HeaderPortal = () => {
 
   useEffect(() => {
     if (activeSidebar) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "scroll";
+    else document.body.style.overflow = "inherit";
   }, [activeSidebar]);
 
   return (

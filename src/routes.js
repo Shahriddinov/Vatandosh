@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
+import Test from "./component/test/Test";
 import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
 import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
 
@@ -103,6 +104,7 @@ const RoutesContainer = () => (
   <Router>
     <Layout>
       <Suspense fallback={<Spinner position="full" />}>
+        <Test />
         <Routes>
           {routes.map((route, key) => {
             const RouteComponent = ScrollTop(route.element);
