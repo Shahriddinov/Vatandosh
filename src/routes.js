@@ -47,7 +47,9 @@ const Register = lazy(() =>
 );
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
-const AboutCouncil = lazy(()=> import("./pages/Portal/pages/AboutCouncil/AboutCouncil"))
+const AboutCouncil = lazy(() =>
+  import("./pages/Portal/pages/AboutCouncil/AboutCouncil")
+);
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -82,21 +84,21 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
-  { path: "/portal/expert-register", element: ExpertRegister },
+  { path: "/expert/register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
-    path: "/portal/expert",
+    path: "/expert",
     element: ExpertCouncil,
   },
   {
-    path: "/portal/expert/council/about",
+    path: "/expert/council/about",
     element: AboutCouncil,
   },
   {
-    path: "/portal/expert/employe",
+    path: "/expert/employe",
     element: ExpertEmploye,
   },
-  { path: "/portal/expert-profil", element: ExpertProfile },
+  { path: "/expert/profile", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (

@@ -1,5 +1,4 @@
 import "./ExpertRegister.scss";
-import Header from "../../component/Layout/Header/Header";
 import { useState } from "react";
 import RegisterItem1 from "./components/register1/RegisterItem1";
 import RegisterItem2 from "./components/register2/RegisterItem2";
@@ -17,7 +16,6 @@ export default function ExpertRegister() {
 
   return (
     <>
-      <Header />
       <main className="expertregister">
         <div className="container">
           <ExpertTitle title={"Ro‘yxatdan o‘tish"} url={url} />
@@ -34,13 +32,15 @@ export default function ExpertRegister() {
                   <li
                     key={index}
                     className="expertregister-main-bar-item"
-                    onClick={() => setactiveBarItem(index)}>
+                    onClick={() => setactiveBarItem(index)}
+                  >
                     <div
                       className={
                         activeBarItem === index
                           ? "expertregister-main-bar-item-border activeBarItem"
                           : "expertregister-main-bar-item-border"
-                      }></div>
+                      }
+                    ></div>
                     <span>{el}</span>
                   </li>
                 );
