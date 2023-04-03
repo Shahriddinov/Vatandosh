@@ -165,13 +165,13 @@
 
   },
   "contactPage": {
-    "contactUs": "contact us",
+    "contactUs": "Contact us",
     "appForm": "Application form for contacting us",
     "send": "Send",
     "yourName": "your name",
     "yourNumber": "Enter phone number",
     "addInfo": "Additional information",
-    "address": "address",
+    "address": "Address",
     "workingHours": "Opening hours",
     "contactInfo": "Contact information",
     "houseOrg": "Organizations in the House",
