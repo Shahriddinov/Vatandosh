@@ -1,5 +1,5 @@
 import "./ExpertProfil.scss";
-import ExpertTitle from "../Expert/components/ExpertTitle/ExpertTitle";
+import ExpertTitle from "../Portal/pages/Expert/components/ExpertTitle/ExpertTitle";
 import CustomProfil from "./components/CustomProfil";
 
 export default function ExpertProfil() {

@@ -1,4 +1,4 @@
-// import "./RegisterItem1.scss";
+import "./RegisterItem1.scss";
 import "../customStyles.scss";
 import DefaultProfilePic from '../../../../assets/images/icons/profile.svg';
 import pencil from "../../../../assets/images/expert/input-pencil.svg";

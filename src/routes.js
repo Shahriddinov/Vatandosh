@@ -2,9 +2,8 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
-import ExpertCouncil from "./pages/Expert/ExpertCouncil";
-import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
+import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
+import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -48,7 +47,7 @@ const Register = lazy(() =>
 );
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
-
+const AboutCouncil = lazy(()=> import("./pages/Portal/pages/AboutCouncil/AboutCouncil"))
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -86,15 +85,15 @@ const routes = [
   { path: "/portal/expert-register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
-    path: "/expert",
+    path: "/portal/expert",
     element: ExpertCouncil,
   },
   {
-    path: "/expert/council/about",
+    path: "/portal/expert/council/about",
     element: AboutCouncil,
   },
   {
-    path: "/expert/employe",
+    path: "/portal/expert/employe",
     element: ExpertEmploye,
   },
   { path: "/portal/expert-profil", element: ExpertProfile },
