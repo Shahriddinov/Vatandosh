@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
+import { Link } from "react-router-dom";
 
 const MapsModal = ({ changeActive, countryCode }) => {
   const mapData = useSelector((state) => state.mapSlice.mapData);
@@ -97,9 +98,12 @@ const MapsModal = ({ changeActive, countryCode }) => {
                   </li>
                 </ul>
 
-                <button type="button" className="maps_modal__body_btn">
+                <Link
+                  to="/information-service/news"
+                  className="maps_modal__body_link"
+                >
                   Barchasini ko‘rish
-                </button>
+                </Link>
               </div>
             </>
           )}
