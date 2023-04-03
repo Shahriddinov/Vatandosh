@@ -58,24 +58,30 @@ const Navbar = ({ activeSidebar }) => {
       <div className="header-sideBar-wrapper">
         <div className="header-sideBar-top">
           <div className="header-sideBar-connection-action">
-            <motion.img
-              whileTap={{ scale: 0.6 }}
-              src={Flag}
-              className="header-sideBar-connection-action-img"
-              alt="flag"
-            />
-            <motion.img
-              whileTap={{ scale: 0.6 }}
-              src={Blazon}
-              className="header-sideBar-connection-action-img"
-              alt="blazon"
-            />
-            <motion.img
-              whileTap={{ scale: 0.6 }}
-              src={Music}
-              className="header-sideBar-connection-action-img"
-              alt="music"
-            />
+            <Link to="/flag">
+              <motion.img
+                whileTap={{ scale: 0.6 }}
+                src={Flag}
+                className="header-sideBar-connection-action-img"
+                alt="flag"
+              />
+            </Link>
+            <Link to="/coat">
+              <motion.img
+                whileTap={{ scale: 0.6 }}
+                src={Blazon}
+                className="header-sideBar-connection-action-img"
+                alt="blazon"
+              />
+            </Link>
+            <Link to="/anthem">
+              <motion.img
+                whileTap={{ scale: 0.6 }}
+                src={Music}
+                className="header-sideBar-connection-action-img"
+                alt="music"
+              />
+            </Link>
           </div>
           <form action="" className="header-sideBar-form">
             <input type="text" placeholder={t("search")} />

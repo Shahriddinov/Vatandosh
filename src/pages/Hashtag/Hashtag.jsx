@@ -16,6 +16,7 @@ const Hashtag = () => {
 
   const tagData = useSelector((state) => state.tagSearchSlice.tagData);
   const tagLoading = useSelector((state) => state.tagSearchSlice.loading);
+  const error = useSelector((state) => state.tagSearchSlice.error);
   const { tag } = useParams();
 
   useEffect(() => {
@@ -24,6 +25,10 @@ const Hashtag = () => {
 
   if (tagLoading) {
     return <Spinner position="full" />;
+  }
+
+  if (error) {
+    return <h2>{error}</h2>;
   }
 
   const data = tagData.data;
