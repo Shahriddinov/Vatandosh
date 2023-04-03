@@ -15,13 +15,13 @@ import Menus from "./component/Menus/Menus";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
-import { GrayContext } from "../Layout";
 import Navbar from "./component/navbar/Navbar";
 import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { languageList } from "../data";
 import { useTranslation } from "react-i18next";
+import { GrayContext } from "../../../context/GrayContext";
 
 const Header = () => {
   const [activeSidebar, setactiveSidebar] = useState(false);
