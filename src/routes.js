@@ -45,6 +45,10 @@ const RecoveryPassword = lazy(() =>
 const Register = lazy(() =>
   import("./pages/Registration/pages/Register/Register")
 );
+const ExpertOffers = lazy(() => import("./pages/ExpertOffers/ExpertOffers"));
+const ExpertOffersDetail = lazy(() =>
+  import("./pages/ExpertOffersDetail/ExpertOffersDetail")
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
@@ -99,6 +103,8 @@ const routes = [
     element: ExpertEmploye,
   },
   { path: "/expert/profile", element: ExpertProfile },
+  { path: "/expert/offers", element: ExpertOffers },
+  { path: "/expert/offers/:id", element: ExpertOffersDetail },
 ];
 
 const RoutesContainer = () => (
