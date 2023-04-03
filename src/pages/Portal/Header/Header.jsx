@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Navbar from "./Navbar";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
-import { GrayContext } from "../../../component/Layout/Layout";
 import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 
 import "./header.scss";
@@ -18,6 +17,7 @@ import Music from "../../../assets/images/Music.png";
 import { CiGlobe } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { GrayContext } from "../../../context/GrayContext";
 
 const HeaderPortal = () => {
   const [activeLangBar, setactiveLangBar] = useState(false);

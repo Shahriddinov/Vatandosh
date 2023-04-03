@@ -14,7 +14,6 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
-import { GrayContext } from "../Layout";
 import { Link, useLocation } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
@@ -23,6 +22,7 @@ import { languageList } from "../data";
 
 import Spinner from "../../Spinner/Spinner";
 import Navbar from "../Header/component/navbar/Navbar";
+import { GrayContext } from "../../../context/GrayContext";
 
 const WhriteHeader = () => {
   const projectsMenuLoading = useSelector(
@@ -65,7 +65,8 @@ const WhriteHeader = () => {
           </Link>
           <a
             href={`tel: ${contactData?.phone}`}
-            className="header_navbar_phone">
+            className="header_navbar_phone"
+          >
             <img src={Phone} alt="phone" />
             <div className="header_navbar_phone_number colors">
               +998(55)502-22-99
@@ -73,7 +74,8 @@ const WhriteHeader = () => {
           </a>
           <a
             href={`mailto: ${contactData?.email}`}
-            className="header_navbar_phone">
+            className="header_navbar_phone"
+          >
             <img src={Message} alt="message" />
             <div className="header_navbar_phone_number colors">
               info@vatandoshlarfondi.uz
@@ -118,14 +120,16 @@ const WhriteHeader = () => {
           </label>
           <button
             className="header_navbar_eye searches"
-            onClick={() => grayScale()}>
+            onClick={() => grayScale()}
+          >
             <motion.img whileTap={{ scale: 0.6 }} src={EyeWhrite} alt="eye" />
           </button>
 
           <div className="header_navbar_language">
             <div
               className="header_navbar_language-wrapper searches"
-              onClick={() => setactiveLang((el) => !el)}>
+              onClick={() => setactiveLang((el) => !el)}
+            >
               <CiGlobe className="header_navbar_language-icon" />
               <span style={{ color: "white" }}>
                 {language.split("")[0].toUpperCase() + language.split("")[1]}
@@ -134,7 +138,8 @@ const WhriteHeader = () => {
             </div>
             <div
               className="header_navbar_language-bar searches"
-              style={activeLang ? { display: "flex" } : null}>
+              style={activeLang ? { display: "flex" } : null}
+            >
               {languageList.map((el, index) => (
                 <p key={index} onClick={() => handleChangeLng(el.type)}>
                   {el.label}
@@ -144,7 +149,8 @@ const WhriteHeader = () => {
           </div>
           <button
             className="header_navbar_eye burger"
-            onClick={() => setactiveSidebar(!activeSidebar)}>
+            onClick={() => setactiveSidebar(!activeSidebar)}
+          >
             {activeSidebar ? (
               <CgClose className="burger-closeIcon" />
             ) : (
@@ -160,7 +166,8 @@ const WhriteHeader = () => {
 
         <div
           className={activeSidebar ? "overlay overlayActive" : "overlay"}
-          onClick={() => setactiveSidebar(!activeSidebar)}></div>
+          onClick={() => setactiveSidebar(!activeSidebar)}
+        ></div>
       </div>
       {pathname.split("/")[1].includes("portal") ? "" : <Menun />}
     </header>

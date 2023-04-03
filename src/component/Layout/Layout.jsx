@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
-import Header from "./Header/Header";
+import React from "react";
 import Footer from "./Footer/Footer";
 import { useLocation } from "react-router-dom";
 import NetworkError from "../NetworkError/NetworkError";
@@ -10,50 +9,15 @@ import { useProjectsData } from "./hooks/useProjectsData";
 import { useSelector } from "react-redux";
 import ExpertHeader from "../../pages/Portal/components/ExpertHeader/ExpertHeader";
 import ExpertFooter from "../../pages/Portal/components/ExpertFooter/ExpertFooter";
+import Test from "../test/Test";
 
-export const GrayContext = createContext();
-
-const Layout = (props) => {
+const Layout = ({ children }) => {
   const { error } = useProjectsData();
   const errorHashtag = useSelector((state) => state.tagSearchSlice.error);
   const { pathname } = useLocation();
-  const { children } = props;
-  const [text, setText] = useState("");
-  const [speaker, setSpeaker] = useState(false);
-  const [isGray, setGray] = useState(
-    localStorage.getItem("grayMode") ? localStorage.getItem("grayMode") : false
-  );
 
   const registerHeader = pathname.split("/")[1];
   const headerExpert = pathname.split("/");
-
-  const changeSpeakSwitcher = (value) => {
-    setSpeaker(value);
-  };
-
-  const grayScale = () => {
-    setGray(!isGray);
-    localStorage.setItem("grayMode", !isGray);
-  };
-
-  const htmlTag = document.getElementsByTagName("html");
-
-  JSON.parse(isGray)
-    ? htmlTag[0].classList.add("gray-scale")
-    : htmlTag[0].classList.remove("gray-scale");
-
-  useEffect(() => {
-    document.onmouseup = () => {
-      if (speaker && text !== window.getSelection().toString()) {
-        window.responsiveVoice.speak(
-          window.getSelection().toString(),
-          "Russian Female"
-        );
-        setText(window.getSelection().toString());
-      }
-    };
-    //eslint-disable-next-line
-  }, [speaker]);
 
   if (error || errorHashtag) {
     return (
@@ -64,37 +28,36 @@ const Layout = (props) => {
     );
   }
 
+  const FooterComponent = () => {
+    if (registerHeader.includes("portal")) return null;
+    else if (registerHeader.includes("registration")) return <RegisterFooter />;
+    else if (registerHeader.includes("expert")) return <ExpertFooter />;
+    else return <Footer />;
+  };
+
   return (
-    <GrayContext.Provider value={{ isGray, grayScale }}>
+    <>
       <NetworkError />
+      <Test />
       <div
         className={
           registerHeader.includes("registration")
             ? "registerBackground"
             : registerHeader.includes("portal")
-            ? ""
-            : "page-wrapper1"
+            ? "page-wrapper1"
+            : ""
         }
       >
-        {registerHeader.includes("portal") ? (
-          <HeaderPortal />
-        ) : registerHeader.includes("registration") ? (
-          <RegisterHeader />
-        ) : registerHeader.includes("expert") && headerExpert.length > 2 ? (
+        {pathname === "/portal" && <HeaderPortal />}
+        {registerHeader.includes("registration") && <RegisterHeader />}
+        {registerHeader.includes("expert") && headerExpert.length > 2 && (
           <ExpertHeader />
-        ) : null}
-        <div className="page-content">{children}</div>
-        {registerHeader.includes("portal") ? null : registerHeader.includes(
-            "registration"
-          ) ? (
-          <RegisterFooter />
-        ) : registerHeader.includes("expert") ? (
-          <ExpertFooter />
-        ) : (
-          <Footer />
         )}
+
+        <div className="page-content">{children}</div>
+        <FooterComponent />
       </div>
-    </GrayContext.Provider>
+    </>
   );
 };
 
