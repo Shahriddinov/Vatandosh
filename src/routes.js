@@ -5,6 +5,7 @@ import ScrollTop from "./hoc/ScrollTop";
 import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
 import ExpertCouncil from "./pages/Expert/ExpertCouncil";
 import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
+import Test from "./component/test/Test";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -104,6 +105,7 @@ const RoutesContainer = () => (
   <Router>
     <Layout>
       <Suspense fallback={<Spinner position="full" />}>
+        <Test />
         <Routes>
           {routes.map((route, key) => {
             const RouteComponent = ScrollTop(route.element);
