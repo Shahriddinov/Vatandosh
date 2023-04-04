@@ -49,8 +49,6 @@ const HomePage = () => {
     });
   }, []);
 
-  console.log(horizontal);
-
   return (
     <div className="portal">
       <div className="background-gif"></div>
@@ -201,10 +199,10 @@ const HomePage = () => {
               <Swiper
                 direction={`${horizontal ? "horizontal" : "vertical"}`}
                 slidesPerView={3}
-                spaceBetween={20}
+                spaceBetween={horizontal ? 20 : 40}
                 grabCursor={true}
                 autoplay={{
-                  delay: 2000,
+                  delay: 2500,
                   disableOnInteraction: false,
                 }}
                 pagination={{
