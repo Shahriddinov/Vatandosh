@@ -37,19 +37,19 @@ const HomePage = () => {
     (state) => state.contactSlice.contactData.data
   );
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth <= 1024) {
-      setHorizontal(true);
-    } else {
-      setHorizontal(false);
-    }
-  });
-
-  console.log(horizontal);
-
   useEffect(() => {
     dispatch(getContact());
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 1024) {
+        setHorizontal(true);
+      } else {
+        setHorizontal(false);
+      }
+    });
   }, []);
+
+  console.log(horizontal);
 
   return (
     <div className="portal">
@@ -198,52 +198,28 @@ const HomePage = () => {
               </div>
             </div>
             <div className="navbar-side">
-              {horizontal ? (
-                <Swiper
-                  slidesPerView={3}
-                  spaceBetween={20}
-                  grabCursor={true}
-                  autoplay={{
-                    delay: 2000,
-                    disableOnInteraction: false,
-                  }}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  modules={[Autoplay]}
-                >
-                  {navbarList.map((navbar) => {
-                    return (
-                      <SwiperSlide key={navbar.id}>
-                        <Link to={navbar.url}>{navbar.label}</Link>
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              ) : (
-                <Swiper
-                  direction="vertical"
-                  slidesPerView={3}
-                  spaceBetween={40}
-                  grabCursor={true}
-                  autoplay={{
-                    delay: 2000,
-                    disableOnInteraction: false,
-                  }}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  modules={[Autoplay]}
-                >
-                  {navbarList.map((navbar) => {
-                    return (
-                      <SwiperSlide key={navbar.id}>
-                        <Link to={navbar.url}>{navbar.label}</Link>
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              )}
+              <Swiper
+                direction={`${horizontal ? "horizontal" : "vertical"}`}
+                slidesPerView={3}
+                spaceBetween={20}
+                grabCursor={true}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Autoplay]}
+              >
+                {navbarList.map((navbar) => {
+                  return (
+                    <SwiperSlide key={navbar.id}>
+                      <Link to={navbar.url}>{navbar.label}</Link>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
             </div>
           </div>
           <div className="portal-body-bottom">
