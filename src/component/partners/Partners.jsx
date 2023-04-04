@@ -21,7 +21,6 @@ const Partners = () => {
   const dispatch = useDispatch();
   const partnersData = useSelector((state) => state.partnersSlice.partnersData);
   const error = useSelector((state) => state.partnersSlice.error);
-  console.log(partnersData);
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
