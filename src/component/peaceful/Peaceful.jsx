@@ -38,7 +38,6 @@ const Peaceful = () => {
   if (error) {
     return <p>{error}</p>;
   }
-
   return (
     <section className="peaceful">
       <div className="peaceful__container container">
@@ -101,7 +100,6 @@ const Peaceful = () => {
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
-
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",
@@ -126,7 +124,7 @@ const Peaceful = () => {
                 }}
                 className="mySwiper"
               >
-                {peacefulData.map((el) => (
+                {peacefulData?.map((el) => (
                   <SwiperSlide
                     key={el?.id}
                     className="peaceful__slider-item"
@@ -149,7 +147,7 @@ const Peaceful = () => {
                           </a>
 
                           <p className="peaceful__slider_card--text">
-                            {el[`title_${lng}`].slice(0, 60)}...
+                            {el[`title_${lng}`]?.slice(0, 60)}...
                           </p>
                         </div>
 

@@ -132,7 +132,7 @@ const WhriteHeader = () => {
             >
               <CiGlobe className="header_navbar_language-icon" />
               <span style={{ color: "white" }}>
-                {language.split("")[0].toUpperCase() + language.split("")[1]}
+                {languageList.find((lan) => lan.type === language).label}
               </span>
               <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
             </div>
