@@ -59,22 +59,24 @@ const Hashtag = () => {
         </div>
         <div className="hashtag__body">
           <div className="hashtag__images">
-            {data.map((image, index) => (
-              <div
-                key={index}
-                className="hashtag__image-card"
-                onClick={() => {}}
-              >
-                <div className="hashtag__image-container">
-                  <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
-                    <img
-                      src={`${baseServerUrl}/${image.image}`}
-                      alt="mediatake"
-                    />
-                  </Link>
+            {data.map((image, index) => {
+              return image.image ? (
+                <div
+                  key={index}
+                  className="hashtag__image-card"
+                  onClick={() => {}}
+                >
+                  <div className="hashtag__image-container">
+                    <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                      <img
+                        src={`${baseServerUrl}/${image.image}`}
+                        alt="mediatake"
+                      />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ) : null;
+            })}
           </div>
         </div>
         {paginationCount >= 2 ? (
