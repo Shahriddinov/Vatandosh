@@ -107,11 +107,11 @@ const HeaderPortal = () => {
             </a>
           </div>
 
-          <Link to="/flag">
+          <Link to="/flag" className="first-flag">
             <motion.img
               whileTap={{ scale: 0.6 }}
               src={Flag}
-              className="header_navbar_flags first-flag"
+              className="header_navbar_flags"
               alt="flag"
             />
           </Link>
@@ -187,15 +187,18 @@ const HeaderPortal = () => {
                 onClick={(e) => {
                   handleChangeLng(e.target.innerText.toLowerCase());
                   setactiveLangBar((el) => !el);
-                }}>
-                Uz
+                }}
+              >
+                O'z
+
               </p>
               <p
                 onClick={(e) => {
                   handleChangeLng(e.target.innerText.toLowerCase());
                   setactiveLangBar((el) => !el);
-                }}>
-                Ru
+                }}
+              >
+                Рус
               </p>
               <p
                 onClick={(e) => {
@@ -203,6 +206,14 @@ const HeaderPortal = () => {
                   setactiveLangBar((el) => !el);
                 }}>
                 En
+              </p>
+              <p
+                onClick={(e) => {
+                  handleChangeLng(e.target.innerText.toLowerCase());
+                  setactiveLangBar((el) => !el);
+                }}
+              >
+                Ўз
               </p>
             </div>
           </div>

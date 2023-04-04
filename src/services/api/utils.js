@@ -22,7 +22,7 @@ export const GET_MEDIA_IMAGES_MENUS = `${baseUrl}/mediateka-image-menus`;
 export const GET_SINGLE_PAGINATION = baseUrl + "/";
 export const GET_COLUMN_COUNT = `${baseUrl}/columns/page/`;
 export const GET_COLUMNS_MENU = `${baseUrl}/column-menus`;
-export const GET_TAG_RESULTS = `${baseUrl}/search`;
+export const GET_TAG_RESULTS = `${baseUrl}/tagsearch`;
 export const GET_DIRECTION = `${baseUrl}/directions`;
 
 // Post requests

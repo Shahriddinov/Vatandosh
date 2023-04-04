@@ -7,7 +7,11 @@ export const getTagSearch = createAsyncThunk(
   "tagResult/get",
   async (payload) => {
     return await axios
-      .get(`${GET_TAG_RESULTS}/${payload}`)
+      .get(`${GET_TAG_RESULTS}/${payload}`, {
+        headers: {
+          "Accept-Language": { payload },
+        },
+      })
       .then((res) => res.data);
   }
 );
