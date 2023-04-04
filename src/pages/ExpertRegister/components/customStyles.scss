@@ -42,6 +42,31 @@
     flex-direction: column;
     gap: 5px;
 
+    &-delete{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-single{
+        display: flex;
+        justify-content: end;
+      }
+
+      &>svg, 
+      &-single>svg{
+        width: 20px;
+        height: 20px;
+        color: #EB5757;
+        cursor: pointer;
+      }
+
+      &>p{
+        white-space: nowrap;
+        word-break: keep-all;
+        @include fontStyles(400, 14px, 17px, #000000);
+      }
+    }
+
     &-fileinput {
       display: none;
     }

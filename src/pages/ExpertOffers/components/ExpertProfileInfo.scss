@@ -1,0 +1,33 @@
+@import "../../../assets/style/global.scss";
+
+.expertprofile {
+  &-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &-desc {
+      display: grid;
+      gap: 5px;
+
+      & > span {
+        @include fontStyles(400, 14px, 17px, $colorGrey);
+      }
+
+      & > h4 {
+        @include fontStyles(600, 20px, 24px, $colorBlack);
+      }
+
+      & > strong {
+        @include fontStyles(700, 14px, 17px, $colorGrey);
+      }
+    }
+
+    & > img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}

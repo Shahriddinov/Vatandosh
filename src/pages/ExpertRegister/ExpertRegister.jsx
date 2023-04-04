@@ -1,12 +1,11 @@
 import "./ExpertRegister.scss";
-import Header from "../../component/Layout/Header/Header";
 import { useState } from "react";
 import RegisterItem1 from "./components/register1/RegisterItem1";
 import RegisterItem2 from "./components/register2/RegisterItem2";
 import RegisterItem3 from "./components/register3/RegisterItem3";
 import RegisterItem4 from "./components/register4/RegisterItem4";
 import RegisterItem5 from "./components/register5/RegisterItem5";
-import ExpertTitle from "../Expert/components/ExpertTitle/ExpertTitle";
+import ExpertTitle from "../Portal/pages/Expert/components/ExpertTitle/ExpertTitle";
 
 export default function ExpertRegister() {
   const [activeBarItem, setactiveBarItem] = useState(0);
@@ -17,7 +16,6 @@ export default function ExpertRegister() {
 
   return (
     <>
-      <Header />
       <main className="expertregister">
         <div className="container">
           <ExpertTitle title={"Ro‘yxatdan o‘tish"} url={url} />

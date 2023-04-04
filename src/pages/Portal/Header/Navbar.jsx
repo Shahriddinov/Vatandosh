@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { AiFillInstagram } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Flag from "../../../assets/images/Flag.png";
 import Blazon from "../../../assets/images/blazon.png";
@@ -32,7 +30,7 @@ const Navbar = ({ activeSidebar }) => {
   const navbarList = [
     { id: 1, label: t("uzLearning"), url: "/" },
     { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/" },
+    { id: 3, label: t("expertCouncil"), url: "/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },
@@ -53,8 +51,7 @@ const Navbar = ({ activeSidebar }) => {
     <div
       className={
         activeSidebar ? "header-sideBar activeSideBar" : "header-sideBar"
-      }
-    >
+      }>
       <div className="header-sideBar-wrapper">
         <div className="header-sideBar-top">
           <div className="header-sideBar-connection-action">
@@ -95,9 +92,8 @@ const Navbar = ({ activeSidebar }) => {
                 <li
                   key={navbar.id}
                   className="header-sideBar-navlist-item"
-                  style={{ height: "auto" }}
-                >
-                  <Link to={navbar.url}>{navbar.label}</Link>
+                  style={{ height: "auto" }}>
+                  <Link to="/">{navbar.label}</Link>
                 </li>
               );
             })}
@@ -109,8 +105,7 @@ const Navbar = ({ activeSidebar }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_320_3118)">
                   <path
                     fillRule="evenodd"
@@ -141,8 +136,7 @@ const Navbar = ({ activeSidebar }) => {
                   activeLng === el.type ? "langActive" : ""
                 }`}
                 key={el.id}
-                onClick={() => changeLanguage(el.type)}
-              >
+                onClick={() => changeLanguage(el.type)}>
                 {el.label}
               </li>
             ))}
