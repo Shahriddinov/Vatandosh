@@ -84,10 +84,17 @@
         cursor: pointer;
       }
 
-      & > p {
+      & > p,
+      span {
         white-space: nowrap;
         word-break: keep-all;
-        @include fontStyles(400, 14px, 17px, #000000);
+        @include fontStyles(400, 14px, 17px, #000000 !important);
+      }
+
+      & > strong {
+        white-space: nowrap;
+        word-break: keep-all;
+        @include fontStyles(600, 16px, 24px, #1e202c);
       }
     }
 
@@ -209,5 +216,70 @@
     transform-origin: top;
     transform: scaleY(1);
     transition: transform 0.5s ease;
+  }
+
+  &-imageList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    &-inputFile {
+      width: 60px;
+      height: 60px;
+      background: #e3f0ff;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      & > svg {
+        width: 20px;
+        height: 20px;
+        color: $colorTitle;
+      }
+    }
+
+    &-item {
+      position: relative;
+      padding: 6px;
+      height: 130px;
+      width: 130px;
+      background: #f0f2f9;
+      border-radius: 12px;
+
+      &-remove {
+        position: absolute;
+        padding: 7px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: #f8fafc;
+        box-shadow: 0px 4px 70px rgba(148, 163, 184, 0.4);
+        border-radius: 4px;
+        cursor: pointer;
+
+        & > span {
+          @include fontStyles(400, 12px, 15px, #bd3232);
+        }
+
+        & > svg {
+          width: 12px;
+          height: 12px;
+          color: #bd3232;
+        }
+      }
+
+      & > img {
+        width: 118px;
+        height: 118px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+    }
   }
 }

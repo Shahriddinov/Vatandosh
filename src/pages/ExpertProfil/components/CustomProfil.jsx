@@ -243,6 +243,58 @@ export default function CustomProfil() {
             </Typography>
           </AccordionDetails>
         </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Volonyorlik faoliyati</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              {[1, 2, 3, 4].map((id) => (
+                <div key={id} className="customprofil-list-offer">
+                  <div
+                    className="customprofil-list-offer-info"
+                    style={
+                      id % 2 === 0 ? { flexDirection: "row-reverse" } : null
+                    }
+                  >
+                    <div className="customprofil-list-offer-info-img">
+                      <img
+                        src={DefaultProfilePic}
+                        alt="error"
+                        className="valontery-desc-img"
+                      />
+                    </div>
+                    <div className="customprofil-list-offer-info-desc valontery-desc-text">
+                      <p className="customprofil-list-offer-info-desc-text">
+                        {`${id}. “O‘zbekiston zamini” ilmiy-amaliy va innovatsion maqola`}
+                      </p>
+                      <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book. It has
+                        survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                        It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and
+                        more recently with desktop publishing software like
+                        Aldus PageMaker
+                      </p>
+                      <button className="customprofil-list-offer-info-desc-btn">
+                        <Link to={"#"}>Batafsil</Link>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
   );

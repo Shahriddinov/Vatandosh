@@ -6,9 +6,10 @@ import RegisterItem3 from "./components/register3/RegisterItem3";
 import RegisterItem4 from "./components/register4/RegisterItem4";
 import RegisterItem5 from "./components/register5/RegisterItem5";
 import ExpertTitle from "../Portal/pages/Expert/components/ExpertTitle/ExpertTitle";
+import Volunteer from "./components/volunteer/Volunteer";
 
 export default function ExpertRegister() {
-  const [activeBarItem, setactiveBarItem] = useState(0);
+  let [activeBarItem, setactiveBarItem] = useState(0);
   const url = [
     { title: "Asosiy", url: "/" },
     { title: "Ro‘yxatdan o‘tish", url: "" },
@@ -27,6 +28,7 @@ export default function ExpertRegister() {
                 "Mehnat faoliyatingiz",
                 "Ilmiy faoliyatingiz",
                 "Taklifingiz",
+                "Volonyorlik faoliyati",
               ].map((el, index) => {
                 return (
                   <li
@@ -52,6 +54,7 @@ export default function ExpertRegister() {
               <RegisterItem3 activeBarItem={activeBarItem} />
               <RegisterItem4 activeBarItem={activeBarItem} />
               <RegisterItem5 activeBarItem={activeBarItem} />
+              <Volunteer activeBarItem={activeBarItem} />
             </div>
           </div>
         </div>

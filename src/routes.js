@@ -102,6 +102,7 @@ const routes = [
     path: "/expert/employe",
     element: ExpertEmploye,
   },
+  { path: "/expert/contact", element: Contact },
   { path: "/expert/profile", element: ExpertProfile },
   { path: "/expert/offers", element: ExpertOffers },
   { path: "/expert/offers/:id", element: ExpertOffersDetail },

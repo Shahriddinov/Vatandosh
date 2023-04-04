@@ -34,7 +34,7 @@ function Nav() {
           </li>
           <li>
             <Link
-              to="/expert/about"
+              to="/expert/contact"
               className={editClass === "/expert" ? `nav-link` : `nav--link`}
             >
               Bog‘lanish
