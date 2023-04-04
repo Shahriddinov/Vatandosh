@@ -47,21 +47,21 @@ const Hashtag = () => {
           <h2>#{tag}</h2>
           <div className="hashtag__btns">
             <div className="hashtag__image-btn">
-              <button className={true ? "active-btn" : ""}>Vatandoshlar</button>
+              <button className={true ? "active-btn" : ""}>Eng mashhur</button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Yosh oila</button>
+              <button>Eng so‘ngi</button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Suhbat</button>
+              <button>Eng ko‘p ko‘rilgan</button>
             </div>
           </div>
         </div>
         <div className="hashtag__body">
           <div className="hashtag__images">
-            {data.map((image) => (
+            {data.map((image, index) => (
               <div
-                key={image.id}
+                key={index}
                 className="hashtag__image-card"
                 onClick={() => {}}
               >
