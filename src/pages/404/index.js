@@ -10,9 +10,14 @@ const NotFound = () => {
 
   const registerHeader = pathname.split("/")[1];
 
+  const Header = () => {
+    if (registerHeader.includes("expert")) return null;
+    else return <Header />;
+  };
+
   return (
     <>
-      {registerHeader.includes("expert") ? null : <Header />}
+      <Header />
 
       <div className="container">
         <div className="not-found">
