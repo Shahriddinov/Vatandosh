@@ -99,10 +99,9 @@ const Partners = () => {
     <section className="partner_section">
       <div className="container">
         <div className="top">
-          <div className="title">
-            <h1>{t("partnersTitle")}</h1>
-            <div className="bottom__line" />
-          </div>
+          <h3 className="peaceful__title section_title">
+            {t("partnersTitle")}
+          </h3>
           <div className="carousel__buttons">
             <button className="carousel__button" onClick={handlePrev}>
               <FiChevronLeft size={20} />

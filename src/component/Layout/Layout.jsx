@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
             : ""
         }
       >
-        {pathname === "/portal" && <HeaderPortal />}
+        {pathname.includes("portal") && <HeaderPortal />}
         {registerHeader.includes("registration") && <RegisterHeader />}
         {registerHeader.includes("expert") && headerExpert.length > 2 && (
           <ExpertHeader />
