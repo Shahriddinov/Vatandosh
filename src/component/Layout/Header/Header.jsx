@@ -119,7 +119,8 @@ const Header = () => {
             >
               <CiGlobe className="header_navbar_language-icon" />
               <span style={{ color: "white" }}>
-                {languageList.find((lan) => lan.type === language).label}
+                {languageList.find((lan) => lan.type === language)?.label}
+
               </span>
               <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
             </div>
