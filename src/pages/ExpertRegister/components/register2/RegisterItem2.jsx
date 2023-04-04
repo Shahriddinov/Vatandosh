@@ -16,8 +16,6 @@ export default function RegisterItem2({ activeBarItem }) {
     { id: 1, otm: "", faculti: "", job: "Yurist" },
   ]);
 
-  console.log(data1);
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -59,7 +57,7 @@ export default function RegisterItem2({ activeBarItem }) {
             <div key={el.id} className="registeritem2-form-otm">
               <label htmlFor="" className="registeritem-label">
                 <p className="registeritem-label-delete">
-                  <p>O‘zbekistonda tahsil olgan OTM</p>
+                  <span>O‘zbekistonda tahsil olgan OTM</span>
                   <AiOutlineDelete
                     style={data1.length === 1 ? { display: "none" } : null}
                     onClick={() =>
@@ -138,7 +136,7 @@ export default function RegisterItem2({ activeBarItem }) {
             <div key={el.id} className="registeritem2-form-otm">
               <label htmlFor="" className="registeritem-label">
                 <p className="registeritem-label-delete">
-                  <p>Xorijda tahsil olgan OTM</p>
+                  <span>Xorijda tahsil olgan OTM</span>
                   <AiOutlineDelete
                     style={data2.length === 1 ? { display: "none" } : null}
                     onClick={() =>

@@ -80,6 +80,11 @@
       color: $colorTitle;
     }
 
+    .MuiTypography-root {
+      display: grid;
+      gap: 20px;
+    }
+
     & span {
       letter-spacing: 0.5px;
       @include fontStyles(600, 14px, 17px, $colorGrey);
@@ -150,7 +155,17 @@
     &-offer {
       &-info {
         display: flex;
+        justify-content: start;
         gap: 30px;
+
+        .valontery-desc-text {
+          max-width: 100%;
+        }
+
+        .valontery-desc-img {
+          width: 325px;
+          height: 225px;
+        }
 
         &-img {
           & > img {
@@ -163,6 +178,9 @@
 
         &-desc {
           max-width: 580px;
+          &-text {
+            @include fontStyles(600, 16px, 24px, #1e202c);
+          }
 
           &-btn {
             margin-top: 20px;
