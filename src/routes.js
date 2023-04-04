@@ -2,9 +2,8 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import AboutCouncil from "./pages/AboutCouncil/AboutCouncil";
-import ExpertCouncil from "./pages/Expert/ExpertCouncil";
-import ExpertEmploye from "./pages/ExpertEmploye/ExpertEmploye";
+import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
+import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -46,9 +45,15 @@ const RecoveryPassword = lazy(() =>
 const Register = lazy(() =>
   import("./pages/Registration/pages/Register/Register")
 );
+const ExpertOffers = lazy(() => import("./pages/ExpertOffers/ExpertOffers"));
+const ExpertOffersDetail = lazy(() =>
+  import("./pages/ExpertOffersDetail/ExpertOffersDetail")
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
-
+const AboutCouncil = lazy(() =>
+  import("./pages/Portal/pages/AboutCouncil/AboutCouncil")
+);
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -83,7 +88,7 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
-  { path: "/expert-register", element: ExpertRegister },
+  { path: "/expert/register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
     path: "/expert",
@@ -97,7 +102,9 @@ const routes = [
     path: "/expert/employe",
     element: ExpertEmploye,
   },
-  { path: "/expert-profil", element: ExpertProfile },
+  { path: "/expert/profile", element: ExpertProfile },
+  { path: "/expert/offers", element: ExpertOffers },
+  { path: "/expert/offers/:id", element: ExpertOffersDetail },
 ];
 
 const RoutesContainer = () => (
