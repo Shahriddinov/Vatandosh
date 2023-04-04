@@ -30,7 +30,8 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha mutaxassislar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -45,7 +46,8 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha davlatlar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -62,6 +64,7 @@ function Employe() {
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
               <Link className="employe-link" to="/expert">
+                <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>

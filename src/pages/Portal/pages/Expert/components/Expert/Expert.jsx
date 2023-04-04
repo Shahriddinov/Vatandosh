@@ -17,6 +17,7 @@ function Expert() {
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
               <Link className="employe-link" to="/expert/employe">
+                <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>

@@ -1,5 +1,5 @@
 import "./Nav.scss";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Nav() {
   const location = useLocation();
@@ -9,32 +9,36 @@ function Nav() {
       <div className="container">
         <ul>
           <li>
-            <a
-              href="#"
-              className={editClass === "/expert" ? `nav-link` : `nav--link`}>
+            <Link
+              to="/expert"
+              className={editClass === "/expert" ? `nav-link` : `nav--link`}
+            >
               ASOSIY
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className={editClass === "/expert" ? `nav-link` : `nav--link`}>
+            <Link
+              to="/expert/employe"
+              className={editClass === "/expert" ? `nav-link` : `nav--link`}
+            >
               Ekspertlar kengashi
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className={editClass === "/expert" ? `nav-link` : `nav--link`}>
+            <Link
+              to="/expert/offers"
+              className={editClass === "/expert" ? `nav-link` : `nav--link`}
+            >
               Takliflar
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className={editClass === "/expert" ? `nav-link` : `nav--link`}>
+            <Link
+              to="/expert/about"
+              className={editClass === "/expert" ? `nav-link` : `nav--link`}
+            >
               Bog‘lanish
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
