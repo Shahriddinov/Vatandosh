@@ -14,7 +14,7 @@ export default function Detail(data) {
   const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   useEffect(() => {
-    if (data?.imgs) setgalleryMainImg(JSON.parse(data?.imgs)[0]);
+    if (data?.images) setgalleryMainImg(JSON.parse(data?.images)[0]);
   }, [data]);
 
   return data ? (
@@ -67,21 +67,21 @@ export default function Detail(data) {
                   __html: data[`text_${lan}`],
                 }}
               ></div>
-              {data?.imgs
-                ? JSON.parse(data.imgs).length > 2 && (
+              {data?.images
+                ? JSON.parse(data?.images).length > 2 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
                         src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
                           galleryMainImg
                             ? galleryMainImg
-                            : JSON.parse(data?.imgs)[0]
+                            : JSON.parse(data?.images)[0]
                         }`}
                         alt="error"
                         className="newsdetail-main-desc-gallery-mainImg"
                       />
                       <div className="newsdetail-main-desc-gallery-list-wrapper">
                         <ul className="newsdetail-main-desc-gallery-list">
-                          {JSON.parse(data.imgs).map((el, index) => {
+                          {JSON.parse(data?.images).map((el, index) => {
                             return (
                               <li key={index}>
                                 <img
