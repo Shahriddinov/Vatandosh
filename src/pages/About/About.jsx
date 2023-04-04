@@ -7,7 +7,7 @@ import Urinbosar from "../../assets/images/Substitute.jpg";
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
 
 import Table from "./component/Table/Table";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -27,6 +27,8 @@ import Spinner from "../../component/Spinner";
 import { baseServerUrl } from "../../services/api/utils";
 import Aos from "aos";
 
+import Gallery from '../Projects/gallery'
+
 const About = () => {
   const state = useLocation();
   const dispatch = useDispatch();
@@ -42,6 +44,10 @@ const About = () => {
   };
 
   const swiperParams = {
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
     breakpoints: {
       360: {
         slidesPerView: 1,
@@ -156,35 +162,22 @@ const About = () => {
         </div>
         <div className="about_caruosel">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={50}
             slidesPerView={4}
             centeredSlides={true}
-            initialSlide={2}
-            data-aos="zoom-in"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="1000"
+            initialSlide={1}
+            loop={true}
             {...swiperParams}
-          >
-            <SwiperSlide>
-              <img src={Gallery2} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={Gallery3} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={Gallery4} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={Gallery2} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={Gallery3} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={Gallery4} alt="" />
-            </SwiperSlide>
-          </Swiper>
+        >
+            {Gallery.map((obj, index) => {
+                return (
+                    <SwiperSlide key={index}>
+                        <img src={obj.image} alt=""/>
+                    </SwiperSlide>
+                )
+            })}
+        </Swiper>
         </div>
       </div>
     </div>

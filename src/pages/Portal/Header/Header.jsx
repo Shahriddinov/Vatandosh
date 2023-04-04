@@ -33,7 +33,6 @@ const HeaderPortal = () => {
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
-    console.log("salom");
   };
 
   useEffect(() => {
