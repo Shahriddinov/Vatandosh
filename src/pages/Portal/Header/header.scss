@@ -21,6 +21,7 @@
   top: 0;
   z-index: 999;
   outline: none;
+  border-bottom: 1px solid #eaedf642;
 
   &.portal-fixed {
     background: #00081c;
@@ -32,7 +33,6 @@
 
   .header {
     padding: 1rem;
-    border-bottom: 1px solid #eaedf642;
 
     .portal-header-lang {
       position: relative;
