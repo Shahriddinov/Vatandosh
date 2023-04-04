@@ -9,17 +9,30 @@ import {
   TelegramShareButton,
   TwitterShareButton,
 } from "react-share";
+import { useState } from "react";
 
 export default function ShareFriends() {
+  const [isurlCopy, setisurlCopy] = useState(false);
+
   const shareUrl = window.location.href;
   const { t } = useTranslation();
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setisurlCopy(true);
+  };
   return (
     <div className="sharefriends">
       <div className="sharefriends-list">
-        <a href="https://www.google.com" className="sharefriends-list-item">
+        <div className="sharefriends-list-item" onClick={handleCopy}>
           <img src={filled} alt="" />
-        </a>
+          <span
+            className="sharefriends-list-item-copy"
+            style={isurlCopy ? { opacity: 1 } : null}
+          >
+            Copied!
+          </span>
+        </div>
         <FacebookShareButton url={shareUrl} className="sharefriends-list-item">
           <RiFacebookFill />
         </FacebookShareButton>

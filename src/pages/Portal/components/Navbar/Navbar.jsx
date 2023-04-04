@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div className="navbarpage">
       <div className="container">
-        <Link to="/">
+        <Link to="/expert">
           <div className="navbar-list">
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
@@ -110,14 +110,15 @@ function Navbar() {
               ))}
             </div>
           </div>
-          <button
+          <Link
+            to={"/expert/register"}
             className={
               editClass === "/expert" ? `navbar-button` : `navbar--button`
             }
           >
             <img src={ExitIcon} alt="" className="navbar-icon" />
             Kirish
-          </button>
+          </Link>
         </div>
       </div>
     </div>
