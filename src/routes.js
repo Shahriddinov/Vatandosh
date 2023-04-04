@@ -2,9 +2,8 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
-import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
-
+import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
+import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -13,7 +12,7 @@ const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() =>
   import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
 );
-const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
+const Portal = lazy(() => import("./pages/Portal/Portal"));
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
@@ -30,9 +29,11 @@ const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
-const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
+const ExpertProfile = lazy(() =>
+  import("./pages/Portal/expert/pages/ExpertProfil/ExpertProfil")
+);
 const ExpertRegister = lazy(() =>
-  import("./pages/ExpertRegister/ExpertRegister")
+  import("./pages/Portal/expert/pages/ExpertRegister/ExpertRegister")
 );
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -45,14 +46,16 @@ const RecoveryPassword = lazy(() =>
 const Register = lazy(() =>
   import("./pages/Registration/pages/Register/Register")
 );
-const ExpertOffers = lazy(() => import("./pages/ExpertOffers/ExpertOffers"));
+const ExpertOffers = lazy(() =>
+  import("./pages/Portal/expert/pages/ExpertOffers/ExpertOffers")
+);
 const ExpertOffersDetail = lazy(() =>
-  import("./pages/ExpertOffersDetail/ExpertOffersDetail")
+  import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
 );
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
-  import("./pages/Portal/pages/AboutCouncil/AboutCouncil")
+  import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
 );
 const routes = [
   { path: "", element: Home },

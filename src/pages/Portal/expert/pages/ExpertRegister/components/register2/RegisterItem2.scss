@@ -1,0 +1,14 @@
+@import "../../../../../../../assets/style/global.scss";
+
+.registeritem2 {
+  &-form {
+    &-otm {
+      display: grid;
+      gap: 20px;
+
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+  }
+}
