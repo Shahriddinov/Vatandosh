@@ -5,7 +5,7 @@ import znakLeft from "../../assets/images/znak-left.png";
 import "./style.scss";
 import Header from "../../component/Layout/Header/Header";
 import Footer from "../../component/Layout/Footer/Footer";
-import ExpertHeader from "../Portal/components/ExpertHeader/ExpertHeader";
+import ExpertHeader from "../Portal/expert/components/ExpertHeader/ExpertHeader";
 
 const NotFound = () => {
   const { pathname } = useLocation();

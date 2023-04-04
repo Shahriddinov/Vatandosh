@@ -1,0 +1,206 @@
+@import "../../../../../../assets/style/global.scss";
+
+.customprofil {
+  &-wrapper {
+    background: #f6f7fb;
+    border-radius: 20px;
+  }
+
+  &-detail {
+    padding: 30px 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    &-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-desc {
+      & > h4 {
+        @include fontStyles(600, 32px, 39px, $colorBlack);
+      }
+
+      &-workexp {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        & > span {
+          letter-spacing: 0.5px;
+          @include fontStyles(600, 14px, 17px, $colorGrey);
+        }
+        & > span:last-child {
+          @include fontStyles(500, 16px, 19px, $colorBlack);
+        }
+      }
+    }
+  }
+
+  &-list {
+    .MuiPaper-root {
+      background-color: transparent;
+      box-shadow: none;
+      border-top: 1px solid #eaedf6;
+      border-bottom: none;
+
+      .MuiAccordionDetails-root {
+        padding: 0 25px 25px;
+      }
+
+      .MuiAccordionSummary-content {
+        margin: 0;
+      }
+
+      .MuiButtonBase-root {
+        padding: 30px 25px;
+        min-height: 0;
+      }
+
+      .MuiTypography-root {
+        @include fontStyles(600, 20px, 24px, $colorBlack);
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .MuiSvgIcon-root {
+      color: $colorTitle;
+    }
+
+    .MuiTypography-root {
+      display: grid;
+      gap: 20px;
+    }
+
+    & span {
+      letter-spacing: 0.5px;
+      @include fontStyles(600, 14px, 17px, $colorGrey);
+    }
+
+    & p {
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+      @include fontStyles(600, 16px, 19px, $colorBlack);
+    }
+
+    &-otm {
+      display: flex;
+      gap: 60px;
+
+      &:not(:first-child) {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eaedf6;
+      }
+
+      &-item {
+        min-width: 332px;
+        display: grid;
+        gap: 15px;
+      }
+    }
+
+    &-workexp {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 60px;
+      row-gap: 20px;
+
+      &:not(:first-child) {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eaedf6;
+      }
+    }
+
+    &-scientific {
+      display: grid;
+      gap: 20px;
+
+      &-printDate {
+        display: grid;
+        grid-template-columns: repeat(2, 332px);
+        column-gap: 60px;
+      }
+
+      &-tags-list {
+        margin-top: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        & > span {
+          padding: 8px 12px;
+          background: #e3f0ff;
+          border-radius: 5px;
+          cursor: pointer;
+          @include fontStyles(400, 12px, 14px, $colorTitle);
+        }
+      }
+    }
+
+    &-offer {
+      &-info {
+        display: flex;
+        justify-content: start;
+        gap: 30px;
+
+        .valontery-desc-text {
+          max-width: 100%;
+        }
+
+        .valontery-desc-img {
+          width: 325px;
+          height: 225px;
+        }
+
+        &-img {
+          & > img {
+            max-width: 327px;
+            height: 245px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+        }
+
+        &-desc {
+          max-width: 580px;
+          &-text {
+            @include fontStyles(600, 16px, 24px, #1e202c);
+          }
+
+          &-btn {
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #065ea9;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+
+            & > a {
+              @include fontStyles(500, 14px, 24px, #ffffff);
+            }
+          }
+        }
+      }
+
+      &-infoplus {
+        margin-top: 20px;
+        max-width: 1070px;
+      }
+    }
+  }
+}

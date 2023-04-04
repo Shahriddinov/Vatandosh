@@ -2,14 +2,14 @@ import React from "react";
 import Footer from "./Footer/Footer";
 import { useLocation } from "react-router-dom";
 import NetworkError from "../NetworkError/NetworkError";
-import HeaderPortal from "../../pages/Portal/Header/Header";
+import HeaderPortal from "../../pages/Portal/components/Header/Header";
 import RegisterHeader from "../../pages/Registration/pages/Layout/Header/RegisterHeader";
 import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/RegisterFooter";
 import { useProjectsData } from "./hooks/useProjectsData";
 import { useSelector } from "react-redux";
-import ExpertHeader from "../../pages/Portal/components/ExpertHeader/ExpertHeader";
-import ExpertFooter from "../../pages/Portal/components/ExpertFooter/ExpertFooter";
 import Test from "../test/Test";
+import ExpertFooter from "../../pages/Portal/expert/components/ExpertFooter/ExpertFooter";
+import ExpertHeader from "../../pages/Portal/expert/components/ExpertHeader/ExpertHeader";
 
 const Layout = ({ children }) => {
   const { error } = useProjectsData();
