@@ -195,7 +195,13 @@ const HeaderPortal = () => {
               style={activeLangBar ? { display: "flex" } : null}
             >
               {languageList.map((el, index) => (
-                <p key={index} onClick={() => handleChangeLng(el.type)}>
+                <p
+                  key={index}
+                  onClick={() => {
+                    handleChangeLng(el.type);
+                    setactiveLangBar((el) => !el);
+                  }}
+                >
                   {el.label}
                 </p>
               ))}
