@@ -51,7 +51,8 @@ const Navbar = ({ activeSidebar }) => {
     <div
       className={
         activeSidebar ? "header-sideBar activeSideBar" : "header-sideBar"
-      }>
+      }
+    >
       <div className="header-sideBar-wrapper">
         <div className="header-sideBar-top">
           <div className="header-sideBar-connection-action">
@@ -92,8 +93,9 @@ const Navbar = ({ activeSidebar }) => {
                 <li
                   key={navbar.id}
                   className="header-sideBar-navlist-item"
-                  style={{ height: "auto" }}>
-                  <Link to="/">{navbar.label}</Link>
+                  style={{ height: "auto" }}
+                >
+                  <Link to={navbar.url}>{navbar.label}</Link>
                 </li>
               );
             })}
@@ -105,7 +107,8 @@ const Navbar = ({ activeSidebar }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g clipPath="url(#clip0_320_3118)">
                   <path
                     fillRule="evenodd"
@@ -136,7 +139,8 @@ const Navbar = ({ activeSidebar }) => {
                   activeLng === el.type ? "langActive" : ""
                 }`}
                 key={el.id}
-                onClick={() => changeLanguage(el.type)}>
+                onClick={() => changeLanguage(el.type)}
+              >
                 {el.label}
               </li>
             ))}
