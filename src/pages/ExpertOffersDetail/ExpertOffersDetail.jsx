@@ -3,6 +3,7 @@ import DefaultProfilePic from "../../assets/images/mediateka/2.png";
 import "./ExpertOffersDetail.scss";
 import ExpertProfileInfo from "../ExpertOffers/components/ExpertProfileInfo";
 import ShareFriends from "../../component/ShareFriends/ShareFriends";
+import CouncilStatics from "../Portal/pages/Expert/components/Council/CouncilStatics";
 
 export default function ExpertOffersDetail() {
   const url = [
@@ -39,6 +40,9 @@ export default function ExpertOffersDetail() {
               galley of type and scrambled it to make a type specimen book.
             </p>
             <ShareFriends />
+          </div>
+          <div className="expertofferdetail-actions">
+            <CouncilStatics />
           </div>
         </div>
       </div>

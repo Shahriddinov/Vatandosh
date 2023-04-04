@@ -22,7 +22,7 @@ const HomePage = () => {
   const navbarList = [
     { id: 1, label: t("uzLearning"), url: "/" },
     { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/" },
+    { id: 3, label: t("expertCouncil"), url: "/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },

@@ -11,12 +11,13 @@ function Expert() {
         <div className="expert-list">
           {data.map((evt) => (
             <div>
-              <img src={evt.images} />
+              <img src={evt.images} alt="error" />
               <p>{evt.country}</p>
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
               <Link className="employe-link" to="/expert/employe">
+                <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
@@ -24,7 +25,7 @@ function Expert() {
         </div>
         <div className="expert-item">
           <Link to="/expert/employe" className="expert-link">
-            <img src={ExcludeIcon} />
+            <img src={ExcludeIcon} alt="error" />
             Barcha olim va ekspertlar
           </Link>
         </div>

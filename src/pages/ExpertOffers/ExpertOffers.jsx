@@ -43,7 +43,7 @@ export default function ExpertOffers() {
               </p>
               <div className="expertoffer-list-item-desc-button">
                 <button>
-                  <Link to={""}>Batafsil</Link>
+                  <Link to={"/expert/offers/12"}>Batafsil</Link>
                 </button>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function ExpertOffers() {
               </p>
               <div className="expertoffer-list-item-desc-button">
                 <button>
-                  <Link to={""}>Batafsil</Link>
+                  <Link to={"/expert/offers/12"}>Batafsil</Link>
                 </button>
               </div>
             </div>
