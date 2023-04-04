@@ -31,7 +31,7 @@ const InformationServices = () => {
   } = useInformationServicesPagination();
 
   const pagePath = {
-    title: `${pageName}`,
+    title: `${t(pageName)}`,
     path: [
       { id: 1, label: `${t("mainPage")}`, path: "/" },
       {

@@ -126,7 +126,7 @@ const Peaceful = () => {
                 }}
                 className="mySwiper"
               >
-                {peacefulData.map((el) => (
+                {peacefulData.map((el ) => (
                   <SwiperSlide
                     key={el?.id}
                     className="peaceful__slider-item"
