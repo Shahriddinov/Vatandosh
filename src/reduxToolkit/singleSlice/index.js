@@ -13,6 +13,7 @@ const initialState = {
   paginationLoading: true,
   compatriotsMenuLoading: true,
   error: null,
+  compatriotsMenuError: null,
   paginationError: null,
 };
 
@@ -49,6 +50,7 @@ const singleSlice = createSlice({
     build
       .addCase(getCompatriotsMenu.pending, (state) => {
         state.compatriotsMenuLoading = true;
+        state.compatriotsMenuError = null;
       })
       .addCase(getCompatriotsMenu.fulfilled, (state, { payload }) => {
         state.compatriotsMenu = payload;
@@ -56,7 +58,7 @@ const singleSlice = createSlice({
       })
       .addCase(getCompatriotsMenu.rejected, (state, { error }) => {
         state.compatriotsMenuLoading = false;
-        state.error = error.message;
+        state.compatriotsMenuError = error.message;
       });
   },
 });
