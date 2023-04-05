@@ -1,6 +1,6 @@
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
 import "./ExpertProfil.scss";
-import CustomProfil from "./components/CustomProfil";
+import CustomProfil from "../../../components/CustomProfil/CustomProfil";
 
 export default function ExpertProfil() {
   const url = [

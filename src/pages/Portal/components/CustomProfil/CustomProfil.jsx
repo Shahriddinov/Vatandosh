@@ -1,5 +1,5 @@
 import "./CustomProfil.scss";
-import DefaultProfilePic from "../../../../../../assets/images/mediateka/2.png";
+import DefaultProfilePic from "../../../../assets/images/mediateka/2.png";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";

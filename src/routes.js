@@ -4,6 +4,8 @@ import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
+import VolunterLayout from "./pages/Portal/volunter/VolunterLayout";
+import VolunterProfile from "./pages/Portal/volunter/pages/VolunterProfile/VolunterProfile";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -150,6 +152,10 @@ const RoutesContainer = () => (
           >
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
+          </Route>
+          <Route path="/portal-category/volunter" element={<VolunterLayout />}>
+            <Route index element={<VolunterHome />} />
+            <Route path="profile" element={<VolunterProfile />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
