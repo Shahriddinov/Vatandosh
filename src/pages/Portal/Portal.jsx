@@ -28,7 +28,11 @@ const HomePage = () => {
     { id: 7, label: t("electronBook"), url: "/" },
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
     { id: 9, label: t("participationProject"), url: "/" },
-    { id: 10, label: t("electronCommunity"), url: "/" },
+    {
+      id: 10,
+      label: t("electronCommunity"),
+      url: "/portal-category/community-association",
+    },
     { id: 11, label: t("compatriotsValunteer"), url: "/vo" },
   ];
 
@@ -199,6 +203,7 @@ const HomePage = () => {
                 direction={`${horizontal ? "horizontal" : "vertical"}`}
                 slidesPerView={3}
                 spaceBetween={horizontal ? 20 : 40}
+                loop={true}
                 grabCursor={true}
                 autoplay={{
                   delay: 2500,
