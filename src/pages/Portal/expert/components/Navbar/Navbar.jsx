@@ -16,7 +16,7 @@ import { languageList } from "../../../../../component/Layout/data";
 
 function Navbar() {
   const location = useLocation();
-  const editClass = location.pathname;
+  const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
@@ -33,7 +33,7 @@ function Navbar() {
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
               className={
-                editClass === "/expert" ? `navbar--name` : `navbar--subname`
+                editClass.length <= 3 ? `navbar--name` : `navbar--subname`
               }
             >
               “VATANDOSHLAR” JAMOAT FONDI
@@ -44,9 +44,7 @@ function Navbar() {
           <li className="navbar-item">
             <a
               href="tel:+998555022299"
-              className={
-                editClass === "/expert" ? `navbar-link` : `navbar--link`
-              }
+              className={editClass.length <= 3 ? `navbar-link` : `navbar--link`}
             >
               <PhoneIcon />
               +998(55)502-22-99
@@ -55,9 +53,7 @@ function Navbar() {
           <li className="navbar-item">
             <a
               href="mailto:info@vatandoshlarfondi.uz"
-              className={
-                editClass === "/expert" ? `navbar-link` : `navbar--link`
-              }
+              className={editClass.length <= 3 ? `navbar-link` : `navbar--link`}
             >
               <EmailIcon />
               info@vatandoshlarfondi.uz
@@ -70,9 +66,7 @@ function Navbar() {
               className="navbarpage_language-wrapper"
               style={{
                 background: `${
-                  editClass === "/expert"
-                    ? "rgba(255, 255, 255, 0.2)"
-                    : `#065EA9`
+                  editClass.length <= 3 ? "rgba(255, 255, 255, 0.2)" : `#065EA9`
                 }`,
               }}
               onClick={() => setactiveLang((el) => !el)}
@@ -90,7 +84,7 @@ function Navbar() {
                   ? {
                       display: "flex",
                       background: `${
-                        editClass === "/expert"
+                        editClass.length <= 3
                           ? "rgba(255, 255, 255, 0.2)"
                           : `#065EA9`
                       }`,
@@ -113,7 +107,7 @@ function Navbar() {
           <Link
             to={"/expert/register"}
             className={
-              editClass === "/expert" ? `navbar-button` : `navbar--button`
+              editClass.length <= 3 ? `navbar-button` : `navbar--button`
             }
           >
             <img src={ExitIcon} alt="" className="navbar-icon" />
