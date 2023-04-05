@@ -57,6 +57,27 @@ const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
   import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
 );
+
+const VolunterHome = lazy(() =>
+  import("./pages/Portal/volunter/pages/VolunterHome/VolunterHome")
+);
+
+const CommunityAssociationLayout = lazy(() =>
+  import("./pages/Portal/communityAssociation/communityAssociationLayout")
+);
+
+const CommunityAssociationHome = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/associationHome/AssociationHome"
+  )
+);
+
+const CommunityAssociationAbout = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
+  )
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },

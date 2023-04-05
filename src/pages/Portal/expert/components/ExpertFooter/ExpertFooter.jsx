@@ -9,8 +9,9 @@ import { RiInstagramFill } from "react-icons/ri";
 import "./ExpertFooter.scss";
 import napaName from "../../../../../assets/images/icons/napa.png";
 import { getContact } from "../../../../../reduxToolkit/contactSlice/extraReducer";
+import { Link } from "react-router-dom";
 
-const ExpertFooter = () => {
+const ExpertFooter = ({ navData }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -45,19 +46,11 @@ const ExpertFooter = () => {
 
           <div className="expertfooter-page">
             <ul>
-              <li>
-                <a href="#">Asosiy</a>
-              </li>
-              <li>
-                <a href="#">Ekspertlar kengashi</a>
-              </li>
-              <li>
-                <a href="#">Takliflar</a>
-              </li>
-
-              <li>
-                <a href="#">Bog‘lanish</a>
-              </li>
+              {navData?.map((navItem) => (
+                <li>
+                  <Link to={navItem.url}>{navItem.label}</Link>
+                </li>
+              ))}
             </ul>
             <div className="expertfooter-icons">
               <a href={contactData?.facebook}>
