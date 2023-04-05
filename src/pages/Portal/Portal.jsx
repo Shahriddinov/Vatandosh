@@ -29,7 +29,7 @@ const HomePage = () => {
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
     { id: 9, label: t("participationProject"), url: "/" },
     { id: 10, label: t("electronCommunity"), url: "/" },
-    { id: 11, label: t("compatriotsValunteer"), url: "/vo" },
+    { id: 11, label: t("compatriotsValunteer"), url: "/volunter" },
   ];
 
   const contactData = useSelector(
