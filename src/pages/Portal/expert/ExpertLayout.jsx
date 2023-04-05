@@ -30,7 +30,7 @@ const ExpertLayout = () => {
       {editClass.length > 3 && editClass[3] && (
         <ExpertHeader navData={navData} />
       )}
-      <Outlet />
+      <Outlet context={{ navData }} />
       <ExpertFooter navData={navData} />
     </>
   );
