@@ -15,7 +15,6 @@
   "dialog3": "Dialogue with our compatriots in Germany",
   "more": "More",
   "news": "News",
-  "share": "Share with your friends",
   "events": "Events",
   "all": "All",
   "system": "Unified automated information system of the compatriot fund",
@@ -166,13 +165,13 @@
 
   },
   "contactPage": {
-    "contactUs": "contact us",
+    "contactUs": "Contact us",
     "appForm": "Application form for contacting us",
     "send": "Send",
     "yourName": "your name",
     "yourNumber": "Enter phone number",
     "addInfo": "Additional information",
-    "address": "address",
+    "address": "Address",
     "workingHours": "Opening hours",
     "contactInfo": "Contact information",
     "houseOrg": "Organizations in the House",

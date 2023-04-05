@@ -17,7 +17,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
 }
 
 .participate__modal {
@@ -175,7 +174,6 @@
     .black__overlay {
         position: relative;
         z-index: 1;
-        overflow-y: unset;
     }
 
     .participate__modal {

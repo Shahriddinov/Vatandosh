@@ -21,6 +21,7 @@ const Partners = () => {
   const dispatch = useDispatch();
   const partnersData = useSelector((state) => state.partnersSlice.partnersData);
   const error = useSelector((state) => state.partnersSlice.error);
+  console.log(partnersData);
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
@@ -99,9 +100,10 @@ const Partners = () => {
     <section className="partner_section">
       <div className="container">
         <div className="top">
-          <h3 className="peaceful__title section_title">
-            {t("partnersTitle")}
-          </h3>
+          <div className="title">
+            <h1>{t("partnersTitle")}</h1>
+            <div className="bottom__line" />
+          </div>
           <div className="carousel__buttons">
             <button className="carousel__button" onClick={handlePrev}>
               <FiChevronLeft size={20} />

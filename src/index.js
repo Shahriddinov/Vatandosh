@@ -13,17 +13,14 @@ import "./assets/style/Footer.scss";
 import "./assets/style/Header.scss";
 import "animate.css/animate.min.css";
 import i18 from "./services/i18n/i18n";
-import GrayContextProvider from "./context/GrayContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Suspense fallback="">
-      <GrayContextProvider>
-        <Provider store={store}>
-          <Routes />
-        </Provider>
-      </GrayContextProvider>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </Suspense>
   </React.StrictMode>
 );

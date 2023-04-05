@@ -47,36 +47,34 @@ const Hashtag = () => {
           <h2>#{tag}</h2>
           <div className="hashtag__btns">
             <div className="hashtag__image-btn">
-              <button className={true ? "active-btn" : ""}>Eng mashhur</button>
+              <button className={true ? "active-btn" : ""}>Vatandoshlar</button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Eng so‘ngi</button>
+              <button>Yosh oila</button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Eng ko‘p ko‘rilgan</button>
+              <button>Suhbat</button>
             </div>
           </div>
         </div>
         <div className="hashtag__body">
           <div className="hashtag__images">
-            {data.map((image, index) => {
-              return image.image ? (
-                <div
-                  key={index}
-                  className="hashtag__image-card"
-                  onClick={() => {}}
-                >
-                  <div className="hashtag__image-container">
-                    <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
-                      <img
-                        src={`${baseServerUrl}/${image.image}`}
-                        alt="mediatake"
-                      />
-                    </Link>
-                  </div>
+            {data.map((image) => (
+              <div
+                key={image.id}
+                className="hashtag__image-card"
+                onClick={() => {}}
+              >
+                <div className="hashtag__image-container">
+                  <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                    <img
+                      src={`${baseServerUrl}/${image.image}`}
+                      alt="mediatake"
+                    />
+                  </Link>
                 </div>
-              ) : null;
-            })}
+              </div>
+            ))}
           </div>
         </div>
         {paginationCount >= 2 ? (

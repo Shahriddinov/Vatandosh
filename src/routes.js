@@ -2,8 +2,9 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
-import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
-import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
+import ExpertCouncil from "./pages/Portal/pages/Expert/ExpertCouncil";
+import ExpertEmploye from "./pages/Portal/pages/ExpertEmploye/ExpertEmploye";
+
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -12,7 +13,7 @@ const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() =>
   import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
 );
-const Portal = lazy(() => import("./pages/Portal/Portal"));
+const Portal = lazy(() => import("./pages/Portal/HomePage/HomePage"));
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
@@ -29,11 +30,9 @@ const Management = lazy(() =>
   import("./pages/About/component/Management/Management")
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
-const ExpertProfile = lazy(() =>
-  import("./pages/Portal/expert/pages/ExpertProfil/ExpertProfil")
-);
+const ExpertProfile = lazy(() => import("./pages/ExpertProfil/ExpertProfil"));
 const ExpertRegister = lazy(() =>
-  import("./pages/Portal/expert/pages/ExpertRegister/ExpertRegister")
+  import("./pages/ExpertRegister/ExpertRegister")
 );
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -46,17 +45,9 @@ const RecoveryPassword = lazy(() =>
 const Register = lazy(() =>
   import("./pages/Registration/pages/Register/Register")
 );
-const ExpertOffers = lazy(() =>
-  import("./pages/Portal/expert/pages/ExpertOffers/ExpertOffers")
-);
-const ExpertOffersDetail = lazy(() =>
-  import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
-);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
-const AboutCouncil = lazy(() =>
-  import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
-);
+const AboutCouncil = lazy(()=> import("./pages/Portal/pages/AboutCouncil/AboutCouncil"))
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -91,24 +82,21 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
-  { path: "/expert/register", element: ExpertRegister },
+  { path: "/portal/expert-register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
   {
-    path: "/expert",
+    path: "/portal/expert",
     element: ExpertCouncil,
   },
   {
-    path: "/expert/council/about",
+    path: "/portal/expert/council/about",
     element: AboutCouncil,
   },
   {
-    path: "/expert/employe",
+    path: "/portal/expert/employe",
     element: ExpertEmploye,
   },
-  { path: "/expert/contact", element: Contact },
-  { path: "/expert/profile", element: ExpertProfile },
-  { path: "/expert/offers", element: ExpertOffers },
-  { path: "/expert/offers/:id", element: ExpertOffersDetail },
+  { path: "/portal/expert-profil", element: ExpertProfile },
 ];
 
 const RoutesContainer = () => (

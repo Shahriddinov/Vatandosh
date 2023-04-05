@@ -1,6 +1,7 @@
 $colorTitle: #065ea9;
 $colorGreyText: #656b70;
 
+
 .partner_section {
   padding: 50px 0;
 }
@@ -17,7 +18,6 @@ $colorGreyText: #656b70;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 2rem;
   line-height: 39px;
 }
 
@@ -78,8 +78,8 @@ $colorGreyText: #656b70;
 
 .content_text {
   margin-bottom: 10px;
-  font-family: "TT Firs Neue";
-  color: #656b70;
+  font-family: 'TT Firs Neue';
+  color: #656B70;
 }
 
 .image {
@@ -106,7 +106,7 @@ $colorGreyText: #656b70;
   gap: 20px;
 }
 
-.slick-slide {
+.slick-slide  {
   padding: 10px 10px;
   transition: all 0.5s linear;
 }
@@ -121,12 +121,13 @@ $colorGreyText: #656b70;
   display: flex !important;
   align-items: center !important;
   justify-content: center;
-  width: 198px;
+  width: 198px ;
   height: 80px;
   padding: 5px 10px;
   border: 1px solid rgb(124, 124, 124);
   border-radius: 16px;
   overflow: hidden;
+
 
   &__img {
     width: 100%;
@@ -137,10 +138,10 @@ $colorGreyText: #656b70;
 }
 .partners .slick-current .partner {
   background-color: transparent;
-}
+} 
 
 .partners .slick-current .partner {
-  border: 1px solid #004b42;
+  border: 1px solid #004B42;
 }
 
 .partners .slick-current .partner__img {
@@ -148,6 +149,7 @@ $colorGreyText: #656b70;
 }
 
 @media (max-width: 992px) {
+ 
   .content {
     display: flex !important;
     flex-direction: column-reverse;
@@ -175,7 +177,7 @@ $colorGreyText: #656b70;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { 
   .carousel__buttons {
     display: none;
   }
@@ -211,7 +213,8 @@ $colorGreyText: #656b70;
   }
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: 480px) { 
   .content {
     display: flex !important;
     flex-direction: column-reverse;
@@ -224,7 +227,7 @@ $colorGreyText: #656b70;
     line-height: 16px;
   }
 
-  .content_text {
+  .content_text{
     margin-bottom: 0px;
   }
 
@@ -248,6 +251,7 @@ $colorGreyText: #656b70;
   }
 
   .horizontal__line {
-    display: none;
+   display: none;
   }
 }
+

@@ -25,6 +25,7 @@ const News = () => {
   const projectMenu = useSelector((state) => state.peaceful.menuData);
   const lan = useSelector((state) => state.language.language);
   const [activeCard, setActiveCard] = useState(true);
+  console.log(eventsData);
 
   const data = useSelector((store) => store.singleSlice.projectsData);
 
