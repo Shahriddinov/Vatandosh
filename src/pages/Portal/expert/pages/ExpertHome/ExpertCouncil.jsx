@@ -5,13 +5,16 @@ import Header from "../../components/Header/Header";
 import News from "./components/News/News";
 import Council from "./components/Council/Council";
 import Expert from "./components/ExpertCouncil/ExpertCouncil";
+import { useOutletContext } from "react-router";
 
 function ExpertCouncil() {
+  const { navData } = useOutletContext();
+
   return (
     <>
       <div className="expert-council">
         <Navbar />
-        <Nav />
+        <Nav navData={navData} />
         <Header />
       </div>
       <Council />
