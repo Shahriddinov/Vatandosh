@@ -199,6 +199,7 @@ const HomePage = () => {
               <Swiper
                 direction={`${horizontal ? "horizontal" : "vertical"}`}
                 slidesPerView={3}
+                loop={true}
                 spaceBetween={horizontal ? 20 : 40}
                 grabCursor={true}
                 autoplay={{
