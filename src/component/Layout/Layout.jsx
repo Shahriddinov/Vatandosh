@@ -8,8 +8,6 @@ import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/Registe
 import { useProjectsData } from "./hooks/useProjectsData";
 import { useSelector } from "react-redux";
 import Test from "../test/Test";
-import ExpertFooter from "../../pages/Portal/expert/components/ExpertFooter/ExpertFooter";
-import ExpertHeader from "../../pages/Portal/expert/components/ExpertHeader/ExpertHeader";
 
 const Layout = ({ children }) => {
   const { error } = useProjectsData();
@@ -17,7 +15,6 @@ const Layout = ({ children }) => {
   const { pathname } = useLocation();
 
   const registerHeader = pathname.split("/")[1];
-  const headerExpert = pathname.split("/");
 
   if (error || errorHashtag) {
     return (
@@ -30,9 +27,8 @@ const Layout = ({ children }) => {
 
   const FooterComponent = () => {
     if (registerHeader.includes("portal")) return null;
-    if (registerHeader.includes("portal-category")) return null;
+    else if (registerHeader.includes("portal-category")) return null;
     else if (registerHeader.includes("registration")) return <RegisterFooter />;
-    else if (registerHeader.includes("expert")) return <ExpertFooter />;
     else return <Footer />;
   };
 
