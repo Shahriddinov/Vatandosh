@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import ChatModal from "./components/PortalChatModal/ChatModal";
 
@@ -30,7 +29,7 @@ const HomePage = () => {
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
     { id: 9, label: t("participationProject"), url: "/" },
     { id: 10, label: t("electronCommunity"), url: "/" },
-    { id: 11, label: t("compatriotsValunteer"), url: "/" },
+    { id: 11, label: t("compatriotsValunteer"), url: "/vo" },
   ];
 
   const contactData = useSelector(
