@@ -200,6 +200,7 @@ const HomePage = () => {
                 direction={`${horizontal ? "horizontal" : "vertical"}`}
                 slidesPerView={3}
                 spaceBetween={horizontal ? 20 : 40}
+                loop={true}
                 grabCursor={true}
                 autoplay={{
                   delay: 2500,
