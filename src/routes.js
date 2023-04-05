@@ -131,22 +131,6 @@ const routes = [
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/expert/register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
-  {
-    path: "/expert",
-    element: ExpertCouncil,
-  },
-  {
-    path: "/expert/council/about",
-    element: AboutCouncil,
-  },
-  {
-    path: "/expert/employe",
-    element: ExpertEmploye,
-  },
-  { path: "/expert/contact", element: Contact },
-  { path: "/expert/profile", element: ExpertProfile },
-  { path: "/expert/offers", element: ExpertOffers },
-  { path: "/expert/offers/:id", element: ExpertOffersDetail },
 ];
 
 const RoutesContainer = () => (
@@ -176,6 +160,7 @@ const RoutesContainer = () => (
           >
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
+            <Route path="contact" element={<Contact />} />
           </Route>
 
           <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
