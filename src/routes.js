@@ -4,8 +4,6 @@ import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
-import VolunterLayout from "./pages/Portal/volunter/VolunterLayout";
-import VolunterProfile from "./pages/Portal/volunter/pages/VolunterProfile/VolunterProfile";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -77,6 +75,22 @@ const CommunityAssociationHome = lazy(() =>
 const CommunityAssociationAbout = lazy(() =>
   import(
     "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
+  )
+);
+
+const VolunterLayout = lazy(() =>
+  import("./pages/Portal/volunter/VolunterLayout")
+);
+
+const VolunterProfile = lazy(() =>
+  import("./pages/Portal/volunter/pages/VolunterProfile/VolunterProfile")
+);
+const VolunterRegister = lazy(() =>
+  import("./pages/Portal/volunter/pages/VolunterRegister/VolunterRegister")
+);
+const VolunterArticleDetail = lazy(() =>
+  import(
+    "./pages/Portal/volunter/pages/VolunterArticleDetail/VolunterArticleDetail"
   )
 );
 
@@ -156,6 +170,9 @@ const RoutesContainer = () => (
           <Route path="/portal-category/volunter" element={<VolunterLayout />}>
             <Route index element={<VolunterHome />} />
             <Route path="profile" element={<VolunterProfile />} />
+            <Route path="register" element={<VolunterRegister />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="article/:id" element={<VolunterArticleDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

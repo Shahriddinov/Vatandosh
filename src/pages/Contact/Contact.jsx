@@ -36,7 +36,9 @@ export default function Contact() {
 
   return (
     <>
-      {pathname.includes("expert") ? null : <Header />}
+      {pathname.includes("expert") || pathname.includes("volunter") ? null : (
+        <Header />
+      )}
       <div className="contact">
         <div className="container">
           <div className="contact-wrapper">
