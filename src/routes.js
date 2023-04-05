@@ -57,20 +57,6 @@ const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
   import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
 );
-const CommunityAssociationLayout = lazy(() =>
-  import("./pages/Portal/communityAssociation/communityAssociationLayout")
-);
-const CommunityAssociationHome = lazy(() =>
-  import(
-    "./pages/Portal/communityAssociation/pages/associationHome/AssociationHome"
-  )
-);
-const CommunityAssociationAbout = lazy(() =>
-  import(
-    "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
-  )
-);
-
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -123,6 +109,7 @@ const routes = [
   { path: "/expert/profile", element: ExpertProfile },
   { path: "/expert/offers", element: ExpertOffers },
   { path: "/expert/offers/:id", element: ExpertOffersDetail },
+  { path: "/volunter", element: VolunterHome },
 ];
 
 const RoutesContainer = () => (
