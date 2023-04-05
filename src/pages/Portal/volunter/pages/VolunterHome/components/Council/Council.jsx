@@ -1,4 +1,4 @@
-import { CouncilImage } from "../../../../../../../assets/images/expert";
+import { CouncilImage } from "../../../../../../../assets/images/volunter";
 import "./Council.scss";
 import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
