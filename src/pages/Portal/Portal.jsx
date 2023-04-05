@@ -31,7 +31,7 @@ const HomePage = () => {
     {
       id: 10,
       label: t("electronCommunity"),
-      url: "portal-category/community-association",
+      url: "/portal-category/community-association",
     },
     { id: 11, label: t("compatriotsValunteer"), url: "/volunter" },
   ];
