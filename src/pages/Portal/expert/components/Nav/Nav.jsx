@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 function Nav({ navData }) {
   const location = useLocation();
   const editClass = location.pathname.split("/");
-  console.log(editClass);
   return (
     <div className="nav">
       <div className="container">

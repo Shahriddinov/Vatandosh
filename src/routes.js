@@ -132,7 +132,7 @@ const routes = [
   { path: "/expert/profile", element: ExpertProfile },
   { path: "/expert/offers", element: ExpertOffers },
   { path: "/expert/offers/:id", element: ExpertOffersDetail },
-  { path: "/volunter", element: VolunterHome },
+  { path: "/portal-category/volunter", element: VolunterHome },
 ];
 
 const RoutesContainer = () => (
