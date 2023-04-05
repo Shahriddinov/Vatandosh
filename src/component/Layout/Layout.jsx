@@ -51,10 +51,6 @@ const Layout = ({ children }) => {
       >
         {registerHeader === "portal" && <HeaderPortal />}
         {registerHeader.includes("registration") && <RegisterHeader />}
-        {registerHeader.includes("expert") && headerExpert.length > 2 && (
-          <ExpertHeader />
-        )}
-
         <div className="page-content">{children}</div>
         <FooterComponent />
       </div>

@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
+import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterLayout from "./pages/Portal/volunter/VolunterLayout";
@@ -132,7 +133,6 @@ const routes = [
   { path: "/expert/profile", element: ExpertProfile },
   { path: "/expert/offers", element: ExpertOffers },
   { path: "/expert/offers/:id", element: ExpertOffersDetail },
-  { path: "/portal-category/volunter", element: VolunterHome },
 ];
 
 const RoutesContainer = () => (
@@ -146,6 +146,16 @@ const RoutesContainer = () => (
               <Route key={key} path={route.path} element={<RouteComponent />} />
             );
           })}
+          <Route path="/portal-category/expert" element={<ExpertLayout />}>
+            <Route index element={<ExpertCouncil />} />
+            <Route path="council-about" element={<AboutCouncil />} />
+            <Route path="employe" element={<ExpertEmploye />} />
+            <Route path="profile" element={<ExpertProfile />} />
+            <Route path="offers" element={<ExpertOffers />} />
+            <Route path="offers/:id" element={<ExpertOffersDetail />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+
           <Route
             path="/portal-category/community-association"
             element={<CommunityAssociationLayout />}
@@ -153,7 +163,8 @@ const RoutesContainer = () => (
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
           </Route>
-          <Route path="/portal-category/volunter" element={<VolunterLayout />}>
+
+          <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
             <Route index element={<VolunterHome />} />
             <Route path="profile" element={<VolunterProfile />} />
           </Route>

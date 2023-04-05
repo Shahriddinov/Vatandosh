@@ -30,7 +30,7 @@ const Navbar = ({ activeSidebar }) => {
   const navbarList = [
     { id: 1, label: t("uzLearning"), url: "/" },
     { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/expert" },
+    { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },
@@ -42,7 +42,11 @@ const Navbar = ({ activeSidebar }) => {
       label: t("electronCommunity"),
       url: "/portal-category/community-association",
     },
-    { id: 11, label: t("compatriotsValunteer"), url: "/" },
+    {
+      id: 11,
+      label: t("compatriotsValunteer"),
+      url: "/portal-category/volunteer",
+    },
   ];
 
   const changeLanguage = (lng) => {
