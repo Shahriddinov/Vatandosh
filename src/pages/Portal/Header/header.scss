@@ -1,14 +1,16 @@
 @import "../../../assets/style/global.scss";
 
 .header_navbar_left {
-  width: 181px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  color: #fff;
+  a {
+    width: 181px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
 
-  span {
-    line-height: 18px;
+    span {
+      line-height: 18px;
+    }
   }
 }
 
@@ -96,12 +98,16 @@
       align-items: center;
       gap: 18px;
 
+      & > a {
+        display: flex;
+        align-items: center;
+      }
+
       &_phone {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-left: auto;
-
 
         &_number {
           font-weight: 400;

@@ -381,6 +381,12 @@
   }
 
   .portal-body-bottom {
-    margin-top: 160px;
+    bottom: -30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .portal-body-bottom {
+    bottom: 20px;
   }
 }

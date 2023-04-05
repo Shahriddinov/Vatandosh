@@ -7,11 +7,13 @@ import HeaderPortal from "../../pages/Portal/Header/Header";
 import RegisterHeader from "../../pages/Registration/pages/Layout/Header/RegisterHeader";
 import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/RegisterFooter";
 import { useProjectsData } from "./hooks/useProjectsData";
+import { useSelector } from "react-redux";
 
 export const GrayContext = createContext();
 
 const Layout = (props) => {
   const { error } = useProjectsData();
+  const errorHashtag = useSelector((state) => state.tagSearchSlice.error);
   const { pathname } = useLocation();
   const { children } = props;
   const [text, setText] = useState("");
@@ -50,8 +52,13 @@ const Layout = (props) => {
     //eslint-disable-next-line
   }, [speaker]);
 
-  if (error) {
-    return <b>{error}</b>;
+  if (error || errorHashtag) {
+    return (
+      <b>
+        {error}
+        {errorHashtag}
+      </b>
+    );
   }
 
   return (
