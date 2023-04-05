@@ -29,7 +29,7 @@ const HomePage = () => {
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
     { id: 9, label: t("participationProject"), url: "/" },
     { id: 10, label: t("electronCommunity"), url: "/" },
-    { id: 11, label: t("compatriotsValunteer"), url: "/volunter" },
+    { id: 11, label: t("compatriotsValunteer"), url: "/vo" },
   ];
 
   const contactData = useSelector(
@@ -199,6 +199,7 @@ const HomePage = () => {
                 direction={`${horizontal ? "horizontal" : "vertical"}`}
                 slidesPerView={3}
                 spaceBetween={horizontal ? 20 : 40}
+                loop={true}
                 grabCursor={true}
                 autoplay={{
                   delay: 2500,

@@ -57,9 +57,6 @@ const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
   import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
 );
-const VolunterHome = lazy(() =>
-  import("./pages/Portal/volunter/pages/VolunterHome/VolunterHome")
-);
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -126,6 +123,13 @@ const RoutesContainer = () => (
               <Route key={key} path={route.path} element={<RouteComponent />} />
             );
           })}
+          <Route
+            path="/portal-category/community-association"
+            element={<CommunityAssociationLayout />}
+          >
+            <Route index element={<CommunityAssociationHome />} />
+            <Route path="about" element={<CommunityAssociationAbout />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

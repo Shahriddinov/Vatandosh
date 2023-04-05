@@ -30,6 +30,7 @@ const Layout = ({ children }) => {
 
   const FooterComponent = () => {
     if (registerHeader.includes("portal")) return null;
+    if (registerHeader.includes("portal-category")) return null;
     else if (registerHeader.includes("registration")) return <RegisterFooter />;
     else if (registerHeader.includes("expert")) return <ExpertFooter />;
     else return <Footer />;
@@ -48,7 +49,7 @@ const Layout = ({ children }) => {
             : ""
         }
       >
-        {pathname.includes("portal") && <HeaderPortal />}
+        {registerHeader === "portal" && <HeaderPortal />}
         {registerHeader.includes("registration") && <RegisterHeader />}
         {registerHeader.includes("expert") && headerExpert.length > 2 && (
           <ExpertHeader />
