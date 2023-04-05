@@ -64,7 +64,7 @@ const VolunterHome = lazy(() =>
 );
 
 const CommunityAssociationLayout = lazy(() =>
-  import("./pages/Portal/communityAssociation/communityAssociationLayout")
+  import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
 );
 
 const CommunityAssociationHome = lazy(() =>
@@ -129,7 +129,6 @@ const routes = [
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
-  { path: "/expert/register", element: ExpertRegister },
   { path: "/hashtag/:tag", element: Hashtag },
 ];
 

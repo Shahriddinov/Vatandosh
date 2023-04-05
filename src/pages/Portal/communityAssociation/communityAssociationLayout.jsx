@@ -3,7 +3,7 @@ import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
 import { Outlet, useLocation } from "react-router-dom";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 
-const communityAssociationLayout = () => {
+const CommunityAssociationLayout = () => {
   const location = useLocation();
   const editClass = location.pathname.split("/");
 
@@ -37,4 +37,4 @@ const communityAssociationLayout = () => {
   );
 };
 
-export default communityAssociationLayout;
+export default CommunityAssociationLayout;
