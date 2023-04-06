@@ -99,6 +99,9 @@ const VolunterActivityDetail = lazy(() =>
     "./pages/Portal/volunter/pages/VolunterActivityDetail/VolunterActivityDetail"
   )
 );
+const VolunterActivity = lazy(() =>
+  import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -174,6 +177,7 @@ const RoutesContainer = () => (
             <Route path="register" element={<VolunterRegister />} />
             <Route path="contact" element={<Contact />} />
             <Route path="article/:id" element={<VolunterArticleDetail />} />
+            <Route path="activity" element={<VolunterActivity />} />
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />

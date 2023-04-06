@@ -8,6 +8,7 @@ import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
+import { baseServerUrl } from "../../services/api/utils";
 
 export default function Detail(data) {
   const lan = useSelector((state) => state.language.language);
@@ -39,10 +40,7 @@ export default function Detail(data) {
           <div className="newsdetail-main">
             <div className="newsdetail-main-desc">
               <div className="newsdetail-main-desc-img">
-                <img
-                  src={`https://vatanparvarbackend.napaautomotive.uz/storage/${data?.image}`}
-                  alt=""
-                />
+                <img src={`${baseServerUrl}/${data?.image}`} alt="" />
               </div>
               <div className="newsdetail-main-desc-action">
                 <div className="newsdetail-main-desc-action-date-viewers">
@@ -71,7 +69,7 @@ export default function Detail(data) {
                 ? JSON.parse(data?.images).length > 2 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
-                        src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                        src={`${baseServerUrl}/${
                           galleryMainImg
                             ? galleryMainImg
                             : JSON.parse(data?.images)[0]
@@ -85,7 +83,7 @@ export default function Detail(data) {
                             return (
                               <li key={index}>
                                 <img
-                                  src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el}`}
+                                  src={`${baseServerUrl}/${el}`}
                                   alt="error"
                                   className="newsdetail-main-desc-gallery-list-item"
                                   onClick={() => setgalleryMainImg(el)}

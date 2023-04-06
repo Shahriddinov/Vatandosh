@@ -1,0 +1,15 @@
+@import "../../../../../assets/style/global.scss";
+
+.volunteractivity {
+  padding-bottom: 80px;
+  &-cardlist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    &-title {
+      margin: 100px 0 30px;
+      @include fontStyles(700, 32px, 39px, $colorTitle);
+    }
+  }
+}
