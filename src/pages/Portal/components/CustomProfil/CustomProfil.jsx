@@ -10,7 +10,6 @@ import { Link, useLocation } from "react-router-dom";
 export default function CustomProfil() {
   const { pathname } = useLocation();
 
-  console.log(pathname);
   return (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
@@ -224,7 +223,9 @@ export default function CustomProfil() {
                       software like Aldus PageMaker
                     </p>
                     <button className="customprofil-list-offer-info-desc-btn">
-                      <Link to={"#"}>Batafsil</Link>
+                      <Link to={"/portal-category/expert/offers/1"}>
+                        Batafsil
+                      </Link>
                     </button>
                   </div>
                 </div>
@@ -290,7 +291,9 @@ export default function CustomProfil() {
                           software like Aldus PageMaker
                         </p>
                         <button className="customprofil-list-offer-info-desc-btn">
-                          <Link to={"#"}>Batafsil</Link>
+                          <Link to={"/portal-category/volunteer/article/2"}>
+                            Batafsil
+                          </Link>
                         </button>
                       </div>
                     </div>

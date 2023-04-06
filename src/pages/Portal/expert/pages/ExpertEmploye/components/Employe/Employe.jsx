@@ -63,7 +63,10 @@ function Employe() {
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
-              <Link className="employe-link" to="/expert">
+              <Link
+                className="employe-link"
+                to="/portal-category/expert/profile/1"
+              >
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>

@@ -64,7 +64,7 @@ const VolunterHome = lazy(() =>
 );
 
 const CommunityAssociationLayout = lazy(() =>
-  import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
+  import("./pages/Portal/communityAssociation/communityAssociationLayout")
 );
 
 const CommunityAssociationHome = lazy(() =>
@@ -92,6 +92,11 @@ const VolunterRegister = lazy(() =>
 const VolunterArticleDetail = lazy(() =>
   import(
     "./pages/Portal/volunter/pages/VolunterArticleDetail/VolunterArticleDetail"
+  )
+);
+const VolunterActivityDetail = lazy(() =>
+  import(
+    "./pages/Portal/volunter/pages/VolunterActivityDetail/VolunterActivityDetail"
   )
 );
 
@@ -147,7 +152,8 @@ const RoutesContainer = () => (
             <Route index element={<ExpertCouncil />} />
             <Route path="council-about" element={<AboutCouncil />} />
             <Route path="employe" element={<ExpertEmploye />} />
-            <Route path="profile" element={<ExpertProfile />} />
+            <Route path="profile/:id" element={<ExpertProfile />} />
+            <Route path="register" element={<ExpertRegister />} />
             <Route path="offers" element={<ExpertOffers />} />
             <Route path="offers/:id" element={<ExpertOffersDetail />} />
             <Route path="contact" element={<Contact />} />
@@ -168,6 +174,7 @@ const RoutesContainer = () => (
             <Route path="register" element={<VolunterRegister />} />
             <Route path="contact" element={<Contact />} />
             <Route path="article/:id" element={<VolunterArticleDetail />} />
+            <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
