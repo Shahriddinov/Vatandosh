@@ -21,7 +21,7 @@ function Council() {
             remaining essentially unchanged. It was popularised...
           </p>
           <div>
-            <Link to="/expert/council/about">Batafsil</Link>
+            <Link to="/portal-category/expert/council-about">Batafsil</Link>
           </div>
         </div>
         <CouncilStatics />

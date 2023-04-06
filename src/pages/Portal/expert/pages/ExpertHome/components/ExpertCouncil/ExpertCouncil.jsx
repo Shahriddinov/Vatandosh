@@ -19,7 +19,10 @@ function Expert() {
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
-              <Link className="employe-link" to="/expert/employe">
+              <Link
+                className="employe-link"
+                to="/portal-category/expert/profile/12"
+              >
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
@@ -27,7 +30,7 @@ function Expert() {
           ))}
         </div>
         <div className="expert-item">
-          <Link to="/expert/employe" className="expert-link">
+          <Link to="/portal-category/expert/employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
             Barcha olim va ekspertlar
           </Link>
