@@ -14,7 +14,7 @@ import i18next from "i18next";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
 
-function Navbar() {
+function Navbar({ navbarUrl }) {
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div className="navbarpage">
       <div className="container">
-        <Link to="/expert">
+        <Link to={navbarUrl?.home}>
           <div className="navbar-list">
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
@@ -105,7 +105,7 @@ function Navbar() {
             </div>
           </div>
           <Link
-            to={"/expert/register"}
+            to={navbarUrl?.register}
             className={
               editClass.length <= 3 ? `navbar-button` : `navbar--button`
             }

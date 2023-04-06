@@ -25,12 +25,17 @@ const ExpertLayout = () => {
       label: "Bog‘lanish",
     },
   ];
+
+  const navbarUrl = {
+    home: "/portal-category/expert",
+    register: "/portal-category/expert/register",
+  };
   return (
     <>
       {editClass.length > 3 && editClass[3] && (
-        <ExpertHeader navData={navData} />
+        <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData }} />
+      <Outlet context={{ navData, navbarUrl }} />
       <ExpertFooter navData={navData} />
     </>
   );

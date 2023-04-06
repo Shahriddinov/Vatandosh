@@ -24,7 +24,6 @@ const Layout = ({ children }) => {
       </b>
     );
   }
-
   const FooterComponent = () => {
     if (registerHeader.includes("portal")) return null;
     else if (registerHeader.includes("portal-category")) return null;
