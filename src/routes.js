@@ -5,6 +5,7 @@ import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
+import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -165,8 +166,7 @@ const RoutesContainer = () => (
 
           <Route
             path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}
-          >
+            element={<CommunityAssociationLayout />}>
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
             <Route path="contact" element={<Contact />} />
