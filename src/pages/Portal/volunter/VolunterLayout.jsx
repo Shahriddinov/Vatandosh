@@ -11,7 +11,7 @@ export default function VolunterLayout() {
     { id: 1, url: "/portal-category/volunteer", label: "Asosiy" },
     {
       id: 2,
-      url: "/portal-category/volunteer/Volunteers",
+      url: "/portal-category/volunteer/volunteers",
       label: "Volontyorlar",
     },
     {
@@ -25,12 +25,18 @@ export default function VolunterLayout() {
       label: "Bog‘lanish",
     },
   ];
+
+  const navbarUrl = {
+    home: "/portal-category/volunteer",
+    register: "/portal-category/volunteer/register",
+  };
+
   return (
     <>
       {editClass.length > 3 && editClass[3] && (
-        <ExpertHeader navData={navData} />
+        <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData }} />
+      <Outlet context={{ navData, navbarUrl }} />
       <ExpertFooter navData={navData} />
     </>
   );

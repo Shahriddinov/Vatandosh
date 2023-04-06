@@ -50,7 +50,7 @@ function CouncilStatics() {
           <img src={Globe} />
         </span>
         {data.map((data) => (
-          <span className="council-span">
+          <span className="council-span" key={data.id}>
             <h5>{data.country}</h5>
             <p>{data.number}</p>
           </span>

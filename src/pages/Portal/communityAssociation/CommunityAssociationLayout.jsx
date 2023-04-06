@@ -26,12 +26,16 @@ const CommunityAssociationLayout = () => {
     },
   ];
 
+  const navbarUrl = {
+    home: "/portal-category/community-association",
+    register: "/portal-category/community-association/register",
+  };
   return (
     <>
       {editClass.length > 3 && editClass[3] && (
-        <ExpertHeader navData={navData} />
+        <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData }} />
+      <Outlet context={{ navData, navbarUrl }} />
       <ExpertFooter navData={navData} />
     </>
   );

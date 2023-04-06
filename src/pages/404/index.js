@@ -5,7 +5,6 @@ import znakLeft from "../../assets/images/znak-left.png";
 import "./style.scss";
 import Header from "../../component/Layout/Header/Header";
 import Footer from "../../component/Layout/Footer/Footer";
-import ExpertHeader from "../Portal/expert/components/ExpertHeader/ExpertHeader";
 
 const NotFound = () => {
   const { pathname } = useLocation();
@@ -13,9 +12,7 @@ const NotFound = () => {
   const registerHeader = pathname.split("/")[1];
 
   const HeaderComponent = () => {
-    if (registerHeader.includes("expert") && pathname.split("/").length <= 2)
-      return <ExpertHeader />;
-    else if (
+    if (
       !registerHeader.includes("registration") &&
       !registerHeader.includes("portal") &&
       !registerHeader.includes("expert")
@@ -44,7 +41,7 @@ const NotFound = () => {
           </Link>
         </div>
       </div>
-      {registerHeader.includes("portal") && <Footer />}
+      {registerHeader[0] === "portal" && <Footer />}
     </>
   );
 };

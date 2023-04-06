@@ -153,10 +153,11 @@ const RoutesContainer = () => (
             <Route path="council-about" element={<AboutCouncil />} />
             <Route path="employe" element={<ExpertEmploye />} />
             <Route path="profile/:id" element={<ExpertProfile />} />
-            <Route path="register" element={<ExpertRegister />} />
             <Route path="offers" element={<ExpertOffers />} />
             <Route path="offers/:id" element={<ExpertOffersDetail />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="register" element={<ExpertRegister />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           <Route
@@ -166,6 +167,7 @@ const RoutesContainer = () => (
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
@@ -174,7 +176,6 @@ const RoutesContainer = () => (
             <Route path="register" element={<VolunterRegister />} />
             <Route path="contact" element={<Contact />} />
             <Route path="article/:id" element={<VolunterArticleDetail />} />
-            <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

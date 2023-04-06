@@ -9,7 +9,7 @@ function Nav({ navData }) {
       <div className="container">
         <ul>
           {navData?.map((navItem) => (
-            <li>
+            <li key={navItem.id}>
               <Link
                 to={navItem.url}
                 className={editClass.length <= 3 ? `nav-link` : `nav--link`}

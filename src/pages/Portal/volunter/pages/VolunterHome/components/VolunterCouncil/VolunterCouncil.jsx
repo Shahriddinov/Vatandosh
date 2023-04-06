@@ -13,7 +13,7 @@ function Volunter() {
         <h2>Ekspertlar kengashi</h2>
         <div className="expert-list">
           {data.map((evt) => (
-            <div>
+            <div key={evt.id}>
               <img src={evt.images} alt="error" />
               <p>{evt.country}</p>
               <h3>{evt.name}</h3>

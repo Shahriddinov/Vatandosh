@@ -47,7 +47,7 @@ const ExpertFooter = ({ navData }) => {
           <div className="expertfooter-page">
             <ul>
               {navData?.map((navItem) => (
-                <li>
+                <li key={navItem.id}>
                   <Link to={navItem.url}>{navItem.label}</Link>
                 </li>
               ))}

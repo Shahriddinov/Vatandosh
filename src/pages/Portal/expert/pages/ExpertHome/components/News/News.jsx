@@ -26,7 +26,7 @@ function News() {
           </div>
           <div className="expertnews-right">
             {news.map((news) => (
-              <div className="expertnews-list">
+              <div className="expertnews-list" key={news.id}>
                 <img src={news.images} alt={news.title} />
                 <div>
                   <h5>{news.title}</h5>
