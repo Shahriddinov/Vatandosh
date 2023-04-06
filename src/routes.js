@@ -5,6 +5,7 @@ import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
+import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -181,6 +182,8 @@ const RoutesContainer = () => (
             <Route index element={<VolunterHome />} />
             <Route path="profile" element={<VolunterProfile />} />
             <Route path="register" element={<VolunterRegister />} />
+            <Route path="volunter-employe" element={<VolunterAbout />} />
+            <Route path="council-about" element={<VolunterCouncilAbout />} />
             <Route path="contact" element={<Contact />} />
             <Route path="article/:id" element={<VolunterArticleDetail />} />
             <Route path="activity" element={<VolunterActivity />} />

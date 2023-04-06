@@ -1,85 +1,78 @@
-import {
-  CopyIcon,
-  FacebookIcon,
-  TwitterIcon,
-  TelegramIcon,
-  InstagramIcon,
-} from "../../../../../assets/images/expert";
-import { CouncilImage } from "../../../../../assets/images/volunter";
-import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
+import React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import "./VolunterAbout.scss";
+import { Link } from "react-router-dom";
+import { ArrowIcon } from "../../../../../assets/images/expert";
+import { data } from "../VolunterHome/data";
 
 function VolunterAbout() {
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   return (
-    <div className="about">
+    <div className="employe">
       <div className="container">
-        <div className="about-top">
-          <h3>Kengashi haqida</h3>
-          <span>
-            <a href="#">Asosiy</a>
-            <p>Batafsil</p>
-          </span>
-        </div>
-        <div className="about-page">
-          <div className="about-left">
-            <img src={CouncilImage} />
-            <h3 className="about-title">
-              “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi
-            </h3>
-            <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised...
-            </p>
-            <img src={CouncilImage} />
-            <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
-            <ul className="about-list">
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={CopyIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={FacebookIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={TwitterIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={TelegramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={InstagramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-            </ul>
+        <div className="employe-list">
+          <h3>Ekspertlar kengashi</h3>
+          <div className="employe-item">
+            <FormControl sx={{ m: 3, minWidth: 270 }}>
+              <InputLabel id="demo-simple-select-helper-label">
+                Barcha mutaxassislar
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={age}
+                label="Barcha mutaxassislar"
+                onChange={handleChange}>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 3, minWidth: 270 }}>
+              <InputLabel id="demo-simple-select-helper-label">
+                Barcha davlatlar
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={age}
+                label="Barcha davlatlar"
+                onChange={handleChange}>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
           </div>
-          <CouncilStatics />
+        </div>
+        <div className="employe-page">
+          {data.map((evt) => (
+            <div>
+              <img src={evt.images} />
+              <p>{evt.country}</p>
+              <h3>{evt.name}</h3>
+              <h4>{evt.job}</h4>
+              <h4>{evt.location}</h4>
+              <Link
+                className="employe-link"
+                to="/portal-category/expert/profile/1">
+                <span>Batafsil</span>
+                <img src={ArrowIcon} alt="Arrow Icon" />
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
+
 export default VolunterAbout;
