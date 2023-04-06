@@ -64,7 +64,7 @@ const VolunterHome = lazy(() =>
 );
 
 const CommunityAssociationLayout = lazy(() =>
-  import("./pages/Portal/communityAssociation/communityAssociationLayout")
+  import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
 );
 
 const CommunityAssociationHome = lazy(() =>
