@@ -79,6 +79,10 @@ const CommunityAssociationAbout = lazy(() =>
   )
 );
 
+const CommunityAssociationCountry = lazy(() =>
+  import("./pages/Portal/communityAssociation/pages/country/Country")
+);
+
 const VolunterLayout = lazy(() =>
   import("./pages/Portal/volunter/VolunterLayout")
 );
