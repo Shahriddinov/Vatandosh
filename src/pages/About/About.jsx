@@ -1,41 +1,32 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./About.scss";
-import CardImg from "../../assets/images/about-Card.svg";
-import Rais from "../../assets/images/Rais.svg";
-import Urinbosar from "../../assets/images/Substitute.jpg";
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
-
 import Table from "./component/Table/Table";
 import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Header from "../../component/Layout/Header/Header";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
-import Gallery2 from "../../assets/images/projects/gallery2.png";
-import Gallery3 from "../../assets/images/projects/gallery3.png";
-import Gallery4 from "../../assets/images/projects/gallery4.png";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import Spinner from "../../component/Spinner";
 import { baseServerUrl } from "../../services/api/utils";
 import Aos from "aos";
-
 import Gallery from '../Projects/gallery'
+import {getAbout} from "../../reduxToolkit/About/About";
+
+
 
 const About = () => {
   const state = useLocation();
   const dispatch = useDispatch();
+  const lan = useSelector((state) => state.language.language);
 
-  const sliderData = useSelector((state) => state.sliderSlice.sliderData);
   const loading = useSelector((state) => state.sliderSlice.loading);
-
+  const aboutData = useSelector((state)=>state.aboutSlice.aboutData);
   const { t } = useTranslation();
   const heroData = {
     title: `${t("aboutPage.section1.htext")}`,
@@ -72,12 +63,14 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getSlider());
+    dispatch(getAbout());
   }, []);
 
   if (loading) {
     return <Spinner />;
   }
+
+
 
   return (
     <div className="about ">
@@ -91,7 +84,7 @@ const About = () => {
             <img
               className="about_card_left_much_img"
               data-aos="fade-up"
-              src={CardImg}
+              src={`${baseServerUrl}/${aboutData.image}`}
               alt="cardImg"
             />
           </div>
@@ -128,8 +121,7 @@ const About = () => {
         <div>
           <video autoPlay muted loop className="about_videos_links">
             <source
-              src={`${baseServerUrl}/${
-                JSON.parse(sliderData?.[1]?.video)[0].download_link
+              src={`${baseServerUrl}/${JSON.parse(aboutData?.videofile)[0].download_link
               }`}
             />
           </video>
@@ -142,11 +134,21 @@ const About = () => {
         data-aos-duration="1000"
       >
         <div className="about_direction_fon">
-          {t("aboutPage.section3-1.htext1")}
+          <p
+
+              dangerouslySetInnerHTML={{
+                __html: aboutData[`history_${lan}`],
+              }}
+          />
         </div>
         <div className="about_direction_cards">
           <p className="about_direction_cards_information">
-            {t("aboutPage.section3-1.ptext1")}
+            <p
+
+                dangerouslySetInnerHTML={{
+                  __html: aboutData[`text_${lan}`],
+                }}
+            />
           </p>
         </div>
       </div>
