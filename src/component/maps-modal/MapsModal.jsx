@@ -1,5 +1,4 @@
 import React from "react";
-import flag from "../../assets/images/home/flag.svg";
 import "./maps-modal.scss";
 import { useSelector } from "react-redux";
 import Spinner from "../Spinner/Spinner";
