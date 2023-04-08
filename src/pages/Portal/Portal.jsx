@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import ChatModal from "./components/PortalChatModal/ChatModal";
+import Spinner from "../../component/Spinner/Spinner";
 
 import "./portal.scss";
 
@@ -40,9 +41,8 @@ const HomePage = () => {
     },
   ];
 
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
+  const loading = useSelector((state) => state.contactSlice.loading);
 
   useEffect(() => {
     dispatch(getContact());
@@ -55,6 +55,10 @@ const HomePage = () => {
       }
     });
   }, []);
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
 
   return (
     <div className="portal">
@@ -99,7 +103,7 @@ const HomePage = () => {
               >
                 <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
               </svg>
-              <a href={contactData?.instagram}>
+              <Link to={contactData?.instagram}>
                 <svg
                   width="17"
                   height="17"
@@ -114,8 +118,8 @@ const HomePage = () => {
                     fill="white"
                   />
                 </svg>
-              </a>
-              <a href={contactData?.twitter}>
+              </Link>
+              <Link to={contactData?.twitter}>
                 <svg
                   width="18"
                   height="15"
@@ -130,8 +134,8 @@ const HomePage = () => {
                     fill="white"
                   />
                 </svg>
-              </a>
-              <a href={contactData?.facebook}>
+              </Link>
+              <Link to={contactData?.facebook}>
                 <svg
                   width="10"
                   height="18"
@@ -146,7 +150,7 @@ const HomePage = () => {
                     fill="white"
                   />
                 </svg>
-              </a>
+              </Link>
               <svg
                 width="8"
                 height="8"
