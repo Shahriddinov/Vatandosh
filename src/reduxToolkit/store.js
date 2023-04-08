@@ -15,7 +15,8 @@ import mediatekaSlice from "./mediatekaSlice";
 import singleSlice from "./singleSlice";
 import tagSearchSlice from "./tagSearchSlice/tagSearchSlice";
 import directionSlice from "./Direction"
-import aboutSlice from "./About"
+import aboutSlice from "./About";
+import managementSlice from "./ManagementSlice"
 const store = configureStore({
   reducer: {
     newsSlice,
@@ -33,7 +34,8 @@ const store = configureStore({
     mediatekaSlice,
     informationServicesSlice,
     tagSearchSlice,
-    aboutSlice
+    aboutSlice,
+    managementSlice
   },
 });
 
