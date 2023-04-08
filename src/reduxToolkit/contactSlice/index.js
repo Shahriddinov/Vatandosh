@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getContact, sendContact } from "./extraReducer";
 
 const initialState = {
-  loading: false,
+  loading: true,
   contactData: {},
   sendData: null,
   error: null,
