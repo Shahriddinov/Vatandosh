@@ -14,7 +14,7 @@ function VolunterCouncilAbout() {
     <div className="about">
       <div className="container">
         <div className="about-top">
-          <h3>Kengashi haqida</h3>
+          <h3>Volontyorlar haqida</h3>
           <span>
             <a href="#">Asosiy</a>
             <p>Batafsil</p>
@@ -24,7 +24,7 @@ function VolunterCouncilAbout() {
           <div className="about-left">
             <img src={CouncilImage} />
             <h3 className="about-title">
-              “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi
+              “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro Volontyorlar
             </h3>
             <p className="about-text">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -55,22 +55,22 @@ function VolunterCouncilAbout() {
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://www.facebook.com/" className="about-link">
                   <img src={FacebookIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://twitter.com/" className="about-link">
                   <img src={TwitterIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://web.telegram.org/k/" className="about-link">
                   <img src={TelegramIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://www.instagram.com/" className="about-link">
                   <img src={InstagramIcon} alt="" className="about-icon" />
                 </a>
               </li>

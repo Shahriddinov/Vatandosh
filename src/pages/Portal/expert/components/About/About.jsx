@@ -55,22 +55,22 @@ function About() {
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://www.facebook.com/" className="about-link">
                   <img src={FacebookIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://twitter.com/" className="about-link">
                   <img src={TwitterIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://web.telegram.org/k/" className="about-link">
                   <img src={TelegramIcon} alt="" className="about-icon" />
                 </a>
               </li>
               <li className="about-item">
-                <a href="#" className="about-link">
+                <a href="https://www.instagram.com/" className="about-link">
                   <img src={InstagramIcon} alt="" className="about-icon" />
                 </a>
               </li>

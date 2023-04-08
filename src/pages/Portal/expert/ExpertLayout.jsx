@@ -27,9 +27,10 @@ const ExpertLayout = () => {
   ];
 
   const navbarUrl = {
-    home: "/portal-category/expert",
+    home: "/portal",
     register: "/portal-category/expert/register",
   };
+  
   return (
     <>
       {editClass.length > 3 && editClass[3] && (

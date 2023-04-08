@@ -11,12 +11,12 @@ export default function VolunterLayout() {
     { id: 1, url: "/portal-category/volunteer", label: "Asosiy" },
     {
       id: 2,
-      url: "/portal-category/volunteer/volunteers",
+      url: "/portal-category/volunteer/volunter-employe",
       label: "Volontyorlar",
     },
     {
       id: 3,
-      url: "/portal-category/volunteer/activities-volunteers",
+      url: "/portal-category/volunteer/council-about",
       label: "Volontyorlarni faoliyati",
     },
     {
@@ -27,7 +27,7 @@ export default function VolunterLayout() {
   ];
 
   const navbarUrl = {
-    home: "/portal-category/volunteer",
+    home: "/portal",
     register: "/portal-category/volunteer/register",
   };
 
