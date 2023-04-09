@@ -1,0 +1,38 @@
+.page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: #10131b;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    display: inline-block;
+    margin: 0 8px;
+  }
+
+  &__breadcrumb_item {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+  }
+
+  &__breadcrumb_link {
+    display: inline-block;
+    color: #5d6b8a;
+  }
+
+  &__breadcrumb_item_active {
+    color: #065ea9;
+  }
+}

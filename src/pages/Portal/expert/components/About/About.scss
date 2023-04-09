@@ -14,13 +14,17 @@
     span {
       display: flex;
       align-items: center;
+
+      img {
+        display: inline-block;
+        margin: 0 8px;
+      }
     }
     a {
       font-weight: 700;
       font-size: 14px;
       line-height: 17px;
       color: #5d6b8a;
-      margin: 0 10px;
     }
     p {
       font-weight: 700;

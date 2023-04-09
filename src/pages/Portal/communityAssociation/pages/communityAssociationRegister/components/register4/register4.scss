@@ -1,0 +1,21 @@
+.community-association-register4 {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__input_box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 810px) {
+  .community-association-register4 {
+    &__input_box {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
