@@ -14,14 +14,14 @@ const AssociationHome = () => {
   const headerData = {
     title: "“Vatandoshlar” Jamoat birlashmalari",
     subTitle: "Vatandosh jamoat birlashmalaring elektron platformasi",
-    link: "/portal-category/community-association/register",
+    link: "/portal-category/community-association/application#1",
   };
   const councilData = {
     title:
       "Xorijda istiqomat qilayotgan vatandoshlar tomonidan tashkil  etilgan jamoat birlashmalari",
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised...",
     image: heroImg,
-    pathUrl: "/portal-category/community-association/council-about",
+    pathUrl: "/portal-category/community-association/about",
   };
   return (
     <>

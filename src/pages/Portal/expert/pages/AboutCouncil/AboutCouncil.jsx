@@ -1,9 +1,10 @@
 import About from "../../components/About/About";
+import { aboutData } from "./data";
 
 function AboutCouncil() {
   return (
     <div>
-      <About />
+      <About aboutData={aboutData} />
     </div>
   );
 }

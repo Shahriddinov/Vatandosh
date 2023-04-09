@@ -85,6 +85,12 @@ const CommunityAssociationCountry = lazy(() =>
   import("./pages/Portal/communityAssociation/pages/country/Country")
 );
 
+const CommunityAssociationRegister = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityAssociationRegister/CommunityAssociationRegister"
+  )
+);
+
 const VolunterLayout = lazy(() =>
   import("./pages/Portal/volunter/VolunterLayout")
 );
@@ -160,7 +166,7 @@ const RoutesContainer = () => (
           <Route path="/portal-category/expert" element={<ExpertLayout />}>
             <Route index element={<ExpertCouncil />} />
             <Route path="council-about" element={<AboutCouncil />} />
-            <Route path="employe" element={<ExpertEmploye />} />
+            <Route path="expert-council" element={<ExpertEmploye />} />
             <Route path="profile/:id" element={<ExpertProfile />} />
             <Route path="offers" element={<ExpertOffers />} />
             <Route path="offers/:id" element={<ExpertOffersDetail />} />
@@ -174,6 +180,14 @@ const RoutesContainer = () => (
             element={<CommunityAssociationLayout />}>
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
+            <Route
+              path="country/:country"
+              element={<CommunityAssociationCountry />}
+            />
+            <Route
+              path="application"
+              element={<CommunityAssociationRegister />}
+            />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
