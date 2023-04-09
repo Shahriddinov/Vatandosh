@@ -11,7 +11,7 @@ const ExpertLayout = () => {
     { id: 1, url: "/portal-category/expert", label: "Asosiy" },
     {
       id: 2,
-      url: "/portal-category/expert/council-about",
+      url: "/portal-category/expert/expert-council",
       label: "Ekspertlar kengashi",
     },
     {

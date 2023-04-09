@@ -28,7 +28,7 @@ const CommunityAssociationLayout = () => {
 
   const navbarUrl = {
     home: "/portal-category/community-association",
-    register: "/portal-category/community-association/register",
+    register: "/portal-category/community-association/application#1",
   };
   return (
     <>
