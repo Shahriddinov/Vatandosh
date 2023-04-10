@@ -8,7 +8,7 @@ import Navbar from "../../../expert/components/Navbar/Navbar";
 import backImg from "../../../../../assets/images/volunter/volunter.png";
 import heroImg from "../../../../../assets/images/volunter/image.png";
 import Header from "../../../expert/components/Header/Header";
-import Council from "../../../expert/pages/ExpertHome/components/Council/Council";
+import Council from "./components/Council/Council";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -24,6 +24,7 @@ function VolunterHome() {
     image: heroImg,
     pathUrl: "/portal-category/volunteer/council-about",
   };
+
   return (
     <>
       <div

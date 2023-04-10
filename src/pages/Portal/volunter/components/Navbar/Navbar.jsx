@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div className="navbarpage">
       <div className="container">
-        <Link to="/portal-category/volunter">
+        <Link to="/portal">
           <div className="navbar-list">
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4

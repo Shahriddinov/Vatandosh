@@ -8,7 +8,7 @@ import {
 } from "../../reduxToolkit/mapSlice/mapAsyncThunk";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import CommunityAssociationMapModal from "../../pages/Portal/communityAssociation/components/CommunityAssociationMapModal/CommunityAssociationMapModal";
+import { CommunityAssociationMapModal } from "../../pages/Portal/communityAssociation/components";
 
 const MapsHome = () => {
   const [active, setActive] = useState(false);

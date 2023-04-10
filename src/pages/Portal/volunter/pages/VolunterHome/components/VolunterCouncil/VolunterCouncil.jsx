@@ -19,7 +19,7 @@ function Volunter() {
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
-              <Link className="employe-link" to="/expert/employe">
+              <Link className="employe-link" to="profile">
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
@@ -27,7 +27,7 @@ function Volunter() {
           ))}
         </div>
         <div className="expert-item">
-          <Link to="/expert/employe" className="expert-link">
+          <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
             Barcha olim va ekspertlar
           </Link>

@@ -5,6 +5,8 @@ import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
+import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
+import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -79,14 +81,14 @@ const CommunityAssociationAbout = lazy(() =>
   )
 );
 
-const CommunityAssociations = lazy(() =>
-  import(
-    "./pages/Portal/communityAssociation/pages/associations/Associations"
-  )
-);
-
 const CommunityAssociationCountry = lazy(() =>
   import("./pages/Portal/communityAssociation/pages/country/Country")
+);
+
+const CommunityAssociationRegister = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityAssociationRegister/CommunityAssociationRegister"
+  )
 );
 
 const VolunterLayout = lazy(() =>
@@ -164,7 +166,7 @@ const RoutesContainer = () => (
           <Route path="/portal-category/expert" element={<ExpertLayout />}>
             <Route index element={<ExpertCouncil />} />
             <Route path="council-about" element={<AboutCouncil />} />
-            <Route path="employe" element={<ExpertEmploye />} />
+            <Route path="expert-council" element={<ExpertEmploye />} />
             <Route path="profile/:id" element={<ExpertProfile />} />
             <Route path="offers" element={<ExpertOffers />} />
             <Route path="offers/:id" element={<ExpertOffersDetail />} />
@@ -175,10 +177,17 @@ const RoutesContainer = () => (
 
           <Route
             path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}
-          >
+            element={<CommunityAssociationLayout />}>
             <Route index element={<CommunityAssociationHome />} />
-            <Route path="about" element={<CommunityAssociations />} />
+            <Route path="about" element={<CommunityAssociationAbout />} />
+            <Route
+              path="country/:country"
+              element={<CommunityAssociationCountry />}
+            />
+            <Route
+              path="application"
+              element={<CommunityAssociationRegister />}
+            />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
@@ -187,6 +196,8 @@ const RoutesContainer = () => (
             <Route index element={<VolunterHome />} />
             <Route path="profile" element={<VolunterProfile />} />
             <Route path="register" element={<VolunterRegister />} />
+            <Route path="volunter-employe" element={<VolunterAbout />} />
+            <Route path="council-about" element={<VolunterCouncilAbout />} />
             <Route path="contact" element={<Contact />} />
             <Route path="article/:id" element={<VolunterArticleDetail />} />
             <Route path="activity" element={<VolunterActivity />} />

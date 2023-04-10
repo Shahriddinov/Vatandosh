@@ -13,6 +13,7 @@ function Management(props) {
   const dispatch = useDispatch();
   const allTrustees = useSelector((state) => state.trustees.allTrustees);
   const { t } = useTranslation();
+  console.log(allTrustees);
   const heroData = {
     title: `${t("about_items.item3")}`,
     description: `${t("aboutPage.section1.ptext")}`,
