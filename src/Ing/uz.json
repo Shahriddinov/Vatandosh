@@ -1,7 +1,7 @@
 {
-  "Council_composition":"Kengash tarkibi",
+  "Council_composition": "Kengash tarkibi",
   "seeMore": "Ko’proq ko’rish",
-  "leadership_structure":"Rahbariyat tarkibi",
+  "leadership_structure": "Rahbariyat tarkibi",
   "search": "Qidirish",
   "about": "BIZ HAQIMIZDA",
   "citizin": "VATANDOSHLAR",
@@ -62,9 +62,9 @@
   "participationProject": "Viktorina va loyihalarga qatnashish",
   "electronCommunity": "Jamoat birlashmalari elektron restri",
   "compatriotsValunteer": "Vatandosh valantyorlar",
-  "modalText1" : "Ro'yxatga olingan vatandoshlar",
-  "modalText2" : "Yangiliklar",
-  "modalText3" : "Tadbirlar",
+  "modalText1": "Ro'yxatga olingan vatandoshlar",
+  "modalText2": "Yangiliklar",
+  "modalText3": "Tadbirlar",
   "mediateka": "Mediateka",
   "infographics": "Infografika",
   "compatriotMagazine": "Vatandoshlar jurnali",
@@ -74,10 +74,10 @@
   "Associations": "Birlashmalar",
   "staffCount": "Xodimlar soni",
   "leader": "Rahbar",
-  "founding_date":"Tashkilot tashkil topgan sana",
-  "election_leader":"Rahbar saylangan sana",
-  "mediaVideo":"Video lavhalar",
-  "mediaImg":"Foto sur'atlar",
+  "founding_date": "Tashkilot tashkil topgan sana",
+  "election_leader": "Rahbar saylangan sana",
+  "mediaVideo": "Video lavhalar",
+  "mediaImg": "Foto sur'atlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -106,7 +106,7 @@
     "item7": "“Xorijdagi vatandosh tashkilot” loyihasi"
   },
   "aboutPage": {
-    "section1" : {
+    "section1": {
       "htext": "Biz haqimizda",
       "ptext": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
       "foottext1": "Asosiy sahifa",
@@ -163,7 +163,6 @@
     "section5": {
       "htext1": "Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir"
     }
-
   },
 
   "contactPage": {
@@ -179,7 +178,7 @@
     "houseOrg": "Uydagi tashkilotlar",
     "warnUs": "Xato haqida xabar berish"
   },
-    "projects_page": {
+  "projects_page": {
     "hero_title": "Loyihalar",
     "hero_description": "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish, vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalarini qo‘llab-quvvatlash, turli sohalarda faoliyat yuritayotgan vatandoshlarimizning salohiyatini mamlakatimiz taraqqiyotiga samarali yo‘naltirish Fondning asosiy maqsadlaridan biri hisoblanadi.",
     "page_path": "Loyihalar",
@@ -208,5 +207,12 @@
     "form_link": "Ijtimoiy tarmoqlardagi sahifalaringiz",
     "form_cancel": "Bekor qilish",
     "form_submit": "Yuborish"
+  },
+  "volunter": {
+    "nav1": "VOLONTYORLAR",
+    "nav2": "VOLONTYORLARNI FAOLIYATI",
+    "nav3": "BOG‘LANISH",
+    "header":"“VATANDOSHLAR” VOLONTYORLAR",
+    "headerText":"Vatandosh volontyorlar elektron platformasi"
   }
 }

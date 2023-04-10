@@ -1,7 +1,7 @@
 {
-  "Council_composition":"Council composition",
-  "seeMore": "see more" ,
-  "leadership_structure":"leadership structure",
+  "Council_composition": "Council composition",
+  "seeMore": "see more",
+  "leadership_structure": "leadership structure",
   "search": "Search",
   "about": "ABOUT US",
   "citizin": "COMPATRIOTS",
@@ -62,22 +62,22 @@
   "participationProject": "Participation in quizzes and projects",
   "electronCommunity": "Public associations electronic restri",
   "compatriotsValunteer": "Compatriot valantiors",
-  "modalText1" : "Registered compatriots",
-  "modalText2" : "News",
-  "modalText3" : "Events",
-  "mediateka" : "Media",
-  "infographics" : "Infographic",
-  "compatriotMagazine" : "Compatriot magazine",
-  "mainPage" : "Main page",
+  "modalText1": "Registered compatriots",
+  "modalText2": "News",
+  "modalText3": "Events",
+  "mediateka": "Media",
+  "infographics": "Infographic",
+  "compatriotMagazine": "Compatriot magazine",
+  "mainPage": "Main page",
   "mainDirections": "Main areas of activity of the foundation",
   "directions": "routes",
   "Associations": "Associations",
   "staffCount": "The number of employees",
   "leader": "Leader",
-  "founding_date":"Founding date",
-  "election_leader":"Date of election of leader",
-  "mediaVideo":"Video footage",
-  "mediaImg":"Pictures",
+  "founding_date": "Founding date",
+  "election_leader": "Date of election of leader",
+  "mediaVideo": "Video footage",
+  "mediaImg": "Pictures",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
@@ -106,7 +106,7 @@
     "item7": "“Overseas compatriot organization” project"
   },
   "aboutPage": {
-    "section1" : {
+    "section1": {
       "htext": "About us",
       "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
       "foottext1": "Main page",
@@ -163,7 +163,6 @@
     "section5": {
       "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
     }
-
   },
   "contactPage": {
     "contactUs": "contact us",
@@ -207,5 +206,12 @@
     "form_link": "Your social network profiles",
     "form_cancel": "Cancel",
     "form_submit": "Send"
+  },
+  "volunter": {
+    "nav1": "VOLUNTEERS",
+    "nav2": "VOLUNTEER ACTIVITIES",
+    "nav3": "CONTACT",
+    "header": "“CITIZENS” VOLUNTEERS",
+    "headerText": "Electronic platform of compatriot volunteers"
   }
 }
