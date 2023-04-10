@@ -1,0 +1,90 @@
+@import "../../../../../assets/style/global.scss";
+
+.listwinners {
+  width: 100%;
+  max-width: 100vw;
+  padding: 80px 0 35px;
+
+  .container {
+    position: relative;
+    padding-right: 0;
+
+    & > h3 {
+      margin-bottom: 30px;
+      @include fontStyles(600, 36px, 44px, $colorBlack);
+    }
+  }
+
+  &-list {
+    &-leftbtn,
+    &-rightbtn {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 1px solid #eaedf6;
+      cursor: pointer;
+      z-index: 10;
+
+      & > svg {
+        width: 20px;
+        height: 20px;
+        color: $colorTitle;
+      }
+    }
+
+    &-leftbtn {
+      left: 30px;
+    }
+
+    &-rightbtn {
+      right: 20px;
+    }
+
+    &-item {
+      width: 368px;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border: 1px solid #eaedf6;
+      box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+
+      & > img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+
+      &-desc {
+        padding: 15px 17px;
+
+        & > span,
+        p {
+          letter-spacing: 0.2px;
+          @include fontStyles(400, 14px, 17px, #656b70);
+        }
+
+        & > h4 {
+          margin: 5px 0 15px;
+          @include fontStyles(700, 18px, 22px, $colorTitle);
+        }
+
+        & > p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
+}
