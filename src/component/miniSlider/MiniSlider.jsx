@@ -8,8 +8,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import "./miniSlider.scss";
+import { memo } from "react";
 
-export const MiniSlider = ({ title, data, fetchUrl }) => {
+export const MiniSlider = memo(({ title, data, fetchUrl }) => {
   return (
     <section className="compatriots-events">
       <div className="container">
@@ -95,4 +96,4 @@ export const MiniSlider = ({ title, data, fetchUrl }) => {
       </div>
     </section>
   );
-};
+});

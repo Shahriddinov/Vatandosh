@@ -1,0 +1,138 @@
+.community-association-hero {
+  position: relative;
+  z-index: 2;
+  min-height: 572px;
+
+  &__breadcrumb_nav {
+    padding-top: 26px;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  &__breadcrumb_item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  &__breadcrumb_link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .breadcrumb_item_active {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__title {
+    margin-top: 109px;
+    width: 100%;
+    max-width: 442px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 44px;
+    color: #ffffff;
+  }
+
+  &__desc {
+    width: 100%;
+    max-width: 454px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+  }
+
+  &__btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 12px 22px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #065ea9;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  &__btn:hover {
+    background-color: #e3f0ff;
+    border: 1px solid #065ea9;
+    transition: all 0.3s linear;
+  }
+}
+
+@media (max-width: 1000px) {
+  .community-association-hero {
+    min-height: 304px;
+
+    &__inner {
+      padding-top: 60px;
+    }
+
+    &__breadcrumb_link {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    &__title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    &__desc {
+      width: 100%;
+      max-width: 454px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.2px;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 601px) {
+  .community-association-hero {
+    min-height: 560px;
+
+    &__inner {
+      padding-top: 18px;
+    }
+
+    &__breadcrumb {
+      margin-bottom: 164px;
+    }
+
+    &__breadcrumb_item {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__breadcrumb_link {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
