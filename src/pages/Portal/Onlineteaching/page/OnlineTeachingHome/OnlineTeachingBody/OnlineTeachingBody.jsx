@@ -3,6 +3,7 @@ import "./OnlineTeaching.scss"
 import Logos from "../../../../../../assets/images/OnlineTeaching/image.svg"
 import Logos2 from "../../../../../../assets/images/OnlineTeaching/image2.svg"
 import Teacher from "../../../../../../assets/images/OnlineTeaching/Teacher.svg"
+import Grades from "../../../../../../assets/images/OnlineTeaching/Grades.svg"
 
 function OnlineTeachingBody(props) {
     return (
@@ -42,14 +43,14 @@ function OnlineTeachingBody(props) {
                 </div>
                 <div className="onlineTeachingBody_level_start">
                     <div className="onlineTeachingBody_level_start_cardInfo">
-                        <div className="onlineTeachingBody_level_start_cardInfo_titles">Beginner</div>
+                        <div className="onlineTeachingBody_level_start_cardInfo_titles">Pre-intermediate</div>
                         <div className="onlineTeachingBody_level_start_cardInfo_describtions">В этом курсе вы примете
                             участие в серии задач, призванных повысить ваше собственное счастье и выработать более
                         </div>
                         <div className="onlineTeachingBody_level_start_cardInfo_sends">Начать урок</div>
                     </div>
                     <div className="onlineTeachingBody_level_start_cardInfo">
-                        <img className="onlineTeachingBody_level_start_cardInfo_teacher" src={Teacher} alt=""/>
+                        <img className="onlineTeachingBody_level_start_cardInfo_teacher" src={Grades} alt=""/>
                     </div>
                 </div>
             </div>
