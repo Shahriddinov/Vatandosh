@@ -93,6 +93,12 @@ const CommunityAssociationRegister = lazy(() =>
   )
 );
 
+const CommunityAssociationDetail = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityAssociationDetail/CommunityAssociationDetail"
+  )
+);
+
 const VolunterLayout = lazy(() =>
   import("./pages/Portal/volunter/VolunterLayout")
 );
@@ -182,7 +188,8 @@ const RoutesContainer = () => (
 
           <Route
             path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}>
+            element={<CommunityAssociationLayout />}
+          >
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
             <Route
@@ -192,6 +199,10 @@ const RoutesContainer = () => (
             <Route
               path="application"
               element={<CommunityAssociationRegister />}
+            />
+            <Route
+              path="country/:country/:id"
+              element={<CommunityAssociationDetail />}
             />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

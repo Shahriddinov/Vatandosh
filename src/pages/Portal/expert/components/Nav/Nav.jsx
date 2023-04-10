@@ -1,8 +1,9 @@
 import "./Nav.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 function Nav({ navData }) {
   const location = useLocation();
+  const { id } = useParams();
   const editClass = location.pathname.split("/");
   return (
     <div className="nav">
@@ -12,7 +13,11 @@ function Nav({ navData }) {
             <li key={navItem.id}>
               <Link
                 to={navItem.url}
-                className={editClass.length <= 3 ? `nav-link` : `nav--link`}
+                className={
+                  editClass.length <= 3 || id !== undefined
+                    ? `nav-link`
+                    : `nav--link`
+                }
               >
                 {navItem.label}
               </Link>

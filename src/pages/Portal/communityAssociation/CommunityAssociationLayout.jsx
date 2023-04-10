@@ -1,11 +1,12 @@
 import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 
 const CommunityAssociationLayout = () => {
   const location = useLocation();
   const editClass = location.pathname.split("/");
+  const { id } = useParams();
 
   const navData = [
     { id: 1, url: "/portal-category/community-association", label: "Asosiy" },
@@ -32,7 +33,7 @@ const CommunityAssociationLayout = () => {
   };
   return (
     <>
-      {editClass.length > 3 && editClass[3] && (
+      {editClass.length > 3 && editClass[3] && !id && (
         <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
       <Outlet context={{ navData, navbarUrl }} />

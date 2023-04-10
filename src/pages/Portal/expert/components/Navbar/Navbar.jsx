@@ -7,7 +7,7 @@ import {
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import i18next from "i18next";
@@ -20,13 +20,16 @@ function Navbar({ navbarUrl }) {
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
+  const { id } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
+
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
   };
+
   return (
     <div className="navbarpage">
       <div className="container">
@@ -35,7 +38,9 @@ function Navbar({ navbarUrl }) {
             <img src={LogoIcon} alt="" className="navbar-icon" />
             <h4
               className={
-                editClass.length <= 3 ? `navbar--name` : `navbar--subname`
+                editClass.length <= 3 || id !== undefined
+                  ? `navbar--name`
+                  : `navbar--subname`
               }
             >
               {t("expert.headtitle")}
@@ -46,7 +51,11 @@ function Navbar({ navbarUrl }) {
           <li className="navbar-item">
             <a
               href="tel:+998555022299"
-              className={editClass.length <= 3 ? `navbar-link` : `navbar--link`}
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbar-link`
+                  : `navbar--link`
+              }
             >
               <PhoneIcon />
               +998(55)502-22-99
@@ -55,7 +64,11 @@ function Navbar({ navbarUrl }) {
           <li className="navbar-item">
             <a
               href="mailto:info@vatandoshlarfondi.uz"
-              className={editClass.length <= 3 ? `navbar-link` : `navbar--link`}
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbar-link`
+                  : `navbar--link`
+              }
             >
               <EmailIcon />
               info@vatandoshlarfondi.uz
@@ -68,7 +81,9 @@ function Navbar({ navbarUrl }) {
               className="navbarpage_language-wrapper"
               style={{
                 background: `${
-                  editClass.length <= 3 ? "rgba(255, 255, 255, 0.2)" : `#065EA9`
+                  editClass.length <= 3 || id !== undefined
+                    ? "rgba(255, 255, 255, 0.2)"
+                    : `#065EA9`
                 }`,
               }}
               onClick={() => setactiveLang((el) => !el)}
@@ -109,7 +124,9 @@ function Navbar({ navbarUrl }) {
           <Link
             to={navbarUrl?.register}
             className={
-              editClass.length <= 3 ? `navbar-button` : `navbar--button`
+              editClass.length <= 3 || id !== undefined
+                ? `navbar-button`
+                : `navbar--button`
             }
           >
             <img src={ExitIcon} alt="" className="navbar-icon" />
