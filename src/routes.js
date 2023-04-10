@@ -115,7 +115,7 @@ const VolunterActivity = lazy(() =>
   import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
 );
 
-const OnlineTeaching = lazy(()=> import("./pages/Portal/Onlineteaching/Onlineteaching"))
+const OnlineTeachingHome = lazy(()=> import("./pages/Portal/Onlineteaching/page/OnlineTeachingHome/OnlineTeachingHome"))
 
 const routes = [
   { path: "", element: Home },
@@ -152,6 +152,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
+  {path: "/online-teaching", element: OnlineTeachingHome}
 ];
 
 const RoutesContainer = () => (

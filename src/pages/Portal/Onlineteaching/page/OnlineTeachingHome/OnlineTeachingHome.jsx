@@ -1,9 +1,10 @@
 import React from 'react';
+import OnlineTeachingBody from "./OnlineTeachingBody/OnlineTeachingBody";
 
 function OnlineTeachingHome(props) {
     return (
         <div>
-            OnlineTeachingHome
+            <OnlineTeachingBody/>
         </div>
     );
 }
