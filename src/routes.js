@@ -1,12 +1,13 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Layout, Spinner } from "./component";
+import { Layout } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
+
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -115,7 +116,15 @@ const VolunterActivity = lazy(() =>
   import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
 );
 
-const OnlineTeaching = lazy(()=> import("./pages/Portal/Onlineteaching/Onlineteaching"))
+const OnlineTeachingLayout = lazy(() =>
+  import("./pages/Portal/OnlineTeaching/OnlineTeachingLayout")
+);
+
+const OnlineTeachingHome = lazy(() =>
+  import(
+    "./pages/Portal/OnlineTeaching/pages/OnlineTeachingHome/OnlineTeachingHome"
+  )
+);
 
 const routes = [
   { path: "", element: Home },
@@ -157,57 +166,63 @@ const routes = [
 const RoutesContainer = () => (
   <Router>
     <Layout>
-      <Suspense fallback={<Spinner position="full" />}>
-        <Routes>
-          {routes.map((route, key) => {
-            const RouteComponent = ScrollTop(route.element);
-            return (
-              <Route key={key} path={route.path} element={<RouteComponent />} />
-            );
-          })}
-          <Route path="/portal-category/expert" element={<ExpertLayout />}>
-            <Route index element={<ExpertCouncil />} />
-            <Route path="council-about" element={<AboutCouncil />} />
-            <Route path="expert-council" element={<ExpertEmploye />} />
-            <Route path="profile/:id" element={<ExpertProfile />} />
-            <Route path="offers" element={<ExpertOffers />} />
-            <Route path="offers/:id" element={<ExpertOffersDetail />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="register" element={<ExpertRegister />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-
-          <Route
-            path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}>
-            <Route index element={<CommunityAssociationHome />} />
-            <Route path="about" element={<CommunityAssociationAbout />} />
-            <Route
-              path="country/:country"
-              element={<CommunityAssociationCountry />}
-            />
-            <Route
-              path="application"
-              element={<CommunityAssociationRegister />}
-            />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-
-          <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
-            <Route index element={<VolunterHome />} />
-            <Route path="profile" element={<VolunterProfile />} />
-            <Route path="register" element={<VolunterRegister />} />
-            <Route path="volunter-employe" element={<VolunterAbout />} />
-            <Route path="council-about" element={<VolunterCouncilAbout />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="article/:id" element={<VolunterArticleDetail />} />
-            <Route path="activity" element={<VolunterActivity />} />
-            <Route path="activity/:id" element={<VolunterActivityDetail />} />
-          </Route>
+      <Routes>
+        {routes.map((route, key) => {
+          const RouteComponent = ScrollTop(route.element);
+          return (
+            <Route key={key} path={route.path} element={<RouteComponent />} />
+          );
+        })}
+        <Route path="/portal-category/expert" element={<ExpertLayout />}>
+          <Route index element={<ExpertCouncil />} />
+          <Route path="council-about" element={<AboutCouncil />} />
+          <Route path="expert-council" element={<ExpertEmploye />} />
+          <Route path="profile/:id" element={<ExpertProfile />} />
+          <Route path="offers" element={<ExpertOffers />} />
+          <Route path="offers/:id" element={<ExpertOffersDetail />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="register" element={<ExpertRegister />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+        </Route>
+
+        <Route
+          path="/portal-category/community-association"
+          element={<CommunityAssociationLayout />}
+        >
+          <Route index element={<CommunityAssociationHome />} />
+          <Route path="about" element={<CommunityAssociationAbout />} />
+          <Route
+            path="country/:country"
+            element={<CommunityAssociationCountry />}
+          />
+          <Route
+            path="application"
+            element={<CommunityAssociationRegister />}
+          />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+
+        <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
+          <Route index element={<VolunterHome />} />
+          <Route path="profile" element={<VolunterProfile />} />
+          <Route path="register" element={<VolunterRegister />} />
+          <Route path="volunter-employe" element={<VolunterAbout />} />
+          <Route path="council-about" element={<VolunterCouncilAbout />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="article/:id" element={<VolunterArticleDetail />} />
+          <Route path="activity" element={<VolunterActivity />} />
+          <Route path="activity/:id" element={<VolunterActivityDetail />} />
+        </Route>
+
+        <Route
+          path="/portal-category/online-teaching"
+          element={<OnlineTeachingLayout />}
+        >
+          <Route index element={<OnlineTeachingHome />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Layout>
   </Router>
 );
