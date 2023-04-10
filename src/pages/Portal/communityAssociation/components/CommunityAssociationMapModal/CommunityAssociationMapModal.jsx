@@ -69,7 +69,7 @@ const CommunityAssociationMapModal = ({ changeActive, countryCode }) => {
                 </div>
 
                 <Link
-                  to="/information-service/news"
+                  to={`/portal-category/community-association/country/${mapData[0].id}`}
                   className="communityAssociationMapModal__body_link"
                 >
                   Barchasini ko‘rish

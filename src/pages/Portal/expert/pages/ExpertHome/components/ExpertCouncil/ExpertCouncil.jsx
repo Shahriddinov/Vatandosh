@@ -30,7 +30,10 @@ function Expert() {
           ))}
         </div>
         <div className="expert-item">
-          <Link to="/portal-category/expert/employe" className="expert-link">
+          <Link
+            to="/portal-category/expert/expert-council"
+            className="expert-link"
+          >
             <img src={ExcludeIcon} alt="error" />
             Barcha olim va ekspertlar
           </Link>
