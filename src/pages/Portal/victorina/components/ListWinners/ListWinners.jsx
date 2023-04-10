@@ -1,10 +1,10 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import img from "../../../../../assets/images/portal/2.png";
 import "./ListWinners.scss";
 import "swiper/css";
 import { Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useState } from "react";
+import WinnerCard from "../WinnerCard/WinnerCard";
 
 export default function ListWinners() {
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
@@ -62,21 +62,8 @@ export default function ListWinners() {
           className="listwinners-list"
         >
           {[1, 2, 3, 4, 5, 6].map((el) => (
-            <SwiperSlide key={el} className="listwinners-list-item">
-              <img src={img} alt="error" />
-              <div className="listwinners-list-item-desc">
-                <span> "ZIYOUZ VIKTORINASI" 1-o‘rin g‘olibi</span>
-                <h4>Xayitboev Nurali</h4>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised...
-                </p>
-              </div>
+            <SwiperSlide key={el}>
+              <WinnerCard />
             </SwiperSlide>
           ))}
         </Swiper>
