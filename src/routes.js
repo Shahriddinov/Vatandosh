@@ -7,6 +7,8 @@ import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmplo
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
+import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
+import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -205,6 +207,9 @@ const RoutesContainer = () => (
             <Route path="article/:id" element={<VolunterArticleDetail />} />
             <Route path="activity" element={<VolunterActivity />} />
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
+          </Route>
+          <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
+            <Route index element={<VictorinaHome />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
