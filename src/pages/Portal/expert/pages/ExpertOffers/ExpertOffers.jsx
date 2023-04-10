@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
 import ExpertProfileInfo from "./components/ExpertProfileInfo";
+import { useTranslation } from "react-i18next";
 
 export default function ExpertOffers() {
+  const { t } = useTranslation();
   const url = [
-    { title: "Asosiy", url: "/expert" },
-    { title: "Takliflar", url: "/expert/offers" },
+    { title: t("expert.main"), url: "/portal-category/expert" },
+    { title: t("expert.offers"), url: "/portal-category/expert/offers" },
   ];
 
   return (
     <main className="expertoffer">
       <div className="container">
-        <ExpertTitle title={"Takliflar"} url={url} />
+        <ExpertTitle title={t("expert.offers")} url={url} />
         <div className="expertoffer-list">
           <div className="expertoffer-list-item">
             <img src={DefaultProfilePic} alt="error" />
@@ -43,7 +45,9 @@ export default function ExpertOffers() {
               </p>
               <div className="expertoffer-list-item-desc-button">
                 <button>
-                  <Link to={"/expert/offers/12"}>Batafsil</Link>
+                  <Link to={"/portal-category/expert/offers/12"}>
+                    {t("expert.detail")}
+                  </Link>
                 </button>
               </div>
             </div>
@@ -75,7 +79,7 @@ export default function ExpertOffers() {
               </p>
               <div className="expertoffer-list-item-desc-button">
                 <button>
-                  <Link to={"/expert/offers/12"}>Batafsil</Link>
+                  <Link to={"/expert/offers/12"}>{t("expert.detail")}</Link>
                 </button>
               </div>
             </div>
@@ -83,7 +87,7 @@ export default function ExpertOffers() {
           <div className="expertoffer-list-morebtn">
             <button>
               <BsArrowDownCircleFill />
-              <span>Barcha takliflar</span>
+              <span>{t("expert.alloffers")}</span>
             </button>
           </div>
         </div>

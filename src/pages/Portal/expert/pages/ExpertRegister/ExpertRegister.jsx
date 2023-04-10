@@ -6,19 +6,21 @@ import RegisterItem3 from "./components/register3/RegisterItem3";
 import RegisterItem4 from "./components/register4/RegisterItem4";
 import RegisterItem5 from "./components/register5/RegisterItem5";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
+import { useTranslation } from "react-i18next";
 
 export default function ExpertRegister() {
   let [activeBarItem, setactiveBarItem] = useState(0);
+  const { t } = useTranslation();
   const url = [
-    { title: "Asosiy", url: "/" },
-    { title: "Ro‘yxatdan o‘tish", url: "" },
+    { title: t("expert.main"), url: "/portal-category/expert" },
+    { title: t("expert.register"), url: "" },
   ];
 
   return (
     <>
       <main className="expertregister">
         <div className="container">
-          <ExpertTitle title={"Ro‘yxatdan o‘tish"} url={url} />
+          <ExpertTitle title={t("expert.register")} url={url} />
           <div className="expertregister-main">
             <ul className="expertregister-main-bar">
               {[

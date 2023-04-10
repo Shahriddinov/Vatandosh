@@ -7,8 +7,10 @@ import "./Employe.scss";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
 import { data } from "../../../ExpertHome/data";
+import { useTranslation } from "react-i18next";
 
 function Employe() {
+  const { t } = useTranslation();
   const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
@@ -19,11 +21,11 @@ function Employe() {
     <div className="employe">
       <div className="container">
         <div className="employe-list">
-          <h3>Ekspertlar kengashi</h3>
+          <h3>{t("expert.expertCouncil")}</h3>
           <div className="employe-item">
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha mutaxassislar
+                {t("expert.allexpert")}
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
@@ -39,7 +41,7 @@ function Employe() {
             </FormControl>
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha davlatlar
+                {t("expert.allcountry")}
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
@@ -58,7 +60,7 @@ function Employe() {
         <div className="employe-page">
           {data.map((evt) => (
             <div>
-              <img src={evt.images} />
+              <img src={evt.images} alt="error" />
               <p>{evt.country}</p>
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
@@ -67,7 +69,7 @@ function Employe() {
                 className="employe-link"
                 to="/portal-category/expert/profile/1"
               >
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
