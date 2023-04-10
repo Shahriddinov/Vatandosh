@@ -25,8 +25,8 @@ const HomePage = () => {
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },
-    { id: 7, label: t("electronBook"), url: "/portal-category/victorina" },
-    { id: 8, label: t("aboutUzbekistan"), url: "/" },
+    { id: 7, label: t("electronBook"), url: "/" },
+    { id: 8, label: t("aboutUzbekistan"), url: "/portal-category/victorina" },
     { id: 9, label: t("participationProject"), url: "/" },
     {
       id: 10,
