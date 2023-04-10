@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import DefaultProfilePic from "../../../../../assets/images/mediateka/2.png";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
@@ -6,15 +7,16 @@ import ExpertProfileInfo from "../ExpertOffers/components/ExpertProfileInfo";
 import "./ExpertOffersDetail.scss";
 
 export default function ExpertOffersDetail() {
+  const { t } = useTranslation();
   const url = [
-    { title: "Asosiy", url: "/expert" },
-    { title: "Takliflar", url: "/expert/offers" },
-    { title: "Taklif", url: "/expert/offerts" },
+    { title: t("expert.main"), url: "/portal-category/expert" },
+    { title: t("expert.offers"), url: "/portal-category/expert/offers" },
+    { title: t("expert.offer"), url: "" },
   ];
   return (
     <main className="expertofferdetail">
       <div className="container">
-        <ExpertTitle title={"Taklif"} url={url} />
+        <ExpertTitle title={t("expert.offer")} url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img src={DefaultProfilePic} alt="error" />

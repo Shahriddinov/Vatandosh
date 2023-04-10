@@ -6,6 +6,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Link, useLocation } from "react-router-dom";
+import { t } from "i18next";
 
 export default function CustomProfil() {
   const { pathname } = useLocation();
@@ -19,7 +20,7 @@ export default function CustomProfil() {
         <div className="customprofil-detail-desc">
           <h4>Xatamov Akbarjon O‘tkir o‘g‘li</h4>
           <div className="customprofil-detail-desc-workexp">
-            <span>Umumiy ish staji:</span>
+            <span>{t("expert.workexp")}</span>
             <span>4 yil</span>
           </div>
         </div>
@@ -31,36 +32,36 @@ export default function CustomProfil() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Oliy ma’lumoti</Typography>
+            <Typography>{t("expert.education")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
               <div className="customprofil-list-otm">
                 <div className="customprofil-list-otm-item">
                   <div className="customprofil-list-otm-desc">
-                    <span>O‘zbekistonda tahsil olgan OTM</span>
+                    <span>{t("expert.uzbotm")}</span>
                     <p>Toshkent moliya instituti</p>
                   </div>
                   <div className="customprofil-list-otm-desc">
-                    <span>Fakultet</span>
+                    <span>{t("expert.faculty")}</span>
                     <p>Moliya</p>
                   </div>
                   <div className="customprofil-list-otm-desc">
-                    <span>Mutaxassisligi</span>
+                    <span>{t("expert.profession")}</span>
                     <p>Bank ishi</p>
                   </div>
                 </div>
                 <div className="customprofil-list-otm-item">
                   <div className="customprofil-list-otm-desc">
-                    <span>Xorijda tahsil olgan OTM</span>
+                    <span>{t("expert.xorotm")}</span>
                     <p>American University of Sharjah</p>
                   </div>
                   <div className="customprofil-list-otm-desc">
-                    <span>Xorijdagi fakultet</span>
+                    <span>{t("expert.xorfaculty")}</span>
                     <p>Bachelor of Business Administration</p>
                   </div>
                   <div className="customprofil-list-otm-desc">
-                    <span>Xorijdagi mutaxassisligi</span>
+                    <span>{t("expert.xorprofession")}</span>
                     <p>Administration</p>
                   </div>
                 </div>
@@ -104,33 +105,33 @@ export default function CustomProfil() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Mehnat faoliyati</Typography>
+            <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
               <div className="customprofil-list-workexp">
                 <div className="customprofil-list-workexp-item">
-                  <span>Ish joyi</span>
+                  <span>{t("expert.workspace")}</span>
                   <p>Jupiter IT Service</p>
                 </div>
                 <div className="customprofil-list-workexp-item">
-                  <span>Ish joyi joylashgan davlat</span>
+                  <span>{t("expert.workcountry")}</span>
                   <p>BAA</p>
                 </div>
                 <div className="customprofil-list-workexp-item">
-                  <span>Ish joyi joylashgan davlatni mintaqasi </span>
+                  <span>{t("expert.workregion")}</span>
                   <p>Nyu-York</p>
                 </div>
                 <div className="customprofil-list-workexp-item">
-                  <span>Lavozimi</span>
+                  <span>{t("expert.position")}</span>
                   <p>Boshqaruv raisi</p>
                 </div>
                 <div className="customprofil-list-workexp-item">
-                  <span>Ish boshlagan yili</span>
+                  <span>{t("expert.workstart")}</span>
                   <p>2014</p>
                 </div>
                 <div className="customprofil-list-workexp-item">
-                  <span>Tamomlagan yili</span>
+                  <span>{t("expert.workend")}</span>
                   <p>2018</p>
                 </div>
               </div>
@@ -143,13 +144,13 @@ export default function CustomProfil() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Ilmiy faoliyati</Typography>
+            <Typography>{t("expert.activity")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
               <div className="customprofil-list-scientific">
                 <div className="customprofil-list-scientific-item">
-                  <span>Maqolasi</span>
+                  <span>{t("expert.article")}</span>
                   <p>
                     Sovet Ittifoqi va Xitoy Xalq Respublikasi o‘z qo‘li ostidagi
                     yaponlarga nisbatan munosabatining qiyosiy tahlili. Maqola
@@ -157,7 +158,7 @@ export default function CustomProfil() {
                   </p>
                 </div>
                 <div className="customprofil-list-scientific-item">
-                  <span>Ilmiy maqola mavzusi</span>
+                  <span>{t("expert.articletitle")}</span>
                   <p>
                     “O‘zbekistonda yosh rahbar kadrlarning boshqaruv
                     salohiyatini yuksaltirish: Muammo va istiqbollar”
@@ -165,7 +166,7 @@ export default function CustomProfil() {
                   </p>
                 </div>
                 <div className="customprofil-list-scientific-item">
-                  <span>Chop etilgan jurnal nomi</span>
+                  <span>{t("expert.articlename")}</span>
                   <p>
                     “O‘zbekistonda yosh rahbar kadrlarning boshqaruvsalohiyatini
                     yuksaltirish: Muammo va istiqbollar” ilmiy elektron jurnali
@@ -173,16 +174,16 @@ export default function CustomProfil() {
                 </div>
                 <div className="customprofil-list-scientific-printDate">
                   <div className="customprofil-list-scientific-printDate-item">
-                    <span>Chop etilgan sana</span>
+                    <span>{t("expert.articledate")}</span>
                     <p>28-noyabr 2018-yil</p>
                   </div>
                   <div className="customprofil-list-scientific-printDate-item">
-                    <span>Ilmiy darajasi</span>
+                    <span>{t("expert.degree")}</span>
                     <p>Fan Doktori</p>
                   </div>
                 </div>
                 <div className="customprofil-list-scientific-tags">
-                  <span>Asosiy ilmiy qiziqish yo‘nalishlari</span>
+                  <span>{t("expert.degreelist")}</span>
                   <div className="customprofil-list-scientific-tags-list">
                     <span>Global governance</span>
                     <span>International trade and development</span>
@@ -199,7 +200,7 @@ export default function CustomProfil() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Takliflari</Typography>
+            <Typography>{t("expert.ownoffers")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
@@ -209,7 +210,7 @@ export default function CustomProfil() {
                     <img src={DefaultProfilePic} alt="error" />
                   </div>
                   <div className="customprofil-list-offer-info-desc">
-                    <span>Taklif</span>
+                    <span>{t("expert.offer")}</span>
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
@@ -224,13 +225,13 @@ export default function CustomProfil() {
                     </p>
                     <button className="customprofil-list-offer-info-desc-btn">
                       <Link to={"/portal-category/expert/offers/1"}>
-                        Batafsil
+                        {t("expert.detail")}
                       </Link>
                     </button>
                   </div>
                 </div>
                 <div className="customprofil-list-offer-infoplus">
-                  <span>Qo‘shimcha ma’lumotlar</span>
+                  <span></span>
                   <p>
                     El-Yurt Uidi Halqaro Expertlar Kengashi a’zosi bo‘lish; 2.
                     O‘zbekistonda tegishli vazirlik va tashkilotlar bilan

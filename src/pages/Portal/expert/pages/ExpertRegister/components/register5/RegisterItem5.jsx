@@ -1,9 +1,11 @@
 import "../customStyles.scss";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BsImage } from "react-icons/bs";
 
 export default function RegisterItem5({ activeBarItem }) {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
 
   const handleChangeCheckbox = (event) => {
@@ -24,7 +26,7 @@ export default function RegisterItem5({ activeBarItem }) {
       onSubmit={handleSubmit}
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">V. Taklifingiz</h3>
+        <h3 className="registeritem-title">{t("expert.reg5")}</h3>
         <div className="registeritem-form">
           <label
             htmlFor="registeritem-label-fileinput"
@@ -37,15 +39,15 @@ export default function RegisterItem5({ activeBarItem }) {
               type="file"
               minLength={3}
               maxLength={50}
-              placeholder={"Kiriting"}
+              placeholder={t("expert.inputplaceholder")}
             />
             <BsImage />
-            <p>Taklifingiz uchun rasm</p>
+            <p>{t("expert.offerforimg")}</p>
           </label>
           <label htmlFor="" className="registeritem-label">
             <p>
-              O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida
-              takliflaringiz<span>*</span>
+              {t("expert.articleoffer")}
+              <span>*</span>
             </p>
             <div className="registeritem-label-textarea">
               <textarea
@@ -53,13 +55,13 @@ export default function RegisterItem5({ activeBarItem }) {
                 type="text"
                 minLength={3}
                 maxLength={500}
-                placeholder={"Kiriting"}
+                placeholder={t("expert.inputplaceholder")}
               />
             </div>
           </label>
           <label htmlFor="" className="registeritem-label">
             <p>
-              Qo‘shimcha ma’lumotlar <span>*</span>
+              {t("expert.information")} <span>*</span>
             </p>
             <div className="registeritem-label-textarea">
               <textarea
@@ -67,7 +69,7 @@ export default function RegisterItem5({ activeBarItem }) {
                 type="text"
                 minLength={3}
                 maxLength={500}
-                placeholder={"Kiriting"}
+                placeholder={t("expert.inputplaceholder")}
               />
             </div>
           </label>
@@ -78,7 +80,7 @@ export default function RegisterItem5({ activeBarItem }) {
               required
               inputProps={{ "aria-label": "controlled" }}
             />
-            <p>Hozirda shu sohada ishlayapti</p>
+            <p>{t("expert.nowwork")}</p>
           </div>
         </div>
       </div>
@@ -88,7 +90,7 @@ export default function RegisterItem5({ activeBarItem }) {
           disabled={true}
           className="registeritem-submitBtn"
         >
-          Saqlash
+          {t("expert.save")}
         </button>
       </div>
     </form>

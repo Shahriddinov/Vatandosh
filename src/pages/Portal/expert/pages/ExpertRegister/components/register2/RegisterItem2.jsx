@@ -7,8 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 export default function RegisterItem2({ activeBarItem }) {
+  const { t } = useTranslation();
   const [data1, setData1] = useState([
     { id: 1, otm: "", faculti: "", job: "" },
   ]);
@@ -51,13 +53,13 @@ export default function RegisterItem2({ activeBarItem }) {
       onSubmit={handleSubmit}
     >
       <div className="registeritem2-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">II. Oliy ma’lumotingiz</h3>
+        <h3 className="registeritem-title">{t("expert.reg2")}</h3>
         <div className="registeritem-form">
           {data1.map((el) => (
             <div key={el.id} className="registeritem2-form-otm">
               <label htmlFor="" className="registeritem-label">
                 <p className="registeritem-label-delete">
-                  <span>O‘zbekistonda tahsil olgan OTM</span>
+                  <span>{t("expert.uzbotm")}</span>
                   <AiOutlineDelete
                     style={data1.length === 1 ? { display: "none" } : null}
                     onClick={() =>
@@ -75,7 +77,7 @@ export default function RegisterItem2({ activeBarItem }) {
                     value={el.otm}
                     minLength={3}
                     maxLength={30}
-                    placeholder={"Kiriting"}
+                    placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
                       handleChange({ ...el, otm: e.target.value.trim() })
                     }
@@ -85,7 +87,7 @@ export default function RegisterItem2({ activeBarItem }) {
               </label>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>Fakulteti</p>
+                  <p>{t("expert.faculty")}</p>
                   <div>
                     <input
                       required
@@ -93,7 +95,7 @@ export default function RegisterItem2({ activeBarItem }) {
                       minLength={3}
                       value={el.faculti}
                       maxLength={30}
-                      placeholder={"Kiriting"}
+                      placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChange({ ...el, faculti: e.target.value.trim() })
                       }
@@ -102,7 +104,7 @@ export default function RegisterItem2({ activeBarItem }) {
                   </div>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>Mutaxassisligi</p>
+                  <p>{t("expert.profession")}</p>
                   <div>
                     <input
                       required
@@ -110,7 +112,7 @@ export default function RegisterItem2({ activeBarItem }) {
                       minLength={3}
                       value={el.job}
                       maxLength={30}
-                      placeholder={"Kiriting"}
+                      placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChange({ ...el, job: e.target.value.trim() })
                       }
@@ -136,7 +138,7 @@ export default function RegisterItem2({ activeBarItem }) {
             <div key={el.id} className="registeritem2-form-otm">
               <label htmlFor="" className="registeritem-label">
                 <p className="registeritem-label-delete">
-                  <span>Xorijda tahsil olgan OTM</span>
+                  <span>{t("expert.xorotm")}</span>
                   <AiOutlineDelete
                     style={data2.length === 1 ? { display: "none" } : null}
                     onClick={() =>
@@ -154,7 +156,7 @@ export default function RegisterItem2({ activeBarItem }) {
                     value={el.otm}
                     minLength={3}
                     maxLength={30}
-                    placeholder={"Kiriting"}
+                    placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
                       handleChangeX({ ...el, otm: e.target.value.trim() })
                     }
@@ -164,7 +166,7 @@ export default function RegisterItem2({ activeBarItem }) {
               </label>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>Xorijda fakulteti</p>
+                  <p>{t("expert.xorfaculty")}</p>
                   <div>
                     <input
                       required
@@ -172,7 +174,7 @@ export default function RegisterItem2({ activeBarItem }) {
                       minLength={3}
                       value={el.faculti}
                       maxLength={30}
-                      placeholder={"Kiriting"}
+                      placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChangeX({ ...el, faculti: e.target.value.trim() })
                       }
@@ -181,7 +183,7 @@ export default function RegisterItem2({ activeBarItem }) {
                   </div>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>Xorijdagi mutaxassisligi</p>
+                  <p>{t("expert.xorprofession")}</p>
                   <FormControl style={{ padding: 0 }}>
                     <Select
                       className="registeritem-select"
@@ -217,7 +219,7 @@ export default function RegisterItem2({ activeBarItem }) {
       </div>
       <div className="registeritem-btnWrapper">
         <button type="submit" className="registeritem-submitBtn">
-          Keyingisi
+          {t("expert.nextbtn")}
         </button>
       </div>
     </form>
