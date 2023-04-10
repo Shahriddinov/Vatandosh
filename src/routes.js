@@ -79,6 +79,12 @@ const CommunityAssociationAbout = lazy(() =>
   )
 );
 
+const CommunityAssociations = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/associations/Associations"
+  )
+);
+
 const CommunityAssociationCountry = lazy(() =>
   import("./pages/Portal/communityAssociation/pages/country/Country")
 );
@@ -172,7 +178,7 @@ const RoutesContainer = () => (
             element={<CommunityAssociationLayout />}
           >
             <Route index element={<CommunityAssociationHome />} />
-            <Route path="about" element={<CommunityAssociationAbout />} />
+            <Route path="about" element={<CommunityAssociations />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
