@@ -9,12 +9,14 @@ import backImg from "../../../../../assets/images/volunter/volunter.png";
 import heroImg from "../../../../../assets/images/volunter/image.png";
 import Header from "../../../expert/components/Header/Header";
 import Council from "./components/Council/Council";
+import { useTranslation } from "react-i18next";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
+  const { t } = useTranslation();
   const headerData = {
-    title: "“Vatandoshlar” Volontyorlar",
-    subTitle: "Vatandosh volontyorlar elektron platformasi",
+    title: `${t("volunter.header")}`,
+    subTitle: `${t("volunter.headerText")}`,
     link: "/portal-category/volunteer/register",
   };
 
@@ -29,8 +31,7 @@ function VolunterHome() {
     <>
       <div
         className="volunter-home"
-        style={{ backgroundImage: `url(${backImg})` }}
-      >
+        style={{ backgroundImage: `url(${backImg})` }}>
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />

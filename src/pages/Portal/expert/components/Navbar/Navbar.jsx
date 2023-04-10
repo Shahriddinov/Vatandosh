@@ -13,8 +13,10 @@ import { useState } from "react";
 import i18next from "i18next";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
+import { useTranslation } from "react-i18next";
 
 function Navbar({ navbarUrl }) {
+  const { t } = useTranslation();
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 ? `navbar--name` : `navbar--subname`
               }
             >
-              “VATANDOSHLAR” JAMOAT FONDI
+              {t("expert.headtitle")}
             </h4>
           </div>
         </Link>
@@ -111,7 +113,7 @@ function Navbar({ navbarUrl }) {
             }
           >
             <img src={ExitIcon} alt="" className="navbar-icon" />
-            Kirish
+            {t("expert.enter")}
           </Link>
         </div>
       </div>

@@ -19,7 +19,7 @@ const ExpertFooter = ({ navData }) => {
 
   useEffect(() => {
     dispatch(getContact());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

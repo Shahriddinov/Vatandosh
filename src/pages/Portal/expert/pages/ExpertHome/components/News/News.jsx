@@ -22,7 +22,7 @@ function News() {
               <img src={WhiteCalendar} alt="Calendar Icon" />
               <p>12.02.2023</p>
             </span>
-            <img src={NewsImage} />
+            <img src={NewsImage} alt="error" />
           </div>
           <div className="expertnews-right">
             {news.map((news) => (

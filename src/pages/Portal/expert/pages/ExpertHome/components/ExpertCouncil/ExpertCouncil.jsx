@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   ArrowIcon,
   ExcludeIcon,
@@ -7,10 +8,11 @@ import "./ExpertCouncil.scss";
 import { Link } from "react-router-dom";
 
 function Expert() {
+  const { t } = useTranslation();
   return (
     <div className="expert">
       <div className="container">
-        <h2>Ekspertlar kengashi</h2>
+        <h2>{t("expert.expertCouncil")}</h2>
         <div className="expert-list">
           {data.map((evt) => (
             <div key={evt.id}>
@@ -23,7 +25,7 @@ function Expert() {
                 className="employe-link"
                 to="/portal-category/expert/profile/12"
               >
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
@@ -35,7 +37,7 @@ function Expert() {
             className="expert-link"
           >
             <img src={ExcludeIcon} alt="error" />
-            Barcha olim va ekspertlar
+            {t("expert.allexperts")}
           </Link>
         </div>
       </div>
