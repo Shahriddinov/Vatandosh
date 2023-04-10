@@ -130,7 +130,11 @@ const Register = () => {
   };
 
   return (
-    <div className="container position__relative">
+    <div className="container position__relative register__wrapper">
+      <div className="left__side__text">
+        <h1>Lorem ipsum dolor sit amet consectetur. Mauris sit mauris</h1>
+        <p>Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus vitae velit vitae vulputate blandit. Malesuada commodo magna sed sem justo non convallis. Vestibulum id nunc et morbi lobortis non bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc feugiat fermentum in nisi</p>
+      </div>
       <div className="registration__form">
         <div className="form__title">
           <h2>Ro'yxatdan O'ting</h2>
