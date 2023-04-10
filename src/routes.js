@@ -115,6 +115,8 @@ const VolunterActivity = lazy(() =>
   import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
 );
 
+const OnlineTeaching = lazy(()=> import("./pages/Portal/Onlineteaching/Onlineteaching"))
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
