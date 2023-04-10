@@ -25,7 +25,7 @@ const HomePage = () => {
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/" },
-    { id: 7, label: t("electronBook"), url: "/" },
+    { id: 7, label: t("electronBook"), url: "/portal-category/victorina" },
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
     { id: 9, label: t("participationProject"), url: "/" },
     {
@@ -68,8 +68,7 @@ const HomePage = () => {
                 height="104"
                 viewBox="0 0 2 104"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -83,8 +82,7 @@ const HomePage = () => {
                     y1="1"
                     x2="1.5"
                     y2="103"
-                    gradientUnits="userSpaceOnUse"
-                  >
+                    gradientUnits="userSpaceOnUse">
                     <stop stopColor="white" stopOpacity="0" />
                     <stop offset="1" stopColor="white" />
                   </linearGradient>
@@ -95,8 +93,7 @@ const HomePage = () => {
                 height="8"
                 viewBox="0 0 8 8"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
               </svg>
               <a href={contactData?.instagram}>
@@ -105,8 +102,7 @@ const HomePage = () => {
                   height="17"
                   viewBox="0 0 17 17"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -121,8 +117,7 @@ const HomePage = () => {
                   height="15"
                   viewBox="0 0 18 15"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -137,8 +132,7 @@ const HomePage = () => {
                   height="18"
                   viewBox="0 0 10 18"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -152,8 +146,7 @@ const HomePage = () => {
                 height="8"
                 viewBox="0 0 8 8"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
               </svg>
               <svg
@@ -161,8 +154,7 @@ const HomePage = () => {
                 height="104"
                 viewBox="0 0 2 104"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -176,8 +168,7 @@ const HomePage = () => {
                     y1="1"
                     x2="1.5"
                     y2="103"
-                    gradientUnits="userSpaceOnUse"
-                  >
+                    gradientUnits="userSpaceOnUse">
                     <stop stopColor="white" stopOpacity="0" />
                     <stop offset="1" stopColor="white" />
                   </linearGradient>
@@ -216,8 +207,7 @@ const HomePage = () => {
                 pagination={{
                   clickable: true,
                 }}
-                modules={[Autoplay]}
-              >
+                modules={[Autoplay]}>
                 {navbarList.map((navbar) => {
                   return (
                     <SwiperSlide key={navbar.id}>
@@ -235,8 +225,7 @@ const HomePage = () => {
                 height="20"
                 viewBox="0 0 20 20"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
