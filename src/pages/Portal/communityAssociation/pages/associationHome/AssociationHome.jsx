@@ -8,13 +8,16 @@ import News from "../../../expert/pages/ExpertHome/components/News/News";
 import backImg from "../../../../../assets/images/communityAssociation/communityAssociationHomeBg.png";
 import heroImg from "../../../../../assets/images/communityAssociation/hero-img.png";
 import MapsHome from "../../../../../component/maps-home/MapsHome";
+import { useTranslation } from "react-i18next";
 
 const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
+  const { t } = useTranslation();
   const headerData = {
     title: "“Vatandoshlar” Jamoat birlashmalari",
     subTitle: "Vatandosh jamoat birlashmalaring elektron platformasi",
     link: "/portal-category/community-association/application#1",
+    btnText: "Ariza berish",
   };
   const councilData = {
     title:
