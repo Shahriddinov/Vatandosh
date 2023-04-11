@@ -2,8 +2,10 @@ import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import WinnerCard from "../../components/WinnerCard/WinnerCard";
 import "./ListOfWinners.scss";
 import TestPopUp from "../../components/TestPopUp/TestPopUp";
+import { useTranslation } from "react-i18next";
 
 export default function ListOfWinners() {
+  const { t } = useTranslation();
   return (
     <div className="listofwinners">
       <TestPopUp />
@@ -17,7 +19,7 @@ export default function ListOfWinners() {
         <div className="listofwinners-moreBtn-wrapper">
           <button className="listofwinners-moreBtn">
             <BsFillArrowDownCircleFill />
-            <span>Barcha g‘oliblar</span>
+            <span>{t("victorina.allwinner")}</span>
           </button>
         </div>
       </div>

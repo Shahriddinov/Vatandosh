@@ -5,10 +5,13 @@ import { Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useState } from "react";
 import WinnerCard from "../WinnerCard/WinnerCard";
+import { useTranslation } from "react-i18next";
 
 export default function ListWinners() {
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleChange = (swiper) => {
     setisHiddenLeftBtn(swiper.isBeginning);
@@ -20,7 +23,7 @@ export default function ListWinners() {
   return (
     <div className="listwinners">
       <div className="container">
-        <h3>G‘oliblar ro‘yxati</h3>
+        <h3>{t("victorina.listwinner")}</h3>
         <button
           className="listwinners-list-leftbtn slider_controls__left"
           style={isHiddenLeftBtn ? { display: "none" } : null}

@@ -127,6 +127,10 @@ const ListOfWinners = lazy(() =>
   import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
 );
 
+const VictorinaWinner = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -223,6 +227,7 @@ const RoutesContainer = () => (
           >
             <Route index element={<VictorinaHome />}></Route>
             <Route path="listwinners" element={<ListOfWinners />} />
+            <Route path="winner/:id" element={<VictorinaWinner />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

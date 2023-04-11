@@ -1,9 +1,12 @@
 import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectYouTubePopUp() {
   const [activePopUp, setactivePopUp] = useState(true);
+
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,10 +22,10 @@ export default function ProjectYouTubePopUp() {
         onClick={() => setactivePopUp(false)}
       ></div>
       <form className="victorina-popup" onSubmit={handleSubmit}>
-        <h3 className="victorina-popup-title">Loyihada ishtirok etish</h3>
+        <h3 className="victorina-popup-title">{t("victorina.joinproject")}</h3>
         <label htmlFor="" className="registeritem-label">
           <p>
-            {"FISH"} <span>*</span>
+            {t("victorina.fio")} <span>*</span>
           </p>
           <div>
             <input
@@ -30,19 +33,19 @@ export default function ProjectYouTubePopUp() {
               type="text"
               minLength={3}
               maxLength={30}
-              placeholder={"Ishtirokchini ismi"}
+              placeholder={t("victorina.name")}
             />
           </div>
         </label>
         <label htmlFor="" className="registeritem-label">
-          <p>{"Youtubudagi eng yaxshi videolari loyihangiz"}</p>
+          <p>{t("victorina.projectyoutube")}</p>
           <div>
             <input
               required
               type="url"
               minLength={3}
               maxLength={30}
-              placeholder={"Video link "}
+              placeholder={t("victorina.videourl")}
             />
           </div>
         </label>
@@ -52,10 +55,10 @@ export default function ProjectYouTubePopUp() {
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            Bekor qilish
+            {t("form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
-            Yuborish
+            {t("footerSend")}
           </button>
         </div>
       </form>

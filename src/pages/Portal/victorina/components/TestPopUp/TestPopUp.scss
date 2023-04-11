@@ -26,8 +26,22 @@
     display: grid;
     gap: 30px;
 
+    &-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: space-between;
+
+      & > img {
+        width: 360px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+    }
+
     &-desc {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       @include fontStyles(600, 20px, 24px, #64748b);
     }
 
@@ -55,6 +69,41 @@
       & > span {
         @include fontStyles(700, 16px, 19px, $colorTitle);
       }
+    }
+  }
+
+  &-btn {
+    &-wrapper {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+
+      & > span {
+        @include fontStyles(600, 16px, 19px, #64748b);
+      }
+    }
+
+    &-prev,
+    &-next {
+      border-radius: 5px;
+      cursor: pointer;
+      @include fontStyles(700, 14px, 24px, #ffffff);
+    }
+
+    &-prev {
+      padding: 12px 34px;
+      background: #e3f0ff;
+      border-radius: 5px;
+      color: $colorTitle;
+      border: none;
+    }
+
+    &-next {
+      margin: 0 30px 0 16px;
+      padding: 12px 38px;
+      background: #065ea9;
+      border: 1px solid #065ea9;
+      border-radius: 5px;
     }
   }
 }

@@ -2,10 +2,11 @@ import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import scripka from "../../../../../assets/images/expert/scripka-icon.svg";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectPoemsPopUp() {
   const [activePopUp, setactivePopUp] = useState(true);
-
+  const { t } = useTranslation();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -20,10 +21,10 @@ export default function ProjectPoemsPopUp() {
         onClick={() => setactivePopUp(false)}
       ></div>
       <form className="victorina-popup" onSubmit={handleSubmit}>
-        <h3 className="victorina-popup-title">Loyihada ishtirok etish</h3>
+        <h3 className="victorina-popup-title">{t("victorina.joinproject")}</h3>
         <label htmlFor="" className="registeritem-label">
           <p>
-            {"FISH"} <span>*</span>
+            {t("victorina.fio")} <span>*</span>
           </p>
           <div>
             <input
@@ -31,13 +32,13 @@ export default function ProjectPoemsPopUp() {
               type="text"
               minLength={3}
               maxLength={30}
-              placeholder={"Ishtirokchini ismi"}
+              placeholder={t("victorina.name")}
             />
           </div>
         </label>
         <label htmlFor="" className="registeritem-label">
           <p>
-            {"Eng yaxshi she’rlaringizni yuklang (pdf, doc)"}
+            {t("victorina.projectpoem")}
             <span>*</span>
           </p>
           <label htmlFor="registeritem-label-fileinput" required>
@@ -47,7 +48,7 @@ export default function ProjectPoemsPopUp() {
               className="registeritem-label-fileinput"
               type="file"
             />
-            <p>Fayl yuklang</p>
+            <p>{t("expert.uploadfile")}</p>
             <img src={scripka} alt="" />
           </label>
         </label>
@@ -57,10 +58,10 @@ export default function ProjectPoemsPopUp() {
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            Bekor qilish
+            {t("form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
-            Yuborish
+            {t("footerSend")}
           </button>
         </div>
       </form>

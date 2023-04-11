@@ -2,9 +2,12 @@ import "./ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { BsImage } from "react-icons/bs";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectImgPopUp() {
   const [activePopUp, setactivePopUp] = useState(true);
+
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,10 +23,10 @@ export default function ProjectImgPopUp() {
         onClick={() => setactivePopUp(false)}
       ></div>
       <form className="victorina-popup" onSubmit={handleSubmit}>
-        <h3 className="victorina-popup-title">Loyihada ishtirok etish</h3>
+        <h3 className="victorina-popup-title">{t("victorina.joinproject")}</h3>
         <label htmlFor="" className="registeritem-label">
           <p>
-            {"FISH"} <span>*</span>
+            {t("victorina.fio")} <span>*</span>
           </p>
           <div>
             <input
@@ -31,7 +34,7 @@ export default function ProjectImgPopUp() {
               type="text"
               minLength={3}
               maxLength={30}
-              placeholder={"Ishtirokchini ismi"}
+              placeholder={t("victorina.name")}
             />
           </div>
         </label>
@@ -48,17 +51,17 @@ export default function ProjectImgPopUp() {
             maxLength={50}
           />
           <BsImage />
-          <p>{"Tanlovda ishtirok etish uchun rasmlar yuklang"}</p>
+          <p>{t("victorina.projectimg")}</p>
         </label>
         <div className="victorina-popup-btnWrapper">
           <div
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            Bekor qilish
+            {t("form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
-            Yuborish
+            {t("footerSend")}
           </button>
         </div>
       </form>
