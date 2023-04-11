@@ -17,6 +17,7 @@ function ExpertCouncil() {
     title: t("expert.headertitle"),
     subTitle: t("expert.headersubtitle"),
     link: "/portal-category/expert/register",
+    btnText: t("expert.register"),
   };
 
   const councilData = {

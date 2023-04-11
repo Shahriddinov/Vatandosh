@@ -4,13 +4,11 @@
 }
 
 .navbarpage {
-  // padding: 20px 0;
-
-  .container {
+  &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #eaedf6;
+    border-bottom: 1px solid #eaedf6;
     padding: 10px 0;
   }
 
