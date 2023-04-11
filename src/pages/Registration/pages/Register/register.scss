@@ -2,14 +2,42 @@
     border-radius: 8px !important;
 }
 
-.registration__form {
-    position: relative;
-    margin: 55px auto;
-    width: 1148px;
+.register__wrapper {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 52px auto;
+}
+
+.left__side__text {
+    width: 471px;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding: 40px 70px;
+    h1 {
+        font-weight: 600;
+        font-size: 46px;
+        line-height: 54px;
+        color: #FFFFFF;
+    }
+    p {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        letter-spacing: -0.015em;
+        color: rgba(255, 255, 255, 0.65);
+    }
+}
+
+.registration__form {
+    position: relative;
+    width: 644px;
+    height: 634px;
+    display: flex;
+    flex-direction: column;
+    padding: 45px 60px;
+    padding-bottom: 0;
     background: #FFFFFF;
     border-radius: 20px;
     z-index: 10;
@@ -18,18 +46,42 @@
 .form {
     display: flex;
     flex-direction: row;
-    gap: 50px;
     font-size: 14px;
+    justify-content: space-between;
 }
 
 .form__right {
     display: flex;
+    padding-top: 44px;
+    margin-right: -15px;
     flex-direction: column;
-    width: 826px;
+    width: 412px;
+    height: 468px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     gap: 35px;
+
+    &::-webkit-scrollbar-track {
+        background-color: #93C5FD;
+        border-width: 1px;
+        border-radius: 0;
+        border-left: 4px solid transparent;
+        background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: linear-gradient(131.1deg, #338CDA 16%, rgba(88, 172, 244, 0.88) 82.17%);
+        border-radius: 0;
+        border-left: 3px solid transparent;
+        border-top: 37px solid transparent;
+        border-bottom: 60px solid transparent;
+        background-clip: content-box;
+        height: 40px;
+    }
 }
 
 .form__title {
+    width: 506px;
     height: 80px;
     border-bottom: solid 2px rgba(6, 94, 169, 0.5);
     line-height: 20px;
@@ -43,10 +95,14 @@
 }
 
 .profile__photo {
-    width: 140px;
-    height: 132px;
+    margin-top: 44px;
+    position: relative;
+    width: 96px;
+    height: 96px;
     background-color: #D9D9D9;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     border-radius: 50%;
     overflow: hidden;
@@ -58,34 +114,34 @@
 }
 
 .profile__img {
-    width: 132px;
-    height: 132px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
 
-    .width100 {
-        width: 100%;
-        height: auto;
-    }
+.width100 {
+    width: 100%;
+    height: auto;
 }
 
 .upload__photo {
+    position: absolute;
     width: 100%;
-    height: 44px;
+    height: 32px;
     display: none;
     justify-content: center;
     align-items: center;
-    margin-top: -44px;
     background: rgba(0, 0, 0, 0.5);
+    bottom: 0;
 }
 
 .input__fields {
-    width: 826px;
+    width: 380px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr;
     row-gap: 30px;
 }
 
@@ -156,40 +212,21 @@
 }
 
 @media (max-width: 992px) {
-    .registration__form {
-        width: 790px;
-        padding: 40px;
-    }
-
-    .form {
+    .register__wrapper {
         flex-direction: column;
-        gap: 50px;
-        font-size: 14px;
-        align-items: center;
+        row-gap: 30px;
     }
 
-    .form__right {
-        width: 710px;
-        gap: 20px;
+    .left__side__text {
+        width: 95%;
     }
 
-    .input__fields {
-        width: 710px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        row-gap: 20px;
-    }
-
-    .profile__photo {
-        width: 132px;
-        height: 132px;
-    }
 }
 
 @media (max-width: 768px) {
     .registration__form {
         width: 95%;
+        height: max-content;
         padding: 30px;
     }
 
