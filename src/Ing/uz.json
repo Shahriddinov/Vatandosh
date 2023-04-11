@@ -277,5 +277,21 @@
     "offerforimg": "Taklifingiz uchun rasm",
     "articleoffer": "O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida takliflaringiz",
     "save": "Saqlash"
+  },
+  "victorina": {
+    "listwinner": "G‘oliblar ro‘yxati",
+    "joinproject": "Loyihada ishtirok etish",
+    "name": "Ishtirokchini ismi",
+    "fio": "FISH",
+    "projectimg": "Tanlovda ishtirok etish uchun rasmlar yuklang",
+    "projectpoem": "Eng yaxshi she’rlaringizni yuklang (pdf, doc)",
+    "projectyoutube": "Youtubudagi eng yaxshi videolari loyihangiz",
+    "videourl": "Video link",
+    "prev": "Oldingi",
+    "end": "Viktorina yakunlanganlar",
+    "bestimgproject": "Eng yaxshi rasmlari loyihasi",
+    "winner": "Viktorina g‘olibi",
+    "winnerprice": "Viktorina g‘olibi taqdirlandi",
+    "allwinner": "Barcha g‘oliblar"
   }
 }

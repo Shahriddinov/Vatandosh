@@ -1,15 +1,14 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Layout } from "./component";
+import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
-import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
-
+import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -139,6 +138,10 @@ const ListOfWinners = lazy(() =>
   import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
 );
 
+const VictorinaWinner = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -239,8 +242,13 @@ const RoutesContainer = () => (
         >
           <Route index element={<OnlineTeachingHome />} />
         </Route>
-        <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
+        <Route
+            path="/portal-category/victorina"
+            element={<VictorinaLayout />}
+        >
           <Route index element={<VictorinaHome />}></Route>
+          <Route path="listwinners" element={<ListOfWinners />} />
+          <Route path="winner/:id" element={<VictorinaWinner />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

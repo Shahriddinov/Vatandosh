@@ -276,5 +276,21 @@
     "offerforimg": "Picture for your proposal",
     "articleoffer": "Your proposals for cooperation with Uzbekistan in the field of education and science",
     "save": "Save"
+  },
+  "victorina": {
+    "listwinner": "List of winners",
+    "joinproject": "Participation in the project",
+    "name": "Name of the participant",
+    "fio": "FISH",
+    "projectimg": "Upload photos to participate in the competition",
+    "projectpoem": "Upload your best poems (pdf, doc)",
+    "projectyoutube": "Your best videos project on YouTube",
+    "videourl": "Video link",
+    "prev": "Prev",
+    "end": "Quiz finishers",
+    "bestimgproject": "Best painting project",
+    "winner": " Quiz winner",
+    "winnerprice": "Winner of the quiz awarded",
+    "allwinner": "All winners"
   }
 }

@@ -6,6 +6,7 @@
     display: flex;
     align-items: end;
     justify-content: space-between;
+    flex-wrap: wrap-reverse;
 
     &-text {
       @include fontStyles(600, 32px, 39px, $colorBlack);
