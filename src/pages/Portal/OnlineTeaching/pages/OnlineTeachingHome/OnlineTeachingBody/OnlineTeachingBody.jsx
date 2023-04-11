@@ -6,6 +6,9 @@ import Teacher from "../../../../../../assets/images/OnlineTeaching/Teacher.svg"
 import Grades from "../../../../../../assets/images/OnlineTeaching/Grades.svg"
 import Online from "../../../../../../assets/images/OnlineTeaching/Online.svg"
 import Seminar from "../../../../../../assets/images/OnlineTeaching/Seminar.svg"
+import Geografy from "../../../../../../assets/images/online-teaching/geogrify.svg"
+import Sertification from "../../../../../../assets/images/online-teaching/12.svg"
+import calendar from "../../../../../../assets/images/online-teaching/123.svg"
 
 function OnlineTeachingBody(props) {
     const Levels = [
@@ -70,6 +73,29 @@ function OnlineTeachingBody(props) {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="onlineTeachingBody_boxs">
+                <div className="onlineTeachingBody_boxs_ones">
+                    <img src={Geografy} alt=""/>
+                    <div className="onlineTeachingBody_boxs_ones_lefts">
+                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
+                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
+                    </div>
+                </div>
+                <div className="onlineTeachingBody_boxs_ones">
+                    <img src={Sertification} alt=""/>
+                    <div className="onlineTeachingBody_boxs_ones_lefts">
+                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
+                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
+                    </div>
+                </div>
+                <div className="onlineTeachingBody_boxs_ones">
+                    <img src={calendar} alt=""/>
+                    <div className="onlineTeachingBody_boxs_ones_lefts">
+                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
+                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
