@@ -8,22 +8,32 @@ function Nav({ navData }) {
   return (
     <div className="nav">
       <div className="container">
-        <ul>
-          {navData?.map((navItem) => (
-            <li key={navItem.id}>
-              <Link
-                to={navItem.url}
-                className={
-                  editClass.length <= 3 || id !== undefined
-                    ? `nav-link`
-                    : `nav--link`
-                }
-              >
-                {navItem.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div
+          className="nav__inner"
+          style={{
+            borderBottomColor:
+              editClass.length <= 3 || id !== undefined
+                ? "transparent"
+                : "#eaedf6",
+          }}
+        >
+          <ul>
+            {navData?.map((navItem) => (
+              <li key={navItem.id}>
+                <Link
+                  to={navItem.url}
+                  className={
+                    editClass.length <= 3 || id !== undefined
+                      ? `nav-link`
+                      : `nav--link`
+                  }
+                >
+                  {navItem.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

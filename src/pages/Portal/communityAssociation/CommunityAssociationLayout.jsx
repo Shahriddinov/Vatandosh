@@ -12,7 +12,7 @@ const CommunityAssociationLayout = () => {
     { id: 1, url: "/portal-category/community-association", label: "Asosiy" },
     {
       id: 2,
-      url: "/portal-category/community-association/about",
+      url: "/portal-category/community-association/associations",
       label: "Jamoat birlashmalari",
     },
     {

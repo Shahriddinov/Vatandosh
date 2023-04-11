@@ -1,27 +1,26 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Layout } from "./component";
+import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
-import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
-
+import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
 const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() =>
-    import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
+  import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
 );
 const Portal = lazy(() => import("./pages/Portal/Portal"));
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
-    import("./pages/InformationServices/InformationServices")
+  import("./pages/InformationServices/InformationServices")
 );
 const Mediateka = lazy(() => import("./pages/Mediateka/Mediateka"));
 const NotFound = lazy(() => import("./pages/404"));
@@ -29,120 +28,118 @@ const Flags = lazy(() => import("./pages/Symbols/Flag"));
 const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
 const Coat = lazy(() => import("./pages/Symbols/Coat"));
 const Direction = lazy(() =>
-    import("./pages/About/component/Direction/BasicDirection")
+  import("./pages/About/component/Direction/BasicDirection")
 );
 const Management = lazy(() =>
-    import("./pages/About/component/Management/Management")
+  import("./pages/About/component/Management/Management")
 );
 const Hashtag = lazy(() => import("./pages/Hashtag/Hashtag"));
 const ExpertProfile = lazy(() =>
-    import("./pages/Portal/expert/pages/ExpertProfil/ExpertProfil")
+  import("./pages/Portal/expert/pages/ExpertProfil/ExpertProfil")
 );
 const ExpertRegister = lazy(() =>
-    import("./pages/Portal/expert/pages/ExpertRegister/ExpertRegister")
+  import("./pages/Portal/expert/pages/ExpertRegister/ExpertRegister")
 );
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
 const ChangePassword = lazy(() =>
-    import("./pages/Registration/pages/ChangePassword/ChangePassword")
+  import("./pages/Registration/pages/ChangePassword/ChangePassword")
 );
 const RecoveryPassword = lazy(() =>
-    import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword")
+  import("./pages/Registration/pages/RecoveryPassword/RecoveryPassword")
 );
 const Register = lazy(() =>
-    import("./pages/Registration/pages/Register/Register")
+  import("./pages/Registration/pages/Register/Register")
 );
 const ExpertOffers = lazy(() =>
-    import("./pages/Portal/expert/pages/ExpertOffers/ExpertOffers")
+  import("./pages/Portal/expert/pages/ExpertOffers/ExpertOffers")
 );
 const ExpertOffersDetail = lazy(() =>
-    import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
+  import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
 );
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
-    import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
+  import("./pages/Portal/expert/pages/AboutCouncil/AboutCouncil")
 );
 
 const VolunterHome = lazy(() =>
-    import("./pages/Portal/volunter/pages/VolunterHome/VolunterHome")
+  import("./pages/Portal/volunter/pages/VolunterHome/VolunterHome")
 );
 
 const CommunityAssociationLayout = lazy(() =>
-    import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
+  import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
 );
 
-
-
 const CommunityAssociationHome = lazy(() =>
-    import(
-        "./pages/Portal/communityAssociation/pages/associationHome/AssociationHome"
-        )
+  import(
+    "./pages/Portal/communityAssociation/pages/associationHome/AssociationHome"
+  )
 );
 
 const CommunityAssociationAbout = lazy(() =>
-    import(
-        "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
-        )
-);
-
-const CommunityAssociations = lazy(() =>
-    import(
-        "./pages/Portal/communityAssociation/pages/associations/Associations"
-        )
-);
-
-const CommunityAssociationEvents = lazy(() =>
-    import(
-        "./pages/Portal/communityAssociation/pages/associationsEvents/AssociationsEvents"
-        )
+  import(
+    "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
+  )
 );
 
 const CommunityAssociationCountry = lazy(() =>
-    import("./pages/Portal/communityAssociation/pages/country/Country")
+  import("./pages/Portal/communityAssociation/pages/country/Country")
 );
 
 const CommunityAssociationRegister = lazy(() =>
-    import(
-        "./pages/Portal/communityAssociation/pages/communityAssociationRegister/CommunityAssociationRegister"
-        )
+  import(
+    "./pages/Portal/communityAssociation/pages/communityAssociationRegister/CommunityAssociationRegister"
+  )
+);
+const CommunityAssociationDetail = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityAssociationDetail/CommunityAssociationDetail"
+  )
+);
+const Associations = lazy(() =>
+  import("./pages/Portal/communityAssociation/pages/associations/Associations")
 );
 
 const VolunterLayout = lazy(() =>
-    import("./pages/Portal/volunter/VolunterLayout")
+  import("./pages/Portal/volunter/VolunterLayout")
 );
 
 const VolunterProfile = lazy(() =>
-    import("./pages/Portal/volunter/pages/VolunterProfile/VolunterProfile")
+  import("./pages/Portal/volunter/pages/VolunterProfile/VolunterProfile")
 );
 const VolunterRegister = lazy(() =>
-    import("./pages/Portal/volunter/pages/VolunterRegister/VolunterRegister")
+  import("./pages/Portal/volunter/pages/VolunterRegister/VolunterRegister")
 );
 const VolunterArticleDetail = lazy(() =>
-    import(
-        "./pages/Portal/volunter/pages/VolunterArticleDetail/VolunterArticleDetail"
-        )
+  import(
+    "./pages/Portal/volunter/pages/VolunterArticleDetail/VolunterArticleDetail"
+  )
 );
 const VolunterActivityDetail = lazy(() =>
-    import(
-        "./pages/Portal/volunter/pages/VolunterActivityDetail/VolunterActivityDetail"
-        )
+  import(
+    "./pages/Portal/volunter/pages/VolunterActivityDetail/VolunterActivityDetail"
+  )
 );
 const VolunterActivity = lazy(() =>
-    import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
+  import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
 );
 
 const OnlineTeachingLayout = lazy(() =>
-    import("./pages/Portal/OnlineTeaching/OnlineTeachingLayout")
+  import("./pages/Portal/OnlineTeaching/OnlineTeachingLayout")
 );
 
 const OnlineTeachingHome = lazy(() =>
-    import(
-        "./pages/Portal/OnlineTeaching/pages/OnlineTeachingHome/OnlineTeachingHome"
-        )
+  import(
+    "./pages/Portal/OnlineTeaching/pages/OnlineTeachingHome/OnlineTeachingHome"
+  )
 );
 const ListOfWinners = lazy(() =>
-    import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
+  import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
+);
+
+const VictorinaWinner = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
 );
 
 const routes = [
@@ -183,75 +180,80 @@ const routes = [
 ];
 
 const RoutesContainer = () => (
-    <Router>
-      <Layout>
-        <Routes>
-          {routes.map((route, key) => {
-            const RouteComponent = ScrollTop(route.element);
-            return (
-                <Route key={key} path={route.path} element={<RouteComponent />} />
-            );
-          })}
-          <Route path="/portal-category/expert" element={<ExpertLayout />}>
-            <Route index element={<ExpertCouncil />} />
-            <Route path="council-about" element={<AboutCouncil />} />
-            <Route path="expert-council" element={<ExpertEmploye />} />
-            <Route path="profile/:id" element={<ExpertProfile />} />
-            <Route path="offers" element={<ExpertOffers />} />
-            <Route path="offers/:id" element={<ExpertOffersDetail />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="register" element={<ExpertRegister />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-
-          <Route
-              path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}
-          >
-            <Route index element={<CommunityAssociationHome />} />
-            <Route path="about" element={<CommunityAssociationAbout />} />
-            <Route path="associations" element={<CommunityAssociations />} />
-            <Route path="events" element={<CommunityAssociationEvents />} />
-            <Route
-                path="country/:country"
-                element={<CommunityAssociationCountry />}
-            />
-            <Route
-                path="application"
-                element={<CommunityAssociationRegister />}
-            />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-
-          <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
-            <Route index element={<VolunterHome />} />
-            <Route path="profile" element={<VolunterProfile />} />
-            <Route path="register" element={<VolunterRegister />} />
-            <Route path="volunter-employe" element={<VolunterAbout />} />
-            <Route path="council-about" element={<VolunterCouncilAbout />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="article/:id" element={<VolunterArticleDetail />} />
-            <Route path="activity" element={<VolunterActivity />} />
-            <Route path="activity/:id" element={<VolunterActivityDetail />} />
-          </Route>
-
-          <Route
-              path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}
-          >
-            <Route index element={<OnlineTeachingHome />} />
-          </Route>
-          <Route
-              path="/portal-category/victorina"
-              element={<VictorinaLayout />}
-          >
-            <Route index element={<VictorinaHome />}></Route>
-          </Route>
+  <Router>
+    <Layout>
+      <Routes>
+        {routes.map((route, key) => {
+          const RouteComponent = ScrollTop(route.element);
+          return (
+            <Route key={key} path={route.path} element={<RouteComponent />} />
+          );
+        })}
+        <Route path="/portal-category/expert" element={<ExpertLayout />}>
+          <Route index element={<ExpertCouncil />} />
+          <Route path="council-about" element={<AboutCouncil />} />
+          <Route path="expert-council" element={<ExpertEmploye />} />
+          <Route path="profile/:id" element={<ExpertProfile />} />
+          <Route path="offers" element={<ExpertOffers />} />
+          <Route path="offers/:id" element={<ExpertOffersDetail />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="register" element={<ExpertRegister />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </Router>
+        </Route>
+
+        <Route
+          path="/portal-category/community-association"
+          element={<CommunityAssociationLayout />}
+        >
+          <Route index element={<CommunityAssociationHome />} />
+          <Route path="about" element={<CommunityAssociationAbout />} />
+          <Route
+            path="country/:country"
+            element={<CommunityAssociationCountry />}
+          />
+          <Route path="associations" element={<Associations />} />
+          <Route
+            path="country/:country/:id"
+            element={<CommunityAssociationDetail />}
+          />
+          <Route
+            path="application"
+            element={<CommunityAssociationRegister />}
+          />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+
+        <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
+          <Route index element={<VolunterHome />} />
+          <Route path="profile" element={<VolunterProfile />} />
+          <Route path="register" element={<VolunterRegister />} />
+          <Route path="volunter-employe" element={<VolunterAbout />} />
+          <Route path="council-about" element={<VolunterCouncilAbout />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="article/:id" element={<VolunterArticleDetail />} />
+          <Route path="activity" element={<VolunterActivity />} />
+          <Route path="activity/:id" element={<VolunterActivityDetail />} />
+        </Route>
+
+        <Route
+          path="/portal-category/online-teaching"
+          element={<OnlineTeachingLayout />}
+        >
+          <Route index element={<OnlineTeachingHome />} />
+        </Route>
+        <Route
+            path="/portal-category/victorina"
+            element={<VictorinaLayout />}
+        >
+          <Route index element={<VictorinaHome />}></Route>
+          <Route path="listwinners" element={<ListOfWinners />} />
+          <Route path="winner/:id" element={<VictorinaWinner />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
+  </Router>
 );
 
 export default RoutesContainer;

@@ -15,13 +15,19 @@ import {
 } from "./components";
 import { getEvents } from "../../../../../reduxToolkit/eventsSlice/extraReducer";
 import { Spinner } from "../../../../../component";
+import { useState } from "react";
+import AddNewsModal from "./components/addNewsModal/AddNewsModal";
 
 const CommunityAssociationDetail = () => {
+  const [activeModal, setActiveModal] = useState(true);
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventsSlice.eventsData);
   const loading = useSelector((state) => state.eventsSlice.loading);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     if (!events.length) {
@@ -42,12 +48,17 @@ const CommunityAssociationDetail = () => {
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
 
-        <CommunityAssociationHero data={communityAssociationHeroData} />
+        <CommunityAssociationHero
+          data={communityAssociationHeroData}
+          handleOpen={handleOpen}
+        />
       </div>
 
       <StatesFriendshipInfo {...CommunityIntroData} />
       <CommunityAssociationCompanyOffer {...CommunityIntroData} />
       <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
+
+      {activeModal && <AddNewsModal open={open} handleClose={handleClose} />}
     </div>
   );
 };

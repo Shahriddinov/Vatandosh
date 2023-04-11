@@ -1,5 +1,9 @@
 .nav {
-  padding: 20px 0;
+  &__inner {
+    padding: 20px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
   ul {
     display: flex;
     align-items: center;

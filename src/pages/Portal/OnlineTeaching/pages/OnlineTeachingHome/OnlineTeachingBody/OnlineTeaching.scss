@@ -125,4 +125,31 @@
       }
     }
   }
+  &_boxs{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    &_ones{
+      width: 25%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      &_lefts{
+        &_spans{
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 134%;
+          color: $colorTitle;
+        }
+        &_ps{
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 134%;
+          margin-top: 5px;
+          color: #141619;
+        }
+
+      }
+    }
+  }
 }

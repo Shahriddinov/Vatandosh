@@ -4,7 +4,7 @@ import arrowRight from "../../../../../../../assets/images/about/arrow-right.svg
 
 import "./communityHero.scss";
 
-const CommunityAssociationHero = ({ data }) => {
+const CommunityAssociationHero = ({ data, handleOpen }) => {
   return (
     <section className="community-association-hero">
       <div className="community-association-hero__container container">
@@ -52,8 +52,11 @@ const CommunityAssociationHero = ({ data }) => {
               bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab
               qolish,
             </p>
-
-            <button type="button" className="community-association-hero__btn">
+            <button
+              onClick={handleOpen}
+              type="button"
+              className="community-association-hero__btn"
+            >
               Yangilik qo’shish
             </button>
           </div>
