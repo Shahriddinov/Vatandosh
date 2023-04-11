@@ -125,6 +125,9 @@ const OnlineTeachingHome = lazy(() =>
         "./pages/Portal/Onlineteaching/pages/OnlineTeachingHome/OnlineTeachingHome"
         )
 );
+const ListOfWinners = lazy(() =>
+    import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -215,16 +218,24 @@ const RoutesContainer = () => (
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
 
+
           <Route
               path="/portal-category/online-teaching"
               element={<OnlineTeachingLayout />}
           >
             <Route index element={<OnlineTeachingHome />} />
+          <Route
+            path="/portal-category/victorina"
+            element={<VictorinaLayout />}
+          >
+            <Route index element={<VictorinaHome />}></Route>
           </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Layout>
-    </Router>
+      </Suspense>
+    </Layout>
+  </Router>
 );
 
 export default RoutesContainer;

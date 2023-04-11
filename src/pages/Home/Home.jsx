@@ -8,7 +8,6 @@ import MapsHome from "../../component/maps-home/MapsHome";
 import Partners from "../../component/partners/Partners";
 import { useDispatch, useSelector } from "react-redux";
 import { getPeaceful } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import ContactUs from "../../component/ContactUs/ContactUs";
 import Header from "../../component/Layout/Header/Header";
 import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 
@@ -22,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getPeaceful());
     dispatch(getSlider());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
