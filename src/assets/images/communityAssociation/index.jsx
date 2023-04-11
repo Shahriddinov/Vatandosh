@@ -13,3 +13,5 @@ export { default as CommunityCardImg4 } from "./card-img5.png";
 export { default as CommunityCardImg5 } from "./card-img6.png";
 export { default as CommunityCardImg6 } from "./card-img7.png";
 export { default as CommunityCardImg7 } from "./card-img8.png";
+export { default as PlusIcon } from "./Plus-icon.svg";
+export { default as Trash } from "./trash.svg";

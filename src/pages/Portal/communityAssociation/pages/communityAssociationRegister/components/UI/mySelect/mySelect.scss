@@ -7,11 +7,11 @@
     line-height: 19px;
     color: #9d9d9d;
   }
-  .css-vamk89-MuiFormControl-root,
-  .css-78me8v-MuiFormControl-root {
+
+  .MuiFormControl-root {
     margin: 0 !important;
   }
-  .css-1wc848c-MuiFormHelperText-root {
+  .MuiFormHelperText-root {
     font-family: "Inter" !important;
     font-style: normal !important;
     font-size: 14px !important;
@@ -24,21 +24,18 @@
     margin-left: 0 !important;
   }
 
-  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  .MuiSelect-select {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     padding: 14px 12px !important;
+    background-color: #fff;
     border: 1px solid #eaedf6;
   }
 
-  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
-    background-color: #fff;
-  }
-
-  .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  .MuiOutlinedInput-notchedOutline {
     border: 0 !important;
   }
 }
