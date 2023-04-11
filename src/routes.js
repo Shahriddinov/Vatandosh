@@ -121,12 +121,12 @@ const VolunterActivity = lazy(() =>
 );
 
 const OnlineTeachingLayout = lazy(() =>
-    import("./pages/Portal/Onlineteaching/OnlineTeachingLayout")
+    import("./pages/Portal/OnlineTeaching/OnlineTeachingLayout")
 );
 
 const OnlineTeachingHome = lazy(() =>
     import(
-        "./pages/Portal/Onlineteaching/pages/OnlineTeachingHome/OnlineTeachingHome"
+        "./pages/Portal/OnlineTeaching/pages/OnlineTeachingHome/OnlineTeachingHome"
         )
 );
 const ListOfWinners = lazy(() =>
