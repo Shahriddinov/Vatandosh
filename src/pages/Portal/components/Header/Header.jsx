@@ -26,9 +26,7 @@ const HeaderPortal = () => {
   const { grayScale } = useContext(GrayContext);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);

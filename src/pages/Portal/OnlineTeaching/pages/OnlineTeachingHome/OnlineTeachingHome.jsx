@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+
+import OnlineTeachingHero from "../../components/OnlineTeachingHero/OnlineTeachingHero";
 
 function OnlineTeachingHome(props) {
-    return (
-        <div>
-            OnlineTeachingHome
-        </div>
-    );
+  return (
+    <div>
+      <OnlineTeachingHero />
+    </div>
+  );
 }
 
 export default OnlineTeachingHome;

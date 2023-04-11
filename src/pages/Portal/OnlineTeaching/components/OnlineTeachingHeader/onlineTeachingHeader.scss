@@ -1,6 +1,12 @@
 @import "../../../../../assets/style/global.scss";
 
 .online-teaching-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+  background: #065ea9;
+
   &__navbar {
     display: flex;
     align-items: center;
@@ -21,6 +27,8 @@
 
         span {
           line-height: 18px;
+          color: #065ea9;
+          font-weight: 600;
         }
       }
     }
@@ -35,7 +43,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
-        color: #fff;
+        color: #5d6b8a;
       }
     }
 
@@ -50,7 +58,7 @@
         font-size: 14px;
         line-height: 17px;
         opacity: 0.8;
-        color: #fff;
+        color: #5d6b8a;
       }
     }
 
@@ -68,7 +76,7 @@
       border: none;
       width: 40px;
       height: 40px;
-      background: #065ea9;
+      background: #eaedf6;
       border-radius: 12px;
       cursor: pointer;
     }
@@ -100,6 +108,25 @@
         grid-area: 5px;
         color: white;
         border: none;
+      }
+    }
+
+    &-cabinet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 0;
+      gap: 5px;
+      border: none;
+      width: 110px;
+      height: 40px;
+      background: #eaedf6;
+      border-radius: 12px;
+      cursor: pointer;
+
+      span {
+        font-size: 14px;
+        color: #5d6b8a;
       }
     }
 

@@ -3,7 +3,11 @@ import React from "react";
 import "./onlineTeachingHero.scss";
 
 const OnlineTeachingHero = () => {
-  return <div>OnlineTeachingHero</div>;
+  return (
+    <div className="teaching-hero">
+      <div className="container"></div>
+    </div>
+  );
 };
 
 export default OnlineTeachingHero;
