@@ -57,6 +57,7 @@ const CommunityRegister2 = ({ activeBarItem }) => {
           text="Tashkilot uchun rasmlar (yuklab olish)"
           handleChange={handleChangeApplication2}
           valueKey="componyImg"
+          countImg={2}
         />
 
         <button className="community-association-register__form--btn">
