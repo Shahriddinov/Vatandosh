@@ -28,6 +28,29 @@ a {
   text-decoration: none;
 }
 
+.victorina-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(2, 12, 21, 0.75);
+}
+
+.victorina-popup {
+  width: 80%;
+  padding: 40px 55px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 15px;
+  background-color: #ffffff;
+  border: 1px solid #eaedf6;
+  border-radius: 15px;
+}
+
 .gray-scale {
   filter: grayscale(100%);
 }

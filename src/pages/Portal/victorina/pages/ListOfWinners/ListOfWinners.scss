@@ -1,0 +1,43 @@
+@import "../../../../../assets/style/global.scss";
+
+.listofwinners {
+  padding: 35px 0 100px;
+
+  &-title {
+    margin-bottom: 34px;
+    @include fontStyles(600, 32px, 39px, $colorBlack);
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  &-moreBtn {
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #e3f0ff;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+
+    &-wrapper {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+      color: $colorTitle;
+    }
+
+    & > span {
+      @include fontStyles(500, 14px, 24px, $colorTitle);
+    }
+  }
+}

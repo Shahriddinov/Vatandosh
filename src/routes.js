@@ -117,7 +117,15 @@ const VolunterActivity = lazy(() =>
   import("./pages/Portal/volunter/pages/VolunterActivity/VolunterActivity")
 );
 
-const OnlineTeachingHome = lazy(()=> import("./pages/Portal/Onlineteaching/page/OnlineTeachingHome/OnlineTeachingHome"))
+const OnlineTeachingHome = lazy(() =>
+  import(
+    "./pages/Portal/Onlineteaching/page/OnlineTeachingHome/OnlineTeachingHome"
+  )
+);
+
+const ListOfWinners = lazy(() =>
+  import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -154,7 +162,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
-  {path: "/online-teaching", element: OnlineTeachingHome}
+  { path: "/online-teaching", element: OnlineTeachingHome },
 ];
 
 const RoutesContainer = () => (
@@ -182,7 +190,8 @@ const RoutesContainer = () => (
 
           <Route
             path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}>
+            element={<CommunityAssociationLayout />}
+          >
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
             <Route
@@ -208,8 +217,12 @@ const RoutesContainer = () => (
             <Route path="activity" element={<VolunterActivity />} />
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
-          <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
-            <Route index element={<VictorinaHome />} />
+          <Route
+            path="/portal-category/victorina"
+            element={<VictorinaLayout />}
+          >
+            <Route index element={<VictorinaHome />}></Route>
+            <Route path="listwinners" element={<ListOfWinners />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

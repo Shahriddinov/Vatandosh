@@ -1,0 +1,60 @@
+@import "../../../../../assets/style/global.scss";
+
+.victorina-test {
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 15px;
+
+  &-title {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e6e8ec;
+
+    & > h3 {
+      @include fontStyles(700, 24px, 29px, $colorTitle);
+    }
+  }
+
+  &-wrapper {
+    padding: 25px 30px;
+  }
+
+  &-list {
+    display: grid;
+    gap: 30px;
+
+    &-desc {
+      margin-bottom: 25px;
+      @include fontStyles(600, 20px, 24px, #64748b);
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .MuiButtonBase-root {
+        padding: 0;
+        color: #065ea9 !important;
+
+        & > input,
+        svg {
+          width: 30px;
+          height: 30px;
+
+          & > path {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+
+      & > span {
+        @include fontStyles(700, 16px, 19px, $colorTitle);
+      }
+    }
+  }
+}
