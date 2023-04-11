@@ -7,6 +7,8 @@ import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmplo
 import ExpertCouncil from "./pages/Portal/expert/pages/ExpertHome/ExpertCouncil";
 import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilAbout/VolunterCouncilAbout";
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
+import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
+import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -69,6 +71,8 @@ const VolunterHome = lazy(() =>
 const CommunityAssociationLayout = lazy(() =>
     import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
 );
+
+
 
 const CommunityAssociationHome = lazy(() =>
     import(
@@ -218,24 +222,22 @@ const RoutesContainer = () => (
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
 
-
           <Route
               path="/portal-category/online-teaching"
               element={<OnlineTeachingLayout />}
           >
             <Route index element={<OnlineTeachingHome />} />
+          </Route>
           <Route
-            path="/portal-category/victorina"
-            element={<VictorinaLayout />}
+              path="/portal-category/victorina"
+              element={<VictorinaLayout />}
           >
             <Route index element={<VictorinaHome />}></Route>
           </Route>
-
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Suspense>
-    </Layout>
-  </Router>
+      </Layout>
+    </Router>
 );
 
 export default RoutesContainer;
