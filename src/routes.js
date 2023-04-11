@@ -222,6 +222,7 @@ const RoutesContainer = () => (
             element={<VictorinaLayout />}
           >
             <Route index element={<VictorinaHome />}></Route>
+            <Route path="listwinners" element={<ListOfWinners />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
