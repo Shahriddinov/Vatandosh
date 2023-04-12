@@ -8,6 +8,7 @@ import VictorinaCouncil from "./components/VictorinaStatics/VictorinaCouncil";
 import { NotebookImage } from "../../../../../assets/images/victorina";
 import Victorina from "./components/Victorina/Victorina";
 import VictorinaNews from "./components/News/News";
+import ListWinners from "../../components/ListWinners/ListWinners";
 
 function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -28,6 +29,7 @@ function VictorinaHome() {
       <HeaderTime />
       <VictorinaCouncil councilData={councilData} />
       <Victorina />
+      <ListWinners />
       <VictorinaNews />
     </div>
   );

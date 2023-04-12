@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 import OnlineTeachingHeader from "./components/OnlineTeachingHeader/OnlineTeachingHeader";
-import OnlineTeachingFooter from "./components/OnlineTeachingFooter/OnlineTeachingFooter";
+import OnlineTeachingFooter from "./components/OnlineteachingFooter/OnlineteachingFooter";
 
 const OnlineTeachingLayout = () => {
   return (

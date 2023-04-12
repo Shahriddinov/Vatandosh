@@ -4,8 +4,7 @@ import img from "../../../../../assets/images/portal/4.png";
 import Checkbox from "@mui/material/Checkbox";
 import { useTranslation } from "react-i18next";
 
-export default function TestPopUp() {
-  const [activePopUp, setactivePopUp] = useState(true);
+export default function TestPopUp({ setactivePopUp }) {
   const [testResponse, settestResponse] = useState(false);
 
   const { t } = useTranslation();
@@ -15,10 +14,7 @@ export default function TestPopUp() {
   };
 
   return (
-    <div
-      className="projectImg"
-      style={activePopUp ? null : { display: "none" }}
-    >
+    <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}

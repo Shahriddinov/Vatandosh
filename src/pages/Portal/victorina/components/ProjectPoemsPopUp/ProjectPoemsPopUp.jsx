@@ -1,21 +1,16 @@
 import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import scripka from "../../../../../assets/images/expert/scripka-icon.svg";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function ProjectPoemsPopUp() {
-  const [activePopUp, setactivePopUp] = useState(true);
+export default function ProjectPoemsPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
-    <div
-      className="projectImg"
-      style={activePopUp ? null : { display: "none" }}
-    >
+    <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}
@@ -58,7 +53,7 @@ export default function ProjectPoemsPopUp() {
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            {t("form_cancel")}
+            {t("projects_page.form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
             {t("footerSend")}

@@ -1,11 +1,8 @@
 import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function ProjectYouTubePopUp() {
-  const [activePopUp, setactivePopUp] = useState(true);
-
+export default function ProjectYouTubePopUp({ setactivePopUp }) {
   const { t } = useTranslation();
 
   const handleSubmit = (e) => {
@@ -13,10 +10,7 @@ export default function ProjectYouTubePopUp() {
   };
 
   return (
-    <div
-      className="projectImg"
-      style={activePopUp ? null : { display: "none" }}
-    >
+    <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}
@@ -55,7 +49,7 @@ export default function ProjectYouTubePopUp() {
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            {t("form_cancel")}
+            {t("projects_page.form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
             {t("footerSend")}

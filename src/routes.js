@@ -142,6 +142,10 @@ const VictorinaWinner = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
 );
 
+const VictorinaProject = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -242,13 +246,15 @@ const RoutesContainer = () => (
         >
           <Route index element={<OnlineTeachingHome />} />
         </Route>
-        <Route
-            path="/portal-category/victorina"
-            element={<VictorinaLayout />}
-        >
+        <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
           <Route index element={<VictorinaHome />}></Route>
+          <Route path="contact" element={<Contact />} />
           <Route path="listwinners" element={<ListOfWinners />} />
           <Route path="winner/:id" element={<VictorinaWinner />} />
+          <Route path="image-project" element={<VictorinaProject />} />
+          <Route path="youtube-project" element={<VictorinaProject />} />
+          <Route path="poem-project" element={<VictorinaProject />} />
+          <Route path="edu-branding" element={<VictorinaProject />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
