@@ -120,7 +120,6 @@ const Header = () => {
               <CiGlobe className="header_navbar_language-icon" />
               <span style={{ color: "white" }}>
                 {languageList.find((lan) => lan.type === language)?.label}
-
               </span>
               <IoMdArrowDropdown className="header_navbar_language-iconArrow" />
             </div>
@@ -138,22 +137,6 @@ const Header = () => {
                   {el.label}
                 </p>
               ))}
-              {/* <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>Uz</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>Ru</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>En</p>
-                            <p onClick={(e) => {
-                                handleChangeLng(e.target.innerText.toLowerCase());
-                                setactiveLang((el) => !el)
-                            }}>oz</p> */}
             </div>
           </div>
           <button
