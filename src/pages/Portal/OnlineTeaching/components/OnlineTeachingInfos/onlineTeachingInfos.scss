@@ -4,12 +4,14 @@
   background: #F6FCFF;
   height: 600px;
   background-repeat:no-repeat ;
-  background-position: bottom right;
+  background-position:left bottom, bottom right, right top;
   margin-bottom: 5%;
   margin-top: 5%;
   display: flex;
   justify-content: space-between;
-  background-image: url("../../../../../assets/images/online-teaching/Group.svg");
+  background-image: url("../../../../../assets/images/online-teaching/leftLines.png"),
+  url("../../../../../assets/images/online-teaching/Group.svg"),
+  url("../../../../../assets/images/online-teaching/lines.png");
   &_count{
 
     display: flex;
