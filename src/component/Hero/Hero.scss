@@ -121,6 +121,10 @@
       background: #fff;
       border: none;
       cursor: pointer;
+
+      &.hide-btn {
+        display: none;
+      }
     }
 
     .navigation-line {

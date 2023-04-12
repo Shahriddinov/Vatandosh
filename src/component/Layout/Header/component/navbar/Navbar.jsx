@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { NavBarLinks } from "../../../../NavBarLinks";
-import {languageList} from '../../../data.js'
+import { languageList } from "../../../data.js";
 
 const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
@@ -24,8 +24,6 @@ const Navbar = ({ activeSidebar }) => {
   const [activeLinkBar, setactiveLinkBar] = useState(-1);
   const [activeLng, setActiveLng] = useState(activeLanguage);
   const dispatch = useDispatch();
-
-
 
   const contactData = useSelector(
     (state) => state.contactSlice.contactData.data
@@ -51,48 +49,66 @@ const Navbar = ({ activeSidebar }) => {
         <div className="header-sideBar-navlinks">
           <ul className="header-sideBar-navlist">
             {NavBarLinks()?.map((el, index) => {
-              return (
-                el.links ?
-                  <li
-                    key={index}
-                    className="header-sideBar-navlist-item"
-                    style={activeLinkBar === index ? { height: "auto" } : null}
+              return el.links ? (
+                <li
+                  key={index}
+                  className="header-sideBar-navlist-item"
+                  style={activeLinkBar === index ? { height: "auto" } : null}
+                >
+                  <p
+                    className="header-sideBar-navlist-item-title"
+                    onClick={() =>
+                      setactiveLinkBar((el) => (el === index ? -1 : index))
+                    }
                   >
-                    <p
-                      className="header-sideBar-navlist-item-title"
-                      onClick={() =>
-                        setactiveLinkBar((el) => (el === index ? -1 : index))
-                      }>
-                      {el.title}{" "}
-                      <IoIosArrowDown
-                        className="header-sideBar-navlist-item-arrowIcon"
-                        style={
-                          activeLinkBar === index
-                            ? { transform: "rotate(180deg)" }
-                            : null
-                        }
-                      />
-                    </p>
-                    <div className="header-sideBar-navlist-item-links">
-                      {
-                        el.links?.map((link, index) => {
-                          return <NavLink key={index} className="header-sideBar-navlist-item-link" to={link.url}>
-                            {link.title}
-                          </NavLink>
-                        })
+                    {el.title}{" "}
+                    <IoIosArrowDown
+                      className="header-sideBar-navlist-item-arrowIcon"
+                      style={
+                        activeLinkBar === index
+                          ? { transform: "rotate(180deg)" }
+                          : null
                       }
-                    </div>
-                  </li>
-                  : <li className="header-sideBar-navlist-item" key={index}><Link className="header-sideBar-navlist-item-title" to={el?.url}>{el.title}</Link></li>
+                    />
+                  </p>
+                  <div className="header-sideBar-navlist-item-links">
+                    {el.links?.map((link, index) => {
+                      return (
+                        <NavLink
+                          key={index}
+                          className="header-sideBar-navlist-item-link"
+                          to={link.url}
+                        >
+                          {link.title}
+                        </NavLink>
+                      );
+                    })}
+                  </div>
+                </li>
+              ) : (
+                <li className="header-sideBar-navlist-item" key={index}>
+                  <Link
+                    className="header-sideBar-navlist-item-title"
+                    to={el?.url}
+                  >
+                    {el.title}
+                  </Link>
+                </li>
               );
             })}
           </ul>
           <div className="header-sideBar-connection">
-            <a href={`tel: ${contactData?.phone}`} className="header-sideBar-connection-item">
+            <a
+              href={`tel: ${contactData?.phone}`}
+              className="header-sideBar-connection-item"
+            >
               <img src={phone} alt="phone" />
               <span>0800-120-55 55</span>
             </a>
-            <a href={`mailto: ${contactData?.email}`} className="header-sideBar-connection-item">
+            <a
+              href={`mailto: ${contactData?.email}`}
+              className="header-sideBar-connection-item"
+            >
               <HiOutlineMail className="header-sideBar-connection-item-icon" />
               <span>info@Vatandoshlar</span>
             </a>
@@ -128,8 +144,9 @@ const Navbar = ({ activeSidebar }) => {
           <ul className="header-sideBar-bottom-lang">
             {languageList.map((el, index) => (
               <li
-                className={`header-sideBar-bottom-lang-item ${activeLng === el.type ? "langActive" : ""
-                  }`}
+                className={`header-sideBar-bottom-lang-item ${
+                  activeLng === el.type ? "langActive" : ""
+                }`}
                 key={index}
                 onClick={() => changeLanguage(el.type)}
               >

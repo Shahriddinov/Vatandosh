@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import "./Hero.scss";
 
@@ -12,6 +13,7 @@ const Hero = ({ sliderData, error, loading }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
+  const navigate = useNavigate();
 
   const handleLeft = () => {
     if (slideIndex === 1) {
@@ -86,7 +88,14 @@ const Hero = ({ sliderData, error, loading }) => {
                     __html: slider[`text_${lan}`],
                   }}
                 />
-                <button>{t("more")}</button>
+                <button
+                  onClick={() => navigate(`/sliders/${slider.id}`)}
+                  className={`${
+                    JSON.parse(slider.video).length ? "hide-btn" : ""
+                  }`}
+                >
+                  {t("more")}
+                </button>
                 <div
                   className={`navigation-line ${
                     slideIndex === slider?.id ? "active" : ""

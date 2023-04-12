@@ -28,7 +28,7 @@ const Navbar = ({ activeSidebar }) => {
   ];
 
   const navbarList = [
-    { id: 1, label: t("uzLearning"), url: "/" },
+    { id: 1, label: t("uzLearning"), url: "/portal-category/online-teaching" },
     { id: 2, label: t("applyUniversity"), url: "/" },
     { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
