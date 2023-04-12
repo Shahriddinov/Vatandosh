@@ -46,7 +46,7 @@ export default function Detail(data) {
                 <div className="newsdetail-main-desc-action-date-viewers">
                   <div className="newsdetail-main-desc-action-date">
                     <BsFillCalendar2EventFill />
-                    <span>{data.created_at?.split("T")[0]}</span>
+                    <span>{data.data}</span>
                   </div>
                   <div className="newsdetail-main-desc-action-viewers">
                     <AiFillEye />

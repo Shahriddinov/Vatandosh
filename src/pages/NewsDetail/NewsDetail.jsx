@@ -12,21 +12,19 @@ export default function NewsDetail() {
 
   useEffect(() => {
     dispatch(getContact());
-  }, [])
+  }, []);
 
   if (loading) {
     return (
       <div className="spinner_box">
         <Spinner />
       </div>
-    )
+    );
   }
 
   if (error) {
-    return <NotFound />
+    return <NotFound />;
   }
 
-  return (
-    <Detail {...data} />
-  );
+  return <Detail {...data} />;
 }
