@@ -11,6 +11,7 @@ import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/Victorin
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import VictorinaAbout from "./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout";
 import VictorinaFinish from "./pages/Portal/victorina/pages/VictorinaFinish/VictorinaFinish";
+import MoreVictorina from "./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -225,6 +226,7 @@ const RoutesContainer = () => (
             <Route path="listwinners" element={<ListOfWinners />} />
             <Route path="victorina-about" element={<VictorinaAbout />} />
             <Route path="victorina-finish" element={<VictorinaFinish />} />
+            <Route path="more-victorina" element={<MoreVictorina />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

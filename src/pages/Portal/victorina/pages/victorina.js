@@ -26,7 +26,7 @@ export const victorine = [
   },
   {
     id: 3,
-    title: "'Ilm fan chegarani bilmas' tanlovda qatnashing",
+    title: "'Ilm fan chegarani bilmas' tanlovda",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ",
     image: VictorinaThree,
