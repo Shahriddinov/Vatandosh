@@ -1,0 +1,16 @@
+@import "./src/assets/style/global";
+
+.OnlineTeachingFooter{
+  width: 100%;
+  background: #062A49;
+  &_boxes{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    &_betweens{
+      width: 50%;
+      height: 500px;
+      border: 2px solid red;
+    }
+  }
+}
