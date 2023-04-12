@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import phone from "../../../../../assets/images/icons/Phone.svg";
@@ -15,15 +15,19 @@ import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { NavBarLinks } from "../../../../NavBarLinks";
 import { languageList } from "../../../data.js";
+import { getSearchResults } from "../../../../../reduxToolkit/searchSlice/extraReducer";
 
 const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
   : "uz";
 
 const Navbar = ({ activeSidebar }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [activeLinkBar, setactiveLinkBar] = useState(-1);
   const [activeLng, setActiveLng] = useState(activeLanguage);
-  const dispatch = useDispatch();
+  const searchRef = useRef("");
 
   const contactData = useSelector(
     (state) => state.contactSlice.contactData.data
@@ -35,6 +39,14 @@ const Navbar = ({ activeSidebar }) => {
     setActiveLng(lng);
   };
 
+  const handleSearch = () => {
+    const search = searchRef.current.value;
+    if (search !== "") {
+      dispatch(getSearchResults({ search, page: 1 }));
+      navigate(`/search/${search}`);
+    }
+  };
+
   return (
     <div
       className={
@@ -42,9 +54,12 @@ const Navbar = ({ activeSidebar }) => {
       }
     >
       <div className="header-sideBar-wrapper">
-        <form action="" className="header-sideBar-form">
-          <input type="text" placeholder="Qidirish" />
-          <CiSearch className="header-sideBar-form-searchIcon" />
+        <form className="header-sideBar-form">
+          <input ref={searchRef} type="text" placeholder="Qidirish" />
+          <CiSearch
+            className="header-sideBar-form-searchIcon"
+            onClick={handleSearch}
+          />
         </form>
         <div className="header-sideBar-navlinks">
           <ul className="header-sideBar-navlist">

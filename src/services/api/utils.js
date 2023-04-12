@@ -25,7 +25,8 @@ export const GET_COLUMNS_MENU = `${baseUrl}/column-menus`;
 export const GET_TAG_RESULTS = `${baseUrl}/tagsearch`;
 export const GET_DIRECTION = `${baseUrl}/directions`;
 export const GET_ABOUTS = `${baseUrl}/abouts`;
-export const GET_MANAGEMENT = `${baseUrl}/managements`
+export const GET_MANAGEMENT = `${baseUrl}/managements`;
+export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

@@ -78,9 +78,7 @@ const CommunityAssociationHome = lazy(() =>
 );
 
 const CommunityAssociations = lazy(() =>
-  import(
-    "./pages/Portal/communityAssociation/pages/associations/Associations"
-  )
+  import("./pages/Portal/communityAssociation/pages/associations/Associations")
 );
 
 const CommunityAssociationEvents = lazy(() =>
@@ -153,6 +151,8 @@ const ListOfWinners = lazy(() =>
 const VictorinaWinner = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
 );
+
+const SearchResult = lazy(() => import("./pages/searchResult/SearchResult"));
 
 const VictorinaProject = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
