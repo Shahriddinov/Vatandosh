@@ -9,6 +9,9 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
+import VictorinaAbout from "./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout";
+import VictorinaFinish from "./pages/Portal/victorina/pages/VictorinaFinish/VictorinaFinish";
+import MoreVictorina from "./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));

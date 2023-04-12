@@ -18,8 +18,8 @@ export default function VictorinaLayout() {
     },
     {
       id: 3,
-      url: "/portal-category/victorina/council-about",
-      label: "G‘oliblar ro‘yxati",
+      url: "/portal-category/victorina/victorina-finish",
+      label: "Viktorina yakunlanganlar",
     },
     {
       id: 4,
