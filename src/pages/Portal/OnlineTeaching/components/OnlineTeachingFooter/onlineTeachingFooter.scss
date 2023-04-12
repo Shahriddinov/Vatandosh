@@ -1,16 +1,69 @@
 @import "./src/assets/style/global";
 
-.OnlineTeachingFooter{
+.OnlineTeachingFooter {
   width: 100%;
-  background: #062A49;
-  &_boxes{
+  background: #062a49;
+
+  &_boxes {
     display: flex;
     justify-content: space-between;
     color: white;
-    &_betweens{
+
+    &_ended {
       width: 50%;
-      height: 500px;
-      border: 2px solid red;
+      display: flex;
+      align-items: flex-start;
+      margin-top: 3%;
+      gap: 30px;
+      // justify-content: end;
+      &_step {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        // margin-top: 15px;
+        opacity: 0.5;
+        &_division {
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+    &_end {
+      width: 50%;
+      display: flex;
+      margin-top: 3%;
+      // flex-wrap: wrap;
+      justify-content: end;
+
+      &_contacts {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      &_phones {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        &_number {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+  &_production {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_napa {
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    &_year {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
     }
   }
 }
