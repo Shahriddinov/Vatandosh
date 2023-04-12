@@ -19,7 +19,6 @@ const Associations = ({ data }) => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  console.log(data);
 
   return (
     <section className="associations">

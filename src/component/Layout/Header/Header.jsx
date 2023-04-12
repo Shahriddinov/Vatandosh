@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 
 import Logo from "../../../assets/images/Logos.svg";
 import burger from "../../../assets/images/icons/burger.svg";
@@ -16,21 +16,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import Navbar from "./component/navbar/Navbar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { languageList } from "../data";
 import { useTranslation } from "react-i18next";
 import { GrayContext } from "../../../context/GrayContext";
+import { getSearchResults } from "../../../reduxToolkit/searchSlice/extraReducer";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [activeSidebar, setactiveSidebar] = useState(false);
   const { pathname } = useLocation();
   const [activeLang, setactiveLang] = useState(false);
   const { grayScale } = useContext(GrayContext);
-  const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
   const { t } = useTranslation();
+  const searchRef = useRef("");
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -40,6 +44,14 @@ const Header = () => {
   const contactData = useSelector(
     (state) => state.contactSlice.contactData.data
   );
+
+  const handleSearch = () => {
+    const search = searchRef.current.value;
+    if (search !== "") {
+      dispatch(getSearchResults({ search, page: 1 }));
+      navigate(`/search/${search}`);
+    }
+  };
 
   useEffect(() => {
     if (activeSidebar) document.body.style.overflow = "hidden";
@@ -98,11 +110,13 @@ const Header = () => {
           </a>
           <label className="header_navbar_search">
             <input
+              ref={searchRef}
               type="text"
               className="header_navbar_search_inputs"
               placeholder={t("search")}
             />
             <img
+              onClick={handleSearch}
               src={Search}
               className="header_navbar_search_icon"
               alt="search"

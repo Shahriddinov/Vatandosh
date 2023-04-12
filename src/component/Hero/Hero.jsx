@@ -61,11 +61,11 @@ const Hero = ({ sliderData, error, loading }) => {
               }`}
               key={slider.id}
             >
-              {slider.img ? (
+              {slider.image ? (
                 <div
                   className={`hero__slider-item`}
                   style={{
-                    backgroundImage: `url(${baseServerUrl}/${slider?.img})`,
+                    backgroundImage: `url(${baseServerUrl}/${slider?.image})`,
                   }}
                 ></div>
               ) : (

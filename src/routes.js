@@ -78,9 +78,7 @@ const CommunityAssociationHome = lazy(() =>
 );
 
 const CommunityAssociations = lazy(() =>
-  import(
-    "./pages/Portal/communityAssociation/pages/associations/Associations"
-  )
+  import("./pages/Portal/communityAssociation/pages/associations/Associations")
 );
 
 const CommunityAssociationEvents = lazy(() =>
@@ -154,6 +152,8 @@ const VictorinaWinner = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaWinner/VictorinaWinner")
 );
 
+const SearchResult = lazy(() => import("./pages/searchResult/SearchResult"));
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -189,6 +189,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
+  { path: "/search/:search", element: SearchResult },
 ];
 
 const RoutesContainer = () => (
@@ -255,10 +256,8 @@ const RoutesContainer = () => (
         >
           <Route index element={<OnlineTeachingHome />} />
         </Route>
-        <Route
-            path="/portal-category/victorina"
-            element={<VictorinaLayout />}
-        >
+
+        <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
           <Route index element={<VictorinaHome />}></Route>
           <Route path="listwinners" element={<ListOfWinners />} />
           <Route path="winner/:id" element={<VictorinaWinner />} />
