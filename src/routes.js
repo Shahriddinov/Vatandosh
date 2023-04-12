@@ -77,6 +77,18 @@ const CommunityAssociationHome = lazy(() =>
   )
 );
 
+const CommunityAssociations = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/associations/Associations"
+  )
+);
+
+const CommunityAssociationEvents = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/associationsEvents/AssociationsEvents"
+  )
+);
+
 const CommunityAssociationAbout = lazy(() =>
   import(
     "./pages/Portal/communityAssociation/pages/associationAbout/CommunityAssociationAbout"
@@ -212,6 +224,7 @@ const RoutesContainer = () => (
             element={<CommunityAssociationCountry />}
           />
           <Route path="associations" element={<Associations />} />
+          <Route path="events" element={<CommunityAssociationEvents />} />
           <Route
             path="country/:country/:id"
             element={<CommunityAssociationDetail />}
