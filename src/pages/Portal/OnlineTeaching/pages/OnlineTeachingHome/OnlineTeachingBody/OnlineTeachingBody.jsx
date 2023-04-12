@@ -74,29 +74,6 @@ function OnlineTeachingBody(props) {
                     </div>
                 ))}
             </div>
-            <div className="onlineTeachingBody_boxs">
-                <div className="onlineTeachingBody_boxs_ones">
-                    <img src={Geografy} alt=""/>
-                    <div className="onlineTeachingBody_boxs_ones_lefts">
-                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
-                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
-                    </div>
-                </div>
-                <div className="onlineTeachingBody_boxs_ones">
-                    <img src={Sertification} alt=""/>
-                    <div className="onlineTeachingBody_boxs_ones_lefts">
-                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
-                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
-                    </div>
-                </div>
-                <div className="onlineTeachingBody_boxs_ones">
-                    <img src={calendar} alt=""/>
-                    <div className="onlineTeachingBody_boxs_ones_lefts">
-                        <span className="onlineTeachingBody_boxs_ones_lefts_spans">Sifatli ta’lim</span>
-                        <p className="onlineTeachingBody_boxs_ones_lefts_ps">Chet tillarini o‘rganish imkoniyati</p>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 }
