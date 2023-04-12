@@ -43,6 +43,7 @@
       @include fontStyles(600, 28px, 34px, $colorBlack);
     }
     & > p {
+      text-align: justify;
       margin-bottom: 30px;
       @include fontStyles(400, 16px, 19px, #434b54);
     }

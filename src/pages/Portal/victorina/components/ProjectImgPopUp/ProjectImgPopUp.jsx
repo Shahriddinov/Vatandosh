@@ -1,12 +1,9 @@
 import "./ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { BsImage } from "react-icons/bs";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function ProjectImgPopUp() {
-  const [activePopUp, setactivePopUp] = useState(true);
-
+export default function ProjectImgPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
 
   const handleSubmit = (e) => {
@@ -14,10 +11,7 @@ export default function ProjectImgPopUp() {
   };
 
   return (
-    <div
-      className="projectImg"
-      style={activePopUp ? null : { display: "none" }}
-    >
+    <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}
@@ -58,7 +52,7 @@ export default function ProjectImgPopUp() {
             className="victorina-popup-closeBtn"
             onClick={() => setactivePopUp(false)}
           >
-            {t("form_cancel")}
+            {t("projects_page.form_cancel")}
           </div>
           <button type="submit" className="victorina-popup-SubmitBtn">
             {t("footerSend")}
