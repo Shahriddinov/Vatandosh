@@ -9,6 +9,8 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
+import VictorinaAbout from "./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout";
+import VictorinaFinish from "./pages/Portal/victorina/pages/VictorinaFinish/VictorinaFinish";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -190,8 +192,7 @@ const RoutesContainer = () => (
 
           <Route
             path="/portal-category/community-association"
-            element={<CommunityAssociationLayout />}
-          >
+            element={<CommunityAssociationLayout />}>
             <Route index element={<CommunityAssociationHome />} />
             <Route path="about" element={<CommunityAssociationAbout />} />
             <Route
@@ -219,10 +220,11 @@ const RoutesContainer = () => (
           </Route>
           <Route
             path="/portal-category/victorina"
-            element={<VictorinaLayout />}
-          >
+            element={<VictorinaLayout />}>
             <Route index element={<VictorinaHome />}></Route>
             <Route path="listwinners" element={<ListOfWinners />} />
+            <Route path="victorina-about" element={<VictorinaAbout />} />
+            <Route path="victorina-finish" element={<VictorinaFinish />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

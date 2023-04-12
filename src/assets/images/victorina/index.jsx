@@ -10,3 +10,4 @@ export { default as RightIcon } from "./chevron-right.png";
 export { default as NotebookImage } from "./notebook.png";
 export { default as CalendarIcon } from "./calendar.svg";
 export { default as ViewIcon } from "./view.svg";
+export { default as ExcludeIcon } from "./Exclude.svg";
