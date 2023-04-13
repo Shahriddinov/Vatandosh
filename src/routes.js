@@ -196,7 +196,7 @@ const routes = [
   { path: "/coat", element: Coat },
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
-  { path: "/search/:search", element: Hashtag },
+  { path: "/search/:search", element: SearchResult },
 ];
 
 const RoutesContainer = () => (
