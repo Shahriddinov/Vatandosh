@@ -36,7 +36,11 @@ const Navbar = ({ activeSidebar }) => {
     { id: 6, label: t("electronLibrary"), url: "/" },
     { id: 7, label: t("electronBook"), url: "/" },
     { id: 8, label: t("aboutUzbekistan"), url: "/" },
-    { id: 9, label: t("participationProject"), url: "/" },
+    {
+      id: 9,
+      label: t("participationProject"),
+      url: "/portal-category/victorina",
+    },
     {
       id: 10,
       label: t("electronCommunity"),
