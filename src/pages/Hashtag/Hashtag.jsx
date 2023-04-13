@@ -20,7 +20,7 @@ const Hashtag = () => {
   const { tag } = useParams();
 
   useEffect(() => {
-    dispatch(getTagSearch(tag));
+    dispatch(getTagSearch({ tag, page: activePage }));
   }, []);
 
   if (tagLoading) {
@@ -31,9 +31,8 @@ const Hashtag = () => {
     return <h2>{error}</h2>;
   }
 
+  const paginationCount = Math.ceil(tagData.total / 16);
   const data = tagData.data;
-
-  const paginationCount = data.total;
 
   const fetchingData = (page) => {
     setActivePage(page);
