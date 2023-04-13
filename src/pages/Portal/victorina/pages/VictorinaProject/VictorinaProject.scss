@@ -49,6 +49,7 @@
     }
 
     &-desc {
+      margin-bottom: 30px;
       & > h3 {
         margin-bottom: 10px;
         @include fontStyles(600, 28px, 34px, $colorBlack);

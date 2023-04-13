@@ -10,8 +10,14 @@ export default function VictorinaWinner() {
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/victorina" },
-    { title: t("victorina.end"), url: "" },
-    { title: t("victorina.bestimgproject"), url: "" },
+    {
+      title: t("victorina.end"),
+      url: "/portal-category/victorina/finished-projects",
+    },
+    {
+      title: t("victorina.bestimgproject"),
+      url: "/portal-category/victorina/finished-projects/image-project",
+    },
     { title: t("victorina.winner"), url: "" },
   ];
 

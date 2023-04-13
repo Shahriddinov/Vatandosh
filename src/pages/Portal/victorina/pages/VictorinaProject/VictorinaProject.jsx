@@ -12,6 +12,7 @@ import ProjectYouTubePopUp from "../../components/ProjectYouTubePopUp/ProjectYou
 import ProjectImgPopUp from "../../components/ProjectImgPopUp/ProjectImgPopUp";
 import ProjectPoemsPopUp from "../../components/ProjectPoemsPopUp/ProjectPoemsPopUp";
 import TestPopUp from "../../components/TestPopUp/TestPopUp";
+import WinnerCard from "../../components/WinnerCard/WinnerCard";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -20,13 +21,26 @@ export default function VictorinaProject() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    if (PopUp) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+  }, [PopUp]);
+
+  useEffect(() => {
     if (pathname.includes("image-project")) {
       setProjectData((prev) => {
         return {
           title: t("victorina.bestimgproject"),
           url: [
             { title: t("expert.main"), url: "/portal-category/victorina" },
-            { title: t("victorina.victorinas"), url: "" },
+            pathname.includes("finished-project")
+              ? {
+                  title: t("victorina.endvictorina"),
+                  url: "/portal-category/victorina/finished-projects",
+                }
+              : {
+                  title: t("victorina.victorinas"),
+                  url: "/portal-category/victorina/projects",
+                },
             { title: t("victorina.bestimgproject"), url: "" },
           ],
         };
@@ -39,7 +53,15 @@ export default function VictorinaProject() {
           title: t("victorina.youtubeproject"),
           url: [
             { title: t("expert.main"), url: "/portal-category/victorina" },
-            { title: t("victorina.victorinas"), url: "" },
+            pathname.includes("finished-project")
+              ? {
+                  title: t("victorina.endvictorina"),
+                  url: "/portal-category/victorina/finished-projects",
+                }
+              : {
+                  title: t("victorina.victorinas"),
+                  url: "/portal-category/victorina/projects",
+                },
             { title: t("victorina.youtubeproject") },
           ],
         };
@@ -52,7 +74,15 @@ export default function VictorinaProject() {
           title: t("victorina.poemproject"),
           url: [
             { title: t("expert.main"), url: "/portal-category/victorina" },
-            { title: t("victorina.victorinas"), url: "" },
+            pathname.includes("finished-project")
+              ? {
+                  title: t("victorina.endvictorina"),
+                  url: "/portal-category/victorina/finished-projects",
+                }
+              : {
+                  title: t("victorina.victorinas"),
+                  url: "/portal-category/victorina/projects",
+                },
             { title: t("victorina.poemproject") },
           ],
         };
@@ -65,7 +95,15 @@ export default function VictorinaProject() {
           title: t("victorina.edubrand"),
           url: [
             { title: t("expert.main"), url: "/portal-category/victorina" },
-            { title: t("victorina.victorinas"), url: "" },
+            pathname.includes("finished-project")
+              ? {
+                  title: t("victorina.endvictorina"),
+                  url: "/portal-category/victorina/finished-projects",
+                }
+              : {
+                  title: t("victorina.victorinas"),
+                  url: "/portal-category/victorina/projects",
+                },
             { title: t("victorina.edubrand") },
           ],
         };
@@ -80,29 +118,34 @@ export default function VictorinaProject() {
         <div className="victorinaproject-wrapper">
           <div className="victorinaproject-main">
             <img src={img} alt="error" />
-            <div className="victorinaproject-main-timer">
-              <div>
-                <span>7</span>
-                <span>Kun</span>
-              </div>
-              <div>
-                <span>12</span>
-                <span>Soat</span>
-              </div>
-              <div>
-                <span>45</span>
-                <span>Daqiqa</span>
-              </div>
-            </div>
-            <button
-              className="victorinaproject-main-btn victorinaproject-main-btnActive"
-              onClick={() => setPopUp(pathname)}
-            >
-              {t("victorina.joinproject")}
-            </button>
-            {/* <button className="victorinaproject-main-btn">
-              {t("victorina.endproject")}
-            </button> */}
+            {pathname.includes("finished-projects") ? (
+              <button className="victorinaproject-main-btn">
+                {t("victorina.endproject")}
+              </button>
+            ) : (
+              <>
+                <div className="victorinaproject-main-timer">
+                  <div>
+                    <span>7</span>
+                    <span>Kun</span>
+                  </div>
+                  <div>
+                    <span>12</span>
+                    <span>Soat</span>
+                  </div>
+                  <div>
+                    <span>45</span>
+                    <span>Daqiqa</span>
+                  </div>
+                </div>
+                <button
+                  className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                  onClick={() => setPopUp(pathname)}
+                >
+                  {t("victorina.joinproject")}
+                </button>
+              </>
+            )}
             <div className="victorinaproject-main-desc">
               <h3>
                 Uzbekistondagi eng yaxshi rasmlar pochta markalarida aks
@@ -149,18 +192,23 @@ export default function VictorinaProject() {
                 like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
             </div>
-            <ShareFriends />
           </div>
           <CouncilStatics />
         </div>
-        {/* <div className="victorinaproject-winners">
-          <h3>{t("victorina.winnerlist")}</h3>
-          <div className="victorinaproject-winners-list">
-            {[1, 2, 3].map((el) => (
-              <WinnerCard key={el} />
-            ))}
-          </div>
-        </div> */}
+        {pathname.includes("finished-projects") ? (
+          <>
+            <div className="victorinaproject-winners">
+              <h3>{t("victorina.winnerlist")}</h3>
+              <div className="victorinaproject-winners-list">
+                {[1, 2, 3].map((el) => (
+                  <WinnerCard key={el} />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <ShareFriends />
+        )}
       </div>
 
       {PopUp && PopUp.includes("image-project") ? (

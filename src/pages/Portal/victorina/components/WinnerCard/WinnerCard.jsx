@@ -1,9 +1,10 @@
 import "./WinnerCard.scss";
 import img from "../../../../../assets/images/portal/2.png";
+import { Link } from "react-router-dom";
 
 export default function WinnerCard() {
   return (
-    <div className="winnercard">
+    <Link to={"/portal-category/victorina/winner/12"} className="winnercard">
       <img src={img} alt="error" />
       <div className="winnercard-desc">
         <span> "ZIYOUZ VIKTORINASI" 1-o‘rin g‘olibi</span>
@@ -17,6 +18,6 @@ export default function WinnerCard() {
           remaining essentially unchanged. It was popularised...
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -5,7 +5,11 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import "./VictorinaFinish.scss";
-import { CalendarIcon, ExcludeIcon, ViewIcon } from "../../../../../assets/images/expert";
+import {
+  CalendarIcon,
+  ExcludeIcon,
+  ViewIcon,
+} from "../../../../../assets/images/expert";
 import { victorine } from "../victorina";
 
 function VictorinaFinish() {
@@ -26,7 +30,8 @@ function VictorinaFinish() {
               id="demo-simple-select-helper"
               value={age}
               label="Age"
-              onChange={handleChange}>
+              onChange={handleChange}
+            >
               <MenuItem value="2022-2023">2022-2023</MenuItem>
               <MenuItem value="2022-2024">2022-2024</MenuItem>
               <MenuItem value="2022-2025">2022-2025</MenuItem>
@@ -53,7 +58,10 @@ function VictorinaFinish() {
                 <button className="victorina-button">
                   VIKTORINA YAKUNLANDI!
                 </button>
-                <a href="#" className="victorina-link">
+                <a
+                  href="finished-projects/image-project"
+                  className="victorina-link"
+                >
                   Batafsil ma'lumot
                 </a>
               </div>

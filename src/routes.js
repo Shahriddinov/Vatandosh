@@ -9,9 +9,6 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
-import VictorinaAbout from "./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout";
-import VictorinaFinish from "./pages/Portal/victorina/pages/VictorinaFinish/VictorinaFinish";
-import MoreVictorina from "./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
@@ -161,6 +158,18 @@ const VictorinaProject = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
 );
 
+const VictorinaAbout = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout")
+);
+
+const VictorinaFinish = lazy(() =>
+  import("./pages/Portal/victorina/pages/VictorinaFinish/VictorinaFinish")
+);
+
+const MoreVictorina = lazy(() =>
+  import("./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -271,6 +280,13 @@ const RoutesContainer = () => (
           <Route path="youtube-project" element={<VictorinaProject />} />
           <Route path="poem-project" element={<VictorinaProject />} />
           <Route path="edu-branding" element={<VictorinaProject />} />
+          <Route path="about" element={<VictorinaAbout />} />
+          <Route path="projects" element={<MoreVictorina />} />
+          <Route path="finished-projects" element={<VictorinaFinish />} />
+          <Route
+            path="finished-projects/image-project"
+            element={<VictorinaProject />}
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

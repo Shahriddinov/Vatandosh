@@ -31,7 +31,10 @@ function Victorina() {
                 <button className="victorina-button">
                   Loyiha tez orada ishga tushadi
                 </button>
-                <a href="#" className="victorina-link">
+                <a
+                  href="/portal-category/victorina/image-project"
+                  className="victorina-link"
+                >
                   Batafsil ma'lumot
                 </a>
               </div>

@@ -1,6 +1,10 @@
 @import "../../../../../assets/style/global.scss";
 
 .victorina-popup {
+  animation-duration: 0.5s;
+  animation-name: scalePopUp;
+  transform-origin: left;
+
   &-title {
     margin-bottom: 15px;
     @include fontStyles(800, 24px, 29px, $colorTitle);
@@ -29,5 +33,18 @@
 
   &-SubmitBtn {
     background: #065ea9;
+  }
+}
+
+@keyframes scalePopUp {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.1;
+  }
+
+  100% {
+    scale: 1;
   }
 }
