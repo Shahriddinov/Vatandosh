@@ -13,7 +13,7 @@ export default function VictorinaLayout() {
     { id: 1, url: "/portal-category/victorina", label: "Asosiy" },
     {
       id: 2,
-      url: "/portal-category/victorina/volunter-employe",
+      url: "/portal-category/victorina/victorina-more",
       label: "Viktorinalar",
     },
     {

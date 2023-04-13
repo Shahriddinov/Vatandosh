@@ -223,8 +223,7 @@ const RoutesContainer = () => (
 
         <Route
           path="/portal-category/community-association"
-          element={<CommunityAssociationLayout />}
-        >
+          element={<CommunityAssociationLayout />}>
           <Route index element={<CommunityAssociationHome />} />
           <Route path="about" element={<CommunityAssociationAbout />} />
           <Route
@@ -259,8 +258,7 @@ const RoutesContainer = () => (
 
         <Route
           path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}
-        >
+          element={<OnlineTeachingLayout />}>
           <Route index element={<OnlineTeachingHome />} />
         </Route>
         <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
@@ -272,6 +270,8 @@ const RoutesContainer = () => (
           <Route path="youtube-project" element={<VictorinaProject />} />
           <Route path="poem-project" element={<VictorinaProject />} />
           <Route path="edu-branding" element={<VictorinaProject />} />
+          <Route path="victorina-finish" element={<VictorinaFinish />} />
+          <Route path="victorina-more" element={<MoreVictorina />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
