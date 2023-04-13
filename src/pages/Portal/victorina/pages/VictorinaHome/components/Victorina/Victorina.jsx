@@ -12,8 +12,8 @@ function Victorina() {
       <div className="container">
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
-          {victorine.map((victorina) => (
-            <div className="victorina-list">
+          {victorine.map((victorina, index) => (
+            <div key={index} className="victorina-list">
               <img src={victorina.image} alt="" className="victorina-img" />
               <div className="victorina-items">
                 <h4 className="victorina-subname">{victorina.title}</h4>

@@ -27,6 +27,7 @@ export const GET_DIRECTION = `${baseUrl}/directions`;
 export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
+export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
