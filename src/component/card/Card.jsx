@@ -1,24 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./card.scss";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
 import { baseServerUrl } from "../../services/api/utils";
-import { getTagSearch } from "../../reduxToolkit/tagSearchSlice/extraReducer";
 
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [activePage, setActivePage] = useState(1);
 
   const tags = props[`tag_${lan}`]?.split(",");
 
   const handleClick = (e) => {
-    dispatch(getTagSearch({ tag: e.target.innerText, page: activePage }));
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
