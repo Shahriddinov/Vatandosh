@@ -301,6 +301,72 @@
     "youtubeproject": "Youtubudagi eng yaxshi videolari loyihasi",
     "poemproject": "Eng yaxshi she’rlar to'plami  loyihasi",
     "edubrand": "Eng yaxshi ta’lim brendi"
-
+  },
+  "communityAssociation": {
+    "navbar":{
+      "navbar_link1": "Asosiy",
+      "navbar_link2": "Jamoat birlashmalari",
+      "navbar_link3": "Tadbirlar",
+      "navbar_link4": "Bog‘lanish"
+    },
+    "cabinet": "Kabinet",
+    "home_title": "“Vatandoshlar” Jamoat birlashmalari",
+    "home_desc": "Vatandosh jamoat birlashmalarining elektron platformasi",
+    "application": "Ariza berish",
+    "detail": "Batafsil",   
+    "total_public_organizations": "Jami jamoat birlashmalri",  
+    "view_all": "Hammasini ko'rish",  
+    "community_association_about_title": "Jamoat birlashmalari haqida",
+    "all_states": "Barcha davlatlar",
+    "add_news": "Yangiliklar qo'shish",
+    "input_title": "Sarlavha",
+    "title_input_plack": "Kiriting",
+    "desc_input": "Yangilik haqida ma'lumot",
+    "desc_textarea_plack": "Izoh",
+    "vide_input": "Video",
+    "vide_input_plack": "Video havolasi",
+    "upload_image": "Rasmlar yuklang",
+    "delete": "O'chirish",
+    "cancel": "Bekor qilish",
+    "send": "Yuborish",
+    "menu1_info": {
+      "menu1_title": "Birlashma ma’lumotilari",
+      "input1_name": "Tashkilot nomi",
+      "input2_name": "Davlat organida ro'yxatdan o'tganlik to'g'risidagi guvohnoma",
+      "input2_placeholder": "Fayl yuklash",
+      "input3_name": "Tashkilot logotipi (yuklab olish)",
+      "next": "Keyingi"
+    },
+    "menu2_info": {
+      "menu2_title": "Tashkilot haqida",
+      "input2_name": "Tashkilot haqida ma'lumot",
+      "input3_name": "Tashkilot uchun fotosuratlar (yuklab olish)"
+    },
+    "menu3_info": {
+      "menu3_title": "Rahbari",
+      "input1_name": "Rahbarning surati yuklang",
+      "input1_desc": "Yaxshi sifatli, JPG formatida, oq yoki ko'k fonda",
+      "input2_name": "Tashkilot direktori",
+      "input2_placeholder": "To'liq ismi Sharif"
+    },
+    "menu4_info": {
+      "menu4_title": "Tashkilot faoliyati",
+      "input1_name": "Tashkilotning ustav faoliyati",
+      "input2_name": "Tashkilot tashkil etilgan sana",
+      "input3_name": "Tashkilot a'zolari soni",
+      "input4_name": "Asosiy yutuqlar"
+    },
+    "menu5_info": {
+      "menu5_title": "Manzil",
+      "input1_name": "Davlat",
+      "input1_desc": "Tanlang",
+      "input2_name": "Shahar",
+      "input3_name": "Telefon raqami",
+      "input4_name": "Elektron pochta",
+      "input5_name": "Yuridik manzili",
+      "input6_name": "Veb-sayt va boshqa rasmiy sahifalar",
+      "input7_name": "Ma'lumotlarni saqlash va qayta ishlashga rozilik",
+      "save": "Saqlash"
+    }
   }
 }

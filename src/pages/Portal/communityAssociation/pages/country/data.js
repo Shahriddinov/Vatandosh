@@ -1,21 +1,3 @@
-export const CountryPageTopData = {
-  title: "Qirgʻiziston",
-  pathUrl: [
-    {
-      id: 1,
-      pathUrl: "/portal-category/community-association",
-      label: "Asosiy",
-      active: false,
-    },
-    {
-      id: 2,
-      pathUrl: null,
-      label: "Qirgʻiziston",
-      active: true,
-    },
-  ],
-};
-
 export const countryData = [
   { id: 1, text: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati" },
   {

@@ -3,12 +3,14 @@ import MyInput from "../UI/myInput/MyInput";
 
 import "./register3.scss";
 import { UserIcon } from "../../../../../../../assets/images/communityAssociation";
+import { useTranslation } from "react-i18next";
 
 const CommunityRegister3 = ({ activeBarItem }) => {
   const [data, setData] = useState({
     name: "",
     userImg: [],
   });
+  const { t } = useTranslation();
 
   const handleChangeApplication3 = ({ key, value }) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -22,7 +24,9 @@ const CommunityRegister3 = ({ activeBarItem }) => {
           : "registeritem-scaleActive"
       }`}
     >
-      <h3 className="community-association-register__title">III. Rahbari</h3>
+      <h3 className="community-association-register__title">
+        III. {t("communityAssociation.menu3_info.menu3_title")}
+      </h3>
 
       <form className="community-association-register3__form">
         <div className="community-association-register3__user_box">
@@ -47,7 +51,7 @@ const CommunityRegister3 = ({ activeBarItem }) => {
               className="community-association-register3__user_label"
             >
               <span className="community-association-register3__user_label--text">
-                Rahbarning surati yuklang{" "}
+                {t("communityAssociation.menu3_info.input1_name")}
               </span>
               <input
                 id="user-upload"
@@ -60,18 +64,18 @@ const CommunityRegister3 = ({ activeBarItem }) => {
               />
             </label>
             <button className="community-association-register3__user_delete">
-              O‘chirish
+              {t("communityAssociation.delete")}
             </button>
           </div>
           <p className="community-association-register3__user_img--desc">
-            Yaxshi sifatda, JPG formatda, oq yoki ko‘k fonda
+            {t("communityAssociation.menu3_info.input1_desc")}
           </p>
         </div>
 
         <MyInput
           value={data.name}
-          text="Tashkilot direktori "
-          placeholder="To'liq ismi-sharifi"
+          text={t("communityAssociation.menu3_info.input2_name")}
+          placeholder={t("communityAssociation.menu3_info.input2_placeholder")}
           handleChange={handleChangeApplication3}
           type="text"
           inputType="input"
@@ -79,7 +83,7 @@ const CommunityRegister3 = ({ activeBarItem }) => {
         />
 
         <button className="community-association-register__form--btn">
-          Keyingisi
+          {t("communityAssociation.menu1_info.next")}
         </button>
       </form>
     </div>

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
-import { CountryPageTopData as pageTopData, countryData as data } from "./data";
+import { countryData as data } from "./data";
 import { Spinner } from "../../../../../component";
 import { Link, useParams } from "react-router-dom";
 
@@ -23,6 +23,24 @@ const Country = () => {
       dispatch(getNews());
     }
   }, []);
+
+  const pageTopData = {
+    title: "Qirgʻiziston",
+    pathUrl: [
+      {
+        id: 1,
+        pathUrl: "/portal-category/community-association",
+        label: t("communityAssociation.navbar.navbar_link1"),
+        active: false,
+      },
+      {
+        id: 2,
+        pathUrl: null,
+        label: "Qirgʻiziston",
+        active: true,
+      },
+    ],
+  };
 
   if (loadingNews) {
     return <Spinner position="full" />;

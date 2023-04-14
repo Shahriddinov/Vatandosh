@@ -6,6 +6,7 @@ import { BsFillTrashFill, BsImage } from "react-icons/bs";
 import Modal from "@mui/material/Modal";
 
 import "./addNewsModal.scss";
+import { useTranslation } from "react-i18next";
 
 const AddNewsModal = ({ open, handleClose }) => {
   const [data, setData] = useState({
@@ -14,6 +15,7 @@ const AddNewsModal = ({ open, handleClose }) => {
     videoLink: "",
     images: [],
   });
+  const { t } = useTranslation();
 
   const handleChangeApplication1 = ({ key, value }) => {
     if (value !== undefined) {
@@ -43,13 +45,13 @@ const AddNewsModal = ({ open, handleClose }) => {
       className="add-news-modal"
     >
       <div className="add-news-modal__content">
-        <h3 className="add-news-modal__title">Yangilik</h3>
+        <h3 className="add-news-modal__title">{t("news")}</h3>
 
         <form className="add-news-modal__form">
           <MyInput
             value={data.title}
-            text="Title"
-            placeholder="Kiriting"
+            text={t("communityAssociation.input_title")}
+            placeholder={t("communityAssociation.title_input_plack")}
             handleChange={handleChangeApplication1}
             type="text"
             inputType="input"
@@ -58,8 +60,8 @@ const AddNewsModal = ({ open, handleClose }) => {
 
           <MyInput
             value={data.description}
-            text="TitYangilik haqida  ma’lumotle"
-            placeholder="Izoh"
+            text={t("communityAssociation.desc_input")}
+            placeholder={t("communityAssociation.desc_textarea_plack")}
             handleChange={handleChangeApplication1}
             type="text"
             inputType="textarea"
@@ -68,8 +70,8 @@ const AddNewsModal = ({ open, handleClose }) => {
 
           <MyInput
             value={data.videoLink}
-            text="Video link"
-            placeholder="Video link"
+            text={t("communityAssociation.vide_input")}
+            placeholder={t("communityAssociation.vide_input_plack")}
             handleChange={handleChangeApplication1}
             type="text"
             inputType="input"
@@ -84,7 +86,8 @@ const AddNewsModal = ({ open, handleClose }) => {
                       onClick={() => handleClick(img.id)}
                       className="my-img-upload__img_delete"
                     >
-                      <BsFillTrashFill /> <span>Delete</span>
+                      <BsFillTrashFill />{" "}
+                      <span>{t("communityAssociation.delete")}</span>
                     </button>
                     <img
                       className="my-img-upload__img"
@@ -124,7 +127,7 @@ const AddNewsModal = ({ open, handleClose }) => {
                 <>
                   <BsImage />
                   <p>
-                    {"Rasmlar yuklang"}{" "}
+                    {t("communityAssociation.upload_image")}{" "}
                     <span className="my-img-upload__certificate--required">
                       *
                     </span>
@@ -135,11 +138,15 @@ const AddNewsModal = ({ open, handleClose }) => {
           </div>
 
           <div className="add-news-modal__btn_roup">
-            <button className="add-news-modal__btn add-news-modal__btn_white">
-              Bekor qilish
+            <button
+              type="button"
+              className="add-news-modal__btn add-news-modal__btn_white"
+              onClick={handleClose}
+            >
+              {t("communityAssociation.cancel")}
             </button>
             <button className="add-news-modal__btn add-news-modal__btn_primary">
-              Yuborish
+              {t("communityAssociation.send")}
             </button>
           </div>
         </form>

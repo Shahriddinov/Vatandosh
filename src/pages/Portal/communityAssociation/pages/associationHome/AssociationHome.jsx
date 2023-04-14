@@ -14,10 +14,10 @@ const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const headerData = {
-    title: "“Vatandoshlar” Jamoat birlashmalari",
-    subTitle: "Vatandosh jamoat birlashmalaring elektron platformasi",
+    title: t("communityAssociation.home_title"),
+    subTitle: t("communityAssociation.home_desc"),
     link: "/portal-category/community-association/application#1",
-    btnText: "Ariza berish",
+    btnText: t("communityAssociation.application"),
   };
   const councilData = {
     title:
@@ -37,7 +37,7 @@ const AssociationHome = () => {
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} />
-      <MapsHome />
+      <MapsHome title={t("communityAssociation.navbar.navbar_link2")} />
       <News />
     </>
   );
