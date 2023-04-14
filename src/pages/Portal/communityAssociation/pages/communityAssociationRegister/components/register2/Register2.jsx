@@ -4,6 +4,7 @@ import { useState } from "react";
 import MyImgUpload from "../UI/myImgUpload/MyImgUpload";
 
 import "./register2.scss";
+import { useTranslation } from "react-i18next";
 
 const CommunityRegister2 = ({ activeBarItem }) => {
   const [data, setData] = useState({
@@ -11,13 +12,13 @@ const CommunityRegister2 = ({ activeBarItem }) => {
     comment: "",
     componyImg: [],
   });
+  const { t } = useTranslation();
 
   const handleChangeApplication2 = ({ key, value }) => {
     setData((prev) => ({
       ...prev,
       [key]: key === "componyImg" ? [value] : value,
     }));
-    console.log("salom2");
   };
 
   return (
@@ -29,13 +30,13 @@ const CommunityRegister2 = ({ activeBarItem }) => {
       }`}
     >
       <h3 className="community-association-register__title">
-        II. Tashkilot haqida
+        {t("communityAssociation.menu2_info.menu2_title")}
       </h3>
       <form className="community-association-register1__form">
         <MyInput
           value={data.title}
-          text="Title"
-          placeholder="Kiriting"
+          text={t("communityAssociation.input_title")}
+          placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication2}
           type="text"
           inputType="input"
@@ -44,8 +45,8 @@ const CommunityRegister2 = ({ activeBarItem }) => {
 
         <MyInput
           value={data.comment}
-          text="Tashkilot haqida  ma’lumot"
-          placeholder="Izoh"
+          text={t("communityAssociation.menu2_info.input2_name")}
+          placeholder={t("communityAssociation.desc_textarea_plack")}
           handleChange={handleChangeApplication2}
           type="comment"
           inputType="textarea"
@@ -54,14 +55,14 @@ const CommunityRegister2 = ({ activeBarItem }) => {
 
         <MyImgUpload
           data={data.componyImg}
-          text="Tashkilot uchun rasmlar (yuklab olish)"
+          text={t("communityAssociation.menu2_info.input3_name")}
           handleChange={handleChangeApplication2}
           valueKey="componyImg"
           countImg={2}
         />
 
         <button className="community-association-register__form--btn">
-          Keyingisi
+          {t("communityAssociation.menu1_info.next")}
         </button>
       </form>
     </div>

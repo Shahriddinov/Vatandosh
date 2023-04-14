@@ -5,10 +5,10 @@ import { Link, useParams } from "react-router-dom";
 import { baseServerUrl } from "../../services/api/utils";
 import Header from "../../component/Layout/Header/Header";
 import Spinner from "../../component/Spinner/Spinner";
-import { Paginator } from "../../component/Pagination/Pagination";
 
 import "./hashtag.scss";
 import { getTagSearch } from "../../reduxToolkit/tagSearchSlice/extraReducer";
+import { Pagination } from "../../component";
 
 const Hashtag = () => {
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ const Hashtag = () => {
           </div>
         </div>
         {paginationCount >= 2 ? (
-          <Paginator
+          <Pagination
             count={paginationCount}
             page={activePage}
             paginationFetching={fetchingData}

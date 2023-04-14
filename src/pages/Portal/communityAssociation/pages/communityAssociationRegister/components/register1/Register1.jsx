@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FileUploadIcon } from "../../../../../../../assets/images/communityAssociation";
 import "./register1.scss";
 import { MyImgUpload, MyInput } from "../";
+import { useTranslation } from "react-i18next";
 
 const CommunityRegister1 = ({ activeBarItem }) => {
   const [data, setData] = useState({
@@ -10,13 +11,13 @@ const CommunityRegister1 = ({ activeBarItem }) => {
     certificate: [],
     logo: [],
   });
+  const { t } = useTranslation();
 
   const handleChangeApplication1 = ({ key, value }) => {
     setData((prev) => ({
       ...prev,
       [key]: key === "logo" ? [value] : value,
     }));
-    console.log("salom1");
   };
 
   return (
@@ -28,13 +29,13 @@ const CommunityRegister1 = ({ activeBarItem }) => {
       }`}
     >
       <h3 className="community-association-register__title">
-        I. Birlashma ma’lumotilari
+        {t("communityAssociation.menu1_info.menu1_title")}
       </h3>
       <form className="community-association-register1__form">
         <MyInput
           value={data.name}
-          text="Tashkilot nomi"
-          placeholder="Kiriting"
+          text={t("communityAssociation.menu1_info.input1_name")}
+          placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication1}
           type="text"
           inputType="input"
@@ -46,7 +47,7 @@ const CommunityRegister1 = ({ activeBarItem }) => {
           className="community-association-register1__certificate"
         >
           <span className="community-association-register1__certificate--span">
-            Davlat organida roʻyxatdan oʻtganlik toʻgʻrisidagi guvohnomasi{" "}
+            {t("communityAssociation.menu1_info.input2_name")}
             <span className="community-association-register1__certificate--required">
               *
             </span>
@@ -68,7 +69,7 @@ const CommunityRegister1 = ({ activeBarItem }) => {
               <span className="community-association-register1__certificate--text">
                 {data.certificate.length > 0
                   ? data.certificate[0].name
-                  : "Fayl yuklang"}
+                  : t("communityAssociation.menu1_info.input2_placeholder")}
               </span>
             </div>
 
@@ -82,13 +83,13 @@ const CommunityRegister1 = ({ activeBarItem }) => {
 
         <MyImgUpload
           data={data.logo}
-          text="Tashkilot logotipi(yuklab olish)"
+          text={t("communityAssociation.menu1_info.input3_name")}
           handleChange={handleChangeApplication1}
           valueKey="logo"
         />
 
         <button className="community-association-register__form--btn">
-          Keyingisi
+          {t("communityAssociation.menu1_info.next")}
         </button>
       </form>
     </div>

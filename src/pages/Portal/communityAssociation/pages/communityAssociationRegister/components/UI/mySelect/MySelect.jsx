@@ -6,6 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import "./mySelect.scss";
+import { useTranslation } from "react-i18next";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,6 +30,7 @@ function getStyles(name, personName, theme) {
 
 const MySelect = ({ data, text, value, handleChange, valueKey }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const handleChangeSelect = (event) => {
     const {
@@ -41,7 +43,7 @@ const MySelect = ({ data, text, value, handleChange, valueKey }) => {
       <FormControl sx={{ m: 1, width: "100%" }}>
         <FormHelperText id="outlined-weight-helper-text">
           <span className="my-input__text">{text}</span>
-          <span className="my-input__required">*</span>
+          <span className="my-input__required"> *</span>
         </FormHelperText>
         <Select
           displayEmpty
@@ -51,7 +53,9 @@ const MySelect = ({ data, text, value, handleChange, valueKey }) => {
           inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem disabled value="">
-            <p className="disabled">Tanlang</p>
+            <p className="disabled">
+              {t("communityAssociation.menu5_info.input1_desc")}
+            </p>
           </MenuItem>
 
           {data?.map((name) => (
