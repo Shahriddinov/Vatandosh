@@ -4,7 +4,9 @@ import "./test.scss";
 const Test = () => {
   return (
     <div className="test">
-      <marquee className="test__text">Sayt test rejimida ishlamoqda!</marquee>
+      <marquee className="test__text">
+        Sayt sinov tariqasida ishga tushirilgan
+      </marquee>
     </div>
   );
 };

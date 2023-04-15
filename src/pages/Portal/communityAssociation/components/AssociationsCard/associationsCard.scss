@@ -1,61 +1,70 @@
 .association__card {
-    padding: 15px;
-    width: max-content;
-    background: #F6F7FB;
-    border: 1px solid #EAEDF6;
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 125%;
-    text-align: center;
-    letter-spacing: 0.2px;
-    color: #4B5157;
+  padding: 15px;
+  width: max-content;
+  background: #f6f7fb;
+  border: 1px solid #eaedf6;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 125%;
+  text-align: center;
+  letter-spacing: 0.2px;
+  color: #4b5157;
 
-    & > * {
-        width: 240px;
-    }
+  & > * {
+    width: 240px;
+  }
 }
 
 .association__country {
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #065EA9;
-    margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #065ea9;
+  margin-bottom: 15px;
 
-    img {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
-        border-radius: 15px;
-    }
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
 }
 
 .association__info {
-    padding: 10px 0;
-    border-top: 1px solid #EAEDF6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 5px;
+  padding: 10px 0;
+  border-top: 1px solid #eaedf6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
 
-    img {
-        width: 88px;
-        height: 88px;
-        object-fit: cover;
-    }
-} 
+  img {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+  }
+}
 
 .more__button {
-    background: rgba(6, 94, 169, 0.1);
-    border: 1px solid #EAEDF6;
-    border-radius: 15px;
-    font-weight: 500; 
-    color: #065EA9;
-    text-align: center;
-    margin-top: 10px;
-    padding: 12.5px 0;
-    cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12.5px 0;
+  border: 1px solid #eaedf6;
+  border-radius: 15px;
+  font-weight: 500;
+  color: #065ea9;
+  text-align: center;
+  background-color: rgba(6, 94, 169, 0.1);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.more__button:hover {
+  color: #fff;
+  background-color: rgba(97, 165, 224, 0.88);
+  border: 1px solid #eaedf6;
+  transition: all 0.3s linear;
 }
