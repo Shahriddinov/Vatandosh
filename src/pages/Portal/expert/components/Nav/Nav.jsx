@@ -3,8 +3,9 @@ import { Link, useLocation, useParams } from "react-router-dom";
 
 function Nav({ navData }) {
   const location = useLocation();
-  const { id } = useParams();
+  const { communityCountryId } = useParams();
   const editClass = location.pathname.split("/");
+
   return (
     <div className="nav">
       <div className="container">
@@ -12,7 +13,7 @@ function Nav({ navData }) {
           className="nav__inner"
           style={{
             borderBottomColor:
-              editClass.length <= 3 || id !== undefined
+              editClass.length <= 3 || communityCountryId !== undefined
                 ? "transparent"
                 : "#eaedf6",
           }}
@@ -23,7 +24,7 @@ function Nav({ navData }) {
                 <Link
                   to={navItem.url}
                   className={
-                    editClass.length <= 3 || id !== undefined
+                    editClass.length <= 3 || communityCountryId !== undefined
                       ? `nav-link`
                       : `nav--link`
                   }
