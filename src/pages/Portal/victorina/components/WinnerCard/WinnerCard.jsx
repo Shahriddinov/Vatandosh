@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function WinnerCard() {
   return (
-    <Link to={"/portal-category/victorina/winner/12"} className="winnercard">
+    <Link to={"/portal-category/victorina/winner"} className="winnercard">
       <img src={img} alt="error" />
       <div className="winnercard-desc">
         <span> "ZIYOUZ VIKTORINASI" 1-o‘rin g‘olibi</span>

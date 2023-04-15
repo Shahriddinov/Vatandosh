@@ -23,7 +23,7 @@ function Expert() {
               <h4>{evt.location}</h4>
               <Link
                 className="employe-link"
-                to="/portal-category/expert/profile/12"
+                to="/portal-category/expert/profile"
               >
                 <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />

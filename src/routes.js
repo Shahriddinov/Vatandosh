@@ -230,7 +230,7 @@ const RoutesContainer = () => (
           <Route index element={<ExpertCouncil />} />
           <Route path="council-about" element={<AboutCouncil />} />
           <Route path="expert-council" element={<ExpertEmploye />} />
-          <Route path="profile/:id" element={<ExpertProfile />} />
+          <Route path="profile" element={<ExpertProfile />} />
           <Route path="offers" element={<ExpertOffers />} />
           <Route path="offers/:id" element={<ExpertOffersDetail />} />
           <Route path="contact" element={<Contact />} />
@@ -282,7 +282,7 @@ const RoutesContainer = () => (
           <Route index element={<VictorinaHome />}></Route>
           <Route path="contact" element={<Contact />} />
           <Route path="listwinners" element={<ListOfWinners />} />
-          <Route path="winner/:id" element={<VictorinaWinner />} />
+          <Route path="winner" element={<VictorinaWinner />} />
           <Route path="image-project" element={<VictorinaProject />} />
           <Route path="youtube-project" element={<VictorinaProject />} />
           <Route path="poem-project" element={<VictorinaProject />} />
