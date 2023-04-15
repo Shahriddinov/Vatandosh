@@ -45,6 +45,9 @@ const ExpertRegister = lazy(() =>
 );
 const NewsDetail = lazy(() => import("./pages/NewsDetail/NewsDetail"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
+const SetPassword = lazy(() =>
+  import("./pages/Registration/pages/SetPassword/SetPassword")
+);
 const ChangePassword = lazy(() =>
   import("./pages/Registration/pages/ChangePassword/ChangePassword")
 );
@@ -161,6 +164,10 @@ const VictorinaProject = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
 );
 
+const EmailVerify = lazy(() =>
+  import("./pages/Registration/emailVerify/EmailVerify")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -182,6 +189,7 @@ const routes = [
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },
   { path: "/registration/signin", element: SignIn },
+  { path: "/registration/set-password", element: SetPassword },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
   {
@@ -197,6 +205,7 @@ const routes = [
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
+  { path: "/registration/signup/api/verify/", element: EmailVerify },
 ];
 
 const RoutesContainer = () => (

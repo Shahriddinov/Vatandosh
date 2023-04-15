@@ -18,6 +18,7 @@ import directionSlice from "./Direction";
 import aboutSlice from "./About";
 import managementSlice from "./ManagementSlice";
 import searchSlice from "./searchSlice/searchSlice";
+import authSlice from "./authSlice/authSlice";
 
 const store = configureStore({
   reducer: {
@@ -39,6 +40,7 @@ const store = configureStore({
     aboutSlice,
     managementSlice,
     searchSlice,
+    authSlice,
   },
 });
 
