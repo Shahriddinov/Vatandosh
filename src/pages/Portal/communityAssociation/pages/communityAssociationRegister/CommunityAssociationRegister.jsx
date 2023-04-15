@@ -2,7 +2,7 @@ import "../../../expert/pages/ExpertRegister/ExpertRegister.scss";
 import { useState } from "react";
 import "./communityAssociationRegister.scss";
 import { PageTop } from "../../components";
-import { registerPageTopData as pageTopData, registerPath } from "./data";
+import { registerPath } from "./data";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   CommunityRegister1,
@@ -11,6 +11,7 @@ import {
   CommunityRegister4,
   CommunityRegister5,
 } from "./components";
+import { useTranslation } from "react-i18next";
 
 const CommunityAssociationRegister = () => {
   const { hash } = useLocation();
@@ -18,10 +19,29 @@ const CommunityAssociationRegister = () => {
     hash ? hash.slice(1) : "application-1"
   );
   const navigation = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = (url) => {
     setactiveBarItem(url);
     navigation(`/portal-category/community-association/application#${url}`);
+  };
+
+  const pageTopData = {
+    title: t("communityAssociation.application"),
+    pathUrl: [
+      {
+        id: 1,
+        pathUrl: "/portal-category/community-association",
+        label: t("communityAssociation.navbar.navbar_link1"),
+        active: false,
+      },
+      {
+        id: 2,
+        pathUrl: null,
+        label: t("communityAssociation.application"),
+        active: true,
+      },
+    ],
   };
 
   return (

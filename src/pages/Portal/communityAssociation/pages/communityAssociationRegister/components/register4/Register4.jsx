@@ -4,6 +4,7 @@ import "./register4.scss";
 import MyInput from "../UI/myInput/MyInput";
 import { useState } from "react";
 import MyInputDate from "../UI/myInputDate/MyInputDate";
+import { useTranslation } from "react-i18next";
 
 const CommunityRegister4 = ({ activeBarItem }) => {
   const [data, setData] = useState({
@@ -12,6 +13,7 @@ const CommunityRegister4 = ({ activeBarItem }) => {
     count: "",
     achievements: "",
   });
+  const { t } = useTranslation();
 
   const handleChangeApplication4 = ({ key, value }) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -26,14 +28,14 @@ const CommunityRegister4 = ({ activeBarItem }) => {
       }`}
     >
       <h3 className="community-association-register__title">
-        IV. Tashkilot faoliyati
+        IV. {t("communityAssociation.menu4_info.menu4_title")}
       </h3>
 
       <form className="community-association-register4__form">
         <MyInput
           value={data.name}
-          text="Tashkilotning nizom faoliyati"
-          placeholder="Kiriting"
+          text={t("communityAssociation.menu4_info.input1_name")}
+          placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication4}
           type="text"
           inputType="input"
@@ -42,13 +44,13 @@ const CommunityRegister4 = ({ activeBarItem }) => {
 
         <div className="community-association-register4__input_box">
           <MyInputDate
-            text="Tashkilot tashkil etilgan sana"
+            text={t("communityAssociation.menu4_info.input2_name")}
             handleChange={handleChangeApplication4}
             valueKey="time"
           />
           <MyInput
             value={data.count}
-            text="Tashkilot a'zolari soni "
+            text={t("communityAssociation.menu4_info.input3_name")}
             placeholder="0"
             handleChange={handleChangeApplication4}
             type="number"
@@ -59,8 +61,8 @@ const CommunityRegister4 = ({ activeBarItem }) => {
 
         <MyInput
           value={data.achievements}
-          text="Asosiy yutuqlar"
-          placeholder="Kiriting"
+          text={t("communityAssociation.menu4_info.input4_name")}
+          placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication4}
           type="text"
           inputType="input"
@@ -68,7 +70,7 @@ const CommunityRegister4 = ({ activeBarItem }) => {
         />
 
         <button className="community-association-register__form--btn">
-          Keyingisi
+          {t("communityAssociation.menu1_info.next")}
         </button>
       </form>
     </div>

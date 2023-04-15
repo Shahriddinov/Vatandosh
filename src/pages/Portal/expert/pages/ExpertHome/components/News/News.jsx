@@ -6,12 +6,15 @@ import {
 } from "../../../../../../../assets/images/expert";
 import "./News.scss";
 import { news } from "../../news";
+import { useTranslation } from "react-i18next";
 
 function News() {
+  const { t } = useTranslation();
+
   return (
     <div className="expertnews">
       <div className="container">
-        <h3>Yangiliklar</h3>
+        <h3>{t("news")}</h3>
         <div className="expertnews-page">
           <div className="expertnews-left">
             <h4>

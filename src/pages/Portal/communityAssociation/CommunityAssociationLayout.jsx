@@ -2,28 +2,34 @@ import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
 import { Outlet, useLocation, useParams } from "react-router-dom";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
+import { useTranslation } from "react-i18next";
 
 const CommunityAssociationLayout = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const editClass = location.pathname.split("/");
   const { id } = useParams();
 
   const navData = [
-    { id: 1, url: "/portal-category/community-association", label: "Asosiy" },
+    {
+      id: 1,
+      url: "/portal-category/community-association",
+      label: t("communityAssociation.navbar.navbar_link1"),
+    },
     {
       id: 2,
       url: "/portal-category/community-association/associations",
-      label: "Jamoat birlashmalari",
+      label: t("communityAssociation.navbar.navbar_link2"),
     },
     {
       id: 3,
       url: "/portal-category/community-association/events",
-      label: "Tadbirlar",
+      label: t("communityAssociation.navbar.navbar_link3"),
     },
     {
       id: 4,
       url: "/portal-category/community-association/contact",
-      label: "Bog‘lanish",
+      label: t("communityAssociation.navbar.navbar_link4"),
     },
   ];
 

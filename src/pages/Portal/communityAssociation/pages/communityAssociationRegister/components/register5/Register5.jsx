@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
 import "./register5.scss";
+import { useTranslation } from "react-i18next";
 
 const countryData = [
   "Uzbekiston",
@@ -40,6 +41,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
     confirm: false,
   });
   const [links, setLinks] = useState([{ id: 1, link: "" }]);
+  const { t } = useTranslation();
 
   const handleChangeApplication5 = ({ key, value, id }) => {
     setData((prev) => ({ ...prev, [key]: value }));
@@ -63,7 +65,9 @@ const CommunityRegister5 = ({ activeBarItem }) => {
           : "registeritem-scaleActive"
       }`}
     >
-      <h3 className="community-association-register__title">V. Manzil</h3>
+      <h3 className="community-association-register__title">
+        V. {t("communityAssociation.menu5_info.menu5_title")}
+      </h3>
 
       <form className="community-association-register5__form">
         <div className="community-association-register5__input_box">
@@ -71,7 +75,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             value={data.country}
             handleChange={handleChangeApplication5}
             data={countryData}
-            text="Davlat"
+            text={t("communityAssociation.menu5_info.input1_name")}
             valueKey="country"
           />
 
@@ -79,14 +83,16 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             value={data.city}
             handleChange={handleChangeApplication5}
             data={cityData}
-            text="SHahar"
+            text={t("communityAssociation.menu5_info.input2_name")}
             valueKey="city"
           />
 
           <div className="community-association-register__phone_box">
             <FormHelperText id="outlined-weight-helper-text">
-              <span className="my-input__text">Telefon raqam </span>
-              <span className="my-input__required">*</span>
+              <span className="my-input__text">
+                {t("communityAssociation.menu5_info.input3_name")}
+              </span>
+              <span className="my-input__required"> *</span>
             </FormHelperText>
             <PhoneInput
               className="community-association-register__phone"
@@ -100,7 +106,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
           <MyInput
             value={data.email}
             handleChange={handleChangeApplication5}
-            text="Elektron pochta"
+            text={t("communityAssociation.menu5_info.input4_name")}
             placeholder="email@example.com"
             type="email"
             inputType="input"
@@ -111,8 +117,8 @@ const CommunityRegister5 = ({ activeBarItem }) => {
         <MyInput
           value={data.address}
           handleChange={handleChangeApplication5}
-          text="Yuridik manzil"
-          placeholder="Kiriting"
+          text={t("communityAssociation.menu5_info.input5_name")}
+          placeholder={t("communityAssociation.title_input_plack")}
           type="text"
           inputType="input"
           valueKey="address"
@@ -122,7 +128,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             key={el.id}
             value={el.link}
             handleChange={handleChangeApplication5}
-            text="Veb-sayt va boshqa rasmiy sahifalar"
+            text={t("communityAssociation.menu5_info.input6_name")}
             placeholder="https://"
             type="text"
             inputType="input"
@@ -148,14 +154,14 @@ const CommunityRegister5 = ({ activeBarItem }) => {
         <div className="community-association-register5__checkbox">
           <FormControlLabel
             control={<Checkbox />}
-            label="Ma'lumotlarni saqlash va qayta ishlashga rozilik"
+            label={t("communityAssociation.menu5_info.input7_name")}
             onChange={(e) =>
               setData((prev) => ({ ...prev, confirm: e.target.checked }))
             }
           />
         </div>
         <button className="community-association-register__form--btn">
-          Keyingisi
+          {t("communityAssociation.menu5_info.save")}
         </button>
       </form>
     </div>

@@ -1,13 +1,11 @@
 import "./VolunterActivity.scss";
-import Hero from "../../../../../component/Hero/Hero";
 import { useDispatch, useSelector } from "react-redux";
 import { getSlider } from "../../../../../reduxToolkit/sliderSlice/extraReducer";
 import { useEffect } from "react";
 import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
 import Aos from "aos";
-import Card from "../../../../../component/card/Card";
-import { Paginator } from "../../../../../component/Pagination/Pagination";
 import { useState } from "react";
+import { Card, Hero, Pagination } from "../../../../../component";
 
 export default function VolunterActivity() {
   const dispatch = useDispatch();
@@ -52,7 +50,7 @@ export default function VolunterActivity() {
             />
           ))}
         </div>
-        <Paginator
+        <Pagination
           count={8}
           page={activePage}
           paginationFetching={pagination}

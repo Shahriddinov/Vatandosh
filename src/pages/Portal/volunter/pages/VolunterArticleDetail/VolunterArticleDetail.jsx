@@ -6,11 +6,11 @@ import img5 from "../../../../../assets/images/mediateka/5.png";
 import img6 from "../../../../../assets/images/mediateka/6.png";
 import img7 from "../../../../../assets/images/mediateka/7.png";
 import img8 from "../../../../../assets/images/mediateka/8.png";
-import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
 import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/ExpertProfileInfo";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterArticleDetail.scss";
+import { ShareFriends } from "../../../../../component";
 
 export default function VolunterArticleDetail() {
   const [mainImg, setMainImg] = useState(DefaultProfilePic);

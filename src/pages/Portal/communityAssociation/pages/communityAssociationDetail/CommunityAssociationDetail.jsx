@@ -1,43 +1,57 @@
-import React, { useEffect } from "react";
-import "./communityAssociationDetail.scss";
-import { CountryFlag } from "../../../../../assets/images/communityAssociation";
+import React from "react";
 import { useOutletContext } from "react-router-dom";
-import Navbar from "../../../expert/components/Navbar/Navbar";
-import Nav from "../../../expert/components/Nav/Nav";
-import { CommunityIntroData, communityAssociationHeroData } from "./data";
-import StatesFriendshipInfo from "../../../../compatriots/components/statesFriendshipInfo";
-import { MiniSlider } from "../../../../../component/miniSlider/MiniSlider";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { CountryFlag } from "../../../../../assets/images/communityAssociation";
+import StatesFriendshipInfo from "../../../../compatriots/components/statesFriendshipInfo";
+import { MiniSlider, Spinner } from "../../../../../component";
+import { Nav, Navbar } from "../../../expert/components";
+
 import {
+  AddNewsModal,
   CommunityAssociationCompanyOffer,
   CommunityAssociationHero,
 } from "./components";
-import { getEvents } from "../../../../../reduxToolkit/eventsSlice/extraReducer";
-import { Spinner } from "../../../../../component";
-import { useState } from "react";
-import AddNewsModal from "./components/addNewsModal/AddNewsModal";
+import { useFetchingData, useModalActive } from "./hooks";
+import { CommunityIntroData } from "./data";
+
+//scss files
+import "./communityAssociationDetail.scss";
 
 const CommunityAssociationDetail = () => {
-  const [activeModal, setActiveModal] = useState(true);
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const events = useSelector((state) => state.eventsSlice.eventsData);
-  const loading = useSelector((state) => state.eventsSlice.loading);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  useEffect(() => {
-    if (!events.length) {
-      dispatch(getEvents());
-    }
-  }, []);
+  const { loading, events } = useFetchingData();
+  const { open, changeOpen } = useModalActive();
 
   if (loading) {
     return <Spinner position="full" />;
   }
+
+  const communityAssociationHeroData = {
+    breadcrumbs: [
+      {
+        id: 1,
+        label: t("communityAssociation.navbar.navbar_link1"),
+        url: "/portal-category/community-association",
+        active: false,
+      },
+      {
+        id: 2,
+        label: t("communityAssociation.navbar.navbar_link2"),
+        url: "/portal-category/community-association/country/russia",
+        active: false,
+      },
+      {
+        id: 3,
+        label: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
+        url: null,
+        active: true,
+      },
+    ],
+
+    title: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
+    desc: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,",
+  };
 
   return (
     <div className="community-association-detail">
@@ -50,7 +64,7 @@ const CommunityAssociationDetail = () => {
 
         <CommunityAssociationHero
           data={communityAssociationHeroData}
-          handleOpen={handleOpen}
+          handleOpen={changeOpen}
         />
       </div>
 
@@ -58,7 +72,7 @@ const CommunityAssociationDetail = () => {
       <CommunityAssociationCompanyOffer {...CommunityIntroData} />
       <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
 
-      {activeModal && <AddNewsModal open={open} handleClose={handleClose} />}
+      <AddNewsModal open={open} handleClose={changeOpen} />
     </div>
   );
 };

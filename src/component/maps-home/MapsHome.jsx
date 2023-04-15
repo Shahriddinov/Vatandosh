@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { CommunityAssociationMapModal } from "../../pages/Portal/communityAssociation/components";
 
-const MapsHome = () => {
+const MapsHome = ({ title }) => {
   const [active, setActive] = useState(false);
   const svgRef = useRef(null);
   const [countryCode, setCountryCode] = useState("");
@@ -92,7 +92,7 @@ const MapsHome = () => {
     <section className="maps_home maps">
       <div className="maps_home__container">
         <div className="maps_home__inner">
-          <h3 className="maps_home__title">{t("mapTitle")}</h3>
+          <h3 className="maps_home__title">{title}</h3>
 
           <div className="maps__inner">
             <div className="maps__zoom_btns">

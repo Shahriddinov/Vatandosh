@@ -3,7 +3,7 @@ import "./Pagination.scss";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
-export const Paginator = ({ count, paginationFetching, page }) => {
+const PaginationComponent = ({ count, paginationFetching, page }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -33,3 +33,5 @@ export const Paginator = ({ count, paginationFetching, page }) => {
     </div>
   );
 };
+
+export default PaginationComponent;
