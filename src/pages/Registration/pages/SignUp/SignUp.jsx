@@ -1,6 +1,25 @@
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { sendEmail } from "../../../../reduxToolkit/authSlice/extraReducer";
+
 import "../SignIn/SignIn.scss";
+import { Link } from "react-router-dom";
+import useSelection from "antd/es/table/hooks/useSelection";
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const emailRef = useRef();
+  const [isValid, setIsValid] = useState(false);
+  const message = useSelector((store) => store.authSlice.message);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(sendEmail({ email: emailRef.current.value }));
+    setIsValid(true);
+  };
+  console.log(message);
   return (
     <div className="auth">
       <div className="container">
@@ -26,13 +45,19 @@ export default function SignUp() {
                 tashdiqlash kodini yuboramiz
               </p>
             </div>
-            <form className="auth-form-inputs">
+            <form
+              className="auth-form-inputs"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
                 <span>Email pochtangizni kiriting</span>
-                <input type="email" onFocus={console.log("el")} />
+                <input type="email" ref={emailRef} required />
               </label>
-              <p className="auth-form-inputs-sendMail">
-                Email pochtangizga xabar yuborildi
+              <p
+                className="auth-form-inputs-sendMail"
+                style={isValid ? { display: "block" } : { display: "none" }}
+              >
+                {message ? message : "loading..."}
               </p>
               <button type="submit" className="auth-form-inputs-submitBtn">
                 Davom etish
