@@ -22,18 +22,14 @@ export default function SignIn() {
   const user = useSelector((state) => state.authSlice.userData);
   const error = useSelector((state) => state.authSlice.error);
 
-  console.log(user);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(userData));
   };
 
-  useEffect(() => {
-    if (user) {
-      alert("Signed in successfully");
-    }
-  }, [user]);
+  if (user) {
+    alert("Signed in successfully");
+  }
 
   if (error) {
     alert(error);

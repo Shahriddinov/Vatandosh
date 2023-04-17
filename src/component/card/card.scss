@@ -43,12 +43,8 @@
     }
 
     p {
+      height: 63px;
       overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
       margin-top: 8px;
       color: #5d6b8a;
     }
@@ -57,9 +53,9 @@
   .tags-box {
     width: 100%;
     max-width: 300px;
-    height: 60px;
+    height: 50px;
     position: relative;
-    padding: 12px 0;
+    padding: 0 0 12px 0;
     overflow-x: auto;
     border-left: 15px solid white;
     border-right: 15px solid white;
