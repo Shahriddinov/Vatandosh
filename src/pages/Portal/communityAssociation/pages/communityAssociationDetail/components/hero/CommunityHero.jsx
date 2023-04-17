@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import arrowRight from "../../../../../../../assets/images/about/arrow-right.svg";
 
 import "./communityHero.scss";
+import { t } from "i18next";
 
 const CommunityAssociationHero = ({ data, handleOpen }) => {
   return (
@@ -57,7 +58,7 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
               type="button"
               className="community-association-hero__btn"
             >
-              Yangilik qo’shish
+              {t("communityAssociation.add_news")}
             </button>
           </div>
         </div>

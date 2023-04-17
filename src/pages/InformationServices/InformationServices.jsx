@@ -7,7 +7,6 @@ import LatestNews from "../../component/LatestNews/LatestNews";
 import Card from "../../component/card/Card";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
-import { Paginator } from "../../component/Pagination/Pagination";
 
 import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
 import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
@@ -16,6 +15,7 @@ import graphIcon from "../../assets/images/navMenuIcons/informationService/graph
 import coountryManIcon from "../../assets/images/navMenuIcons/informationService/countryManIcon.svg";
 import Spinner from "../../component/Spinner/Spinner";
 import { useInformationServicesPagination } from "./hooks/useInformationServicesPagination";
+import { Pagination } from "../../component";
 
 const InformationServices = () => {
   const {
@@ -101,7 +101,7 @@ const InformationServices = () => {
           </div>
         </div>
         {paginationCount >= 2 ? (
-          <Paginator
+          <Pagination
             page={page}
             paginationFetching={paginationFetching}
             count={paginationCount}

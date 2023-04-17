@@ -291,14 +291,5 @@
     "winner": " Quiz winner",
     "winnerprice": "Winner of the quiz awarded",
     "allwinner": "All winners"
-  },
-  "voluntery": {
-    "headertitle": "“Compatriots” Volunteers",
-    "headertext": "Electronic platform of compatriot volunteers",
-    "headersubmit": "Print",
-    "voluntery": "Volunteers",
-    "nav1": "Volunteers",
-    "nav2": "Volunteer activities",
-    "nav3": "Connect"
   }
 }

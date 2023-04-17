@@ -8,6 +8,7 @@ import Teacher from "../../../../../assets/images/OnlineTeaching/Teacher.svg";
 import Grades from "../../../../../assets/images/OnlineTeaching/Grades.svg";
 import Online from "../../../../../assets/images/OnlineTeaching/Online.svg";
 import Seminar from "../../../../../assets/images/OnlineTeaching/Seminar.svg";
+import {Link} from "react-router-dom";
 
 function OnlineTeachingBody(props) {
   const Levels = [
@@ -70,9 +71,9 @@ function OnlineTeachingBody(props) {
               <div className="onlineTeachingBody_level_start_cardInfo_describtions">
                 {item.text}
               </div>
-              <div className="onlineTeachingBody_level_start_cardInfo_sends">
+              <Link to="about" className="onlineTeachingBody_level_start_cardInfo_sends">
                 {item.send}
-              </div>
+              </Link>
             </div>
             <div className="onlineTeachingBody_level_start_cardInfo">
               <img

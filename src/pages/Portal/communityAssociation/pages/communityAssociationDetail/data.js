@@ -9,32 +9,6 @@ import {
   CommunityCardImgLg,
 } from "../../../../../assets/images/communityAssociation";
 
-export const communityAssociationHeroData = {
-  breadcrumbs: [
-    {
-      id: 1,
-      label: "Asosiy",
-      url: "/portal-category/community-association",
-      active: false,
-    },
-    {
-      id: 2,
-      label: "Jamoat birlashmalar",
-      url: "/portal-category/community-association/country/russia",
-      active: false,
-    },
-    {
-      id: 3,
-      label: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
-      url: null,
-      active: true,
-    },
-  ],
-
-  title: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
-  desc: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,",
-};
-
 export const CommunityIntroData = {
   company_photo: "assosiation-categories/March2023/JjE6nSYRYOgsDTT0mZm5.jpg",
   company_start_data: "2019 yil",

@@ -17,6 +17,8 @@ const CommunityAssociationCompanyOffer = (props) => {
     image: CommunitySliderData[0].image,
   });
 
+  console.log(props[`info_${lng}`]);
+
   return (
     <section className="community-association-company-offer">
       <div className="community-association-company-offer__container container">

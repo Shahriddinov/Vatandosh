@@ -28,8 +28,6 @@ const CompatriotsEvents = () => {
     dispatch(getNews());
   }, []);
 
-  console.log(newsData);
-
   return (
     <section className="compatriots-events">
       <div className="container">

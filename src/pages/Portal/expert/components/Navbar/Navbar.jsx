@@ -27,6 +27,7 @@ function Navbar({ navbarUrl }) {
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
   const { id } = useParams();
+  const { communityCountryId } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
 
@@ -45,7 +46,7 @@ function Navbar({ navbarUrl }) {
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
                 }>
@@ -58,7 +59,7 @@ function Navbar({ navbarUrl }) {
               <a
                 href="tel:+998555022299"
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
                 }>
@@ -70,7 +71,7 @@ function Navbar({ navbarUrl }) {
               <a
                 href="mailto:info@vatandoshlarfondi.uz"
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
                 }>
@@ -107,7 +108,7 @@ function Navbar({ navbarUrl }) {
                 className="navbarpage_language-wrapper"
                 style={{
                   background: `${
-                    editClass.length <= 3 || id !== undefined
+                    editClass.length <= 3 || communityCountryId !== undefined
                       ? "rgba(255, 255, 255, 0.2)"
                       : `#065EA9`
                   }`,
@@ -163,7 +164,7 @@ function Navbar({ navbarUrl }) {
             <Link
               to={navbarUrl?.register}
               className={
-                editClass.length <= 3 || id !== undefined
+                editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbar-button`
                   : `navbar--button`
               }>

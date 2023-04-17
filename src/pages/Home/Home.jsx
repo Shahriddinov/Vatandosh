@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPeaceful } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
 import Header from "../../component/Layout/Header/Header";
 import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
+import { t } from "i18next";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Home = () => {
       <News />
       <Peaceful />
       <InteractiveServices />
-      <MapsHome />
+      <MapsHome title={t("mapTitle")} />
       <Partners />
     </div>
   );

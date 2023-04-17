@@ -1,14 +1,39 @@
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { signIn } from "../../../../reduxToolkit/authSlice/extraReducer";
+
 import google from "../../../../assets/images/register/google-icon.svg";
 import apple from "../../../../assets/images/register/apple-icon.svg";
 import facebook from "../../../../assets/images/register/facebook-icon.svg";
 import oneid from "../../../../assets/images/register/oneid-icon.svg";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+
 import "./SignIn.scss";
-import { useState } from "react";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const user = useSelector((state) => state.authSlice.userData);
+  const error = useSelector((state) => state.authSlice.error);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signIn(userData));
+  };
+
+  if (user) {
+    alert("Signed in successfully");
+  }
+
+  if (error) {
+    alert(error);
+  }
 
   return (
     <div className="auth">
@@ -32,14 +57,28 @@ export default function SignIn() {
               <h3>Shaxsiy kabinetga kirish</h3>
               <p>Iltimos ma’lumotlaringizni kirting</p>
             </div>
-            <form className="auth-form-inputs">
+            <form
+              className="auth-form-inputs"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label className="auth-form-inputs-emailInput">
                 <span>Email pochtangizni kiriting</span>
-                <input type="email" />
+                <input
+                  type="email"
+                  onChange={(e) =>
+                    setUserData((prev) => ({ ...prev, email: e.target.value }))
+                  }
+                />
               </label>
               <label className="auth-form-inputs-passwordInput">
                 <span>Parol</span>
                 <input
+                  onChange={(e) =>
+                    setUserData((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
                   type={isActivePasswordEye ? "text" : "password"}
                   minLength={5}
                   maxLength={30}

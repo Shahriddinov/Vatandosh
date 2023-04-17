@@ -1,0 +1,24 @@
+@import "src/assets/style/global";
+
+.aboutTeachingHero {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  top: -60px;
+  .container{
+    position: relative;
+  }
+  &_bodes{
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    background-image: url("../../../../../assets/images/online-teaching/About.svg");
+    &_items{
+      position: absolute;
+      //top: 5%;
+      margin-top: 5%;
+    }
+  }
+}

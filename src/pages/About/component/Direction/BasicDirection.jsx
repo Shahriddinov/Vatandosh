@@ -38,7 +38,7 @@ function BasicDirection(props) {
             <div className="about_basics container">Asosiy yo'nalishlar</div>
             <div className="about_direction_cards container">
 
-                {directionsData.map((item, index) => (
+                {directionsData?.map((item, index) => (
 
                     <div key={item.id} className="about_direction_cards_boxs">
                         <img src={`${baseServerUrl}/${item.img}`} alt="partner"/>

@@ -64,7 +64,7 @@ const CommunityAssociationMapModal = ({ changeActive, countryCode }) => {
                 <div className="communityAssociationMapModal__body_content">
                   <b className="communityAssociationMapModal__body_count">10</b>
                   <p className="communityAssociationMapModal__body_text">
-                    Всего общественных организаций
+                    {t("communityAssociation.total_public_organizations")}
                   </p>
                 </div>
 
@@ -72,7 +72,7 @@ const CommunityAssociationMapModal = ({ changeActive, countryCode }) => {
                   to={`/portal-category/community-association/country/${mapData[0]?.title_en.toLowerCase()}`}
                   className="communityAssociationMapModal__body_link"
                 >
-                  Barchasini ko‘rish
+                  {t("communityAssociation.view_all")}
                 </Link>
               </div>
             </>
