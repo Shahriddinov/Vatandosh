@@ -19,21 +19,11 @@ export default function SignIn() {
     email: "",
     password: "",
   });
-  const user = useSelector((state) => state.authSlice.userData);
-  const error = useSelector((state) => state.authSlice.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(userData));
   };
-
-  if (user) {
-    alert("Signed in successfully");
-  }
-
-  if (error) {
-    alert(error);
-  }
 
   return (
     <div className="auth">

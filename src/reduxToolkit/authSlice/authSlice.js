@@ -1,11 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sendEmail, setPassword, signIn, verifyToken } from "./extraReducer";
+import {
+  recoverPassword,
+  resetPassword,
+  sendEmail,
+  setPassword,
+  signIn,
+  verifyToken,
+} from "./extraReducer";
 
 const initialState = {
   emailLoading: false,
   verifyLoading: true,
   passwordLoading: true,
   loginLoading: true,
+  resetLoading: false,
   userData: null,
   token: localStorage.getItem("token"),
   message: "",
@@ -74,16 +82,53 @@ const authSlice = createSlice({
         state.loginLoading = false;
         if (action.payload.message) {
           state.error = action.payload.message;
+          alert(action.payload.message);
         } else {
           state.userData = action.payload;
-          state.token = action.token;
-          localStorage.setItem("token", action.token);
+          state.token = action.payload.token;
+          localStorage.setItem("token", action.payload.token);
+          console.log(action.payload);
         }
-        console.log(action.payload);
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loginLoading = false;
         state.error = action.message;
+      });
+
+    // Reset Password
+    build
+      .addCase(resetPassword.pending, (state) => {
+        state.resetLoading = true;
+        state.message = "";
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.resetLoading = false;
+
+        if (action.payload.errors) {
+          state.error = action.payload.errors.email;
+          alert(action.payload.errors.email);
+        } else {
+          state.message = action.payload.message;
+        }
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.resetLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Recover Password
+    build
+      .addCase(recoverPassword.pending, (state) => {
+        state.resetLoading = true;
+      })
+      .addCase(recoverPassword.fulfilled, (state, action) => {
+        state.resetLoading = false;
+        if (action.payload.errors) {
+          state.error = action.payload.errors.message;
+          alert(action.payload.errors.message);
+        } else {
+          state.message = action.payload.message;
+        }
       });
   },
 });

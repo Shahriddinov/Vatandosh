@@ -1,5 +1,5 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
-export const authUrl = "http://vatandoshlar.napaautomotive.uz/api/auth";
+export const authUrl = "https://vatandoshlar.napaautomotive.uz/api/auth";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
 
@@ -36,6 +36,7 @@ export const SEND_EMAIL = `${authUrl}/send-mail`;
 export const VERIFY_TOKEN = `${authUrl}/validate-token`;
 export const SET_PASSWORD = `${authUrl}/set-password`;
 export const LOGIN = `${authUrl}/login`;
+export const RESET_PASSWORD = `${authUrl}/reset-password`;
 
 // Update requests
 
