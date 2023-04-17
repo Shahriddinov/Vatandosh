@@ -63,9 +63,9 @@
     }
   }
   .navbar--button {
-    background: #065ea9;
-    border-radius: 5px;
-    width: 113px;
+    background: #eaedf6;
+    border-radius: 12px;
+    width: 120px;
     height: 40px;
     font-weight: 500;
     font-size: 14px;
@@ -73,10 +73,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #065ea9;
-    color: #ffffff;
+    border: 2px solid #eaedf6;
+    color: #5d6b8a;
     cursor: pointer;
-    margin: 0 20px;
+
+    svg {
+      path {
+        fill: #5d6b8a;
+      }
+    }
   }
   &_language {
     position: relative;
@@ -134,5 +139,25 @@
         background-color: grey;
       }
     }
+  }
+
+  .navbarpage-icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 6px;
+  }
+  .navbarpage--notification {
+    background: #eaedf6;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin: 0 9px;
+    cursor: pointer;
   }
 }

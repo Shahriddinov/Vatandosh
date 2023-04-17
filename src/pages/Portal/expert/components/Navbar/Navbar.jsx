@@ -1,8 +1,14 @@
 import "./Navbar.scss";
 import {
+  BayroqIcon,
   EmailIcon,
   ExitIcon,
+  EyeIcon,
+  GerbIcon,
   LogoIcon,
+  MessengerIcon,
+  MusicIcon,
+  NotificationIcon,
   PhoneIcon,
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
@@ -20,7 +26,7 @@ function Navbar({ navbarUrl }) {
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { communityCountryId } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
 
@@ -39,7 +45,7 @@ function Navbar({ navbarUrl }) {
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
                 }
@@ -53,7 +59,7 @@ function Navbar({ navbarUrl }) {
               <a
                 href="tel:+998555022299"
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
                 }
@@ -66,7 +72,7 @@ function Navbar({ navbarUrl }) {
               <a
                 href="mailto:info@vatandoshlarfondi.uz"
                 className={
-                  editClass.length <= 3 || id !== undefined
+                  editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
                 }
@@ -77,12 +83,36 @@ function Navbar({ navbarUrl }) {
             </li>
           </ul>
           <div className="navbar-list">
+            <button className="navbarpage-icon">
+              <img src={GerbIcon} />
+            </button>
+            <button className="navbarpage-icon">
+              <img src={BayroqIcon} />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || communityCountryId !== undefined
+                  ? `navbarpage-icon`
+                  : `navbarpage--icon`
+              }
+            >
+              <MusicIcon />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || communityCountryId !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }
+            >
+              <EyeIcon />
+            </button>
             <div className="navbarpage_language">
               <div
                 className="navbarpage_language-wrapper"
                 style={{
                   background: `${
-                    editClass.length <= 3 || id !== undefined
+                    editClass.length <= 3 || communityCountryId !== undefined
                       ? "rgba(255, 255, 255, 0.2)"
                       : `#065EA9`
                   }`,
@@ -122,16 +152,34 @@ function Navbar({ navbarUrl }) {
                 ))}
               </div>
             </div>
+            <button
+              className={
+                editClass.length <= 3 || communityCountryId !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }
+            >
+              <NotificationIcon />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || communityCountryId !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }
+            >
+              <MessengerIcon />
+            </button>
             <Link
               to={navbarUrl?.register}
               className={
-                editClass.length <= 3 || id !== undefined
+                editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbar-button`
                   : `navbar--button`
               }
             >
-              <img src={ExitIcon} alt="" className="navbar-icon" />
-              {t("expert.enter")}
+              <ExitIcon />
+              Кабинет
             </Link>
           </div>
         </div>

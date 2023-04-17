@@ -1,11 +1,13 @@
 import {createSlice} from "@reduxjs/toolkit";
+// import {getma} from "./About";
 import {getManagement} from "./ManagementSlice";
 
 const initialState = {
+    loading: true,
     managementData: [],
-    loadingManagement: true,
     error: null,
-}
+};
+
 const managementSlice = createSlice({
     name: "managements",
     initialState,
@@ -13,16 +15,17 @@ const managementSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getManagement.pending, (state) => {
-                state.loadingManagement = true;
+                state.loading = true;
             })
             .addCase(getManagement.fulfilled, (state, action) => {
-                state.managementData = false;
-                state.loadingManagement = action.payload;
+                state.loading = false;
+                state.managementData = action.payload;
             })
-            .addCase(getManagement.rejected, (state, action)=>{
-                state.loadingManagement= false;
+            .addCase(getManagement.rejected, (state, action) => {
+                state.loading = false;
                 state.error = action.error.message;
             })
     }
 });
+
 export default managementSlice.reducer

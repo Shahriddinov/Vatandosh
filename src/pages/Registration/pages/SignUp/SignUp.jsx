@@ -1,17 +1,19 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { sendEmail } from "../../../../reduxToolkit/authSlice/extraReducer";
+import Spinner from "../../../../component/Spinner/Spinner";
 
 import "../SignIn/SignIn.scss";
-import { Link } from "react-router-dom";
-import useSelection from "antd/es/table/hooks/useSelection";
 
 export default function SignUp() {
   const dispatch = useDispatch();
   const emailRef = useRef();
   const [isValid, setIsValid] = useState(false);
+  const loading = useSelector((store) => store.authSlice.emailLoading);
   const message = useSelector((store) => store.authSlice.message);
+  const error = useSelector((store) => store.authSlice.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +21,15 @@ export default function SignUp() {
     dispatch(sendEmail({ email: emailRef.current.value }));
     setIsValid(true);
   };
-  console.log(message);
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
+  if (error) {
+    alert(error);
+  }
+
   return (
     <div className="auth">
       <div className="container">

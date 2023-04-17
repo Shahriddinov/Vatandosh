@@ -12,10 +12,10 @@ import { useTranslation } from "react-i18next";
 const Associations = () => {
   const { t } = useTranslation();
 
-  const [age, setAge] = React.useState("Barcha davlatlar");
+  const [country, setCountry] = React.useState("Barcha davlatlar");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCountry(event.target.value);
   };
 
   return (
@@ -24,7 +24,7 @@ const Associations = () => {
         <h1>{t("communityAssociation.navbar.navbar_link2")}</h1>
         <FormControl className="form__control">
           <Select
-            value={age}
+            value={country}
             onChange={handleChange}
             inputProps={{ "aria-label": "Without label" }}
             IconComponent={ExpandMoreIcon}
