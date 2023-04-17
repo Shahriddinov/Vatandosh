@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sendEmail, setPassword, signIn, verifyToken } from "./extraReducer";
 
 const initialState = {
-  emailLoading: true,
+  emailLoading: false,
   verifyLoading: true,
   passwordLoading: true,
   loginLoading: true,
@@ -18,19 +18,22 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (build) => {
-    // Send Email
+    // Sign Up
     build
       .addCase(sendEmail.pending, (state) => {
-        console.log("dwedwe");
         state.loading = true;
       })
       .addCase(sendEmail.fulfilled, (state, action) => {
         state.loading = false;
-        state.message = action.payload.message;
+        if (action.message) {
+          state.message = action.message;
+        } else {
+          state.message = action.payload.message;
+        }
       })
       .addCase(sendEmail.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.message = action.message;
       });
 
     // Verify Token
@@ -69,13 +72,18 @@ const authSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.loginLoading = false;
-        state.userData = action.payload;
+        if (action.payload.message) {
+          state.error = action.payload.message;
+        } else {
+          state.userData = action.payload;
+          state.token = action.token;
+          localStorage.setItem("token", action.token);
+        }
         console.log(action.payload);
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loginLoading = false;
-        // state.error = action.message;
-        console.log(action);
+        state.error = action.message;
       });
   },
 });

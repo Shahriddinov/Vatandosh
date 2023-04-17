@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getNews, getDetailData } from "./extraReducer";
+import { getNews, getDetailData, getHomeNews } from "./extraReducer";
 
 const initialState = {
   loadingNews: true,
   loadingDetail: true,
   newsData: [],
+  newsHomeData: [],
   detailData: {},
   error: null,
 };
@@ -41,6 +42,20 @@ const newsSlice = createSlice({
       })
       .addCase(getDetailData.rejected, (state, action) => {
         state.loadingDetail = false;
+        state.error = action.error.message;
+      });
+
+    // Get home news
+    builder
+      .addCase(getHomeNews.pending, (state) => {
+        state.loadingNews = true;
+      })
+      .addCase(getHomeNews.fulfilled, (state, action) => {
+        state.loadingNews = false;
+        state.newsHomeData = action.payload[0].data;
+      })
+      .addCase(getHomeNews.rejected, (state, action) => {
+        state.loadingNews = false;
         state.error = action.error.message;
       });
   },
