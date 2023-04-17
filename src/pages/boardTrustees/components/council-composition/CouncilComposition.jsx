@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 
 const CouncilComposition = ({ searchCount, handleFetching, trusts }) => {
   const { t } = useTranslation();
-  console.log(trusts);
   return (
     <section className="council-composition">
       <div className="council-composition__container container">

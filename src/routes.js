@@ -172,6 +172,7 @@ const VictorinaFinish = lazy(() =>
 const MoreVictorina = lazy(() =>
   import("./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina")
 );
+const AboutTeaching = lazy(()=> import("./pages/Portal/OnlineTeaching/pages/AboutTeaching/AboutTeaching"))
 
 const EmailVerify = lazy(() =>
   import("./pages/Registration/emailVerify/EmailVerify")
@@ -279,7 +280,9 @@ const RoutesContainer = () => (
           element={<OnlineTeachingLayout />}
         >
           <Route index element={<OnlineTeachingHome />} />
+          <Route path="about" element={<AboutTeaching/>}/>
         </Route>
+
         <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
           <Route index element={<VictorinaHome />}></Route>
           <Route path="contact" element={<Contact />} />

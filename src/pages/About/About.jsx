@@ -24,7 +24,6 @@ const About = () => {
   const state = useLocation();
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
-
   const loading = useSelector((state) => state.sliderSlice.loading);
   const aboutData = useSelector((state)=>state.aboutSlice.aboutData);
   const { t } = useTranslation();
@@ -84,7 +83,7 @@ const About = () => {
             <img
               className="about_card_left_much_img"
               data-aos="fade-up"
-              src={`${baseServerUrl}/${aboutData.image}`}
+              src={`${baseServerUrl}/${aboutData?.image}`}
               alt="cardImg"
             />
           </div>
@@ -121,7 +120,7 @@ const About = () => {
         <div>
           <video autoPlay muted loop className="about_videos_links">
             <source
-              src={`${baseServerUrl}/${JSON.parse(aboutData?.videofile)[0].download_link
+              src={`${baseServerUrl}/${JSON.parse(aboutData?.videofile)[0]?.download_link
               }`}
             />
           </video>

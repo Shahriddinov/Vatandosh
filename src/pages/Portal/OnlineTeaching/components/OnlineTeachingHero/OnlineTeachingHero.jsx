@@ -46,7 +46,7 @@ const OnlineTeachingHero = () => {
                   В этом курсе вы примете участие в серии задач, призванных
                   повысить ваше собственное счастье и выработать более{" "}
                 </p>
-                <Link to="/" className="teaching-hero__btn">
+                <Link to="about" className="teaching-hero__btn">
                   Начать урок
                 </Link>
               </div>
@@ -62,7 +62,7 @@ const OnlineTeachingHero = () => {
                   В этом курсе вы примете участие в серии задач, призванных
                   повысить ваше собственное счастье и выработать более{" "}
                 </p>
-                <Link to="/" className="teaching-hero__btn">
+                <Link to="about" className="teaching-hero__btn">
                   Начать урок
                 </Link>
               </div>
@@ -79,7 +79,7 @@ const OnlineTeachingHero = () => {
                   В этом курсе вы примете участие в серии задач, призванных
                   повысить ваше собственное счастье и выработать более{" "}
                 </p>
-                <Link to="/" className="teaching-hero__btn">
+                <Link to="about" className="teaching-hero__btn">
                   Начать урок
                 </Link>
               </div>
@@ -95,7 +95,7 @@ const OnlineTeachingHero = () => {
                   В этом курсе вы примете участие в серии задач, призванных
                   повысить ваше собственное счастье и выработать более{" "}
                 </p>
-                <Link to="/" className="teaching-hero__btn">
+                <Link to="about" className="teaching-hero__btn">
                   Начать урок
                 </Link>
               </div>
