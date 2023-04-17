@@ -244,7 +244,6 @@ const routes = [
   { path: "/registration/signup", element: SignUp },
   { path: "/registration/set-password", element: SetPassword },
   { path: "/registration/signin", element: SignIn },
-  { path: "/registration/set-password", element: SetPassword },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
   {
