@@ -3,7 +3,6 @@ import {
   BayroqIcon,
   EmailIcon,
   ExitIcon,
-  EyeIcon,
   GerbIcon,
   LogoIcon,
   MessengerIcon,
@@ -65,53 +64,20 @@ function Navbar({ navbarUrl }) {
           <button className="navbarpage-icon">
             <img src={BayroqIcon} />
           </button>
-          <button
-            className={
-              editClass.length <= 3 || id !== undefined
-                ? `navbarpage-icon`
-                : `navbarpage--icon`
-            }>
+          <button className="navbarpage--icon">
             <MusicIcon />
           </button>
-          <button
-            className={
-              editClass.length <= 3 || id !== undefined
-                ? `navbarpage-notification`
-                : `navbarpage--notification`
-            }>
-            <EyeIcon />
-          </button>
-          <div className="navbarpage_language">
+          <div className="navbarvictorina_language">
             <div
-              className="navbarpage_language-wrapper"
-              style={{
-                background: `${
-                  editClass.length <= 3 || id !== undefined
-                    ? "rgba(255, 255, 255, 0.2)"
-                    : `#065EA9`
-                }`,
-              }}
+              className="navbarvictorina_language-wrapper"
               onClick={() => setactiveLang((el) => !el)}>
-              <CiGlobe className="navbarpage_language-icon" />
-              <span style={{ color: "white" }}>
+              <CiGlobe className="navbarvictorina_language-icon" />
+              <span>
                 {languageList.find((lan) => lan.type === language).label}
               </span>
-              <IoMdArrowDropdown className="navbarpage_language-iconArrow" />
+              <IoMdArrowDropdown className="navbarvictorina_language-iconArrow" />
             </div>
-            <div
-              className="navbarpage_language-bar"
-              style={
-                activeLang
-                  ? {
-                      display: "flex",
-                      background: `${
-                        editClass.length <= 3
-                          ? "rgba(255, 255, 255, 0.2)"
-                          : `#065EA9`
-                      }`,
-                    }
-                  : null
-              }>
+            <div className="navbarvictorina_language-bar">
               {languageList.map((el, index) => (
                 <p
                   key={index}
@@ -123,31 +89,15 @@ function Navbar({ navbarUrl }) {
               ))}
             </div>
           </div>
-          <button
-            className={
-              editClass.length <= 3 || id !== undefined
-                ? `navbarpage-notification`
-                : `navbarpage--notification`
-            }>
+          <button className="navbarpage--notification">
             <NotificationIcon />
           </button>
-          <button
-            className={
-              editClass.length <= 3 || id !== undefined
-                ? `navbarpage-notification`
-                : `navbarpage--notification`
-            }>
+          <button className="navbarpage--notification">
             <MessengerIcon />
           </button>
-          <Link
-            to={navbarUrl?.register}
-            className={
-              editClass.length <= 3 || id !== undefined
-                ? `navbar-button`
-                : `navbar--button`
-            }>
+          <Link to={navbarUrl?.register} className="navbar--button">
             <ExitIcon />
-            Кабинет
+            Kirish
           </Link>
         </div>
       </div>
