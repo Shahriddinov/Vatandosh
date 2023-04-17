@@ -17,19 +17,21 @@
     align-items: center;
   }
   .navbar-button {
-    margin: 0 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 8px 14px;
+    border: none;
+    width: 120px;
+    height: 40px;
     display: flex;
     align-items: center;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    border-radius: 12px;
-    padding: 8px 14px;
-    border: none;
     cursor: pointer;
+    margin: 0 20px;
   }
   img {
     margin-right: 5px;
@@ -83,9 +85,9 @@
     }
   }
   .navbar--button {
-    background: #065ea9;
-    border-radius: 5px;
-    width: 113px;
+    background: #EAEDF6;
+    border-radius: 12px;
+    width: 120px;
     height: 40px;
     font-weight: 500;
     font-size: 14px;
@@ -93,10 +95,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #065ea9;
-    color: #ffffff;
+    border: 2px solid #EAEDF6;
+    color: #5D6B8A;
     cursor: pointer;
-    margin: 0 20px;
+
+    svg {
+      path {
+        fill: #5d6b8a;
+      }
+    }
   }
   &_language {
     position: relative;
@@ -149,6 +156,60 @@
 
       & > p:hover {
         background-color: grey;
+      }
+    }
+  }
+
+  &-notification {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin: 0 6px;
+    cursor: pointer;
+  }
+
+  &--notification {
+    background: #eaedf6;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin: 0 6px;
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: #5d6b8a;
+      }
+    }
+  }
+
+  &-icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 6px;
+  }
+
+  &--icon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 6px;
+
+    svg {
+      path {
+        fill: #5d6b8a;
       }
     }
   }

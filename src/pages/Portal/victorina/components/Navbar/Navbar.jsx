@@ -1,25 +1,34 @@
 import "./Navbar.scss";
 import {
+  BayroqIcon,
   EmailIcon,
   ExitIcon,
+  GerbIcon,
   LogoIcon,
+  MessengerIcon,
+  MusicIcon,
+  NotificationIcon,
   PhoneIcon,
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import i18next from "i18next";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
+import { useTranslation } from "react-i18next";
 
 function Navbar({ navbarUrl }) {
+  const { t } = useTranslation();
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
+  const { id } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
+
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
@@ -49,6 +58,15 @@ function Navbar({ navbarUrl }) {
           </li>
         </ul>
         <div className="navbar-list">
+          <button className="navbarpage-icon">
+            <img src={GerbIcon} />
+          </button>
+          <button className="navbarpage-icon">
+            <img src={BayroqIcon} />
+          </button>
+          <button className="navbarpage--icon">
+            <MusicIcon />
+          </button>
           <div className="navbarvictorina_language">
             <div
               className="navbarvictorina_language-wrapper"
@@ -71,8 +89,14 @@ function Navbar({ navbarUrl }) {
               ))}
             </div>
           </div>
+          <button className="navbarpage--notification">
+            <NotificationIcon />
+          </button>
+          <button className="navbarpage--notification">
+            <MessengerIcon />
+          </button>
           <Link to={navbarUrl?.register} className="navbar--button">
-            <img src={ExitIcon} alt="" className="navbar-icon" />
+            <ExitIcon />
             Kirish
           </Link>
         </div>

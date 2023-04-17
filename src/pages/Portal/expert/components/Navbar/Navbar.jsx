@@ -1,8 +1,14 @@
 import "./Navbar.scss";
 import {
+  BayroqIcon,
   EmailIcon,
   ExitIcon,
+  EyeIcon,
+  GerbIcon,
   LogoIcon,
+  MessengerIcon,
+  MusicIcon,
+  NotificationIcon,
   PhoneIcon,
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
@@ -42,8 +48,7 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
-                }
-              >
+                }>
                 {t("expert.headtitle")}
               </h4>
             </div>
@@ -56,8 +61,7 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }
-              >
+                }>
                 <PhoneIcon />
                 +998(55)502-22-99
               </a>
@@ -69,14 +73,35 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }
-              >
+                }>
                 <EmailIcon />
                 info@vatandoshlarfondi.uz
               </a>
             </li>
           </ul>
           <div className="navbar-list">
+            <button className="navbarpage-icon">
+              <img src={GerbIcon} />
+            </button>
+            <button className="navbarpage-icon">
+              <img src={BayroqIcon} />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbarpage-icon`
+                  : `navbarpage--icon`
+              }>
+              <MusicIcon />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }>
+              <EyeIcon />
+            </button>
             <div className="navbarpage_language">
               <div
                 className="navbarpage_language-wrapper"
@@ -87,8 +112,7 @@ function Navbar({ navbarUrl }) {
                       : `#065EA9`
                   }`,
                 }}
-                onClick={() => setactiveLang((el) => !el)}
-              >
+                onClick={() => setactiveLang((el) => !el)}>
                 <CiGlobe className="navbarpage_language-icon" />
                 <span style={{ color: "white" }}>
                   {languageList.find((lan) => lan.type === language).label}
@@ -108,30 +132,43 @@ function Navbar({ navbarUrl }) {
                         }`,
                       }
                     : null
-                }
-              >
+                }>
                 {languageList.map((el, index) => (
                   <p
                     key={index}
                     onClick={() => {
                       handleChangeLng(el.type);
-                    }}
-                  >
+                    }}>
                     {el.label}
                   </p>
                 ))}
               </div>
             </div>
+            <button
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }>
+              <NotificationIcon />
+            </button>
+            <button
+              className={
+                editClass.length <= 3 || id !== undefined
+                  ? `navbarpage-notification`
+                  : `navbarpage--notification`
+              }>
+              <MessengerIcon />
+            </button>
             <Link
               to={navbarUrl?.register}
               className={
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbar-button`
                   : `navbar--button`
-              }
-            >
-              <img src={ExitIcon} alt="" className="navbar-icon" />
-              {t("expert.enter")}
+              }>
+              <ExitIcon />
+              Кабинет
             </Link>
           </div>
         </div>
