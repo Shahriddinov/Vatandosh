@@ -87,7 +87,7 @@ const CommunityAssociationDetail = () => {
 
       <StatesFriendshipInfo {...findCountryCategoryData} />
       <CommunityAssociationCompanyOffer {...findCountryCategoryData} />
-      {/* <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" /> */}
+      <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
 
       <AddNewsModal open={open} handleClose={changeOpen} />
     </div>

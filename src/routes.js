@@ -210,7 +210,9 @@ const VictorinaFinish = lazy(() =>
 const MoreVictorina = lazy(() =>
   import("./pages/Portal/victorina/pages/MoreVictorina/MoreVictorina")
 );
-const AboutTeaching = lazy(()=> import("./pages/Portal/OnlineTeaching/pages/AboutTeaching/AboutTeaching"))
+const AboutTeaching = lazy(() =>
+  import("./pages/Portal/OnlineTeaching/pages/AboutTeaching/AboutTeaching")
+);
 
 const EmailVerify = lazy(() =>
   import("./pages/Registration/emailVerify/EmailVerify")
@@ -237,6 +239,7 @@ const routes = [
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },
   { path: "/registration/signin", element: SignIn },
+  { path: "/registration/set-password", element: SetPassword },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
   {
@@ -318,7 +321,7 @@ const RoutesContainer = () => (
           element={<OnlineTeachingLayout />}
         >
           <Route index element={<OnlineTeachingHome />} />
-          <Route path="about" element={<AboutTeaching/>}/>
+          <Route path="about" element={<AboutTeaching />} />
         </Route>
 
         <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
