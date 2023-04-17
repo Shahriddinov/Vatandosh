@@ -300,5 +300,14 @@
     "youtubeproject": "Youtubudagi eng yaxshi videolari loyihasi",
     "poemproject": "Eng yaxshi she’rlar to'plami  loyihasi",
     "edubrand": "Eng yaxshi ta’lim brendi"
+  },
+  "voluntery": {
+    "headertitle": "“Vatandoshlar” Volontyorlar",
+    "headertext": "Vatandosh volontyorlar elektron platformasi",
+    "headersubmit": "Chop etish",
+    "voluntery": "Volontyorlar",
+    "nav1": "Volontyorlar",
+    "nav2": "Volontyorlarni faoliyati",
+    "nav3": "Bog‘lanish"
   }
 }
