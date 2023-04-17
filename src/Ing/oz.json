@@ -1,7 +1,7 @@
 {
-  "Council_composition":"Кенгаш таркиби",
-  "seeMore": "Кўпроқ кўриш" ,
-  "leadership_structure":"раҳбарият таркиби",
+  "Council_composition": "Кенгаш таркиби",
+  "seeMore": "Кўпроқ кўриш",
+  "leadership_structure": "раҳбарият таркиби",
   "search": "Қидириш",
   "about": "БИЗ ҲАҚИМИЗДА",
   "citizin": "ВАТАНДОШЛАР",
@@ -62,22 +62,22 @@
   "participationProject": "Викторина ва лойиҳаларга қатнашиш",
   "electronCommunity": "Жамоат бирлашмалари електрон рестри",
   "compatriotsValunteer": "Ватандош валантёрлар",
-  "modalText1" : "Рўйхатга олинган ватандошлар",
-  "modalText2" : "Янгиликлар",
-  "modalText3" : "Тадбирлар",
-  "mediateka" : "Медиатека",
-  "infographics" : "Инфографика",
-  "compatriotMagazine" : "Ватандошлар журнали",
-  "mainPage" : "Асосий саҳифа",
+  "modalText1": "Рўйхатга олинган ватандошлар",
+  "modalText2": "Янгиликлар",
+  "modalText3": "Тадбирлар",
+  "mediateka": "Медиатека",
+  "infographics": "Инфографика",
+  "compatriotMagazine": "Ватандошлар журнали",
+  "mainPage": "Асосий саҳифа",
   "mainDirections": "Жамғарманинг асосий фаолияти",
   "directions": "Йўналишлар",
   "Associations": "Бирлашмалар",
   "staffCount": "Ходимлар сони",
   "leader": "Раҳбар",
-  "founding_date":"Ташкилот ташкил топган сана",
-  "election_leader":"Раҳбар сайланган сана",
-  "mediaVideo":"Video лавҳалар",
-  "mediaImg":"Фото суратлар",
+  "founding_date": "Ташкилот ташкил топган сана",
+  "election_leader": "Раҳбар сайланган сана",
+  "mediaVideo": "Video лавҳалар",
+  "mediaImg": "Фото суратлар",
   "about_items": {
     "item1": "Биз ҳақимизда",
     "item2": "Васийлик кенгаши",
@@ -106,7 +106,7 @@
     "item7": "'Хориждаги ватандош ташкилот' лойиҳаси"
   },
   "aboutPage": {
-    "section1" : {
+    "section1": {
       "htext": "Биз ҳақимизда",
       "ptext": "Хорижда истиқомат қилаётган ватандошларни тарихий Ватани атрофида янада жипслаштириш, уларнинг қалби ва онгида юрт билан фахрланиш туйғусини юксалтириш, миллий ўзликни сақлаб қолиш, ватандошлар ва улар томонидан тузилган жамоат бирлашмаларини қўллаб-қувватлаш, турли соҳаларда фаолият юритаётган ватандошларимизнинг салоҳиятини мамлакатимиз тараққиётига самарали йўналтириш Фонднинг асосий мақсадларидан бири ҳисобланади.",
       "foottext1": "Асосий саҳифа",
@@ -163,7 +163,6 @@
     "section5": {
       "htext1": "Ватани атрофида янада жипслаштириш, уларнинг қалби ва онгида юрт билан фахрланиш туйғусини юксалтириш, миллий ўзликни сақлаб қолиш бизнинг олий мақсадимиздир"
     }
-
   },
   "contactPage": {
     "contactUs": "Боғланиш",
@@ -224,9 +223,9 @@
     "offers": "Таклифлар",
     "offer": "Таклиф",
     "detail": "Батафсил",
-    "councildetail":"Кенгаши ҳақида",
-    "allexpert":"Барча мутахассислар",
-    "allcountry":"Барча давлатлар",
+    "councildetail": "Кенгаши ҳақида",
+    "allexpert": "Барча мутахассислар",
+    "allcountry": "Барча давлатлар",
     "alloffers": "Барча таклифлар",
     "compatriot": "Ватандошимиз",
     "workexp": "Умумий иш стажи:",
@@ -265,7 +264,7 @@
     "surname": "Фамилияси",
     "inputplaceholder": "Критинг",
     "name": "Исми",
-    "secondname":"Шарифи",
+    "secondname": "Шарифи",
     "reg2": "II. Олий маълумотингиз",
     "nextbtn": "Кейингиси",
     "reg3": "III. Меҳнат фаолиятигиз",
@@ -292,5 +291,14 @@
     "winner": "Викторина ғолиби",
     "winnerprice": "Викторина ғолиби тақдирланди",
     "allwinner": "Барча ғолиблар"
+  },
+  "voluntery": {
+    "headertitle": "“Compatriots” Volunteers",
+    "headertext": "Electronic platform of compatriot volunteers",
+    "headersubmit": "Print",
+    "voluntery": "Volunteers",
+    "nav1": "Volunteers",
+    "nav2": "Volunteer activities",
+    "nav3": "Connect"
   }
 }

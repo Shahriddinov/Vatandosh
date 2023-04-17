@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import { useTranslation } from "react-i18next";
 
-function Header() {
+function Header({ headerData }) {
+  const { t } = useTranslation();
   return (
     <div className="headeres">
       <div className="container">
-        <h2>“Vatandoshlar” Volontyorlar</h2>
-        <p className="headeres--text">
-          Vatandosh volontyorlar elektron platformasi
-        </p>
-        <Link to="/expert/register">Ariza berish</Link>
+        <h2>{headerData.title}</h2>
+        <p className="headeres--text">{headerData.subTitle}</p>
+        <Link to="/expert/register">{t("voluntery.headersubmit")}</Link>
       </div>
     </div>
   );
