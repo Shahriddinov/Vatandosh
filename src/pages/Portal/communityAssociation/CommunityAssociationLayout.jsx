@@ -8,7 +8,7 @@ const CommunityAssociationLayout = () => {
   const location = useLocation();
   const { t } = useTranslation();
   const editClass = location.pathname.split("/");
-  const { id } = useParams();
+  const { communityCountryId } = useParams();
 
   const navData = [
     {
@@ -39,7 +39,7 @@ const CommunityAssociationLayout = () => {
   };
   return (
     <>
-      {editClass.length > 3 && editClass[3] && !id && (
+      {editClass.length > 3 && editClass[3] && !communityCountryId && (
         <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
       <Outlet context={{ navData, navbarUrl }} />

@@ -10,13 +10,21 @@ import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
 import { countryData as data } from "./data";
 import { Spinner } from "../../../../../component";
 import { Link, useParams } from "react-router-dom";
+import { useCountryGet } from "./hooks/useCountryGet";
 
 const Country = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const news = useSelector((state) => state.newsSlice.newsData);
   const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
-  const { country } = useParams();
+  const { communityCountry } = useParams();
+  const {
+    associationData,
+    associationCategoryData,
+    associationLoading,
+    associationCategoryLoading,
+  } = useCountryGet();
+  const lng = useSelector((state) => state.language.language);
 
   useEffect(() => {
     if (!news.length) {
@@ -24,8 +32,19 @@ const Country = () => {
     }
   }, []);
 
+  if (loadingNews || associationLoading || associationCategoryLoading) {
+    return <Spinner position="full" />;
+  }
+
+  const findCountry = associationData.find((el) => el.id === 3);
+  const findCountryCategoryData = associationCategoryData.filter(
+    (el) => el.country_uz * 1 === 3
+  );
+
+  console.log(findCountry);
+
   const pageTopData = {
-    title: "Qirgʻiziston",
+    title: findCountry[`country_${lng}`],
     pathUrl: [
       {
         id: 1,
@@ -36,15 +55,11 @@ const Country = () => {
       {
         id: 2,
         pathUrl: null,
-        label: "Qirgʻiziston",
+        label: findCountry[`country_${lng}`],
         active: true,
       },
     ],
   };
-
-  if (loadingNews) {
-    return <Spinner position="full" />;
-  }
 
   return (
     <div className="community-association-country">
@@ -53,20 +68,24 @@ const Country = () => {
           <PageTop pageTopData={pageTopData} />
 
           <ul className="community-association-country__list">
-            {data.map((item) => (
+            {findCountryCategoryData.map((item, i) => (
               <li className="community-association-country__item" key={item.id}>
                 <span className="community-association-country__item--text">
-                  {item.id}.{" "}
-                  {item.text
+                  {i + 1}.{" "}
+                  {item[`title_${lng}`]
                     .split(" ")
-                    .slice(0, item.text.split(" ").length - 1)
+                    .slice(0, item[`title_${lng}`].split(" ").length - 1)
                     .join(" ")}
                   <Link
                     className="associations__accordion_item--link"
-                    to={`/portal-category/community-association/country/${country}/${item?.id}`}
+                    to={`/portal-category/community-association/country/${communityCountry}/${item?.id}`}
                   >
                     {" "}
-                    {item.text.split(" ")[item.text.split(" ").length - 1]}
+                    {
+                      item[`title_${lng}`].split(" ")[
+                        item[`title_${lng}`].split(" ").length - 1
+                      ]
+                    }
                   </Link>
                 </span>
                 <img

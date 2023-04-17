@@ -1,5 +1,5 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { CountryFlag } from "../../../../../assets/images/communityAssociation";
 import StatesFriendshipInfo from "../../../../compatriots/components/statesFriendshipInfo";
@@ -16,16 +16,33 @@ import { CommunityIntroData } from "./data";
 
 //scss files
 import "./communityAssociationDetail.scss";
+import { useCountryGet } from "../country/hooks/useCountryGet";
+import { useSelector } from "react-redux";
 
 const CommunityAssociationDetail = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const { loading, events } = useFetchingData();
   const { open, changeOpen } = useModalActive();
+  const { communityCountryId } = useParams();
+  const {
+    associationData,
+    associationCategoryData,
+    associationLoading,
+    associationCategoryLoading,
+  } = useCountryGet();
+  const lng = useSelector((state) => state.language.language);
 
-  if (loading) {
+  if (loading || associationLoading || associationCategoryLoading) {
     return <Spinner position="full" />;
   }
+
+  const findCountryCategoryData = associationCategoryData.find(
+    (el) => el.id === communityCountryId * 1
+  );
+  const findCountry = associationData.find(
+    (el) => el.id === findCountryCategoryData.country_uz * 1
+  );
 
   const communityAssociationHeroData = {
     breadcrumbs: [
@@ -43,14 +60,14 @@ const CommunityAssociationDetail = () => {
       },
       {
         id: 3,
-        label: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
+        label: findCountry[`country_${lng}`],
         url: null,
         active: true,
       },
     ],
 
-    title: "Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati",
-    desc: "Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish,",
+    title: findCountry[`country_${lng}`],
+    desc: findCountry[`info_${lng}`],
   };
 
   return (
@@ -68,9 +85,9 @@ const CommunityAssociationDetail = () => {
         />
       </div>
 
-      <StatesFriendshipInfo {...CommunityIntroData} />
-      <CommunityAssociationCompanyOffer {...CommunityIntroData} />
-      <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
+      <StatesFriendshipInfo {...findCountryCategoryData} />
+      <CommunityAssociationCompanyOffer {...findCountryCategoryData} />
+      {/* <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" /> */}
 
       <AddNewsModal open={open} handleClose={changeOpen} />
     </div>

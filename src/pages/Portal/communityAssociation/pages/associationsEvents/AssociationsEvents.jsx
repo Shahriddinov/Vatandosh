@@ -6,6 +6,7 @@ import Card from "../../../../../component/card/Card";
 import ArrowRight from "../../../../../assets/images/informationServices/arrowRight.png";
 import { useTranslation } from "react-i18next";
 import { Pagination } from "../../../../../component";
+import { useInView } from "react-intersection-observer";
 
 const AssociationsEvents = () => {
   const [paginationCount, setPaginationCount] = useState(2);

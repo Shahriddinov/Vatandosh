@@ -16,6 +16,7 @@ import Card from "./card/Card";
 import ContactUs from "./ContactUs/ContactUs";
 import FooterBottom from "./footerBottom/FooterBottom";
 import Hero from "./Hero/Hero";
+import LazySpinner from "./lazySpinner/LazySpinner";
 
 export {
   Spinner,
@@ -36,4 +37,5 @@ export {
   ContactUs,
   FooterBottom,
   Hero,
+  LazySpinner,
 };
