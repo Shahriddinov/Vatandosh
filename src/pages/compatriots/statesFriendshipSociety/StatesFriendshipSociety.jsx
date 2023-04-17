@@ -47,7 +47,6 @@ const StatesFriendshipSociety = () => {
     [`menu_${lan}`]: categoryData[`title_${lng}`],
     [`info_${lan}`]: countryData[`info_${lng}`],
   };
-  console.log(categoryData);
 
   return (
     <>

@@ -10,19 +10,47 @@ import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterA
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const SinglePage = lazy(() => import("./pages/singlePage/SinglePage"));
+const About = lazy(() =>
+  import(
+    /*webpackChunkName: Home*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
+    "./pages/About"
+  )
+);
+const SinglePage = lazy(() =>
+  import(
+    /*webpackChunkName: SinglePage*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
+    "./pages/singlePage/SinglePage"
+  )
+);
 const BoardTrustees = lazy(() => import("./pages/boardTrustees/BoardTrustees"));
 const PublicAssociations = lazy(() => import("./pages/compatriots"));
 const StatesFriendshipSociety = lazy(() =>
   import("./pages/compatriots/statesFriendshipSociety/StatesFriendshipSociety")
 );
-const Portal = lazy(() => import("./pages/Portal/Portal"));
+const Portal = lazy(() =>
+  import(
+    /*webpackChunkName: Portal*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
+    "./pages/Portal/Portal"
+  )
+);
 const Projects = lazy(() => import("./pages/Projects"));
 const InformationServices = lazy(() =>
   import("./pages/InformationServices/InformationServices")
 );
-const Mediateka = lazy(() => import("./pages/Mediateka/Mediateka"));
+const Mediateka = lazy(() =>
+  import(
+    /*webpackChunkName: Media*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
+    "./pages/Mediateka/Mediateka"
+  )
+);
 const NotFound = lazy(() => import("./pages/404"));
 const Flags = lazy(() => import("./pages/Symbols/Flag"));
 const Anthem = lazy(() => import("./pages/Symbols/Anthem"));
@@ -71,21 +99,28 @@ const VolunterHome = lazy(() =>
 );
 
 const CommunityAssociationLayout = lazy(() =>
-  import("./pages/Portal/communityAssociation/CommunityAssociationLayout")
+  import(
+    /*webpackChunkName: CommunityAssociationLayout*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
+    "./pages/Portal/communityAssociation/CommunityAssociationLayout"
+  )
 );
 
 const CommunityAssociationHome = lazy(() =>
   import(
+    /*webpackChunkName: CommunityAssociationHome*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
     "./pages/Portal/communityAssociation/pages/associationHome/AssociationHome"
   )
 );
 
-const CommunityAssociations = lazy(() =>
-  import("./pages/Portal/communityAssociation/pages/associations/Associations")
-);
-
 const CommunityAssociationEvents = lazy(() =>
   import(
+    /*webpackChunkName: CommunityAssociationEvents*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
     "./pages/Portal/communityAssociation/pages/associationsEvents/AssociationsEvents"
   )
 );
@@ -107,6 +142,9 @@ const CommunityAssociationRegister = lazy(() =>
 );
 const CommunityAssociationDetail = lazy(() =>
   import(
+    /*webpackChunkName: CommunityAssociationDetail*/
+    /*webpackPrefetch: true */
+    /*webpackPreload: true */
     "./pages/Portal/communityAssociation/pages/communityAssociationDetail/CommunityAssociationDetail"
   )
 );
