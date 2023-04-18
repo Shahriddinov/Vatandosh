@@ -18,13 +18,7 @@ function Nav({ navData }) {
           <ul>
             {navData?.map((navItem) => (
               <li key={navItem.id}>
-                <Link
-                  to={navItem.url}
-                  className={
-                    editClass.length <= 3 || id !== undefined
-                      ? `nav-link`
-                      : `nav--link`
-                  }>
+                <Link to={navItem.url} className="nav--link">
                   {navItem.label}
                 </Link>
               </li>
