@@ -309,5 +309,9 @@
     "nav1": "Volontyorlar",
     "nav2": "Volontyorlarni faoliyati",
     "nav3": "Bog‘lanish"
+  },
+  "webinar": {
+    "tel": "Telefon",
+    "email": "Email pochtangizni kiriting"
   }
 }

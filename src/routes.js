@@ -224,6 +224,10 @@ const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
 
+const WebinarRegister = lazy(() =>
+  import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -289,7 +293,8 @@ const RoutesContainer = () => (
 
         <Route
           path="/portal-category/community-association"
-          element={<CommunityAssociationLayout />}>
+          element={<CommunityAssociationLayout />}
+        >
           <Route index element={<CommunityAssociationHome />} />
           <Route path="about" element={<CommunityAssociationAbout />} />
           <Route
@@ -325,10 +330,12 @@ const RoutesContainer = () => (
         <Route path="/portal-category/webinar" element={<WebinarLayout />}>
           <Route index element={<WebinarHome />} />
         </Route>
+        <Route path="/webinar/register" element={<WebinarRegister />} />
 
         <Route
           path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}>
+          element={<OnlineTeachingLayout />}
+        >
           <Route index element={<OnlineTeachingHome />} />
           <Route path="about" element={<AboutTeaching />} />
         </Route>
