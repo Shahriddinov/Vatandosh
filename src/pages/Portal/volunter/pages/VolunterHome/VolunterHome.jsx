@@ -7,16 +7,16 @@ import Nav from "../../../expert/components/Nav/Nav";
 import Navbar from "../../../expert/components/Navbar/Navbar";
 import backImg from "../../../../../assets/images/volunter/volunter.png";
 import heroImg from "../../../../../assets/images/volunter/image.png";
-import Header from "../../../expert/components/Header/Header";
 import Council from "./components/Council/Council";
 import { useTranslation } from "react-i18next";
+import Header from "../../components/Header/Header";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const headerData = {
-    title: `${t("volunter.header")}`,
-    subTitle: `${t("volunter.headerText")}`,
+    title: `${t("voluntery.headertitle")}`,
+    subTitle: `${t("voluntery.headertext")}`,
     link: "/portal-category/volunteer/register",
   };
 
