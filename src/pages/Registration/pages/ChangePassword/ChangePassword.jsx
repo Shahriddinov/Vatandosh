@@ -13,7 +13,7 @@ export default function ChangePassword() {
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [isActiveCurrentPasswordEye, setisActiveCurrentPasswordEye] =
     useState(false);
-  const token = useSelector((state) => state.authSlice.token);
+  const success = useSelector((state) => state.authSlice.success);
   const verifyToken = localStorage.getItem("verifyToken");
   const [passwords, setPasswords] = useState({
     token: verifyToken,
@@ -31,10 +31,10 @@ export default function ChangePassword() {
   };
 
   useEffect(() => {
-    if (token) {
-      navigate("/registration/register");
+    if (success) {
+      navigate("/registration/signin");
     }
-  }, [token]);
+  }, [success]);
 
   return (
     <div className="auth">

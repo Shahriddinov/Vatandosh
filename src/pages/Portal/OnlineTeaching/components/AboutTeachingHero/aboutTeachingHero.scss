@@ -5,20 +5,38 @@
   height: 500px;
   position: relative;
   top: -60px;
-  .container{
+
+  .container {
     position: relative;
   }
-  &_bodes{
+
+  &_bodes {
     width: 100%;
     height: 500px;
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
     background-image: url("../../../../../assets/images/online-teaching/About.svg");
-    &_items{
+
+    &_items {
       position: absolute;
+      display: flex;
+      justify-content: right;
+      align-items: center;
       //top: 5%;
       margin-top: 5%;
+
+      &_wait {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.2px;
+        gap: 20px!important;
+        &_links{
+          color: white;
+
+        }
+      }
     }
   }
 }

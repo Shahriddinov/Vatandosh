@@ -18,6 +18,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   message: "",
   tokenMessage: null,
+  success: false,
   error: null,
 };
 
@@ -128,7 +129,12 @@ const authSlice = createSlice({
           alert(action.payload.errors.message);
         } else {
           state.message = action.payload.message;
+          state.success = true;
         }
+      })
+      .addCase(recoverPassword.rejected, (state, action) => {
+        state.resetLoading = false;
+        state.error = action.error.message;
       });
   },
 });
