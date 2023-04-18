@@ -5,83 +5,25 @@ import { InformationServicesSlider } from "../../../../InformationServices/Infor
 import Card from "../../../../../component/card/Card";
 import ArrowRight from "../../../../../assets/images/informationServices/arrowRight.png";
 import { useTranslation } from "react-i18next";
-import { Pagination } from "../../../../../component";
+import { Pagination, Spinner } from "../../../../../component";
 import { useInView } from "react-intersection-observer";
+import { useInformationServicesPagination } from "../../../../InformationServices/hooks/useInformationServicesPagination";
 
 const AssociationsEvents = () => {
-  const [paginationCount, setPaginationCount] = useState(2);
-  const { t } = useTranslation();
+  const   {paginationFetching,
+  page,
+  paginationData,
+  paginationCount,
+  paginationLoading,
+  loading,
+  pageName,
+  t,
+} = useInformationServicesPagination()
 
-  const data = [
-    {
-      id: 1,
-      data: "2023-03-09",
-      image: "news/March2023/bjnWwSrb1XA0HQb0CWg1.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-    {
-      id: 2,
-      data: "2023-03-09",
-      image: "news/March2023/dFQEBOlMLwtMyaCowEUJ.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-    {
-      id: 3,
-      data: "2023-03-10",
-      image: "news/March2023/bjnWwSrb1XA0HQb0CWg1.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-    {
-      id: 4,
-      data: "2023-03-10",
-      image: "news/March2023/bjnWwSrb1XA0HQb0CWg1.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-    {
-      id: 5,
-      data: "2023-03-10",
-      image: "news/March2023/bjnWwSrb1XA0HQb0CWg1.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-    {
-      id: 6,
-      data: "2023-03-10",
-      image: "news/March2023/bjnWwSrb1XA0HQb0CWg1.jpg",
-      title_uz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_oz:
-        "Italiyaning Sapiyensa universiteti magistranti yosh vatandoshimiz Ibrohim Jo‘raboyev bilan suhbat",
-      title_ru:
-        "Интервью с молодым соотечественником Ибрагимом джу…, магистрантом итальянского университета Сапиенца",
-    },
-  ];
+  if(paginationLoading) {
+    return <Spinner position="full"/>
+  }
 
-  const pageName = "events";
 
   return (
     <div className="container associations__events__container">
@@ -93,9 +35,9 @@ const AssociationsEvents = () => {
           <span>{t("communityAssociation.navbar.navbar_link3")}</span>
         </p>
       </div>
-      <InformationServicesSlider data={data} />
+      <InformationServicesSlider data={paginationData[0].data} />
       <div className="events__cards">
-        {data.map((card) => (
+        {paginationData[0].data.map((card) => (
           <div className="main-content-card" key={card.id}>
             <Card {...card} pathUrl={pageName} />
           </div>
@@ -104,9 +46,9 @@ const AssociationsEvents = () => {
       {paginationCount >= 1 ? (
         <div className="associations__events__paginator">
           <Pagination
-            page={1}
-            // paginationFetching={paginationFetching}
-            count={2}
+            page={page}
+            paginationFetching={paginationFetching}
+            count={paginationCount}
           />
         </div>
       ) : null}
