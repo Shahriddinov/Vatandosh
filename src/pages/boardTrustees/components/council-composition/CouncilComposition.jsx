@@ -5,8 +5,14 @@ import CouncilCard from "../council/CouncilCard";
 import arrowDown from "../../../../assets/images/about/arrov-down.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { LazySpinner } from "../../../../component";
 
-const CouncilComposition = ({ searchCount, handleFetching, trusts }) => {
+const CouncilComposition = ({
+  searchCount,
+  handleFetching,
+  trusts,
+  trustsLoading,
+}) => {
   const { t } = useTranslation();
   return (
     <section className="council-composition">
@@ -15,13 +21,13 @@ const CouncilComposition = ({ searchCount, handleFetching, trusts }) => {
           <h2 className="council-composition__title">
             {t("Council_composition")}
           </h2>
-
           <ul className="council-composition__list">
             {trusts[0]?.data?.map((el) => (
               <li className="council-composition__item" key={el.id}>
                 <CouncilCard trusts={el} />
               </li>
             ))}
+            {trustsLoading && <LazySpinner height="80px" />}
           </ul>
           {trusts[0]?.next_page_url ? (
             <Link

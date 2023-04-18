@@ -3,7 +3,6 @@ import "./boardTrustees.scss";
 import CouncilHero from "./components/council-hero/CouncilHero";
 import CouncilComposition from "./components/council-composition/CouncilComposition";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
-import { Spinner } from "../../component";
 import { usePaginationFetching } from "./hooks/usePaginationFetfhing";
 import { useTranslation } from "react-i18next";
 
@@ -18,10 +17,6 @@ const BoardTrustees = () => {
     pagePath: `${t("about_items.item2")}`,
   };
 
-  if (trustsLoading) {
-    return <Spinner position="full" />;
-  }
-
   return (
     <div className="council-trustees">
       <div className="page-about">
@@ -32,6 +27,7 @@ const BoardTrustees = () => {
         trusts={trusts}
         searchCount={searchCount}
         handleFetching={handleFetching}
+        trustsLoading={trustsLoading}
       />
     </div>
   );
