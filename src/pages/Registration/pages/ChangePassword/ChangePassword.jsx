@@ -1,11 +1,40 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { recoverPassword } from "../../../../reduxToolkit/authSlice/extraReducer";
+
 import "../SignIn/SignIn.scss";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { useState } from "react";
 
 export default function ChangePassword() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [isActiveCurrentPasswordEye, setisActiveCurrentPasswordEye] =
     useState(false);
+  const token = useSelector((state) => state.authSlice.token);
+  const verifyToken = localStorage.getItem("verifyToken");
+  const [passwords, setPasswords] = useState({
+    token: verifyToken,
+    password: "",
+    password_confirmation: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (passwords.password !== passwords.password_confirmation) {
+      alert("Passwords not matched");
+    } else {
+      dispatch(recoverPassword(passwords));
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/registration/register");
+    }
+  }, [token]);
 
   return (
     <div className="auth">
@@ -32,10 +61,19 @@ export default function ChangePassword() {
                 parolingizni tiklash uchun tasdiqlash kodini yuboramiz.
               </p>
             </div>
-            <form className="auth-form-inputs">
+            <form
+              className="auth-form-inputs"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label className="auth-form-inputs-passwordInput auth-form-inputs-passwordInput-changePassword">
                 <span>Parol</span>
                 <input
+                  onChange={(e) =>
+                    setPasswords((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
                   type={isActivePasswordEye ? "text" : "password"}
                   minLength={5}
                   maxLength={30}
@@ -56,6 +94,12 @@ export default function ChangePassword() {
               <label className="auth-form-inputs-passwordInput">
                 <span>Qaytadan parol</span>
                 <input
+                  onChange={(e) =>
+                    setPasswords((prev) => ({
+                      ...prev,
+                      password_confirmation: e.target.value,
+                    }))
+                  }
                   type={isActiveCurrentPasswordEye ? "text" : "password"}
                   minLength={5}
                   maxLength={30}

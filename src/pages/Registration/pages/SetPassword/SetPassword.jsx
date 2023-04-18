@@ -22,7 +22,11 @@ export default function SetPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setPassword(passwords));
+    if (passwords.password !== passwords.password_confirmation) {
+      alert("Passwords not matched");
+    } else {
+      dispatch(setPassword(passwords));
+    }
   };
 
   useEffect(() => {

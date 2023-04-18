@@ -3,6 +3,7 @@ import axios from "axios";
 
 import {
   LOGIN,
+  RESET_PASSWORD,
   SEND_EMAIL,
   SET_PASSWORD,
   VERIFY_TOKEN,
@@ -50,3 +51,32 @@ export const signIn = createAsyncThunk("signIn", async (payload) => {
     .then((res) => res.data)
     .catch((e) => e.response.data);
 });
+
+// Reset Password
+export const resetPassword = createAsyncThunk(
+  "resetPassword",
+  async (payload) => {
+    return await axios
+      .post(RESET_PASSWORD, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.data)
+      .catch((e) => e.response.data);
+  }
+);
+
+// Recover Password
+export const recoverPassword = createAsyncThunk(
+  "recoverPassword",
+  async (payload) => {
+    return await axios
+      .post(SET_PASSWORD, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.data);
+  }
+);

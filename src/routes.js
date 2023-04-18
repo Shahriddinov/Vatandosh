@@ -178,6 +178,10 @@ const EmailVerify = lazy(() =>
   import("./pages/Registration/emailVerify/EmailVerify")
 );
 
+const ResetPassword = lazy(() =>
+  import("./pages/Registration/resetPassword/ResetPassword")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -198,6 +202,7 @@ const routes = [
   { path: "/portal", element: Portal },
   { path: "/registration/register", element: Register },
   { path: "/registration/signup", element: SignUp },
+  { path: "/registration/set-password", element: SetPassword },
   { path: "/registration/signin", element: SignIn },
   { path: "/registration/recovery-password", element: RecoveryPassword },
   { path: "/registration/change-password", element: ChangePassword },
@@ -215,6 +220,7 @@ const routes = [
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
   { path: "/registration/signup/api/verify/", element: EmailVerify },
+  { path: "/registration/signup/api/reset/", element: ResetPassword },
 ];
 
 const RoutesContainer = () => (
