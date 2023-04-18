@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { signIn } from "../../../../reduxToolkit/authSlice/extraReducer";
 
@@ -14,26 +14,24 @@ import "./SignIn.scss";
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
+  const token = useSelector((state) => state.authSlice.token);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-  const user = useSelector((state) => state.authSlice.userData);
-  const error = useSelector((state) => state.authSlice.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(userData));
   };
 
-  if (user) {
-    alert("Signed in successfully");
-  }
-
-  if (error) {
-    alert(error);
-  }
+  useEffect(() => {
+    if (token) {
+      navigate("/registration/register");
+    }
+  }, [token]);
 
   return (
     <div className="auth">

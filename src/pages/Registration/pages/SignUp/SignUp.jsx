@@ -67,7 +67,7 @@ export default function SignUp() {
                 className="auth-form-inputs-sendMail"
                 style={isValid ? { display: "block" } : { display: "none" }}
               >
-                {message ? message : "loading..."}
+                {message ? message : "Loading..."}
               </p>
               <button type="submit" className="auth-form-inputs-submitBtn">
                 Davom etish
