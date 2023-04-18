@@ -3,6 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Nav from "./components/Nav/Nav";
 import WebinarHeader from "./components/Header/Header";
+import './WebinarHome.scss'
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
