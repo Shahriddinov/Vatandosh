@@ -5,6 +5,8 @@
   height: 500px;
   position: relative;
   top: -60px;
+  background-repeat: no-repeat;
+
 
   .container {
     position: relative;
@@ -16,6 +18,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
+
     background-image: url("../../../../../assets/images/online-teaching/About.svg");
 
     &_items {
@@ -24,6 +27,7 @@
       justify-content: right;
       align-items: center;
       //top: 5%;
+
       margin-top: 5%;
 
       &_wait {
@@ -31,11 +35,44 @@
         font-size: 14px;
         line-height: 17px;
         letter-spacing: 0.2px;
-        gap: 20px!important;
+        display: flex;
+        align-items: center;
+
         &_links{
           color: white;
+          margin-right: 5px;
+          margin-left: 5px;
 
         }
+      }
+    }
+    &_middles{
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      margin: 50px auto;
+      margin-top: 70px;
+      &_titles{
+        width: 35%;
+        font-weight: 700;
+        font-size: 34px;
+        line-height: 41px;
+        leading-trim: both;
+        text-edge: cap;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+      &_texts{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        leading-trim: both;
+        text-edge: cap;
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-top: 15px;
       }
     }
   }
