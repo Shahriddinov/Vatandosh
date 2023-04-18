@@ -10,21 +10,21 @@ export default function VolunterLayout() {
   const { t } = useTranslation();
 
   const navData = [
-    { id: 1, url: "/portal-category/volunteer", label: "Asosiy" },
+    { id: 1, url: "/portal-category/volunteer", label: t("expert.main") },
     {
       id: 2,
       url: "/portal-category/volunteer/volunter-employe",
-      label: `${t("volunter.nav1")}`,
+      label: `${t("voluntery.nav1")}`,
     },
     {
       id: 3,
       url: "/portal-category/volunteer/council-about",
-      label: `${t("volunter.nav2")}`,
+      label: `${t("voluntery.nav2")}`,
     },
     {
       id: 4,
       url: "/portal-category/volunteer/contact",
-      label: `${t("volunter.nav3")}`,
+      label: `${t("voluntery.nav3")}`,
     },
   ];
 
