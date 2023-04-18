@@ -9,6 +9,8 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
+import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
+import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -287,8 +289,7 @@ const RoutesContainer = () => (
 
         <Route
           path="/portal-category/community-association"
-          element={<CommunityAssociationLayout />}
-        >
+          element={<CommunityAssociationLayout />}>
           <Route index element={<CommunityAssociationHome />} />
           <Route path="about" element={<CommunityAssociationAbout />} />
           <Route
@@ -321,10 +322,13 @@ const RoutesContainer = () => (
           <Route path="activity/:id" element={<VolunterActivityDetail />} />
         </Route>
 
+        <Route path="/portal-category/webinar" element={<WebinarLayout />}>
+          <Route index element={<WebinarHome />} />
+        </Route>
+
         <Route
           path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}
-        >
+          element={<OnlineTeachingLayout />}>
           <Route index element={<OnlineTeachingHome />} />
           <Route path="about" element={<AboutTeaching />} />
         </Route>
