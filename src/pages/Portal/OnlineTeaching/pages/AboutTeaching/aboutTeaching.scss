@@ -1,4 +1,47 @@
 @import "src/assets/style/global";
-.aboutTeaching{
 
+.aboutTeaching {
+
+  &_done {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 34px;
+    color: $colorTitle;
+  }
+
+  &_cards {
+    display: flex;
+
+    &_steps {
+      width: 50%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 2px solid red;
+
+      &_borders {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        border: 1px solid #E1E1E1;
+
+        &_imgs {
+          background-repeat: no-repeat;
+          object-fit: none;
+        }
+      }
+
+      &_discrib {
+        &_title {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 24px;
+          color: #141619;
+        }
+      }
+    }
+  }
 }
