@@ -14,11 +14,10 @@
 
     &_steps {
       width: 50%;
-      height: 100px;
       display: flex;
-      align-items: center;
+      //align-items: center;
       gap: 20px;
-      border: 2px solid red;
+      margin-top: 20px;
 
       &_borders {
         width: 40px;
@@ -39,9 +38,31 @@
           font-weight: 700;
           font-size: 20px;
           line-height: 24px;
+          padding-right: 15%;
           color: #141619;
+        }
+
+        &_text {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: #656B70;
+          margin-top: 10px;
+          //width: 90%;
         }
       }
     }
+  }
+
+  &_information {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 134%;
+    color: #656B70;
+    padding-right: 10%;
+  }
+
+  .bot {
+    margin: 3% 0;
   }
 }

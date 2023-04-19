@@ -16,7 +16,6 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
-  const token = useSelector((state) => state.authSlice.token);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -26,12 +25,6 @@ export default function SignIn() {
     e.preventDefault();
     dispatch(signIn(userData));
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/registration/register");
-    }
-  }, [token]);
 
   return (
     <div className="auth">
@@ -63,6 +56,7 @@ export default function SignIn() {
                 <span>Email pochtangizni kiriting</span>
                 <input
                   type="email"
+                  autoComplete="off"
                   onChange={(e) =>
                     setUserData((prev) => ({ ...prev, email: e.target.value }))
                   }
@@ -81,6 +75,7 @@ export default function SignIn() {
                   minLength={5}
                   maxLength={30}
                   required
+                  autoComplete="off"
                 />
                 {isActivePasswordEye ? (
                   <AiFillEyeInvisible

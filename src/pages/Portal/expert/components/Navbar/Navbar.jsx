@@ -37,6 +37,8 @@ function Navbar({ navbarUrl }) {
     setactiveLang((el) => !el);
   };
 
+  console.log(editClass);
+
   return (
     <div className="navbarpage">
       <div className="container">
