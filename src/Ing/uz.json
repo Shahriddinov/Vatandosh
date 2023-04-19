@@ -312,6 +312,10 @@
   },
   "webinar": {
     "tel": "Telefon",
-    "email": "Email pochtangizni kiriting"
+    "email": "Email pochtangizni kiriting",
+    "online-webinar": "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
+    "webinars": "Vebinarlar",
+    "join-webinar": "Vebinarga ishtirok etish",
+    "date": "Webinar sanasi:"
   }
 }

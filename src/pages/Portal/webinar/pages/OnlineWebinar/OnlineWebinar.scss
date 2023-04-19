@@ -1,0 +1,22 @@
+@import "../../../../../assets/style/global.scss";
+
+.online-webinar {
+  padding: 30px 0 100px;
+
+  &-wrapper {
+    display: flex;
+  }
+
+  &-main {
+    width: 100%;
+  }
+
+  &-date {
+    @include fontStyles(600, 14px, 20px, $colorTitle);
+  }
+
+  .victorinaproject-main-desc-action {
+    padding-top: 0;
+    border: none;
+  }
+}

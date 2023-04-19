@@ -1,12 +1,19 @@
 @import "../../../../../../assets/style/global.scss";
 
-.expertprofile {
-  &-info {
+.expertprofile-info {
+  &-border {
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid #f0f2f9;
+  }
+
+  &-main {
     display: flex;
     align-items: center;
     gap: 20px;
 
     &-desc {
+      max-width: 482px;
       display: grid;
       gap: 5px;
 
@@ -20,6 +27,11 @@
 
       & > strong {
         @include fontStyles(700, 14px, 17px, $colorGrey);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
 
