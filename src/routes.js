@@ -229,6 +229,21 @@ const EmailVerify = lazy(() =>
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
+const ElectronicJournalLayout = lazy(() =>
+  import("./pages/Portal/electronicJournal/ElectronicJournalLayout")
+);
+
+const ElectronicJournalHome = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
+  )
+);
+
+const ElectronicJournalAbout = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
+  )
+);
 const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
@@ -389,11 +404,21 @@ const RoutesContainer = () => {
               element={<VictorinaProject />}
             />
           </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </Router>
-  );
-};
+        <Route
+          path="/portal-category/electronic-journal"
+          element={<ElectronicJournalLayout />}
+        >
+          <Route index element={<ElectronicJournalHome />} />
+          <Route
+            path="/portal-category/electronic-journal/about"
+            element={<ElectronicJournalAbout />}
+          />
+          <Route path="*" element={<NotFound />} />s
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
+  </Router>
+);
 
 export default RoutesContainer;
