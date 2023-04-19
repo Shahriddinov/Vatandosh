@@ -5,7 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { Layout, Spinner } from "./component";
+import { Layout } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
 import ExpertEmploye from "./pages/Portal/expert/pages/ExpertEmploye/ExpertEmploye";
@@ -352,7 +352,7 @@ const RoutesContainer = () => {
               element={<CommunityAssociationCountry />}
             />
             <Route path="associations" element={<Associations />} />
-           <Route path=":pageName" element={<CommunityAssociationEvents />} />
+            <Route path=":pageName" element={<CommunityAssociationEvents />} />
             <Route
               path="country/:communityCountry/:communityCountryId"
               element={<CommunityAssociationDetail />}
@@ -375,6 +375,12 @@ const RoutesContainer = () => {
             <Route path="activity" element={<VolunterActivity />} />
             <Route path="activity/:id" element={<VolunterActivityDetail />} />
           </Route>
+
+          <Route path="/portal-category/webinar" element={<WebinarLayout />}>
+            <Route index element={<WebinarHome />} />
+            <Route path="register" element={<WebinarRegister />} />
+          </Route>
+
           <Route
             path="/portal-category/online-teaching"
             element={<OnlineTeachingLayout />}
@@ -382,6 +388,7 @@ const RoutesContainer = () => {
             <Route index element={<OnlineTeachingHome />} />
             <Route path="about" element={<AboutTeaching />} />
           </Route>
+
           <Route
             path="/portal-category/victorina"
             element={<VictorinaLayout />}
@@ -404,21 +411,23 @@ const RoutesContainer = () => {
               element={<VictorinaProject />}
             />
           </Route>
-        <Route
-          path="/portal-category/electronic-journal"
-          element={<ElectronicJournalLayout />}
-        >
-          <Route index element={<ElectronicJournalHome />} />
+
           <Route
-            path="/portal-category/electronic-journal/about"
-            element={<ElectronicJournalAbout />}
-          />
-          <Route path="*" element={<NotFound />} />s
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
-  </Router>
-);
+            path="/portal-category/electronic-journal"
+            element={<ElectronicJournalLayout />}
+          >
+            <Route index element={<ElectronicJournalHome />} />
+            <Route
+              path="/portal-category/electronic-journal/about"
+              element={<ElectronicJournalAbout />}
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
+};
 
 export default RoutesContainer;
