@@ -1,5 +1,10 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { lazy } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -9,6 +14,7 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
+import { useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 const Home = lazy(() => import("./pages/Home"));
@@ -223,11 +229,10 @@ const EmailVerify = lazy(() =>
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
-
+const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
 );
-
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -246,15 +251,6 @@ const routes = [
     element: StatesFriendshipSociety,
   },
   { path: "/portal", element: Portal },
-  { path: "/registration/register", element: Register },
-  { path: "/registration/signup", element: SignUp },
-  { path: "/registration/set-password", element: SetPassword },
-  { path: "/registration/signin", element: SignIn },
-  { path: "/registration/recovery-password", element: RecoveryPassword },
-  { path: "/registration/change-password", element: ChangePassword },
-  {
-    path: "/compatriots/public-association-events",
-  },
   { path: "/information-service/:pageName", element: InformationServices },
   { path: "/:page/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
@@ -265,104 +261,139 @@ const routes = [
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
-  { path: "/registration/signup/api/verify/", element: EmailVerify },
-  { path: "/registration/signup/api/reset/", element: ResetPassword },
 ];
 
-const RoutesContainer = () => (
-  <Router>
-    <Layout>
-      <Routes>
-        {routes.map((route, key) => {
-          const RouteComponent = ScrollTop(route.element);
-          return (
-            <Route key={key} path={route.path} element={<RouteComponent />} />
-          );
-        })}
-        <Route path="/portal-category/expert" element={<ExpertLayout />}>
-          <Route index element={<ExpertCouncil />} />
-          <Route path="council-about" element={<AboutCouncil />} />
-          <Route path="expert-council" element={<ExpertEmploye />} />
-          <Route path="profile/:id" element={<ExpertProfile />} />
-          <Route path="offers" element={<ExpertOffers />} />
-          <Route path="offers/:id" element={<ExpertOffersDetail />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="register" element={<ExpertRegister />} />
+const RoutesContainer = () => {
+  const token = useSelector((state) => state.authSlice.token);
+
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          {routes.map((route, key) => {
+            const RouteComponent = ScrollTop(route.element);
+            return (
+              <Route key={key} path={route.path} element={<RouteComponent />} />
+            );
+          })}
+
+          {token ? (
+            <>
+              <Route path="/portal/cabinet" element={<Cabinet />} />
+              <Route
+                path="/registration/*"
+                element={<Navigate to="/portal/cabinet" />}
+              />
+            </>
+          ) : (
+            <>
+              <Route path="/registration/signup" element={<SignUp />} />
+              <Route path="/registration/signin" element={<SignIn />} />
+              <Route
+                path="/registration/set-password"
+                element={<SetPassword />}
+              />
+              <Route
+                path="/registration/change-password"
+                element={<ChangePassword />}
+              />
+              <Route
+                path="/registration/recovery-password"
+                element={<RecoveryPassword />}
+              />
+              <Route
+                path="/registration/signup/api/reset/"
+                element={<ResetPassword />}
+              />
+              <Route
+                path="/registration/signup/api/verify/"
+                element={<EmailVerify />}
+              />
+              <Route
+                path="/portal/cabinet"
+                element={<Navigate to="/portal" />}
+              />
+            </>
+          )}
+          <Route path="/portal-category/expert" element={<ExpertLayout />}>
+            <Route index element={<ExpertCouncil />} />
+            <Route path="council-about" element={<AboutCouncil />} />
+            <Route path="expert-council" element={<ExpertEmploye />} />
+            <Route path="profile/:id" element={<ExpertProfile />} />
+            <Route path="offers" element={<ExpertOffers />} />
+            <Route path="offers/:id" element={<ExpertOffersDetail />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="register" element={<ExpertRegister />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route
+            path="/portal-category/community-association"
+            element={<CommunityAssociationLayout />}
+          >
+            <Route index element={<CommunityAssociationHome />} />
+            <Route path="about" element={<CommunityAssociationAbout />} />
+            <Route
+              path="country/:communityCountry"
+              element={<CommunityAssociationCountry />}
+            />
+            <Route path="associations" element={<Associations />} />
+           <Route path=":pageName" element={<CommunityAssociationEvents />} />
+            <Route
+              path="country/:communityCountry/:communityCountryId"
+              element={<CommunityAssociationDetail />}
+            />
+            <Route
+              path="application"
+              element={<CommunityAssociationRegister />}
+            />
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
+            <Route index element={<VolunterHome />} />
+            <Route path="profile" element={<VolunterProfile />} />
+            <Route path="register" element={<VolunterRegister />} />
+            <Route path="volunter-employe" element={<VolunterAbout />} />
+            <Route path="council-about" element={<VolunterCouncilAbout />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="article/:id" element={<VolunterArticleDetail />} />
+            <Route path="activity" element={<VolunterActivity />} />
+            <Route path="activity/:id" element={<VolunterActivityDetail />} />
+          </Route>
+          <Route
+            path="/portal-category/online-teaching"
+            element={<OnlineTeachingLayout />}
+          >
+            <Route index element={<OnlineTeachingHome />} />
+            <Route path="about" element={<AboutTeaching />} />
+          </Route>
+          <Route
+            path="/portal-category/victorina"
+            element={<VictorinaLayout />}
+          >
+            <Route index element={<VictorinaHome />}></Route>
+            <Route path="contact" element={<Contact />} />
+            <Route path="listwinners" element={<ListOfWinners />} />
+            <Route path="winner/:id" element={<VictorinaWinner />} />
+            <Route path="image-project" element={<VictorinaProject />} />
+            <Route path="youtube-project" element={<VictorinaProject />} />
+            <Route path="poem-project" element={<VictorinaProject />} />
+            <Route path="edu-branding" element={<VictorinaProject />} />
+            <Route path="victorina-finish" element={<VictorinaFinish />} />
+            <Route path="victorina-more" element={<MoreVictorina />} />
+            <Route path="about" element={<VictorinaAbout />} />
+            <Route path="projects" element={<MoreVictorina />} />
+            <Route path="finished-projects" element={<VictorinaFinish />} />
+            <Route
+              path="finished-projects/image-project"
+              element={<VictorinaProject />}
+            />
+          </Route>
           <Route path="*" element={<NotFound />} />
-        </Route>
-
-        <Route
-          path="/portal-category/community-association"
-          element={<CommunityAssociationLayout />}
-        >
-          <Route index element={<CommunityAssociationHome />} />
-          <Route path="about" element={<CommunityAssociationAbout />} />
-          <Route
-            path="country/:communityCountry"
-            element={<CommunityAssociationCountry />}
-          />
-          <Route path="associations" element={<Associations />} />
-          <Route path=":pageName" element={<CommunityAssociationEvents />} />
-          <Route
-            path="country/:communityCountry/:communityCountryId"
-            element={<CommunityAssociationDetail />}
-          />
-          <Route
-            path="application"
-            element={<CommunityAssociationRegister />}
-          />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-
-        <Route path="/portal-category/volunteer" element={<VolunterLayout />}>
-          <Route index element={<VolunterHome />} />
-          <Route path="profile" element={<VolunterProfile />} />
-          <Route path="register" element={<VolunterRegister />} />
-          <Route path="volunter-employe" element={<VolunterAbout />} />
-          <Route path="council-about" element={<VolunterCouncilAbout />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="article/:id" element={<VolunterArticleDetail />} />
-          <Route path="activity" element={<VolunterActivity />} />
-          <Route path="activity/:id" element={<VolunterActivityDetail />} />
-        </Route>
-
-        <Route path="/portal-category/webinar" element={<WebinarLayout />}>
-          <Route index element={<WebinarHome />} />
-        </Route>
-        <Route path="/webinar/register" element={<WebinarRegister />} />
-
-        <Route
-          path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}
-        >
-          <Route index element={<OnlineTeachingHome />} />
-          <Route path="about" element={<AboutTeaching />} />
-        </Route>
-
-        <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
-          <Route index element={<VictorinaHome />}></Route>
-          <Route path="contact" element={<Contact />} />
-          <Route path="listwinners" element={<ListOfWinners />} />
-          <Route path="winner/:id" element={<VictorinaWinner />} />
-          <Route path="image-project" element={<VictorinaProject />} />
-          <Route path="youtube-project" element={<VictorinaProject />} />
-          <Route path="poem-project" element={<VictorinaProject />} />
-          <Route path="edu-branding" element={<VictorinaProject />} />
-          <Route path="victorina-finish" element={<VictorinaFinish />} />
-          <Route path="victorina-more" element={<MoreVictorina />} />
-          <Route path="about" element={<VictorinaAbout />} />
-          <Route path="projects" element={<MoreVictorina />} />
-          <Route path="finished-projects" element={<VictorinaFinish />} />
-          <Route
-            path="finished-projects/image-project"
-            element={<VictorinaProject />}
-          />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
-  </Router>
-);
+        </Routes>
+      </Layout>
+    </Router>
+  );
+};
 
 export default RoutesContainer;
