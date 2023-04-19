@@ -222,6 +222,22 @@ const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
 
+const ElectronicJournalLayout = lazy(() =>
+  import("./pages/Portal/electronicJournal/ElectronicJournalLayout")
+);
+
+const ElectronicJournalHome = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
+  )
+);
+
+const ElectronicJournalAbout = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
+  )
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -347,6 +363,18 @@ const RoutesContainer = () => (
             path="finished-projects/image-project"
             element={<VictorinaProject />}
           />
+        </Route>
+
+        <Route
+          path="/portal-category/electronic-journal"
+          element={<ElectronicJournalLayout />}
+        >
+          <Route index element={<ElectronicJournalHome />} />
+          <Route
+            path="/portal-category/electronic-journal/about"
+            element={<ElectronicJournalAbout />}
+          />
+          <Route path="*" element={<NotFound />} />s
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
