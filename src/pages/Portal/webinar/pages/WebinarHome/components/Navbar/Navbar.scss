@@ -1,4 +1,6 @@
-.navbarvictorina {
+.navbarpage {
+  // padding: 20px 0;
+
   .container {
     display: flex;
     align-items: center;
@@ -10,6 +12,23 @@
   .navbar-list {
     display: flex;
     align-items: center;
+  }
+  .navbar-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 8px 14px;
+    border: none;
+    width: 97px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0 20px;
   }
   img {
     margin-right: 5px;
@@ -64,8 +83,8 @@
   }
   .navbar--button {
     background: #eaedf6;
-    border-radius: 12px;
-    width: 120px;
+    border-radius: 5px;
+    width: 113px;
     height: 40px;
     font-weight: 500;
     font-size: 14px;
@@ -73,28 +92,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #eaedf6;
-    color: #5d6b8a;
+    border: 2px solid #065ea9;
+    color: #ffffff;
     cursor: pointer;
-
-    svg {
-      path {
-        fill: #5d6b8a;
-      }
-    }
+    margin: 0 20px;
   }
   &_language {
     position: relative;
-    color: #fff;
-    margin: 0 10px;
 
     &-wrapper {
-      padding: 10px 8px;
+      padding: 7px 8px;
       display: flex;
       align-items: center;
       gap: 6px;
       border-radius: 12px;
-      background: #065ea9;
       cursor: pointer;
     }
 
@@ -124,7 +135,6 @@
       right: 0;
       top: 50px;
       border-radius: 12px;
-      background: #065ea9;
       z-index: 10;
       color: white;
       overflow: hidden;
@@ -140,25 +150,5 @@
         background-color: grey;
       }
     }
-  }
-
-  .navbarpage-icon {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    margin: 0 9px;
-  }
-  .navbarpage--notification {
-    background: #eaedf6;
-    border-radius: 12px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    margin: 0 9px;
-    cursor: pointer;
   }
 }
