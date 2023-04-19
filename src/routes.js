@@ -232,6 +232,10 @@ const OnlineWebinar = lazy(() =>
   import("./pages/Portal/webinar/pages/OnlineWebinar/OnlineWebinar")
 );
 
+const PassTheTest = lazy(() =>
+  import("./pages/Portal/OnlineTeaching/pages/PassTheTest/PassTheTest")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -343,6 +347,7 @@ const RoutesContainer = () => (
         >
           <Route index element={<OnlineTeachingHome />} />
           <Route path="about" element={<AboutTeaching />} />
+          <Route path="take-test" element={<PassTheTest />} />
         </Route>
 
         <Route path="/portal-category/victorina" element={<VictorinaLayout />}>
