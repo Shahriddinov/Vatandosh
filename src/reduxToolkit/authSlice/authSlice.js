@@ -25,7 +25,12 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    removeToken: (state) => {
+      localStorage.removeItem("token");
+      state.token = null;
+    },
+  },
   extraReducers: (build) => {
     // Sign Up
     build
@@ -81,12 +86,12 @@ const authSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.loginLoading = false;
+        state.token = action.payload.token;
         if (action.payload.message) {
           state.error = action.payload.message;
           alert(action.payload.message);
         } else {
-          state.userData = action.payload;
-          state.token = action.payload.token;
+          state.userData = action.payload.user;
           localStorage.setItem("token", action.payload.token);
           console.log(action.payload);
         }
@@ -139,4 +144,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { removeToken } = authSlice.actions;
 export default authSlice.reducer;

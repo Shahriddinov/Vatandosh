@@ -16,7 +16,6 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
-  const token = useSelector((state) => state.authSlice.token);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -26,12 +25,6 @@ export default function SignIn() {
     e.preventDefault();
     dispatch(signIn(userData));
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/registration/register");
-    }
-  }, [token]);
 
   return (
     <div className="auth">
