@@ -12,6 +12,7 @@ import ChatModal from "./components/PortalChatModal/ChatModal";
 import "./portal.scss";
 
 const HomePage = () => {
+  const token = useSelector((state) => state.authSlice.token);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -201,13 +202,20 @@ const HomePage = () => {
                 Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 vulputate libero et velit interdum, ac aliquet odio mattis.{" "}
               </p>
+
               <div className="portal-btns">
-                <button onClick={() => navigate("/registration/signup")}>
-                  Sign Up
-                </button>
-                <button onClick={() => navigate("/registration/signin")}>
-                  Log In
-                </button>
+                {token ? (
+                  <Link to="/portal/cabinet">Cabinet</Link>
+                ) : (
+                  <>
+                    <button onClick={() => navigate("/registration/signup")}>
+                      Sign Up
+                    </button>
+                    <button onClick={() => navigate("/registration/signin")}>
+                      Log In
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className="navbar-side">

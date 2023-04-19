@@ -18,6 +18,8 @@ export default function Detail(data) {
     if (data?.images) setgalleryMainImg(JSON.parse(data?.images)[0]);
   }, [data]);
 
+  console.log(data);
+
   return data ? (
     <div className="newsdetail">
       <Header />
@@ -54,7 +56,7 @@ export default function Detail(data) {
                   </div>
                 </div>
                 <div className="newsdetail-main-desc-action-tags">
-                  {data?.tags?.split(",").map((el, index) => {
+                  {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
                     return <span key={index}>{el}</span>;
                   })}
                 </div>
@@ -66,7 +68,7 @@ export default function Detail(data) {
                 }}
               ></div>
               {data?.images
-                ? JSON.parse(data?.images).length > 2 && (
+                ? JSON.parse(data?.images).length > 1 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
                         src={`${baseServerUrl}/${

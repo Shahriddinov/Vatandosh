@@ -26,6 +26,7 @@ function Navbar({ navbarUrl }) {
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
+  const { id } = useParams();
   const { communityCountryId } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
