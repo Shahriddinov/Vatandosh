@@ -302,7 +302,7 @@ const RoutesContainer = () => (
             element={<CommunityAssociationCountry />}
           />
           <Route path="associations" element={<Associations />} />
-          <Route path="events" element={<CommunityAssociationEvents />} />
+          <Route path=":pageName" element={<CommunityAssociationEvents />} />
           <Route
             path="country/:communityCountry/:communityCountryId"
             element={<CommunityAssociationDetail />}

@@ -11,7 +11,6 @@ export const useInformationServicesPagination = () => {
   const { pageName } = useParams()
   const dispatch = useDispatch()
   const { t } = useTranslation();
-
   const paginationData = useSelector((state) => state.informationServicesSlice.paginationData)
 
   const paginationLoading = useSelector(
