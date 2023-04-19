@@ -56,6 +56,7 @@ export default function SignIn() {
                 <span>Email pochtangizni kiriting</span>
                 <input
                   type="email"
+                  autoComplete="off"
                   onChange={(e) =>
                     setUserData((prev) => ({ ...prev, email: e.target.value }))
                   }
@@ -74,6 +75,7 @@ export default function SignIn() {
                   minLength={5}
                   maxLength={30}
                   required
+                  autoComplete="off"
                 />
                 {isActivePasswordEye ? (
                   <AiFillEyeInvisible

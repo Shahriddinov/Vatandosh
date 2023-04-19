@@ -93,7 +93,6 @@ const authSlice = createSlice({
         } else {
           state.userData = action.payload.user;
           localStorage.setItem("token", action.payload.token);
-          console.log(action.payload);
         }
       })
       .addCase(signIn.rejected, (state, action) => {
