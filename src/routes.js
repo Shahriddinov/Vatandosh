@@ -15,7 +15,8 @@ import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterA
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import { useSelector } from "react-redux";
-
+import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
+import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -228,9 +229,10 @@ const EmailVerify = lazy(() =>
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
-
 const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
-
+const WebinarRegister = lazy(() =>
+  import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
+);
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -335,7 +337,7 @@ const RoutesContainer = () => {
               element={<CommunityAssociationCountry />}
             />
             <Route path="associations" element={<Associations />} />
-            <Route path="events" element={<CommunityAssociationEvents />} />
+           <Route path=":pageName" element={<CommunityAssociationEvents />} />
             <Route
               path="country/:communityCountry/:communityCountryId"
               element={<CommunityAssociationDetail />}

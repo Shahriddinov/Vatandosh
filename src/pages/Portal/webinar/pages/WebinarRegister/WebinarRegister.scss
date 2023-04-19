@@ -1,0 +1,23 @@
+@import "../../../../../assets/style/global.scss";
+
+.webinar-register {
+  padding: 30px 0 100px;
+
+  .registeritem1 {
+    padding: 50px;
+    background: #f6f7fb;
+    border-radius: 20px;
+
+    .webinar-ragister-input-list,
+    .webinar-register-inputList {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .webinar-register-inputList {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
