@@ -45,6 +45,7 @@ const AllBooks = () => {
 
     const books = [
         {
+            id: 121,
             cover: Book1,
             title: "Kakku uyasi uzra parvoz",
             author: "Ken Kizi",
@@ -52,6 +53,7 @@ const AllBooks = () => {
             ratingCount: 421
         },
         {
+            id: 122,
             cover: Book2,
             title: "Sharqiy ekspressdagi qotillik",
             author: "Erix Mariya Remark",
@@ -59,6 +61,7 @@ const AllBooks = () => {
             ratingCount: 421
         },
         {
+            id: 123,
             cover: Book3,
             title: "Andisha va g'urur",
             author: "Jeyn Ostin",
@@ -66,6 +69,7 @@ const AllBooks = () => {
             ratingCount: 421
         },
         {
+            id: 123,
             cover: Book4,
             title: "Alkimyogar",
             author: "Paulo Koelo",
