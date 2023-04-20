@@ -316,9 +316,14 @@ const RoutesContainer = () => {
 
             {token ? (
               <>
+                <Route path="/registration/register" element={<Register />} />
                 <Route path="/portal/cabinet" element={<Cabinet />} />
                 <Route
-                  path="/registration/*"
+                  path="/registration/set-password"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signin"
                   element={<Navigate to="/portal/cabinet" />}
                 />
               </>
@@ -363,6 +368,7 @@ const RoutesContainer = () => {
               <Route path="register" element={<ExpertRegister />} />
               <Route path="*" element={<NotFound />} />
             </Route>
+
             <Route
               path="/portal-category/community-association"
               element={<CommunityAssociationLayout />}
@@ -389,6 +395,7 @@ const RoutesContainer = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
+
             <Route
               path="/portal-category/volunteer"
               element={<VolunterLayout />}
