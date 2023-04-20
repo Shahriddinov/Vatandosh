@@ -9,6 +9,7 @@ import Webinar from "../../../../../assets/images/webinar/Vebinarlar.png";
 import WebinarCouncil from "./components/WebinarCouncil/WebinarCouncil";
 import { CouncilImage } from "../../../../../assets/images/webinar";
 import WebinarEvents from "./components/WebinarEvents/WebinarEvents";
+import WebinarNews from "./components/WebinarNews/WebinarNews";
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -38,6 +39,7 @@ function WebinarHome() {
       </div>
       <WebinarCouncil councilData={councilData} />
       <WebinarEvents />
+      <WebinarNews />
     </div>
   );
 }

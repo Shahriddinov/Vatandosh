@@ -12,7 +12,7 @@ import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import { useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
-import { Suspense } from "react";
+import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -295,10 +295,10 @@ const RoutesContainer = () => {
 
             {token ? (
               <>
-                <Route path="/portal/cabinet" element={<Cabinet />} />
+                {/* <Route path="/portal/cabinet" element={<Cabinet />} /> */}
                 <Route
                   path="/registration/*"
-                  element={<Navigate to="/portal/cabinet" />}
+                  // element={<Navigate to="/portal/cabinet" />}
                 />
               </>
             ) : (
@@ -327,7 +327,7 @@ const RoutesContainer = () => {
                 />
                 <Route
                   path="/portal/cabinet"
-                  element={<Navigate to="/portal" />}
+                  // element={<Navigate to="/portal" />}
                 />
               </>
             )}
@@ -388,6 +388,7 @@ const RoutesContainer = () => {
             </Route>
             <Route path="/webinar/register" element={<WebinarRegister />} />
             <Route path="/online-webinar" element={<OnlineWebinar />} />
+            <Route path="/webinar-about" element={<WebinarAbout />} />
 
         <Route
           path="/portal-category/online-teaching"
@@ -395,7 +396,7 @@ const RoutesContainer = () => {
         >
           <Route index element={<OnlineTeachingHome />} />
           <Route path="about" element={<AboutTeaching />} />
-          <Route path="take-test" element={<PassTheTest />} />
+          {/* <Route path="take-test" element={<PassTheTest />} /> */}
         </Route>
 
             <Route
@@ -423,12 +424,12 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}
+              // element={<ElectronicJournalLayout />}
             >
-              <Route index element={<ElectronicJournalHome />} />
+              {/* <Route index element={<ElectronicJournalHome />} /> */}
               <Route
                 path="/portal-category/electronic-journal/about"
-                element={<ElectronicJournalAbout />}
+                // element={<ElectronicJournalAbout />}
               />
               <Route path="*" element={<NotFound />} />
             </Route>
