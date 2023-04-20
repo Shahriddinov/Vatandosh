@@ -9,7 +9,7 @@ const Nav = ({ navData }) => {
         <div
           className="nav__inner"
           style={{
-            borderBottomColor: "#eaedf6",
+            borderBottomColor: "transparent",
           }}
         >
           <ul>

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -225,6 +225,29 @@ const EmailVerify = lazy(() =>
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
+const ElectronicJournalLayout = lazy(() =>
+  import("./pages/Portal/electronicJournal/ElectronicJournalLayout")
+);
+
+const ElectronicJournalHome = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
+  )
+);
+const ElectronicJournalAbout = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
+  )
+);
+
+const NewNumber = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/newNumber/NuwNumber")
+);
+
+const ElectronArchive = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/archive/Archive")
+);
+const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
@@ -426,10 +449,10 @@ const RoutesContainer = () => {
               element={<ElectronicJournalLayout />}
             >
               <Route index element={<ElectronicJournalHome />} />
-              <Route
-                path="/portal-category/electronic-journal/about"
-                element={<ElectronicJournalAbout />}
-              />
+              <Route path="about" element={<ElectronicJournalAbout />} />
+              <Route path="new-number" element={<NewNumber />} />
+              <Route path="archive" element={<ElectronArchive />} />
+              <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="*" element={<NotFound />} />

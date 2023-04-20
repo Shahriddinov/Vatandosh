@@ -1,0 +1,70 @@
+.archive-card {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  align-items: center;
+  gap: 77px;
+
+  .archive-card__img {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px 50px;
+    background-color: #f0f2f4;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .img {
+    width: 261px;
+    height: 379px;
+    object-fit: cover;
+  }
+
+  &__date {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #656b70;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 34px;
+    line-height: 54px;
+    color: #065ea9;
+  }
+
+  &__sub_title {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 28px;
+    color: #141619;
+  }
+
+  &__desc {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #656b70;
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+    background-color: #065ea9;
+    border-radius: 16px;
+    transition: all 0.3s linear;
+  }
+
+  &__btn:hover {
+    background-color: #469dea;
+    transition: all 0.3s linear;
+  }
+}
