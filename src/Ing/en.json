@@ -290,14 +290,7 @@
     "bestimgproject": "Best painting project",
     "winner": " Quiz winner",
     "winnerprice": "Winner of the quiz awarded",
-    "allwinner": "All winners",
-    "endvictorina": "Quiz finishers",
-    "endproject": "THE QUIZ IS OVER!",
-    "winnerlist": "List of Quiz winners",
-    "victorinas": "Quizzes",
-    "youtubeproject": "Best videos project on YouTube",
-    "poemproject": "Best poetry collection project",
-    "edubrand": "Best educational brand"
+    "allwinner": "All winners"
   },
   "voluntery": {
     "headertitle": "“Compatriots” Volunteers",
@@ -307,13 +300,5 @@
     "nav1": "Volunteers",
     "nav2": "Volunteer activities",
     "nav3": "Connect"
-  },
-  "webinar": {
-    "tel": "Telephone",
-    "email": "Enter your Email",
-    "online-webinar": "Online webinar in the direction of natural-scientific literacy",
-    "webinars": "Webinars",
-    "join-webinar": "Participation in the webinar",
-    "date": "Vebinar sanyasi:"
   }
 }
