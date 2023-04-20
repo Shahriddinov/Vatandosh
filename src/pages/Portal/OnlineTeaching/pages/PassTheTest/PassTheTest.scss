@@ -1,12 +1,12 @@
 @import "../../../../../assets/style/global.scss";
 
 .passTheTest {
-  padding-top: 20px;
-  background: #f4f5f7;
+  padding: 20px 0 60px;
 
-  &-active {
-    transition: scale 0.5s;
-    scale: 1 !important;
+  &-wrapper {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
   }
 
   &-navList {
@@ -20,22 +20,62 @@
       border-radius: 16px;
       @include fontStyles(700, 16px, 16px, $colorTitle);
       cursor: pointer;
-      transition: all 0.5s;
 
       &-active {
         color: #ffffff;
-        border-color: $colorTitle;
         background-color: $colorTitle;
+        border-color: $colorTitle;
       }
     }
   }
-  &-scaleHidden {
-    height: 0;
-    opacity: 0;
+
+  &-menuList {
+    width: 30%;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 3px grey;
+
+    .MuiPaper-root::before {
+      display: none;
+    }
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+
+    .MuiButtonBase-root {
+      border-top: 1px dashed #e6e8ec;
+    }
+
+    &-title {
+      padding: 22px 15px;
+
+      & > p {
+        @include fontStyles(700, 16px, 16px, #141619);
+      }
+    }
+
+    &-item {
+      &-ul > li {
+        padding: 22px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px dashed #e6e8ec;
+
+        & > svg {
+          width: 20px;
+          height: 20px;
+          color: $colorTitle;
+        }
+
+        & > span {
+          @include fontStyles(400, 14px, 16px, #141619);
+        }
+      }
+    }
   }
 
-  &-scaleActive {
-    transition: opacity 0.5s;
-    opacity: 1;
+  &-video {
+    width: 70%;
   }
 }

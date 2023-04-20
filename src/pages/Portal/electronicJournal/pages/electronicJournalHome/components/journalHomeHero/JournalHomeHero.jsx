@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { HeroImg } from "../../../../../../../assets/images/electronic-journal";
 
 const JournalHomeHero = () => {
+  let text = `Based on an original new story by J.K. Rowling, Jack Thorne and
+  John Tiffany, a new play by Jack Thorne, Harry Potter and the
+  Cursed Child is the eighth story in the Harry Potter series and
+  the first official Harry Potter story to be presented on stage dwdew.`;
+
   return (
     <section className="journal-home-hero">
       <div className="journal-home-hero__container container">
@@ -26,10 +31,7 @@ const JournalHomeHero = () => {
 
             <b className="journal-home-hero__inner-about">О журнале</b>
             <p className="journal-home-hero__inner-desc">
-              Based on an original new story by J.K. Rowling, Jack Thorne and
-              John Tiffany, a new play by Jack Thorne, Harry Potter and the
-              Cursed Child is the eighth story in the Harry Potter series and
-              the first official Harry Potter story to be presented on stage.
+              {text.length > 259 ? text.slice(0, 259) + "..." : text}
             </p>
 
             <Link

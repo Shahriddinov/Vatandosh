@@ -1,10 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -230,6 +225,29 @@ const EmailVerify = lazy(() =>
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
+const ElectronicJournalLayout = lazy(() =>
+  import("./pages/Portal/electronicJournal/ElectronicJournalLayout")
+);
+
+const ElectronicJournalHome = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
+  )
+);
+const ElectronicJournalAbout = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
+  )
+);
+
+const NewNumber = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/newNumber/NuwNumber")
+);
+
+const ElectronArchive = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/archive/Archive")
+);
+const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
@@ -261,12 +279,6 @@ const routes = [
     element: StatesFriendshipSociety,
   },
   { path: "/portal", element: Portal },
-  { path: "/registration/register", element: Register },
-  { path: "/registration/signup", element: SignUp },
-  { path: "/registration/set-password", element: SetPassword },
-  { path: "/registration/signin", element: SignIn },
-  { path: "/registration/recovery-password", element: RecoveryPassword },
-  { path: "/registration/change-password", element: ChangePassword },
   {
     path: "/compatriots/public-association-events",
   },
@@ -304,10 +316,15 @@ const RoutesContainer = () => {
 
             {token ? (
               <>
-                {/* <Route path="/portal/cabinet" element={<Cabinet />} /> */}
+                <Route path="/registration/register" element={<Register />} />
+                <Route path="/portal/cabinet" element={<Cabinet />} />
                 <Route
-                  path="/registration/*"
-                  // element={<Navigate to="/portal/cabinet" />}
+                  path="/registration/set-password"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signin"
+                  element={<Navigate to="/portal/cabinet" />}
                 />
               </>
             ) : (
@@ -351,6 +368,7 @@ const RoutesContainer = () => {
               <Route path="register" element={<ExpertRegister />} />
               <Route path="*" element={<NotFound />} />
             </Route>
+
             <Route
               path="/portal-category/community-association"
               element={<CommunityAssociationLayout />}>
@@ -376,6 +394,7 @@ const RoutesContainer = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
+
             <Route
               path="/portal-category/volunteer"
               element={<VolunterLayout />}>
@@ -430,15 +449,15 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              // element={<ElectronicJournalLayout />}
+              element={<ElectronicJournalLayout />}
             >
-              {/* <Route index element={<ElectronicJournalHome />} /> */}
+              <Route index element={<ElectronicJournalHome />} />
               <Route
                 path="/portal-category/electronic-journal/about"
-                // element={<ElectronicJournalAbout />}
+                element={<ElectronicJournalAbout />}
               />
               <Route path="*" element={<NotFound />} />
-            </Route> */}
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
