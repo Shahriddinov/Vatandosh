@@ -344,8 +344,7 @@ const RoutesContainer = () => {
             </Route>
             <Route
               path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}
-            >
+              element={<CommunityAssociationLayout />}>
               <Route index element={<CommunityAssociationHome />} />
               <Route path="about" element={<CommunityAssociationAbout />} />
               <Route
@@ -370,8 +369,7 @@ const RoutesContainer = () => {
             </Route>
             <Route
               path="/portal-category/volunteer"
-              element={<VolunterLayout />}
-            >
+              element={<VolunterLayout />}>
               <Route index element={<VolunterHome />} />
               <Route path="profile" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
@@ -390,19 +388,17 @@ const RoutesContainer = () => {
             <Route path="/online-webinar" element={<OnlineWebinar />} />
             <Route path="/webinar-about" element={<WebinarAbout />} />
 
-        <Route
-          path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}
-        >
-          <Route index element={<OnlineTeachingHome />} />
-          <Route path="about" element={<AboutTeaching />} />
-          {/* <Route path="take-test" element={<PassTheTest />} /> */}
-        </Route>
+            <Route
+              path="/portal-category/online-teaching"
+              element={<OnlineTeachingLayout />}>
+              <Route index element={<OnlineTeachingHome />} />
+              <Route path="about" element={<AboutTeaching />} />
+              {/* <Route path="take-test" element={<PassTheTest />} /> */}
+            </Route>
 
             <Route
               path="/portal-category/victorina"
-              element={<VictorinaLayout />}
-            >
+              element={<VictorinaLayout />}>
               <Route index element={<VictorinaHome />}></Route>
               <Route path="contact" element={<Contact />} />
               <Route path="listwinners" element={<ListOfWinners />} />
