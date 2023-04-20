@@ -239,7 +239,6 @@ const ElectronicJournalHome = lazy(() =>
     "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
   )
 );
-
 const ElectronicJournalAbout = lazy(() =>
   import(
     "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
