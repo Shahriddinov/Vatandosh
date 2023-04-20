@@ -1,5 +1,10 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -12,7 +17,6 @@ import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import { useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
-import { Suspense } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -234,6 +238,10 @@ const OnlineWebinar = lazy(() =>
   import("./pages/Portal/webinar/pages/OnlineWebinar/OnlineWebinar")
 );
 
+const PassTheTest = lazy(() =>
+  import("./pages/Portal/OnlineTeaching/pages/PassTheTest/PassTheTest")
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -295,7 +303,6 @@ const RoutesContainer = () => {
 
             {token ? (
               <>
-                <Route path="/portal/cabinet" element={<Cabinet />} />
                 <Route
                   path="/registration/*"
                   element={<Navigate to="/portal/cabinet" />}
@@ -389,14 +396,14 @@ const RoutesContainer = () => {
             <Route path="/webinar/register" element={<WebinarRegister />} />
             <Route path="/online-webinar" element={<OnlineWebinar />} />
 
-        <Route
-          path="/portal-category/online-teaching"
-          element={<OnlineTeachingLayout />}
-        >
-          <Route index element={<OnlineTeachingHome />} />
-          <Route path="about" element={<AboutTeaching />} />
-          <Route path="take-test" element={<PassTheTest />} />
-        </Route>
+            <Route
+              path="/portal-category/online-teaching"
+              element={<OnlineTeachingLayout />}
+            >
+              <Route index element={<OnlineTeachingHome />} />
+              <Route path="about" element={<AboutTeaching />} />
+              <Route path="take-test" element={<PassTheTest />} />
+            </Route>
 
             <Route
               path="/portal-category/victorina"
@@ -421,7 +428,7 @@ const RoutesContainer = () => {
               />
             </Route>
 
-            <Route
+            {/* <Route
               path="/portal-category/electronic-journal"
               element={<ElectronicJournalLayout />}
             >
@@ -431,7 +438,7 @@ const RoutesContainer = () => {
                 element={<ElectronicJournalAbout />}
               />
               <Route path="*" element={<NotFound />} />
-            </Route>
+            </Route> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
