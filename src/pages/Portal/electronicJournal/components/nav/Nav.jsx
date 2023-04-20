@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./nav.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = ({ navData }) => {
+  const { pathname } = useLocation();
+  const [activeLink, setActiveLink] = useState(pathname.split("/")[3]);
+
   return (
     <nav className="nav">
       <div className="container">
@@ -15,7 +18,17 @@ const Nav = ({ navData }) => {
           <ul>
             {navData?.map((navItem) => (
               <li key={navItem.id}>
-                <Link to={navItem.url} className={`nav--link`}>
+                <Link
+                  to={navItem.url}
+                  className={`nav--link`}
+                  onClick={() => setActiveLink(navItem.url.split("/")[3])}
+                  style={{
+                    color:
+                      activeLink === navItem.url.split("/")[3]
+                        ? "#065EA9"
+                        : null,
+                  }}
+                >
                   {navItem.label}
                 </Link>
               </li>

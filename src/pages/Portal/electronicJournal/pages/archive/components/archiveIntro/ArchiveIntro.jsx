@@ -18,7 +18,7 @@ const ArchiveIntro = () => {
           <h3 className="archive-intro__title">В архиве 121 журнал есть</h3>
           <ul className="archive-intro__list">
             {archiveData.map((el) => (
-              <ArchiveCard {...el} />
+              <ArchiveCard key={el.id} {...el} />
             ))}
           </ul>
           {paginationCount >= 2 ? (

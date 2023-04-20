@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +17,6 @@ import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
 import { useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
-import { Suspense } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
