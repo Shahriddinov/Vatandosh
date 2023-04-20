@@ -253,6 +253,7 @@ const ElectronArchive = lazy(() =>
   import("./pages/Portal/electronicJournal/pages/archive/Archive")
 );
 const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
+
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
 );
