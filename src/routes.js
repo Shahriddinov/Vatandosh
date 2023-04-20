@@ -1,10 +1,5 @@
-import React, { lazy } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -239,7 +234,6 @@ const ElectronicJournalHome = lazy(() =>
     "./pages/Portal/electronicJournal/pages/electronicJournalHome/ElectronicJournalHome"
   )
 );
-
 const ElectronicJournalAbout = lazy(() =>
   import(
     "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
@@ -254,6 +248,7 @@ const ElectronArchive = lazy(() =>
   import("./pages/Portal/electronicJournal/pages/archive/Archive")
 );
 const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
+
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
 );
@@ -280,6 +275,12 @@ const routes = [
     element: StatesFriendshipSociety,
   },
   { path: "/portal", element: Portal },
+  { path: "/registration/register", element: Register },
+  { path: "/registration/signup", element: SignUp },
+  { path: "/registration/set-password", element: SetPassword },
+  { path: "/registration/signin", element: SignIn },
+  { path: "/registration/recovery-password", element: RecoveryPassword },
+  { path: "/registration/change-password", element: ChangePassword },
   {
     path: "/compatriots/public-association-events",
   },
@@ -411,13 +412,14 @@ const RoutesContainer = () => {
             <Route path="/webinar/register" element={<WebinarRegister />} />
             <Route path="/online-webinar" element={<OnlineWebinar />} />
 
-            <Route
-              path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}
-            >
-              <Route index element={<OnlineTeachingHome />} />
-              <Route path="about" element={<AboutTeaching />} />
-            </Route>
+        <Route
+          path="/portal-category/online-teaching"
+          element={<OnlineTeachingLayout />}
+        >
+          <Route index element={<OnlineTeachingHome />} />
+          <Route path="about" element={<AboutTeaching />} />
+          <Route path="take-test" element={<PassTheTest />} />
+        </Route>
 
             <Route
               path="/portal-category/victorina"

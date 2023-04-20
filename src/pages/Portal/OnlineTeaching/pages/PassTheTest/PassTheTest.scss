@@ -1,0 +1,81 @@
+@import "../../../../../assets/style/global.scss";
+
+.passTheTest {
+  padding: 20px 0 60px;
+
+  &-wrapper {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+  }
+
+  &-navList {
+    display: flex;
+    gap: 20px;
+
+    &-item {
+      padding: 18px 32px;
+      background: #ffffff;
+      border: 2px solid #e6e8ec;
+      border-radius: 16px;
+      @include fontStyles(700, 16px, 16px, $colorTitle);
+      cursor: pointer;
+
+      &-active {
+        color: #ffffff;
+        background-color: $colorTitle;
+        border-color: $colorTitle;
+      }
+    }
+  }
+
+  &-menuList {
+    width: 30%;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 3px grey;
+
+    .MuiPaper-root::before {
+      display: none;
+    }
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+
+    .MuiButtonBase-root {
+      border-top: 1px dashed #e6e8ec;
+    }
+
+    &-title {
+      padding: 22px 15px;
+
+      & > p {
+        @include fontStyles(700, 16px, 16px, #141619);
+      }
+    }
+
+    &-item {
+      &-ul > li {
+        padding: 22px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px dashed #e6e8ec;
+
+        & > svg {
+          width: 20px;
+          height: 20px;
+          color: $colorTitle;
+        }
+
+        & > span {
+          @include fontStyles(400, 14px, 16px, #141619);
+        }
+      }
+    }
+  }
+
+  &-video {
+    width: 70%;
+  }
+}
