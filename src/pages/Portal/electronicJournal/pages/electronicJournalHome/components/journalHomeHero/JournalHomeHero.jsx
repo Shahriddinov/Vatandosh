@@ -9,7 +9,6 @@ const JournalHomeHero = () => {
   Cursed Child is the eighth story in the Harry Potter series and
   the first official Harry Potter story to be presented on stage dwdew.`;
 
-  console.log(text.length);
   return (
     <section className="journal-home-hero">
       <div className="journal-home-hero__container container">

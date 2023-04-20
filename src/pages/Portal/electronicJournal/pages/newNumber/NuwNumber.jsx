@@ -12,7 +12,7 @@ const NuwNumber = () => {
           <h3 className="new-number__inner_title">СОДЕРЖАНИЕ НОВОГО НОМЕРА</h3>
           <ul className="new-number__inner_list">
             {newNumberData.map((el) => (
-              <NewNumberCard {...el} />
+              <NewNumberCard {...el} key={el.id} />
             ))}
           </ul>
         </div>
