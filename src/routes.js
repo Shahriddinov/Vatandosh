@@ -245,6 +245,14 @@ const ElectronicJournalAbout = lazy(() =>
     "./pages/Portal/electronicJournal/pages/electronicJournalAbout/ElectronicJournalAbout"
   )
 );
+
+const NewNumber = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/newNumber/NuwNumber")
+);
+
+const ElectronArchive = lazy(() =>
+  import("./pages/Portal/electronicJournal/pages/archive/Archive")
+);
 const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
@@ -439,10 +447,10 @@ const RoutesContainer = () => {
               element={<ElectronicJournalLayout />}
             >
               <Route index element={<ElectronicJournalHome />} />
-              <Route
-                path="/portal-category/electronic-journal/about"
-                element={<ElectronicJournalAbout />}
-              />
+              <Route path="about" element={<ElectronicJournalAbout />} />
+              <Route path="new-number" element={<NewNumber />} />
+              <Route path="archive" element={<ElectronArchive />} />
+              <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="*" element={<NotFound />} />
