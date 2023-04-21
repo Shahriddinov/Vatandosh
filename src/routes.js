@@ -189,6 +189,25 @@ const OnlineTeachingHome = lazy(() =>
     "./pages/Portal/OnlineTeaching/pages/OnlineTeachingHome/OnlineTeachingHome"
   )
 );
+
+const LibraryLayout = lazy(() =>
+  import(
+    "./pages/Portal/Library/LibraryLayout"
+  )
+);
+
+const LibraryAllBooks = lazy(() =>
+  import(
+    "./pages/Portal/Library/pages/AllBooks/AllBooks"
+  )
+);
+
+const LibraryAboutBook = lazy(() =>
+  import(
+    "./pages/Portal/Library/pages/AboutBook/AboutBook"
+  )
+);
+
 const ListOfWinners = lazy(() =>
   import("./pages/Portal/victorina/pages/ListOfWinners/ListOfWinners")
 );
@@ -423,6 +442,14 @@ const RoutesContainer = () => {
               <Route index element={<OnlineTeachingHome />} />
               <Route path="about" element={<AboutTeaching />} />
               <Route path="take-test" element={<PassTheTest />} />
+            </Route>
+
+            <Route 
+              path="/portal-category/library"
+              element={<LibraryLayout />}
+            >
+              <Route index element={<LibraryAllBooks />} />
+              <Route path="about" element={<LibraryAboutBook />} />
             </Route>
 
             <Route
