@@ -190,11 +190,11 @@ const OnlineTeachingHome = lazy(() =>
   )
 );
 
-const LibraryLayout = lazy(() =>
-  import(
-    "./pages/Portal/Library/LibraryLayout"
-  )
-);
+// const LibraryLayout = lazy(() =>
+//   import(
+//     "./pages/Portal/Library/LibraryLayout"
+//   )
+// );
 
 const LibraryAllBooks = lazy(() =>
   import(
@@ -337,14 +337,14 @@ const RoutesContainer = () => {
               <>
                 <Route path="/registration/register" element={<Register />} />
                 <Route path="/portal/cabinet" element={<Cabinet />} />
-                <Route
-                  path="/registration/set-password"
-                  element={<Navigate to="/registration/register" />}
-                />
-                <Route
-                  path="/registration/signin"
-                  element={<Navigate to="/portal/cabinet" />}
-                />
+                {/*<Route*/}
+                {/*  path="/registration/set-password"*/}
+                {/*  element={<Navigate to="/registration/register" />}*/}
+                {/*/>*/}
+                {/*<Route*/}
+                {/*  path="/registration/signin"*/}
+                {/*  element={<Navigate to="/portal/cabinet" />}*/}
+                {/*/>*/}
               </>
             ) : (
               <>
@@ -444,9 +444,9 @@ const RoutesContainer = () => {
               <Route path="take-test" element={<PassTheTest />} />
             </Route>
 
-            <Route 
+            <Route
               path="/portal-category/library"
-              element={<LibraryLayout />}
+              element=""
             >
               <Route index element={<LibraryAllBooks />} />
               <Route path="about" element={<LibraryAboutBook />} />

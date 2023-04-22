@@ -39,12 +39,12 @@ export default function WebinarLayout() {
   };
 
   return (
-    <>
-      {editClass.length > 3 && editClass[3] && (
-        <WebinarHome navData={navData} navbarUrl={navbarUrl} />
-      )}
-      <Outlet context={{ navData, navbarUrl }} />
-      <ExpertFooter navData={navData} />
-    </>
+      <>
+        {editClass.length > 3 && editClass[3] && (
+            <WebinarHome navData={navData} navbarUrl={navbarUrl} />
+        )}
+        <Outlet context={{ navData, navbarUrl }} />
+        <ExpertFooter navData={navData} />
+      </>
   );
 }

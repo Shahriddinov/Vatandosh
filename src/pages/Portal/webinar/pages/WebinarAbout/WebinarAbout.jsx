@@ -1,7 +1,7 @@
 import React from "react";
 import { PageTop } from "../../../communityAssociation/components";
 import { ShareFriends } from "../../../../../component";
-import WebinarCouncilStatics from "../WebinarHome/components/WebinarCouncil/WebinarCouncilStatics";
+// import WebinarCouncilStatics from "../WebinarHome/components/WebinarCouncil/WebinarCouncilStatics";
 import { aboutData } from "./data";
 
 function WebinarAbout() {
@@ -35,7 +35,7 @@ function WebinarAbout() {
             <p className="about-text">{aboutData?.desc2}</p>
             <ShareFriends />
           </div>
-          <WebinarCouncilStatics />
+          {/*<WebinarCouncilStatics />*/}
         </div>
       </div>
     </div>

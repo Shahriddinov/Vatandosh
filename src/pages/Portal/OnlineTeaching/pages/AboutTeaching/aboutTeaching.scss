@@ -61,8 +61,31 @@
     color: #656B70;
     padding-right: 10%;
   }
+  &_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 22px;
+    background: #065EA9;
+    border-radius: 16px;
+    font-weight: 700;
+    border: none;
+    font-size: 14px;
+    line-height: 24px;
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+
+    &:focus{
+      border: none;
+    }
+    &:active{
+      border: none;
+    }
+  }
 
   .bot {
-    margin: 3% 0;
+    margin: 3% 0 2%;
   }
 }
