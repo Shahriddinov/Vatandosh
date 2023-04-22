@@ -28,7 +28,7 @@ const CouncilComposition = ({
               </li>
             ))}
             {trustsLoading && <LazySpinner height="80px" />}
-          </ul>
+          </ul> 
           {trusts[0]?.next_page_url ? (
             <Link
               className="council-composition__btn"
