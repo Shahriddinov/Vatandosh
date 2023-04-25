@@ -83,7 +83,7 @@ const Menus = () => {
             aria-controls={openAbout ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openAbout ? "true" : undefined}
-            onMouseOver={handleClickAbout}
+            onClick={handleClickAbout}
             className="menus_link"
           >
             {navLinks[0].title}
@@ -119,7 +119,7 @@ const Menus = () => {
             aria-controls={openCitizin ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openCitizin ? "true" : undefined}
-            onMouseOver={handleClickCitizin}
+            onClick={handleClickCitizin}
             className="menus_link"
           >
             {navLinks[1].title}
@@ -155,7 +155,7 @@ const Menus = () => {
             aria-controls={openProject ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openProject ? "true" : undefined}
-            onMouseOver={handleClickProject}
+            onClick={handleClickProject}
             className="menus_link"
           >
             {navLinks[2].title}
@@ -206,7 +206,7 @@ const Menus = () => {
             aria-controls={openInformation ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openInformation ? "true" : undefined}
-            onMouseOver={handleClickInformation}
+            onClick={handleClickInformation}
             className="menus_link"
           >
             <Link to="" className="menus_link">
