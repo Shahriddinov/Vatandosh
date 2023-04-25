@@ -4,6 +4,9 @@ import "./PassTheTest.scss";
 import { useState } from "react";
 import VideoTutorial from "./components/VideoTutorial/VideoTutorial";
 import Presentation from "./components/Presentation/Presentation";
+import Materials from "./components/Materials/Materials";
+import OnlineTeachingTest from "../../components/OnlineTeachingTest/OnlineTeachingTest";
+import Certificate from "./components/Certificate/Certificate";
 
 export default function PassTheTest() {
   const [activeNav, setActiveNav] = useState(0);
@@ -42,6 +45,9 @@ export default function PassTheTest() {
         </div>
         <VideoTutorial activeNav={activeNav} />
         <Presentation activeNav={activeNav} />
+        <Materials activeNav={activeNav} />
+        <OnlineTeachingTest activeNav={activeNav} />
+        <Certificate activeNav={activeNav} />
       </div>
     </main>
   );

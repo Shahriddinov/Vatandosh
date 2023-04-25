@@ -35,11 +35,10 @@ export default function Presentation({ activeNav }) {
       <Swiper
         modules={[Navigation]}
         navigation={{
-          prevEl: ".pagination-left",
-          nextEl: ".pagination-right",
+          prevEl: ".paginationOnline-left",
+          nextEl: ".paginationOnline-right",
         }}
         onSlideChange={(e) => {
-          console.log(e.activeIndex);
           setactiveSlide(e.activeIndex);
         }}
         className="presentation-swiper"
@@ -72,10 +71,10 @@ export default function Presentation({ activeNav }) {
           0{activeSlide + 1}/07
         </div>
         <div className="presentation-desc-pagination-btns">
-          <button className="presentation-desc-pagination-btns-item pagination-left">
+          <button className="presentation-desc-pagination-btns-item paginationOnline-left">
             <MdKeyboardArrowLeft />
           </button>
-          <button className="presentation-desc-pagination-btns-item pagination-right">
+          <button className="presentation-desc-pagination-btns-item paginationOnline-right">
             <MdKeyboardArrowRight />
           </button>
         </div>
