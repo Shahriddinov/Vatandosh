@@ -12,7 +12,6 @@ import { MdLock } from "react-icons/md";
 export default function VideoTutorial({ activeNav }) {
   const [activeAccardion, setActiveAccardion] = useState(0);
   const [activeAccardionItem, setactiveAccardionItem] = useState(0);
-  console.log(activeNav);
   return (
     <div
       className={
