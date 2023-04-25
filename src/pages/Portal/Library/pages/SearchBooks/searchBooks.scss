@@ -1,0 +1,70 @@
+.MuiOutlinedInput-notchedOutline {
+    border-color: #EAEDF6 !important;
+}
+
+.all__books__search {
+    margin: 0 25px;
+    display: flex;
+    flex-flow: column;
+    row-gap: 20px;
+    
+    h2 {
+        font-size: 28px;
+        line-height: 44px;
+        color: #065EA9; 
+    }
+}
+
+.all__books__row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.all__books__search__input {
+    display: flex;
+    gap: 20px;
+}
+
+.all__books__filter {
+    display: flex;
+    gap: 20px;
+}
+
+.all__books__sort {
+    ul {
+        display: flex;
+        font-size: 16px;
+        line-height: 24px;
+        color: #9D9D9D;
+
+        li {
+            padding: 10px 16px;
+            border-top: solid 2px transparent;
+            border-bottom: solid 2px #E7E9EE;
+            cursor: pointer;
+        }
+
+        .active {
+            color: #065EA9;
+            border-bottom-color: #065EA9;
+        }
+    }
+}
+
+.grey__bg {
+    background-color: #F4F5F7;
+}
+
+.all__books__grid {
+    display: flex;
+    flex-wrap: row wrap;
+    justify-content: space-between;
+    padding: 30px 25px;
+}
+
+.online-teaching-header {
+    box-shadow: none
+}
+
+
+

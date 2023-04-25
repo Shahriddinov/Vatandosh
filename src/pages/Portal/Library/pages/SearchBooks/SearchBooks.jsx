@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './allBooks.scss'
+import './searchBooks.scss'
 import Hero from '../../components/Hero/Hero';
 import BookCard from '../../components/BookCard/BookCard'
 
@@ -21,7 +21,7 @@ import Book2 from '../../../../../assets/images/library/agata.png'
 import Book3 from '../../../../../assets/images/library/jeyn.png'
 import Book4 from '../../../../../assets/images/library/paulo.png'
 
-const AllBooks = () => {
+const SearchBooks = () => {
 
     const [activeSort, setActiveSort] = useState('new')
 
@@ -81,9 +81,8 @@ const AllBooks = () => {
     return (
         <>
             <div className="all__books__container container">
-                <Hero sliderData={sliderData} />
                 <div className="all__books__search">
-                    <h2>O‘zingizni qiziqtirgan darsni o‘rganing</h2>
+                    <h2>Поиск</h2>
                     <div className="all__books__row">
                         <div className="all__books__search__input">
                             <Paper
@@ -99,9 +98,6 @@ const AllBooks = () => {
                                     <CiSearch color='#065EA9' size={24}/>
                                 </IconButton>
                             </Paper>
-                            <Button variant="contained" size="large"  sx={{ padding: '12px 22px',boxShadow: 0, borderRadius: '12px', background: '#065EA9', textTransform: 'none', fontFamily: "Inter", fontSize: '14px', lineHeight: '24px', fontWeight: 400}}>
-                                Сделай предложение
-                            </Button>
 
                         </div>
                         <div className="all__books__filter">
@@ -158,4 +154,4 @@ const AllBooks = () => {
     )
 }
 
-export default AllBooks
+export default SearchBooks
