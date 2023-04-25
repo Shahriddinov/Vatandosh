@@ -12,10 +12,10 @@ function WebinarHeader({ headerData }) {
         <p className="webinarheader-text">{headerData.subTitle}</p>
         <div className="webinarheader-list">
           <Link className="webinarheader-more" to="/expert/register">
-            {t("voluntery.headersubmit")}
+            {t("webinar.header1")}
           </Link>
           <Link className="webinarheader-link" to="/expert/register">
-            {t("voluntery.headersubmit")}
+            {t("webinar.header2")}
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import WebinarHome from "./pages/WebinarHome/WebinarHome";
+import WebinarHeader from "./components/WebinarHeader/WebinarHeader";
 
 export default function WebinarLayout() {
   const location = useLocation();
@@ -10,26 +10,21 @@ export default function WebinarLayout() {
   const { t } = useTranslation();
 
   const navData = [
-    { id: 1, url: "/portal-category/volunteer", label: t("expert.main") },
+    { id: 1, url: "/portal-category/webinar", label: t("expert.main") },
     {
       id: 2,
-      url: "/portal-category/volunteer/volunter-employe",
-      label: "О ЖУРНАЛЕ",
+      url: "/portal-category/webinar/webinar-events",
+      label: t("webinar.nav2"),
     },
     {
       id: 3,
-      url: "/portal-category/volunteer/council-about",
-      label: `НОВЫЙ НОМЕР`,
+      url: "/portal-category/volunteer/arxiv",
+      label: t("webinar.nav3"),
     },
     {
       id: 4,
-      url: "/portal-category/volunteer/arxiv",
-      label: `АРХИВ`,
-    },
-    {
-      id: 5,
-      url: "/portal-category/volunteer/contact",
-      label: `КОНТАКТЫ`,
+      url: "/portal-category/webinar/webinar-contact",
+      label: t("webinar.nav4"),
     },
   ];
 
@@ -39,12 +34,12 @@ export default function WebinarLayout() {
   };
 
   return (
-      <>
-        {editClass.length > 3 && editClass[3] && (
-            <WebinarHome navData={navData} navbarUrl={navbarUrl} />
-        )}
-        <Outlet context={{ navData, navbarUrl }} />
-        <ExpertFooter navData={navData} />
-      </>
+    <>
+      {editClass.length > 3 && editClass[3] && (
+        <WebinarHeader navData={navData} navbarUrl={navbarUrl} />
+      )}
+      <Outlet context={{ navData, navbarUrl }} />
+      <ExpertFooter navData={navData} />
+    </>
   );
 }

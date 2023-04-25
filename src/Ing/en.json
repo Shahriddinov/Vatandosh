@@ -300,5 +300,20 @@
     "nav1": "Volunteers",
     "nav2": "Volunteer activities",
     "nav3": "Connect"
+  },
+  "webinar": {
+    "tel": "Phone",
+    "email": "Enter your email address",
+    "online-webinar": "Online webinar on scientific literacy",
+    "webinars": "Webinars",
+    "join-webinar": "Join the webinar",
+    "date": "Webinar date:",
+    "nav2": "Events",
+    "nav3": "Archive",
+    "nav4": "Unite",
+    "header1": "Participation",
+    "header2": "To learn more",
+    "headerName": "“Compatriots” Webinar",
+    "council": "What is a webinar platform?"
   }
 }

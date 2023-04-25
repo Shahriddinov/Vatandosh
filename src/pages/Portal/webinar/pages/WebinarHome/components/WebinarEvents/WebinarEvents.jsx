@@ -3,18 +3,24 @@ import { Link } from "react-router-dom";
 import { webinar } from "../../../webinar";
 import { CalendarIcon } from "../../../../../../../assets/images/expert";
 import "./WebinarEvents.scss";
+import { useTranslation } from "react-i18next";
 
 function WebinarEvents() {
+  const { t } = useTranslation();
   return (
     <div className="webinar">
       <div className="container">
         <div className="webinar-list">
-          <h3 className="webinar-name">Tadbirlar</h3>
+          <h3 className="webinar-name">{t("webinar.nav2")}</h3>
           <div className="webinar-lists">
-            <Link to="/" className="webinar-top">
+            <Link
+              to="/portal-category/webinar/webinar-events"
+              className="webinar-top">
               Vebinarlar
             </Link>
-            <Link to="/" className="webinar-tops">
+            <Link
+              to="/portal-category/webinar/webinar-events"
+              className="webinar-tops">
               Konferensiyalar
             </Link>
           </div>
@@ -30,8 +36,16 @@ function WebinarEvents() {
               <h5 className="webinar-names">{webinar.title}</h5>
               <p className="webinar-text">{webinar.text}</p>
               <div className="webinar-bottom">
-                <Link className="webinar-more">Batafsil</Link>
-                <Link className="webinar-links">Ishtirok etish</Link>
+                <Link
+                  to="/portal-category/webinar/online-webinar"
+                  className="webinar-more">
+                   {t("webinar.header2")}
+                </Link>
+                <Link
+                  to="/portal-category/webinar/webinar-register"
+                  className="webinar-links">
+                  {t("webinar.header1")}
+                </Link>
               </div>
             </div>
           ))}
