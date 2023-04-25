@@ -433,6 +433,7 @@ const RoutesContainer = () => {
               <Route path="online-webinar" element={<OnlineWebinar />} />
               <Route path="webinar-about" element={<WebinarAbout />} />
               <Route path="webinar-events" element={<WebinarEvents />} />
+              <Route path="webinar-contact" element={<Contact />} />
             </Route>
 
             <Route
