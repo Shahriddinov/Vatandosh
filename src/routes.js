@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
+import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -191,27 +192,19 @@ const OnlineTeachingHome = lazy(() =>
 );
 
 const LibraryLayout = lazy(() =>
-  import(
-    "./pages/Portal/Library/LibraryLayout"
-  )
+  import("./pages/Portal/Library/LibraryLayout")
 );
 
 const LibraryAllBooks = lazy(() =>
-  import(
-    "./pages/Portal/Library/pages/AllBooks/AllBooks"
-  )
+  import("./pages/Portal/Library/pages/AllBooks/AllBooks")
 );
 
 const LibrarySearchBooks = lazy(() =>
-  import(
-    "./pages/Portal/Library/pages/SearchBooks/SearchBooks"
-  )
+  import("./pages/Portal/Library/pages/SearchBooks/SearchBooks")
 );
 
 const LibraryAboutBook = lazy(() =>
-  import(
-    "./pages/Portal/Library/pages/AboutBook/AboutBook"
-  )
+  import("./pages/Portal/Library/pages/AboutBook/AboutBook")
 );
 
 const ListOfWinners = lazy(() =>
@@ -436,24 +429,21 @@ const RoutesContainer = () => {
 
             <Route path="/portal-category/webinar" element={<WebinarLayout />}>
               <Route index element={<WebinarHome />} />
+              <Route path="webinar-register" element={<WebinarRegister />} />
+              <Route path="online-webinar" element={<OnlineWebinar />} />
+              <Route path="webinar-about" element={<WebinarAbout />} />
+              <Route path="webinar-events" element={<WebinarEvents />} />
             </Route>
-            <Route path="/webinar/register" element={<WebinarRegister />} />
-            <Route path="/online-webinar" element={<OnlineWebinar />} />
-            <Route path="/webinar-about" element={<WebinarAbout />} />
 
             <Route
               path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}
-            >
+              element={<OnlineTeachingLayout />}>
               <Route index element={<OnlineTeachingHome />} />
               <Route path="about" element={<AboutTeaching />} />
               <Route path="take-test" element={<PassTheTest />} />
             </Route>
 
-            <Route
-              path="/portal-category/library"
-              element={<LibraryLayout />}
-            >
+            <Route path="/portal-category/library" element={<LibraryLayout />}>
               <Route index element={<LibraryAllBooks />} />
               <Route path="search" element={<LibrarySearchBooks />} />
               <Route path="about" element={<LibraryAboutBook />} />
@@ -483,8 +473,7 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}
-            >
+              element={<ElectronicJournalLayout />}>
               <Route index element={<ElectronicJournalHome />} />
               <Route
                 path="/portal-category/electronic-journal/about"

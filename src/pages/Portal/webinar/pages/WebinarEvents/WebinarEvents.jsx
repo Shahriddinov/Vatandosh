@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { webinar } from "../../../webinar";
-import { CalendarIcon } from "../../../../../../../assets/images/expert";
+import { webinar } from "../webinar";
+import { CalendarIcon } from "../../../../../assets/images/expert";
 import "./WebinarEvents.scss";
 
 function WebinarEvents() {
@@ -10,18 +10,6 @@ function WebinarEvents() {
       <div className="container">
         <div className="webinar-list">
           <h3 className="webinar-name">Tadbirlar</h3>
-          <div className="webinar-lists">
-            <Link
-              to="/portal-category/webinar/webinar-events"
-              className="webinar-top">
-              Vebinarlar
-            </Link>
-            <Link
-              to="/portal-category/webinar/webinar-events"
-              className="webinar-tops">
-              Konferensiyalar
-            </Link>
-          </div>
         </div>
         <div className="webinar-page">
           {webinar?.map((webinar) => (
@@ -34,16 +22,8 @@ function WebinarEvents() {
               <h5 className="webinar-names">{webinar.title}</h5>
               <p className="webinar-text">{webinar.text}</p>
               <div className="webinar-bottom">
-                <Link
-                  to="/portal-category/webinar/online-webinar"
-                  className="webinar-more">
-                  Batafsil
-                </Link>
-                <Link
-                  to="/portal-category/webinar/webinar-register"
-                  className="webinar-links">
-                  Ishtirok etish
-                </Link>
+                <Link className="webinar-more">Batafsil</Link>
+                <Link className="webinar-links">Ishtirok etish</Link>
               </div>
             </div>
           ))}

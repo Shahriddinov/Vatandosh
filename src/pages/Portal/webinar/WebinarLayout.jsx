@@ -2,7 +2,7 @@ import React from "react";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import WebinarHome from "./pages/WebinarHome/WebinarHome";
+import WebinarHeader from "./components/WebinarHeader/WebinarHeader";
 
 export default function WebinarLayout() {
   const location = useLocation();
@@ -10,7 +10,7 @@ export default function WebinarLayout() {
   const { t } = useTranslation();
 
   const navData = [
-    { id: 1, url: "/portal-category/volunteer", label: t("expert.main") },
+    { id: 1, url: "/portal-category/webinar", label: t("expert.main") },
     {
       id: 2,
       url: "/portal-category/volunteer/volunter-employe",
@@ -28,7 +28,7 @@ export default function WebinarLayout() {
     },
     {
       id: 5,
-      url: "/portal-category/volunteer/contact",
+      url: "/portal-category/webinar/webinar-register",
       label: `КОНТАКТЫ`,
     },
   ];
@@ -39,12 +39,12 @@ export default function WebinarLayout() {
   };
 
   return (
-      <>
-        {editClass.length > 3 && editClass[3] && (
-            <WebinarHome navData={navData} navbarUrl={navbarUrl} />
-        )}
-        <Outlet context={{ navData, navbarUrl }} />
-        <ExpertFooter navData={navData} />
-      </>
+    <>
+      {editClass.length > 3 && editClass[3] && (
+        <WebinarHeader navData={navData} navbarUrl={navbarUrl} />
+      )}
+      <Outlet context={{ navData, navbarUrl }} />
+      <ExpertFooter navData={navData} />
+    </>
   );
 }
