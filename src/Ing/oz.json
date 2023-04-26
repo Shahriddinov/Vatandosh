@@ -315,5 +315,28 @@
     "header2": "Батафсил маълумот",
     "headerName": "“Ватандошлар” Вебинари",
     "council": "Вебинар платформаси нима?"
+  },
+  "library": {
+    "library": "Кутубхона",
+    "hero_title": "Энг шинам кутубхона",
+    "main_page_header": "Ўзингизни қизиқтирган дарсни ўрганинг",
+    "search": "Қидириш",
+    "suggest": "Таклиф қилиш",
+    "sort_by_language": "Тил бўйича",
+    "sort_by_genre": "Тури бўйича",
+    "new": "Янгиликлар",
+    "popular": "Ommabop",
+    "search_header": "Қидирув",
+    "search_result_start": "Ушбу сўров билан",
+    "search_result_end": "та китоб топилди",
+    "author": "Муаллиф",
+    "language": "Тил",
+    "about": "Китоб ҳақида",
+    "read_more": "Кўпроқ ўқиш",
+    "about_the_book": "Китоб ҳақида",
+    "for_ages": "Мўлжалланган аудитория",
+    "format": "Формат",
+    "published_date": "Чоп этилган санаси",
+    "ISBN13": "ISBN13"
   }
 }

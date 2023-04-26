@@ -20,10 +20,28 @@ import Book1 from '../../../../../assets/images/library/ken.png'
 import Book2 from '../../../../../assets/images/library/agata.png'
 import Book3 from '../../../../../assets/images/library/jeyn.png'
 import Book4 from '../../../../../assets/images/library/paulo.png'
+import Suggest from '../../components/suggestModal/Suggest';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 
 const AllBooks = () => {
 
+    const lng = useSelector((state) => state.language.language);
+    const { t } = useTranslation();
+
     const [activeSort, setActiveSort] = useState('new')
+    const [suggestModal, setSuggestModal] = useState(false)
+
+    const toggleModal = () => {
+        setSuggestModal(!suggestModal)
+        if (window.innerWidth <= 1000) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    }
 
     const sliderData = [
         {
@@ -99,7 +117,7 @@ const AllBooks = () => {
                                     <CiSearch color='#065EA9' size={24}/>
                                 </IconButton>
                             </Paper>
-                            <Button variant="contained" size="large"  sx={{ padding: '12px 22px',boxShadow: 0, borderRadius: '12px', background: '#065EA9', textTransform: 'none', fontFamily: "Inter", fontSize: '14px', lineHeight: '24px', fontWeight: 400}}>
+                            <Button onClick={toggleModal} variant="contained" size="large"  sx={{ padding: '12px 22px',boxShadow: 0, borderRadius: '12px', background: '#065EA9', textTransform: 'none', fontFamily: "Inter", fontSize: '14px', lineHeight: '24px', fontWeight: 400}}>
                                 Сделай предложение
                             </Button>
 
@@ -154,6 +172,7 @@ const AllBooks = () => {
                     ))}
                 </div>
             </div>
+            {suggestModal && <Suggest toggleModal={toggleModal} lng={lng} t={t}/>}
         </>
     )
 }

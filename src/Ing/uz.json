@@ -324,5 +324,28 @@
     "header2": "Batafsil ma’lumot",
     "headerName": "“Vatandoshlar” Vebinari",
     "council": "Vebinar platformasi nima?"
+  },
+  "library": {
+    "library": "Kutubxona",
+    "hero_title": "Eng shinam kutubxona",
+    "main_page_header": "O‘zingizni qiziqtirgan darsni o‘rganing",
+    "search": "Qidirish",
+    "suggest": "Taklif qilih",
+    "sort_by_language": "Til bo'yicha",
+    "sort_by_genre": "Turi bo'yicha",
+    "new": "Yangiliklar",
+    "popular": "Ommabop",
+    "search_header": "Qidiruv",
+    "search_result_start": "Ushbu so'rov bilan",
+    "search_result_end": "ta kitob topildi",
+    "author": "Muallif",
+    "language": "Til",
+    "about": "Kitob haqida",
+    "read_more": "Ko'proq o'qish",
+    "about_the_book": "Kitob haqida ",
+    "for_ages": "Mo'ljallangan auditoriya",
+    "format": "Format",
+    "published_date": "Chop etilgan sanasi",
+    "ISBN13": "ISBN13"
   }
 }
