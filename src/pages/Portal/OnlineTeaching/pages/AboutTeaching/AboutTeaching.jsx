@@ -106,13 +106,15 @@ function AboutTeaching(props) {
                         id="panel1bh-header"
                         className="aboutTeaching_accordion"
                     >
-                        <Typography sx={{width: '33%', flexShrink: 0, display: 'flex'}}>
+                        <Typography sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
                             <button className="aboutTeaching_accordion_buttons">Урок 1</button>
-                            <div>Введение</div>
+                            <div className="aboutTeaching_accordion_seem">Введение</div>
                         </Typography>
-                        <Typography sx={{color: 'text.secondary'}}>2</Typography>
-                        <Typography sx={{color: 'text.secondary'}}>23:21 Min</Typography>
-                        <Typography sx={{color: 'text.secondary'}}><button>Меньше</button></Typography>
+                        <div className="aboutTeaching_accordion_second">
+                            <Typography sx={{color: 'text.secondary'}}>2</Typography>
+                            <Typography sx={{color: 'text.secondary'}}>23:21 Min</Typography>
+                            <Typography sx={{color: 'text.secondary'}}><button>Меньше</button></Typography>
+                        </div>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
