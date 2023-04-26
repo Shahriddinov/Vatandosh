@@ -2,6 +2,8 @@ import React from "react";
 import AboutTeachingHero from "../../components/AboutTeachingHero/AboutTeachingHero";
 import "./aboutTeaching.scss";
 import Done from "../../../../../assets/images/online-teaching/done.svg";
+import Play from "../../../../../assets/images/OnlineTeaching/play.svg";
+import Block from "../../../../../assets/images/OnlineTeaching/block.svg";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -99,9 +101,10 @@ function AboutTeaching(props) {
                     к тому, чтобы успешно включить в свою жизнь определенную
                     оздоровительную деятельность.
                 </div>
-                <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <div className={}></div>
+                <Accordion expanded={expanded === 'panel1'} sx={{border: '1px dashed', marginTop: '3%'}} onChange={handleChange('panel1')}>
                     <AccordionSummary
-                        expandIcon={<ExpandMoreIcon/>}
+                        // expandIcon={<ExpandMoreIcon/>}
                         aria-controls="panel1bh-content"
                         id="panel1bh-header"
                         className="aboutTeaching_accordion"
@@ -111,72 +114,69 @@ function AboutTeaching(props) {
                             <div className="aboutTeaching_accordion_seem">Введение</div>
                         </Typography>
                         <div className="aboutTeaching_accordion_second">
-                            <Typography sx={{color: 'text.secondary'}}>2</Typography>
-                            <Typography sx={{color: 'text.secondary'}}>23:21 Min</Typography>
-                            <Typography sx={{color: 'text.secondary'}}><button>Меньше</button></Typography>
+                            <Typography sx={{color: '#141619'}}>2</Typography>
+                            <Typography sx={{color: '#141619'}}>23:21 Min</Typography>
+                            <Typography ><button className="aboutTeaching_accordion_second_learn">Меньше</button></Typography>
                         </div>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
-                            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-                            Aliquam eget maximus est, id dignissim quam.
+                            <div className="aboutTeaching_accordion_lesson">
+                                <div className="aboutTeaching_accordion_lesson_play">
+                                    <img src={Play} alt=""/>
+                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
+                                </div>
+                                <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
+                            </div>
+                            <hr/>
+                            <div className="aboutTeaching_accordion_lesson">
+                                <div className="aboutTeaching_accordion_lesson_play">
+                                    <img src={Block} alt=""/>
+                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
+                                </div>
+                                <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
+                            </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                <Accordion expanded={expanded === 'panel2'} sx={{border: '1px dashed',  marginBottom:'3%'}} onChange={handleChange('panel2')}>
                     <AccordionSummary
-                        expandIcon={<ExpandMoreIcon/>}
-                        aria-controls="panel2bh-content"
-                        id="panel2bh-header"
+                        // expandIcon={<ExpandMoreIcon/>}
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
+                        className="aboutTeaching_accordion"
                     >
-                        <Typography sx={{width: '33%', flexShrink: 0}}>Users</Typography>
-                        <Typography sx={{color: 'text.secondary'}}>
-                            You are currently not an owner
+                        <Typography sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
+                            <button className="aboutTeaching_accordion_buttons">Урок 2</button>
+                            <div className="aboutTeaching_accordion_seem">Введение</div>
                         </Typography>
+                        <div className="aboutTeaching_accordion_second">
+                            <Typography sx={{color: '#141619'}}>2</Typography>
+                            <Typography sx={{color: '#141619'}}>23:21 Min</Typography>
+                            <Typography ><button className="aboutTeaching_accordion_second_learn">Более</button></Typography>
+                        </div>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
-                            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus,
-                            varius pulvinar diam eros in elit. Pellentesque convallis laoreet
-                            laoreet.
+                            <div className="aboutTeaching_accordion_lesson">
+                                <div className="aboutTeaching_accordion_lesson_play">
+                                    <img src={Play} alt=""/>
+                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
+                                </div>
+                                <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
+                            </div>
+                            <hr/>
+                            <div className="aboutTeaching_accordion_lesson">
+                                <div className="aboutTeaching_accordion_lesson_play">
+                                    <img src={Block} alt=""/>
+                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
+                                </div>
+                                <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
+                            </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon/>}
-                        aria-controls="panel3bh-content"
-                        id="panel3bh-header"
-                    >
-                        <Typography sx={{width: '33%', flexShrink: 0}}>
-                            Advanced settings
-                        </Typography>
-                        <Typography sx={{color: 'text.secondary'}}>
-                            Filtering has been entirely disabled for whole web server
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                            amet egestas eros, vitae egestas augue. Duis vel est augue.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon/>}
-                        aria-controls="panel4bh-content"
-                        id="panel4bh-header"
-                    >
-                        <Typography sx={{width: '33%', flexShrink: 0}}>Personal data</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit
-                            amet egestas eros, vitae egestas augue. Duis vel est augue.
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
+
             </div>
         </>
     );

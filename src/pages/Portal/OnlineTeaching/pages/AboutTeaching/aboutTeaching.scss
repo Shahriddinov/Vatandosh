@@ -61,7 +61,8 @@
     color: #656B70;
     padding-right: 10%;
   }
-  &_buttons{
+
+  &_buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -77,10 +78,11 @@
     margin-top: 15px;
     cursor: pointer;
 
-    &:focus{
+    &:focus {
       border: none;
     }
-    &:active{
+
+    &:active {
       border: none;
     }
   }
@@ -88,13 +90,16 @@
   .bot {
     margin: 3% 0 2%;
   }
-  &_table{
+
+  &_table {
     margin-top: 3%;
     margin-bottom: 3%;
   }
-  &_accordion{
+
+  &_accordion {
     display: flex;
-    &_buttons{
+
+    &_buttons {
       background: #E6EFF6;
       border-radius: 39px;
       display: flex;
@@ -105,22 +110,72 @@
       gap: 10px;
       outline: none;
       border: none;
-      &:active{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #065EA9;
+
+      &:active {
         border: none;
       }
     }
-    &_seem{
+
+    &_seem {
       font-weight: 400;
       font-size: 16px;
       line-height: 16px;
-      color: black;
+      color: #141619;
     }
-    &_second{
+
+    &_second {
       display: flex;
+      align-items: center;
       margin-left: 30%;
+      column-gap: 141px;
+
+      &_learn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 16px;
+        gap: 10px;
+        background: #FFFFFF;
+        border: 1px solid #BDC1C6;
+        border-radius: 8px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+      }
     }
-    .MuiAccordionSummary-expandIconWrapper{
-      display: none;
+
+    &_lesson {
+      background: #F4F5F7;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      padding: 0 18px;
+      justify-content: end;
+      align-items: center;
+      &_play{
+        display: flex;
+        width: 80%;
+        align-items: center;
+        column-gap: 20px;
+
+        &_welcome{
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+      &_min{
+        width: 26%;
+      }
     }
+
+  }
+  .css-15v22id-MuiAccordionDetails-root{
+    padding: 8px 0px 16px!important;
   }
 }
