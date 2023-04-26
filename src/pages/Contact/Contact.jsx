@@ -36,6 +36,7 @@ export default function Contact() {
 
   return (
     <>
+      {pathname.split("/")[1] === "contact" && <Header />}
       <div className="contact">
         <div className="container">
           <div className="contact-wrapper">
