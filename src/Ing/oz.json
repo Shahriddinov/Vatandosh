@@ -292,6 +292,73 @@
     "winnerprice": "Викторина ғолиби тақдирланди",
     "allwinner": "Барча ғолиблар"
   },
+  "communityAssociation": {
+    "navbar":{
+      "navbar_link1": "Aсосий",
+      "navbar_link2": "Жамоат бирлашмалари",
+      "navbar_link3": "Тадбирлар",
+      "navbar_link4": "Contact"
+    },
+    "cabinet": "Кабинет",
+    "home_title": "Ватандошлар Жамоат бирлашмалари",
+    "home_desc": "Ватандош жамоат бирлашмаларининг електрон платформаси",
+    "application": "Aриза бериш",
+    "detail": "Батафсил",  
+    "total_public_organizations": "Жами жамоат бирлашмалри",  
+    "view_all": "Ҳаммасини кўриш",  
+    "community_association_about_title": "Жамоат бирлашмалари ҳақида",
+    "all_states": "Барча давлатлар",
+    "add_news": "Янгиликлар қўшиш",
+    "input_title": "Сарлавҳа",
+    "title_input_plack": "Киритинг",
+    "desc_input": "Янгилик ҳақида маълумот",
+    "desc_textarea_plack": "Изоҳ",
+    "vide_input": "Видео",
+    "vide_input_plack": "Видео ҳаволаси",
+    "upload_image": "Расмлар юкланг",
+    "delete": "Ўчириш",
+    "cancel": "Бекор қилиш",
+    "send": "Юбориш",
+    "menu1_info": {
+      "menu1_title": "Birlashma ma’lumotilari",
+      "input1_name": "Ташкилот номи",
+      "input2_name": "Давлат органида рўйхатдан ўтганлик тўғрисидаги гувоҳнома",
+      "input2_placeholder": "Файл юклаш",
+      "input3_name": "Ташкилот логотипи (юклаб олиш)",
+      "next": "Кейинги"
+    },
+    "menu2_info": {
+      "menu2_title": "Бирлашма маълумотилари",
+      "input2_name": "Ташкилот ҳақида маълумот",
+      "input3_name": "Ташкилот учун фотосуратлар (юклаб олиш)"
+    },
+    "menu3_info": {
+      "menu3_title": "Раҳбари",
+      "input1_name": "Раҳбарнинг сурати юкланг",
+      "input1_desc": "Яхши сифатли, JPG форматида, оқ ёки кўк фонда",
+      "input2_name": "Ташкилот директори",
+      "input2_placeholder": "Тўлиқ исми Шариф"
+    },
+    "menu4_info": {
+      "menu4_title": "Ташкилот фаолияти",
+      "input1_name": "Ташкилот ташкил етилган сана",
+      "input2_name": "Date of establishment of the organization",
+      "input3_name": "Ташкилот аъзолари сони",
+      "input4_name": "Aсосий ютуқлар"
+    },
+    "menu5_info": {
+      "menu5_title": "Манзил",
+      "input1_name": "Давлат",
+      "input1_desc": "Танланг",
+      "input2_name": "Шаҳар",
+      "input3_name": "Телефон рақами",
+      "input4_name": "Електрон почта",
+      "input5_name": "Юридик манзили",
+      "input6_name": "Веб-сайт ва бошқа расмий саҳифалар",
+      "input7_name": "Маълумотларни сақлаш ва қайта ишлашга розилик",
+      "save": "Сақлаш"
+    }
+  },
   "voluntery": {
     "headertitle": "“Ватандошлар” Волонтёрлар",
     "headertext": "Ватандош волонтёрлар электрон платформаси",
