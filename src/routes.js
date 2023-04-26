@@ -499,10 +499,10 @@ const RoutesContainer = () => {
               element={<ElectronicJournalLayout />}
             >
               <Route index element={<ElectronicJournalHome />} />
-              <Route
-                path="/portal-category/electronic-journal/about"
-                element={<ElectronicJournalAbout />}
-              />
+              <Route path="about" element={<ElectronicJournalAbout />} />
+              <Route path="new-number" element={<NewNumber />} />
+              <Route path="archive" element={<ElectronArchive />} />
+              <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
 
