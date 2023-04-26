@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   recoverPassword,
+  registerUser,
   resetPassword,
   sendEmail,
   setPassword,
@@ -14,6 +15,8 @@ const initialState = {
   passwordLoading: true,
   loginLoading: true,
   resetLoading: false,
+  registerLoading: false,
+  registerData: null,
   userData: null,
   token: localStorage.getItem("token"),
   message: "",
@@ -83,13 +86,13 @@ const authSlice = createSlice({
     build
       .addCase(signIn.pending, (state) => {
         state.loginLoading = true;
+        state.error = null;
       })
       .addCase(signIn.fulfilled, (state, action) => {
         state.loginLoading = false;
         state.token = action.payload.token;
         if (action.payload.message) {
           state.error = action.payload.message;
-          alert(action.payload.message);
         } else {
           state.userData = action.payload.user;
           localStorage.setItem("token", action.payload.token);
@@ -138,6 +141,21 @@ const authSlice = createSlice({
       })
       .addCase(recoverPassword.rejected, (state, action) => {
         state.resetLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Register User
+    build
+      .addCase(registerUser.pending, (state) => {
+        state.registerLoading = true;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.registerLoading = false;
+        state.registerData = action.payload;
+        console.log(action.payload);
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.registerLoading = false;
         state.error = action.error.message;
       });
   },

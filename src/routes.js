@@ -1,5 +1,10 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { lazy } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
 import ExpertLayout from "./pages/Portal/expert/ExpertLayout";
@@ -336,14 +341,14 @@ const RoutesContainer = () => {
               <>
                 <Route path="/registration/register" element={<Register />} />
                 <Route path="/portal/cabinet" element={<Cabinet />} />
-                {/*<Route*/}
-                {/*  path="/registration/set-password"*/}
-                {/*  element={<Navigate to="/registration/register" />}*/}
-                {/*/>*/}
-                {/*<Route*/}
-                {/*  path="/registration/signin"*/}
-                {/*  element={<Navigate to="/portal/cabinet" />}*/}
-                {/*/>*/}
+                <Route
+                  path="/registration/set-password"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signin"
+                  element={<Navigate to="/portal/cabinet" />}
+                />
               </>
             ) : (
               <>
@@ -371,7 +376,7 @@ const RoutesContainer = () => {
                 />
                 <Route
                   path="/portal/cabinet"
-                  // element={<Navigate to="/portal" />}
+                  element={<Navigate to="/portal" />}
                 />
               </>
             )}
@@ -435,6 +440,8 @@ const RoutesContainer = () => {
               <Route path="webinar-events" element={<WebinarEvents />} />
               <Route path="webinar-contact" element={<Contact />} />
             </Route>
+            <Route path="/webinar/register" element={<WebinarRegister />} />
+            <Route path="/online-webinar" element={<OnlineWebinar />} />
 
             <Route
               path="/portal-category/online-teaching"
