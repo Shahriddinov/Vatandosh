@@ -1,13 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import Header from "./components/Header";
+import AboutUzbekistanHeader from "./components/aboutUzbekistanHeader/AboutUzbekistanHeader";
+import AboutUzbekistanNavbar from "./components/aboutUzbekistanNavbar/AboutUzbekistanNavbar";
 import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
 
 const AboutUzbekistan = () => {
   return (
     <div>
-      <Header />
+      <AboutUzbekistanHeader />
+      <AboutUzbekistanNavbar />
       <Outlet />
       <OnlineTeachingFooter />
     </div>

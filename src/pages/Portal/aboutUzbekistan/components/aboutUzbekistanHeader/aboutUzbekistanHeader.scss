@@ -1,17 +1,18 @@
-@import "../../../../assets/style/global.scss";
+@import "../../../../../assets/style/global.scss";
 
 .about-uzbekistan-header {
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eaedf6;
   background: #fff;
 
   &__navbar {
     display: flex;
     align-items: center;
     gap: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eaedf6;
 
     & > a {
       display: flex;
