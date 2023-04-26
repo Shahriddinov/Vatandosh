@@ -31,7 +31,11 @@ const HomePage = () => {
       label: t("electronBook"),
       url: "/portal-category/electronic-journal",
     },
-    { id: 8, label: t("aboutUzbekistan"), url: "/portal-category/victorina" },
+    {
+      id: 8,
+      label: t("aboutUzbekistan"),
+      url: "/portal-category/about-uzbekistan",
+    },
     {
       id: 9,
       label: t("participationProject"),
