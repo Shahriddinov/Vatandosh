@@ -284,6 +284,16 @@ const PassTheTest = lazy(() =>
   import("./pages/Portal/OnlineTeaching/pages/PassTheTest/PassTheTest")
 );
 
+const AboutUzbekistanLayout = lazy(() =>
+  import("./pages/Portal/aboutUzbekistan/AboutUzbekistanLayout")
+);
+
+const AboutUzbekistanHome = lazy(() =>
+  import(
+    "./pages/Portal/aboutUzbekistan/pages/aboutUzbekistanHome/AboutUzbekistanHome"
+  )
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -380,6 +390,7 @@ const RoutesContainer = () => {
                 />
               </>
             )}
+
             <Route path="/portal-category/expert" element={<ExpertLayout />}>
               <Route index element={<ExpertCouncil />} />
               <Route path="council-about" element={<AboutCouncil />} />
@@ -494,6 +505,14 @@ const RoutesContainer = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
+
+            <Route
+              path="/portal-category/about-uzbekistan"
+              element={<AboutUzbekistanLayout />}
+            >
+              <Route index element={<AboutUzbekistanHome />} />
+            </Route>
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
