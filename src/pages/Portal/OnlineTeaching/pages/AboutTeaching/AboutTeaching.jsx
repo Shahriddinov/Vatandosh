@@ -12,8 +12,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.common.black,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -30,16 +30,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, Главы, Длительность, Carbs) {
+  return { name, Главы, Длительность, Carbs  };
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Frozen yoghurt', 159, 6.0, <div className="button">Milk</div>),
+  createData('Ice cream sandwich', 237, 9.0,  <div className="button">Milk</div>),
+  createData('Eclair', 262, 16.0,  <div className="button">Milk</div>),
+  createData('Cupcake', 305, 3.7,  <div className="button">Milk</div>),
+  createData('Gingerbread', 356, 16.0,  <div className="button">Milk</div>),
 ];
 function AboutTeaching(props) {
   return (
@@ -127,15 +127,15 @@ function AboutTeaching(props) {
           к тому, чтобы успешно включить в свою жизнь определенную
           оздоровительную деятельность.
         </div>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="aboutTeaching_table">
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                <StyledTableCell align="right">Calories</StyledTableCell>
-                <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+                <StyledTableCell>Lessons</StyledTableCell>
+                <StyledTableCell align="right">Главы</StyledTableCell>
+                <StyledTableCell align="right">Длительность</StyledTableCell>
                 <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                {/*<StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>*/}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -144,10 +144,10 @@ function AboutTeaching(props) {
                     <StyledTableCell component="th" scope="row">
                       {row.name}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                    <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                    <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                    <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                    <StyledTableCell align="right">{row.Главы}</StyledTableCell>
+                    <StyledTableCell align="right">{row.Длительность}</StyledTableCell>
+                    <StyledTableCell align="right">{row.Carbs}</StyledTableCell>
+                    {/*<StyledTableCell align="right">{row.protein}</StyledTableCell>*/}
                   </StyledTableRow>
               ))}
             </TableBody>
