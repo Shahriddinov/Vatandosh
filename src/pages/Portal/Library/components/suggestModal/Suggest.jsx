@@ -38,7 +38,7 @@ const Suggest = (props) => {
   return (
     <div className="black__overlay">
         <div className="participate__modal">
-            <h2>{t("projects_page.form_title")}</h2>
+            <h2>{t("library.suggest")}</h2>
             <form action="" method='post' autoComplete="off" onSubmit={handleSubmit}>
                 <TextField 
                     id="outlined-basic" 
@@ -72,7 +72,7 @@ const Suggest = (props) => {
                 />
                 <TextField 
                         id="outlined-multiline-flexible"
-                        label={t("projects_page.form_about")}  
+                        label={t("library.about_the_book")}  
                         variant="outlined" 
                         name="aboutParticipant"
                         value={formData.aboutParticipant}

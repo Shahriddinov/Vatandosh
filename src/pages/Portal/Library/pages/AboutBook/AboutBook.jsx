@@ -1,5 +1,7 @@
 import React from 'react'
 import './aboutBook.scss'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 
 import FullStar from '../../../../../assets/images/library/fullStar.svg'
 import EmptyStar from '../../../../../assets/images/library/emptyStar.svg'
@@ -12,6 +14,9 @@ import Book4 from '../../../../../assets/images/library/paulo.png'
 import BookCard from '../../components/BookCard/BookCard'
 
 const AboutBook = () => {
+
+    const lng = useSelector((state) => state.language.language);
+    const { t } = useTranslation();
 
     const rating = 4
     const ratingCount = 421
@@ -78,25 +83,25 @@ const AboutBook = () => {
                             {stars}
                             <span>({ratingCount})</span>
                         </div>
-                        <h3>Author: <span>Falonchi</span></h3>
-                        <h3>Language: <span>Falonchi</span></h3>
+                        <h3>{t("library.author")}: <span>Falonchi</span></h3>
+                        <h3>{t("library.language")}: <span>Falonchi</span></h3>
                         <Button variant="contained" size="large"  sx={{ width: "max-content", padding: '12px 22px', margin: "8px 0", boxShadow: 0, borderRadius: '12px', background: '#065EA9', textTransform: 'none', fontFamily: "Inter", fontSize: '14px', lineHeight: '24px', fontWeight: 400}}>
-                            Сделай предложение
+                            {t("library.read_online")}
                         </Button>
-                        <h3>About the book</h3>
+                        <h3>{t("library.about")}</h3>
                         <p className='description__text'>Based on an original new story by J.K. Rowling, Jack Thorne and John Tiffany, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play will receive its world premiere in London’s West End on 30th July 2016. It was always difficult being Harry Potter and it isn’t much easier now that he is an overworked employee of the Ministry of Magic, a husband, and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he </p>
-                        <span className='description__more'>Read more</span>
+                        <span className='description__more'>{t("library.read_more")}</span>
                     </div>
                 </div>
                 <div className="book__details">
-                    <h2>О деталях книги</h2>
+                    <h2>{t("library.about_the_book")}</h2>
                     <div className="horizontal__line"/>
                     <div className="details__row">
                         <ul>
-                            <li>For ages: <span>9 years or older</span></li>
-                            <li>Format: <span>Hard cover</span></li>
-                            <li>Published date: <span>January 1, 1998</span></li>
-                            <li>Language: <span>English</span></li>
+                            <li>{t("library.for_ages")}: <span>9 years or older</span></li>
+                            <li>{t("library.format")}: <span>Hard cover</span></li>
+                            <li>{t("library.published_date")}: <span>January 1, 1998</span></li>
+                            <li>{t("library.language")}: <span>English</span></li>
                         </ul>
                         <ul>
                             <li>For ages: <span>9 years or older</span></li>
@@ -107,7 +112,7 @@ const AboutBook = () => {
                     </div>
                 </div>
                 <div className="recommended__books">
-                    <h1>Sizni qiziqtirishi mumkin</h1>
+                    <h1>{t("library.suggestions")}</h1>
                     <div className="books__row">
                         {books.map((book) => (
                             <BookCard {...book}/>

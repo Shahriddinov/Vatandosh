@@ -20,28 +20,15 @@ import Book1 from '../../../../../assets/images/library/ken.png'
 import Book2 from '../../../../../assets/images/library/agata.png'
 import Book3 from '../../../../../assets/images/library/jeyn.png'
 import Book4 from '../../../../../assets/images/library/paulo.png'
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 const SearchBooks = () => {
 
-    const [activeSort, setActiveSort] = useState('new')
+    const lng = useSelector((state) => state.language.language);
+    const { t } = useTranslation();
 
-    const sliderData = [
-        {
-            id: 1,
-            image: HeroImage,
-            text: "Cамая уютная онлайн библиотека"
-        },
-        {
-            id: 2,
-            image: HeroImage1,
-            text: "Eng shinam kutubxona"
-        },
-        {
-            id: 3,
-            image: HeroImage2,
-            text: "Most comfy library"
-        },
-    ]
+    const [activeSort, setActiveSort] = useState('new')
 
     const books = [
         {
@@ -82,7 +69,7 @@ const SearchBooks = () => {
         <>
             <div className="all__books__container container">
                 <div className="all__books__search">
-                    <h2>Поиск</h2>
+                    <h2>{t("library.search_header")}</h2>
                     <div className="all__books__row">
                         <div className="all__books__search__input">
                             <Paper
@@ -91,14 +78,13 @@ const SearchBooks = () => {
                                 >
                                 <InputBase
                                     sx={{ ml: 1, flex: 1, fontFamily: "Inter", fontSize: '14px', fontWeight: 400, color: '#656B70'}}
-                                    placeholder="Поиск"
-                                    inputProps={{ 'aria-label': 'Поиск' }}
+                                    placeholder={t("library.search")}
+                                    inputProps={{ 'aria-label': t("library.search") }}
                                 />
                                 <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
                                     <CiSearch color='#065EA9' size={24}/>
                                 </IconButton>
                             </Paper>
-
                         </div>
                         <div className="all__books__filter">
                             <FormControl sx={{ minWidth: 180, height: 48 }}>
@@ -110,11 +96,11 @@ const SearchBooks = () => {
                                     sx={{fontFamily: "Inter", fontSize: '14px', fontWeight: 400, color: '#656B70', borderRadius: '12px', boxShadow: 0}}
                                     >
                                     <MenuItem value="">
-                                        По языку
+                                        {t("library.sort_by_language")}
                                     </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value={10}>English</MenuItem>
+                                    <MenuItem value={20}>O'zbek</MenuItem>
+                                    <MenuItem value={30}>Русский</MenuItem>
                                 </Select>
                             </FormControl>
                             <FormControl sx={{ minWidth: 180, height: 48 }}>
@@ -126,19 +112,19 @@ const SearchBooks = () => {
                                     sx={{fontFamily: "Inter", fontSize: '14px', fontWeight: 400, color: '#656B70', borderRadius: '12px', boxShadow: 0}}
                                     >
                                     <MenuItem value="">
-                                        По типу
+                                        {t("library.sort_by_genre")}
                                     </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value={10}>Criminal</MenuItem>
+                                    <MenuItem value={20}>Romance</MenuItem>
+                                    <MenuItem value={30}>Satiric</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
                     </div>
                     <div className="all__books__sort">
                         <ul>
-                            <li className={activeSort === 'new' ? 'active' : '' } onClick={() => setActiveSort('new')}>Новинки</li>
-                            <li className={activeSort === 'popular' ? 'active' : ''} onClick={() => setActiveSort('popular')}>Популяреое</li>
+                            <li className={activeSort === 'new' ? 'active' : '' } onClick={() => setActiveSort('new')}>{t("library.new")}</li>
+                            <li className={activeSort === 'popular' ? 'active' : ''} onClick={() => setActiveSort('popular')}>{t("library.popular")}</li>
                         </ul>
                     </div>
                 </div>

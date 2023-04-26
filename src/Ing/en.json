@@ -292,6 +292,74 @@
     "winnerprice": "Winner of the quiz awarded",
     "allwinner": "All winners"
   },
+  "communityAssociation": {
+    "navbar":{
+      "navbar_link1": "Home",
+      "navbar_link2": "Public associations",
+      "navbar_link3": "Events",
+      "navbar_link4": "Contact"
+    },
+    "cabinet": "Cabinet",
+    "home_title": "Compatriots Public Associations",
+    "home_desc": "Electronic platform of compatriot public associations",
+    "application": "Submit an application",
+    "detail": "Detail",  
+    "total_public_organizations": "Total public organizations",  
+    "view_all": "View all",  
+    "community_association_about_title": "About public associations",
+    "all_states": "All states",
+    "add_news": "Add news",
+    "input_title": "Title",
+    "title_input_plack": "Enter",
+    "desc_input": "News information",
+    "desc_textarea_plack": "Comment",
+    "vide_input": "Video",
+    "vide_input_plack": "Video link",
+    "upload_image": "Upload images",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "send": "Send",
+    "menu1_info": {
+      "menu1_title": "association information",
+      "input1_name": "Organization name",
+      "input2_name": "Certificate of registration with the state body",
+      "input2_placeholder": "Upload file",
+      "input3_name": "Organization logo (download)",
+      "next": "Next"
+    },
+    "menu2_info": {
+      "menu2_title": "About the organization",
+      "input2_name": "Organization information",
+      "input2_placeholder": "Comment",
+      "inpu3_name": "Photos for the organization (download)"
+    },
+    "menu3_info": {
+      "menu3_title": "Director",
+      "input1_name": "Upload a picture of the director",
+      "input1_desc": "In good quality, in JPG format, on a white or blue background",
+      "input2_name": "Director of the organization",
+      "input2_placeholder": "Full name-Sheriff"
+    },
+    "menu4_info": {
+      "menu4_title": "Activities of the organization",
+      "input1_name": "Charter activities of the organization",
+      "input2_name": "Date of establishment of the organization",
+      "input3_name": "The number of members of the organization",
+      "input4_name": "Main achievements"
+    },
+    "menu5_info": {
+      "menu5_title": "Address",
+      "input1_name": "State",
+      "input1_desc": "Select",
+      "input2_name": "City",
+      "input3_name": "Phone number",
+      "input4_name": "Email",
+      "input5_name": "Legal address",
+      "input6_name": "Website and other official pages",
+      "input7_name": "Consent to data storage and processing",
+      "save": "Save"
+    }
+  },
   "voluntery": {
     "headertitle": "“Compatriots” Volunteers",
     "headertext": "Electronic platform of compatriot volunteers",
@@ -337,6 +405,8 @@
     "for_ages": "For ages",
     "format": "Format",
     "published_date": "Published date",
-    "ISBN13": "ISBN13"
+    "ISBN13": "ISBN13",
+    "suggestions": "You may be interested",
+    "read_online": "Read online"
   }
 }
