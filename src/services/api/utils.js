@@ -38,6 +38,7 @@ export const SET_PASSWORD = `${authUrl}/set-password`;
 export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
+export const REGISTER = `${authUrl}/register`;
 
 // Update requests
 

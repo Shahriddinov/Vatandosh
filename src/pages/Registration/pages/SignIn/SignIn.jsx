@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import { signIn } from "../../../../reduxToolkit/authSlice/extraReducer";
 
@@ -14,23 +17,50 @@ import "./SignIn.scss";
 
 export default function SignIn() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const error = useSelector((state) => state.authSlice.error);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(userData));
   };
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, [error]);
+
   return (
     <div className="auth">
       <div className="container">
         <div className="auth-wrapper">
           <div className="auth-desc">
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
             <h2 className="auth-desc-title">
               Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
             </h2>

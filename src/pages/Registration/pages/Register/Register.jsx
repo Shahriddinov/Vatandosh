@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Spinner from "../../../../component/Spinner/Spinner";
 
 import "../../../../assets/style/global.scss";
 import "./register.scss";
@@ -24,52 +27,50 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
+import { registerUser } from "../../../../reduxToolkit/authSlice/extraReducer";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const countries = [
-    "AQSH",
-    "Avstraliya",
-    "BAA",
-    "Daniya",
-    "Estoniya",
-    "Ekvador",
-    "Finlandiya",
-    "Italya",
-    "Ispaniya",
-    "Latviya",
-    "Mongoliya",
-    "Namimbiya",
-    "Portugaliya",
-    "Saudiya Arabistoni",
-    "Ummon",
-    "Vengriya",
-    "Xorvatiya",
-    "",
+    { id: 1, label: "AQSH" },
+    { id: 2, label: "Avstraliya" },
+    { id: 3, label: "BAA" },
+    { id: 4, label: "Daniya" },
+    { id: 5, label: "Ekvador" },
+    { id: 6, label: "Finlandiya" },
+    { id: 7, label: "Italya" },
+    { id: 8, label: "Ispaniya" },
+    { id: 9, label: "Latviya" },
+    { id: 10, label: "Mongoliya" },
+    { id: 11, label: "Namimbiya" },
+    { id: 12, label: "Portugaliya" },
+    { id: 13, label: "Saudiya Arabistoni" },
+    { id: 14, label: "Ummon" },
+    { id: 15, label: "Vengriya" },
+    { id: 16, label: "Xorvatiya" },
   ];
 
+  const [agree, setAgree] = useState(false);
   const [formData, setFormData] = useState({
-    profilePhoto: DefaultProfilePic,
-    familyName: "",
-    firstName: "",
-    middleName: "",
-    dateBorn: "",
-    nationality: "",
+    avatar_url: DefaultProfilePic,
+    first_name: "",
+    second_name: "",
+    last_name: "",
+    birth_date: "",
+    additional_info: "",
     gender: "",
     address: "",
-    livingCountry: "",
-    job: "",
-    jobAddress: "",
-    phoneNumber: "",
-    passportCopy: null,
-    agree: false,
+    location_id: null,
+    job_position: "",
+    achievements: "",
+    hobbies: "",
+    passport_file: null,
   });
 
-  useEffect(() => {
-    const svgElements = document.querySelectorAll(".MuiSvgIcon-root");
-  }, []);
-
   const [modal, setModal] = useState(false);
-  const [disableTyping, setDisableTyping] = useState(false);
+  const loading = useSelector((state) => state.authSlice.registerLoading);
+  const registerData = useSelector((state) => state.authSlice.registerData);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -77,7 +78,6 @@ const Register = () => {
 
   const fileInputRef = useRef(null);
   const photoInputRef = useRef(null);
-  const countrySelectorRef = useRef(null);
 
   const handleUploadButtonClick = () => {
     fileInputRef.current.click();
@@ -91,7 +91,7 @@ const Register = () => {
     const selectedFile = event.target.files[0];
     setFormData((prevFormData) => ({
       ...prevFormData,
-      profilePhoto: URL.createObjectURL(selectedFile),
+      avatar_url: URL.createObjectURL(selectedFile),
     }));
   };
 
@@ -99,22 +99,19 @@ const Register = () => {
     const selectedFile = fileInputRef.current.files[0];
     setFormData((prevFormData) => ({
       ...prevFormData,
-      passportCopy: selectedFile,
+      passport_file: selectedFile,
     }));
   };
 
   const handleFileRemove = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      passportCopy: null,
+      passport_file: null,
     }));
   };
 
   const handleCheckbox = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      agree: !formData.agree,
-    }));
+    setAgree(!agree);
   };
 
   const handleInputChange = (event) => {
@@ -127,7 +124,15 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(registerUser(formData));
+    console.log(formData);
   };
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
+  console.log(registerData);
 
   return (
     <div className="container position__relative register__wrapper">
@@ -150,22 +155,21 @@ const Register = () => {
         <form
           autoComplete="off"
           method="post"
-          action=""
           className="form"
           onSubmit={handleSubmit}
         >
           <div className="profile__photo" onClick={handlePhotoUploadClick}>
             <div className="profile__img">
               <img
-                src={formData.profilePhoto}
-                alt=""
+                src={formData.avatar_url}
+                alt="user picture"
                 className={
-                  formData.profilePhoto === DefaultProfilePic ? "" : "width100"
+                  formData.avatar_url === DefaultProfilePic ? "" : "width100"
                 }
               />
             </div>
             <div className="upload__photo">
-              <img src={CameraIcon} alt="" />
+              <img src={CameraIcon} alt="camera icon" />
               <input
                 className="input__file"
                 ref={photoInputRef}
@@ -182,37 +186,39 @@ const Register = () => {
               <TextField
                 required
                 id="outlined-basic"
-                name="familyName"
+                name="last_name"
                 label="Familiyasi"
                 variant="outlined"
-                value={formData.familyName}
+                value={formData.last_name}
                 onChange={handleInputChange}
               />
               <TextField
+                required
                 id="outlined-basic"
-                name="firstName"
+                name="first_name"
                 label="Ismi"
                 variant="outlined"
-                value={formData.firstName}
+                value={formData.first_name}
                 onChange={handleInputChange}
               />
               <TextField
+                required
                 id="outlined-basic"
-                name="middleName"
+                name="second_name"
                 label="Otasining ismi"
                 variant="outlined"
-                value={formData.middleName}
+                value={formData.second_name}
                 onChange={handleInputChange}
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="Tug'ilgan sana"
                   id="dateBorn"
-                  value={formData.dateBorn}
+                  value={formData.birth_date}
                   onChange={(date) => {
                     setFormData((prevFormData) => ({
                       ...prevFormData,
-                      dateBorn: date,
+                      birth_date: date,
                     }));
                   }}
                 />
@@ -220,11 +226,12 @@ const Register = () => {
               <FormControl>
                 <InputLabel id="demo-simple-select-label">Millati</InputLabel>
                 <Select
+                  required
                   label="Millati"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  name="nationality"
-                  value={formData.nationality}
+                  name="additional_info"
+                  value={formData.additional_info}
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
@@ -238,6 +245,7 @@ const Register = () => {
               <FormControl>
                 <InputLabel id="demo-simple-select-label">Jinsi</InputLabel>
                 <Select
+                  required
                   label="Jinsi"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -251,6 +259,7 @@ const Register = () => {
                 </Select>
               </FormControl>
               <TextField
+                required
                 id="outlined-basic"
                 label="O'zbekistondagi manzilingiz"
                 variant="outlined"
@@ -259,14 +268,14 @@ const Register = () => {
                 onChange={handleInputChange}
               />
               <Autocomplete
+                required
                 disablePortal
-                id="combo-box-demo"
+                id={formData.location_id}
                 options={countries}
-                value={formData.livingCountry}
                 onChange={(event, value) => {
                   setFormData((prevFormData) => ({
                     ...prevFormData,
-                    livingCountry: value,
+                    location_id: value.id,
                   }));
                 }}
                 renderInput={(params) => (
@@ -274,37 +283,39 @@ const Register = () => {
                 )}
               />
               <TextField
+                required
                 id="outlined-basic"
                 label="Faoliyat turi"
                 variant="outlined"
-                name="job"
-                value={formData.job}
+                name="job_position"
+                value={formData.job_position}
                 onChange={handleInputChange}
               />
               <TextField
+                required
                 id="outlined-basic"
                 label="Manzil"
                 variant="outlined"
-                name="jobAddress"
-                value={formData.jobAddress}
+                name="achievements"
+                value={formData.achievements}
                 onChange={handleInputChange}
-                required
               />
               <TextField
+                required
                 id="outlined-basic"
                 label="Telefon raqamingiz"
                 variant="outlined"
-                name="phoneNumber"
-                value={formData.phoneNumber}
+                name="hobbies"
+                value={formData.hobbies}
                 InputProps={{
                   inputComponent: PhoneInput,
                   inputProps: {
                     defaultCountry: "US",
-                    value: formData.phoneNumber,
+                    value: formData.hobbies,
                     onChange: (value) => {
                       setFormData((prevFormData) => ({
                         ...prevFormData,
-                        phoneNumber: value,
+                        hobbies: value,
                       }));
                     },
                   },
@@ -312,18 +323,21 @@ const Register = () => {
                 autoComplete="off"
               />
               <TextField
+                required
                 label="Pasportingiz nusxasini joylang"
-                value={formData.passportCopy ? formData.passportCopy.name : ""}
+                value={
+                  formData.passport_file ? formData.passport_file.name : ""
+                }
                 InputProps={{
                   endAdornment: (
                     <IconButton
                       onClick={
-                        !formData.passportCopy
+                        !formData.passport_file
                           ? handleUploadButtonClick
                           : handleFileRemove
                       }
                     >
-                      {!formData.passportCopy ? (
+                      {!formData.passport_file ? (
                         <UploadFileIcon />
                       ) : (
                         <DeleteIcon />
@@ -345,7 +359,7 @@ const Register = () => {
             </div>
             <div className="termsCheck">
               <div className="checkbox" onClick={handleCheckbox}>
-                {formData.agree ? (
+                {agree ? (
                   <div className="checked">
                     <img src={Checkmark} alt="" />
                   </div>
@@ -360,7 +374,7 @@ const Register = () => {
                 roziman
               </p>
             </div>
-            <button className="submit" type="submit">
+            <button className={`submit ${agree ? "active" : ""}`} type="submit">
               Saqlash
             </button>
           </div>

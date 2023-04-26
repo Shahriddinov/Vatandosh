@@ -27,6 +27,7 @@ const Layout = ({ children }) => {
   const FooterComponent = () => {
     if (registerHeader.includes("portal")) return null;
     else if (registerHeader.includes("portal-category")) return null;
+    else if (pathname.split("/")[2] === "register") return null;
     else if (registerHeader.includes("registration")) return <RegisterFooter />;
     else return <Footer />;
   };

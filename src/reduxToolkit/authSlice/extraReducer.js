@@ -3,11 +3,15 @@ import axios from "axios";
 
 import {
   LOGIN,
+  REGISTER,
   RESET_PASSWORD,
   SEND_EMAIL,
   SET_PASSWORD,
   VERIFY_TOKEN,
 } from "../../services/api/utils";
+
+const token = localStorage.getItem("token");
+console.log(token);
 
 // Sign Up
 export const sendEmail = createAsyncThunk(
@@ -75,6 +79,21 @@ export const recoverPassword = createAsyncThunk(
       .post(SET_PASSWORD, payload, {
         headers: {
           "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.data);
+  }
+);
+
+// Register User
+export const registerUser = createAsyncThunk(
+  "registerUser",
+  async (payload) => {
+    return await axios
+      .post(REGISTER, payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => res.data);
