@@ -315,5 +315,28 @@
     "header2": "To learn more",
     "headerName": "“Compatriots” Webinar",
     "council": "What is a webinar platform?"
+  },
+  "library": {
+    "library": "Library",
+    "hero_title": "Most comfy library",
+    "main_page_header": "Find the book of your interests",
+    "search": "Search",
+    "suggest": "Suggest a book",
+    "sort_by_language": "By language",
+    "sort_by_genre": "by genre",
+    "new": "New",
+    "popular": "Popular",
+    "search_header": "Search",
+    "search_result_start": "Found",
+    "search_result_end": "book(s)",
+    "author": "Author",
+    "language": "Language",
+    "about": "About",
+    "read_more": "Read more",
+    "about_the_book": "About the book ",
+    "for_ages": "For ages",
+    "format": "Format",
+    "published_date": "Published date",
+    "ISBN13": "ISBN13"
   }
 }

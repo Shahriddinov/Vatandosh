@@ -315,5 +315,28 @@
     "header2": "Узнать больше",
     "headerName": "“Cоотечественники” Вебинар",
     "council": "Что такое вебинарная платформа?"
+  },
+  "library": {
+    "library": "Библиотека",
+    "hero_title": "Самая уютная библиотека",
+    "main_page_header": "Найдите книгу, которая вас интересует",
+    "search": "Поиск",
+    "suggest": "Сделать предложение",
+    "sort_by_language": "По языку",
+    "sort_by_genre": "По типу",
+    "new": "Новый",
+    "popular": "Популярный",
+    "search_header": "Поиск",
+    "search_result_start": "По этому запросу найдено",
+    "search_result_end": "книг",
+    "author": "Автор",
+    "language": "Язык",
+    "about": "О книге",
+    "read_more": "Читать дальше",
+    "about_the_book": "О книге",
+    "for_ages": "Целевая аудитория",
+    "format": "Формат",
+    "published_date": "Дата публикации",
+    "ISBN13": "ISBN13"
   }
 }
