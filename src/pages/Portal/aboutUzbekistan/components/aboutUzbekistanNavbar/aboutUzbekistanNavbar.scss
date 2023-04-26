@@ -1,0 +1,21 @@
+.about-uzbekistan-navbar {
+  &__menu-items {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+  }
+
+  &__menu-item {
+    a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #5d6b8a;
+    }
+
+    &.active {
+      a {
+        color: #065ea9;
+      }
+    }
+  }
+}

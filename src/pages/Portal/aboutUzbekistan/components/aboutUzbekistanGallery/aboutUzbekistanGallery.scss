@@ -1,0 +1,35 @@
+.about-uzbekistan-gallery {
+  width: 100%;
+  padding: 20px 0;
+
+  &__images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__large,
+  &__middle,
+  &__small,
+  &__extra-small {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  &__large {
+    flex: 6;
+  }
+
+  &__middle {
+    flex: 5;
+  }
+
+  &__small {
+    flex: 4;
+  }
+
+  &__extra-small {
+    flex: 3;
+  }
+}
