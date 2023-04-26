@@ -337,6 +337,8 @@
     "for_ages": "Целевая аудитория",
     "format": "Формат",
     "published_date": "Дата публикации",
-    "ISBN13": "ISBN13"
+    "ISBN13": "ISBN13",
+    "suggestions": "Вам может быть интересно",
+    "read_online": "Читать онлайн"
   }
 }

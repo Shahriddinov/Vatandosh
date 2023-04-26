@@ -330,7 +330,7 @@
     "hero_title": "Eng shinam kutubxona",
     "main_page_header": "O‘zingizni qiziqtirgan darsni o‘rganing",
     "search": "Qidirish",
-    "suggest": "Taklif qilih",
+    "suggest": "Taklif qilish",
     "sort_by_language": "Til bo'yicha",
     "sort_by_genre": "Turi bo'yicha",
     "new": "Yangiliklar",
@@ -346,6 +346,8 @@
     "for_ages": "Mo'ljallangan auditoriya",
     "format": "Format",
     "published_date": "Chop etilgan sanasi",
-    "ISBN13": "ISBN13"
+    "ISBN13": "ISBN13",
+    "suggestions": "Sizni qiziqtirishi mumkin",
+    "read_online": "Onlayn o'qish"
   }
 }

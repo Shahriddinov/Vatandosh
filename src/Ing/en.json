@@ -337,6 +337,8 @@
     "for_ages": "For ages",
     "format": "Format",
     "published_date": "Published date",
-    "ISBN13": "ISBN13"
+    "ISBN13": "ISBN13",
+    "suggestions": "You may be interested",
+    "read_online": "Read online"
   }
 }

@@ -325,7 +325,7 @@
     "sort_by_language": "Тил бўйича",
     "sort_by_genre": "Тури бўйича",
     "new": "Янгиликлар",
-    "popular": "Ommabop",
+    "popular": "Оммабоп",
     "search_header": "Қидирув",
     "search_result_start": "Ушбу сўров билан",
     "search_result_end": "та китоб топилди",
@@ -337,6 +337,8 @@
     "for_ages": "Мўлжалланган аудитория",
     "format": "Формат",
     "published_date": "Чоп этилган санаси",
-    "ISBN13": "ISBN13"
+    "ISBN13": "ISBN13",
+    "suggestions": "Сизни қизиқтириши мумкин",
+    "read_online": "Онлайн ўқиш"
   }
 }
