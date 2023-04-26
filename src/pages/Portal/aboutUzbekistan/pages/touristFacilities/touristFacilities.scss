@@ -1,0 +1,112 @@
+.active_li {
+    background-color: #065EA9 !important;
+    color: #FFFFFF !important;
+    border-color: #065EA9 !important;
+}
+
+.facilities {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin: 60px auto;
+
+    &_hero {
+        padding: 195px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background:url('../../../../../assets/images/tourist-facilities/charvak.png');
+        background-repeat: no-repeat;
+        border-radius: 30px;
+        background-size: cover;
+
+        h1 {
+            color: #fff;
+            font-size: 56px;
+            line-height: 68px;
+            text-transform: uppercase;
+            padding-bottom: 20px;
+            border-bottom: solid 2px #fff;
+
+        }
+    }
+
+    &_intro {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 20px;
+
+        h1 {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 39px;
+            color: #065EA9;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 134%;
+            color: #141619;
+        }
+    }
+
+    &_grid {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+
+        h1 {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 39px;
+            color: #065EA9;
+            margin-bottom: 9px;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            li {
+                padding: 18.5px 32px;
+                background: #FFFFFF;
+                border: 2px solid #E6E8EC;
+                border-radius: 16px;
+                font-size: 16px;
+                line-height: 16px;
+                color: #065EA9;
+            }
+        }
+        &_cards {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minMax(250px, 1fr));
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .facilities {
+        &_grid {
+            &_cards {
+                grid-template-columns: repeat(2, minMax(250px, 1fr));
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .facilities {
+        &_grid {
+            &_cards {
+                grid-template-columns: repeat(1, minMax(250px, 1fr));
+            }
+        }
+    }
+}
