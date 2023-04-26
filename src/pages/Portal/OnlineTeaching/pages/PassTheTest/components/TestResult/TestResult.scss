@@ -1,0 +1,56 @@
+@import "../../../../../../../assets/style/global.scss";
+
+.test-result {
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: #ffffff
+    url("../../../../../../../assets/images/OnlineTeaching/test-result-vector.svg");
+  border-radius: 30px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+
+  & > img {
+    width: 480px;
+    height: 357px;
+    object-fit: cover;
+  }
+
+  &-desc {
+    &-title {
+      @include fontStyles(700, 18px, 22px, $colorTitle);
+    }
+
+    &-result {
+      margin: 20px 0 30px;
+      @include fontStyles(600, 24px, 29px, #141619);
+    }
+
+    &-content {
+      @include fontStyles(600, 18px, 22px, #cc2727);
+    }
+
+    &-btns {
+      margin-top: 30px;
+      display: flex;
+      gap: 16px;
+
+      &-left,
+      &-right {
+        padding: 12px 22px;
+        background: #e3f0ff;
+        border-radius: 12px;
+        cursor: pointer;
+        border: none;
+        @include fontStyles(700, 14px, 24px, $colorTitle);
+      }
+
+      &-right {
+        background-color: #065ea9;
+        color: #ffffff;
+      }
+    }
+  }
+}

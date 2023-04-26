@@ -70,7 +70,7 @@
         & > img {
           border-radius: 15px;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
           height: 100%;
         }
       }
@@ -85,6 +85,11 @@
           @include fontStyles(400, 16px, 19px, $colorGrey);
           text-align: justify;
           letter-spacing: 0.2px;
+        }
+
+        & iframe,
+        & video {
+          width: 100%;
         }
       }
 
@@ -121,7 +126,8 @@
           align-items: center;
           gap: 20px;
 
-          & > span {
+          & > span,
+          & > a {
             padding: 8px 16px;
             @include fontStyles(400, 16px, 19px, $colorTitle !important);
             background: #e3f0ff;

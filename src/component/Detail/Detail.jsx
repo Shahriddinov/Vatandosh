@@ -57,7 +57,15 @@ export default function Detail(data) {
                 </div>
                 <div className="newsdetail-main-desc-action-tags">
                   {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
-                    return <span key={index}>{el}</span>;
+                    return (
+                      <Link
+                        to={`/hashtag/${el.trim()}`}
+                        key={index}
+                        className="populartags-tag"
+                      >
+                        {el}
+                      </Link>
+                    );
                   })}
                 </div>
               </div>
@@ -68,7 +76,7 @@ export default function Detail(data) {
                 }}
               ></div>
               {data?.images
-                ? JSON.parse(data?.images).length > 1 && (
+                ? JSON.parse(data?.images).length >= 1 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
                         src={`${baseServerUrl}/${
