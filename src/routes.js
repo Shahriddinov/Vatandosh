@@ -300,6 +300,12 @@ const AboutUzbekistanTouristFacilities = lazy(() =>
   )
 );
 
+const AboutUzbekistanCity = lazy(() =>
+  import(
+    "./pages/Portal/aboutUzbekistan/pages/city/City"
+  )
+);
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -518,6 +524,7 @@ const RoutesContainer = () => {
             >
               <Route index element={<AboutUzbekistanHome />} />
               <Route path="tourist-facilities" element={<AboutUzbekistanTouristFacilities />} />
+              <Route path="city" element={<AboutUzbekistanCity />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />

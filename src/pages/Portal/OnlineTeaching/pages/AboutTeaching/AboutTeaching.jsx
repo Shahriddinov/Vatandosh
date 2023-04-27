@@ -101,7 +101,7 @@ function AboutTeaching(props) {
                     к тому, чтобы успешно включить в свою жизнь определенную
                     оздоровительную деятельность.
                 </div>
-                <div className={}></div>
+                <div className=''></div>
                 <Accordion expanded={expanded === 'panel1'} sx={{border: '1px dashed', marginTop: '3%'}} onChange={handleChange('panel1')}>
                     <AccordionSummary
                         // expandIcon={<ExpandMoreIcon/>}
