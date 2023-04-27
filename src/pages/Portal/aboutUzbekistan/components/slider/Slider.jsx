@@ -95,8 +95,9 @@ export const Slider = memo(({ title, data }) => {
               {data?.map((item) => (
                 <SwiperSlide
                   className="compatriots-events__slider-list"
+                  key={item.id}
                 >
-                  <Card {...item} />
+                  <Card {...item}/>
                 </SwiperSlide>
               ))}
             </Swiper>

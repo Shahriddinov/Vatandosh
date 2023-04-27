@@ -6,8 +6,6 @@ import EmptyStar from '../../../../../assets/images/library/emptyStar.svg'
 
 const BookCard = ({cover, title, author, rating, ratingCount}) => {
 
-    console.log(rating)
-
     const fullStars = Math.floor(rating)
     const emptyStars = 5 - fullStars
 
