@@ -20,7 +20,8 @@ import managementSlice from "./ManagementSlice";
 import searchSlice from "./searchSlice/searchSlice";
 import tagsSlice from "./tagsSlice/tagsSlice";
 import authSlice from "./authSlice/authSlice";
-import formDataSlice from "./projectsSlice/projectsSlice"
+import formDataSlice from "./projectsSlice/projectsSlice";
+import { community } from "./portalSlices";
 
 const store = configureStore({
   reducer: {
@@ -44,7 +45,8 @@ const store = configureStore({
     searchSlice,
     tagsSlice,
     authSlice,
-    formDataSlice
+    formDataSlice,
+    community,
   },
 });
 

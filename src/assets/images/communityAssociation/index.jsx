@@ -15,3 +15,4 @@ export { default as CommunityCardImg6 } from "./card-img7.png";
 export { default as CommunityCardImg7 } from "./card-img8.png";
 export { default as PlusIcon } from "./Plus-icon.svg";
 export { default as Trash } from "./trash.svg";
+export { default as UzFlag } from "./uz_falg_image.png";

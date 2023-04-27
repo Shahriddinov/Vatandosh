@@ -6,7 +6,6 @@ import {
   getCountries,
   mapGetData,
 } from "../../reduxToolkit/mapSlice/mapAsyncThunk";
-import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { CommunityAssociationMapModal } from "../../pages/Portal/communityAssociation/components";
 
@@ -15,7 +14,6 @@ const MapsHome = ({ title }) => {
   const svgRef = useRef(null);
   const [countryCode, setCountryCode] = useState("");
   const zoomValue = useRef(1);
-  const { t } = useTranslation();
   const data = [
     "EN",
     "UZ",
