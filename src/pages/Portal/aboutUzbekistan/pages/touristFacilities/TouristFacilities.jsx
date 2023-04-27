@@ -11,26 +11,32 @@ const TouristFacilities = () => {
 
     const cardData = [
         {
+            "id": 1,
             "image": CardImg1,
             "text": "Дом-музей Джахан-Отин Увайси"
         },
         {
+            "id": 2,
             "image": CardImg2,
             "text": "Дом-музей Джахан-Отин Увайси"
         },
         {
+            "id": 3,
             "image": CardImg3,
             "text": "Дом-музей Джахан-Отин Увайси"
         },
         {
+            "id": 4,
             "image": CardImg2,
             "text": "Дом-музей Джахан-Отин Увайси"
         },
         {
+            "id": 5,
             "image": CardImg3,
             "text": "Дом-музей Джахан-Отин Увайси"
         },
         {
+            "id": 6,
             "image": CardImg1,
             "text": "Дом-музей Джахан-Отин Увайси"
         }
@@ -57,7 +63,7 @@ const TouristFacilities = () => {
                     </ul>
                     <div className="facilities_grid_cards">
                         {cardData.map((card) => (
-                            <FacilitiesCard {...card}/>
+                            <FacilitiesCard {...card} key={card.id}/>
                         ))}
                     </div>
                 </div>

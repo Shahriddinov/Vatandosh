@@ -33,7 +33,7 @@ const Navbar = ({ activeSidebar }) => {
     { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
-    { id: 6, label: t("electronLibrary"), url: "/" },
+    { id: 6, label: t("electronLibrary"), url: "/portal-category/library" },
     {
       id: 7,
       label: t("electronBook"),

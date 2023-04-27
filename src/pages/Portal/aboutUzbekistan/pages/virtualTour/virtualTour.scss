@@ -1,0 +1,43 @@
+.virtual_tour {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-bottom: 60px;
+
+    &_body {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    &_hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        padding: 235px 0;
+        align-items: center;
+        color: #FFFFFF;
+        background: url('../../../../../assets/images/tourist-facilities/cityHero.png');
+        background-size: cover;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        h2 {
+            font-size: 24px;
+            line-height: 29px
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 68px;
+            text-align: center;
+        }
+
+        &_line {
+            width: 500px;
+            height: 2px;
+            background-color: #FFFFFF;
+        }
+    }
+}
