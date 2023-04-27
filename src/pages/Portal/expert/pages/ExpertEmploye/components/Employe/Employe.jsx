@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
 import { data } from "../../../ExpertHome/data";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getExpertMenu } from "../../../../../../../reduxToolkit/ExpertMenu/Menu";
 
 function Employe() {
   const { t } = useTranslation();
@@ -16,6 +18,15 @@ function Employe() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  const dispatch = useDispatch();
+  const userMenu = useSelector((state) => state.expertMenu.menuData);
+
+  useEffect(() => {
+    dispatch(getExpertMenu());
+  }, []);
+
+  console.log(userMenu);
 
   return (
     <div className="employe">
@@ -32,8 +43,7 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha mutaxassislar"
-                onChange={handleChange}
-              >
+                onChange={handleChange}>
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -48,8 +58,7 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha davlatlar"
-                onChange={handleChange}
-              >
+                onChange={handleChange}>
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -67,8 +76,7 @@ function Employe() {
               <h4>{evt.location}</h4>
               <Link
                 className="employe-link"
-                to="/portal-category/expert/profile/1"
-              >
+                to="/portal-category/expert/profile/1">
                 <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>

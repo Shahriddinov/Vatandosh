@@ -6,9 +6,18 @@ import {
 import { data } from "../../data";
 import "./ExpertCouncil.scss";
 import { Link } from "react-router-dom";
+import { getExpertUser } from "../../../../../../../reduxToolkit/ExpertUser/User";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function Expert() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.expertUser?.userData);
+
+  useEffect(() => {
+    dispatch(getExpertUser());
+  }, []);
   return (
     <div className="expert">
       <div className="container">
@@ -23,8 +32,7 @@ function Expert() {
               <h4>{evt.location}</h4>
               <Link
                 className="employe-link"
-                to="/portal-category/expert/profile/12"
-              >
+                to="/portal-category/expert/profile/12">
                 <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
@@ -34,8 +42,7 @@ function Expert() {
         <div className="expert-item">
           <Link
             to="/portal-category/expert/expert-council"
-            className="expert-link"
-          >
+            className="expert-link">
             <img src={ExcludeIcon} alt="error" />
             {t("expert.allexperts")}
           </Link>
