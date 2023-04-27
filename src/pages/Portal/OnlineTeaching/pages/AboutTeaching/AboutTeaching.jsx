@@ -9,6 +9,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import OnlineTeachingLesson from "./component/OnlineTeachingLesson/OnlineTeachingLesson";
 
 function AboutTeaching(props) {
     const [expanded, setExpanded] = React.useState(false);
@@ -101,22 +102,26 @@ function AboutTeaching(props) {
                     к тому, чтобы успешно включить в свою жизнь определенную
                     оздоровительную деятельность.
                 </div>
-                <div className={}></div>
-                <Accordion expanded={expanded === 'panel1'} sx={{border: '1px dashed', marginTop: '3%'}} onChange={handleChange('panel1')}>
+                <div></div>
+                <Accordion expanded={expanded === 'panel1'} sx={{border: '1px dashed', marginTop: '3%'}}
+                           onChange={handleChange('panel1')}>
                     <AccordionSummary
                         // expandIcon={<ExpandMoreIcon/>}
                         aria-controls="panel1bh-content"
                         id="panel1bh-header"
                         className="aboutTeaching_accordion"
                     >
-                        <Typography sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
+                        <Typography
+                            sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
                             <button className="aboutTeaching_accordion_buttons">Урок 1</button>
                             <div className="aboutTeaching_accordion_seem">Введение</div>
                         </Typography>
                         <div className="aboutTeaching_accordion_second">
                             <Typography sx={{color: '#141619'}}>2</Typography>
                             <Typography sx={{color: '#141619'}}>23:21 Min</Typography>
-                            <Typography ><button className="aboutTeaching_accordion_second_learn">Меньше</button></Typography>
+                            <Typography>
+                                <button className="aboutTeaching_accordion_second_learn">Меньше</button>
+                            </Typography>
                         </div>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -124,7 +129,8 @@ function AboutTeaching(props) {
                             <div className="aboutTeaching_accordion_lesson">
                                 <div className="aboutTeaching_accordion_lesson_play">
                                     <img src={Play} alt=""/>
-                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
+                                    <span
+                                        className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
                                 </div>
                                 <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
                             </div>
@@ -132,28 +138,33 @@ function AboutTeaching(props) {
                             <div className="aboutTeaching_accordion_lesson">
                                 <div className="aboutTeaching_accordion_lesson_play">
                                     <img src={Block} alt=""/>
-                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
+                                    <span
+                                        className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
                                 </div>
                                 <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
                             </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion expanded={expanded === 'panel2'} sx={{border: '1px dashed',  marginBottom:'3%'}} onChange={handleChange('panel2')}>
+                <Accordion expanded={expanded === 'panel2'} sx={{border: '1px dashed', marginBottom: '3%'}}
+                           onChange={handleChange('panel2')}>
                     <AccordionSummary
                         // expandIcon={<ExpandMoreIcon/>}
                         aria-controls="panel1bh-content"
                         id="panel1bh-header"
                         className="aboutTeaching_accordion"
                     >
-                        <Typography sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
+                        <Typography
+                            sx={{width: '33%', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '30px'}}>
                             <button className="aboutTeaching_accordion_buttons">Урок 2</button>
                             <div className="aboutTeaching_accordion_seem">Введение</div>
                         </Typography>
                         <div className="aboutTeaching_accordion_second">
                             <Typography sx={{color: '#141619'}}>2</Typography>
                             <Typography sx={{color: '#141619'}}>23:21 Min</Typography>
-                            <Typography ><button className="aboutTeaching_accordion_second_learn">Более</button></Typography>
+                            <Typography>
+                                <button className="aboutTeaching_accordion_second_learn">Более</button>
+                            </Typography>
                         </div>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -161,7 +172,8 @@ function AboutTeaching(props) {
                             <div className="aboutTeaching_accordion_lesson">
                                 <div className="aboutTeaching_accordion_lesson_play">
                                     <img src={Play} alt=""/>
-                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
+                                    <span
+                                        className="aboutTeaching_accordion_lesson_play_welcome">Welcome to our journey</span>
                                 </div>
                                 <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
                             </div>
@@ -169,14 +181,15 @@ function AboutTeaching(props) {
                             <div className="aboutTeaching_accordion_lesson">
                                 <div className="aboutTeaching_accordion_lesson_play">
                                     <img src={Block} alt=""/>
-                                    <span className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
+                                    <span
+                                        className="aboutTeaching_accordion_lesson_play_welcome">Structuring Language</span>
                                 </div>
                                 <div className="aboutTeaching_accordion_lesson_min">23:21 Min</div>
                             </div>
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-
+                <OnlineTeachingLesson/>
             </div>
         </>
     );
