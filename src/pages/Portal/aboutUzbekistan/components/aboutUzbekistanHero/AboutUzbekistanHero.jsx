@@ -28,36 +28,34 @@ const AboutUzbekistanHero = () => {
 
   return (
     <div className="about-uzbekistan-hero">
-      <div className="container">
-        <section className="about-uzbekistan-hero__section">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            keyboard={{
-              enabled: true,
-            }}
-            pagination={{
-              type: "fraction",
-              clickable: true,
-            }}
-            navigation={{
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            }}
-            modules={[Keyboard, Pagination, Navigation]}
-          >
-            {sliderItems.map((slide) => (
-              <SwiperSlide key={slide.id}>
-                <div className="about-uzbekistan-hero__image">
-                  <img src={slide.image} alt="slide picture" />
-                </div>
-              </SwiperSlide>
-            ))}
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-          </Swiper>
-        </section>
-      </div>
+      <section className="about-uzbekistan-hero__section">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            type: "fraction",
+            clickable: true,
+          }}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          modules={[Keyboard, Pagination, Navigation]}
+        >
+          {sliderItems.map((slide) => (
+            <SwiperSlide key={slide.id}>
+              <div className="about-uzbekistan-hero__image">
+                <img src={slide.image} alt="slide picture" />
+              </div>
+            </SwiperSlide>
+          ))}
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
+        </Swiper>
+      </section>
     </div>
   );
 };
