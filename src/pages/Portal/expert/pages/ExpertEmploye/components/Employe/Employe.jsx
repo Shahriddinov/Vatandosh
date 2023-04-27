@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
 import { data } from "../../../ExpertHome/data";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { getExpertMenu } from "../../../../../../../reduxToolkit/ExpertMenu/Menu";
 
 function Employe() {
   const { t } = useTranslation();
@@ -18,15 +16,6 @@ function Employe() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
-  const dispatch = useDispatch();
-  const userMenu = useSelector((state) => state.expertMenu.menuData);
-
-  useEffect(() => {
-    dispatch(getExpertMenu());
-  }, []);
-
-  console.log(userMenu);
 
   return (
     <div className="employe">
