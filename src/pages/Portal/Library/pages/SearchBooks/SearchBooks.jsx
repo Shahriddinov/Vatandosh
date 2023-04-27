@@ -56,7 +56,7 @@ const SearchBooks = () => {
             ratingCount: 421
         },
         {
-            id: 123,
+            id: 124,
             cover: Book4,
             title: "Alkimyogar",
             author: "Paulo Koelo",
@@ -132,7 +132,7 @@ const SearchBooks = () => {
             <div className="grey__bg">
                 <div className="all__books__grid container">
                     {books.map((book) => (
-                        <BookCard {...book}/>
+                        <BookCard {...book} key={book.id}/>
                     ))}
                 </div>
             </div>
