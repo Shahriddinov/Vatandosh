@@ -55,6 +55,13 @@
   align-items: center;
   gap: 25px;
 
+  a {
+    svg {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+
   & > svg {
     &:last-child {
       transform: rotate(180deg);
@@ -394,14 +401,13 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 555px) {
   .portal-body-bottom {
     bottom: 0;
   }
 
   .social-media {
     bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
   }
 }

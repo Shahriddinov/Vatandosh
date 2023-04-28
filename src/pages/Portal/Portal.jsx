@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import ChatModal from "./components/PortalChatModal/ChatModal";
 
+import { FaLinkedinIn, FaTelegramPlane, FaYoutube } from "react-icons/fa";
+
 import "./portal.scss";
 
 const HomePage = () => {
@@ -53,9 +55,7 @@ const HomePage = () => {
     },
   ];
 
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   useEffect(() => {
     dispatch(getContact());
@@ -76,13 +76,7 @@ const HomePage = () => {
         <div className="portal-body">
           <div className="portal-body-middle">
             <div className="social-media">
-              <svg
-                width="2"
-                height="104"
-                viewBox="0 0 2 104"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="2" height="104" viewBox="0 0 2 104" fill="none">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -103,23 +97,8 @@ const HomePage = () => {
                   </linearGradient>
                 </defs>
               </svg>
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
-              </svg>
               <a href={contactData?.instagram}>
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -129,13 +108,7 @@ const HomePage = () => {
                 </svg>
               </a>
               <a href={contactData?.twitter}>
-                <svg
-                  width="18"
-                  height="15"
-                  viewBox="0 0 18 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="18" height="15" viewBox="0 0 18 15" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -145,13 +118,7 @@ const HomePage = () => {
                 </svg>
               </a>
               <a href={contactData?.facebook}>
-                <svg
-                  width="10"
-                  height="18"
-                  viewBox="0 0 10 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -160,22 +127,16 @@ const HomePage = () => {
                   />
                 </svg>
               </a>
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
-              </svg>
-              <svg
-                width="2"
-                height="104"
-                viewBox="0 0 2 104"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <a href={contactData?.twitter}>
+                <FaTelegramPlane />
+              </a>
+              <a href={contactData?.facebook}>
+                <FaLinkedinIn />
+              </a>
+              <a href={contactData?.facebook}>
+                <FaYoutube />
+              </a>
+              <svg width="2" height="104" viewBox="0 0 2 104" fill="none">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -199,7 +160,7 @@ const HomePage = () => {
             </div>
             <div className="register-field">
               <h2>
-                “<span>VATANDOSHLAR</span>” <br /> Jamoat Fondining Yagona
+                <span>“VATANDOSHLAR”</span> <br /> Jamoat Fondining Yagona
                 Avtomatlashtirilgan Axborot Tizimi
               </h2>
               <p>
