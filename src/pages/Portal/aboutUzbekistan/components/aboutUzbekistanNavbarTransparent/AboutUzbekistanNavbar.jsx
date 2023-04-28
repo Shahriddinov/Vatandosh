@@ -28,7 +28,7 @@ const AboutUzbekistanNavbar = () => {
     },
   ];
 
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(3);
 
   return (
     <div className="about-uzbekistan-navbar-transparent">

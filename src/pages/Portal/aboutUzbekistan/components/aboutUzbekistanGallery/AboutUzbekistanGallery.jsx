@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { showMediaModal, slideMove } from "../../../../Mediateka/extraFunc";
+import ImageModal from "../../../../Mediateka/components/imageModal/ImageModal";
 
 import "./aboutUzbekistanGallery.scss";
 
@@ -23,12 +26,31 @@ const AboutUzbekistanGallery = () => {
     { id: 8, img: img8, size: "large" },
   ];
 
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [activeImage, setActiveImage] = useState("");
+
+  const moveSlide = (value) => {
+    slideMove({
+      mediaData: images,
+      setActiveImage,
+      activeImage,
+      value,
+    });
+  };
+
+  const handleImageModal = (imgId) => {
+    setShowImageModal(true);
+    setActiveImage(imgId);
+    showMediaModal({ mediaData: images, imgUrl: imgId });
+  };
+
   return (
     <div className="about-uzbekistan-gallery">
       <h2 className="about-uzbekistan-title">Фотогалерея</h2>
       <div className="about-uzbekistan-gallery__images">
         {images.map((image) => (
           <img
+            // onClick={() => handleImageModal(image.img)}
             key={image.id}
             className={`about-uzbekistan-gallery__${image.size}`}
             src={image.img}
@@ -36,6 +58,12 @@ const AboutUzbekistanGallery = () => {
           />
         ))}
       </div>
+      <ImageModal
+        activeImage={activeImage}
+        setShowImageModal={setShowImageModal}
+        showImageModal={showImageModal}
+        moveSlide={moveSlide}
+      />
     </div>
   );
 };

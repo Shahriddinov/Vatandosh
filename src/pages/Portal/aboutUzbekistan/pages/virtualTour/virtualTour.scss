@@ -9,19 +9,19 @@
     gap: 60px;
   }
 
-    &_hero {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-        padding: 235px 0;
-        align-items: center;
-        color: #FFFFFF;
-        background: url('../../../../../assets/images/tourist-facilities/vurtual.png');
-        background-size: cover;
-        text-transform: uppercase;
-        font-weight: 700;
+  &_hero {
+    height: calc(100vh - 26px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 235px 0;
+    align-items: center;
+    color: #ffffff;
+    background: url("../../../../../assets/images/tourist-facilities/vurtual.png");
+    background-size: cover;
+    text-transform: uppercase;
+    font-weight: 700;
 
     h2 {
       font-size: 24px;
