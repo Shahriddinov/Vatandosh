@@ -19,8 +19,12 @@ export const sendEmail = createAsyncThunk(
     return await axios
       .post(SEND_EMAIL, payload, {
         headers: {
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH",
         },
+        mode: "no-cors",
       })
       .then((res) => res.data)
       .catch((e) => e.response.data);
