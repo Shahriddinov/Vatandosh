@@ -8,33 +8,55 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AssociationsCard from "../../components/AssociationsCard/AssociationsCard";
 import ArrowDown from "../../../../../assets/images/icons/arrowDown.svg";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getLocation } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { Autocomplete, TextField } from "@mui/material";
+import { createSelector } from "@reduxjs/toolkit";
+import { Spinner } from "../../../../../component";
 
 const Associations = () => {
   const { t } = useTranslation();
+  const locationDataChange = createSelector(
+    (store) => store.community.locationGet,
+    (location) => {
+      return location.map((el) => ({ ...el, label: el.name }));
+    }
+  );
+  const locationData = useSelector(locationDataChange);
+  const locationLoading = useSelector(
+    (store) => store.community.locationGetLoading
+  );
 
-  const [country, setCountry] = React.useState("Barcha davlatlar");
-
-  const handleChange = (event) => {
-    setCountry(event.target.value);
+  const handleChange = (event, value) => {
+    // setCountry(event.target.value);
+    console.log(value);
   };
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLocation());
+  }, []);
+
+  if (locationLoading) {
+    return <Spinner position="full" />;
+  }
   return (
     <div className="associations__wrapper">
       <div className="associations__top">
         <h1>{t("communityAssociation.navbar.navbar_link2")}</h1>
         <FormControl className="form__control">
-          <Select
-            value={country}
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={locationData}
+            sx={{ width: 300 }}
             onChange={handleChange}
-            inputProps={{ "aria-label": "Without label" }}
-            IconComponent={ExpandMoreIcon}
-          >
-            <MenuItem value="Barcha davlatlar">
-              {t("communityAssociation.all_states")}
-            </MenuItem>
-            <MenuItem value={20}>Qirg'iziston</MenuItem>
-            <MenuItem value={30}>Qozog'iston</MenuItem>
-          </Select>
+            renderInput={(params) => (
+              <TextField {...params} label="Barcha davlatlar" />
+            )}
+          />
         </FormControl>
       </div>
       <div className="associations__grid">
