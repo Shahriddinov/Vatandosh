@@ -1,6 +1,7 @@
 .about-uzbekistan-navbar-transparent {
   position: relative;
   z-index: 999;
+
   &__menu-items {
     display: flex;
     justify-content: center;
@@ -11,12 +12,12 @@
     a {
       font-size: 14px;
       font-weight: 600;
-      color: #FFF;
+      color: #fff;
     }
 
     &.active {
       a {
-        color: #FFF;
+        color: #fff;
         font-weight: 700;
       }
     }

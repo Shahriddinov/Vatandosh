@@ -301,9 +301,7 @@ const AboutUzbekistanTouristFacilities = lazy(() =>
 );
 
 const AboutUzbekistanCity = lazy(() =>
-  import(
-    "./pages/Portal/aboutUzbekistan/pages/city/City"
-  )
+  import("./pages/Portal/aboutUzbekistan/pages/city/City")
 );
 
 const VisualInformation = lazy(() =>
@@ -313,9 +311,7 @@ const VisualInformation = lazy(() =>
 );
 
 const VirtualTour = lazy(() =>
-  import(
-    "./pages/Portal/aboutUzbekistan/pages/virtualTour/VirtualTour"
-  )
+  import("./pages/Portal/aboutUzbekistan/pages/virtualTour/VirtualTour")
 );
 
 const routes = [
@@ -429,7 +425,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}>
+              element={<CommunityAssociationLayout />}
+            >
               <Route index element={<CommunityAssociationHome />} />
               <Route path="about" element={<CommunityAssociationAbout />} />
               <Route
@@ -455,7 +452,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/volunteer"
-              element={<VolunterLayout />}>
+              element={<VolunterLayout />}
+            >
               <Route index element={<VolunterHome />} />
               <Route path="profile" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
@@ -478,7 +476,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}>
+              element={<OnlineTeachingLayout />}
+            >
               <Route index element={<OnlineTeachingHome />} />
               <Route path="about" element={<AboutTeaching />} />
               <Route path="take-test" element={<PassTheTest />} />
@@ -492,7 +491,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/victorina"
-              element={<VictorinaLayout />}>
+              element={<VictorinaLayout />}
+            >
               <Route index element={<VictorinaHome />}></Route>
               <Route path="contact" element={<Contact />} />
               <Route path="listwinners" element={<ListOfWinners />} />
@@ -514,7 +514,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}>
+              element={<ElectronicJournalLayout />}
+            >
               <Route index element={<ElectronicJournalHome />} />
               <Route path="about" element={<ElectronicJournalAbout />} />
               <Route path="new-number" element={<NewNumber />} />
@@ -525,7 +526,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/about-uzbekistan"
-              element={<AboutUzbekistanLayout />}>
+              element={<AboutUzbekistanLayout />}
+            >
               <Route index element={<AboutUzbekistanHome />} />
               <Route
                 path="visual-information"
@@ -535,9 +537,9 @@ const RoutesContainer = () => {
                 path="tourist-facilities"
                 element={<AboutUzbekistanTouristFacilities />}
               />
-              <Route path="tourist-facilities" element={<AboutUzbekistanTouristFacilities />} />
               <Route path="city" element={<AboutUzbekistanCity />} />
               <Route path="virtual-tour" element={<VirtualTour />} />
+              <Route path="contact" element={<Contact />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />

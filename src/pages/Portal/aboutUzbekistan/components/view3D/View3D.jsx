@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./view3d.scss";
 
 const View3D = () => {
@@ -6,7 +8,12 @@ const View3D = () => {
     <div className="facilities_3d">
       <div className="facilities_3d_circle">
         <div className="facilities_3d_circle_inner">
-          <div className="facilities_3d_circle_inner_inner">Start 3D tour</div>
+          <Link
+            to="/portal-category/about-uzbekistan/virtual-tour"
+            className="facilities_3d_circle_inner_inner"
+          >
+            Start 3D tour
+          </Link>
         </div>
       </div>
     </div>

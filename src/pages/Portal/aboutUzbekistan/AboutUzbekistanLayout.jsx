@@ -8,16 +8,25 @@ import AboutUzbekistanNavbarTransparent from "./components/aboutUzbekistanNavbar
 import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
 
 const AboutUzbekistan = () => {
-
   const location = useLocation();
   let transparentIsTrue = location.pathname.split("/")[3];
 
   return (
     <div>
-      {(transparentIsTrue  === "virtual-tour" | transparentIsTrue  === "city")? <AboutUzbekistanHeaderTransparent /> : <AboutUzbekistanHeader />}
-      {(transparentIsTrue  === "virtual-tour" | transparentIsTrue  === "city") ? <AboutUzbekistanNavbarTransparent /> : <AboutUzbekistanNavbar />}
+      {(transparentIsTrue === "virtual-tour") |
+      (transparentIsTrue === "city") ? (
+        <AboutUzbekistanHeaderTransparent />
+      ) : (
+        <AboutUzbekistanHeader />
+      )}
+      {(transparentIsTrue === "virtual-tour") |
+      (transparentIsTrue === "city") ? (
+        <AboutUzbekistanNavbarTransparent />
+      ) : (
+        <AboutUzbekistanNavbar />
+      )}
       <Outlet />
-      {(transparentIsTrue  !== "virtual-tour") && <OnlineTeachingFooter />}
+      {transparentIsTrue !== "virtual-tour" && <OnlineTeachingFooter />}
     </div>
   );
 };

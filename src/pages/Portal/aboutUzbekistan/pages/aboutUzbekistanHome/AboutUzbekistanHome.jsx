@@ -3,6 +3,7 @@ import React from "react";
 import AboutUzbekistanHero from "../../components/aboutUzbekistanHero/AboutUzbekistanHero";
 import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
 import View3D from "../../components/view3D/View3D";
+import Slider from "../../components/slider/Slider";
 
 import "./aboutUzbekistanHome.scss";
 
@@ -29,6 +30,7 @@ const AboutUzbekistanHome = () => {
             ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
           </p>
         </div>
+        <Slider title="Туристические объекты" />
         <View3D />
         <AboutUzbekistanGallery />
         <div className="about-uzbekistan-home__bottom">

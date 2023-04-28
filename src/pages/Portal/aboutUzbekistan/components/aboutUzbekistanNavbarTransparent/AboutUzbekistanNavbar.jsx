@@ -11,13 +11,21 @@ const AboutUzbekistanNavbar = () => {
       name: "VIZUAL MA'LUMOT",
       url: "/portal-category/about-uzbekistan/visual-information",
     },
-    { id: 3, name: "3D SAYOHAT", url: "/portal-category/about-uzbekistan/virtual-tour" },
+    {
+      id: 3,
+      name: "3D SAYOHAT",
+      url: "/portal-category/about-uzbekistan/virtual-tour",
+    },
     {
       id: 4,
       name: "TURISTIK OBYEKTLAR",
       url: "/portal-category/about-uzbekistan/tourist-facilities",
     },
-    { id: 5, name: "BOG'LANISH", url: "/" },
+    {
+      id: 5,
+      name: "BOG'LANISH",
+      url: "/portal-category/about-uzbekistan/contact",
+    },
   ];
 
   const [active, setActive] = useState(1);
