@@ -7,18 +7,29 @@ import Council from "../../../expert/pages/ExpertHome/components/Council/Council
 import News from "../../../expert/pages/ExpertHome/components/News/News";
 import backImg from "../../../../../assets/images/communityAssociation/communityAssociationHomeBg.png";
 import heroImg from "../../../../../assets/images/communityAssociation/hero-img.png";
-import MapsHome from "../../../../../component/maps-home/MapsHome";
 import { useTranslation } from "react-i18next";
+import { CommunityMaps } from "../../components";
+import { useCommunityHomeFetching } from "./hooks/useCommunityHomeFetching";
+import { Spinner } from "../../../../../component";
 
 const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
+  const { communityHomePageData, communityHomePageLoading } =
+    useCommunityHomeFetching();
+
+  if (communityHomePageLoading) {
+    return <Spinner />;
+  }
+
+  console.log(communityHomePageData);
   const headerData = {
     title: t("communityAssociation.home_title"),
     subTitle: t("communityAssociation.home_desc"),
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };
+
   const councilData = {
     title:
       "Xorijda istiqomat qilayotgan vatandoshlar tomonidan tashkil  etilgan jamoat birlashmalari",
@@ -26,6 +37,7 @@ const AssociationHome = () => {
     image: heroImg,
     pathUrl: "/portal-category/community-association/about",
   };
+
   return (
     <>
       <div
@@ -37,7 +49,7 @@ const AssociationHome = () => {
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} />
-      <MapsHome title={t("communityAssociation.navbar.navbar_link2")} />
+      <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
       <News />
     </>
   );

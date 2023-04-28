@@ -21,7 +21,6 @@ const mapSlice = createSlice({
       .addCase(mapGetData.fulfilled, (state, { payload }) => {
         state.mapDataLoading = false;
         state.mapData = payload.data;
-        console.log(payload.data);
       })
       .addCase(mapGetData.rejected, (state, action) => {
         state.mapDataLoading = false;

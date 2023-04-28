@@ -24,17 +24,22 @@
   row-gap: 30px;
 }
 
-.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+.MuiInputBase-input {
+  padding: 0 !important;
+  padding-bottom: 5px !important;
+  vertical-align: middle;
   font-family: "Inter" !important;
   font-size: 16px !important;
   line-height: 24px !important;
-  border: 1px solid #eaedf6 !important;
   border-radius: 6px !important;
+  outline: 0;
 }
 
-.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+.MuiInputBase-root {
   padding: 12px 11px !important;
-  width: 270px !important;
+  width: 100%;
+  max-width: 270px !important;
+  border: 1px solid #eaedf6 !important;
 }
 
 .more__less__button {

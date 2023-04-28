@@ -21,6 +21,7 @@ import searchSlice from "./searchSlice/searchSlice";
 import tagsSlice from "./tagsSlice/tagsSlice";
 import authSlice from "./authSlice/authSlice";
 import formDataSlice from "./projectsSlice/projectsSlice";
+import { community } from "./portalSlices";
 import expertMenu from "./ExpertMenu";
 
 const store = configureStore({
@@ -46,6 +47,7 @@ const store = configureStore({
     tagsSlice,
     authSlice,
     formDataSlice,
+    community,
     expertMenu,
   },
 });
