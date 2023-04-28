@@ -11,7 +11,6 @@ import {
 } from "../../services/api/utils";
 
 const token = localStorage.getItem("token");
-console.log(token);
 
 // Sign Up
 export const sendEmail = createAsyncThunk(

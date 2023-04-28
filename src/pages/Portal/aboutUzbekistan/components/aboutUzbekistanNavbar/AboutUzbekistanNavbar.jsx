@@ -6,9 +6,17 @@ import "./aboutUzbekistanNavbar.scss";
 const AboutUzbekistanNavbar = () => {
   const navbarItems = [
     { id: 1, name: "BOSH SAHIFA", url: "/portal-category/about-uzbekistan" },
-    { id: 2, name: "VIZUAL MA'LUMOT", url: "/" },
-    { id: 3, name: "3D SAYOHAT", url: "/" },
-    { id: 4, name: "TURISTIK OBYEKTLAR", url: "/" },
+    {
+      id: 2,
+      name: "VIZUAL MA'LUMOT",
+      url: "/portal-category/about-uzbekistan/visual-information",
+    },
+    { id: 3, name: "3D SAYOHAT", url: "/portal-category/about-uzbekistan/virtual-tour" },
+    {
+      id: 4,
+      name: "TURISTIK OBYEKTLAR",
+      url: "/portal-category/about-uzbekistan/tourist-facilities",
+    },
     { id: 5, name: "BOG'LANISH", url: "/" },
   ];
 

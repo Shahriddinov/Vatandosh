@@ -25,18 +25,16 @@ const AboutUzbekistanGallery = () => {
 
   return (
     <div className="about-uzbekistan-gallery">
-      <div className="container">
-        <h2 className="about-uzbekistan-title">Фотогалерея</h2>
-        <div className="about-uzbekistan-gallery__images">
-          {images.map((image) => (
-            <img
-              key={image.id}
-              className={`about-uzbekistan-gallery__${image.size}`}
-              src={image.img}
-              alt="gallery picture"
-            />
-          ))}
-        </div>
+      <h2 className="about-uzbekistan-title">Фотогалерея</h2>
+      <div className="about-uzbekistan-gallery__images">
+        {images.map((image) => (
+          <img
+            key={image.id}
+            className={`about-uzbekistan-gallery__${image.size}`}
+            src={image.img}
+            alt="gallery picture"
+          />
+        ))}
       </div>
     </div>
   );

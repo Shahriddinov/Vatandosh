@@ -1,15 +1,16 @@
 import React from "react";
 
 import AboutUzbekistanHero from "../../components/aboutUzbekistanHero/AboutUzbekistanHero";
+import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
+import View3D from "../../components/view3D/View3D";
 
 import "./aboutUzbekistanHome.scss";
-import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
 
 const AboutUzbekistanHome = () => {
   return (
     <div className="about-uzbekistan-home">
-      <AboutUzbekistanHero />
       <div className="container">
+        <AboutUzbekistanHero />
         <div className="about-uzbekistan-home__open-uzbekistan">
           <h2 className="about-uzbekistan-title">
             Откройте для себя новый Узбекистан!
@@ -28,9 +29,8 @@ const AboutUzbekistanHome = () => {
             ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
           </p>
         </div>
-      </div>
-      <AboutUzbekistanGallery />
-      <div className="container">
+        <View3D />
+        <AboutUzbekistanGallery />
         <div className="about-uzbekistan-home__bottom">
           <h2 className="about-uzbekistan-title">
             Откройте для себя новый Узбекистан!

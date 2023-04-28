@@ -168,7 +168,7 @@ const AllBooks = () => {
             <div className="grey__bg">
                 <div className="all__books__grid container">
                     {books.map((book) => (
-                        <BookCard {...book}/>
+                        <BookCard {...book} key={book.id}/>
                     ))}
                 </div>
             </div>
