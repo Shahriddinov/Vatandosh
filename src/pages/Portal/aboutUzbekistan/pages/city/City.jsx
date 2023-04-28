@@ -7,9 +7,22 @@ import AboutUzbekistanGallery from '../../components/aboutUzbekistanGallery/Abou
 import CardImg1 from '../../../../../assets/images/tourist-facilities/bazaar.png'
 import CardImg2 from '../../../../../assets/images/tourist-facilities/street.png'
 import CardImg3 from '../../../../../assets/images/tourist-facilities/palace.png'
-import VideoCard from '../../components/videoCard/VideoCard'
+import { useMediaFetching } from '../../../../Mediateka/hooks/useMediaFetching'
+import { Spinner } from '../../../../../component'
+import AboutUzbekistanVideos from '../../components/aboutUzbekistanVideos/AboutUzbekistanVideos'
 
 const City = () => {
+
+    const {
+        mediaData,
+        dataLoading,
+        lan,
+    } = useMediaFetching();
+
+    
+    if (dataLoading) {
+        return <Spinner position="full" />;
+    }
 
     const cardData = [
         {
@@ -59,11 +72,7 @@ const City = () => {
                     </div>
                     <div className="city_videos">
                         <h1>Видеоклипы</h1>
-                        <div className="city_videos_grid">
-                            {cardData.map((card) => (
-                                <VideoCard key={card.id} {...card}/>
-                            ))}
-                        </div>
+                        <AboutUzbekistanVideos mediaData={mediaData} lan={lan}/>
                     </div>
                     <div className="city_intro">
                         <h1>Откройте для себя новый Ташкент!</h1>
