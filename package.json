@@ -28,6 +28,7 @@
     "lodash": "^4.17.21",
     "material-ui-popup-state": "^5.0.5",
     "node-sass": "^8.0.0",
+    "pannellum-react": "^1.2.4",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-animation-on-scroll": "^5.1.0",

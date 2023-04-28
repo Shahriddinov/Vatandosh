@@ -23,13 +23,13 @@ const AboutUzbekistanNavbar = () => {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="about-uzbekistan-navbar">
+    <div className="about-uzbekistan-navbar-transparent">
       <div className="container">
-        <div className="about-uzbekistan-navbar__navbar-body">
-          <ul className="about-uzbekistan-navbar__menu-items">
+        <div className="about-uzbekistan-navbar-transparent__navbar-body">
+          <ul className="about-uzbekistan-navbar-transparent__menu-items">
             {navbarItems.map((menuItem) => (
               <li
-                className={`about-uzbekistan-navbar__menu-item ${
+                className={`about-uzbekistan-navbar-transparent__menu-item ${
                   active === menuItem.id ? "active" : ""
                 }`}
                 key={menuItem.id}
