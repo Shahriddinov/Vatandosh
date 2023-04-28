@@ -3,6 +3,8 @@ export const authUrl = "https://vatandoshlar.napaautomotive.uz/api/auth";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
 
+export const expertUrl = "https://vatandoshlar.napaautomotive.uz/api/menu";
+
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
@@ -29,6 +31,8 @@ export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
+export const GET_EXPERT_USER = `${expertUrl}/user`;
+export const GET_EXPERT_MENU = `${expertUrl}/all`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

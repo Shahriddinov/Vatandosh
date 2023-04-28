@@ -1,30 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAbout } from "./About";
+import { getExpertUser } from "./User";
 
 const initialState = {
   loading: true,
-  aboutData: [],
+  UserData: [],
   error: null,
 };
 
-const aboutSlice = createSlice({
-  name: "abouts",
+const expertUser = createSlice({
+  name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAbout.pending, (state) => {
+      .addCase(getExpertUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getAbout.fulfilled, (state, action) => {
+      .addCase(getExpertUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.aboutData = action.payload;
+        state.UserData = action.payload;
       })
-      .addCase(getAbout.rejected, (state, action) => {
+      .addCase(getExpertUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default aboutSlice.reducer;
+export default expertUser.reducer;
