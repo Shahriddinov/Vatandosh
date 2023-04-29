@@ -1,10 +1,19 @@
 import React from "react";
 
 import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
+import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutUzbekistanVideos";
+import { useMediaFetching } from "../../../../Mediateka/hooks/useMediaFetching";
+import { Spinner } from "../../../../../component";
 
 import "./visualInformation.scss";
 
 const VisualInformation = () => {
+  const { mediaData, dataLoading, lan } = useMediaFetching();
+
+  if (dataLoading) {
+    return <Spinner position="full" />;
+  }
+
   return (
     <div className="visual-information">
       <div className="container">
@@ -29,7 +38,14 @@ const VisualInformation = () => {
             ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
           </p>
         </div>
-        <div className="visual-information__open-uzbekistan">
+        <div className="visual-information__videos">
+          <AboutUzbekistanVideos
+            mediaData={mediaData}
+            lan={lan}
+            hasMoreBtn="true"
+          />
+        </div>
+        <div className="visual-information__open-uzbekistan-second">
           <h2 className="about-uzbekistan-title">
             Откройте для себя новый Ташкент!
           </h2>

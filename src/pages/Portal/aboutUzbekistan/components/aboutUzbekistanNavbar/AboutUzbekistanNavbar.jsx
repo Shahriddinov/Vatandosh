@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import "./aboutUzbekistanNavbar.scss";
 
@@ -28,7 +28,13 @@ const AboutUzbekistanNavbar = () => {
     },
   ];
 
-  const [active, setActive] = useState(1);
+  const { pathname } = useLocation();
+
+  const [active, setActive] = useState(pathname);
+
+  useEffect(() => {
+    setActive(pathname);
+  }, [pathname]);
 
   return (
     <div className="about-uzbekistan-navbar">
@@ -38,10 +44,9 @@ const AboutUzbekistanNavbar = () => {
             {navbarItems.map((menuItem) => (
               <li
                 className={`about-uzbekistan-navbar__menu-item ${
-                  active === menuItem.id ? "active" : ""
+                  active === menuItem.url ? "active" : ""
                 }`}
                 key={menuItem.id}
-                onClick={() => setActive(menuItem.id)}
               >
                 <Link to={menuItem.url}>{menuItem.name}</Link>
               </li>

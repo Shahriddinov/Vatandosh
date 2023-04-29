@@ -1,6 +1,12 @@
 .visual-information {
   padding: 20px 0;
 
+  .about-uzbekistan-title {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #065ea9;
+  }
+
   &__hero {
     height: 500px;
     display: flex;
@@ -35,6 +41,10 @@
   }
 
   &__open-uzbekistan {
+    padding: 40px 0;
+  }
+
+  &__open-uzbekistan-second {
     padding-top: 40px;
   }
 }
