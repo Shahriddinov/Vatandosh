@@ -4,21 +4,49 @@ import { FileUploadIcon } from "../../../../../../../assets/images/communityAsso
 import "./register1.scss";
 import { MyImgUpload, MyInput } from "../";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 const CommunityRegister1 = ({ activeBarItem }) => {
+  const { name, certificate, logo } = useSelector(
+    (store) => store.community.communityCreateData
+  );
+
+  const communityImagePost = useSelector(
+    (store) => store.community.communityImagePost
+  );
+  const communityImagePostLoading = useSelector(
+    (store) => store.community.communityImagePostLoading
+  );
+
+  const dispatch = useDispatch();
+
   const [data, setData] = useState({
-    name: "",
+    name,
     certificate: [],
     logo: [],
   });
   const { t } = useTranslation();
 
   const handleChangeApplication1 = ({ key, value }) => {
-    setData((prev) => ({
-      ...prev,
-      [key]: key === "logo" ? [value] : value,
-    }));
+    if (key === "logo") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      logoData.append("folder", "community");
+      dispatch(postCommunityImage());
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+    }
   };
+
+  console.log(communityImagePost);
 
   return (
     <div
@@ -89,7 +117,9 @@ const CommunityRegister1 = ({ activeBarItem }) => {
         />
 
         <button className="community-association-register__form--btn">
-          {t("communityAssociation.menu1_info.next")}
+          {communityImagePostLoading
+            ? "Loading..."
+            : t("communityAssociation.menu1_info.next")}
         </button>
       </form>
     </div>

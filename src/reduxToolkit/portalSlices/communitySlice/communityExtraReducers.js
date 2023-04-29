@@ -5,6 +5,8 @@ import {
   GET_COMMUNITY_ALL_REGIONS,
   GET_COMMUNITY_HOMEPAGE_DATA,
   GET_LOCATION,
+  POST_COMMUNITY_CREATE,
+  POST_COMMUNITY_IMAGE,
 } from "../../../services/api/utils";
 
 export const getLocation = createAsyncThunk("getLocation", async () => {
@@ -28,5 +30,35 @@ export const getCommunityHomePage = createAsyncThunk(
   "getCommunityHomePage",
   async (payload) => {
     return await axios.get(GET_COMMUNITY_HOMEPAGE_DATA).then((res) => res.data);
+  }
+);
+
+export const postCommunityCreate = createAsyncThunk(
+  "postCommunityCreate",
+  async (data) => {
+    return await axios({
+      url: POST_COMMUNITY_CREATE,
+      data,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    }).then((res) => res.data);
+  }
+);
+
+export const postCommunityImage = createAsyncThunk(
+  "postCommunityImage",
+  async (data) => {
+    return await axios({
+      url: POST_COMMUNITY_IMAGE,
+      method: "POST",
+      data,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        accept: "*/*",
+      },
+    }).then((res) => res.data);
   }
 );

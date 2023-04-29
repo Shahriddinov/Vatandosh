@@ -40,6 +40,8 @@ export const GET_LOCATION = "/location/get-all";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
+export const POST_COMMUNITY_CREATE = "/community/create";
+export const POST_COMMUNITY_IMAGE = "/media/create";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
