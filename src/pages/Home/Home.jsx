@@ -11,6 +11,7 @@ import { getPeaceful } from "../../reduxToolkit/peacefulSlice/peacefulExtraReduc
 import Header from "../../component/Layout/Header/Header";
 import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import { t } from "i18next";
+import HomeWebinarSlider from "../../component/homeWebinarSlider/HomeWebinarSlider";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Home = () => {
   const sliderData = useSelector((state) => state.sliderSlice.sliderData);
   const error = useSelector((state) => state.sliderSlice.error);
   const loading = useSelector((state) => state.sliderSlice.loading);
+  console.log(sliderData);
 
   useEffect(() => {
     dispatch(getPeaceful());
@@ -29,6 +31,11 @@ const Home = () => {
       <Header />
       <Hero sliderData={sliderData} error={error} loading={loading} />
       <News />
+      <HomeWebinarSlider
+        sliderData={sliderData}
+        error={error}
+        loading={loading}
+      />
       <Peaceful />
       <InteractiveServices />
       <MapsHome title={t("mapTitle")} />
