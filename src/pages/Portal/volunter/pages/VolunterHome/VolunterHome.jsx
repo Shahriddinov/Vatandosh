@@ -1,6 +1,5 @@
 import React from "react";
 import Volunter from "./components/VolunterCouncil/VolunterCouncil";
-import News from "./components/News/News";
 import "./VolunterHome.scss";
 import { useOutletContext } from "react-router-dom";
 import Nav from "../../../expert/components/Nav/Nav";
@@ -10,6 +9,7 @@ import heroImg from "../../../../../assets/images/volunter/image.png";
 import Council from "./components/Council/Council";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
+import News from "../../../expert/pages/ExpertHome/components/News/News";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -31,7 +31,8 @@ function VolunterHome() {
     <>
       <div
         className="volunter-home"
-        style={{ backgroundImage: `url(${backImg})` }}>
+        style={{ backgroundImage: `url(${backImg})` }}
+      >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
