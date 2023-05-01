@@ -4,16 +4,53 @@ import MyInput from "../UI/myInput/MyInput";
 import "./register3.scss";
 import { UserIcon } from "../../../../../../../assets/images/communityAssociation";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import {
+  PORTAL_IMAGE_URL,
+  baseServerUrl,
+} from "../../../../../../../services/api/utils";
 
 const CommunityRegister3 = ({ activeBarItem }) => {
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+
+  const communityImagePostStatus = useSelector(
+    (store) => store.community.communityImagePostStatus
+  );
   const [data, setData] = useState({
-    name: "",
-    userImg: [],
+    director: communityCreateData.director,
+    director_img: communityCreateData.director_img,
   });
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleChangeApplication3 = ({ key, value }) => {
-    setData((prev) => ({ ...prev, [key]: value }));
+    if (key === "director_img") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      console.log(value);
+      const directorImageData = new FormData();
+      directorImageData.append("image", value);
+      directorImageData.append("folder", "community");
+      dispatch(postCommunityImage({ key, image: directorImageData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+    }
   };
 
   return (
@@ -32,11 +69,11 @@ const CommunityRegister3 = ({ activeBarItem }) => {
         <div className="community-association-register3__user_box">
           <div className="community-association-register3__user">
             <div className="community-association-register3__user_img">
-              {data.userImg.length > 0 ? (
+              {data.director_img.length > 0 ? (
                 <img
                   className="community-association-register3__img"
-                  src={URL.createObjectURL(data.userImg[0])}
-                  alt=""
+                  src={`${PORTAL_IMAGE_URL}/${communityCreateData.director_img}`}
+                  alt={data.director}
                 />
               ) : (
                 <img
@@ -59,7 +96,10 @@ const CommunityRegister3 = ({ activeBarItem }) => {
                 className="community-association-register3__user_input"
                 accept="image/png, image/gif, image/jpeg, image/jpg"
                 onChange={(e) =>
-                  setData((prev) => ({ ...prev, userImg: [e.target.files[0]] }))
+                  handleChangeApplication3({
+                    key: "director_img",
+                    value: e.target.files[0],
+                  })
                 }
               />
             </label>
@@ -73,13 +113,13 @@ const CommunityRegister3 = ({ activeBarItem }) => {
         </div>
 
         <MyInput
-          value={data.name}
+          value={data.director}
           text={t("communityAssociation.menu3_info.input2_name")}
           placeholder={t("communityAssociation.menu3_info.input2_placeholder")}
           handleChange={handleChangeApplication3}
           type="text"
           inputType="input"
-          valueKey="name"
+          valueKey="director"
         />
 
         <button className="community-association-register__form--btn">

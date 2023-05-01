@@ -4,9 +4,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
 
 import "./myInputDate.scss";
-const MyInputDate = ({ text, handleChange, valueKey }) => {
+const MyInputDate = ({ text, handleChange, valueKey, value }) => {
   const handleChangeDate = (val) => {
     handleChange({ key: valueKey, value: val[`$d`] });
   };
@@ -21,7 +22,11 @@ const MyInputDate = ({ text, handleChange, valueKey }) => {
         style={{ width: "100%" }}
       >
         <DemoContainer components={["DatePicker"]} style={{ width: "100%" }}>
-          <DatePicker onChange={handleChangeDate} style={{ width: "100%" }} />
+          <DatePicker
+            onChange={handleChangeDate}
+            style={{ width: "100%" }}
+            defaultValue={dayjs(value)}
+          />
         </DemoContainer>
       </LocalizationProvider>
     </div>
