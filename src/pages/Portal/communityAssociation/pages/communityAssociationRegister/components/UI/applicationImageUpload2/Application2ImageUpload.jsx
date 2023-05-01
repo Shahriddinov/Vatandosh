@@ -16,6 +16,7 @@ const Application2ImageUpload = ({
     handleChange({ key: valueKey, value: evt.target.files[0] });
   };
 
+  console.log(data);
   return (
     <label
       htmlFor={valueKey}

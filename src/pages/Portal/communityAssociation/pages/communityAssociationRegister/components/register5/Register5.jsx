@@ -1,5 +1,3 @@
-import React from "react";
-import { useState } from "react";
 import { MyInput, MySelect } from "../";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -10,53 +8,39 @@ import PhoneInput from "react-phone-number-input";
 
 import "./register5.scss";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
-
-const countryData = [
-  "Uzbekiston",
-  "Rossiya",
-  "Amerika",
-  "Arabiston",
-  "Tojikiston",
-  "Ukraina",
-  "Kanada",
-  "Meksika",
-];
+import { postCommunityCreate } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import useApplicationFetching from "./hooks/useApplicationFetching";
 
 const cityData = [
-  "Toshkent",
-  "Samarqand",
-  "Namangan",
-  "Surhandaryo",
-  "Jizzax",
-  "Qashqadaryo",
+  { id: 1, label: "Farg'ona" },
+  { id: 2, label: "Toshkent" },
+  { id: 3, label: "Samarqand" },
+  { id: 4, label: "Buxora" },
 ];
-
 const CommunityRegister5 = ({ activeBarItem }) => {
+  const {
+    data,
+    setData,
+    links,
+    setLinks,
+    dispatch,
+    locationData,
+    locationLoading,
+  } = useApplicationFetching();
+  const { t } = useTranslation();
+
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
-  const [data, setData] = useState({
-    region_id: communityCreateData.region_id,
-    city_id: communityCreateData.city_id,
-    phone: communityCreateData.phone ? communityCreateData.phone : "+998",
-    email: communityCreateData.email,
-    address: communityCreateData.address,
-    confirm: false,
-  });
-  const linksData = communityCreateData.site
-    ? communityCreateData.site.map((el, i) => ({ id: i + 1, link: el }))
-    : [{ id: 1, link: "" }];
-  const [links, setLinks] = useState(linksData);
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
 
   const handleChangeApplication5 = ({ key, value, id }) => {
     if (key !== "link") {
       setData((prev) => ({ ...prev, [key]: value }));
     }
 
+    console.log(links);
     const newArr = links.map((el) => {
       if (el.id === id) {
         return {
@@ -80,12 +64,26 @@ const CommunityRegister5 = ({ activeBarItem }) => {
     if (data.confirm) {
       const newCommunityCreateData = {
         ...communityCreateData,
-        site: links.map((link) => link.link),
+        site: links.map((link) => link.link).join(","),
       };
 
+      console.log({
+        ...newCommunityCreateData,
+        attachments: [newCommunityCreateData.attachments],
+      });
       dispatch(communityCreateDataAdd(newCommunityCreateData));
+      dispatch(
+        postCommunityCreate({
+          ...newCommunityCreateData,
+          attachments: [newCommunityCreateData.attachments],
+        })
+      );
     }
   };
+
+  if (locationLoading) {
+    return null;
+  }
 
   return (
     <div
@@ -107,7 +105,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
           <MySelect
             value={data.region_id}
             handleChange={handleChangeApplication5}
-            data={countryData}
+            data={locationData}
             text={t("communityAssociation.menu5_info.input1_name")}
             valueKey="region_id"
           />
