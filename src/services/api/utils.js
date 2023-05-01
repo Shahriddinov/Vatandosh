@@ -50,6 +50,7 @@ export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
+export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
 
 // Update requests
 
