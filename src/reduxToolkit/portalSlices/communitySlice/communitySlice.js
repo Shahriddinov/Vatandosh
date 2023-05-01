@@ -133,13 +133,15 @@ const communitySlice = createSlice({
       })
       .addCase(postCommunityCreate.fulfilled, (state, { payload }) => {
         state.communityCreateDataLoading = false;
-        state.communityCreateData = payload;
+        // state.communityCreateData = payload;
         state.communityCreateDataStatus = "success";
+        console.log(payload);
       })
       .addCase(postCommunityCreate.rejected, (state, { error }) => {
         state.communityCreateDataLoading = false;
         state.communityCreateDataStatus = "error";
         state.error = error.message;
+        console.log(error.message);
       });
 
     builder

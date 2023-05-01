@@ -7,6 +7,7 @@ import Select from "@mui/material/Select";
 
 import "./mySelect.scss";
 import { useTranslation } from "react-i18next";
+import { Autocomplete, TextField } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -29,15 +30,15 @@ function getStyles(name, personName, theme) {
 }
 
 const MySelect = ({ data, text, value, handleChange, valueKey }) => {
-  const theme = useTheme();
   const { t } = useTranslation();
 
-  const handleChangeSelect = (event) => {
+  const handleChangeSelect = (event, { id }) => {
     const {
       target: { value },
     } = event;
-    handleChange({ key: valueKey, value });
+    handleChange({ key: valueKey, value: id });
   };
+
   return (
     <div className="my-select">
       <FormControl sx={{ m: 1, width: "100%" }}>
@@ -45,29 +46,15 @@ const MySelect = ({ data, text, value, handleChange, valueKey }) => {
           <span className="my-input__text">{text}</span>
           <span className="my-input__required"> *</span>
         </FormHelperText>
-        <Select
-          displayEmpty
-          value={value}
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={data}
+          sx={{ width: 300 }}
           onChange={handleChangeSelect}
-          MenuProps={MenuProps}
-          inputProps={{ "aria-label": "Without label" }}
-        >
-          <MenuItem disabled value="">
-            <p className="disabled">
-              {t("communityAssociation.menu5_info.input1_desc")}
-            </p>
-          </MenuItem>
-
-          {data?.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, value, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
+          placeholder="Barcha davlatlar"
+          renderInput={(params) => <TextField {...params} label="" />}
+        />
       </FormControl>
     </div>
   );
