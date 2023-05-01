@@ -18,8 +18,6 @@ export default function Detail(data) {
     if (data?.images) setgalleryMainImg(JSON.parse(data?.images)[0]);
   }, [data]);
 
-  console.log(data);
-
   return data ? (
     <div className="newsdetail">
       <Header />
