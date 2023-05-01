@@ -23,7 +23,8 @@ import authSlice from "./authSlice/authSlice";
 import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import expertMenu from "./ExpertMenu";
-import volunterCreate from "./volunteer/index";
+import volunterCreate from "./volunteer";
+import quizSlice from "./victorinaQuiz";
 
 const store = configureStore({
   reducer: {
@@ -51,6 +52,7 @@ const store = configureStore({
     community,
     expertMenu,
     volunterCreate,
+    quizSlice,
   },
 });
 

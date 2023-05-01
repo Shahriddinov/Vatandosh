@@ -23,6 +23,9 @@
 
   &-img {
     height: 240px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    object-fit: cover;
   }
 
   &-list {
@@ -86,5 +89,27 @@
     border: none;
     margin-bottom: 10px;
     cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    span {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 10px 0;
+
+      p {
+        font-weight: 600;
+        font-size: 13.2px;
+        line-height: 16px;
+        color: #5c5c5c;
+        margin: 3px 0;
+      }
+    }
   }
 }

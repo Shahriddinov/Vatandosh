@@ -4,37 +4,67 @@ import {
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
 import "./Victorina.scss";
-import { victorine } from "../../../victorina";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuizz } from "../../../../../../../reduxToolkit/victorinaQuiz/getquiz";
+import { useEffect } from "react";
+import { imageUrl } from "../../../../../../../services/api/utils";
 
 function Victorina() {
+  const dispatch = useDispatch();
+  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
+
+  useEffect(() => {
+    dispatch(getQuizz());
+  }, []);
+
+
   return (
     <div className="victorina">
       <div className="container">
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
-          {victorine.map((victorina, index) => (
+          {quizData?.map((victorina, index) => (
             <div key={index} className="victorina-list">
-              <img src={victorina.image} alt="" className="victorina-img" />
+              <img
+                src={`${imageUrl}/${victorina?.image}`}
+                alt=""
+                className="victorina-img"
+              />
               <div className="victorina-items">
                 <h4 className="victorina-subname">{victorina.title}</h4>
                 <div className="victorina-lists">
                   <div className="victorina-item">
                     <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>12.02.2023</p>
+                    <p>{victorina.started_at}</p>
                   </div>
                   <div className="victorina-item">
                     <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>100 K</p>
+                    <p>{victorina.count}</p>
                   </div>
                 </div>
-                <p className="victorina-text">{victorina.description}</p>
-                <button className="victorina-button">
+                <p
+                  dangerouslySetInnerHTML={{ __html: victorina.description }}
+                />
+                <div className="victorina__list">
+                  <span className="victorina__item">
+                    <p>{victorina.started_at.slice(9, 11)}</p>
+                    <p>Kun</p>
+                  </span>
+                  <span className="victorina__item">
+                    <p>{victorina.started_at.slice(11, 13)}</p>
+                    <p>Soat</p>
+                  </span>
+                  <span className="victorina__item">
+                    <p>{victorina.started_at.slice(14, 16)}</p>
+                    <p>Daqiqa</p>
+                  </span>
+                </div>
+                {/* <button className="victorina-button">
                   Loyiha tez orada ishga tushadi
-                </button>
+                </button> */}
                 <a
                   href="/portal-category/victorina/image-project"
-                  className="victorina-link"
-                >
+                  className="victorina-link">
                   Batafsil ma'lumot
                 </a>
               </div>

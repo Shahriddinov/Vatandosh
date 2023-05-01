@@ -16,8 +16,6 @@ export default function ListWinners() {
   const handleChange = (swiper) => {
     setisHiddenLeftBtn(swiper.isBeginning);
     setisHiddenRightBtn(swiper.isEnd);
-    console.log(swiper.isBeginning);
-    console.log(swiper.isEnd);
   };
 
   return (
@@ -26,14 +24,12 @@ export default function ListWinners() {
         <h3>{t("victorina.listwinner")}</h3>
         <button
           className="listwinners-list-leftbtn slider_controls__left"
-          style={isHiddenLeftBtn ? { display: "none" } : null}
-        >
+          style={isHiddenLeftBtn ? { display: "none" } : null}>
           <MdKeyboardArrowLeft />
         </button>
         <button
           className="listwinners-list-rightbtn slider_controls__right"
-          style={isHiddenRightBtn ? { display: "none" } : null}
-        >
+          style={isHiddenRightBtn ? { display: "none" } : null}>
           <MdKeyboardArrowRight />
         </button>
         <Swiper
@@ -62,8 +58,7 @@ export default function ListWinners() {
               spaceBetween: 30,
             },
           }}
-          className="listwinners-list"
-        >
+          className="listwinners-list">
           {[1, 2, 3, 4, 5, 6].map((el) => (
             <SwiperSlide key={el}>
               <WinnerCard />

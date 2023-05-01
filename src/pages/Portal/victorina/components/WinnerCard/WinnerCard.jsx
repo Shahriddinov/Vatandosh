@@ -2,7 +2,7 @@ import "./WinnerCard.scss";
 import img from "../../../../../assets/images/portal/2.png";
 import { Link } from "react-router-dom";
 
-export default function WinnerCard() {
+export default function WinnerCard({ quizData }) {
   return (
     <Link to={"/portal-category/victorina/winner/12"} className="winnercard">
       <img src={img} alt="error" />
