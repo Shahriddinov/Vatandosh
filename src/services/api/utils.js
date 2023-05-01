@@ -3,6 +3,8 @@ export const authUrl = "https://vatandoshlar.napaautomotive.uz/api/auth";
 export const portalBaseUrl = "https://vatandoshlar.napaautomotive.uz/api";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
+export const PORTAL_IMAGE_URL =
+  "https://vatandoshlar.napaautomotive.uz/storage/";
 
 export const expertUrl = "https://vatandoshlar.napaautomotive.uz/api/menu";
 
@@ -37,6 +39,7 @@ export const GET_EXPERT_MENU = `${expertUrl}/all`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
+export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";

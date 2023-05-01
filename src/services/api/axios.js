@@ -9,7 +9,6 @@ axios.interceptors.request.use(function (config) {
   const authorization = token ? `Bearer ${token}` : "";
 
   config.headers.Authorization = authorization;
-  console.log(config);
   return config;
 });
 

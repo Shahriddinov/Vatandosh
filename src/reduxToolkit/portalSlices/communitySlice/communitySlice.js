@@ -21,8 +21,8 @@ const communityCreateData = {
   created_date: "",
   members: 0,
   achievement: "",
-  region_id: 0,
-  city_id: 0,
+  region_id: "Uzbekiston",
+  city_id: "Toshkent",
   phone: "",
   email: "",
   address: "",
@@ -45,7 +45,7 @@ const initialState = {
   communityHomePageLoading: true,
 
   communityCreateData: getItem("communityCreate")
-    ? getItem("communityCreate")
+    ? JSON.parse(getItem("communityCreate"))
     : communityCreateData,
   communityCreateDataStatus: null,
   communityCreateDataLoading: true,
@@ -68,7 +68,9 @@ const communitySlice = createSlice({
       );
     },
     communityCreateDataAdd: (state, { payload }) => {
-      setItem("communityCreate", payload);
+      console.log(payload);
+      state.communityCreateData = payload;
+      setItem("communityCreate", JSON.stringify(payload));
     },
   },
   extraReducers: (builder) => {
@@ -145,10 +147,19 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = true;
         state.communityImagePostStatus = null;
       })
-      .addCase(postCommunityImage.fulfilled, (state, { payload }) => {
+      .addCase(postCommunityImage.fulfilled, (state, action) => {
         state.communityImagePostLoading = false;
-        state.communityImagePost = payload;
+        state.communityImagePost = action.payload;
         state.communityImagePostStatus = "success";
+        const newCommunityCreateData = {
+          ...state.communityCreateData,
+          [action.meta.arg.key]:
+            [action.meta.arg.key] === "attachments"
+              ? action.payload.path
+              : action.payload.path,
+        };
+        state.communityCreateData = newCommunityCreateData;
+        setItem("communityCreate", JSON.stringify(newCommunityCreateData));
       })
       .addCase(postCommunityImage.rejected, (state, { error }) => {
         state.communityImagePostLoading = false;

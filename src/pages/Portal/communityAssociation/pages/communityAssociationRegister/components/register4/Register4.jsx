@@ -5,17 +5,29 @@ import MyInput from "../UI/myInput/MyInput";
 import { useState } from "react";
 import MyInputDate from "../UI/myInputDate/MyInputDate";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 const CommunityRegister4 = ({ activeBarItem }) => {
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
   const [data, setData] = useState({
-    name: "",
-    time: "",
-    count: "",
-    achievements: "",
+    work: communityCreateData.work,
+    created_date: communityCreateData.created_date,
+    members: communityCreateData.members,
+    achievement: communityCreateData.achievement,
   });
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleChangeApplication4 = ({ key, value }) => {
+    const newCommunityCreateData = {
+      ...communityCreateData,
+      [key]: value,
+    };
+
+    dispatch(communityCreateDataAdd(newCommunityCreateData));
     setData((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -33,40 +45,41 @@ const CommunityRegister4 = ({ activeBarItem }) => {
 
       <form className="community-association-register4__form">
         <MyInput
-          value={data.name}
+          value={data.work}
           text={t("communityAssociation.menu4_info.input1_name")}
           placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication4}
           type="text"
           inputType="input"
-          valueKey="name"
+          valueKey="work"
         />
 
         <div className="community-association-register4__input_box">
           <MyInputDate
             text={t("communityAssociation.menu4_info.input2_name")}
             handleChange={handleChangeApplication4}
-            valueKey="time"
+            valueKey="created_date"
+            value={data.created_date}
           />
           <MyInput
-            value={data.count}
+            value={data.members}
             text={t("communityAssociation.menu4_info.input3_name")}
             placeholder="0"
             handleChange={handleChangeApplication4}
             type="number"
             inputType="input"
-            valueKey="count"
+            valueKey="members"
           />
         </div>
 
         <MyInput
-          value={data.achievements}
+          value={data.achievement}
           text={t("communityAssociation.menu4_info.input4_name")}
           placeholder={t("communityAssociation.title_input_plack")}
           handleChange={handleChangeApplication4}
           type="text"
           inputType="input"
-          valueKey="achievements"
+          valueKey="achievement"
         />
 
         <button className="community-association-register__form--btn">

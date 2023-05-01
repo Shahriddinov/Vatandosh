@@ -1,24 +1,53 @@
 import React from "react";
-import MyInput from "../UI/myInput/MyInput";
 import { useState } from "react";
-import MyImgUpload from "../UI/myImgUpload/MyImgUpload";
 
 import "./register2.scss";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import { Application2ImageUpload, MyInput } from "../";
 
 const CommunityRegister2 = ({ activeBarItem }) => {
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+
+  const communityImagePostStatus = useSelector(
+    (store) => store.community.communityImagePostStatus
+  );
   const [data, setData] = useState({
-    title: "",
-    comment: "",
-    componyImg: [],
+    title: communityCreateData.title,
+    description: communityCreateData.description,
+    attachments: communityCreateData.attachments,
   });
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleChangeApplication2 = ({ key, value }) => {
-    setData((prev) => ({
-      ...prev,
-      [key]: key === "componyImg" ? [value] : value,
-    }));
+    if (key === "attachments") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      console.log(value);
+      const attachmentsData = new FormData();
+      attachmentsData.append("image", value);
+      attachmentsData.append("folder", "community");
+      dispatch(postCommunityImage({ key, image: attachmentsData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+    }
   };
 
   return (
@@ -44,20 +73,21 @@ const CommunityRegister2 = ({ activeBarItem }) => {
         />
 
         <MyInput
-          value={data.comment}
+          value={data.description}
           text={t("communityAssociation.menu2_info.input2_name")}
           placeholder={t("communityAssociation.desc_textarea_plack")}
           handleChange={handleChangeApplication2}
-          type="comment"
+          type="description"
           inputType="textarea"
-          valueKey="comment"
+          valueKey="description"
         />
 
-        <MyImgUpload
-          data={data.componyImg}
+        <Application2ImageUpload
+          data={communityCreateData.attachments}
+          uploadStatus={communityImagePostStatus}
           text={t("communityAssociation.menu2_info.input3_name")}
           handleChange={handleChangeApplication2}
-          valueKey="componyImg"
+          valueKey="attachments"
           countImg={2}
         />
 

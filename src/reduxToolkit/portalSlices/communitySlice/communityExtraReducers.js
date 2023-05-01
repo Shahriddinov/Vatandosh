@@ -51,12 +51,14 @@ export const postCommunityCreate = createAsyncThunk(
 export const postCommunityImage = createAsyncThunk(
   "postCommunityImage",
   async (data) => {
+    console.log(data);
     return await axios({
       url: POST_COMMUNITY_IMAGE,
       method: "POST",
-      data,
+      data: data.image,
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type":
+          "multipart/form-data; boundary=<calculated when request is sent>",
         accept: "*/*",
       },
     }).then((res) => res.data);
