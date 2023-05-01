@@ -5,9 +5,8 @@ import { useParams } from "react-router-dom";
 import { getSearchResults } from "../../reduxToolkit/searchSlice/extraReducer";
 
 import "./searchResult.scss";
-import { Pagination, Spinner } from "../../component";
+import { Card, Pagination, Spinner } from "../../component";
 import Header from "../../component/Layout/Header/Header";
-import { Card } from "antd";
 
 const SearchResult = () => {
   const dispatch = useDispatch();
