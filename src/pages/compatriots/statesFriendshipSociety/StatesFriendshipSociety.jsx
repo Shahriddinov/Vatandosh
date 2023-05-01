@@ -65,7 +65,7 @@ const StatesFriendshipSociety = () => {
           <StatesFriendshipInfo {...categoryData} />
           <CommunityAssociationCompanyOffer {...categoryData} />
           <MiniSlider
-            title={`${t("event")}`}
+            title={`${t("events")}`}
             data={eventsData}
             fetchUrl="events"
           />
