@@ -7,7 +7,7 @@ import CommunityRegister2 from "./register2/Register2";
 import CommunityRegister3 from "./register3/Register3";
 import CommunityRegister4 from "./register4/Register4";
 import CommunityRegister5 from "./register5/Register5";
-
+import Application2ImageUpload from "./UI/applicationImageUpload2/Application2ImageUpload";
 export {
   MyInput,
   MySelect,
@@ -18,4 +18,5 @@ export {
   CommunityRegister4,
   CommunityRegister5,
   MyInputDate,
+  Application2ImageUpload,
 };

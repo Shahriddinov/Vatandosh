@@ -4,18 +4,57 @@ import {
   getAllRegions,
   getCommunityHomePage,
   getLocation,
+  postCommunityCreate,
+  postCommunityImage,
 } from "./communityExtraReducers";
+import { getItem, setItem } from "../../../helpers/persistanceStorage";
+
+const communityCreateData = {
+  name: "",
+  title: "",
+  description: "",
+  logo: "",
+  document: "",
+  director: "",
+  director_img: "",
+  work: "",
+  created_date: "",
+  members: 0,
+  achievement: "",
+  region_id: "Uzbekiston",
+  city_id: "Toshkent",
+  phone: "",
+  email: "",
+  address: "",
+  site: "",
+  status: "",
+  attachments: [""],
+};
 
 const initialState = {
   locationGet: [],
-  allRegionsGet: [],
-  allCommunityGet: [],
-  singleRegion: {},
-  communityHomePageData: {},
   locationGetLoading: true,
+
+  allRegionsGet: [],
   allRegionsGetLoading: true,
+
+  allCommunityGet: [],
   allCommunityGetLoading: true,
+
+  communityHomePageData: {},
   communityHomePageLoading: true,
+
+  communityCreateData: getItem("communityCreate")
+    ? JSON.parse(getItem("communityCreate"))
+    : communityCreateData,
+  communityCreateDataStatus: null,
+  communityCreateDataLoading: true,
+
+  communityImagePost: {},
+  communityImagePostStatus: null,
+  communityImagePostLoading: false,
+
+  singleRegion: {},
   error: null,
 };
 
@@ -27,6 +66,11 @@ const communitySlice = createSlice({
       state.singleRegion = state.allRegionsGet.find(
         (country) => country.code === payload
       );
+    },
+    communityCreateDataAdd: (state, { payload }) => {
+      console.log(payload);
+      state.communityCreateData = payload;
+      setItem("communityCreate", JSON.stringify(payload));
     },
   },
   extraReducers: (builder) => {
@@ -42,6 +86,7 @@ const communitySlice = createSlice({
         state.locationGetLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getAllRegions.pending, (state) => {
         state.allRegionsGetLoading = true;
@@ -54,6 +99,7 @@ const communitySlice = createSlice({
         state.allCommunityGetLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getAllCommunity.pending, (state) => {
         state.allCommunityGetLoading = true;
@@ -66,6 +112,7 @@ const communitySlice = createSlice({
         state.allRegionsGetLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getCommunityHomePage.pending, (state) => {
         state.communityHomePageLoading = true;
@@ -79,9 +126,51 @@ const communitySlice = createSlice({
         state.error = error.message;
       });
 
+    builder
+      .addCase(postCommunityCreate.pending, (state) => {
+        state.communityCreateDataLoading = true;
+        state.communityCreateDataStatus = null;
+      })
+      .addCase(postCommunityCreate.fulfilled, (state, { payload }) => {
+        state.communityCreateDataLoading = false;
+        state.communityCreateData = payload;
+        state.communityCreateDataStatus = "success";
+      })
+      .addCase(postCommunityCreate.rejected, (state, { error }) => {
+        state.communityCreateDataLoading = false;
+        state.communityCreateDataStatus = "error";
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(postCommunityImage.pending, (state) => {
+        state.communityImagePostLoading = true;
+        state.communityImagePostStatus = null;
+      })
+      .addCase(postCommunityImage.fulfilled, (state, action) => {
+        state.communityImagePostLoading = false;
+        state.communityImagePost = action.payload;
+        state.communityImagePostStatus = "success";
+        const newCommunityCreateData = {
+          ...state.communityCreateData,
+          [action.meta.arg.key]:
+            [action.meta.arg.key] === "attachments"
+              ? action.payload.path
+              : action.payload.path,
+        };
+        state.communityCreateData = newCommunityCreateData;
+        setItem("communityCreate", JSON.stringify(newCommunityCreateData));
+      })
+      .addCase(postCommunityImage.rejected, (state, { error }) => {
+        state.communityImagePostLoading = false;
+        state.communityImagePostStatus = "error";
+        state.error = error.message;
+      });
+
     builder.addDefaultCase((state) => state);
   },
 });
 
-export const { findSingleRegion } = communitySlice.actions;
+export const { findSingleRegion, communityCreateDataAdd } =
+  communitySlice.actions;
 export default communitySlice.reducer;

@@ -4,20 +4,50 @@ import { FileUploadIcon } from "../../../../../../../assets/images/communityAsso
 import "./register1.scss";
 import { MyImgUpload, MyInput } from "../";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 const CommunityRegister1 = ({ activeBarItem }) => {
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+
+  const communityImagePostStatus = useSelector(
+    (store) => store.community.communityImagePostStatus
+  );
+
   const [data, setData] = useState({
-    name: "",
-    certificate: [],
-    logo: [],
+    name: communityCreateData.name,
+    document: communityCreateData.document,
+    logo: communityCreateData.logo,
   });
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleChangeApplication1 = ({ key, value }) => {
-    setData((prev) => ({
-      ...prev,
-      [key]: key === "logo" ? [value] : value,
-    }));
+    if (key === "logo" || key === "document") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      logoData.append("folder", "community");
+      dispatch(postCommunityImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "document" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+    }
   };
 
   return (
@@ -43,7 +73,7 @@ const CommunityRegister1 = ({ activeBarItem }) => {
         />
 
         <label
-          htmlFor="certificate"
+          htmlFor="document"
           className="community-association-register1__certificate"
         >
           <span className="community-association-register1__certificate--span">
@@ -56,19 +86,19 @@ const CommunityRegister1 = ({ activeBarItem }) => {
             <div className="">
               <input
                 type="file"
-                name="certificate"
-                id="certificate"
+                name="document"
+                id="document"
                 onChange={(evt) =>
-                  setData((prev) => ({
-                    ...prev,
-                    certificate: [evt.target.files[0]],
-                  }))
+                  handleChangeApplication1({
+                    key: "document",
+                    value: evt.target.files[0],
+                  })
                 }
                 className="community-association-register1__certificate--input"
               />
               <span className="community-association-register1__certificate--text">
-                {data.certificate.length > 0
-                  ? data.certificate[0].name
+                {communityCreateData.document.length > 0
+                  ? communityCreateData.document
                   : t("communityAssociation.menu1_info.input2_placeholder")}
               </span>
             </div>
@@ -82,7 +112,8 @@ const CommunityRegister1 = ({ activeBarItem }) => {
         </label>
 
         <MyImgUpload
-          data={data.logo}
+          data={communityCreateData.logo}
+          uploadStatus={communityImagePostStatus}
           text={t("communityAssociation.menu1_info.input3_name")}
           handleChange={handleChangeApplication1}
           valueKey="logo"

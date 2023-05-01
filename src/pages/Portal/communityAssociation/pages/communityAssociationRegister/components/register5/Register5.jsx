@@ -10,6 +10,8 @@ import PhoneInput from "react-phone-number-input";
 
 import "./register5.scss";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 const countryData = [
   "Uzbekiston",
@@ -32,19 +34,29 @@ const cityData = [
 ];
 
 const CommunityRegister5 = ({ activeBarItem }) => {
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
   const [data, setData] = useState({
-    country: "",
-    city: "",
-    phone: "+998",
-    email: "",
-    address: "",
+    region_id: communityCreateData.region_id,
+    city_id: communityCreateData.city_id,
+    phone: communityCreateData.phone ? communityCreateData.phone : "+998",
+    email: communityCreateData.email,
+    address: communityCreateData.address,
     confirm: false,
   });
-  const [links, setLinks] = useState([{ id: 1, link: "" }]);
+  const linksData = communityCreateData.site
+    ? communityCreateData.site.map((el, i) => ({ id: i + 1, link: el }))
+    : [{ id: 1, link: "" }];
+  const [links, setLinks] = useState(linksData);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleChangeApplication5 = ({ key, value, id }) => {
-    setData((prev) => ({ ...prev, [key]: value }));
+    if (key !== "link") {
+      setData((prev) => ({ ...prev, [key]: value }));
+    }
+
     const newArr = links.map((el) => {
       if (el.id === id) {
         return {
@@ -55,6 +67,24 @@ const CommunityRegister5 = ({ activeBarItem }) => {
       return el;
     });
     setLinks(newArr);
+    const newCommunityCreateData = {
+      ...communityCreateData,
+      [key]: value,
+    };
+
+    dispatch(communityCreateDataAdd(newCommunityCreateData));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (data.confirm) {
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        site: links.map((link) => link.link),
+      };
+
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+    }
   };
 
   return (
@@ -69,22 +99,25 @@ const CommunityRegister5 = ({ activeBarItem }) => {
         V. {t("communityAssociation.menu5_info.menu5_title")}
       </h3>
 
-      <form className="community-association-register5__form">
+      <form
+        className="community-association-register5__form"
+        onSubmit={handleSubmit}
+      >
         <div className="community-association-register5__input_box">
           <MySelect
-            value={data.country}
+            value={data.region_id}
             handleChange={handleChangeApplication5}
             data={countryData}
             text={t("communityAssociation.menu5_info.input1_name")}
-            valueKey="country"
+            valueKey="region_id"
           />
 
           <MySelect
-            value={data.city}
+            value={data.city_id}
             handleChange={handleChangeApplication5}
             data={cityData}
             text={t("communityAssociation.menu5_info.input2_name")}
-            valueKey="city"
+            valueKey="city_id"
           />
 
           <div className="community-association-register__phone_box">
@@ -99,7 +132,9 @@ const CommunityRegister5 = ({ activeBarItem }) => {
               placeholder="+998"
               value={data.phone}
               defaultCountry="UZ"
-              onChange={(e) => setData((prev) => ({ ...prev, phone: e }))}
+              onChange={(e) =>
+                handleChangeApplication5({ key: "phone", value: e })
+              }
             />
           </div>
 
@@ -160,7 +195,14 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             }
           />
         </div>
-        <button className="community-association-register__form--btn">
+        <button
+          className={`${
+            !data.confirm
+              ? "disabled"
+              : "community-association-register__form--btn"
+          }`}
+          disabled={!data.confirm}
+        >
           {t("communityAssociation.menu5_info.save")}
         </button>
       </form>
