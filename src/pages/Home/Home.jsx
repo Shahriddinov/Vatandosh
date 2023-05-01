@@ -19,7 +19,6 @@ const Home = () => {
   const sliderData = useSelector((state) => state.sliderSlice.sliderData);
   const error = useSelector((state) => state.sliderSlice.error);
   const loading = useSelector((state) => state.sliderSlice.loading);
-  console.log(sliderData);
 
   useEffect(() => {
     dispatch(getPeaceful());
