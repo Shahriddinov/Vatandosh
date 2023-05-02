@@ -497,10 +497,10 @@ const RoutesContainer = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="listwinners" element={<ListOfWinners />} />
               <Route path="winner/:id" element={<VictorinaWinner />} />
-              <Route path="image-project" element={<VictorinaProject />} />
-              <Route path="youtube-project" element={<VictorinaProject />} />
+              <Route path="image-project/:id" element={<VictorinaProject />} />
+              {/* <Route path="youtube-project" element={<VictorinaProject />} />
               <Route path="poem-project" element={<VictorinaProject />} />
-              <Route path="edu-branding" element={<VictorinaProject />} />
+              <Route path="edu-branding" element={<VictorinaProject />} /> */}
               <Route path="victorina-finish" element={<VictorinaFinish />} />
               <Route path="victorina-more" element={<MoreVictorina />} />
               <Route path="about" element={<VictorinaAbout />} />

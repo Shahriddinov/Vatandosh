@@ -1,26 +1,24 @@
 import Checkbox from "@mui/material/Checkbox";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsImage, BsPlusCircleFill } from "react-icons/bs";
 import { HiOutlineTrash } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { volunterProfile } from "../../../../../../../reduxToolkit/volunteer/profileCreate";
 
 export default function Volunteer({ activeBarItem }) {
-  const [data, setData] = useState([
+  const [volunteerProfile, setVolunteerProfile] = useState([
     {
       id: 1,
-      articleTitle: "",
-      articeImg: [],
-      articeDesc: "",
+      title: "",
+      description: "",
+      images: [],
     },
   ]);
   const [checked, setChecked] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const handleChange = (obj) => {
-    setData((prev) =>
+    setVolunteerProfile((prev) =>
       prev.map((item) => {
         if (obj.id === item.id) {
           return obj;
@@ -30,6 +28,13 @@ export default function Volunteer({ activeBarItem }) {
     );
   };
 
+  const dispatch = useDispatch();
+
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    dispatch(volunterProfile(volunteerProfile));
+  };
+
   return (
     <form
       className={
@@ -37,21 +42,22 @@ export default function Volunteer({ activeBarItem }) {
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSubmit}
-    >
+      onSubmit={handleSumbit}>
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
           <h3 className="registeritem-title">VI. Volonyorlik faoliyati</h3>
-          {data?.map((el, index) => (
+          {volunteerProfile.map((el, index) => (
             <div key={el.id} className="registeritem-form">
               <p className="registeritem-label-delete">
                 <strong>{`${
                   index + 1
                 }. “O‘zbekiston zamini” ilmiy-amaliy va innovatsion  maqola`}</strong>
                 <AiOutlineDelete
-                  style={data.length === 1 ? { display: "none" } : null}
+                  style={
+                    volunteerProfile?.length === 1 ? { display: "none" } : null
+                  }
                   onClick={() =>
-                    setData(
+                    setVolunteerProfile(
                       (prev) =>
                         (prev = prev.filter((item) => item.id !== el.id))
                     )
@@ -69,22 +75,21 @@ export default function Volunteer({ activeBarItem }) {
                     type="text"
                     minLength={3}
                     maxLength={200}
-                    value={el.articleTitle}
+                    value={el.title}
                     placeholder={"Kiriting"}
                     onChange={(e) =>
                       handleChange({
                         ...el,
-                        articleTitle: e.target.value.trim(),
+                        title: e.target.value.trim(),
                       })
                     }
                   />
                 </div>
               </label>
-              {!el.articeImg.length ? (
+              {!el.images.length ? (
                 <label
                   htmlFor="volentoryinputfile"
-                  className="registeritem-imgInput"
-                >
+                  className="registeritem-imgInput">
                   <input
                     required
                     className="registeritem-label-fileinput"
@@ -94,7 +99,7 @@ export default function Volunteer({ activeBarItem }) {
                     onChange={(e) =>
                       handleChange({
                         ...el,
-                        articeImg: [...el.articeImg, e.target.files[0]],
+                        images: [...el.images, e.target.files[0]],
                       })
                     }
                   />
@@ -103,16 +108,15 @@ export default function Volunteer({ activeBarItem }) {
                 </label>
               ) : (
                 <ul className="registeritem-imageList">
-                  {el.articeImg.map((item, index) => (
+                  {el.images.map((item, index) => (
                     <li key={index} className="registeritem-imageList-item">
-                      {el.articeImg.length ? (
+                      {el.images.length ? (
                         <div
                           className="registeritem-imageList-item-remove"
                           onClick={() => {
-                            el.articeImg.splice(index, 1);
-                            handleChange({ ...el, articeImg: el.articeImg });
-                          }}
-                        >
+                            el.images.splice(index, 1);
+                            handleChange({ ...el, images: el.images });
+                          }}>
                           <HiOutlineTrash />
                           <span>Удалить</span>
                         </div>
@@ -122,8 +126,7 @@ export default function Volunteer({ activeBarItem }) {
                   ))}
                   <label
                     htmlFor={el.id}
-                    className="registeritem-imageList-inputFile"
-                  >
+                    className="registeritem-imageList-inputFile">
                     <input
                       required
                       className="registeritem-label-fileinput"
@@ -134,7 +137,7 @@ export default function Volunteer({ activeBarItem }) {
                         e.target.files[0] &&
                         handleChange({
                           ...el,
-                          articeImg: [...el.articeImg, e.target.files[0]],
+                          images: [...el.images, e.target.files[0]],
                         })
                       }
                     />
@@ -150,12 +153,15 @@ export default function Volunteer({ activeBarItem }) {
                   <textarea
                     required
                     type="text"
-                    value={el.articeDesc}
+                    value={el.description}
                     minLength={3}
                     maxLength={500}
                     placeholder={"Izoh"}
                     onChange={(e) =>
-                      handleChange({ ...el, articeDesc: e.target.value.trim() })
+                      handleChange({
+                        ...el,
+                        description: e.target.value.trim(),
+                      })
                     }
                   />
                 </div>
@@ -165,17 +171,16 @@ export default function Volunteer({ activeBarItem }) {
           <button
             className="registeritem-addForm"
             onClick={() =>
-              setData((prev) => [
+              setVolunteerProfile((prev) => [
                 ...prev,
                 {
                   id: Date.now(),
-                  articleTitle: "",
-                  articeImg: [],
-                  articeDesc: "",
+                  title: "",
+                  images: [],
+                  description: "",
                 },
               ])
-            }
-          >
+            }>
             <BsPlusCircleFill />
           </button>
           <div className="registeritem-checkbox">
@@ -190,10 +195,10 @@ export default function Volunteer({ activeBarItem }) {
       </div>
       <div className="registeritem-btnWrapper">
         <button
-          disabled={!checked}
+          // disabled={!checked}
           type="submit"
           className="registeritem-submitBtn"
-          style={checked ? null : { opacity: 0.5, cursor: "auto" }}
+          // style={checked ? null : { opacity: 0.5, cursor: "auto" }}
         >
           Keyingisi
         </button>

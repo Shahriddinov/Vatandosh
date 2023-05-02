@@ -6,6 +6,8 @@ export const baseServerUrl =
 export const PORTAL_IMAGE_URL =
   "https://vatandoshlar.napaautomotive.uz/storage/";
 
+export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
+
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
@@ -37,6 +39,10 @@ export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
 export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
+export const GET_EXPERT_USER = `/user`;
+export const GET_EXPERT_MENU = `/all`;
+export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
+export const GET_VICTORINA_PAGE = `/quiz/page`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
@@ -57,6 +63,7 @@ export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
+export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
 
 // Update requests
 
