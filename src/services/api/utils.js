@@ -42,6 +42,8 @@ export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
+export const GET_LIBRARY_ALL = "/ebook/get-all/";
+export const GET_LIBRARY_ONE = "/ebook/get-one/";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

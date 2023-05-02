@@ -23,6 +23,7 @@ import authSlice from "./authSlice/authSlice";
 import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
+import librarySlice from "./portalSlices/librarySlice";
 
 const store = configureStore({
   reducer: {
@@ -49,6 +50,7 @@ const store = configureStore({
     formDataSlice,
     community,
     expertSlice,
+    librarySlice,
   },
 });
 
