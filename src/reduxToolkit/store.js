@@ -22,11 +22,13 @@ import tagsSlice from "./tagsSlice/tagsSlice";
 import authSlice from "./authSlice/authSlice";
 import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
+import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
 import expertMenu from "./ExpertMenu";
 import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
+import expertRegisterSlice from "./ExpertSlice/RegisterSlice/index";
 
 const store = configureStore({
   reducer: {
@@ -57,6 +59,8 @@ const store = configureStore({
     volunterCreate,
     quizSlice,
     pageSlice,
+    suggestionSlice,
+    expertRegisterSlice,
   },
 });
 

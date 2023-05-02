@@ -51,6 +51,9 @@ export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
+export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
+export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
+export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
 

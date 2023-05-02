@@ -5,20 +5,43 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { t } from "i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getExpert } from "../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import Spinner from "../../../../component/Spinner/Spinner";
+import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
+import NotFound from "../../../404";
 
 export default function CustomProfil() {
   const { pathname } = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { expert: expertData, loading } = useSelector(
+    (state) => state.expertSlice
+  );
+
+  useEffect(() => {
+    if (pathname.includes("expert")) {
+      dispatch(getExpert(id));
+    }
+  }, [dispatch, pathname, id]);
+
+  if (loading) return <Spinner position="full" />;
+  if (!expertData) return <NotFound />;
 
   return (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
-          <img src={DefaultProfilePic} alt="error" />
+          <img
+            src={`${PORTAL_IMAGE_URL}/${expertData?.user.avatar}`}
+            alt="error"
+          />
         </div>
         <div className="customprofil-detail-desc">
-          <h4>Xatamov Akbarjon O‘tkir o‘g‘li</h4>
+          <h4>{expertData?.user.name}</h4>
           <div className="customprofil-detail-desc-workexp">
             <span>{t("expert.workexp")}</span>
             <span>4 yil</span>
@@ -39,15 +62,15 @@ export default function CustomProfil() {
               <div className="customprofil-list-otm-item">
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.uzbotm")}</span>
-                  <p>Toshkent moliya instituti</p>
+                  <p>{expertData?.user_education.institution}</p>
                 </div>
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.faculty")}</span>
-                  <p>Moliya</p>
+                  <p>{expertData?.user_education.faculty}</p>
                 </div>
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.profession")}</span>
-                  <p>Bank ishi</p>
+                  <p>{expertData?.user_education.level}</p>
                 </div>
               </div>
               <div className="customprofil-list-otm-item">
@@ -61,36 +84,6 @@ export default function CustomProfil() {
                 </div>
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.xorprofession")}</span>
-                  <p>Administration</p>
-                </div>
-              </div>
-            </div>
-            <div className="customprofil-list-otm">
-              <div className="customprofil-list-otm-item">
-                <div className="customprofil-list-otm-desc">
-                  <span>O‘zbekistonda tahsil olgan OTM</span>
-                  <p>Toshkent moliya instituti</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>Fakultet</span>
-                  <p>Moliya</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>Mutaxassisligi</span>
-                  <p>Bank ishi</p>
-                </div>
-              </div>
-              <div className="customprofil-list-otm-item">
-                <div className="customprofil-list-otm-desc">
-                  <span>Xorijda tahsil olgan OTM</span>
-                  <p>American University of Sharjah</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>Xorijdagi fakultet</span>
-                  <p>Bachelor of Business Administration</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>Xorijdagi mutaxassisligi</span>
                   <p>Administration</p>
                 </div>
               </div>
@@ -109,27 +102,27 @@ export default function CustomProfil() {
             <div className="customprofil-list-workexp">
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workspace")}</span>
-                <p>Jupiter IT Service</p>
+                <p>{expertData?.user_employment_info.company}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workcountry")}</span>
-                <p>BAA</p>
+                <p>{expertData?.user_employment_info.city}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workregion")}</span>
-                <p>Nyu-York</p>
+                <p>{expertData?.user_employment_info.city}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.position")}</span>
-                <p>Boshqaruv raisi</p>
+                <p>{expertData?.user_employment_info.specialization}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workstart")}</span>
-                <p>2014</p>
+                <p>{expertData?.user_employment_info.start_date}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workend")}</span>
-                <p>2018</p>
+                <p>{expertData?.user_employment_info.finish_date}</p>
               </div>
             </div>
           </AccordionDetails>
