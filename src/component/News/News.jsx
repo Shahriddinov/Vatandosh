@@ -10,7 +10,7 @@ import Card from "../card/Card";
 import "./News.scss";
 
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import { getEvents } from "../../reduxToolkit/eventsSlice/extraReducer";
+import { getEventsHome } from "../../reduxToolkit/eventsSlice/extraReducer";
 import { baseServerUrl } from "../../services/api/utils";
 import Spinner from "../Spinner/Spinner";
 
@@ -21,8 +21,8 @@ const News = () => {
   const newsData = useSelector((state) => state.newsSlice.newsHomeData);
   const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
   const error = useSelector((state) => state.newsSlice.error);
-  const eventsData = useSelector((state) => state.eventsSlice.eventsData);
-  const eventsLoading = useSelector((state) => state.eventsSlice.loading);
+  const eventsData = useSelector((state) => state.eventsSlice.homeEventData);
+  const eventsLoading = useSelector((state) => state.eventsSlice.eventLoading);
   const errorEvents = useSelector((state) => state.eventsSlice.error);
   const projectMenu = useSelector((state) => state.peaceful.menuData);
   const lan = useSelector((state) => state.language.language);
@@ -34,7 +34,7 @@ const News = () => {
 
   useEffect(() => {
     dispatch(getHomeNews());
-    dispatch(getEvents());
+    dispatch(getEventsHome());
     dispatch(getProjectsMenu());
   }, []);
 
@@ -84,7 +84,7 @@ const News = () => {
               </div>
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
-              {eventsData.slice(0, 6).map((event) => (
+              {eventsData[0].data.map((event) => (
                 <Card key={event.id} {...event} />
               ))}
               <div className="all-btn-mobile">

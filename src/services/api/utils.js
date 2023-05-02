@@ -27,11 +27,16 @@ export const GET_SINGLE_PAGINATION = baseUrl + "/";
 export const GET_COLUMN_COUNT = `${baseUrl}/columns/page/`;
 export const GET_COLUMNS_MENU = `${baseUrl}/column-menus`;
 export const GET_TAG_RESULTS = `${baseUrl}/tagsearch`;
+export const GET_LATEST_TAG = `${baseUrl}/latesttag`;
+export const GET_POPULAR_TAG = `${baseUrl}/brandtag`;
 export const GET_DIRECTION = `${baseUrl}/directions`;
 export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
+export const GET_EXPERT_USER = `/user`;
+export const GET_EXPERT_MENU = `/all`;
+export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";

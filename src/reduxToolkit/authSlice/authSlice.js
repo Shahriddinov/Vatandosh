@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getAllNations,
   recoverPassword,
   registerUser,
   resetPassword,
@@ -18,6 +19,8 @@ const initialState = {
   registerLoading: false,
   registerData: null,
   userData: null,
+  nationsData: null,
+  nationsLoading: true,
   token: localStorage.getItem("token"),
   message: "",
   tokenMessage: null,
@@ -156,6 +159,20 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Get all nations
+    build
+      .addCase(getAllNations.pending, (state) => {
+        state.nationsData = true;
+      })
+      .addCase(getAllNations.fulfilled, (state, action) => {
+        state.nationsLoading = false;
+        state.nationsData = action.payload;
+      })
+      .addCase(getAllNations.rejected, (state, action) => {
+        state.nationsLoading = false;
         state.error = action.error.message;
       });
   },
