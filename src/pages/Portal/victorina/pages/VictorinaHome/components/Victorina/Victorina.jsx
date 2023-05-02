@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { useEffect } from "react";
 import { imageUrl } from "../../../../../../../services/api/utils";
+import { Link } from "react-router-dom";
 
 function Victorina() {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ function Victorina() {
   useEffect(() => {
     dispatch(getQuizz());
   }, []);
-
 
   return (
     <div className="victorina">
@@ -59,14 +59,11 @@ function Victorina() {
                     <p>Daqiqa</p>
                   </span>
                 </div>
-                {/* <button className="victorina-button">
-                  Loyiha tez orada ishga tushadi
-                </button> */}
-                <a
-                  href="/portal-category/victorina/image-project"
+                <Link
+                  to={`/portal-category/victorina/image-project/${victorina.id}`}
                   className="victorina-link">
                   Batafsil ma'lumot
-                </a>
+                </Link>
               </div>
             </div>
           ))}

@@ -9,9 +9,14 @@ import { NotebookImage } from "../../../../../assets/images/victorina";
 import Victorina from "./components/Victorina/Victorina";
 import VictorinaNews from "./components/News/News";
 import ListWinners from "../../components/ListWinners/ListWinners";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
+import { useEffect } from "react";
 
 function VictorinaHome() {
+  const dispatch = useDispatch();
   const { navData, navbarUrl } = useOutletContext();
+  const pageData = useSelector((state) => state.pageSlice.pageData);
   const { t } = useTranslation();
 
   const councilData = {
@@ -20,6 +25,11 @@ function VictorinaHome() {
     image: NotebookImage,
     pathUrl: "/portal-category/victorina/about",
   };
+
+  useEffect(() => {
+    dispatch(getQuizPage());
+  }, []);
+
   return (
     <div>
       <div className="victorina-home">
@@ -27,7 +37,7 @@ function VictorinaHome() {
         <Nav navData={navData} />
       </div>
       <HeaderTime />
-      <VictorinaCouncil councilData={councilData} />
+      <VictorinaCouncil pageData={pageData} />
       <Victorina />
       <ListWinners />
       <VictorinaNews />

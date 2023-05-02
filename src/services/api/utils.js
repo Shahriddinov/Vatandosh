@@ -6,7 +6,7 @@ export const baseServerUrl =
 
 export const expertUrl = "https://vatandoshlar.napaautomotive.uz/api/menu";
 
-export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage"
+export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
 
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
@@ -37,6 +37,7 @@ export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
 export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
+export const GET_VICTORINA_PAGE = `/quiz/page`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";

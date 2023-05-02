@@ -1,14 +1,15 @@
 import "./WinnerCard.scss";
 import img from "../../../../../assets/images/portal/2.png";
 import { Link } from "react-router-dom";
+import { imageUrl } from "../../../../../services/api/utils";
 
-export default function WinnerCard({ quizData }) {
+export default function WinnerCard({ el }) {
   return (
     <Link to={"/portal-category/victorina/winner/12"} className="winnercard">
-      <img src={img} alt="error" />
+      <img src={`${imageUrl}/${el?.user.avatar}`} alt="error" />
       <div className="winnercard-desc">
-        <span> "ZIYOUZ VIKTORINASI" 1-o‘rin g‘olibi</span>
-        <h4>Xayitboev Nurali</h4>
+        <span> "ZIYOUZ VIKTORINASI" {el?.position}-o‘rin g‘olibi</span>
+        <h4>{el?.user?.name}</h4>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

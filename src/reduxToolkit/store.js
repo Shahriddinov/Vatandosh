@@ -25,6 +25,7 @@ import { community } from "./portalSlices";
 import expertMenu from "./ExpertMenu";
 import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
+import pageSlice from "./victorinapage";
 
 const store = configureStore({
   reducer: {
@@ -53,6 +54,7 @@ const store = configureStore({
     expertMenu,
     volunterCreate,
     quizSlice,
+    pageSlice,
   },
 });
 

@@ -2,18 +2,26 @@ import "./VictorinaStatics.scss";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import VictorinaStatics from "./VictorinaStatics";
+import { imageUrl } from "../../../../../../../services/api/utils";
 
-function VictorinaCouncil({ councilData }) {
+function VictorinaCouncil({ pageData }) {
   const { t } = useTranslation();
+  console.log(pageData);
   return (
     <div className="council">
       <div className="container">
         <div className="council-left">
-          <img src={councilData?.image} alt="img" />
-          <h3>{councilData?.title}</h3>
-          <p>{councilData?.desc}</p>
+          <img
+            className="victorina-images"
+            src={`${imageUrl}/${pageData?.image}`}
+            alt="img"
+          />
+          <h3>{pageData?.title}</h3>
+          <p>{pageData?.excerpt}</p>
           <div>
-            <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
+            <Link to="/portal-category/victorina/about">
+              {t("expert.detail")}
+            </Link>
           </div>
         </div>
         <VictorinaStatics />

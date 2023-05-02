@@ -11,6 +11,10 @@ import {
   ViewIcon,
 } from "../../../../../assets/images/expert";
 import { victorine } from "../victorina";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
+import { useEffect } from "react";
+import { imageUrl } from "../../../../../services/api/utils";
 
 function VictorinaFinish() {
   const [age, setAge] = useState("");
@@ -18,6 +22,13 @@ function VictorinaFinish() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  const dispatch = useDispatch();
+  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
+
+  useEffect(() => {
+    dispatch(getQuizz());
+  }, []);
   return (
     <div className="victorinafinish">
       <div className="container">
@@ -30,8 +41,7 @@ function VictorinaFinish() {
               id="demo-simple-select-helper"
               value={age}
               label="Age"
-              onChange={handleChange}
-            >
+              onChange={handleChange}>
               <MenuItem value="2022-2023">2022-2023</MenuItem>
               <MenuItem value="2022-2024">2022-2024</MenuItem>
               <MenuItem value="2022-2025">2022-2025</MenuItem>
@@ -39,29 +49,34 @@ function VictorinaFinish() {
           </FormControl>
         </div>
         <div className="victorina-page">
-          {victorine.map((victorina) => (
+          {quizData.map((victorina) => (
             <div className="victorina-list">
-              <img src={victorina.image} alt="" className="victorina-img" />
+              <img
+                src={`${imageUrl}/${victorina?.image}`}
+                alt=""
+                className="victorina-img"
+              />
               <div className="victorina-items">
                 <h4 className="victorina-subname">{victorina.title}</h4>
                 <div className="victorina-lists">
                   <div className="victorina-item">
                     <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>12.02.2023</p>
+                    <p>{victorina.started_at}</p>
                   </div>
                   <div className="victorina-item">
                     <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>100 K</p>
+                    <p>{victorina.count}</p>
                   </div>
                 </div>
-                <p className="victorina-text">{victorina.description}</p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: victorina.description }}
+                />
                 <button className="victorina-button">
                   VIKTORINA YAKUNLANDI!
                 </button>
                 <a
                   href="finished-projects/image-project"
-                  className="victorina-link"
-                >
+                  className="victorina-link">
                   Batafsil ma'lumot
                 </a>
               </div>
