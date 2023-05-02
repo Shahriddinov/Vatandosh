@@ -1,5 +1,3 @@
-import React from "react";
-import { useState } from "react";
 import { MyInput, MySelect } from "../";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -10,41 +8,39 @@ import PhoneInput from "react-phone-number-input";
 
 import "./register5.scss";
 import { useTranslation } from "react-i18next";
-
-const countryData = [
-  "Uzbekiston",
-  "Rossiya",
-  "Amerika",
-  "Arabiston",
-  "Tojikiston",
-  "Ukraina",
-  "Kanada",
-  "Meksika",
-];
+import { useSelector } from "react-redux";
+import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import { postCommunityCreate } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import useApplicationFetching from "./hooks/useApplicationFetching";
 
 const cityData = [
-  "Toshkent",
-  "Samarqand",
-  "Namangan",
-  "Surhandaryo",
-  "Jizzax",
-  "Qashqadaryo",
+  { id: 1, label: "Farg'ona" },
+  { id: 2, label: "Toshkent" },
+  { id: 3, label: "Samarqand" },
+  { id: 4, label: "Buxora" },
 ];
-
 const CommunityRegister5 = ({ activeBarItem }) => {
-  const [data, setData] = useState({
-    country: "",
-    city: "",
-    phone: "+998",
-    email: "",
-    address: "",
-    confirm: false,
-  });
-  const [links, setLinks] = useState([{ id: 1, link: "" }]);
+  const {
+    data,
+    setData,
+    links,
+    setLinks,
+    dispatch,
+    locationData,
+    locationLoading,
+  } = useApplicationFetching();
   const { t } = useTranslation();
 
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+
   const handleChangeApplication5 = ({ key, value, id }) => {
-    setData((prev) => ({ ...prev, [key]: value }));
+    if (key !== "link") {
+      setData((prev) => ({ ...prev, [key]: value }));
+    }
+
+    console.log(links);
     const newArr = links.map((el) => {
       if (el.id === id) {
         return {
@@ -55,7 +51,39 @@ const CommunityRegister5 = ({ activeBarItem }) => {
       return el;
     });
     setLinks(newArr);
+    const newCommunityCreateData = {
+      ...communityCreateData,
+      [key]: value,
+    };
+
+    dispatch(communityCreateDataAdd(newCommunityCreateData));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (data.confirm) {
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        site: links.map((link) => link.link).join(","),
+      };
+
+      console.log({
+        ...newCommunityCreateData,
+        attachments: [newCommunityCreateData.attachments],
+      });
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+      dispatch(
+        postCommunityCreate({
+          ...newCommunityCreateData,
+          attachments: [newCommunityCreateData.attachments],
+        })
+      );
+    }
+  };
+
+  if (locationLoading) {
+    return null;
+  }
 
   return (
     <div
@@ -69,22 +97,25 @@ const CommunityRegister5 = ({ activeBarItem }) => {
         V. {t("communityAssociation.menu5_info.menu5_title")}
       </h3>
 
-      <form className="community-association-register5__form">
+      <form
+        className="community-association-register5__form"
+        onSubmit={handleSubmit}
+      >
         <div className="community-association-register5__input_box">
           <MySelect
-            value={data.country}
+            value={data.region_id}
             handleChange={handleChangeApplication5}
-            data={countryData}
+            data={locationData}
             text={t("communityAssociation.menu5_info.input1_name")}
-            valueKey="country"
+            valueKey="region_id"
           />
 
           <MySelect
-            value={data.city}
+            value={data.city_id}
             handleChange={handleChangeApplication5}
             data={cityData}
             text={t("communityAssociation.menu5_info.input2_name")}
-            valueKey="city"
+            valueKey="city_id"
           />
 
           <div className="community-association-register__phone_box">
@@ -99,7 +130,9 @@ const CommunityRegister5 = ({ activeBarItem }) => {
               placeholder="+998"
               value={data.phone}
               defaultCountry="UZ"
-              onChange={(e) => setData((prev) => ({ ...prev, phone: e }))}
+              onChange={(e) =>
+                handleChangeApplication5({ key: "phone", value: e })
+              }
             />
           </div>
 
@@ -160,7 +193,14 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             }
           />
         </div>
-        <button className="community-association-register__form--btn">
+        <button
+          className={`${
+            !data.confirm
+              ? "disabled"
+              : "community-association-register__form--btn"
+          }`}
+          disabled={!data.confirm}
+        >
           {t("communityAssociation.menu5_info.save")}
         </button>
       </form>

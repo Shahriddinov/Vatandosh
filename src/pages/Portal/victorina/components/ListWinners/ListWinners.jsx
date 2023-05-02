@@ -16,8 +16,6 @@ export default function ListWinners() {
   const handleChange = (swiper) => {
     setisHiddenLeftBtn(swiper.isBeginning);
     setisHiddenRightBtn(swiper.isEnd);
-    console.log(swiper.isBeginning);
-    console.log(swiper.isEnd);
   };
 
   return (

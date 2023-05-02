@@ -7,12 +7,11 @@ import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
 function Volunter() {
-
   return (
     <div className="expert">
       <div className="container">
         <h2>Ekspertlar kengashi</h2>
-        <div className="expert-list">
+        <div className="volunter-list">
           {data.map((evt) => (
             <div key={evt.id}>
               <img src={evt.images} alt="error" />

@@ -2,18 +2,26 @@ import React from "react";
 import { BsImage } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
-import "./myImgUpload.scss";
+import "../myImgUpload/myImgUpload.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../../services/api/utils";
 
-const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
+const Application2ImageUpload = ({
+  data,
+  text,
+  handleChange,
+  valueKey,
+  uploadStatus,
+}) => {
   const handleChangeInput = (evt) => {
     handleChange({ key: valueKey, value: evt.target.files[0] });
   };
+
+  console.log(data);
   return (
     <label
       htmlFor={valueKey}
       className={
-        data.length > 0 && uploadStatus === "success"
+        data.length > 0 && data[0] !== undefined && uploadStatus === "success"
           ? "my-img-upload-imgInput_edit"
           : "my-img-upload-imgInput"
       }
@@ -39,7 +47,7 @@ const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
             alt="img"
           />
         </div>
-      ) : (uploadStatus === null) | (uploadStatus === "error") ? (
+      ) : uploadStatus === null || uploadStatus === "error" ? (
         <>
           <BsImage />
           <p>
@@ -54,4 +62,4 @@ const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
   );
 };
 
-export default MyImgUpload;
+export default Application2ImageUpload;

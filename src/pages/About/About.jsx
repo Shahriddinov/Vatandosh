@@ -24,7 +24,7 @@ const About = () => {
   const state = useLocation();
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
-  const loading = useSelector((state) => state.sliderSlice.loading);
+  const loading = useSelector((state) => state.aboutSlice.loading);
   const aboutData = useSelector((state)=>state.aboutSlice.aboutData);
   const { t } = useTranslation();
   const heroData = {
@@ -68,8 +68,6 @@ const About = () => {
   if (loading) {
     return <Spinner />;
   }
-
-
 
   return (
     <div className="about ">
@@ -133,7 +131,7 @@ const About = () => {
         data-aos-duration="1000"
       >
         <div className="about_direction_fon">
-          <p
+          <span
 
               dangerouslySetInnerHTML={{
                 __html: aboutData[`history_${lan}`],
@@ -142,7 +140,7 @@ const About = () => {
         </div>
         <div className="about_direction_cards">
           <p className="about_direction_cards_information">
-            <p
+            <span
 
                 dangerouslySetInnerHTML={{
                   __html: aboutData[`text_${lan}`],

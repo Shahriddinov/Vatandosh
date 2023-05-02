@@ -37,8 +37,9 @@ const NotFound = () => {
             {/*<img className="znak" src={znak} alt="znak2" />*/}
           </div>
           <h2 className="title">Ync! Cтраница не найдена</h2>
+          <h3 className="">Здесь только кот и тom уходит...</h3>
           <Link to="/" className="go-home-btn">
-            Домой
+            На гловную
           </Link>
         </div>
       </div>
