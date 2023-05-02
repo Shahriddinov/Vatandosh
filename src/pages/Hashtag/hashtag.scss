@@ -38,18 +38,25 @@
     }
   }
 
+  &__regular,
+  &__latest,
+  &__popular {
+    width: 100%;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 16px;
+
+    &.active-tab {
+      display: grid;
+    }
+  }
+
   &__image-btn {
     button {
       background: #e3f0ff;
       color: #065ea9;
     }
-  }
-
-  &__images {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 200px;
-    gap: 16px;
   }
 
   &__image-container {

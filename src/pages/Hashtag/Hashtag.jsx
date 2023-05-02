@@ -7,23 +7,38 @@ import Header from "../../component/Layout/Header/Header";
 import Spinner from "../../component/Spinner/Spinner";
 
 import "./hashtag.scss";
-import { getTagSearch } from "../../reduxToolkit/tagSearchSlice/extraReducer";
+import {
+  getLatestTag,
+  getPopularTag,
+  getTagSearch,
+} from "../../reduxToolkit/tagSearchSlice/extraReducer";
 import { Pagination } from "../../component";
 
 const Hashtag = () => {
   const dispatch = useDispatch();
   const [activePage, setActivePage] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
 
   const tagData = useSelector((state) => state.tagSearchSlice.tagData);
   const tagLoading = useSelector((state) => state.tagSearchSlice.loading);
+  const latestLoading = useSelector(
+    (state) => state.tagSearchSlice.latestLoading
+  );
+  const latestTags = useSelector((state) => state.tagSearchSlice.latestTags);
+  const popularLoading = useSelector(
+    (state) => state.tagSearchSlice.popularLoading
+  );
+  const popularTags = useSelector((state) => state.tagSearchSlice.popularTags);
   const error = useSelector((state) => state.tagSearchSlice.error);
   const { tag } = useParams();
 
   useEffect(() => {
     dispatch(getTagSearch({ tag, page: activePage }));
-  }, []);
+    dispatch(getLatestTag(activePage));
+    dispatch(getPopularTag(activePage));
+  }, [activePage]);
 
-  if (tagLoading) {
+  if (tagLoading || latestLoading || popularLoading) {
     return <Spinner position="full" />;
   }
 
@@ -31,8 +46,15 @@ const Hashtag = () => {
     return <h2>{error}</h2>;
   }
 
-  const paginationCount = Math.ceil(tagData.total / 16);
-  const data = tagData.data;
+  let paginationCount;
+
+  if (activeTab === 1) {
+    paginationCount = Math.ceil(tagData.total / 16);
+  } else if (activeTab === 2) {
+    paginationCount = Math.ceil(latestTags.total / 16);
+  } else if (activeTab === 3) {
+    paginationCount = Math.ceil(popularTags.total / 16);
+  }
 
   const fetchingData = (page) => {
     setActivePage(page);
@@ -46,36 +68,114 @@ const Hashtag = () => {
           <h2>#{tag}</h2>
           <div className="hashtag__btns">
             <div className="hashtag__image-btn">
-              <button className={true ? "active-btn" : ""}>Eng mashhur</button>
+              <button
+                className={activeTab === 1 ? "active-btn" : ""}
+                onClick={() => {
+                  setActiveTab(1);
+                  setActivePage(1);
+                }}
+              >
+                Eng mashhur
+              </button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Eng so‘ngi</button>
+              <button
+                className={activeTab === 2 ? "active-btn" : ""}
+                onClick={() => {
+                  setActiveTab(2);
+                  setActivePage(1);
+                }}
+              >
+                Eng so‘ngi
+              </button>
             </div>
             <div className="hashtag__image-btn">
-              <button>Eng ko‘p ko‘rilgan</button>
+              <button
+                className={activeTab === 3 ? "active-btn" : ""}
+                onClick={() => {
+                  setActiveTab(3);
+                  setActivePage(1);
+                }}
+              >
+                Eng ko‘p ko‘rilgan
+              </button>
             </div>
           </div>
         </div>
         <div className="hashtag__body">
           <div className="hashtag__images">
-            {data.map((image, index) => {
-              return image.image ? (
-                <div
-                  key={index}
-                  className="hashtag__image-card"
-                  onClick={() => {}}
-                >
-                  <div className="hashtag__image-container">
-                    <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
-                      <img
-                        src={`${baseServerUrl}/${image.image}`}
-                        alt="mediatake"
-                      />
-                    </Link>
+            <div
+              className={`hashtag__regular ${
+                activeTab === 1 ? "active-tab" : ""
+              }`}
+            >
+              {tagData.data.map((image, index) => {
+                return image.image ? (
+                  <div
+                    key={index}
+                    className="hashtag__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag__image-container">
+                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                        <img
+                          src={`${baseServerUrl}/${image.image}`}
+                          alt="mediatake"
+                        />
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              ) : null;
-            })}
+                ) : null;
+              })}
+            </div>
+            <div
+              className={`hashtag__latest ${
+                activeTab === 2 ? "active-tab" : ""
+              }`}
+            >
+              {latestTags.data.map((image, index) => {
+                return image.image ? (
+                  <div
+                    key={index}
+                    className="hashtag__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag__image-container">
+                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                        <img
+                          src={`${baseServerUrl}/${image.image}`}
+                          alt="mediatake"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                ) : null;
+              })}
+            </div>
+            <div
+              className={`hashtag__popular ${
+                activeTab === 3 ? "active-tab" : ""
+              }`}
+            >
+              {popularTags.data.map((image, index) => {
+                return image.image ? (
+                  <div
+                    key={index}
+                    className="hashtag__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag__image-container">
+                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                        <img
+                          src={`${baseServerUrl}/${image.image}`}
+                          alt="mediatake"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                ) : null;
+              })}
+            </div>
           </div>
         </div>
         {paginationCount >= 2 ? (

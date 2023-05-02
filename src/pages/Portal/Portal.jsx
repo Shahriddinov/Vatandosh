@@ -127,13 +127,13 @@ const HomePage = () => {
                   />
                 </svg>
               </a>
-              <a href={contactData?.twitter}>
+              <a href={contactData?.telegram}>
                 <FaTelegramPlane />
               </a>
-              <a href={contactData?.facebook}>
+              <a href={contactData?.linkedin}>
                 <FaLinkedinIn />
               </a>
-              <a href={contactData?.facebook}>
+              <a href={contactData?.youtube}>
                 <FaYoutube />
               </a>
               <svg width="2" height="104" viewBox="0 0 2 104" fill="none">
@@ -173,12 +173,8 @@ const HomePage = () => {
                   <Link to="/portal/cabinet">Cabinet</Link>
                 ) : (
                   <>
-                    <button onClick={() => navigate("/registration/signup")}>
-                      Sign Up
-                    </button>
-                    <button onClick={() => navigate("/registration/signin")}>
-                      Log In
-                    </button>
+                    <Link to="/registration/signup">Sign Up</Link>
+                    <Link to="/registration/signin">Log In</Link>
                   </>
                 )}
               </div>

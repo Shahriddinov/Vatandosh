@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import {
+  GET_NATIONS,
   LOGIN,
   REGISTER,
   RESET_PASSWORD,
@@ -102,3 +103,8 @@ export const registerUser = createAsyncThunk(
       .then((res) => res.data);
   }
 );
+
+// Get all nations
+export const getAllNations = createAsyncThunk("getNations", async () => {
+  return await axios.get(GET_NATIONS).then((res) => res.data);
+});

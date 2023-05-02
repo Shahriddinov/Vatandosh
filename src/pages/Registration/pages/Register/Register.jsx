@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 
 import Spinner from "../../../../component/Spinner/Spinner";
+import {
+  getAllNations,
+  registerUser,
+} from "../../../../reduxToolkit/authSlice/extraReducer";
+import { getLocation } from "../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 import "../../../../assets/style/global.scss";
 import "./register.scss";
@@ -27,29 +33,23 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
-import { registerUser } from "../../../../reduxToolkit/authSlice/extraReducer";
 
 const Register = () => {
+  const createCountries = createSelector(
+    (state) => state.community.locationGet,
+    (countries) => {
+      return countries.map((country) => ({ ...country, label: country.name }));
+    }
+  );
   const dispatch = useDispatch();
-
-  const countries = [
-    { id: 1, label: "AQSH" },
-    { id: 2, label: "Avstraliya" },
-    { id: 3, label: "BAA" },
-    { id: 4, label: "Daniya" },
-    { id: 5, label: "Ekvador" },
-    { id: 6, label: "Finlandiya" },
-    { id: 7, label: "Italya" },
-    { id: 8, label: "Ispaniya" },
-    { id: 9, label: "Latviya" },
-    { id: 10, label: "Mongoliya" },
-    { id: 11, label: "Namimbiya" },
-    { id: 12, label: "Portugaliya" },
-    { id: 13, label: "Saudiya Arabistoni" },
-    { id: 14, label: "Ummon" },
-    { id: 15, label: "Vengriya" },
-    { id: 16, label: "Xorvatiya" },
-  ];
+  const loading = useSelector((state) => state.authSlice.registerLoading);
+  const registerData = useSelector((state) => state.authSlice.registerData);
+  const loadingNations = useSelector((state) => state.authSlice.nationsLoading);
+  const nationsData = useSelector((state) => state.authSlice.nationsData);
+  const loadingCountries = useSelector(
+    (state) => state.community.locationGetLoading
+  );
+  const allCountries = useSelector(createCountries);
 
   const [agree, setAgree] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,7 +58,7 @@ const Register = () => {
     second_name: "",
     last_name: "",
     birth_date: "",
-    additional_info: "",
+    national_id: null,
     gender: "",
     address: "",
     location_id: null,
@@ -69,8 +69,6 @@ const Register = () => {
   });
 
   const [modal, setModal] = useState(false);
-  const loading = useSelector((state) => state.authSlice.registerLoading);
-  const registerData = useSelector((state) => state.authSlice.registerData);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -128,11 +126,14 @@ const Register = () => {
     console.log(formData);
   };
 
-  if (loading) {
+  useEffect(() => {
+    dispatch(getAllNations());
+    dispatch(getLocation());
+  }, []);
+
+  if (loading || loadingNations || loadingCountries) {
     return <Spinner position="full" />;
   }
-
-  console.log(registerData);
 
   return (
     <div className="container position__relative register__wrapper">
@@ -230,16 +231,16 @@ const Register = () => {
                   label="Millati"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  name="additional_info"
-                  value={formData.additional_info}
+                  name="national_id"
+                  value={formData.national_id}
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
-                  <MenuItem value={"uzbek"}>O'zbek</MenuItem>
-                  <MenuItem value={"tajik"}>Tojik</MenuItem>
-                  <MenuItem value={"kyrgyz"}>Qirg'iz</MenuItem>
-                  <MenuItem value={"karakalpak"}>Qoraqalpoq</MenuItem>
-                  <MenuItem value={"kazakh"}>Qozoq</MenuItem>
+                  {nationsData.map((nation) => (
+                    <MenuItem key={nation.id} value={nation.id}>
+                      {nation.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl>
@@ -271,7 +272,7 @@ const Register = () => {
                 required
                 disablePortal
                 id={formData.location_id}
-                options={countries}
+                options={allCountries}
                 onChange={(event, value) => {
                   setFormData((prevFormData) => ({
                     ...prevFormData,
@@ -279,7 +280,7 @@ const Register = () => {
                   }));
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} label="Xorijiy Davlat" />
+                  <TextField {...params} label="Xorijiy davlat" />
                 )}
               />
               <TextField
@@ -294,7 +295,7 @@ const Register = () => {
               <TextField
                 required
                 id="outlined-basic"
-                label="Manzil"
+                label="Xorijdagi manzil"
                 variant="outlined"
                 name="achievements"
                 value={formData.achievements}
@@ -323,8 +324,7 @@ const Register = () => {
                 autoComplete="off"
               />
               <TextField
-                required
-                label="Pasportingiz nusxasini joylang"
+                label="Pasport nusxasi (ixtiyoriy)"
                 value={
                   formData.passport_file ? formData.passport_file.name : ""
                 }
