@@ -1,30 +1,23 @@
 import {
   CalendarIcon,
-  NewsImage,
   ViewIcon,
-  WhiteCalendar,
 } from "../../../../../../../assets/images/expert";
 import "./News.scss";
-import { news } from "../../news";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
-import InteractiveServices from "../../../../../../../component/interactiveServices/InteractiveServices";
 import { InformationServicesSlider } from "../../../../../../InformationServices/InformationServicesSlider/InformationServicesSlider";
-import { useInformationServicesPagination } from "../../../../../../InformationServices/hooks/useInformationServicesPagination.js";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomeNews } from "../../../../../../../reduxToolkit/newsSlice/extraReducer";
 import { baseServerUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
 
 function News() {
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
-  const { newsHomeData, loadingNews, error } = useSelector(
-    (state) => state.newsSlice
-  );
-  console.log(newsHomeData);
+  const { newsHomeData, loadingNews } = useSelector((state) => state.newsSlice);
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -35,6 +28,8 @@ function News() {
     dispatch(getHomeNews());
   }, [dispatch]);
 
+  if (loadingNews) return <Spinner position="full" />;
+
   return (
     <div className="expertnews">
       <div className="container" ref={ref}>
@@ -42,17 +37,6 @@ function News() {
           <>
             <h3>{t("news")}</h3>
             <div className="expertnews-page">
-              {/* <div className="expertnews-left">
-                <h4>
-                  "Vatandoshlar" jamoat fondi rahbariyati Rossiya
-                  Federatsiyasiga bo'lgan xizmat safari davomida ...
-                </h4>
-                <span className="expertnews-span">
-                  <img src={WhiteCalendar} alt="Calendar Icon" />
-                  <p>12.02.2023</p>
-                </span>
-                <img src={NewsImage} alt="error" />
-              </div> */}
               <InformationServicesSlider data={newsHomeData} />
               <div className="expertnews-right">
                 {newsHomeData?.slice(0, 3).map((news) => (

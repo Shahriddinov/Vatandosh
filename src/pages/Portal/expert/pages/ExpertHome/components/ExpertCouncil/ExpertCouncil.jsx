@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
-import { data } from "../../data";
 import "./ExpertCouncil.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,14 +10,15 @@ import "swiper/css";
 import { Navigation } from "swiper";
 import { getExperts } from "../../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 function Expert() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { expertData, loading, error } = useSelector(
-    (state) => state.expertSlice
-  );
-  console.log(expertData);
+  const {
+    expertData: { data },
+    loading,
+  } = useSelector((state) => state.expertSlice);
 
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
@@ -36,9 +36,7 @@ function Expert() {
     return <Spinner position="full" />;
   }
 
-  if (error) return <p>{error}</p>;
-
-  return (
+  return data?.length ? (
     <div className="expert">
       <div className="container">
         <h2>{t("expert.expertCouncil")}</h2>
@@ -88,14 +86,17 @@ function Expert() {
               <SwiperSlide key={evt.id}>
                 <div className="expert-list-item">
                   <div className="expert-list-item-desc">
-                    <img src={evt.images} alt="error" />
-                    <p>{evt.country}</p>
-                    <h3>{evt.name}</h3>
-                    <h4>{evt.job}</h4>
+                    <img
+                      src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
+                      alt="error"
+                    />
+                    <p>{evt.user_profile_id.international_location_id.name}</p>
+                    <h3>{evt.user_id.name}</h3>
+                    <h4>{evt.user_profile_id.job_position}</h4>
                   </div>
                   <Link
                     className="employe-link"
-                    to="/portal-category/expert/profile/12"
+                    to={`/portal-category/expert/profile/${evt.id}`}
                   >
                     <span>{t("expert.detail")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
@@ -107,6 +108,6 @@ function Expert() {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 export default Expert;
