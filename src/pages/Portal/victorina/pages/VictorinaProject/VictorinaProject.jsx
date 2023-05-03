@@ -127,7 +127,6 @@ export default function VictorinaProject() {
     dispatch(getQuizz());
   }, []);
 
-  console.log(quizData);
   return (
     <main className="victorinaproject">
       <div className="container">
@@ -181,9 +180,10 @@ export default function VictorinaProject() {
           </div>
           <CouncilStatics />
         </div>
-        {/* {pathname.includes("finished-projects") ? ( */}
         <>
-          <div style={{marginBottom:"50px"}} className="victorinaproject-winners">
+          <div
+            style={{ marginBottom: "50px" }}
+            className="victorinaproject-winners">
             <h3>{t("victorina.winnerlist")}</h3>
             <div className="victorinaproject-winners-list">
               {winnerData?.map((el) => (
@@ -192,23 +192,19 @@ export default function VictorinaProject() {
             </div>
           </div>
         </>
-        {/* ) : ( */}
         <ShareFriends />
-        {/* )} */}
       </div>
 
-      {/* {PopUp && PopUp.includes("image-project") ? (
+      {PopUp && quizData.type === "images" ? (
         <ProjectImgPopUp setactivePopUp={setPopUp} />
       ) : null}
-      {PopUp && PopUp.includes("youtube-project") ? (
+
+      {PopUp && quizData.type === "video" ? (
         <ProjectYouTubePopUp setactivePopUp={setPopUp} />
       ) : null}
-      {PopUp && PopUp.includes("poem-project") ? (
-        <ProjectPoemsPopUp setactivePopUp={setPopUp} />
-      ) : null}
-      {PopUp && PopUp.includes("edu-branding") ? (
+      {PopUp && quizData.type === "test" ? (
         <TestPopUp setactivePopUp={setPopUp} />
-      ) : null} */}
+      ) : null}
     </main>
   );
 }

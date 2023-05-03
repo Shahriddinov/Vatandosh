@@ -24,13 +24,13 @@ import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
-// import expertMenu from "./ExpertMenu";
 import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
 import expertRegisterSlice from "./ExpertSlice/RegisterSlice/index";
 import librarySlice from "./portalSlices/librarySlice";
-import volunteerSlice from "./volunteer/volunteerSlice"
+import volunteerSlice from "./volunteer/volunteerSlice";
+import mediaSlice from "./victorinaImage";
 
 const store = configureStore({
   reducer: {
@@ -64,7 +64,8 @@ const store = configureStore({
     suggestionSlice,
     expertRegisterSlice,
     librarySlice,
-    volunteerSlice
+    volunteerSlice,
+    mediaSlice,
   },
 });
 

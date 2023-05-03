@@ -36,8 +36,6 @@ export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
-// export const GET_EXPERT_USER = `/user`;
-// export const GET_EXPERT_MENU = `/all`;
 export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
 export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
@@ -73,6 +71,7 @@ export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_CREATE = "/volunteer/create";
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const VOLUNTEER_PROFILE = "volunteer/update/";
+export const VICTORINA_MEDIA_CREATE = "/media/create";
 
 // Update requests
 
