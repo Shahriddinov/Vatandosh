@@ -1,3 +1,7 @@
+.associations {
+  padding: 0px 0 100px 0;
+}
+
 .associations__top {
   display: flex;
   justify-content: space-between;
@@ -39,7 +43,7 @@
 .more__less__button {
   display: flex;
   gap: 12px;
-  margin: 30px auto 100px auto;
+  margin: 30px auto 0 auto;
   padding: 14px 24px;
   align-items: center;
   background: #e3f0ff;
