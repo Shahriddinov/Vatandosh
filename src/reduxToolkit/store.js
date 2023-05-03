@@ -29,6 +29,8 @@ import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
 import expertRegisterSlice from "./ExpertSlice/RegisterSlice/index";
+import librarySlice from "./portalSlices/librarySlice";
+import volunteerSlice from "./volunteer/volunteerSlice"
 
 const store = configureStore({
   reducer: {
@@ -61,6 +63,8 @@ const store = configureStore({
     pageSlice,
     suggestionSlice,
     expertRegisterSlice,
+    librarySlice,
+    volunteerSlice
   },
 });
 

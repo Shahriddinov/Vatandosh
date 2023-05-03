@@ -58,6 +58,8 @@ export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
+export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
+export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -68,8 +70,11 @@ export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
-export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
+export const VOLUNTEER_CREATE = "/volunteer/create";
+export const VOLUNTEER_UPDATE = "volunteer/update/";
+export const VOLUNTEER_PROFILE = "volunteer/update/";
 
 // Update requests
 
 // Delete requests
+export const VOLUNTEER_DELETE = "volunteer/delete/";

@@ -6,11 +6,9 @@ import {
 } from "./extraReducer";
 
 const initialState = {
-  data: {},
-  dataLoading: true,
   libraryLoading: true,
-  ebookLoading: true,
   libraryData: [],
+  ebookLoading: true,
   ebookData: [],
   error: null,
 };
