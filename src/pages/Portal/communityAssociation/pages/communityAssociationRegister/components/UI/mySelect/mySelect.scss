@@ -24,7 +24,7 @@
     margin-left: 0 !important;
   }
 
-  .MuiSelect-select {
+  .MuiAutocomplete-root {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
@@ -33,6 +33,11 @@
     padding: 14px 12px !important;
     background-color: #fff;
     border: 1px solid #eaedf6;
+  }
+
+  .MuiOutlinedInput-root,
+  .MuiAutocomplete-input {
+    padding: 0 !important;
   }
 
   .MuiOutlinedInput-notchedOutline {

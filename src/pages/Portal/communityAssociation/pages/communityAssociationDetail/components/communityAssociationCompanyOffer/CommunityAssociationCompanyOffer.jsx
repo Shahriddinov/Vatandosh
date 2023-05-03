@@ -7,7 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 //Scss files
 import "./communityAssociationCompanyOffer.scss";
-import { baseServerUrl } from "../../../../../../../services/api/utils";
+import {
+  PORTAL_IMAGE_URL,
+  baseServerUrl,
+} from "../../../../../../../services/api/utils";
 import { useInView } from "react-intersection-observer";
 import { LazySpinner } from "../../../../../../../component";
 
@@ -17,16 +20,18 @@ const CommunityAssociationCompanyOffer = (props) => {
     triggerOnce: true,
   });
 
-  const images = JSON.parse(props.images)?.map((el, i) => ({
-    id: i + 1,
-    image: el,
-  }));
+  console.log(props);
 
-  const lng = useSelector((state) => state.language.language);
+  // const images = JSON.parse(props.images)?.map((el, i) => ({
+  //   id: i + 1,
+  //   image: el,
+  // }));
+
+  // const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const [activeImage, setActiveImage] = useState({
-    id: images ? images[0].id : 1,
-    image: images ? images[0].image : null,
+    id: 0,
+    image: props.attachments[0],
   });
 
   return (
@@ -41,25 +46,22 @@ const CommunityAssociationCompanyOffer = (props) => {
               <div className="community-association-company-offer__box_img">
                 <img
                   className="community-association-company-offer__img"
-                  src={`${baseServerUrl}/${activeImage.image}`}
-                  alt={props[`title_${lng}`]}
+                  src={`${PORTAL_IMAGE_URL}/${activeImage.image}`}
+                  alt={props.name}
                 />
               </div>
 
               <div className="community-association-company-offer__content">
                 <h2 className="community-association-company-offer__title">
-                  {props[`info_title_${lng}`]}
+                  {props.work}
                 </h2>
 
-                <p
-                  className="community-association-company-offer__text1"
-                  dangerouslySetInnerHTML={{
-                    __html: props[`info_${lng}`],
-                  }}
-                />
+                <p className="community-association-company-offer__text1">
+                  {props.description}
+                </p>
 
                 <b className="community-association-company-offer__workers">
-                  {t("staffCount")} {props.company_workers}+
+                  {t("staffCount")} {props.members}+
                 </b>
               </div>
             </div>
@@ -99,25 +101,25 @@ const CommunityAssociationCompanyOffer = (props) => {
                 }}
                 className="community-association-company-offer__inner_list"
               >
-                {images?.map((item) => (
+                {props.attachments?.map((item, i) => (
                   <SwiperSlide
                     key={item.id}
                     className="community-association-company-offer__inner_item community-association-company-offer__inner_card "
                   >
                     <div
                       className={`community-association-company-offer__inner_card_img ${
-                        item.id === activeImage.id ? "active" : ""
+                        i === activeImage.id ? "active" : ""
                       }`}
                       onClick={() =>
                         setActiveImage((prev) => ({
                           ...prev,
-                          id: item.id,
-                          image: item.image,
+                          id: i,
+                          image: item,
                         }))
                       }
                     >
                       <img
-                        src={`${baseServerUrl}/${item.image}`}
+                        src={`${PORTAL_IMAGE_URL}/${item}`}
                         alt="img"
                         className="community-association-company-offer__inner_img"
                       />

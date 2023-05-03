@@ -5,7 +5,14 @@ import { FiEdit } from "react-icons/fi";
 import "./myImgUpload.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../../services/api/utils";
 
-const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
+const MyImgUpload = ({
+  data,
+  text,
+  handleChange,
+  valueKey,
+  uploadStatus,
+  required,
+}) => {
   const handleChangeInput = (evt) => {
     handleChange({ key: valueKey, value: evt.target.files[0] });
   };
@@ -19,13 +26,13 @@ const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
       }
     >
       <input
-        required
         className="my-img-upload-label-fileinput"
         id={valueKey}
         type="file"
         onChange={handleChangeInput}
         accept="image/png, image/gif, image/jpeg, image/jpg"
         multiple
+        name={valueKey}
       />
 
       {data.length > 0 ? (

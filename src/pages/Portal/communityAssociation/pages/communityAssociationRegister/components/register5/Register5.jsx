@@ -116,6 +116,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             data={cityData}
             text={t("communityAssociation.menu5_info.input2_name")}
             valueKey="city_id"
+            placeholder="Barcha davlatlar"
           />
 
           <div className="community-association-register__phone_box">
@@ -133,6 +134,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
               onChange={(e) =>
                 handleChangeApplication5({ key: "phone", value: e })
               }
+              required
             />
           </div>
 
@@ -144,6 +146,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             type="email"
             inputType="input"
             valueKey="email"
+            required={true}
           />
         </div>
 
@@ -155,6 +158,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="address"
+          required={true}
         />
         {links.map((el) => (
           <MyInput
@@ -167,6 +171,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             inputType="input"
             valueKey="link"
             id={el.id}
+            required={true}
           />
         ))}
 

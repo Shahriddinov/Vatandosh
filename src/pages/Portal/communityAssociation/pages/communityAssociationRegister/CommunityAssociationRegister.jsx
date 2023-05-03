@@ -72,11 +72,26 @@ const CommunityAssociationRegister = () => {
                 })}
               </ul>
               <div className="expertregister-main-list">
-                <CommunityRegister1 activeBarItem={activeBarItem} />
-                <CommunityRegister2 activeBarItem={activeBarItem} />
-                <CommunityRegister3 activeBarItem={activeBarItem} />
-                <CommunityRegister4 activeBarItem={activeBarItem} />
-                <CommunityRegister5 activeBarItem={activeBarItem} />
+                <CommunityRegister1
+                  activeBarItem={activeBarItem}
+                  handleClick={handleClick}
+                />
+                <CommunityRegister2
+                  activeBarItem={activeBarItem}
+                  handleClick={handleClick}
+                />
+                <CommunityRegister3
+                  activeBarItem={activeBarItem}
+                  handleClick={handleClick}
+                />
+                <CommunityRegister4
+                  activeBarItem={activeBarItem}
+                  handleClick={handleClick}
+                />
+                <CommunityRegister5
+                  activeBarItem={activeBarItem}
+                  handleClick={handleClick}
+                />
               </div>
             </div>
           </div>
