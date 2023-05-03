@@ -1157,18 +1157,12 @@ const MapsHome = ({ title }) => {
                 </g>
               </svg>
             </div>
-            {active &&
-              (registerHeader.includes("portal-category") ? (
-                <CommunityAssociationMapModal
-                  countryCode={countryCode}
-                  changeActive={changeActive}
-                />
-              ) : (
-                <MapsModal
-                  countryCode={countryCode}
-                  changeActive={changeActive}
-                />
-              ))}
+            {active && (
+              <MapsModal
+                countryCode={countryCode}
+                changeActive={changeActive}
+              />
+            )}
           </div>
         </div>
       </div>

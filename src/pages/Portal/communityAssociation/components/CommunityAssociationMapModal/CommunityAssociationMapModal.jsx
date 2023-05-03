@@ -16,43 +16,54 @@ const CommunityAssociationMapModal = ({ changeActive }) => {
     }
   };
   const country = useSelector((state) => state.community.singleRegion);
+  const countryName = { name: country.name };
 
   console.log(country);
 
   return (
     <div className="communityAssociationMapModal" onClickCapture={handleClick}>
-      <div className="communityAssociationMapModal__card">
-        <div className="communityAssociationMapModal__body">
-          <div className="communityAssociationMapModal__body_top">
-            <img
-              className="communityAssociationMapModal__body_img"
-              src={country.flag ? `${baseServerUrl}/${country?.image}` : UzFlag}
-              alt={country?.name}
-            />
-            <div className="communityAssociationMapModal__body_top--box">
-              <h4 className="communityAssociationMapModal_title">
-                {country?.name}
-              </h4>
+      {country.count > 0 ? (
+        <div className="communityAssociationMapModal__card">
+          <div className="communityAssociationMapModal__body">
+            <div className="communityAssociationMapModal__body_top">
+              <img
+                className="communityAssociationMapModal__body_img"
+                src={
+                  country.flag ? `${baseServerUrl}/${country?.image}` : UzFlag
+                }
+                alt={country?.name}
+              />
+              <div className="communityAssociationMapModal__body_top--box">
+                <h4 className="communityAssociationMapModal_title">
+                  {country?.name}
+                </h4>
+              </div>
             </div>
-          </div>
 
-          <div className="communityAssociationMapModal__body_content">
-            <b className="communityAssociationMapModal__body_count">
-              {country.count ? country?.count : 0}
-            </b>
-            <p className="communityAssociationMapModal__body_text">
-              {t("communityAssociation.total_public_organizations")}
-            </p>
-          </div>
+            <div className="communityAssociationMapModal__body_content">
+              <b className="communityAssociationMapModal__body_count">
+                {country.count ? country?.count : 0}
+              </b>
+              <p className="communityAssociationMapModal__body_text">
+                {t("communityAssociation.total_public_organizations")}
+              </p>
+            </div>
 
-          <Link
-            to={`/portal-category/community-association/country/${country?.id}`}
-            className="communityAssociationMapModal__body_link"
-          >
-            {t("communityAssociation.view_all")}
-          </Link>
+            <Link
+              to={`/portal-category/community-association/country/${country?.id}`}
+              className="communityAssociationMapModal__body_link"
+            >
+              {t("communityAssociation.view_all")}
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="maps_modal__card">
+          <b className="maps_modal__card-error">
+            {t("communityAssociation.communityMapErrorText", { countryName })}
+          </b>
+        </div>
+      )}
     </div>
   );
 };

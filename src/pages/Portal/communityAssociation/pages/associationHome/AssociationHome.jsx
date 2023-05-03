@@ -11,30 +11,33 @@ import { useTranslation } from "react-i18next";
 import { CommunityMaps } from "../../components";
 import { useCommunityHomeFetching } from "./hooks/useCommunityHomeFetching";
 import { Spinner } from "../../../../../component";
+import { CommunityHomeCouncil } from "./components";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
-  const { communityHomePageData, communityHomePageLoading } =
-    useCommunityHomeFetching();
+  const {
+    communityHomePageData,
+    communityHomePageLoading,
+    communityHomePageError,
+  } = useCommunityHomeFetching();
 
   if (communityHomePageLoading) {
     return <Spinner />;
+  } else if (communityHomePageError) {
+    return <p className="">{communityHomePageError}</p>;
   }
 
-  console.log(communityHomePageData);
   const headerData = {
-    title: t("communityAssociation.home_title"),
-    subTitle: t("communityAssociation.home_desc"),
+    title: communityHomePageData.title,
+    subTitle: communityHomePageData.excerpt,
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };
 
   const councilData = {
-    title:
-      "Xorijda istiqomat qilayotgan vatandoshlar tomonidan tashkil  etilgan jamoat birlashmalari",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised...",
-    image: heroImg,
+    body: communityHomePageData.body,
     pathUrl: "/portal-category/community-association/about",
   };
 
@@ -42,13 +45,15 @@ const AssociationHome = () => {
     <>
       <div
         className="expert-council"
-        style={{ backgroundImage: `url(${backImg})` }}
+        style={{
+          backgroundImage: `url(${PORTAL_IMAGE_URL}${communityHomePageData.image})`,
+        }}
       >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <Council councilData={councilData} />
+      <CommunityHomeCouncil councilData={councilData} />
       <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
       <News />
     </>
