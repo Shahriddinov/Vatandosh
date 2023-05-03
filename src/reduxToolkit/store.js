@@ -24,7 +24,7 @@ import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
-import expertMenu from "./ExpertMenu";
+// import expertMenu from "./ExpertMenu";
 import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
@@ -55,7 +55,7 @@ const store = configureStore({
     formDataSlice,
     community,
     expertSlice,
-    expertMenu,
+    // expertMenu,
     volunterCreate,
     quizSlice,
     pageSlice,
