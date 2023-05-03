@@ -12,7 +12,7 @@ import {
   baseServerUrl,
 } from "../../../../../../../services/api/utils";
 
-const CommunityRegister3 = ({ activeBarItem }) => {
+const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
@@ -101,6 +101,7 @@ const CommunityRegister3 = ({ activeBarItem }) => {
                     value: e.target.files[0],
                   })
                 }
+                required
               />
             </label>
             <button className="community-association-register3__user_delete">
@@ -120,9 +121,14 @@ const CommunityRegister3 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="director"
+          required={true}
         />
 
-        <button className="community-association-register__form--btn">
+        <button
+          className="community-association-register__form--btn"
+          type="button"
+          onClick={() => handleClick("4")}
+        >
           {t("communityAssociation.menu1_info.next")}
         </button>
       </form>

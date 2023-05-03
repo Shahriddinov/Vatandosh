@@ -19,9 +19,13 @@ export const getAllRegions = createAsyncThunk("getAllRegions", async () => {
 
 export const getAllCommunity = createAsyncThunk(
   "getAllCommunity",
-  async (payload) => {
+  async ({ page = 1, region }) => {
     return await axios
-      .get(GET_COMMUNITY_ALL_PAGINATION + payload)
+      .get(
+        `${GET_COMMUNITY_ALL_PAGINATION}?page${page}${
+          region === "all" ? "" : `&region_id=${region}`
+        }`
+      )
       .then((res) => res.data);
   }
 );

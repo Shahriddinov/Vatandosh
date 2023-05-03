@@ -1,25 +1,28 @@
 import React from "react";
 import "./associationsCard.scss";
 import Flag from "../../../../../assets/images/flagkgz.png";
-import Logo from "../../../../../assets/images/associationLogo.png";
 import { Link } from "react-router-dom";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
-const AssociationsCard = () => {
+const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
+  const countryInfo = allRegions.find((el) => el.id === region_id);
   return (
     <div className="association__card">
       <div className="association__country">
         <img src={Flag} alt="" />
-        Qirg'iziston
+        {countryInfo.name}
       </div>
       <div className="association__info">
         <p className="association__name">
-          Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi
+          {name.length > 65 ? name.slice(0, 65) + "..." : name.slice(0, 65)}
         </p>
-        <img src={Logo} alt="" />
+        <div className="association__info__image">
+          <img src={`${PORTAL_IMAGE_URL}${logo}`} alt={name} />
+        </div>
       </div>
-      <p>Chop etilgan maqolalar soni: 10</p>
+      <p>Chop etilgan maqolalar soni: {countryInfo.count}</p>
       <Link
-        to={`/portal-category/community-association/country/Ukraine/1`}
+        to={`/portal-category/community-association/country/${countryInfo.id}/${id}`}
         className="more__button"
       >
         Batafsil

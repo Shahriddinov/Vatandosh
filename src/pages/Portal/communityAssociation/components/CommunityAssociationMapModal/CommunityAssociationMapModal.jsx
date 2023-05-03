@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 import { baseServerUrl } from "../../../../../services/api/utils";
 import "./communityAssociationMapModal.scss";
 import { UzFlag } from "../../../../../assets/images/communityAssociation";
+import { useCommunityAssociationModalFetching } from "./hooks/useCommunityAssociationModalFetching ";
+import { Spinner } from "../../../../../component";
 
 const CommunityAssociationMapModal = ({ changeActive }) => {
-  const country = useSelector((state) => state.community.singleRegion);
-  const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const handleClick = (e) => {
     if (e.target.matches(".communityAssociationMapModal")) {
       changeActive(false);
     }
   };
+  const country = useSelector((state) => state.community.singleRegion);
+
   console.log(country);
 
   return (
@@ -44,7 +46,7 @@ const CommunityAssociationMapModal = ({ changeActive }) => {
           </div>
 
           <Link
-            to={`/portal-category/community-association/country/${country?.name}`}
+            to={`/portal-category/community-association/country/${country?.id}`}
             className="communityAssociationMapModal__body_link"
           >
             {t("communityAssociation.view_all")}
