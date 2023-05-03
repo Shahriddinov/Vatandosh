@@ -3,14 +3,19 @@ import "./ListWinners.scss";
 import "swiper/css";
 import { Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WinnerCard from "../WinnerCard/WinnerCard";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 
 export default function ListWinners() {
+  const dispatch = useDispatch();
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
-
+  const quizData = useSelector(
+    (state) => state.quizSlice.quizData.participants
+  );
   const { t } = useTranslation();
 
   const handleChange = (swiper) => {
@@ -18,20 +23,22 @@ export default function ListWinners() {
     setisHiddenRightBtn(swiper.isEnd);
   };
 
+  useEffect(() => {
+    dispatch(getQuizz());
+  }, []);
+
   return (
     <div className="listwinners">
       <div className="container">
         <h3>{t("victorina.listwinner")}</h3>
         <button
           className="listwinners-list-leftbtn slider_controls__left"
-          style={isHiddenLeftBtn ? { display: "none" } : null}
-        >
+          style={isHiddenLeftBtn ? { display: "none" } : null}>
           <MdKeyboardArrowLeft />
         </button>
         <button
           className="listwinners-list-rightbtn slider_controls__right"
-          style={isHiddenRightBtn ? { display: "none" } : null}
-        >
+          style={isHiddenRightBtn ? { display: "none" } : null}>
           <MdKeyboardArrowRight />
         </button>
         <Swiper
@@ -60,11 +67,10 @@ export default function ListWinners() {
               spaceBetween: 30,
             },
           }}
-          className="listwinners-list"
-        >
-          {[1, 2, 3, 4, 5, 6].map((el) => (
+          className="listwinners-list">
+          {quizData?.map((el) => (
             <SwiperSlide key={el}>
-              <WinnerCard />
+              <WinnerCard el={el} />
             </SwiperSlide>
           ))}
         </Swiper>

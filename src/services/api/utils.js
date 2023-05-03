@@ -6,6 +6,8 @@ export const baseServerUrl =
 export const PORTAL_IMAGE_URL =
   "https://vatandoshlar.napaautomotive.uz/storage/";
 
+export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
+
 // Get requests
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
@@ -34,9 +36,13 @@ export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
+// export const GET_EXPERT_USER = `/user`;
+// export const GET_EXPERT_MENU = `/all`;
+export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
 export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
-export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
+export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
+export const GET_VICTORINA_PAGE = `/quiz/page`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
@@ -45,6 +51,9 @@ export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
+export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
+export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
+export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
@@ -59,6 +68,7 @@ export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
+export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
 
 // Update requests
 

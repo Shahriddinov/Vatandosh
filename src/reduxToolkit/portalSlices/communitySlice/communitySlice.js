@@ -68,7 +68,6 @@ const communitySlice = createSlice({
       );
     },
     communityCreateDataAdd: (state, { payload }) => {
-      console.log(payload);
       state.communityCreateData = payload;
       setItem("communityCreate", JSON.stringify(payload));
     },

@@ -1,34 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAssociations,
-  getAssociationsCategory,
-} from "../../../../../../reduxToolkit/associationsSlice/associationsAsyncThunk";
+import { getAllCommunity } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useParams } from "react-router-dom";
 
 export const useCountryGet = () => {
-  const associationData = useSelector(
-    (store) => store.associationSlice.associationData
+  const { communityCountry } = useParams();
+
+  const allCommunityGet = useSelector(
+    (store) => store.community.allCommunityGet
   );
-  const associationCategoryData = useSelector(
-    (store) => store.associationSlice.associationCategoryData
+  const allCommunityGetLoading = useSelector(
+    (store) => store.community.allCommunityGetLoading
   );
-  const associationLoading = useSelector(
-    (store) => store.associationSlice.associationLoading
-  );
-  const associationCategoryLoading = useSelector(
-    (store) => store.associationSlice.associationCategoryLoading
-  );
+
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getAssociations());
-    dispatch(getAssociationsCategory());
-  }, [dispatch]);
-
-  return {
-    associationData,
-    associationCategoryData,
-    associationLoading,
-    associationCategoryLoading,
-  };
+    dispatch(getAllCommunity({ page: 1, region: communityCountry }));
+  }, []);
+  return { allCommunityGet, allCommunityGetLoading };
 };

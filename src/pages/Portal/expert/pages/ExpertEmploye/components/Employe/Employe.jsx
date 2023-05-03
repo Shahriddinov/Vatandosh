@@ -6,10 +6,17 @@ import Select from "@mui/material/Select";
 import "./Employe.scss";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
-import { data } from "../../../ExpertHome/data";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getExperts } from "../../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { Pagination } from "../../../../../../../component";
+import { useState } from "react";
 
 function Employe() {
+  const [activePage, setActivePage] = useState(1);
   const { t } = useTranslation();
   const [age, setAge] = React.useState("");
 
@@ -17,7 +24,23 @@ function Employe() {
     setAge(event.target.value);
   };
 
-  return (
+  const dispatch = useDispatch();
+  const { expertData, loading } = useSelector((state) => state.expertSlice);
+
+  useEffect(() => {
+    dispatch(getExperts());
+  }, [dispatch]);
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
+  const paginationFetching = (key) => {
+    setActivePage(key);
+    dispatch(getExperts(key));
+  };
+
+  return expertData?.data?.length ? (
     <div className="employe">
       <div className="container">
         <div className="employe-list">
@@ -32,7 +55,8 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha mutaxassislar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -47,7 +71,8 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha davlatlar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -56,25 +81,33 @@ function Employe() {
           </div>
         </div>
         <div className="employe-page">
-          {data.map((evt) => (
-            <div>
-              <img src={evt.images} alt="error" />
-              <p>{evt.country}</p>
-              <h3>{evt.name}</h3>
-              <h4>{evt.job}</h4>
-              <h4>{evt.location}</h4>
+          {expertData?.data?.map((evt) => (
+            <div key={evt.id}>
+              <img
+                src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
+                alt="error"
+              />
+              <p>{evt.user_profile_id.international_location_id.name}</p>
+              <h3>{evt.user_id.name}</h3>
+              <h4>{evt.user_profile_id.job_position}</h4>
               <Link
                 className="employe-link"
-                to="/portal-category/expert/profile/1">
+                to={`/portal-category/expert/profile/${evt.id}`}
+              >
                 <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
           ))}
         </div>
+        <Pagination
+          count={Math.ceil(expertData.total / 12)}
+          paginationFetching={paginationFetching}
+          page={activePage}
+        />
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default Employe;
