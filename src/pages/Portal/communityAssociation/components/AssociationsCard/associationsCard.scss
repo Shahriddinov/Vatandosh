@@ -1,6 +1,5 @@
 .association__card {
   padding: 15px;
-  width: max-content;
   background: #f6f7fb;
   border: 1px solid #eaedf6;
   border-radius: 10px;
@@ -10,10 +9,6 @@
   text-align: center;
   letter-spacing: 0.2px;
   color: #4b5157;
-
-  & > * {
-    width: 240px;
-  }
 }
 
 .association__country {
@@ -41,15 +36,25 @@
   align-items: center;
   row-gap: 5px;
 
+  &__image {
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
   img {
     width: 88px;
     height: 88px;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
 .more__button {
-  display: inline-block;
+  display: block;
   margin-top: 10px;
   padding: 12.5px 0;
   border: 1px solid #eaedf6;
@@ -67,4 +72,10 @@
   background-color: rgba(97, 165, 224, 0.88);
   border: 1px solid #eaedf6;
   transition: all 0.3s linear;
+}
+
+@media (max-width: 500px) {
+  .association__card {
+    max-width: 320px;
+  }
 }

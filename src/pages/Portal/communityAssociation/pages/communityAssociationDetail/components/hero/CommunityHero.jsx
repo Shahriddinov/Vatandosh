@@ -6,6 +6,31 @@ import "./communityHero.scss";
 import { t } from "i18next";
 
 const CommunityAssociationHero = ({ data, handleOpen }) => {
+  const communityAssociationHeroData = {
+    breadcrumbs: [
+      {
+        id: 1,
+        label: t("communityAssociation.navbar.navbar_link1"),
+        url: "/portal-category/community-association",
+        active: false,
+      },
+      {
+        id: 2,
+        label: t("communityAssociation.navbar.navbar_link2"),
+        url: "portal-category/community-association/associations",
+        active: false,
+      },
+      {
+        id: 3,
+        label: data.findCountryCategoryData.name,
+        url: null,
+        active: true,
+      },
+    ],
+
+    title: data.findCountry.name,
+    desc: data.findCountry.description,
+  };
   return (
     <section className="community-association-hero">
       <div className="community-association-hero__container container">
@@ -16,7 +41,7 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
               aria-label="breadcrumb"
             >
               <ul className="community-association-hero__breadcrumb">
-                {data.breadcrumbs.map((item) =>
+                {communityAssociationHeroData.breadcrumbs.map((item) =>
                   !item.active ? (
                     <li
                       className="community-association-hero__breadcrumb_item"

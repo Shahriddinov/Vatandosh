@@ -18,57 +18,32 @@ import { CommunityIntroData } from "./data";
 import "./communityAssociationDetail.scss";
 import { useCountryGet } from "../country/hooks/useCountryGet";
 import { useSelector } from "react-redux";
+import { useAssociationFetching } from "../associations/hooks/useAssociationFetching";
 
 const CommunityAssociationDetail = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const { loading, events } = useFetchingData();
   const { open, changeOpen } = useModalActive();
-  const { communityCountryId } = useParams();
-  const {
-    associationData,
-    associationCategoryData,
-    associationLoading,
-    associationCategoryLoading,
-  } = useCountryGet();
-  const lng = useSelector((state) => state.language.language);
+  const { communityCountryId, communityCountry } = useParams();
 
-  if (loading || associationLoading || associationCategoryLoading) {
+  const {
+    allRegions,
+    allRegionsGetLoading,
+    allCommunityGet,
+    allCommunityGetLoading,
+  } = useAssociationFetching();
+
+  if (loading || allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
   }
 
-  const findCountryCategoryData = associationCategoryData.find(
+  const findCountryCategoryData = allRegions.find(
+    (el) => el.id === communityCountry * 1
+  );
+  const findCountry = allCommunityGet.find(
     (el) => el.id === communityCountryId * 1
   );
-  const findCountry = associationData.find(
-    (el) => el.id === findCountryCategoryData.country_uz * 1
-  );
-
-  const communityAssociationHeroData = {
-    breadcrumbs: [
-      {
-        id: 1,
-        label: t("communityAssociation.navbar.navbar_link1"),
-        url: "/portal-category/community-association",
-        active: false,
-      },
-      {
-        id: 2,
-        label: t("communityAssociation.navbar.navbar_link2"),
-        url: "/portal-category/community-association/country/russia",
-        active: false,
-      },
-      {
-        id: 3,
-        label: findCountry[`country_${lng}`],
-        url: null,
-        active: true,
-      },
-    ],
-
-    title: findCountry[`country_${lng}`],
-    desc: findCountry[`info_${lng}`],
-  };
 
   return (
     <div className="community-association-detail">
@@ -80,13 +55,13 @@ const CommunityAssociationDetail = () => {
         <Nav navData={navData} />
 
         <CommunityAssociationHero
-          data={communityAssociationHeroData}
+          data={{ findCountry, findCountryCategoryData }}
           handleOpen={changeOpen}
         />
       </div>
 
-      <StatesFriendshipInfo {...findCountryCategoryData} />
-      <CommunityAssociationCompanyOffer {...findCountryCategoryData} />
+      <StatesFriendshipInfo {...findCountry} />
+      <CommunityAssociationCompanyOffer {...findCountry} />
       <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
 
       <AddNewsModal open={open} handleClose={changeOpen} />

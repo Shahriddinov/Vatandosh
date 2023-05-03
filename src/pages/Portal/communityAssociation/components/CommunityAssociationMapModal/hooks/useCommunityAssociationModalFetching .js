@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCommunity } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useParams } from "react-router-dom";
+import { getAllCommunity } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
-export const useCountryGet = () => {
+export const useCommunityAssociationModalFetching = () => {
   const { communityCountry } = useParams();
 
   const allCommunityGet = useSelector(

@@ -26,6 +26,7 @@ const MyInputDate = ({ text, handleChange, valueKey, value }) => {
             onChange={handleChangeDate}
             style={{ width: "100%" }}
             defaultValue={dayjs(value)}
+            required
           />
         </DemoContainer>
       </LocalizationProvider>

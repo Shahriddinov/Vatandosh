@@ -15,6 +15,7 @@ const MyInput = ({
   valueKey,
   handleChange,
   id,
+  required,
 }) => {
   return (
     <div className="my-input">
@@ -32,6 +33,7 @@ const MyInput = ({
             onChange={(e) =>
               handleChange({ key: valueKey, value: e.target.value.trim(), id })
             }
+            required={required}
           />
         ) : (
           <TextareaAutosize

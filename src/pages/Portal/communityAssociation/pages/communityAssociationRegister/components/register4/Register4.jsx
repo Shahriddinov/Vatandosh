@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
-const CommunityRegister4 = ({ activeBarItem }) => {
+const CommunityRegister4 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
@@ -31,6 +31,11 @@ const CommunityRegister4 = ({ activeBarItem }) => {
     setData((prev) => ({ ...prev, [key]: value }));
   };
 
+  const handleSubmit3 = (e) => {
+    e.preventDefault();
+    handleClick("5");
+  };
+
   return (
     <div
       className={`community-association-register4  ${
@@ -43,7 +48,10 @@ const CommunityRegister4 = ({ activeBarItem }) => {
         IV. {t("communityAssociation.menu4_info.menu4_title")}
       </h3>
 
-      <form className="community-association-register4__form">
+      <form
+        className="community-association-register4__form"
+        onSubmit={handleSubmit3}
+      >
         <MyInput
           value={data.work}
           text={t("communityAssociation.menu4_info.input1_name")}
@@ -52,6 +60,7 @@ const CommunityRegister4 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="work"
+          required={true}
         />
 
         <div className="community-association-register4__input_box">
@@ -69,6 +78,7 @@ const CommunityRegister4 = ({ activeBarItem }) => {
             type="number"
             inputType="input"
             valueKey="members"
+            required={true}
           />
         </div>
 
@@ -80,9 +90,13 @@ const CommunityRegister4 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="achievement"
+          required={true}
         />
 
-        <button className="community-association-register__form--btn">
+        <button
+          className="community-association-register__form--btn"
+          type="submit"
+        >
           {t("communityAssociation.menu1_info.next")}
         </button>
       </form>

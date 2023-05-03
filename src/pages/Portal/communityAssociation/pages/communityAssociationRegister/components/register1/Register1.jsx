@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FileUploadIcon } from "../../../../../../../assets/images/communityAssociation";
 import "./register1.scss";
 import { MyImgUpload, MyInput } from "../";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
-const CommunityRegister1 = ({ activeBarItem }) => {
+const CommunityRegister1 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
@@ -50,6 +50,12 @@ const CommunityRegister1 = ({ activeBarItem }) => {
     }
   };
 
+  const handleSubmit1 = (e) => {
+    e.preventDefault();
+    handleClick("2");
+    console.log("salom");
+  };
+
   return (
     <div
       className={`community-association-register1  ${
@@ -61,7 +67,10 @@ const CommunityRegister1 = ({ activeBarItem }) => {
       <h3 className="community-association-register__title">
         {t("communityAssociation.menu1_info.menu1_title")}
       </h3>
-      <form className="community-association-register1__form">
+      <form
+        className="community-association-register1__form"
+        onSubmit={handleSubmit1}
+      >
         <MyInput
           value={data.name}
           text={t("communityAssociation.menu1_info.input1_name")}
@@ -70,6 +79,7 @@ const CommunityRegister1 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="name"
+          required={true}
         />
 
         <label
@@ -119,7 +129,10 @@ const CommunityRegister1 = ({ activeBarItem }) => {
           valueKey="logo"
         />
 
-        <button className="community-association-register__form--btn">
+        <button
+          className="community-association-register__form--btn"
+          type="submit"
+        >
           {t("communityAssociation.menu1_info.next")}
         </button>
       </form>

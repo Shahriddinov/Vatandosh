@@ -8,7 +8,7 @@ import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlic
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import { Application2ImageUpload, MyInput } from "../";
 
-const CommunityRegister2 = ({ activeBarItem }) => {
+const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
@@ -50,6 +50,11 @@ const CommunityRegister2 = ({ activeBarItem }) => {
     }
   };
 
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
+    handleClick("3");
+  };
+
   return (
     <div
       className={`community-association-register2  ${
@@ -61,7 +66,10 @@ const CommunityRegister2 = ({ activeBarItem }) => {
       <h3 className="community-association-register__title">
         {t("communityAssociation.menu2_info.menu2_title")}
       </h3>
-      <form className="community-association-register1__form">
+      <form
+        className="community-association-register1__form"
+        onSubmit={handleSubmit2}
+      >
         <MyInput
           value={data.title}
           text={t("communityAssociation.input_title")}
@@ -70,6 +78,7 @@ const CommunityRegister2 = ({ activeBarItem }) => {
           type="text"
           inputType="input"
           valueKey="title"
+          required={true}
         />
 
         <MyInput
@@ -80,6 +89,7 @@ const CommunityRegister2 = ({ activeBarItem }) => {
           type="description"
           inputType="textarea"
           valueKey="description"
+          required={true}
         />
 
         <Application2ImageUpload
@@ -91,7 +101,10 @@ const CommunityRegister2 = ({ activeBarItem }) => {
           countImg={2}
         />
 
-        <button className="community-association-register__form--btn">
+        <button
+          className="community-association-register__form--btn"
+          type="submit"
+        >
           {t("communityAssociation.menu1_info.next")}
         </button>
       </form>

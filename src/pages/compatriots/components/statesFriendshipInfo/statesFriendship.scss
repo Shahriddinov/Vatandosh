@@ -21,12 +21,15 @@
   &__box1_img {
     width: 140px;
     height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   &__company_logo {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
   }
 
   &__company_name {
@@ -51,9 +54,9 @@
   }
 
   &__user {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 50%;
   }
 
