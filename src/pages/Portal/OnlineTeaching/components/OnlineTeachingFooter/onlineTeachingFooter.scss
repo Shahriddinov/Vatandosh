@@ -2,36 +2,38 @@
 
 .OnlineTeachingFooter {
   width: 100%;
+
   background: #062a49;
 
-  &_boxes {
+  &__inner {
+    padding: 20px 0;
+  }
+
+  &___boxes_list {
     display: flex;
     justify-content: space-between;
-    color: white;
+    gap: 20px;
+  }
 
-    &_ended {
-      width: 50%;
-      display: flex;
-      align-items: flex-start;
-      margin-top: 3%;
-      gap: 30px;
-      // justify-content: end;
-      &_step {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        // margin-top: 15px;
-        opacity: 0.5;
-        &_division {
-          margin-bottom: 10px;
-          cursor: pointer;
-        }
+  &_boxes {
+    display: grid;
+    grid-template-columns: 198px 1fr;
+    color: white;
+    gap: 60px;
+
+    &_ended_step {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      // margin-top: 15px;
+      opacity: 0.5;
+      &_division {
+        margin-bottom: 10px;
+        cursor: pointer;
       }
     }
     &_end {
-      width: 50%;
       display: flex;
-      margin-top: 3%;
       // flex-wrap: wrap;
       justify-content: end;
 
@@ -64,6 +66,71 @@
       font-weight: 300;
       font-size: 14px;
       line-height: 17px;
+    }
+  }
+}
+
+@media (max-width: 868px) {
+  .OnlineTeachingFooter {
+    width: 100%;
+    background: #062a49;
+
+    &__inner {
+      padding: 20px 0;
+    }
+
+    &_boxes {
+      color: white;
+      gap: 20px;
+
+      &_ended_step {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        // margin-top: 15px;
+        opacity: 0.5;
+        &_division {
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+      &_end {
+        display: flex;
+        // flex-wrap: wrap;
+        justify-content: end;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .OnlineTeachingFooter {
+    &__logo {
+      display: block;
+    }
+
+    &___boxes_list {
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    &_boxes {
+      display: block;
+
+      &_ended_step {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        opacity: 0.5;
+        &_division {
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &_production {
+      flex-direction: column;
     }
   }
 }
