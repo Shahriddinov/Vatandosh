@@ -42,3 +42,63 @@
     color: #065ea9;
   }
 }
+
+@media (max-width: 868px) {
+  .new-number-card {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+
+    &__img {
+      width: 100%;
+      max-width: 540px;
+      height: 480px;
+      justify-self: center;
+    }
+
+    &__page {
+      margin-bottom: 20px;
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    &__title {
+      margin-bottom: 30px;
+      font-size: 24px;
+      line-height: 29px;
+    }
+
+    &__name {
+      font-size: 30px;
+      line-height: 39px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .new-number-card {
+    gap: 20px;
+
+    &__img {
+      max-width: 400px;
+      height: 310px;
+    }
+
+    &__page {
+      margin-bottom: 13px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    &__title {
+      margin-bottom: 13px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    &__name {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+}
