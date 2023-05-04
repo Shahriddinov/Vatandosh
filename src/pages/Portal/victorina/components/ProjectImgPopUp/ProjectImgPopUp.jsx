@@ -2,29 +2,49 @@ import "./ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { BsImage } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import { mediaVictorina } from "../../../../../reduxToolkit/victorinaImage/media-upload";
-import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { postCommunityImage } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { communityCreateDataAdd } from "../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 export default function ProjectImgPopUp({ setactivePopUp }) {
-  const [picture, setPicture] = useState(null);
-  const [file, setFile] = useState(null);
-  const formRef = useRef();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [imageUpload, setImageUpload] = useState("");
-
-  const onChangePicture = (data) => {
-    setPicture(data);
-  };
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+  const [data, setData] = useState({
+    document: communityCreateData.document,
+    logo: communityCreateData.logo,
+  });
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    dispatch(mediaVictorina(imageUpload));
-    formRef.current.reset();
   };
 
-  console.log(imageUpload);
+  const handleChangeApplication = ({ key, value }) => {
+    if (key === "logo" || key === "document") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      logoData.append("folder", "community");
+      dispatch(postCommunityImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "document" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+      dispatch(communityCreateDataAdd(newCommunityCreateData));
+    }
+  };
 
   return (
     <div className="projectImg">
@@ -65,9 +85,6 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
                 minLength={3}
                 maxLength={30}
                 placeholder="Yuklang"
-                onChange={(e) => {
-                  onChangePicture(e.target.files[0]);
-                }}
               />
             </div>
           </label>
@@ -80,14 +97,14 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
             id="registeritem-label-fileinput"
             className="registeritem-label-fileinput"
             type="file"
+            name="image"
             accept="image/png, image/gif, image/jpeg, image/jpg"
-            onChange={(e) => {
-              onChangePicture(e.target.files[0]);
-              setImageUpload((prev) => ({
-                ...prev,
-                images: e.target.files[0].name,
-              }));
-            }}
+            onChange={(evt) =>
+              handleChangeApplication({
+                key: "document",
+                value: evt.target.files[0],
+              })
+            }
           />
           <BsImage />
           <p>{t("victorina.projectimg")}</p>

@@ -205,6 +205,9 @@ export default function VictorinaProject() {
       {PopUp && quizData.type === "test" ? (
         <TestPopUp setactivePopUp={setPopUp} />
       ) : null}
+      {PopUp && quizData.type === "text" ? (
+        <ProjectPoemsPopUp setactivePopUp={setPopUp} />
+      ) : null}
     </main>
   );
 }
