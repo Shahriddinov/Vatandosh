@@ -83,7 +83,9 @@
 
 @media (max-width: 768px) {
   .hashtag {
-    &__images {
+    &__regular,
+    &__latest,
+    &__popular {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -91,7 +93,9 @@
 
 @media (max-width: 500px) {
   .hashtag {
-    &__images {
+    &__regular,
+    &__latest,
+    &__popular {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -99,7 +103,9 @@
 
 @media (max-width: 375px) {
   .hashtag {
-    &__images {
+    &__regular,
+    &__latest,
+    &__popular {
       grid-template-columns: repeat(1, 1fr);
     }
   }
