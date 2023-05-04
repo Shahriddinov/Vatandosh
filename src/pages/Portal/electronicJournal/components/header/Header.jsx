@@ -1,7 +1,6 @@
 import React from "react";
 import "./header.scss";
-import { Navbar, Nav } from "../";
-import MobileNavbar from "../mobileNavbar/MobileNavbar";
+import { Navbar, Nav, MobileNav, MobileNavbar } from "../";
 import { useState } from "react";
 
 const Header = ({ navData, navbarUrl }) => {
@@ -10,7 +9,8 @@ const Header = ({ navData, navbarUrl }) => {
     <header className="electronic-journal">
       <Navbar navbarUrl={navbarUrl} setActive={setActive} />
       <MobileNavbar active={active} setActive={setActive} />
-      {/* <Nav navData={navData} /> */}
+      <Nav navData={navData} />
+      <MobileNav navData={navData} />
     </header>
   );
 };
