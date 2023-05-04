@@ -309,6 +309,7 @@
       "navbar_link3": "Tadbirlar",
       "navbar_link4": "Bog‘lanish"
     },
+    "communityMapErrorText": "{{countryName.name}} davlatida jamoat birlashmalari mavjud emas.",
     "cabinet": "Kabinet",
     "home_title": "“Vatandoshlar” Jamoat birlashmalari",
     "home_desc": "Vatandosh jamoat birlashmalarining elektron platformasi",
