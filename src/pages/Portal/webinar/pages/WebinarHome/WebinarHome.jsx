@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Nav from "./components/Nav/Nav";
@@ -10,6 +10,12 @@ import WebinarCouncil from "./components/WebinarCouncil/WebinarCouncil";
 import { CouncilImage } from "../../../../../assets/images/webinar";
 import WebinarEvents from "./components/WebinarEvents/WebinarEvents";
 import WebinarNews from "./components/WebinarNews/WebinarNews";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getMeetingAll,
+  getMeetingOne,
+} from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { Spinner } from "../../../../../component";
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -32,7 +38,8 @@ function WebinarHome() {
     <div>
       <div
         style={{ backgroundImage: `url(${Webinar})` }}
-        className="webinar-home">
+        className="webinar-home"
+      >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <WebinarHeader headerData={headerData} />
