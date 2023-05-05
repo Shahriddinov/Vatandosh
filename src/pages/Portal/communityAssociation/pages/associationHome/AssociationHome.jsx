@@ -30,14 +30,14 @@ const AssociationHome = () => {
   }
 
   const headerData = {
-    title: communityHomePageData.title,
-    subTitle: communityHomePageData.excerpt,
+    title: communityHomePageData?.title,
+    subTitle: communityHomePageData?.excerpt,
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };
 
   const councilData = {
-    body: communityHomePageData.body,
+    body: communityHomePageData?.body,
     pathUrl: "/portal-category/community-association/about",
   };
 
@@ -46,7 +46,7 @@ const AssociationHome = () => {
       <div
         className="expert-council"
         style={{
-          backgroundImage: `url(${PORTAL_IMAGE_URL}${communityHomePageData.image})`,
+          backgroundImage: `url(${PORTAL_IMAGE_URL}${communityHomePageData?.image})`,
         }}
       >
         <Navbar navbarUrl={navbarUrl} />
