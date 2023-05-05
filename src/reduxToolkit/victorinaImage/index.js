@@ -1,37 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { mediaVictorina } from "./media-upload";
+import { mediaVictorinaImage } from "./media-upload";
 
 const initialState = {
-  mediaUploadLoading: true,
-  mediaUploadLoadingData: [],
-  status: "idle",
+  communityImagePost: {},
+  communityImagePostStatus: null,
+  communityImagePostLoading: false,
+
   error: null,
 };
 
 const mediaSlice = createSlice({
-  name: "images",
+  name: "mediaSlice",
   initialState,
-  reducers: {
-    changeStatus: (state, action) => {
-      state.status = "idle";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    // Create volunteer
     builder
-      .addCase(mediaVictorina.pending, (state) => {
-        state.mediaUploadLoading = true;
-        state.status = "idle";
+      .addCase(mediaVictorinaImage.pending, (state) => {
+        state.communityImagePostLoading = true;
+        state.communityImagePostStatus = null;
       })
-      .addCase(mediaVictorina.fulfilled, (state, action) => {
-        state.mediaUploadLoading = false;
-        state.mediaUploadLoadingData = action.payload;
-        state.status = "succeeded";
+      .addCase(mediaVictorinaImage.fulfilled, (state, action) => {
+        state.communityImagePostLoading = false;
+        state.communityImagePost = action.payload;
+        state.communityImagePostStatus = "success";
+        console.log(state);
       })
-      .addCase(mediaVictorina.rejected, (state, action) => {
-        state.mediaUploadLoading = false;
-        state.error = action.error.message;
+      .addCase(mediaVictorinaImage.rejected, (state, { error }) => {
+        state.communityImagePostLoading = false;
+        state.communityImagePostStatus = "error";
+        state.error = error.message;
       });
+
+    builder.addDefaultCase((state) => state);
   },
 });
 

@@ -31,6 +31,8 @@ import expertRegisterSlice from "./ExpertSlice/RegisterSlice/index";
 import librarySlice from "./portalSlices/librarySlice";
 import volunteerSlice from "./volunteer/volunteerSlice";
 import mediaSlice from "./victorinaImage";
+import quizTestSlice from "./victorinaQuiz/victorinaTest";
+import victorinaYoutubeSlice from "./victorinaYoutube";
 
 const store = configureStore({
   reducer: {
@@ -57,7 +59,6 @@ const store = configureStore({
     formDataSlice,
     community,
     expertSlice,
-    // expertMenu,
     volunterCreate,
     quizSlice,
     pageSlice,
@@ -66,6 +67,8 @@ const store = configureStore({
     librarySlice,
     volunteerSlice,
     mediaSlice,
+    quizTestSlice,
+    victorinaYoutubeSlice,
   },
 });
 

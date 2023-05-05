@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { postCommunityImage } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import { communityCreateDataAdd } from "../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import mediatekaSlice from "../../../../../reduxToolkit/mediatekaSlice";
 
 export default function ProjectImgPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
@@ -42,7 +42,7 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
         ...communityCreateData,
         [key]: value,
       };
-      dispatch(communityCreateDataAdd(newCommunityCreateData));
+      dispatch(mediatekaSlice(newCommunityCreateData));
     }
   };
 

@@ -41,6 +41,7 @@ export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
+export const GET_VICTORINA_TEST = `/quiz/quiz/1`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
@@ -72,6 +73,7 @@ export const VOLUNTEER_CREATE = "/volunteer/create";
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const VOLUNTEER_PROFILE = "volunteer/update/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";
+export const VICTORINA_YOUTUBE = '/quiz/participant'
 
 // Update requests
 

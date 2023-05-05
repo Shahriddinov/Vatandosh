@@ -200,7 +200,7 @@ export default function VictorinaProject() {
       ) : null}
 
       {PopUp && quizData.type === "video" ? (
-        <ProjectYouTubePopUp setactivePopUp={setPopUp} />
+        <ProjectYouTubePopUp setactivePopUp={setPopUp} id={id} />
       ) : null}
       {PopUp && quizData.type === "test" ? (
         <TestPopUp setactivePopUp={setPopUp} />

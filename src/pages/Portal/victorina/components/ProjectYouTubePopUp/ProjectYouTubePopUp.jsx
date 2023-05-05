@@ -1,13 +1,21 @@
 import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { useRef, useState } from "react";
+import { sendVictorinaYoutube } from "../../../../../reduxToolkit/victorinaYoutube/youtube";
 
-export default function ProjectYouTubePopUp({ setactivePopUp }) {
+export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
+  const [dataYoutube, setDataYoutube] = useState();
   const { t } = useTranslation();
-
+  const dispatch = useDispatch();
+  const formRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(sendVictorinaYoutube({ id, dataYoutube }));
   };
+
+  console.log(dataYoutube);
 
   return (
     <div className="projectImg">
@@ -26,7 +34,7 @@ export default function ProjectYouTubePopUp({ setactivePopUp }) {
             </p>
             <div>
               <input
-                required
+                // required
                 type="text"
                 minLength={3}
                 maxLength={30}
@@ -43,7 +51,7 @@ export default function ProjectYouTubePopUp({ setactivePopUp }) {
             </p>
             <div>
               <input
-                required
+                // required
                 type="file"
                 minLength={3}
                 maxLength={30}
@@ -61,6 +69,7 @@ export default function ProjectYouTubePopUp({ setactivePopUp }) {
               minLength={3}
               maxLength={30}
               placeholder={t("victorina.videourl")}
+              onChange={(e) => setDataYoutube({ link: e?.target.value })}
             />
           </div>
         </label>
