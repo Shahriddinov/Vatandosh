@@ -117,7 +117,7 @@ export const NavBarLinks = () => {
         },
         {
           title: t("information_items.item5"),
-          url: "/",
+          url: "/portal-category/electronic-journal",
           icon: coountryManIcon,
         },
       ],

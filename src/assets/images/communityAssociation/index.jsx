@@ -16,3 +16,6 @@ export { default as CommunityCardImg7 } from "./card-img8.png";
 export { default as PlusIcon } from "./Plus-icon.svg";
 export { default as Trash } from "./trash.svg";
 export { default as UzFlag } from "./uz_falg_image.png";
+export { default as Close } from "./close.svg";
+export { default as MobileLogo } from "./mobile-logo.svg";
+export { default as MobileEye } from "./mobile-eye.svg";

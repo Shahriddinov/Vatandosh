@@ -7,10 +7,10 @@ const Nav = ({ navData }) => {
   const [activeLink, setActiveLink] = useState(pathname.split("/")[3]);
 
   return (
-    <nav className="nav">
+    <nav className="community-nav">
       <div className="container">
         <div
-          className="nav__inner"
+          className="community-nav__inner"
           style={{
             borderBottomColor: "transparent",
           }}
@@ -20,7 +20,7 @@ const Nav = ({ navData }) => {
               <li key={navItem.id}>
                 <Link
                   to={navItem.url}
-                  className={`nav--link`}
+                  className={`community-nav--link`}
                   onClick={() => setActiveLink(navItem.url.split("/")[3])}
                   style={{
                     color:

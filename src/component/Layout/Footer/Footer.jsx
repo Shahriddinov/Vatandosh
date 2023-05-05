@@ -39,22 +39,22 @@ const Footer = () => {
                 <div className="footer-menu">
                   <ul>
                     <li>
-                      <a href="#">{t("footerAbout")}</a>
+                      <a href="/about">{t("footerAbout")}</a>
                     </li>
                     <li>
-                      <a href="#">{t("footerCompatriots")}</a>
+                      <a href="/compatriots/public-associations">{t("footerCompatriots")}</a>
                     </li>
                     <li>
-                      <a href="#">{t("footerProjects")}</a>
+                      <a href="/projects">{t("footerProjects")}</a>
                     </li>
                     <li>
-                      <a href="#">{t("footerSelections")}</a>
+                      <a href="/">{t("footerSelections")}</a>
                     </li>
                     <li>
-                      <a href="#">{t("footerService")}</a>
+                      <a href="/information-service/mediateka">{t("footerService")}</a>
                     </li>
                     <li>
-                      <a href="#">{t("footerContact")}</a>
+                      <a href="/contact">{t("footerContact")}</a>
                     </li>
                   </ul>
                 </div>
