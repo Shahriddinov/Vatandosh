@@ -84,7 +84,6 @@
   .journal-home-hero {
     &__inner {
       justify-content: space-between;
-      gap: 20px;
     }
   }
 }
@@ -96,12 +95,137 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 40px;
     }
 
     &__img {
       margin: 0 auto;
       justify-self: center;
+    }
+
+    &__inner-img {
+      width: 580px !important;
+      height: 764px;
+      padding: 20px 60px;
+      background-color: #f0f2f4;
+      border-radius: 20px;
+    }
+
+    &__inner-content {
+      width: 100%;
+      max-width: 631px;
+    }
+
+    &__inner-content--time {
+      margin-bottom: 40px;
+      font-size: 26px;
+      line-height: 31px;
+    }
+
+    &__inner-title {
+      max-width: 100%;
+      margin-bottom: 30px;
+      font-size: 50px;
+      line-height: 63px;
+    }
+
+    &__inner-about {
+      margin-bottom: 30px;
+      font-size: 26px;
+      line-height: 31x;
+    }
+
+    &__inner-desc {
+      margin-bottom: 30px;
+      font-size: 26px;
+      line-height: 31px;
+    }
+
+    &__inner-btn {
+      padding: 23px 56px;
+      font-size: 28px;
+      line-height: 24px;
+    }
+
+    &__inner-btn:hover {
+      background-color: #469dea;
+      transition: all 0.3s linear;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .journal-home-hero {
+    &__inner {
+      gap: 20px;
+    }
+
+    &__inner-img {
+      width: 100%;
+      max-width: 360px !important;
+      height: 420px;
+      padding: 20px 40px;
+    }
+
+    &__inner-content {
+      width: 100%;
+      max-width: 631px;
+    }
+
+    &__inner-content--time {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    &__inner-title {
+      margin-bottom: 20px;
+      max-width: 356px;
+      font-size: 30px;
+      line-height: 36px;
+    }
+
+    &__inner-about {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    &__inner-desc {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 19px;
+      color: #656b70;
+    }
+
+    &__inner-btn {
+      display: block;
+      width: 100%;
+      padding: 12px 22px;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .journal-home-hero {
+    &__inner-img {
+      width: 100%;
+      max-width: 280px !important;
+      height: 400px;
+      padding: 20px 40px;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .journal-home-hero {
+    &__inner-img {
+      width: 100%;
+      max-width: 100% !important;
+      height: 400px;
+      padding: 20px 20px;
     }
   }
 }
