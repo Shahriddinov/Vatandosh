@@ -67,6 +67,9 @@ export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
+export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
+export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
+export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 
 // Update requests
 
