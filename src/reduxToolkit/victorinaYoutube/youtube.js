@@ -7,7 +7,7 @@ export const sendVictorinaYoutube = createAsyncThunk(
   async ({ id, dataYoutube }) => {
     console.log(id, dataYoutube);
     return await axios
-      .post(`${VICTORINA_YOUTUBE}"dwehdew"/${id}`, dataYoutube, {
+      .post(`${VICTORINA_YOUTUBE}/${id}`, dataYoutube, {
         headers: {
           "Content-Type": "application/json",
         },
