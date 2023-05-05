@@ -26,7 +26,6 @@ function Employe() {
 
   const dispatch = useDispatch();
   const { expertData, loading } = useSelector((state) => state.expertSlice);
-
   useEffect(() => {
     dispatch(getExperts());
   }, [dispatch]);

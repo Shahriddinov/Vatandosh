@@ -30,21 +30,22 @@ export default function CustomProfil() {
 
   if (loading) return <Spinner position="full" />;
   if (!expertData) return <NotFound />;
+  console.log(expertData);
 
-  return (
+  return expertData ? (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
-            src={`${PORTAL_IMAGE_URL}/${expertData?.user.avatar}`}
+            src={`${PORTAL_IMAGE_URL}/${expertData?.user_id?.avatar}`}
             alt="error"
           />
         </div>
         <div className="customprofil-detail-desc">
-          <h4>{expertData?.user.name}</h4>
+          <h4>{expertData?.user_id?.name}</h4>
           <div className="customprofil-detail-desc-workexp">
             <span>{t("expert.workexp")}</span>
-            <span>4 yil</span>
+            <span>{expertData?.user_profile_id?.work_experience}</span>
           </div>
         </div>
       </div>
@@ -62,15 +63,15 @@ export default function CustomProfil() {
               <div className="customprofil-list-otm-item">
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.uzbotm")}</span>
-                  <p>{expertData?.user_education.institution}</p>
+                  <p>{expertData?.user_education_id?.institution}</p>
                 </div>
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.faculty")}</span>
-                  <p>{expertData?.user_education.faculty}</p>
+                  <p>{expertData?.user_education_id?.faculty}</p>
                 </div>
                 <div className="customprofil-list-otm-desc">
                   <span>{t("expert.profession")}</span>
-                  <p>{expertData?.user_education.level}</p>
+                  <p>{expertData?.user_education_id?.level}</p>
                 </div>
               </div>
               <div className="customprofil-list-otm-item">
@@ -102,27 +103,29 @@ export default function CustomProfil() {
             <div className="customprofil-list-workexp">
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workspace")}</span>
-                <p>{expertData?.user_employment_info.company}</p>
+                <p>{expertData?.user_employment_info_id?.company}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workcountry")}</span>
-                <p>{expertData?.user_employment_info.city}</p>
+                <p>
+                  {expertData?.user_profile_id?.international_location_id?.name}
+                </p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workregion")}</span>
-                <p>{expertData?.user_employment_info.city}</p>
+                <p>{expertData?.user_employment_info_id?.city}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.position")}</span>
-                <p>{expertData?.user_employment_info.specialization}</p>
+                <p>{expertData?.user_employment_info_id?.specialization}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workstart")}</span>
-                <p>{expertData?.user_employment_info.start_date}</p>
+                <p>{expertData?.user_employment_info_id?.start_date}</p>
               </div>
               <div className="customprofil-list-workexp-item">
                 <span>{t("expert.workend")}</span>
-                <p>{expertData?.user_employment_info.finish_date}</p>
+                <p>{expertData?.user_employment_info_id?.finish_date}</p>
               </div>
             </div>
           </AccordionDetails>
@@ -139,43 +142,34 @@ export default function CustomProfil() {
             <div className="customprofil-list-scientific">
               <div className="customprofil-list-scientific-item">
                 <span>{t("expert.article")}</span>
-                <p>
-                  Sovet Ittifoqi va Xitoy Xalq Respublikasi o‘z qo‘li ostidagi
-                  yaponlarga nisbatan munosabatining qiyosiy tahlili. Maqola
-                  havolasi
-                </p>
+                <p>{expertData?.topic_of_scientific_article}</p>
               </div>
               <div className="customprofil-list-scientific-item">
                 <span>{t("expert.articletitle")}</span>
-                <p>
-                  “O‘zbekistonda yosh rahbar kadrlarning boshqaruv salohiyatini
-                  yuksaltirish: Muammo va istiqbollar” mavzusidagi ilmiy-amaliy
-                  ishi
-                </p>
+                <p>{expertData?.topic_of_scientific_article}</p>
               </div>
               <div className="customprofil-list-scientific-item">
                 <span>{t("expert.articlename")}</span>
-                <p>
-                  “O‘zbekistonda yosh rahbar kadrlarning boshqaruvsalohiyatini
-                  yuksaltirish: Muammo va istiqbollar” ilmiy elektron jurnali
-                </p>
+                <p>{expertData?.article_published_journal_name}</p>
               </div>
               <div className="customprofil-list-scientific-printDate">
                 <div className="customprofil-list-scientific-printDate-item">
                   <span>{t("expert.articledate")}</span>
-                  <p>28-noyabr 2018-yil</p>
+                  <p>{expertData?.scientific_article_created_at}</p>
                 </div>
                 <div className="customprofil-list-scientific-printDate-item">
                   <span>{t("expert.degree")}</span>
-                  <p>Fan Doktori</p>
+                  <p>{expertData?.academic_degree}</p>
                 </div>
               </div>
               <div className="customprofil-list-scientific-tags">
                 <span>{t("expert.degreelist")}</span>
                 <div className="customprofil-list-scientific-tags-list">
-                  <span>Global governance</span>
-                  <span>International trade and development</span>
-                  <span>Economic diplomacy</span>
+                  {expertData?.main_science_directions?.length
+                    ? expertData?.main_science_directions?.map((el, index) => (
+                        <span key={index}>{el}</span>
+                      ))
+                    : null}
                 </div>
               </div>
             </div>
@@ -197,18 +191,7 @@ export default function CustomProfil() {
                 </div>
                 <div className="customprofil-list-offer-info-desc">
                   <span>{t("expert.offer")}</span>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker
-                  </p>
+                  <p>{expertData?.suggestions}</p>
                   <button className="customprofil-list-offer-info-desc-btn">
                     <Link to={"/portal-category/expert/offers/1"}>
                       {t("expert.detail")}
@@ -217,18 +200,8 @@ export default function CustomProfil() {
                 </div>
               </div>
               <div className="customprofil-list-offer-infoplus">
-                <span></span>
-                <p>
-                  El-Yurt Uidi Halqaro Expertlar Kengashi a’zosi bo‘lish; 2.
-                  O‘zbekistonda tegishli vazirlik va tashkilotlar bilan
-                  hamkorlik va yaqin kelajakda ishlash imkoniyatini ko‘rib
-                  chiqish. Iqtisodiyot vazirligi, Tashqi ishlar vazirligi yoki
-                  Investisiyalar va Tashqi Savdo Vazirligida ishlash rejasi.
-                  Hamkorklik va takliflarni ko‘rib chiqaman; 3. Halqaro
-                  iqtisodiy hamkorlik, Iqtisodiy rivojlantirish dasturlari,
-                  Startap ekotizimini rivojlantirish, raqamli iqtisodiyot va
-                  yashil texnologiyalarni rivojlantirish.
-                </p>
+                <span>{t("expert.information")}</span>
+                <p>{expertData?.additional_information}</p>
               </div>
             </div>
           </AccordionDetails>
@@ -289,5 +262,5 @@ export default function CustomProfil() {
         )}
       </div>
     </div>
-  );
+  ) : null;
 }
