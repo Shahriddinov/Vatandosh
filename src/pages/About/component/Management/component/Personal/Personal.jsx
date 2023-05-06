@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./Personal.scss"
 import {useSelector} from "react-redux";
 import {baseServerUrl} from "../../../../../../services/api/utils";
 import phone from "../../../../../../assets/images/about/Phone.svg";
 import mail from "../../../../../../assets/images/about/mail.svg";
-function Personal({ management }) {
+import {getContact} from "../../../../../../reduxToolkit/contactSlice/extraReducer";
+
+function Personal({management}) {
     const lan = useSelector((state) => state.language.language);
 
+    // const contactData = useSelector((state) => state.contactSlice.contactData);
+    //
+    // useEffect(() => {
+    //     dispatch(getContact());
+    // }, []);
 
 
     return (
@@ -29,17 +36,28 @@ function Personal({ management }) {
 
                 <ul className="personal__list">
                     <li className="personal__item">
-            <span className="personal__item--icon">
-              <img src={phone} alt="" />
-            </span>
-                        <span>{management?.phone}</span>
+
+
+                        <a href={`tel: ${management?.phone}`} className="personal__item_flexss">
+                            <span className="personal__item--icon">
+
+                            <img src={phone} alt=""/>
+                            </span>
+                            <span>{management?.phone}</span>
+                        </a>
+
                     </li>
 
                     <li className="personal__item">
-            <span className="personal__item--icon">
-              <img src={mail} alt="email" />
-            </span>
-                        <span>{management?.email}</span>
+                        <a href={`tel: ${management?.mail}`} className="personal__item_flexss">
+                            <span className="personal__item--icon">
+                                                            <img src={mail} alt="email"/>
+
+                            </span>
+                            <span>{management?.email}</span>
+                        </a>
+
+
                     </li>
                 </ul>
             </div>

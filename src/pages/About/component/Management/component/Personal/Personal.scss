@@ -34,7 +34,7 @@
 
   &__title--span {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -47,12 +47,26 @@
 
   &__item + &__item {
     margin-top: 19.5px;
+
+    &_flexss{
+      display: flex;
+      align-items: center;
+      color: #656B70;
+
+    }
   }
 
   &__item {
     display: flex;
     align-items: center;
     gap: 10px;
+    &_flexss{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #656B70;
+
+    }
   }
 }
 
