@@ -63,8 +63,18 @@ export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 export const GET_MEETINGS = "/meeting/meetings";
 export const GET_MEETING_BY_ID = "/meeting/meeting/";
 export const GET_MEETING_PAGE = "/meeting/page";
+export const GET_ALL_ABOUT_UZB_MENU = "/about-uzb/get-all";
+export const GET_SINGLE_ABOUT_UZB_MENU = "/about-uzb/get-one/";
+export const GET_ALL_CITY_CONTENT = "/city-content/get-all";
+export const GET_ALL_CITY = "/city/get-all";
+export const GET_SINGLE_CITY = "/city/get-one/";
+export const GET_ALL_CITY_VIDEO = "/city-video/get-all";
+export const GET_SINGLE_CITY_VIDEO = "/city-video/get-one/";
+export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
+export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
 export const GET_VICTORINA_TEST = "/quiz/quiz/:id"
 export const VICTORINA_YOUTUBE = "/quiz/participant/:id"
+
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

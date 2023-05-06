@@ -39,22 +39,22 @@ const data = [
 const CommunityCouncilStatics = () => {
   const { t } = useTranslation();
   return (
-    <div className="council-right">
+    <div className="community-home-council-right">
       <div>
-        <span className="council--span">
+        <span className="community-home-council__span">
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
         <h4>88</h4>
         <p>{t("expert.expertsand")}</p>
       </div>
-      <div className="council-bottom">
-        <span className="council--span">
+      <div className="community-home-council__bottom">
+        <span className="community-home-council__span">
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
         {data.map((data) => (
-          <span className="council-span" key={data.id}>
+          <span className="community-home-council-span" key={data.id}>
             <h5>{data.country}</h5>
             <p>{data.number}</p>
           </span>
