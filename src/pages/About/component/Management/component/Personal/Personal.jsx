@@ -49,7 +49,7 @@ function Personal({management}) {
                     </li>
 
                     <li className="personal__item">
-                        <a href={`tel: ${management?.mail}`} className="personal__item_flexss">
+                        <a href={`mailto: ${management?.mail}`} className="personal__item_flexss">
                             <span className="personal__item--icon">
                                                             <img src={mail} alt="email"/>
 
