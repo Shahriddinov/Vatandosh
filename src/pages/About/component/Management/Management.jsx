@@ -20,7 +20,7 @@ function Management(props) {
   console.log(ManagementData);
   const heroData = {
     title: `${t("about_items.item3")}`,
-    description: `${t("aboutPage.section1.ptext")}`,
+    // description: `${t("aboutPage.section1.ptext")}`,
     pagePath: `${t("more")}`,
   };
   useEffect(() => {
