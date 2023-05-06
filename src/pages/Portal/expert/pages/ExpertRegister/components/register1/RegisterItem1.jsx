@@ -20,11 +20,12 @@ export default function RegisterItem1({ activeBarItem }) {
     passport_file: null,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.avatar_url) return alert(t("expert.uploadnew"));
     if (!formData.passport_file) return alert(t("expert.passportFile"));
-    dispatch(postExpertRegister1(formData));
+    const res = await dispatch(postExpertRegister1(formData));
+    console.log(res);
   };
 
   return (

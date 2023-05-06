@@ -12,14 +12,23 @@ import { useTranslation } from "react-i18next";
 export default function RegisterItem2({ activeBarItem }) {
   const { t } = useTranslation();
   const [data1, setData1] = useState([
-    { id: 1, otm: "", faculti: "", job: "" },
+    { id: 1, institution: "", faculty: "", job: "", type: 1 },
   ]);
   const [data2, setData2] = useState([
-    { id: 1, otm: "", faculti: "", job: "Yurist" },
+    { id: 1, institution: "", faculty: "", job: "Yurist", type: 2 },
   ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const expert = [...data1, data2].map((el) => {
+      return {
+        institution: el.institution,
+      };
+    });
+    console.log({
+      expert,
+    });
+    console.log(data1, data2);
   };
 
   const handleChange = (obj) => {
@@ -74,12 +83,15 @@ export default function RegisterItem2({ activeBarItem }) {
                   <input
                     required
                     type="text"
-                    value={el.otm}
+                    value={el.institution}
                     minLength={3}
                     maxLength={30}
                     placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
-                      handleChange({ ...el, otm: e.target.value.trim() })
+                      handleChange({
+                        ...el,
+                        institution: e.target.value.trim(),
+                      })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -93,11 +105,11 @@ export default function RegisterItem2({ activeBarItem }) {
                       required
                       type="text"
                       minLength={3}
-                      value={el.faculti}
+                      value={el.faculty}
                       maxLength={30}
                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
-                        handleChange({ ...el, faculti: e.target.value.trim() })
+                        handleChange({ ...el, faculty: e.target.value.trim() })
                       }
                     />
                     <img src={pencil} alt="" />
@@ -128,7 +140,7 @@ export default function RegisterItem2({ activeBarItem }) {
             onClick={() =>
               setData1((prev) => [
                 ...prev,
-                { id: Date.now(), otm: "", faculti: "", job: "" },
+                { id: Date.now(), institution: "", faculty: "", job: "" },
               ])
             }
           >
@@ -153,12 +165,15 @@ export default function RegisterItem2({ activeBarItem }) {
                   <input
                     required
                     type="text"
-                    value={el.otm}
+                    value={el.institution}
                     minLength={3}
                     maxLength={30}
                     placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
-                      handleChangeX({ ...el, otm: e.target.value.trim() })
+                      handleChangeX({
+                        ...el,
+                        institution: e.target.value.trim(),
+                      })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -172,11 +187,11 @@ export default function RegisterItem2({ activeBarItem }) {
                       required
                       type="text"
                       minLength={3}
-                      value={el.faculti}
+                      value={el.faculty}
                       maxLength={30}
                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
-                        handleChangeX({ ...el, faculti: e.target.value.trim() })
+                        handleChangeX({ ...el, faculty: e.target.value.trim() })
                       }
                     />
                     <img src={pencil} alt="" />
@@ -209,7 +224,7 @@ export default function RegisterItem2({ activeBarItem }) {
             onClick={() =>
               setData2((prev) => [
                 ...prev,
-                { id: Date.now(), otm: "", faculti: "", job: "" },
+                { id: Date.now(), institution: "", faculty: "", job: "" },
               ])
             }
           >

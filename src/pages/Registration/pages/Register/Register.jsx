@@ -50,6 +50,7 @@ const Register = () => {
     (state) => state.community.locationGetLoading
   );
   const allCountries = useSelector(createCountries);
+  const formRef = useRef();
 
   const [agree, setAgree] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,14 +59,26 @@ const Register = () => {
     second_name: "",
     last_name: "",
     birth_date: "",
-    national_id: null,
+    national_id: "",
     gender: "",
-    address: "",
-    location_id: null,
+    national_address: "",
+    international_location_id: "",
     job_position: "",
+    international_address: "",
+    phone_number: "",
+    passport_file: "",
+    academic_degree: "",
+    scientific_title: "",
+    work_experience: "",
+    additional_info: "",
     achievements: "",
+    family_status: "",
     hobbies: "",
-    passport_file: null,
+    interests: "",
+    opinions_about_uzbekistan: "",
+    suggestions_and_recommendations: "",
+    timezone: "",
+    language: "",
   });
 
   const [modal, setModal] = useState(false);
@@ -87,14 +100,16 @@ const Register = () => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      avatar_url: URL.createObjectURL(selectedFile),
-    }));
+    if (selectedFile) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        avatar_url: selectedFile,
+      }));
+    }
   };
 
-  const handleFileSelect = () => {
-    const selectedFile = fileInputRef.current.files[0];
+  const handleFileSelect = (event) => {
+    const selectedFile = event.target.files[0];
     setFormData((prevFormData) => ({
       ...prevFormData,
       passport_file: selectedFile,
@@ -122,8 +137,44 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(registerUser(formData));
-    console.log(formData);
+
+    const data = new FormData();
+    data.append("first_name", formData.first_name);
+    data.append("second_name", formData.second_name);
+    data.append("last_name", formData.last_name);
+    data.append("national_address", formData.national_address);
+    data.append(
+      "international_location_id",
+      formData.international_location_id
+    );
+    data.append("international_address", formData.international_address);
+    data.append("national_id", formData.national_id);
+    data.append("birth_date", formData.birth_date);
+    data.append("gender", formData.gender);
+    data.append("academic_degree", formData.academic_degree);
+    data.append("phone_number", formData.phone_number);
+    data.append("scientific_title", formData.scientific_title);
+    data.append("job_position", formData.job_position);
+    data.append("work_experience", formData.work_experience);
+    data.append("additional_info", formData.additional_info);
+    data.append("achievements", formData.achievements);
+    data.append("family_status", formData.family_status);
+    data.append("hobbies", formData.hobbies);
+    data.append("interests", formData.interests);
+    data.append(
+      "opinions_about_uzbekistan",
+      formData.opinions_about_uzbekistan
+    );
+    data.append(
+      "suggestions_and_recommendations",
+      formData.suggestions_and_recommendations
+    );
+    data.append("timezone", formData.timezone);
+    data.append("language", formData.language);
+    data.append("avatar_url", formData.avatar_url);
+    data.append("passport_file", formData.passport_file);
+
+    dispatch(registerUser(data));
   };
 
   useEffect(() => {
@@ -162,8 +213,12 @@ const Register = () => {
           <div className="profile__photo" onClick={handlePhotoUploadClick}>
             <div className="profile__img">
               <img
-                src={formData.avatar_url}
-                alt="user picture"
+                src={
+                  typeof formData.avatar_url === "string"
+                    ? formData.avatar_url
+                    : URL.createObjectURL(formData.avatar_url)
+                }
+                alt="user img"
                 className={
                   formData.avatar_url === DefaultProfilePic ? "" : "width100"
                 }
@@ -175,8 +230,8 @@ const Register = () => {
                 className="input__file"
                 ref={photoInputRef}
                 type="file"
-                id="profilephoto"
-                name="profilephoto"
+                id="avatar_url"
+                name="avatar_url"
                 accept="image/*"
                 onChange={handleFileChange}
               ></input>
@@ -255,8 +310,8 @@ const Register = () => {
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
-                  <MenuItem value={"male"}>Erkak</MenuItem>
-                  <MenuItem value={"female"}>Ayol</MenuItem>
+                  <MenuItem value="1">Erkak</MenuItem>
+                  <MenuItem value="2">Ayol</MenuItem>
                 </Select>
               </FormControl>
               <TextField
@@ -264,19 +319,19 @@ const Register = () => {
                 id="outlined-basic"
                 label="O'zbekistondagi manzilingiz"
                 variant="outlined"
-                name="address"
-                value={formData.address}
+                name="national_address"
+                value={formData.national_address}
                 onChange={handleInputChange}
               />
               <Autocomplete
                 required
                 disablePortal
-                id={formData.location_id}
+                id={formData.international_location_id}
                 options={allCountries}
                 onChange={(event, value) => {
                   setFormData((prevFormData) => ({
                     ...prevFormData,
-                    location_id: value.id,
+                    international_location_id: value.id.toString(),
                   }));
                 }}
                 renderInput={(params) => (
@@ -297,8 +352,8 @@ const Register = () => {
                 id="outlined-basic"
                 label="Xorijdagi manzil"
                 variant="outlined"
-                name="achievements"
-                value={formData.achievements}
+                name="international_address"
+                value={formData.international_address}
                 onChange={handleInputChange}
               />
               <TextField
@@ -306,17 +361,17 @@ const Register = () => {
                 id="outlined-basic"
                 label="Telefon raqamingiz"
                 variant="outlined"
-                name="hobbies"
-                value={formData.hobbies}
+                name="phone_number"
+                value={formData.phone_number}
                 InputProps={{
                   inputComponent: PhoneInput,
                   inputProps: {
                     defaultCountry: "US",
-                    value: formData.hobbies,
+                    value: formData.phone_number,
                     onChange: (value) => {
                       setFormData((prevFormData) => ({
                         ...prevFormData,
-                        hobbies: value,
+                        phone_number: value,
                       }));
                     },
                   },
@@ -346,8 +401,8 @@ const Register = () => {
                         className="input__file"
                         ref={fileInputRef}
                         type="file"
-                        id="document"
-                        name="document"
+                        id="passport_file"
+                        name="passport_file"
                         onChange={handleFileSelect}
                         accept="application/pdf, image/*"
                       />

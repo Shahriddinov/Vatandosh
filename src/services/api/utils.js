@@ -60,9 +60,6 @@ export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
-export const GET_MEETINGS = "/meeting/meetings";
-export const GET_MEETING_PAGE = "/meeting/page";
-export const GET_MEETING_BY_ID = "/meeting/meeting/";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -76,9 +73,11 @@ export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_CREATE = "/volunteer/create";
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const VOLUNTEER_PROFILE = "volunteer/update/";
-export const CREATE_MEETING = "/meeting/create/";
+export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
+export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
+export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
+export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 
 // Update requests
 
 // Delete requests
-export const VOLUNTEER_DELETE = "volunteer/delete/";
