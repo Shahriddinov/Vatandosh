@@ -36,12 +36,13 @@ export const GET_ABOUTS = `${baseUrl}/abouts`;
 export const GET_MANAGEMENT = `${baseUrl}/managements`;
 export const GET_SEARCH_RESULTS = `${baseUrl}/titlesearch`;
 export const GET_FAMOUS_TAGS = `${baseUrl}/brandtag/5`;
+// export const GET_EXPERT_USER = `/user`;
+// export const GET_EXPERT_MENU = `/all`;
 export const GET_NATIONS = `${portalBaseUrl}/national/get-all`;
 export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
-export const GET_VICTORINA_TEST = `/quiz/quiz/1`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
@@ -62,6 +63,8 @@ export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 export const GET_MEETINGS = "/meeting/meetings";
 export const GET_MEETING_BY_ID = "/meeting/meeting/";
 export const GET_MEETING_PAGE = "/meeting/page";
+export const GET_VICTORINA_TEST = "quiz/quiz/:id"
+export const VICTORINA_YOUTUBE = "quiz/participant/:id"
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -73,8 +76,10 @@ export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_CREATE = "/volunteer/create";
-export const VOLUNTEER_UPDATE = "volunteer/update/";
-export const VOLUNTEER_PROFILE = "volunteer/update/";
+export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
+export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
+export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
+export const CREATE_MEETING = "/meeting/create/";
 
 // Update requests
 export const VOLUNTEER_UPDATE = "volunteer/update/";
