@@ -25,7 +25,6 @@ import { community } from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
 // import expertMenu from "./ExpertMenu";
-import volunterCreate from "./volunteer";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
 import expertRegisterSlice from "./ExpertSlice/RegisterSlice/index";
@@ -59,7 +58,6 @@ const store = configureStore({
     community,
     expertSlice,
     // expertMenu,
-    volunterCreate,
     quizSlice,
     pageSlice,
     suggestionSlice,

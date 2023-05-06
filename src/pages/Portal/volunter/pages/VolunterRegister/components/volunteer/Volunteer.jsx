@@ -4,7 +4,6 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsImage, BsPlusCircleFill } from "react-icons/bs";
 import { HiOutlineTrash } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { volunterProfile } from "../../../../../../../reduxToolkit/volunteer/profileCreate";
 
 export default function Volunteer({ activeBarItem }) {
   const [volunteerProfile, setVolunteerProfile] = useState([
@@ -32,7 +31,6 @@ export default function Volunteer({ activeBarItem }) {
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    dispatch(volunterProfile(volunteerProfile));
   };
 
   return (
@@ -42,7 +40,8 @@ export default function Volunteer({ activeBarItem }) {
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSumbit}>
+      onSubmit={handleSumbit}
+    >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
           <h3 className="registeritem-title">VI. Volonyorlik faoliyati</h3>
@@ -89,7 +88,8 @@ export default function Volunteer({ activeBarItem }) {
               {!el.images.length ? (
                 <label
                   htmlFor="volentoryinputfile"
-                  className="registeritem-imgInput">
+                  className="registeritem-imgInput"
+                >
                   <input
                     required
                     className="registeritem-label-fileinput"
@@ -116,7 +116,8 @@ export default function Volunteer({ activeBarItem }) {
                           onClick={() => {
                             el.images.splice(index, 1);
                             handleChange({ ...el, images: el.images });
-                          }}>
+                          }}
+                        >
                           <HiOutlineTrash />
                           <span>Удалить</span>
                         </div>
@@ -126,7 +127,8 @@ export default function Volunteer({ activeBarItem }) {
                   ))}
                   <label
                     htmlFor={el.id}
-                    className="registeritem-imageList-inputFile">
+                    className="registeritem-imageList-inputFile"
+                  >
                     <input
                       required
                       className="registeritem-label-fileinput"
@@ -180,7 +182,8 @@ export default function Volunteer({ activeBarItem }) {
                   description: "",
                 },
               ])
-            }>
+            }
+          >
             <BsPlusCircleFill />
           </button>
           <div className="registeritem-checkbox">
