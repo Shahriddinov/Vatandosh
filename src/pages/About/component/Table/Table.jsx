@@ -42,7 +42,7 @@ function Table(props) {
 
             <div className="table_control">
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.carda")} ...
+                    {t("aboutPage.section4.carda")}
                 </div>
                 <div className="table_control_all increase">
                     {t("aboutPage.section4.cardby")}
