@@ -9,6 +9,7 @@ export const useCommunityHomeFetching = () => {
   const communityHomePageLoading = useSelector(
     (store) => store.community.communityHomePageLoading
   );
+  const communityHomePageError = useSelector((store) => store.community.error);
 
   const dispatch = useDispatch();
 
@@ -19,5 +20,6 @@ export const useCommunityHomeFetching = () => {
   return {
     communityHomePageData,
     communityHomePageLoading,
+    communityHomePageError,
   };
 };

@@ -4,7 +4,7 @@
   "leadership_structure": "leadership structure",
   "search": "Search",
   "about": "ABOUT US",
-  "citizin": "COMPATRIOTS",
+  "citizin": "ASSOCIATIONS",
   "projects": "PROJECTS",
   "contects": "CONTESTS",
   "information": "INFORMATION SERVICE\n",
@@ -86,7 +86,7 @@
   },
   "citizin_items": {
     "item1": "Public associations",
-    "item2": "Category shows",
+    "item2": "Public organization of compatriots",
     "item3": "Community associations events"
   },
   "information_items": {
@@ -149,7 +149,7 @@
       "cardfb": "Fund management",
       "cardy": "Assistant",
       "cardbr": "Chairman of the board",
-      "carda": "Information",
+      "carda": "Chief expert on information technology and electronic portal",
       "cardby": "Chief juristconsult",
       "cardb": "Management",
       "cardsh": "Strategic analysis",
@@ -300,6 +300,7 @@
       "navbar_link3": "Events",
       "navbar_link4": "Contact"
     },
+    "communityMapErrorText": "There are no public associations in the state of {{countryName.name}}.",
     "cabinet": "Cabinet",
     "home_title": "Compatriots Public Associations",
     "home_desc": "Electronic platform of compatriot public associations",

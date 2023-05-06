@@ -57,7 +57,7 @@
     background: #ffffff;
     border: 1px solid #eaedf6;
     width: 370px;
-    height: 514px;
+    height: auto;
   }
   &-names {
     font-weight: 700;
@@ -83,6 +83,10 @@
     letter-spacing: 0.2px;
     color: #5d6b8a;
     margin: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
   &-more {
     border: 1px solid #5d6b8a;
@@ -117,5 +121,11 @@
     align-items: center;
     gap: 10px;
     margin: 15px;
+  }
+  &-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
   }
 }

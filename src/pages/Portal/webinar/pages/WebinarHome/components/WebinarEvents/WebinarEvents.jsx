@@ -15,12 +15,14 @@ function WebinarEvents() {
           <div className="webinar-lists">
             <Link
               to="/portal-category/webinar/webinar-events"
-              className="webinar-top">
+              className="webinar-top"
+            >
               Vebinarlar
             </Link>
             <Link
               to="/portal-category/webinar/webinar-events"
-              className="webinar-tops">
+              className="webinar-tops"
+            >
               Konferensiyalar
             </Link>
           </div>
@@ -37,13 +39,15 @@ function WebinarEvents() {
               <p className="webinar-text">{webinar.text}</p>
               <div className="webinar-bottom">
                 <Link
-                  to="/portal-category/webinar/online-webinar"
-                  className="webinar-more">
-                   {t("webinar.header2")}
+                  to="/portal-category/webinar/online-webinar/id"
+                  className="webinar-more"
+                >
+                  {t("webinar.header2")}
                 </Link>
                 <Link
                   to="/portal-category/webinar/webinar-register"
-                  className="webinar-links">
+                  className="webinar-links"
+                >
                   {t("webinar.header1")}
                 </Link>
               </div>

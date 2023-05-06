@@ -59,6 +59,9 @@ export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
+export const GET_MEETINGS = "/meeting/meetings";
+export const GET_MEETING_BY_ID = "/meeting/meeting/";
+export const GET_MEETING_PAGE = "/meeting/page";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -72,10 +75,9 @@ export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_CREATE = "/volunteer/create";
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const VOLUNTEER_PROFILE = "volunteer/update/";
-export const VICTORINA_MEDIA_CREATE = "/media/create";
-export const VICTORINA_YOUTUBE = '/quiz/participant'
 
 // Update requests
+export const VOLUNTEER_UPDATE = "volunteer/update/";
 
 // Delete requests
-export const VOLUNTEER_DELETE = "volunteer/delete/";
+export const VOLUNTEER_DELETE = "/volunteer/delete/";

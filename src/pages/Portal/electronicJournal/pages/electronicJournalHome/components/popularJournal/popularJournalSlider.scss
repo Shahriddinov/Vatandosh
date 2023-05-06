@@ -120,3 +120,43 @@
     fill: #065ea9;
   }
 }
+
+@media (max-width: 868px) {
+  .popular-journal-slider {
+    padding: 38px 0 64px 0;
+
+    &__title {
+      font-weight: 600;
+      font-size: 57px;
+      line-height: 68px;
+    }
+
+    &__header {
+      margin-bottom: 40px;
+    }
+
+    &__slider--controls {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .popular-journal-slider {
+    padding: 38px 0 30px 0;
+
+    &__title {
+      font-size: 26px;
+      line-height: 31px;
+      text-align: center;
+    }
+
+    &__header {
+      margin-bottom: 30px;
+    }
+
+    &__slider--controls {
+      display: none;
+    }
+  }
+}

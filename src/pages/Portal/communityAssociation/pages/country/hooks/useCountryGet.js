@@ -1,10 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCommunity } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  getAllCommunity,
+  getAllRegions,
+} from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useParams } from "react-router-dom";
+import { getNews } from "../../../../../../reduxToolkit/newsSlice/extraReducer";
 
 export const useCountryGet = () => {
   const { communityCountry } = useParams();
+
+  const allRegionsGet = useSelector((store) => store.community.allRegionsGet);
+  const allRegionsGetLoading = useSelector(
+    (store) => store.community.allRegionsGetLoading
+  );
 
   const allCommunityGet = useSelector(
     (store) => store.community.allCommunityGet
@@ -13,9 +22,26 @@ export const useCountryGet = () => {
     (store) => store.community.allCommunityGetLoading
   );
 
+  const news = useSelector((state) => state.newsSlice.newsData);
+  const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllCommunity({ page: 1, region: communityCountry }));
+    dispatch(getAllRegions());
+    dispatch(getAllCommunity({ region: communityCountry }));
+
+    if (!news.length) {
+      dispatch(getNews());
+    }
   }, []);
-  return { allCommunityGet, allCommunityGetLoading };
+
+  return {
+    allCommunityGet,
+    allCommunityGetLoading,
+    allRegionsGetLoading,
+    allRegionsGet,
+    communityCountry,
+    loadingNews,
+    news,
+  };
 };
