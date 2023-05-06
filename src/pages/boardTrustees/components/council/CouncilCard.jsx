@@ -31,14 +31,24 @@ const CouncilCard = ({ trusts }) => {
             <span className="council-card__item--icon">
               <img src={phone} alt="" />
             </span>
-            <span>{trusts?.phone}</span>
+            <a
+              href={`tel:${trusts?.phone}`}
+              className="council-card__item_link"
+            >
+              {trusts?.phone}
+            </a>
           </li>
 
           <li className="council-card__item">
             <span className="council-card__item--icon">
               <img src={mail} alt="email" />
             </span>
-            <span>{trusts?.email}</span>
+            <a
+              href={`mailto:${trusts?.email}`}
+              className="council-card__item_link"
+            >
+              {trusts?.email}
+            </a>
           </li>
         </ul>
       </div>
