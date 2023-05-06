@@ -115,7 +115,7 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                       onClick={() => navigate(`/portal-category/webinar`)}
                       className="webinar-slider__slider-left-bottom-buttons-more-button"
                     >
-                      Batafsil ma’lumot
+                      {t("webinar.header2")}
                     </button>
                     <button
                       onClick={() =>
@@ -123,7 +123,7 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                       }
                       className=" webinar-slider__slider-left-bottom-buttons-participate-button"
                     >
-                      Ishtirok etish
+                      {t("webinar.header1")}
                     </button>
                   </div>
                   <div
