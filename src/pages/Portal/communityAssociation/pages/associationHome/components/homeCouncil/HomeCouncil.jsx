@@ -16,24 +16,26 @@ const CommunityHomeCouncil = ({ councilData }) => {
   const { t } = useTranslation();
   return (
     <div className="community-home-council">
-      <div className="container" ref={ref}>
-        {inView ? (
-          <>
-            <div className="community-home-council__left">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(councilData.body),
-                }}
-              />
-              <div className="community-home-council__left_btn">
-                <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
+      <div className="container">
+        <div className="community-home-council__inner" ref={ref}>
+          {inView ? (
+            <>
+              <div className="community-home-council__left">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(councilData.body),
+                  }}
+                />
+                <div className="community-home-council__left_btn">
+                  <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
+                </div>
               </div>
-            </div>
-            <CommunityCouncilStatics />
-          </>
-        ) : (
-          <LazySpinner height="350px" />
-        )}
+              <CommunityCouncilStatics />
+            </>
+          ) : (
+            <LazySpinner height="350px" />
+          )}
+        </div>
       </div>
     </div>
   );
