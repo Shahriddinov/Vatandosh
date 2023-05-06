@@ -63,8 +63,8 @@ export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 export const GET_MEETINGS = "/meeting/meetings";
 export const GET_MEETING_BY_ID = "/meeting/meeting/";
 export const GET_MEETING_PAGE = "/meeting/page";
-export const GET_VICTORINA_TEST = "quiz/quiz/:id"
-export const VICTORINA_YOUTUBE = "quiz/participant/:id"
+export const GET_VICTORINA_TEST = "/quiz/quiz/:id"
+export const VICTORINA_YOUTUBE = "/quiz/participant/:id"
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
