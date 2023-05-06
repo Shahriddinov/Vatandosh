@@ -42,16 +42,16 @@ function Table(props) {
 
             <div className="table_control">
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.carda")} ...
+                    {t("aboutPage.section4.carda")}
                 </div>
                 <div className="table_control_all increase">
                     {t("aboutPage.section4.cardby")}
                 </div>
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardb")} ....
+                    {t("aboutPage.section4.cardb")}
                 </div>
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardsh")} ...
+                    {t("aboutPage.section4.cardsh")}
                 </div>
                 <div className="table_control_all">
                     {t("aboutPage.section4.cardmk")}
@@ -60,16 +60,16 @@ function Table(props) {
             <img src={Alls} alt=""/>
             <div className="table_control">
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardxb")} ...
+                    {t("aboutPage.section4.cardxb")}
                 </div>
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardv")} ...
+                    {t("aboutPage.section4.cardv")}
                 </div>
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardv2")} ....
+                    {t("aboutPage.section4.cardv2")}
                 </div>
                 <div className="table_control_all increase">
-                    {t("aboutPage.section4.cardmm")} ...
+                    {t("aboutPage.section4.cardmm")}
                 </div>
                 <div className="table_control_all">
                     {t("aboutPage.section4.cardbb")}
