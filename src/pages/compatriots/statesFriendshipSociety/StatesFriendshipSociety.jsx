@@ -10,6 +10,7 @@ import { useAssociationFetching } from "../hooks/useAssociationFetching";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import OfferStatesFriendship from "../components/offerStatesFriendship";
+import { baseServerUrl } from "../../../services/api/utils";
 
 const StatesFriendshipSociety = () => {
   const lan = useSelector((state) => state.language.language);
@@ -51,7 +52,7 @@ const StatesFriendshipSociety = () => {
         <div
           className="state-friendship-society__head"
           style={{
-            backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${countryData.background_flags})`,
+            backgroundImage: `url(${baseServerUrl}/${countryData.background_flags})`,
           }}
         >
           <WhriteHeader />

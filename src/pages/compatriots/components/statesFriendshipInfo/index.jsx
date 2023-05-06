@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { LazySpinner } from "../../../../component";
-import { imageUrl } from "../../../../services/api/utils";
+import { baseServerUrl, imageUrl } from "../../../../services/api/utils";
 
 const StatesFriendshipInfo = (props) => {
   const { ref, inView } = useInView({
@@ -23,7 +23,7 @@ const StatesFriendshipInfo = (props) => {
               <div className="friendship-info__box1_img">
                 <img
                   className="friendship-info__company_logo"
-                  src={`${imageUrl}/${props.logo}`}
+                  src={`${baseServerUrl}/${props.logo}`}
                   alt={props[`title_${lng}`]}
                 />
               </div>
@@ -37,7 +37,7 @@ const StatesFriendshipInfo = (props) => {
               <div className="friendship-info__user_img">
                 <img
                   className="friendship-info__user"
-                  src={`${imageUrl}/${props.director_image}`}
+                  src={`${baseServerUrl}/${props.director_image}`}
                   alt={props[`director_name_${lng}`]}
                 />
               </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { imageUrl } from "../../../../services/api/utils";
+import { baseServerUrl, imageUrl } from "../../../../services/api/utils";
 import { LazySpinner } from "../../../../component";
 import { useSelector } from "react-redux";
 import DOMPurify from "dompurify";
@@ -41,7 +41,7 @@ const OfferStatesFriendship = (props) => {
               <div className="offer-state-friendship__box_img">
                 <img
                   className="offer-state-friendship__img"
-                  src={`${imageUrl}/${activeImage.image}`}
+                  src={`${baseServerUrl}/${activeImage.image}`}
                   alt={props.name}
                 />
               </div>
@@ -117,7 +117,7 @@ const OfferStatesFriendship = (props) => {
                       }
                     >
                       <img
-                        src={`${imageUrl}/${item.image}`}
+                        src={`${baseServerUrl}/${item.image}`}
                         alt="img"
                         className="offer-state-friendship__inner_img"
                       />
