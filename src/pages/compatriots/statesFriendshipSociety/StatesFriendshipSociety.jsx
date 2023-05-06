@@ -1,18 +1,15 @@
 import React from "react";
-import SiteHero from "../../../component/siteHero/SiteHero";
 import StatesFriendshipInfo from "../components/statesFriendshipInfo";
-import { MiniSlider } from "../../../component/miniSlider/MiniSlider";
+import { MiniSlider, SiteHero, Spinner } from "../../../component";
 
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 import { useTranslation } from "react-i18next";
 
 import { useAssociationFetching } from "../hooks/useAssociationFetching";
 
-import "./statesFriendshipSociety.scss";
-import { Spinner } from "../../../component";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { CommunityAssociationCompanyOffer } from "../../Portal/communityAssociation/pages/communityAssociationDetail/components";
+import OfferStatesFriendship from "../components/offerStatesFriendship";
 
 const StatesFriendshipSociety = () => {
   const lan = useSelector((state) => state.language.language);
@@ -63,7 +60,7 @@ const StatesFriendshipSociety = () => {
 
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
-          <CommunityAssociationCompanyOffer {...categoryData} />
+          <OfferStatesFriendship {...categoryData} />
           <MiniSlider
             title={`${t("events")}`}
             data={eventsData}

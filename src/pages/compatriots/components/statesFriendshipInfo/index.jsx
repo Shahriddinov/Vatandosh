@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { LazySpinner } from "../../../../component";
-import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
-import { MONTH, getDate } from "../../../../config/constants";
+import { imageUrl } from "../../../../services/api/utils";
 
 const StatesFriendshipInfo = (props) => {
   const { ref, inView } = useInView({
@@ -24,20 +23,22 @@ const StatesFriendshipInfo = (props) => {
               <div className="friendship-info__box1_img">
                 <img
                   className="friendship-info__company_logo"
-                  src={`${PORTAL_IMAGE_URL}${props.logo}`}
+                  src={`${imageUrl}/${props.logo}`}
                   alt={props[`title_${lng}`]}
                 />
               </div>
 
-              <h3 className="friendship-info__company_name">{props.name}</h3>
+              <h3 className="friendship-info__company_name">
+                {props[`title_${lng}`]}
+              </h3>
             </div>
 
             <div className="friendship-info__box2">
               <div className="friendship-info__user_img">
                 <img
                   className="friendship-info__user"
-                  src={`${PORTAL_IMAGE_URL}${props.director_img}`}
-                  alt={props.director}
+                  src={`${imageUrl}/${props.director_image}`}
+                  alt={props[`director_name_${lng}`]}
                 />
               </div>
 
@@ -47,7 +48,7 @@ const StatesFriendshipInfo = (props) => {
                     {t("leader")}
                   </span>
                   <span className="friendship-info__item--text2">
-                    {props.director}
+                    {props[`director_name_${lng}`]}
                   </span>
                 </li>
 
@@ -56,10 +57,7 @@ const StatesFriendshipInfo = (props) => {
                     {t("founding_date")}
                   </span>
                   <span className="friendship-info__item--text2">
-                    {getDate(props.created_date).getFullYear()} yil{" "}
-                    {MONTH[
-                      getDate(props.created_date).getMonth()
-                    ].toLowerCase()}
+                    {props.company_start_data}
                   </span>
                 </li>
 
@@ -68,8 +66,7 @@ const StatesFriendshipInfo = (props) => {
                     {t("election_leader")}
                   </span>
                   <span className="friendship-info__item--text2">
-                    {getDate(props.created_at).getFullYear()} yil{" "}
-                    {MONTH[getDate(props.created_at).getMonth()].toLowerCase()}
+                    {props.director_start_data}
                   </span>
                 </li>
               </ul>
