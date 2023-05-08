@@ -9,13 +9,11 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
   const [dataYoutube, setDataYoutube] = useState();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const formRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(sendVictorinaYoutube({ id, dataYoutube }));
   };
 
-  console.log(dataYoutube);
 
   return (
     <div className="projectImg">

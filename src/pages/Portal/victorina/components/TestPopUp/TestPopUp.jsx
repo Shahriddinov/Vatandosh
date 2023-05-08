@@ -1,29 +1,31 @@
 import "./TestPopUp.scss";
 import { useState } from "react";
-import img from "../../../../../assets/images/portal/4.png";
 import Checkbox from "@mui/material/Checkbox";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getTestQuizz } from "../../../../../reduxToolkit/victorinaQuiz/victorinaTest/getTest";
+import {
+  getTestQuizz,
+  sendVictorinaTest,
+} from "../../../../../reduxToolkit/victorinaQuiz/victorinaTest/getTest";
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { imageUrl } from "../../../../../services/api/utils";
 
 export default function TestPopUp({ setactivePopUp }) {
   const [currentQuiz, setCurrentQuiz] = useState(1);
+  const [dataTest, setDataTest] = useState();
+  const [answerId, setAnswerId] = useState("");
+  const [questionId, setQuestion] = useState("");
+  const [test, setTest] = useState([]);
   const { id } = useParams();
   const [testResponse, settestResponse] = useState(false);
   const dispatch = useDispatch();
   const testData = useSelector(
-    (state) => state.quizTestSlice.quizTestData.questions
+    (state) => state?.quizTestSlice?.quizTestData?.questions
   );
 
   const { t } = useTranslation();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   useEffect(() => {
     dispatch(getTestQuizz(id));
@@ -37,6 +39,56 @@ export default function TestPopUp({ setactivePopUp }) {
     setCurrentQuiz(currentQuiz + 1);
   }
 
+  console.log(questionId);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newArray = newObj(test);
+    dispatch(
+      sendVictorinaTest({
+        id,
+        data: {
+          answers: newArray,
+        },
+      })
+    );
+    console.log(newArray);
+  };
+
+  function newObj(arr) {
+    let obj;
+    arr.forEach((element) => {
+      obj = { ...obj, [element.key]: element.value };
+    });
+    return obj;
+  }
+
+  const handleQuestion = ({ q, a }) => {
+    setQuestion(q);
+    setAnswerId(a);
+    const testIndex = test.findIndex((el) => el.key === q);
+    setTest((prev) => {
+      if (testIndex < 0) {
+        return [
+          ...prev,
+          {
+            key: q,
+            value: a,
+          },
+        ];
+      }
+
+      return prev.map((el) => {
+        if (el.key === q) {
+          return {
+            ...el,
+            value: a,
+          };
+        }
+        return el;
+      });
+    });
+  };
+
   return (
     <div className="projectImg">
       <div
@@ -46,22 +98,27 @@ export default function TestPopUp({ setactivePopUp }) {
         <div className="victorina-test-title">
           <h3>01. Введение</h3>
         </div>
-        {testData?.map((evt) => (
+        {testData?.map((evt, index) => (
           <div
-            key={evt.id}
+            key={index}
             className={`victorina-test-wrapper ${
               currentQuiz === evt?.id ? "active" : ""
             }`}>
             <p className="victorina-test-list-desc">{evt.question}</p>
             <div className="victorina-test-list-wrapper">
               <ul className="victorina-test-list">
-                {evt?.answers?.map((el, index) => (
-                  <li key={index} className="victorina-test-list-item">
+                {evt?.answers?.map((el) => (
+                  <li
+                    onClick={() => handleQuestion({ q: evt.id, a: el.id })}
+                    key={el?.id}
+                    className="victorina-test-list-item">
                     <Checkbox
                       type="checkbox"
                       checked={testResponse === el?.id ? true : false}
                       inputProps={{ "aria-label": "controlled" }}
-                      onChange={() => settestResponse(el?.id)}
+                      onChange={() => {
+                        settestResponse(el?.id);
+                      }}
                     />
                     <span>{el.answer}</span>
                   </li>
@@ -71,35 +128,45 @@ export default function TestPopUp({ setactivePopUp }) {
             </div>
           </div>
         ))}
-        <div className="victorina-test-btn-wrapper">
+        <div style={{ padding: "20px" }} className="victorina-test-btn-wrapper">
           {currentQuiz === 1 ? (
-            <Button variant="contained" disabled onClick={prev}>
-              Previous
+            <Button
+              sx={{ gap: "10px" }}
+              variant="contained"
+              disabled
+              onClick={prev}>
+              {t("victorina.prev")}
             </Button>
           ) : (
-            <Button variant="contained" onClick={prev}>
-              Previous
+            <Button sx={{ gap: "10px" }} variant="contained" onClick={prev}>
+              {t("victorina.prev")}
             </Button>
           )}
-          {/* <Button variant="contained" >Submit</Button> */}
           {currentQuiz === testData?.length - 1 ? (
-            <Button variant="contained" onClick={next}>
-              Next
+            <Button
+              sx={{ gap: "10px", marginLeft: "15px" }}
+              variant="contained"
+              onClick={next}>
+              {t("expert.nextbtn")}
             </Button>
           ) : (
-            <Button disabled variant="contained" onClick={next}>
-              Next
+            <Button
+              sx={{ gap: "10px", marginLeft: "15px" }}
+              disabled
+              variant="contained"
+              onClick={next}>
+              {t("expert.nextbtn")}
             </Button>
           )}
-          {/* <button className="victorina-test-btn-prev">
-            {t("victorina.prev")}
-          </button>
-          <button className="victorina-test-btn-next">
-            {t("expert.nextbtn")}
-          </button> */}
-          <span>
+          <span style={{ marginLeft: "15px" }}>
             Вопрос {currentQuiz} из {testData?.length}
           </span>
+          <Button
+            type="submit"
+            sx={{ gap: "10px", marginLeft: "15px" }}
+            variant="contained">
+            Yakunlash
+          </Button>
         </div>
       </form>
     </div>
