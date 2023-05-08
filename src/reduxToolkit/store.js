@@ -34,6 +34,7 @@ import volunteerSlice from "./volunteer/volunteerSlice";
 import aboutUzbekistan from "./portalSlices/aboutUzbekistanSlice/aboutUzbekistanSlice";
 import quizTestSlice from "./victorinaQuiz/victorinaTest";
 import quizFileSlice from "./victorinaFile";
+import mediaFileSlice from "./victorinaImage";
 
 const store = configureStore({
   reducer: {
@@ -71,6 +72,7 @@ const store = configureStore({
     aboutUzbekistan,
     quizTestSlice,
     quizFileSlice,
+    mediaFileSlice,
   },
 });
 

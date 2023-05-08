@@ -3,9 +3,11 @@ import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import scripka from "../../../../../assets/images/expert/scripka-icon.svg";
 import { useTranslation } from "react-i18next";
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { sendVictorinaFile } from "../../../../../reduxToolkit/victorinaFile/download";
+import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
+import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function ProjectPoemsPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
@@ -13,6 +15,13 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
   const { id } = useParams();
   const [formData, setFormData] = useState({
     text: "",
+  });
+  const communityCreateData = useSelector(
+    (store) => store.community.communityCreateData
+  );
+  const [data, setData] = useState({
+    document: communityCreateData.document,
+    logo: communityCreateData.logo,
   });
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
@@ -29,6 +38,30 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
     dispatch(sendVictorinaFile({ id, data }));
   };
 
+  const handleChangeApplication = ({ key, value }) => {
+    if (key === "logo" || key === "document") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      logoData.append("folder", "community");
+      dispatch(mediaVictorinaImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "document" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+      dispatch(mediaFileSlice(newCommunityCreateData));
+    }
+  };
+
   return (
     <div className="projectImg">
       <div
@@ -36,20 +69,50 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
         onClick={() => setactivePopUp(false)}></div>
       <form className="victorina-popup" onSubmit={handleSubmit}>
         <h3 className="victorina-popup-title">{t("victorina.joinproject")}</h3>
-        <label htmlFor="" className="registeritem-label">
-          <p>
-            {t("victorina.fio")} <span>*</span>
-          </p>
-          <div>
-            <input
-              // required
-              type="text"
-              minLength={3}
-              maxLength={30}
-              placeholder={t("victorina.name")}
-            />
-          </div>
-        </label>
+        <div style={{ display: "flex", gap: "15px", width: "100%" }}>
+          <label
+            style={{ width: "100%" }}
+            htmlFor=""
+            className="registeritem-label">
+            <p>
+              {t("victorina.fio")} <span>*</span>
+            </p>
+            <div>
+              <input
+                // required
+                type="text"
+                minLength={3}
+                maxLength={30}
+                placeholder={t("victorina.name")}
+              />
+            </div>
+          </label>
+          <label
+            style={{ width: "100%" }}
+            htmlFor=""
+            className="registeritem-label">
+            <p>
+              Pasport yuklash (pdf, doc) <span>*</span>
+            </p>
+            <div>
+              <input
+                // required
+                type="file"
+                minLength={3}
+                maxLength={30}
+                name="image"
+                placeholder="Yuklang"
+                accept="application/pdf, image/*"
+                onChange={(evt) =>
+                  handleChangeApplication({
+                    key: "document",
+                    value: evt.target.files[0],
+                  })
+                }
+              />
+            </div>
+          </label>
+        </div>
         <label htmlFor="" className="registeritem-label">
           <p>
             {t("victorina.projectpoem")}
