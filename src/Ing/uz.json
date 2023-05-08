@@ -164,7 +164,6 @@
       "htext1": "Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir"
     }
   },
-
   "contactPage": {
     "contactUs": "Bog'lanish",
     "appForm": "Biz bilan bog'lanish uchun ariza shakli",
@@ -294,7 +293,6 @@
     "winner": "Viktorina g‘olibi",
     "winnerprice": "Viktorina g‘olibi taqdirlandi",
     "allwinner": "Barcha g‘oliblar",
-
     "endvictorina": "Viktorina yakunlanganlar",
     "endproject": "VIKTORINA YAKUNLANDI!",
     "winnerlist": "Viktorina g‘oliblar ro‘yxati",
@@ -304,7 +302,7 @@
     "edubrand": "Eng yaxshi ta’lim brendi"
   },
   "communityAssociation": {
-    "navbar":{
+    "navbar": {
       "navbar_link1": "Asosiy",
       "navbar_link2": "Jamoat birlashmalari",
       "navbar_link3": "Tadbirlar",
@@ -315,9 +313,9 @@
     "home_title": "“Vatandoshlar” Jamoat birlashmalari",
     "home_desc": "Vatandosh jamoat birlashmalarining elektron platformasi",
     "application": "Ariza berish",
-    "detail": "Batafsil",   
-    "total_public_organizations": "Jami jamoat birlashmalri",  
-    "view_all": "Hammasini ko'rish",  
+    "detail": "Batafsil",
+    "total_public_organizations": "Jami jamoat birlashmalri",
+    "view_all": "Hammasini ko'rish",
     "community_association_about_title": "Jamoat birlashmalari haqida",
     "all_states": "Barcha davlatlar",
     "add_news": "Yangiliklar qo'shish",
@@ -419,5 +417,18 @@
     "ISBN13": "ISBN13",
     "suggestions": "Sizni qiziqtirishi mumkin",
     "read_online": "Onlayn o'qish"
+  },
+  "symbols": {
+    "anthem": "O'zbekiston Respublikasining davlat madhiyasi",
+    "text": "\"O'zbekiston Respublikasining davlat madhiyasi to'g'risida\"gi Qonun1992-yil 10-dekabrda O'zbekiston Respublikasi Oliy Kengashiningo'n birinchi sessiyasida qabul qilingan",
+    "author": "Mutal Burhonov musiqasi Abdulla Oripov so'zi",
+    "textsOne": "Serquyosh hur o'lkam, elga baxt, najot,Sen o'zing do'stlarga yo'ldosh, mehribon!",
+    "textsTwo": "Yashnagay to abad ilmu fan, ijod, Shuhrating porlasin toki bor jahon! ",
+    "textsThree": "Ulug' xalq qudrati jo'sh urgan zamon, Olamni mahliyo aylagan diyor! ",
+    "textsFour": "Oltin bu vodiylar - jon O'zbekiston, Ajdodlar mardona ruhi senga yor!",
+    "textsFive": " Bag'ri keng o'zbekning o'chmas iymoni, Erkin, yosh avlodlar senga zo'r qanot! ",
+    "textsSix": "Istiqlol mash'ali tinchlik posboni,Xaqsevar, ona yurt, mangu bo'l obod!",
+    "textsSeven": " Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!",
+    "textsEight": "Ulug' xalq qudrati jo'sh urgan zamon,Olamni mahliyo aylagan diyor!"
   }
 }
