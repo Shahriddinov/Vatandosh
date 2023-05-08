@@ -12,7 +12,6 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [formData, setFormData] = useState({
-    // passport_file: "",
     text: "",
   });
   const handleFileSelect = (event) => {
@@ -29,7 +28,6 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
 
     dispatch(sendVictorinaFile({ id, data }));
   };
-
 
   return (
     <div className="projectImg">

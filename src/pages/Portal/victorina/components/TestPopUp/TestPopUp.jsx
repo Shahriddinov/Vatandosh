@@ -14,7 +14,6 @@ import { imageUrl } from "../../../../../services/api/utils";
 
 export default function TestPopUp({ setactivePopUp }) {
   const [currentQuiz, setCurrentQuiz] = useState(1);
-  const [dataTest, setDataTest] = useState();
   const [answerId, setAnswerId] = useState("");
   const [questionId, setQuestion] = useState("");
   const [test, setTest] = useState([]);
@@ -39,7 +38,6 @@ export default function TestPopUp({ setactivePopUp }) {
     setCurrentQuiz(currentQuiz + 1);
   }
 
-  console.log(questionId);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newArray = newObj(test);
@@ -51,7 +49,6 @@ export default function TestPopUp({ setactivePopUp }) {
         },
       })
     );
-    console.log(newArray);
   };
 
   function newObj(arr) {
@@ -76,7 +73,6 @@ export default function TestPopUp({ setactivePopUp }) {
           },
         ];
       }
-
       return prev.map((el) => {
         if (el.key === q) {
           return {
