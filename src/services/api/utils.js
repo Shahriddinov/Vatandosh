@@ -43,6 +43,7 @@ export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
+export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
 
 //===============================PORTAL================================
 export const GET_LOCATION = "/location/get-all";
@@ -72,9 +73,8 @@ export const GET_ALL_CITY_VIDEO = "/city-video/get-all";
 export const GET_SINGLE_CITY_VIDEO = "/city-video/get-one/";
 export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
 export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
-export const GET_VICTORINA_TEST = "/quiz/quiz/:id"
-export const VICTORINA_YOUTUBE = "/quiz/participant/:id"
-
+export const GET_VICTORINA_TEST = "/quiz/quiz/:id";
+export const VICTORINA_YOUTUBE = "/quiz/participant/:id";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

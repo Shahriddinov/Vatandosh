@@ -10,22 +10,22 @@ import { baseServerUrl } from "../../services/api/utils";
 import Spinner from "../Spinner/Spinner";
 
 const HomeWebinarSlider = ({ sliderData, error, loading }) => {
-  const [slideIndex, setSlideIndex] = useState(1);
+  const [slideIndex, setSlideIndex] = useState(0);
   const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
   const navigate = useNavigate();
 
   const handleLeft = () => {
-    if (slideIndex === 1) {
-      setSlideIndex(sliderData.length);
+    if (slideIndex === 0) {
+      setSlideIndex(sliderData.length - 1);
     } else {
       setSlideIndex(slideIndex - 1);
     }
   };
 
   const handleRight = () => {
-    if (slideIndex === sliderData.length) {
-      setSlideIndex(1);
+    if (slideIndex === sliderData.length - 1) {
+      setSlideIndex(0);
     } else {
       setSlideIndex(slideIndex + 1);
     }
@@ -73,42 +73,24 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
     <section className="webinar-slider">
       <div className="webinar-slider__container">
         <div className="webinar-slider__slider">
-          {data?.map((slider) => (
+          {sliderData?.map((slider, index) => (
             <div
               className={`webinar-slider__slider-box ${
-                slideIndex === slider?.id ? "active" : ""
+                slideIndex === index ? "active" : ""
               }`}
-              key={slider.id}
+              key={index}
             >
-              {slider.image ? (
-                <div
-                  className={`webinar-slider__slider-item`}
-                  style={{
-                    backgroundImage: `url(${baseServerUrl}/${slider?.image})`,
-                  }}
-                ></div>
-              ) : (
-                <div className={`webinar-slider__slider-video`}>
-                  <video autoPlay muted loop>
-                    <source
-                      src={`${baseServerUrl}/${
-                        JSON.parse(slider?.video)[
-                          JSON.parse(slider?.video).length - 1
-                        ]?.download_link
-                      }`}
-                    />
-                  </video>
-                </div>
-              )}
+              <div
+                className={`webinar-slider__slider-item`}
+                style={{
+                  backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${baseServerUrl}/${slider.background_image})`,
+                }}
+              ></div>
               <div className="container webinar-slider__content">
                 <div className="webinar-slider__slider-left-bottom">
                   <div className="webinar-slider__slider-left-bottom-text">
-                    <h1>“Vatandoshlar” Vebinari </h1>
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy{" "}
-                    </p>
+                    <h1>{slider[`title_${lan}`]}</h1>
+                    <p>{slider[`text_${lan}`]}</p>
                   </div>
                   <div className="webinar-slider__slider-left-bottom-buttons">
                     <button
@@ -128,7 +110,7 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                   </div>
                   <div
                     className={`navigation-line ${
-                      slideIndex === slider?.id ? "active" : ""
+                      slideIndex === index ? "active" : ""
                     }`}
                   ></div>
                 </div>
@@ -144,15 +126,15 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                 </div>
               </div>
               <div className="webinar-slider__bullets">
-                {data?.map((slider) => (
+                {data?.map((slider, index) => (
                   <div
                     className={`webinar-slider__bullets-bullet ${
-                      slideIndex === slider?.id
+                      slideIndex === index
                         ? "webinar-slider__bullets-bullet-active"
                         : ""
                     }`}
-                    key={slider.id}
-                    onClick={() => handleBulletClick(slider.id)}
+                    key={index}
+                    onClick={() => handleBulletClick(index)}
                   />
                 ))}
               </div>
