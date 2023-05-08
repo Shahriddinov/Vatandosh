@@ -21,9 +21,11 @@ const AssociationHome = () => {
     communityHomePageData,
     communityHomePageLoading,
     communityHomePageError,
+    communityNews,
+    communityNewsLoading,
   } = useCommunityHomeFetching();
 
-  if (communityHomePageLoading) {
+  if (communityHomePageLoading || communityNewsLoading) {
     return <Spinner />;
   } else if (communityHomePageError) {
     return <p className="">{communityHomePageError}</p>;
@@ -55,7 +57,7 @@ const AssociationHome = () => {
       </div>
       <CommunityHomeCouncil councilData={councilData} />
       <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
-      <News />
+      <News communityNews={communityNews} />
     </>
   );
 };

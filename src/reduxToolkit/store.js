@@ -32,6 +32,7 @@ import librarySlice from "./portalSlices/librarySlice";
 import meetingSlice from "./portalSlices/meetingSlice/meetingSlice";
 import volunteerSlice from "./volunteer/volunteerSlice";
 import aboutUzbekistan from "./portalSlices/aboutUzbekistanSlice/aboutUzbekistanSlice";
+import portalNews from "./portalSlices/portalNewsSlice/portalNewsSlice";
 
 const store = configureStore({
   reducer: {
@@ -67,6 +68,7 @@ const store = configureStore({
     volunteerSlice,
     meetingSlice,
     aboutUzbekistan,
+    portalNews,
   },
 });
 
