@@ -1,17 +1,22 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React from "react";
+import { Outlet } from "react-router-dom";
 
-import OnlineTeachingHeader from '../OnlineTeaching/components/OnlineTeachingHeader/OnlineTeachingHeader'
-import OnlineTeachingFooter from '../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter'
+import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
+import Header from "./components/Header/Header";
 
 const LibraryLayout = () => {
+  const navbarUrl = {
+    home: "/portal",
+    register: "/portal-category/electronic-journal",
+  };
+
   return (
     <div>
-      <OnlineTeachingHeader />
+      <Header navbarUrl={navbarUrl} />
       <Outlet />
       <OnlineTeachingFooter />
     </div>
-  )
-}
+  );
+};
 
-export default LibraryLayout
+export default LibraryLayout;

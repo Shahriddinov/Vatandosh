@@ -1,6 +1,5 @@
 .library__hero {
   &__slider {
-    margin: 30px auto;
     height: 500px;
     display: flex;
     position: relative;
@@ -54,7 +53,11 @@
     flex-direction: column;
     justify-content: flex-end;
     position: absolute;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 32.61%, rgba(0, 0, 0, 0.37) 72.94%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 32.61%,
+      rgba(0, 0, 0, 0.37) 72.94%
+    );
     background-size: cover;
     background-position: center center;
     color: #fff;
@@ -78,7 +81,7 @@
       font-size: 54px;
       line-height: 65px;
       width: 45%;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 
@@ -199,7 +202,7 @@
     gap: 15px;
     position: absolute;
     right: 30px;
-    bottom: 54px;
+    bottom: 30px;
     transition: 0.5s;
     z-index: 3;
 
@@ -234,6 +237,34 @@
   }
 }
 
+.bullets {
+  display: none;
+  align-items: center;
+  flex-direction: row;
+  width: max-content;
+  gap: 12px;
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+
+  &-bullet {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+
+  &-bullet-active {
+    width: 30px;
+    height: 30px;
+    background: #ffffff !important;
+  }
+}
+
 @keyframes sliderProgress {
   from {
     width: 0;
@@ -259,16 +290,23 @@
 @media (max-width: 1000px) {
   .library__hero {
     &__slider {
-      height: 400px;
-      padding-top: 30px;
+      height: 512px;
+    }
+
+    &__slider-box {
+      border-radius: 0px;
     }
 
     &__bottom-right {
-      bottom: 0;
+      display: none;
     }
 
     &__slider-video {
-      height: 400px;
+      height: 512px;
+    }
+
+    .bullets {
+      display: flex;
     }
   }
 }
@@ -277,7 +315,6 @@
   .library__hero {
     &__slider {
       height: 360px;
-      padding-top: 30px;
     }
 
     &__slider-video {
@@ -290,10 +327,6 @@
   .library__hero {
     &__slider {
       height: 350px;
-    }
-
-    &__slider-box {
-      border-radius: 8px;
     }
 
     &__slider-video {
@@ -338,8 +371,7 @@
     }
 
     &__slider {
-      height: 410px;
-      padding-top: 0;
+      height: 330px;
     }
 
     &__slider-box {
@@ -348,7 +380,7 @@
     }
 
     &__slider-video {
-      height: 250px;
+      height: 330px;
       position: static;
 
       &::before {
@@ -357,11 +389,19 @@
     }
 
     &__slider-item {
-      height: 250px;
+      height: 330px;
       position: static;
 
       &::before {
         display: none;
+      }
+
+      h1 {
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        width: 320px;
+        padding: 127px 0;
       }
     }
 
@@ -389,9 +429,17 @@
         display: none;
       }
     }
+  }
+  .bullets {
+    gap: 8px;
+    &-bullet {
+      width: 12px;
+      height: 12px;
+    }
 
-    &__bottom {
-      display: none;
+    &-bullet-active {
+      width: 15px;
+      height: 15px;
     }
   }
 }

@@ -2,6 +2,26 @@
   border-color: #eaedf6 !important;
 }
 
+.path {
+  display: flex;
+  justify-content: end;
+  margin: 20px 0;
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .current_path {
+    color: #065ea9;
+  }
+  a:visited {
+    color: #5d6b8a;
+  }
+}
+
 .all__books__search {
   margin: 0 25px;
   display: flex;
@@ -78,22 +98,66 @@
 }
 
 @media (max-width: 768px) {
+  .all__books__filter {
+    flex-direction: column;
+  }
+
   .all__books__search__input {
     flex-direction: column;
   }
 
   .MuiPaper-root {
     width: auto !important;
+    height: 60px !important;
   }
 
   .MuiFormControl-root {
     width: 100%;
     min-width: auto;
+    height: 60px !important;
+  }
+
+  .MuiButtonBase-root,
+  .MuiInputBase-root {
+    font-size: 18px !important;
+    height: 60px !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .all__books__filter {
     flex-direction: column;
+  }
+  .all__books__search {
+    row-gap: 20px;
+    h2 {
+      font-size: 22px;
+      line-height: 35px;
+    }
+  }
+  .all__books__sort {
+    ul {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      li {
+        padding: 10px 0;
+        width: 50%;
+        text-align: center;
+      }
+    }
+  }
+
+  .MuiFormControl-root {
+    height: 48px !important;
+    border-radius: 12px !important;
+  }
+
+  .MuiButtonBase-root,
+  .MuiInputBase-root,
+  .MuiPaper-root {
+    font-size: 16px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
   }
 }

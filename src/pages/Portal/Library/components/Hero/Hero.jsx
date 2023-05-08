@@ -29,6 +29,10 @@ const Hero = ({ sliderData, error, loading }) => {
     }
   };
 
+  const handleBulletClick = (index) => {
+    setSlideIndex(index);
+  };
+
   let slideInterval;
 
   const autoPlay = () => {
@@ -51,14 +55,14 @@ const Hero = ({ sliderData, error, loading }) => {
               }`}
               key={slider.id}
             >
-                <div
-                  className={`library__hero__slider-item`}
-                  style={{
-                    backgroundImage: `url(${slider.image})`,
-                  }}
-                >
-                  <h1>{slider.text}</h1>
-                </div>
+              <div
+                className={`library__hero__slider-item`}
+                style={{
+                  backgroundImage: `url(${slider.image})`,
+                }}
+              >
+                <h1>{slider.text}</h1>
+              </div>
             </div>
           ))}
         </div>
@@ -70,6 +74,17 @@ const Hero = ({ sliderData, error, loading }) => {
             <div className="arrow-btn" onClick={handleRight}>
               <FiChevronRight />
             </div>
+          </div>
+          <div className="bullets">
+            {sliderData?.map((slider) => (
+              <div
+                className={`bullets-bullet ${
+                  slideIndex === slider?.id ? "bullets-bullet-active" : ""
+                }`}
+                key={slider.id}
+                onClick={() => handleBulletClick(slider.id)}
+              />
+            ))}
           </div>
         </div>
       </div>
