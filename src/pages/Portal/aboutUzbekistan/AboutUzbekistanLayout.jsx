@@ -6,23 +6,16 @@ import AboutUzbekistanHeaderTransparent from "./components/aboutUzbekistanHeader
 import AboutUzbekistanNavbar from "./components/aboutUzbekistanNavbar/AboutUzbekistanNavbar";
 import AboutUzbekistanNavbarTransparent from "./components/aboutUzbekistanNavbarTransparent/AboutUzbekistanNavbar";
 import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getAllAboutUzbMenu } from "../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
+import { Spinner } from "../../../component";
+import { useLayoutFetching } from "./hooks/useLayoutFetching";
 
 const AboutUzbekistan = () => {
   const location = useLocation();
   let transparentIsTrue = location.pathname.split("/")[3];
-  const dispatch = useDispatch();
-  const menu = useSelector((store) => store.aboutUzbekistan.allAboutUzbMenu);
-  const menuLoading = useSelector(
-    (store) => store.aboutUzbekistan.allAboutUzbMenuLoading
-  );
-
-  useEffect(() => {
-    dispatch(getAllAboutUzbMenu());
-  }, []);
-  console.log(menu);
+  const { menu, menuLoading } = useLayoutFetching();
+  if (menuLoading) {
+    return <Spinner position="full" />;
+  }
 
   return (
     <div>
@@ -34,11 +27,11 @@ const AboutUzbekistan = () => {
       )}
       {(transparentIsTrue === "virtual-tour") |
       (transparentIsTrue === "city") ? (
-        <AboutUzbekistanNavbarTransparent />
+        <AboutUzbekistanNavbarTransparent menu={menu} />
       ) : (
-        <AboutUzbekistanNavbar />
+        <AboutUzbekistanNavbar menu={menu} />
       )}
-      <Outlet />
+      <Outlet context={{ menu }} />
       {transparentIsTrue !== "virtual-tour" && <OnlineTeachingFooter />}
     </div>
   );
