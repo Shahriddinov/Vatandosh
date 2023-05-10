@@ -11,11 +11,10 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const communityCreateData = useSelector(
-    (store) => store.community.communityCreateData
+    (store) => store.mediaFileSlice.communityImagePost
   );
   const [data, setData] = useState({
     document: communityCreateData.document,
-    logo: communityCreateData.logo,
   });
 
   const handleSumbit = (e) => {
@@ -30,7 +29,6 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
       }));
       const logoData = new FormData();
       logoData.append("image", value);
-      logoData.append("folder", "community");
       dispatch(mediaVictorinaImage({ key, image: logoData }));
     } else {
       setData((prev) => ({
@@ -67,6 +65,8 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
                 type="text"
                 minLength={3}
                 maxLength={30}
+                name="fio"
+                id="fio"
                 placeholder={t("victorina.name")}
               />
             </div>
@@ -82,9 +82,10 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
               <input
                 // required
                 type="file"
-                minLength={3}
-                maxLength={30}
+                id="passport"
+                name="passport"
                 placeholder="Yuklang"
+                accept="application/pdf, image/*"
               />
             </div>
           </label>
