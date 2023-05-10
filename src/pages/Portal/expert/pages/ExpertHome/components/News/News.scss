@@ -1,5 +1,6 @@
 .expertnews {
   padding: 20px 0;
+  overflow-x: hidden;
 
   .main-hero {
     width: 50%;
@@ -80,8 +81,12 @@
   &-right {
     width: 50%;
   }
+  &-content {
+    width: 100%;
+  }
   &-item {
     display: flex;
+    justify-content: space-between;
     color: #5d6b8a;
     font-weight: 400;
     font-size: 12px;

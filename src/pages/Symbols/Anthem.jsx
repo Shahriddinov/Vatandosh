@@ -4,7 +4,9 @@ import Vector from "../../assets/images/home/Vector.svg";
 import Madhiya from "../../assets/images/ozbekiston-respublikasi-davlat-madhiyasi-madhiya_(chaqqon.net).mp3"
 import "./Symbols.scss"
 import ReactAudioPlayer from 'react-audio-player';
+import {useTranslation} from "react-i18next";
 function Anthem(props) {
+    const { t } = useTranslation();
     return (
         <>
             <Header/>
@@ -13,33 +15,28 @@ function Anthem(props) {
 
                 <div className="symbol_text">
                     <div className="symbol_text_start">
-                        O'zbekiston Respublikasining davlat madhiyasi
+                        {t("symbols.anthem")}
                     </div>
                     <div className="symbol_text_title">
-                        "O'zbekiston Respublikasining davlat madhiyasi to'g'risida"gi Qonun1992-yil 10-dekabrda O'zbekiston
-                        Respublikasi Oliy Kengashiningo'n birinchi sessiyasida qabul qilingan
+                        {t("symbols.text")}
                     </div>
-                    <div className="symbol_text_poets">Mutal Burhonov musiqasi Abdulla Oripov so'zi</div>
+                    <div className="symbol_text_poets">{t("symbols.author")}</div>
                     <div className="symbol_text_post">
-                        Serquyosh hur o'lkam, elga baxt, najot,Sen o'zing do'stlarga yo'ldosh, mehribon!Yashnagay to
-                        abad ilmu fan, ijod,Shuhrating porlasin toki bor jahon! <br/>
-
-                        Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!Ulug' xalq qudrati jo'sh
-                        urgan zamon,Olamni mahliyo aylagan diyor! <br/>
-
-                        Bag'ri keng o'zbekning o'chmas iymoni,Erkin, yosh avlodlar senga zo'r qanot!Istiqlol mash'ali
-                        tinchlik posboni,Xaqsevar, ona yurt, mangu bo'l obod! <br/>
-
-
-                        Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!Ulug' xalq qudrati jo'sh
-                        urgan zamon,Olamni mahliyo aylagan diyor! <br/>
+                        {t("symbols.textsOne")} <br/>
+                        {t("symbols.textsTwo")} <br/>
+                        {t("symbols.textsThree")} <br/>
+                        {t("symbols.textsFour")} <br/>
+                        {t("symbols.textsFive")} <br/>
+                        {t("symbols.textsSix")} <br/>
+                        {t("symbols.textsSeven")} <br/>
+                        {t("symbols.textsEight")}
                     </div>
-                    <ReactAudioPlayer
-                        className="symbol_text_audio"
-                        src={Madhiya}
-                        autoPlay
-                        controls
-                    />
+                    {/*<ReactAudioPlayer*/}
+                    {/*    className="symbol_text_audio"*/}
+                    {/*    src={Madhiya}*/}
+                    {/*    autoPlay*/}
+                    {/*    controls*/}
+                    {/*/>*/}
                 </div>
             </div>
         </>

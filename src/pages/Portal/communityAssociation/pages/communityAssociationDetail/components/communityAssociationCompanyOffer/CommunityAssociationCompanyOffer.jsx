@@ -7,10 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 //Scss files
 import "./communityAssociationCompanyOffer.scss";
-import {
-  PORTAL_IMAGE_URL,
-  baseServerUrl,
-} from "../../../../../../../services/api/utils";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { useInView } from "react-intersection-observer";
 import { LazySpinner } from "../../../../../../../component";
 
@@ -20,14 +17,6 @@ const CommunityAssociationCompanyOffer = (props) => {
     triggerOnce: true,
   });
 
-  console.log(props);
-
-  // const images = JSON.parse(props.images)?.map((el, i) => ({
-  //   id: i + 1,
-  //   image: el,
-  // }));
-
-  // const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const [activeImage, setActiveImage] = useState({
     id: 0,

@@ -4,7 +4,7 @@
   "leadership_structure": "leadership structure",
   "search": "Search",
   "about": "ABOUT US",
-  "citizin": "COMPATRIOTS",
+  "citizin": "ASSOCIATIONS",
   "projects": "PROJECTS",
   "contects": "CONTESTS",
   "information": "INFORMATION SERVICE\n",
@@ -39,7 +39,7 @@
   "footerSend": "Send",
   "footerFund": "Public Fund of Compatriots",
   "footerAbout": "About us",
-  "footerCompatriots": "Compatriots",
+  "footerCompatriots": "Associations",
   "footerProjects": "Projects",
   "footerSelections": "Selections",
   "footerService": "Information Service",
@@ -86,7 +86,7 @@
   },
   "citizin_items": {
     "item1": "Public associations",
-    "item2": "Category shows",
+    "item2": "Public organization of compatriots",
     "item3": "Community associations events"
   },
   "information_items": {
@@ -149,15 +149,15 @@
       "cardfb": "Fund management",
       "cardy": "Assistant",
       "cardbr": "Chairman of the board",
-      "carda": "Information",
+      "carda": "Chief expert on information technology and electronic portal",
       "cardby": "Chief juristconsult",
-      "cardb": "Management",
-      "cardsh": "Strategic analysis",
+      "cardb": "Deputy chairman of the board",
+      "cardsh": "Chief specialist in strategic analysis and planning",
       "cardmk": "Press secretary",
-      "cardxb": "With personnel",
-      "cardv": "The compatriots were",
-      "cardv2": "Compatriots",
-      "cardmm": "Cultural-educational",
+      "cardxb": "Chief Staff Officer",
+      "cardv": "Chief specialist in material and social support of compatriots",
+      "cardv2": "Head of relations with compatriot organizations",
+      "cardmm": "Chief specialist in the organization of cultural and educational events",
       "cardbb": "Chief accountant"
     },
     "section5": {
@@ -300,6 +300,7 @@
       "navbar_link3": "Events",
       "navbar_link4": "Contact"
     },
+    "communityMapErrorText": "There are no public associations in the state of {{countryName.name}}.",
     "cabinet": "Cabinet",
     "home_title": "Compatriots Public Associations",
     "home_desc": "Electronic platform of compatriot public associations",
@@ -409,5 +410,12 @@
     "ISBN13": "ISBN13",
     "suggestions": "You may be interested",
     "read_online": "Read online"
+  },
+  "symbols": {
+    "anthem" : "State anthem of the Republic of Uzbekistan",
+    "text" : "Law\"on the state anthem of the Republic of Uzbekistan\" dated December 10, 1992. The Supreme Council of the Republic ofiningo was adopted at its first session",
+    "author" : "Mutal Burhonov music-Abdulla Oripov may refer to",
+    "texts" : "Sunshine hur my country, elga happiness, salvation, you are a companion to your friends, kind!Yashnagai to\nforever science, creativity, may your fame shine so that there is a world! Gold these valleys-John Uzbekistan, the spirit of the ancestral Valor go to you!Great people's power Josh\nthe time when he struck, the land that conquered the universe!\nThe indelible faith of a broad Uzbek,Free, young generations are a great wing for you!Istiqlal torch\na peaceful haven, a good friend, a native land, a good abode! \nGold these valleys-John Uzbekistan, the spirit of the ancestral Valor go to you!Great people's power Josh\nthe time when he struck, the land that conquered the universe! "
+
   }
 }

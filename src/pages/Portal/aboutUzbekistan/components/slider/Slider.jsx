@@ -15,8 +15,10 @@ import { LazySpinner } from "../../../../../component";
 import CardImg1 from "../../../../../assets/images/tourist-facilities/bazaar.png";
 import CardImg2 from "../../../../../assets/images/tourist-facilities/street.png";
 import CardImg3 from "../../../../../assets/images/tourist-facilities/palace.png";
+import { useSelector } from "react-redux";
 
 export const Slider = memo(({ title, data }) => {
+  const data1 = useSelector((store) => store.aboutUzbekistan);
   const cardData = [
     {
       id: 1,

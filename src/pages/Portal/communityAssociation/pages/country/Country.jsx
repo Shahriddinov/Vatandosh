@@ -4,47 +4,32 @@ import { PageTop } from "../../components";
 import { ArrowRight } from "../../../../../assets/images/communityAssociation";
 import { MiniSlider } from "../../../../../component/miniSlider/MiniSlider";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
-import { countryData as data } from "./data";
 import { Spinner } from "../../../../../component";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCountryGet } from "./hooks/useCountryGet";
 
 const Country = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const news = useSelector((state) => state.newsSlice.newsData);
-  const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
-  const { communityCountry } = useParams();
+
   const {
-    associationData,
-    associationCategoryData,
-    associationLoading,
-    associationCategoryLoading,
+    allCommunityGet,
+    allCommunityGetLoading,
+    allRegionsGetLoading,
+    allRegionsGet,
+    communityCountry,
+    loadingNews,
+    news,
   } = useCountryGet();
-  const lng = useSelector((state) => state.language.language);
 
-  useEffect(() => {
-    if (!news.length) {
-      dispatch(getNews());
-    }
-  }, []);
-
-  if (loadingNews || associationLoading || associationCategoryLoading) {
+  if (loadingNews || allCommunityGetLoading || allRegionsGetLoading) {
     return <Spinner position="full" />;
   }
-
-  const findCountry = associationData.find((el) => el.id === 3);
-  const findCountryCategoryData = associationCategoryData.filter(
-    (el) => el.country_uz * 1 === 3
+  const findCountryCountry = allRegionsGet.filter(
+    (el) => el.id === communityCountry * 1
   );
 
-  console.log(findCountry);
-
   const pageTopData = {
-    title: findCountry[`country_${lng}`],
+    title: findCountryCountry.name,
     pathUrl: [
       {
         id: 1,
@@ -55,7 +40,7 @@ const Country = () => {
       {
         id: 2,
         pathUrl: null,
-        label: findCountry[`country_${lng}`],
+        label: findCountryCountry[0].name,
         active: true,
       },
     ],
@@ -68,24 +53,20 @@ const Country = () => {
           <PageTop pageTopData={pageTopData} />
 
           <ul className="community-association-country__list">
-            {findCountryCategoryData.map((item, i) => (
+            {allCommunityGet.map((item, i) => (
               <li className="community-association-country__item" key={item.id}>
                 <span className="community-association-country__item--text">
                   {i + 1}.{" "}
-                  {item[`title_${lng}`]
+                  {item.name
                     .split(" ")
-                    .slice(0, item[`title_${lng}`].split(" ").length - 1)
+                    .slice(0, item.name.split(" ").length - 1)
                     .join(" ")}
                   <Link
                     className="associations__accordion_item--link"
                     to={`/portal-category/community-association/country/${communityCountry}/${item?.id}`}
                   >
                     {" "}
-                    {
-                      item[`title_${lng}`].split(" ")[
-                        item[`title_${lng}`].split(" ").length - 1
-                      ]
-                    }
+                    {item.name.split(" ")[item.name.split(" ").length - 1]}
                   </Link>
                 </span>
                 <img

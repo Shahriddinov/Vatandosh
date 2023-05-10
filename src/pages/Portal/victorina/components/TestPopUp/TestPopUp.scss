@@ -23,6 +23,11 @@
 
   &-wrapper {
     padding: 25px 30px;
+    display: none;
+
+    &.active {
+      display: block;
+    }
   }
 
   &-list {

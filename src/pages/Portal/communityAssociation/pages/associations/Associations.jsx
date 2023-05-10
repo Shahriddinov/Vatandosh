@@ -28,7 +28,8 @@ const Associations = () => {
     return <Spinner position="full" />;
   }
 
-  console.log(allCommunityGet[0]);
+  console.log(allCommunityGet);
+
   return (
     <div className="associations">
       <div className="container">
@@ -49,17 +50,23 @@ const Associations = () => {
             </FormControl>
           </div>
           <div className="associations__grid">
-            {allCommunityGet.map((item) => (
-              <Fragment key={item.id}>
-                <AssociationsCard {...item} allRegions={allRegions} />
-              </Fragment>
-            ))}
+            {allCommunityGet.length > 0 ? (
+              allCommunityGet.map((item) => (
+                <Fragment key={item.id}>
+                  <AssociationsCard {...item} allRegions={allRegions} />
+                </Fragment>
+              ))
+            ) : (
+              <p>Hozirda bu davlatda jamoat birlashmalari mavjud emas</p>
+            )}
           </div>
-          <button className="more__less__button">
-            {" "}
-            <img src={ArrowDown} alt="" />
-            {t("communityAssociation.view_all")}
-          </button>
+          {allCommunityGet.length > 8 ? (
+            <button className="more__less__button">
+              {" "}
+              <img src={ArrowDown} alt="" />
+              {t("communityAssociation.view_all")}
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

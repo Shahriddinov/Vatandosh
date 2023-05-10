@@ -5,7 +5,7 @@ import botIcon from "../../assets/images/navMenuIcons/aboutNav/botIcon.svg";
 import mainRoutesIcon from "../../assets/images/navMenuIcons/aboutNav/mainRoutesIcon.svg";
 
 //
-import categoryShowIcon from "../../assets/images/navMenuIcons/countryMan/categoryShowIcon.svg";
+import PublicCompatriotsProjectsIcon from "../../assets/images/navMenuIcons/countryMan/PublicCompatriotsProjectsIcon.svg";
 import paIcon from "../../assets/images/navMenuIcons/countryMan/publicAssociationsIcon.svg";
 import publicEventsIcon from "../../assets/images/navMenuIcons/countryMan/publicEventsIcon.svg";
 //
@@ -69,7 +69,7 @@ export const NavBarLinks = () => {
         {
           title: t("citizin_items.item2"),
           url: "/compatriots/categoryshows",
-          icon: categoryShowIcon,
+          icon: PublicCompatriotsProjectsIcon,
         },
         {
           title: t("citizin_items.item3"),
@@ -117,7 +117,7 @@ export const NavBarLinks = () => {
         },
         {
           title: t("information_items.item5"),
-          url: "/",
+          url: "/portal-category/electronic-journal",
           icon: coountryManIcon,
         },
       ],

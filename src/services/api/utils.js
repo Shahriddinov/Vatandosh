@@ -45,17 +45,37 @@ export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 
 //===============================PORTAL================================
+export const GET_PORTAL_NEWS = "/news?type=";
 export const GET_LOCATION = "/location/get-all";
 export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
+export const GET_COMMUNITY_ALL_EVENT = "/community/all-event";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
 export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
 export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
 export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
+export const GET_LIBRARY_ALL = "/ebook/get-all/";
+export const GET_LIBRARY_ONE = "/ebook/get-one/";
+export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
+export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
+export const GET_MEETINGS = "/meeting/meetings";
+export const GET_MEETING_BY_ID = "/meeting/meeting/";
+export const GET_MEETING_PAGE = "/meeting/page";
+export const GET_ALL_ABOUT_UZB_MENU = "/about-uzb/get-all";
+export const GET_SINGLE_ABOUT_UZB_MENU = "/about-uzb/get-one/";
+export const GET_ALL_CITY_CONTENT = "/city-content/get-all";
+export const GET_ALL_CITY = "/city/get-all";
+export const GET_SINGLE_CITY = "/city/get-one/";
+export const GET_ALL_CITY_VIDEO = "/city-video/get-all";
+export const GET_SINGLE_CITY_VIDEO = "/city-video/get-one/";
+export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
+export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
+export const GET_VICTORINA_TEST = "/quiz/quiz/:id";
+export const VICTORINA_YOUTUBE = "/quiz/participant/:id";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -66,11 +86,14 @@ export const LOGIN = `${authUrl}/login`;
 export const RESET_PASSWORD = `${authUrl}/reset-password`;
 export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
-export const VOLUNTEER_PROFILE = `${portalBaseUrl}/volunteer/create`;
+export const VOLUNTEER_CREATE = "/volunteer/create";
 export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
 export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
+export const CREATE_MEETING = "/meeting/create/";
 
 // Update requests
+export const VOLUNTEER_UPDATE = "volunteer/update/";
 
 // Delete requests
+export const VOLUNTEER_DELETE = "/volunteer/delete/";

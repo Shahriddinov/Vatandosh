@@ -4,11 +4,32 @@ import { ExpertTitle } from "../../../expert/components";
 import { useTranslation } from "react-i18next";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import img from "../../../../../assets/images/portal/5.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/ExpertProfileInfo";
-import { ShareFriends } from "../../../../../component";
+import { ShareFriends, Spinner } from "../../../../../component";
+import { getMeetingOne } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 export default function OnlineWebinar() {
+  const { id } = useParams();
+  const meetingOnedata = useSelector(
+    (store) => store.meetingSlice.meetingOnedata
+  );
+  const meetingOneLoading = useSelector(
+    (store) => store.meetingSlice.meetingOneLoading
+  );
+  const meetingError = useSelector((store) => store.meetingSlice.error);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMeetingOne(id));
+  }, []);
+
+  console.log(meetingOnedata);
+
   const { pathname } = useLocation();
   const { t } = useTranslation();
   const url = [
@@ -16,15 +37,53 @@ export default function OnlineWebinar() {
     { title: t("webinar.webinars"), url: "" },
   ];
 
+  const targetDate = new Date(meetingOnedata.start_date);
+  const [timeRemaining, setTimeRemaining] = useState({});
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      console.log(targetDate - now);
+      const diffTime = targetDate - now;
+
+      if (diffTime > 0) {
+        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+
+        setTimeRemaining({
+          days: days,
+          hours: hours,
+          minutes: minutes,
+        });
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, [targetDate]);
+
+  if (meetingOneLoading) {
+    return <Spinner />;
+  } else if (meetingError) {
+    return <p>Error</p>;
+  }
+
   return (
     <>
       <main className="online-webinar">
         <div className="container">
-          <ExpertTitle title={t("webinar.online-webinar")} url={url} />
+          <ExpertTitle title={meetingOnedata.title} url={url} />
           <div className="online-webinar-wrapper">
             <div className="online-webinar-main">
               <div className="victorinaproject-main">
-                <img src={img} alt="error" />
+                <img
+                  src={`${PORTAL_IMAGE_URL}${meetingOnedata.image}`}
+                  alt="error"
+                />
                 {pathname.includes("finished-projects") ? (
                   <button className="victorinaproject-main-btn">
                     {t("victorina.endproject")}
@@ -33,15 +92,15 @@ export default function OnlineWebinar() {
                   <>
                     <div className="victorinaproject-main-timer">
                       <div>
-                        <span>7</span>
+                        <span>{timeRemaining.days}</span>
                         <span>Kun</span>
                       </div>
                       <div>
-                        <span>12</span>
+                        <span>{timeRemaining.hours}</span>
                         <span>Soat</span>
                       </div>
                       <div>
-                        <span>45</span>
+                        <span>{timeRemaining.minutes}</span>
                         <span>Daqiqa</span>
                       </div>
                     </div>
@@ -65,41 +124,18 @@ export default function OnlineWebinar() {
                       <span className="online-webinar-date">
                         {t("webinar.date")}
                       </span>
-                      <span>12.02.2023</span>
+                      <span>
+                        {new Date(meetingOnedata.start_date)
+                          .toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            month: "numeric",
+                            year: "numeric",
+                          })
+                          .replace(/\//g, ".")}
+                      </span>
                     </div>
                   </div>
-                  <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing Lorem Ipsum
-                    passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                  </p>
+                  <p>{meetingOnedata.description}</p>
                 </div>
               </div>
               <ShareFriends />

@@ -31,6 +31,10 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
     }
   };
 
+  const handleBulletClick = (index) => {
+    setSlideIndex(index);
+  };
+
   let slideInterval;
 
   const autoPlay = () => {
@@ -148,6 +152,7 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                         : ""
                     }`}
                     key={slider.id}
+                    onClick={() => handleBulletClick(slider.id)}
                   />
                 ))}
               </div>

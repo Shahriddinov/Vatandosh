@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
 import React, { useEffect, useRef } from "react";
 import Aos from "aos";
+import { useNavigate } from "react-router-dom";
 
 const Peaceful = () => {
   const peacefulData = useSelector((state) => state.peaceful.peacefulData);
@@ -20,6 +21,7 @@ const Peaceful = () => {
   const error = useSelector((state) => state.peaceful.error);
 
   const lng = useSelector((state) => state.language.language);
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
 
@@ -38,6 +40,7 @@ const Peaceful = () => {
   if (error) {
     return <p>{error}</p>;
   }
+
   return (
     <section className="peaceful">
       <div className="peaceful__container container">
@@ -47,7 +50,10 @@ const Peaceful = () => {
               {t("peacefulTitle")}
             </h3>
             <div className="peaceful__header_end">
-              <button className="peaceful__header_btn">
+              <button
+                className="peaceful__header_btn"
+                onClick={() => navigate("/projects")}
+              >
                 {t("allPeacefulBtn")}
               </button>
 
@@ -100,7 +106,6 @@ const Peaceful = () => {
                 slidesPerView={4}
                 spaceBetween={30}
                 modules={[Navigation]}
-
                 navigation={{
                   prevEl: ".peaceful__prev",
                   nextEl: ".peaceful__next",

@@ -8,9 +8,9 @@ const FooterBottom = () => {
 
   return (
     <div className="footer-bottom">
-      <div className="footer-company-name">
+      <a href="https://napaautomotive.uz/" target="_blank" className="footer-company-name">
         <img src={napaName} alt="napa-name" />
-      </div>
+      </a>
       <div className="copyright">
         <span>Copyright © 2023 {t("footerFund")}</span>
       </div>
