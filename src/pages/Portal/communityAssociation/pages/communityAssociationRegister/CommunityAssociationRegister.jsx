@@ -15,14 +15,14 @@ import { useTranslation } from "react-i18next";
 
 const CommunityAssociationRegister = () => {
   const { hash } = useLocation();
-  let [activeBarItem, setactiveBarItem] = useState(
+  let [activeBarItem, setActiveBarItem] = useState(
     hash ? hash.slice(1) : "application-1"
   );
   const navigation = useNavigate();
   const { t } = useTranslation();
 
   const handleClick = (url) => {
-    setactiveBarItem(url);
+    setActiveBarItem(url);
     navigation(`/portal-category/community-association/application#${url}`);
   };
 

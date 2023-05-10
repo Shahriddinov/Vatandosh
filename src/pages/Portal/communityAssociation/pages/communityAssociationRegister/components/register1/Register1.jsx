@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import { useEffect } from "react";
 
 const CommunityRegister1 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
@@ -53,9 +54,15 @@ const CommunityRegister1 = ({ activeBarItem, handleClick }) => {
   const handleSubmit1 = (e) => {
     e.preventDefault();
     handleClick("2");
-    console.log("salom");
   };
 
+  useEffect(() => {
+    setData({
+      name: communityCreateData.name,
+      document: communityCreateData.document,
+      logo: communityCreateData.logo,
+    });
+  }, [communityCreateData]);
   return (
     <div
       className={`community-association-register1  ${

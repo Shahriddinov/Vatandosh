@@ -47,6 +47,16 @@ const useApplicationFetching = () => {
     dispatch(getLocation());
   }, []);
 
+  useEffect(() => {
+    setData({
+      region_id: communityCreateData.region_id,
+      city_id: communityCreateData.city_id,
+      phone: communityCreateData.phone ? communityCreateData.phone : "+998",
+      email: communityCreateData.email,
+      address: communityCreateData.address,
+    });
+  }, [communityCreateData]);
+
   return {
     data,
     setData,
