@@ -4,16 +4,17 @@ import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import { CommunityCouncilStatics } from "../../../associationAbout/components";
 import { LazySpinner } from "../../../../../../../component";
-import DOMPurify from "dompurify";
-
 import "./communityHomeCouncil.scss";
+import { extraFun } from "./extra";
 
 const CommunityHomeCouncil = ({ councilData }) => {
+  const { imgSrc, imgAlt, filteredText } = extraFun(councilData.body);
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
   const { t } = useTranslation();
+
   return (
     <div className="community-home-council">
       <div className="container">
@@ -21,11 +22,13 @@ const CommunityHomeCouncil = ({ councilData }) => {
           {inView ? (
             <>
               <div className="community-home-council__left">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(councilData.body),
-                  }}
-                />
+                <img src={imgSrc} alt={imgAlt} width={770} height={420} />
+                <h3>{filteredText[0].replace(/&nbsp;/g, "")}</h3>
+                <p>
+                  {filteredText[1].length > 180
+                    ? filteredText[1].slice(0, 180) + "..."
+                    : filteredText[1]}
+                </p>
                 <div className="community-home-council__left_btn">
                   <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
                 </div>

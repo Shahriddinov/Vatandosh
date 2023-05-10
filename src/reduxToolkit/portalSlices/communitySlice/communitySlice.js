@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllCommunity,
+  getAllEvents,
   getAllRegions,
   getCommunityHomePage,
   getLocation,
@@ -32,6 +33,9 @@ const communityCreateData = {
 };
 
 const initialState = {
+  allEvents: [],
+  allEventsLoading: true,
+
   locationGet: [],
   locationGetLoading: true,
 
@@ -165,6 +169,21 @@ const communitySlice = createSlice({
         state.communityImagePostStatus = "error";
         state.error = error.message;
       });
+
+    builder
+      .addCase(getAllEvents.pending, (state) => {
+        state.allEventsLoading = true;
+      })
+      .addCase(getAllEvents.fulfilled, (state, { payload }) => {
+        state.allEventsLoading = false;
+        state.allEvents = payload;
+      })
+      .addCase(getAllEvents.rejected, (state, { error }) => {
+        state.allEventsLoading = false;
+        state.error = error.message;
+      });
+
+    //getAllEvents
 
     builder.addDefaultCase((state) => state);
   },

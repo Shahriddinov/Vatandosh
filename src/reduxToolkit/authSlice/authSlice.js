@@ -9,6 +9,7 @@ import {
   signIn,
   verifyToken,
 } from "./extraReducer";
+import { getItem, setItem } from "../../helpers/persistanceStorage";
 
 const initialState = {
   emailLoading: false,
@@ -18,7 +19,7 @@ const initialState = {
   resetLoading: false,
   registerLoading: false,
   registerData: null,
-  userData: null,
+  userData: getItem("user") ? JSON.parse(getItem("user")) : null,
   nationsData: null,
   nationsLoading: true,
   token: localStorage.getItem("token"),
@@ -78,7 +79,9 @@ const authSlice = createSlice({
       .addCase(setPassword.fulfilled, (state, action) => {
         state.passwordLoading = false;
         state.token = action.payload;
-        localStorage.setItem("token", action.payload.token);
+        state.userData = action.payload.user;
+        setItem("token", action.payload.token);
+        setItem("user", JSON.stringify(action.payload.user));
       })
       .addCase(setPassword.rejected, (state, action) => {
         state.passwordLoading = false;
@@ -98,7 +101,8 @@ const authSlice = createSlice({
           state.error = action.payload.message;
         } else {
           state.userData = action.payload.user;
-          localStorage.setItem("token", action.payload.token);
+          setItem("token", action.payload.token);
+          setItem("user", JSON.stringify(action.payload.user));
         }
       })
       .addCase(signIn.rejected, (state, action) => {
@@ -117,7 +121,7 @@ const authSlice = createSlice({
 
         if (action.payload.errors) {
           state.error = action.payload.errors.email;
-          alert(action.payload.errors.email);
+          // alert(action.payload.errors.email);
         } else {
           state.message = action.payload.message;
         }
@@ -136,7 +140,7 @@ const authSlice = createSlice({
         state.resetLoading = false;
         if (action.payload.errors) {
           state.error = action.payload.errors.message;
-          alert(action.payload.errors.message);
+          // alert(action.payload.errors.message);
         } else {
           state.message = action.payload.message;
           state.success = true;
@@ -155,7 +159,7 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerLoading = false;
         state.registerData = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
+        setItem("user", JSON.stringify(action.payload));
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;
