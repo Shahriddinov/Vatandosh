@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../../services/api/axios";
 import {
+  GET_COMMUNITY_ALL_EVENT,
   GET_COMMUNITY_ALL_PAGINATION,
   GET_COMMUNITY_ALL_REGIONS,
   GET_COMMUNITY_HOMEPAGE_DATA,
@@ -8,6 +9,10 @@ import {
   POST_COMMUNITY_CREATE,
   POST_COMMUNITY_IMAGE,
 } from "../../../services/api/utils";
+
+export const getAllEvents = createAsyncThunk("getAllEvents", async () => {
+  return await axios.get(GET_COMMUNITY_ALL_EVENT).then((res) => res.data);
+});
 
 export const getLocation = createAsyncThunk("getLocation", async () => {
   return await axios.get(GET_LOCATION).then((res) => res.data);

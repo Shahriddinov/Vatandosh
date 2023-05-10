@@ -93,7 +93,7 @@ const InformationServices = () => {
             <PopularTags />
           </div>
           <div className="main-content-cards">
-            {paginationData["0"].data.map((card) => (
+            {paginationData["0"]?.data?.map((card) => (
               <div className="main-content-card" key={card.id}>
                 <Card {...card} pathUrl={pageName} />
               </div>

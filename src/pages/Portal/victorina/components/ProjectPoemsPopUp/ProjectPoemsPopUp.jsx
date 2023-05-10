@@ -2,7 +2,7 @@ import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import scripka from "../../../../../assets/images/expert/scripka-icon.svg";
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { sendVictorinaFile } from "../../../../../reduxToolkit/victorinaFile/download";
@@ -15,14 +15,19 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
   const { id } = useParams();
   const [formData, setFormData] = useState({
     text: "",
+    passport: "",
+    fio: "",
   });
+
   const communityCreateData = useSelector(
-    (store) => store.community.communityCreateData
+    (store) => store.mediaFileSlice.communityImagePost
   );
   const [data, setData] = useState({
     document: communityCreateData.document,
-    logo: communityCreateData.logo,
   });
+
+  console.log(communityCreateData.path);
+
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
     setFormData((prevFormData) => ({
@@ -30,12 +35,14 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
       text: selectedFile,
     }));
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    data.append("text", formData.text);
 
-    dispatch(sendVictorinaFile({ id, data }));
+  const handleValue = (event) => {
+    const selectedValue = event.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      fio: selectedValue,
+      passport: communityCreateData?.path,
+    }));
   };
 
   const handleChangeApplication = ({ key, value }) => {
@@ -46,7 +53,6 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
       }));
       const logoData = new FormData();
       logoData.append("image", value);
-      logoData.append("folder", "community");
       dispatch(mediaVictorinaImage({ key, image: logoData }));
     } else {
       setData((prev) => ({
@@ -62,6 +68,17 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      fio: formData.fio,
+      passport: formData.passport,
+      text: formData.text,
+    };
+
+    dispatch(sendVictorinaFile({ id, data }));
+  };
+
   return (
     <div className="projectImg">
       <div
@@ -72,35 +89,35 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
         <div style={{ display: "flex", gap: "15px", width: "100%" }}>
           <label
             style={{ width: "100%" }}
-            htmlFor=""
+            htmlFor="fio"
             className="registeritem-label">
             <p>
               {t("victorina.fio")} <span>*</span>
             </p>
             <div>
               <input
-                // required
+                required
                 type="text"
-                minLength={3}
-                maxLength={30}
+                name="fio"
+                id="fio"
                 placeholder={t("victorina.name")}
+                onChange={handleValue}
               />
             </div>
           </label>
           <label
             style={{ width: "100%" }}
-            htmlFor=""
+            htmlFor="passport"
             className="registeritem-label">
             <p>
               Pasport yuklash (pdf, doc) <span>*</span>
             </p>
             <div>
               <input
-                // required
+                required
                 type="file"
-                minLength={3}
-                maxLength={30}
-                name="image"
+                id="passport"
+                name="passport"
                 placeholder="Yuklang"
                 accept="application/pdf, image/*"
                 onChange={(evt) =>

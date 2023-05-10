@@ -1,29 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./associationsEvents.scss";
 
 import { InformationServicesSlider } from "../../../../InformationServices/InformationServicesSlider/InformationServicesSlider";
 import Card from "../../../../../component/card/Card";
 import ArrowRight from "../../../../../assets/images/informationServices/arrowRight.png";
-import { useTranslation } from "react-i18next";
 import { Pagination, Spinner } from "../../../../../component";
-import { useInView } from "react-intersection-observer";
-import { useInformationServicesPagination } from "../../../../InformationServices/hooks/useInformationServicesPagination";
+import { useCommunityEventsFetching } from "./hooks/useCommunityEventsFetching";
+import { useTranslation } from "react-i18next";
+import { CommunityCard } from "../../components";
 
 const AssociationsEvents = () => {
-  const   {paginationFetching,
-  page,
-  paginationData,
-  paginationCount,
-  paginationLoading,
-  loading,
-  pageName,
-  t,
-} = useInformationServicesPagination()
+  const { data, dataLoading, paginationFetching } =
+    useCommunityEventsFetching();
+  const { t } = useTranslation();
 
-  if(paginationLoading) {
-    return <Spinner position="full"/>
+  if (dataLoading) {
+    return <Spinner position="full" />;
   }
-
 
   return (
     <div className="container associations__events__container">
@@ -35,20 +28,20 @@ const AssociationsEvents = () => {
           <span>{t("communityAssociation.navbar.navbar_link3")}</span>
         </p>
       </div>
-      <InformationServicesSlider data={paginationData[0].data} />
+      <InformationServicesSlider data={data} />
       <div className="events__cards">
-        {paginationData[0].data.map((card) => (
+        {data.map((card) => (
           <div className="main-content-card" key={card.id}>
-            <Card {...card} pathUrl={pageName} />
+            <CommunityCard {...card} pathUrl="events" />
           </div>
         ))}
       </div>
-      {paginationCount >= 1 ? (
+      {2 >= 1 ? (
         <div className="associations__events__paginator">
           <Pagination
-            page={page}
+            page={1}
             paginationFetching={paginationFetching}
-            count={paginationCount}
+            count={10}
           />
         </div>
       ) : null}

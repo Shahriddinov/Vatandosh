@@ -5,7 +5,6 @@ import axios from "../../services/api/axios";
 export const sendVictorinaFile = createAsyncThunk(
   "test",
   async ({ id, data }) => {
-    console.log(data);
     return await axios
       .post(`${VICTORINA_YOUTUBE}/${id}`, data, {
         headers: {

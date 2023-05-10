@@ -33,7 +33,6 @@ import meetingSlice from "./portalSlices/meetingSlice/meetingSlice";
 import volunteerSlice from "./volunteer/volunteerSlice";
 import aboutUzbekistan from "./portalSlices/aboutUzbekistanSlice/aboutUzbekistanSlice";
 import quizTestSlice from "./victorinaQuiz/victorinaTest";
-import quizFileSlice from "./victorinaFile";
 import mediaFileSlice from "./victorinaImage";
 
 const store = configureStore({
@@ -71,7 +70,6 @@ const store = configureStore({
     meetingSlice,
     aboutUzbekistan,
     quizTestSlice,
-    quizFileSlice,
     mediaFileSlice,
   },
 });

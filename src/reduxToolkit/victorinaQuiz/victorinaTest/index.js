@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getTestQuizz, sendVictorinaTest } from "./getTest";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: true,
@@ -32,7 +33,7 @@ const quizTestSlice = createSlice({
       .addCase(sendVictorinaTest.fulfilled, (state, action) => {
         state.loading = false;
         state.sendTestData = action.payload;
-        console.log("The test has sent successfully");
+        toast.success("The test has sent successfully");
       })
       .addCase(sendVictorinaTest.rejected, (state, action) => {
         console.log(action);

@@ -4,8 +4,10 @@ import arrowRight from "../../../../../../../assets/images/about/arrow-right.svg
 
 import "./communityHero.scss";
 import { t } from "i18next";
+import { useSelector } from "react-redux";
 
 const CommunityAssociationHero = ({ data, handleOpen }) => {
+  const user = useSelector((store) => store.authSlice.userData);
   const communityAssociationHeroData = {
     breadcrumbs: [
       {
@@ -67,24 +69,21 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
                 )}
               </ul>
             </nav>
-
             <h2 className="community-association-hero__title">
-              Qirgʼiziston-Oʼzbekiston doʼstlik jamiyati
+              {data.findCountry.b_title}
             </h2>
-
             <p className="community-association-hero__desc">
-              Xorijda istiqomat qilayotgan vatandoshlarni tarixiy Vatani
-              atrofida yanada jipslashtirish, ularning qalbi va ongida yurt
-              bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab
-              qolish,
+              {data.findCountry.b_description}
             </p>
-            <button
-              onClick={handleOpen}
-              type="button"
-              className="community-association-hero__btn"
-            >
-              {t("communityAssociation.add_news")}
-            </button>
+            {user.id === data.findCountry.user_id && (
+              <button
+                onClick={handleOpen}
+                type="button"
+                className="community-association-hero__btn"
+              >
+                {t("communityAssociation.add_news")}
+              </button>
+            )}
           </div>
         </div>
       </div>

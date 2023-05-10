@@ -12,7 +12,6 @@ export const getTestQuizz = createAsyncThunk("test/get", async () => {
 export const sendVictorinaTest = createAsyncThunk(
   "test",
   async ({ id, data }) => {
-    console.log(id, data);
     return await axios
       .post(`${VICTORINA_YOUTUBE}/${id}`, data, {
         headers: {

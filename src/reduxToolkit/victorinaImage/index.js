@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { mediaVictorinaImage } from "./media-upload";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const initialState = {
@@ -24,6 +24,7 @@ const mediaFileSlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePost = action.payload;
         state.communityImagePostStatus = "success";
+        toast.success("The image upload success!");
       })
       .addCase(mediaVictorinaImage.rejected, (state, { error }) => {
         state.communityImagePostLoading = false;

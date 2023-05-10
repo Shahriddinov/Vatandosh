@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sendVictorinaYoutube } from "./youtube";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -19,7 +20,7 @@ const victorinaYoutubeSlice = createSlice({
       .addCase(sendVictorinaYoutube.fulfilled, (state, action) => {
         state.loading = false;
         state.sendData = action.payload;
-        console.log("The youtube link has sent successfully");
+        toast.success("The youtube link has sent successfully");
       })
       .addCase(sendVictorinaYoutube.rejected, (state, action) => {
         console.log(action);

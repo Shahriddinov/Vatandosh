@@ -45,11 +45,13 @@ export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 
 //===============================PORTAL================================
+export const GET_PORTAL_NEWS = "/news?type=";
 export const GET_LOCATION = "/location/get-all";
 export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community/";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
+export const GET_COMMUNITY_ALL_EVENT = "/community/all-event";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
 export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
 export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;

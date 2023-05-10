@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { LazySpinner } from "../../../../component";
-import { baseServerUrl, imageUrl } from "../../../../services/api/utils";
+import { baseServerUrl } from "../../../../services/api/utils";
 
 const StatesFriendshipInfo = (props) => {
   const { ref, inView } = useInView({

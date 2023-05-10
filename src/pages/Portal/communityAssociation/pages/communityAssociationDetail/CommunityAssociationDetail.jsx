@@ -1,8 +1,6 @@
 import React from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { CountryFlag } from "../../../../../assets/images/communityAssociation";
-import StatesFriendshipInfo from "../../../../compatriots/components/statesFriendshipInfo";
 import { MiniSlider, Spinner } from "../../../../../component";
 import { Nav, Navbar } from "../../../expert/components";
 
@@ -10,15 +8,14 @@ import {
   AddNewsModal,
   CommunityAssociationCompanyOffer,
   CommunityAssociationHero,
+  CommunityFriendshipInfo,
 } from "./components";
 import { useFetchingData, useModalActive } from "./hooks";
-import { CommunityIntroData } from "./data";
 
 //scss files
 import "./communityAssociationDetail.scss";
-import { useCountryGet } from "../country/hooks/useCountryGet";
-import { useSelector } from "react-redux";
 import { useAssociationFetching } from "../associations/hooks/useAssociationFetching";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const CommunityAssociationDetail = () => {
   const { navData, navbarUrl } = useOutletContext();
@@ -49,7 +46,9 @@ const CommunityAssociationDetail = () => {
     <div className="community-association-detail">
       <div
         className="community-association-detail__top"
-        style={{ backgroundImage: `url(${CountryFlag})` }}
+        style={{
+          backgroundImage: `url(${PORTAL_IMAGE_URL}${findCountry.b_image})`,
+        }}
       >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
@@ -60,7 +59,7 @@ const CommunityAssociationDetail = () => {
         />
       </div>
 
-      <StatesFriendshipInfo {...findCountry} />
+      <CommunityFriendshipInfo {...findCountry} />
       <CommunityAssociationCompanyOffer {...findCountry} />
       <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
 
