@@ -7,18 +7,12 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
-import {
-  PORTAL_IMAGE_URL,
-  baseServerUrl,
-} from "../../../../../../../services/api/utils";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { useEffect } from "react";
 
 const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
-  );
-
-  const communityImagePostStatus = useSelector(
-    (store) => store.community.communityImagePostStatus
   );
   const [data, setData] = useState({
     director: communityCreateData.director,
@@ -52,6 +46,13 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
       dispatch(communityCreateDataAdd(newCommunityCreateData));
     }
   };
+
+  useEffect(() => {
+    setData({
+      director: communityCreateData.director,
+      director_img: communityCreateData.director_img,
+    });
+  }, [communityCreateData]);
 
   return (
     <div

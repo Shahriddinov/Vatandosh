@@ -70,6 +70,10 @@ const store = configureStore({
     aboutUzbekistan,
     portalNews,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import { Application2ImageUpload, MyInput } from "../";
+import { useEffect } from "react";
 
 const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
@@ -55,6 +56,13 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
     handleClick("3");
   };
 
+  useEffect(() => {
+    setData({
+      title: communityCreateData.title,
+      description: communityCreateData.description,
+      attachments: communityCreateData.attachments,
+    });
+  }, [communityCreateData]);
   return (
     <div
       className={`community-association-register2  ${

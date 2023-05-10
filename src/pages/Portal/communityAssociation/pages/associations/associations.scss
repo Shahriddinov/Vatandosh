@@ -1,5 +1,12 @@
 .associations {
   padding: 0px 0 100px 0;
+
+  .MuiInputBase-root {
+    padding: 12px 11px !important;
+    width: 100%;
+    max-width: 270px !important;
+    border: 1px solid #eaedf6 !important;
+  }
 }
 
 .associations__top {
@@ -31,13 +38,6 @@
   line-height: 24px !important;
   border-radius: 6px !important;
   outline: 0;
-}
-
-.MuiInputBase-root {
-  padding: 12px 11px !important;
-  width: 100%;
-  max-width: 270px !important;
-  border: 1px solid #eaedf6 !important;
 }
 
 .more__less__button {

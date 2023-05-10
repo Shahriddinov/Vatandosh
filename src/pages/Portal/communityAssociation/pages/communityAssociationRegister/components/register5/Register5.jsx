@@ -15,6 +15,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CreateFunction } from "./extra";
 import { useEffect } from "react";
+import { communityCreateReset } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { useState } from "react";
 const options = {
   position: "top-right",
   autoClose: 3000,
@@ -33,7 +37,7 @@ const cityData = [
   { id: 4, label: "Buxora" },
 ];
 
-const CommunityRegister5 = ({ activeBarItem }) => {
+const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
   const {
     data,
     setData,
@@ -45,6 +49,7 @@ const CommunityRegister5 = ({ activeBarItem }) => {
     communityCreateData,
     communityCreateDataStatus,
   } = useApplicationFetching();
+  const [confirm, setConfirm] = useState(false);
 
   const { t } = useTranslation();
 
@@ -55,7 +60,8 @@ const CommunityRegister5 = ({ activeBarItem }) => {
       links,
       communityCreateData,
       data,
-      dispatch
+      dispatch,
+      confirm
     );
 
   const handleChangeApplication5 = extraHandleChangeApplication;
@@ -65,6 +71,8 @@ const CommunityRegister5 = ({ activeBarItem }) => {
   useEffect(() => {
     if (communityCreateDataStatus === "success") {
       toast.success("success sending !", options);
+      dispatch(communityCreateReset());
+      handleClick("1");
     } else if (communityCreateDataStatus === "error") {
       toast.error("error sending!", options);
     }
@@ -73,6 +81,8 @@ const CommunityRegister5 = ({ activeBarItem }) => {
   if (locationLoading) {
     return null;
   }
+
+  console.log(confirm);
 
   return (
     <>
@@ -195,18 +205,16 @@ const CommunityRegister5 = ({ activeBarItem }) => {
             <FormControlLabel
               control={<Checkbox />}
               label={t("communityAssociation.menu5_info.input7_name")}
-              onChange={(e) =>
-                setData((prev) => ({ ...prev, confirm: e.target.checked }))
-              }
+              onChange={(e) => setConfirm(e.target.checked)}
             />
           </div>
           <button
             className={`${
-              !data.confirm
+              !confirm
                 ? "disabled"
                 : "community-association-register__form--btn"
             }`}
-            disabled={!data.confirm}
+            disabled={!confirm}
           >
             {t("communityAssociation.menu5_info.save")}
           </button>
