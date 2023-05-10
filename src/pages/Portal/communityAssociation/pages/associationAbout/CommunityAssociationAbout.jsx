@@ -8,8 +8,10 @@ import { useCommunityHomeFetching } from "../associationHome/hooks/useCommunityH
 import CommunityPageTop from "./components/communityPageTop/CommunityPageTop";
 import CommunityCouncilStatics from "./components/comunityCouncilStatics/CommunityCouncilStatics";
 import DOMPurify from "dompurify";
+import { useSelector } from "react-redux";
 
 const CommunityAssociationAbout = () => {
+  const language = useSelector((store) => store.language.language);
   const { t } = useTranslation();
   const {
     communityHomePageData,
