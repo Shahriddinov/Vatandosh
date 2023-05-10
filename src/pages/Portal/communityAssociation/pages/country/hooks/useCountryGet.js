@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getNews } from "../../../../../../reduxToolkit/newsSlice/extraReducer";
 
 export const useCountryGet = () => {
+  const language = useSelector((store) => store.language.language);
   const { communityCountry } = useParams();
 
   const allRegionsGet = useSelector((store) => store.community.allRegionsGet);
@@ -33,7 +34,7 @@ export const useCountryGet = () => {
     if (!news.length) {
       dispatch(getNews());
     }
-  }, []);
+  }, [language]);
 
   return {
     allCommunityGet,

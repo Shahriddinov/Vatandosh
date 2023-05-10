@@ -7,6 +7,7 @@ import {
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 export const useAssociationFetching = () => {
+  const language = useSelector((store) => store.language.language);
   const allRegionsChange = createSelector(
     (store) => store.community.allRegionsGet,
     (location) => {
@@ -30,7 +31,7 @@ export const useAssociationFetching = () => {
   useEffect(() => {
     dispatch(getAllRegions());
     dispatch(getAllCommunity({ page: 1 }));
-  }, []);
+  }, [language]);
 
   allRegions.unshift({
     id: "all",
