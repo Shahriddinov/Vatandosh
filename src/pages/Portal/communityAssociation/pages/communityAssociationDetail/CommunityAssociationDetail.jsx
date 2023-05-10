@@ -1,9 +1,9 @@
 import React from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MiniSlider, Spinner } from "../../../../../component";
 import { Nav, Navbar } from "../../../expert/components";
-
+import { PortalMiniSlider } from "../../../components/portalMiniSlider/PortalMiniSlider";
+import { Spinner } from "../../../../../component";
 import {
   AddNewsModal,
   CommunityAssociationCompanyOffer,
@@ -77,7 +77,11 @@ const CommunityAssociationDetail = () => {
 
         <CommunityFriendshipInfo {...findCountry} />
         <CommunityAssociationCompanyOffer {...findCountry} />
-        <MiniSlider title={`${t("events")}`} data={events} fetchUrl="events" />
+        <PortalMiniSlider
+          title={`${t("events")}`}
+          data={events}
+          fetchUrl="events"
+        />
 
         <AddNewsModal
           open={open}
