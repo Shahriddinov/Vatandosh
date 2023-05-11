@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { webinar } from "../webinar";
 import { CalendarIcon } from "../../../../../assets/images/expert";
 import "./WebinarEvents.scss";
@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../../../../../component";
 import { getMeetingAll } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 function WebinarEvents() {
+  const { t } = useTranslation();
+  const { event } = useParams();
   const meetingsData = useSelector((store) => store.meetingSlice.meetingsData);
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
@@ -26,8 +29,6 @@ function WebinarEvents() {
   } else if (meetingError) {
     return <p>Error</p>;
   }
-
-  console.log(meetingsData.conferences);
 
   return (
     <div className="webinar">
@@ -53,7 +54,7 @@ function WebinarEvents() {
           ))}
         </div> */}
         <div className="webinar-page">
-          {meetingsData.webinars?.map((webinar) => (
+          {meetingsData.meetings?.map((webinar) => (
             <div className="webinar-box" key={webinar.id}>
               <img
                 src={`${PORTAL_IMAGE_URL}${webinar.image}`}
@@ -71,9 +72,9 @@ function WebinarEvents() {
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
                   className="webinar-more"
                 >
-                  Batafsil
+                  {t("webinar.header2")}
                 </Link>
-                <Link className="webinar-links">Ishtirok etish</Link>
+                <Link className="webinar-links">{t("webinar.header1")}</Link>
               </div>
             </div>
           ))}
