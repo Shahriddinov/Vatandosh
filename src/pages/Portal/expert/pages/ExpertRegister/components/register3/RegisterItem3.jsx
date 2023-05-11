@@ -8,19 +8,30 @@ import Checkbox from "@mui/material/Checkbox";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocation } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  createExpertEmployment,
+  getExpertEmployment,
+} from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
 export default function RegisterItem3({ activeBarItem }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { locationGet } = useSelector((state) => state.community);
+  const { employment } = useSelector((state) => state.expertRegisterSlice);
   const [data, setData] = useState([
     {
-      id: 1,
-      workCountry: "",
-      workRegion: "",
+      id: "1",
+      company: "",
       position: "",
-      workSpace: "",
-      checkBox: false,
-      startAtWork: "",
-      endAtWork: "",
+      location_id: 3,
+      status: false,
+      city: "",
+      start_date: "",
+      finish_date: "",
+      specialization: "",
     },
   ]);
 
@@ -37,7 +48,52 @@ export default function RegisterItem3({ activeBarItem }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const update = [];
+    const create = [];
+    data.forEach((emp) => {
+      if (typeof emp.id === "string") create.push(emp);
+      else update.push(emp);
+    });
+    if (create.length)
+      dispatch(
+        createExpertEmployment({
+          expert: create.map(
+            ({
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+            }) => ({
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+              specialization: position,
+            })
+          ),
+        })
+      );
   };
+
+  useEffect(() => {
+    dispatch(getLocation());
+    dispatch(getExpertEmployment());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (employment.length) {
+      setData(() => []);
+      employment.forEach((el) => {
+        setData((prev) => [...prev, el]);
+      });
+    }
+  }, [employment]);
 
   return (
     <form
@@ -73,17 +129,23 @@ export default function RegisterItem3({ activeBarItem }) {
                   <FormControl style={{ padding: 0 }}>
                     <Select
                       className="registeritem-select"
-                      value={el.workCountry}
+                      value={el.location_id}
                       required
                       onChange={(e) =>
-                        handleChange({ ...el, workCountry: e.target.value })
+                        handleChange({ ...el, location_id: e.target.value })
                       }
                       displayEmpty
                       inputProps={{ "aria-label": "Without label" }}
                     >
-                      <MenuItem value={10}>AQSH</MenuItem>
-                      <MenuItem value={20}>GERMANIYA</MenuItem>
-                      <MenuItem value={30}>ITALIYA</MenuItem>
+                      {locationGet.length ? (
+                        locationGet.map((el, index) => (
+                          <MenuItem key={index} value={el.id}>
+                            {el.name}
+                          </MenuItem>
+                        ))
+                      ) : (
+                        <MenuItem value={3}>Albania</MenuItem>
+                      )}
                     </Select>
                   </FormControl>
                 </label>
@@ -98,12 +160,12 @@ export default function RegisterItem3({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={200}
-                      value={el.workRegion}
+                      value={el.city}
                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          workRegion: e.target.value.trim(),
+                          city: e.target.value,
                         })
                       }
                     />
@@ -114,14 +176,13 @@ export default function RegisterItem3({ activeBarItem }) {
                 <p>{t("expert.position")}</p>
                 <div>
                   <input
-                    required
                     type="text"
                     minLength={3}
                     maxLength={50}
                     placeholder={t("expert.inputplaceholder")}
                     value={el.position}
                     onChange={(e) =>
-                      handleChange({ ...el, position: e.target.value.trim() })
+                      handleChange({ ...el, position: e.target.value })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -138,10 +199,10 @@ export default function RegisterItem3({ activeBarItem }) {
                     type="text"
                     minLength={3}
                     maxLength={100}
-                    value={el.workSpace}
+                    value={el.company}
                     placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
-                      handleChange({ ...el, workSpace: e.target.value.trim() })
+                      handleChange({ ...el, company: e.target.value })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -149,11 +210,9 @@ export default function RegisterItem3({ activeBarItem }) {
               </label>
               <div className="registeritem-checkbox">
                 <Checkbox
-                  checked={el.checkBox}
+                  checked={el.status}
                   inputProps={{ "aria-label": "controlled" }}
-                  onChange={(e) =>
-                    handleChange({ ...el, checkBox: !el.checkBox })
-                  }
+                  onChange={(e) => handleChange({ ...el, status: !el.status })}
                 />
                 <p>{t("expert.nowwork")}</p>
               </div>
@@ -170,11 +229,11 @@ export default function RegisterItem3({ activeBarItem }) {
                       minLength={3}
                       maxLength={100}
                       placeholder={t("expert.inputplaceholder")}
-                      value={el.startAtWork}
+                      value={el.start_date}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          startAtWork: e.target.value.trim(),
+                          start_date: e.target.value,
                         })
                       }
                     />
@@ -192,11 +251,11 @@ export default function RegisterItem3({ activeBarItem }) {
                       minLength={3}
                       maxLength={30}
                       placeholder={t("expert.inputplaceholder")}
-                      value={el.endAtWork}
+                      value={el.finish_date}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          endAtWork: e.target.value.trim(),
+                          finish_date: e.target.value,
                         })
                       }
                     />
@@ -206,19 +265,21 @@ export default function RegisterItem3({ activeBarItem }) {
             </div>
           ))}
           <button
+            type="button"
             className="registeritem-addForm"
             onClick={() =>
               setData((prev) => [
                 ...prev,
                 {
-                  id: Date.now(),
-                  workCountry: "",
-                  workRegion: "",
+                  id: "" + Date.now(),
+                  company: "",
                   position: "",
-                  workSpace: "",
-                  checkBox: false,
-                  startAtWork: "",
-                  endAtWork: "",
+                  location_id: 3,
+                  status: false,
+                  city: "",
+                  start_date: "",
+                  finish_date: "",
+                  specialization: "",
                 },
               ])
             }

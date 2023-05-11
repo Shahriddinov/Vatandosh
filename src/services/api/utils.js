@@ -56,6 +56,9 @@ export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/12`;
 export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
 export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
 export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
+export const GET_EXPERT_EDUCATION = `${portalBaseUrl}/education/show-user`;
+export const GET_EXPERT_EDUCATION_SPECIALIZATION = `${portalBaseUrl}/specialization/get-all`;
+export const GET_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/show-user`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
@@ -90,10 +93,13 @@ export const VOLUNTEER_CREATE = "/volunteer/create";
 export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
 export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
+export const SEND_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/create`;
 export const CREATE_MEETING = "/meeting/create/";
 
 // Update requests
 export const VOLUNTEER_UPDATE = "volunteer/update/";
+export const UPDATE_EXPERT_EDUCATION = `${portalBaseUrl}/education/update`;
 
 // Delete requests
 export const VOLUNTEER_DELETE = "/volunteer/delete/";
+export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;

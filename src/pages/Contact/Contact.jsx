@@ -52,7 +52,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="contact-desc-text">
-                <p>{t("aboutPage.section1.ptext")}</p>
+                {/* <p>{t("aboutPage.section1.ptext")}</p> */}
               </div>
             </div>
             <div className="contact-action">
