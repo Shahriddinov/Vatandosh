@@ -7,10 +7,13 @@ const useApplicationFetching = () => {
   const locationDataChange = createSelector(
     (store) => store.community.locationGet,
     (location) => {
-      return location.map((el) => ({ ...el, label: el.name }));
+      return location.map((el) => ({
+        ...el,
+        label: el.name ? el.name : "Uzbekistan",
+      }));
     }
   );
-
+  const language = useSelector((store) => store.language.language);
   const locationData = useSelector(locationDataChange);
   const locationLoading = useSelector(
     (store) => store.community.locationGetLoading
@@ -45,7 +48,7 @@ const useApplicationFetching = () => {
 
   useEffect(() => {
     dispatch(getLocation());
-  }, []);
+  }, [dispatch, language]);
 
   useEffect(() => {
     setData({
@@ -56,6 +59,9 @@ const useApplicationFetching = () => {
       address: communityCreateData.address,
     });
   }, [communityCreateData]);
+
+  // console.log(data);
+  // console.log(locationData);
 
   return {
     data,

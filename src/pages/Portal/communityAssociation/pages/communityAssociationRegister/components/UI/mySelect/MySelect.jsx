@@ -15,7 +15,6 @@ const MySelect = ({ data, text, value, handleChange, valueKey }) => {
     } = event;
     handleChange({ key: valueKey, value: id });
   };
-
   return (
     <div className="my-select">
       <FormControl sx={{ m: 1, width: "100%" }}>
@@ -30,6 +29,7 @@ const MySelect = ({ data, text, value, handleChange, valueKey }) => {
           sx={{ width: "100%" }}
           onChange={handleChangeSelect}
           placeholder="Barcha davlatlar"
+          value={value}
           renderInput={(params) => (
             <TextField
               {...params}

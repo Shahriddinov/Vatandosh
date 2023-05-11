@@ -9,6 +9,7 @@ export const useCommunityEventsFetching = () => {
 
   const dispatch = useDispatch();
   const paginationFetching = (vount) => {};
+  console.log(data);
 
   useEffect(() => {
     dispatch(getAllEvents());
