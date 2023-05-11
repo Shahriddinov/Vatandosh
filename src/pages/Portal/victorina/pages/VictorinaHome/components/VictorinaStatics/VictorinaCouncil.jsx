@@ -6,7 +6,6 @@ import { imageUrl } from "../../../../../../../services/api/utils";
 
 function VictorinaCouncil({ pageData }) {
   const { t } = useTranslation();
-  console.log(pageData);
   return (
     <div className="council">
       <div className="container">

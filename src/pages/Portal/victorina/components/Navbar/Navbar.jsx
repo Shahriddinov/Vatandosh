@@ -72,12 +72,14 @@ function Navbar({ navbarUrl }) {
               className="navbarvictorina_language-wrapper"
               onClick={() => setactiveLang((el) => !el)}>
               <CiGlobe className="navbarvictorina_language-icon" />
-              <span>
-                {languageList.find((lan) => lan.type === language).label}
+              <span style={{ color: "white" }}>
+                {languageList.find((lan) => lan.type === language)?.label}
               </span>
               <IoMdArrowDropdown className="navbarvictorina_language-iconArrow" />
             </div>
-            <div className="navbarvictorina_language-bar">
+            <div
+              className="navbarvictorina_language-bar"
+              style={activeLang ? { display: "flex" } : null}>
               {languageList.map((el, index) => (
                 <p
                   key={index}
@@ -89,13 +91,14 @@ function Navbar({ navbarUrl }) {
               ))}
             </div>
           </div>
+
           <button className="navbarpage--notification">
             <NotificationIcon />
           </button>
           <button className="navbarpage--notification">
             <MessengerIcon />
           </button>
-          <Link to={navbarUrl?.register} className="navbar--button">
+          <Link to="/portal" className="navbar--button">
             <ExitIcon />
             Kirish
           </Link>

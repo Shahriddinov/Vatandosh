@@ -85,15 +85,13 @@
   }
   &_language {
     position: relative;
-    color: #fff;
 
     &-wrapper {
-      padding: 10px 8px;
+      padding: 7px 8px;
       display: flex;
       align-items: center;
       gap: 6px;
       border-radius: 12px;
-      background: #065ea9;
       cursor: pointer;
     }
 
@@ -123,7 +121,6 @@
       right: 0;
       top: 50px;
       border-radius: 12px;
-      background: #065ea9;
       z-index: 10;
       color: white;
       overflow: hidden;
