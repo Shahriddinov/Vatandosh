@@ -470,7 +470,7 @@ const RoutesContainer = () => {
               <Route path="webinar-register" element={<WebinarRegister />} />
               <Route path="online-webinar/:id" element={<OnlineWebinar />} />
               <Route path="webinar-about" element={<WebinarAbout />} />
-              <Route path="webinar-events" element={<WebinarEvents />} />
+              <Route path="webinar-events/:event" element={<WebinarEvents />} />
               <Route path="webinar-contact" element={<Contact />} />
             </Route>
 

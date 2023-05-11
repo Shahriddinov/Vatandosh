@@ -35,7 +35,7 @@ const Mediateka = () => {
   const [activeVideo, setActiveVideo] = useState("");
   const [activeImage, setActiveImage] = useState("");
   const [categoryId, setCategoryId] = useState(0);
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(2);
 
   const {
     mediaData,

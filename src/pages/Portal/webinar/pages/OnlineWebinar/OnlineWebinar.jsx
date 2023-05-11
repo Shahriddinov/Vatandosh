@@ -28,8 +28,6 @@ export default function OnlineWebinar() {
     dispatch(getMeetingOne(id));
   }, []);
 
-  console.log(meetingOnedata);
-
   const { pathname } = useLocation();
   const { t } = useTranslation();
   const url = [
@@ -39,32 +37,36 @@ export default function OnlineWebinar() {
 
   const targetDate = new Date(meetingOnedata.start_date);
   const [timeRemaining, setTimeRemaining] = useState({});
+  const remainingTime = () => {
+    const now = new Date();
+    const diffTime = targetDate - now;
+
+    if (diffTime > 0) {
+      const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+
+      setTimeRemaining({
+        days: days,
+        hours: hours,
+        minutes: minutes,
+      });
+    }
+  };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const now = new Date();
-      console.log(targetDate - now);
-      const diffTime = targetDate - now;
+    let intervalId;
+    if (!meetingOneLoading) {
+      remainingTime();
+    }
 
-      if (diffTime > 0) {
-        const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-
-        setTimeRemaining({
-          days: days,
-          hours: hours,
-          minutes: minutes,
-        });
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 60000);
-
+    intervalId = setInterval(() => {
+      remainingTime();
+    }, 60000); // Update every 60 seconds
     return () => clearInterval(intervalId);
-  }, [targetDate]);
+  }, [meetingOneLoading]);
 
   if (meetingOneLoading) {
     return <Spinner />;

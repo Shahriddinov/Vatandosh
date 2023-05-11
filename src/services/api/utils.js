@@ -43,6 +43,7 @@ export const GET_EXPERT_USER = `/user`;
 export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
+export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS = "/news?type=";

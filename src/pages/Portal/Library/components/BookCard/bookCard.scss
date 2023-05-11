@@ -1,51 +1,121 @@
 .book__cover {
-    padding: 25px 32px;
-    border-radius: 10px;
-    background-color: #FFF;
-    margin-bottom: 12px;
+  padding: 25px 32px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 12px;
 
-    img{
-        width: 190px;
-        height: 260px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+  img {
+    width: 190px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 }
 
 .book__info {
-    display: flex;
-    flex-flow: column;
-    row-gap: 5px;
-    letter-spacing: -0.408px;
-    h3 {
-        font-size: 20px;
-        line-height: 32px;
-        color: #065EA9;
-        max-width: 254px;
-        white-space: nowrap; 
-        overflow: scroll;
+  display: flex;
+  flex-flow: column;
+  row-gap: 5px;
+  letter-spacing: -0.408px;
+  h3 {
+    font-size: 20px;
+    line-height: 32px;
+    color: #065ea9;
+    max-width: 254px;
+    white-space: nowrap;
+    overflow: scroll;
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
 
-    p {
-        font-size: 16px;
-        line-height: 24px;
-        color: #B3B3B6;
-    }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #b3b3b6;
+  }
 }
 
 .book__rating {
-    display: flex;
-    align-items: center;
-    flex-flow: row;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  gap: 10px;
+
+  p {
+    font-size: 13px;
+    line-height: 20px;
+    color: #e5991b;
+  }
+}
+
+@media (max-width: 768px) {
+  .book__cover {
+    padding: 56px;
+    img {
+      width: 400px;
+      height: auto;
+    }
+    margin-bottom: 40px;
+  }
+  .book__info {
+    row-gap: 15px;
+    h3 {
+      font-size: 36px;
+      line-height: 44px;
+      max-width: max-content;
+    }
 
     p {
-        font-size: 13px;
-        line-height: 20px;
-        color: #E5991B;
+      font-size: 27px;
+      line-height: 33px;
     }
+  }
+  .book__rating {
+    align-items: center;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    p,
+    span {
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .book__cover {
+    padding: 38px;
+    img {
+      width: 267px;
+      height: auto;
+    }
+    margin-bottom: 20px;
+  }
+  .book__info {
+    h3 {
+      font-size: 24px;
+      line-height: 29px;
+      max-width: max-content;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+  .book__rating {
+    align-items: center;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    p,
+    span {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
 }

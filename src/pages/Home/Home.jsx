@@ -12,6 +12,7 @@ import Header from "../../component/Layout/Header/Header";
 import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import { t } from "i18next";
 import HomeWebinarSlider from "../../component/homeWebinarSlider/HomeWebinarSlider";
+import { getWebinarSlider } from "../../reduxToolkit/webinarSlider/extraReducer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,16 @@ const Home = () => {
   const sliderData = useSelector((state) => state.sliderSlice.sliderData);
   const error = useSelector((state) => state.sliderSlice.error);
   const loading = useSelector((state) => state.sliderSlice.loading);
+  const webinarData = useSelector((state) => state.webinarSlidesSlice.data);
+  const webinarDataLoading = useSelector(
+    (state) => state.webinarSlidesSlice.dataLoading
+  );
+  const webinarError = useSelector((state) => state.webinarSlidesSlice.error);
 
   useEffect(() => {
     dispatch(getPeaceful());
     dispatch(getSlider());
+    dispatch(getWebinarSlider());
   }, [dispatch]);
 
   return (
@@ -31,9 +38,9 @@ const Home = () => {
       <Hero sliderData={sliderData} error={error} loading={loading} />
       <News />
       <HomeWebinarSlider
-        sliderData={sliderData}
-        error={error}
-        loading={loading}
+        sliderData={webinarData}
+        error={webinarError}
+        loading={webinarDataLoading}
       />
       <Peaceful />
       <InteractiveServices />
