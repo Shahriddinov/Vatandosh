@@ -74,7 +74,12 @@ function WebinarEvents() {
                 >
                   {t("webinar.header2")}
                 </Link>
-                <Link className="webinar-links">{t("webinar.header1")}</Link>
+                <Link
+                  to={`/portal-category/webinar/webinar-register/${webinar.id}`}
+                  className="webinar-links"
+                >
+                  {t("webinar.header1")}
+                </Link>
               </div>
             </div>
           ))}

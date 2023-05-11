@@ -11,15 +11,22 @@ import { CouncilImage } from "../../../../../assets/images/webinar";
 import WebinarEvents from "./components/WebinarEvents/WebinarEvents";
 import WebinarNews from "./components/WebinarNews/WebinarNews";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getMeetingAll,
-  getMeetingOne,
-} from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
-import { Spinner } from "../../../../../component";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
+import News from "../../../expert/pages/ExpertHome/components/News/News";
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
+  const language = useSelector((store) => store.language.language);
+
+  const meetingNews = useSelector((store) => store.portalNews.news);
+  const meetingNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPortalNews("webinar"));
+  }, [language]);
 
   const headerData = {
     title: t("webinar.headerName"),
@@ -46,7 +53,7 @@ function WebinarHome() {
       </div>
       <WebinarCouncil councilData={councilData} />
       <WebinarEvents />
-      <WebinarNews />
+      <News communityNews={meetingNews} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { ExpertTitle } from "../../../expert/components";
 import { useTranslation } from "react-i18next";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import img from "../../../../../assets/images/portal/5.png";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/ExpertProfileInfo";
 import { ShareFriends, Spinner } from "../../../../../component";
 import { getMeetingOne } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
@@ -106,9 +106,12 @@ export default function OnlineWebinar() {
                         <span>Daqiqa</span>
                       </div>
                     </div>
-                    <button className="victorinaproject-main-btn victorinaproject-main-btnActive">
+                    <Link
+                      to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    >
                       {t("webinar.join-webinar")}
-                    </button>
+                    </Link>
                   </>
                 )}
                 <ExpertProfileInfo

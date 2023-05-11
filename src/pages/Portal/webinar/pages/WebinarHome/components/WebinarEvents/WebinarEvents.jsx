@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { webinar } from "../../../webinar";
 import { CalendarIcon } from "../../../../../../../assets/images/expert";
@@ -11,6 +11,8 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 function WebinarEvents() {
   const { t } = useTranslation();
+  const [eventType, setEventType] = useState("webinar");
+  const [page, setPage] = useState(1);
   const meetingsData = useSelector((store) => store.meetingSlice.meetingsData);
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
@@ -20,8 +22,10 @@ function WebinarEvents() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMeetingAll());
-  }, []);
+    dispatch(getMeetingAll({ page, eventType }));
+  }, [eventType, page]);
+
+  console.log(meetingsData);
 
   if (meetingsloading) {
     return <Spinner />;
@@ -34,18 +38,22 @@ function WebinarEvents() {
         <div className="webinar-list">
           <h3 className="webinar-name">{t("webinar.nav2")}</h3>
           <div className="webinar-lists">
-            <Link
-              to={"/portal-category/webinar/webinar-events/webinars"}
-              className="webinar-top"
+            <button
+              onClick={() => setEventType("webinar")}
+              className={
+                eventType == "webinar" ? "webinar-top" : "webinar-tops"
+              }
             >
               Vebinarlar
-            </Link>
-            <Link
-              to="/portal-category/webinar/webinar-events/conferences"
-              className="webinar-tops"
+            </button>
+            <button
+              onClick={() => setEventType("conference")}
+              className={
+                eventType == "conference" ? "webinar-top" : "webinar-tops"
+              }
             >
               Konferensiyalar
-            </Link>
+            </button>
           </div>
         </div>
         <div className="webinar-page">
@@ -64,13 +72,13 @@ function WebinarEvents() {
               <p className="webinar-text">{webinar.description}</p>
               <div className="webinar-bottom">
                 <Link
-                  to="/portal-category/webinar/online-webinar/id"
+                  to={`/portal-category/webinar/online-webinar/${webinar.id}`}
                   className="webinar-more"
                 >
                   {t("webinar.header2")}
                 </Link>
                 <Link
-                  to="/portal-category/webinar/webinar-register"
+                  to={`/portal-category/webinar/webinar-register/${webinar.id}`}
                   className="webinar-links"
                 >
                   {t("webinar.header1")}

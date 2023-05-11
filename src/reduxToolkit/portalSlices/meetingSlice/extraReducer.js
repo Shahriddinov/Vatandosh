@@ -10,9 +10,9 @@ import {
 
 export const meetingCreate = createAsyncThunk(
   "meetingCreate",
-  async (payload) => {
+  async ({ data, id }) => {
     return await axios
-      .post(CREATE_MEETING, payload, {
+      .post(`${CREATE_MEETING}${id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -21,9 +21,20 @@ export const meetingCreate = createAsyncThunk(
   }
 );
 
-export const getMeetingAll = createAsyncThunk("getMeetingAll", async () => {
-  return await axios.get(GET_MEETINGS).then((res) => res.data);
-});
+export const getMeetingAll = createAsyncThunk(
+  "getMeetingAll",
+  async (props) => {
+    console.log(props);
+    return await axios({
+      url: GET_MEETINGS,
+      method: "GET",
+      params: {
+        page: props?.page,
+        type: props?.eventType,
+      },
+    }).then((res) => res.data);
+  }
+);
 
 export const getMeetingOne = createAsyncThunk("getMeetingOne", async (id) => {
   return await axios.get(`${GET_MEETING_BY_ID}${id}`).then((res) => res.data);
