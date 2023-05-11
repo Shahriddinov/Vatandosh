@@ -9,8 +9,11 @@ import { Autocomplete, TextField } from "@mui/material";
 import { Spinner } from "../../../../../component";
 import { useAssociationFetching } from "./hooks/useAssociationFetching";
 import { getAllCommunity } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useState } from "react";
 
 const Associations = () => {
+  const [count, setCount] = useState(8);
+  const [country, setCountry] = useState("Barchasi");
   const { t } = useTranslation();
   const {
     allRegions,
@@ -20,8 +23,9 @@ const Associations = () => {
     dispatch,
   } = useAssociationFetching();
 
-  const handleChange = (event, { id }) => {
+  const handleChange = (event, { id, name }) => {
     dispatch(getAllCommunity({ region: id }));
+    setCountry(name ? name : "Rossiya");
   };
 
   if (allRegionsGetLoading || allCommunityGetLoading) {
@@ -29,7 +33,6 @@ const Associations = () => {
   }
 
   console.log(allCommunityGet);
-
   return (
     <div className="associations">
       <div className="container">
@@ -43,6 +46,7 @@ const Associations = () => {
                 options={allRegions}
                 sx={{ width: 300 }}
                 onChange={handleChange}
+                value={country}
                 renderInput={(params) => (
                   <TextField {...params} label="Barcha davlatlar" />
                 )}
@@ -61,7 +65,13 @@ const Associations = () => {
             )}
           </div>
           {allCommunityGet.length > 8 ? (
-            <button className="more__less__button">
+            <button
+              className="more__less__button"
+              onClick={() => {
+                dispatch(getAllCommunity({ page: count + 8 }));
+                setCount((prev) => prev + 8);
+              }}
+            >
               {" "}
               <img src={ArrowDown} alt="" />
               {t("communityAssociation.view_all")}

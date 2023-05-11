@@ -26,8 +26,8 @@ const data = {
   created_date: "",
   members: 0,
   achievement: "",
-  region_id: "Uzbekiston",
-  city_id: "Toshkent",
+  region_id: "",
+  city_id: "",
   phone: "",
   email: "",
   address: "",
@@ -117,6 +117,8 @@ const communitySlice = createSlice({
       })
       .addCase(getAllCommunity.fulfilled, (state, { payload }) => {
         state.allCommunityGetLoading = false;
+        let payloadCount = 0;
+
         state.allCommunityGet = payload;
       })
       .addCase(getAllCommunity.rejected, (state, { error }) => {
