@@ -34,6 +34,8 @@ import volunteerSlice from "./volunteer/volunteerSlice";
 import aboutUzbekistan from "./portalSlices/aboutUzbekistanSlice/aboutUzbekistanSlice";
 import portalNews from "./portalSlices/portalNewsSlice/portalNewsSlice";
 import webinarSlidesSlice from "./webinarSlider";
+import quizTestSlice from "./victorinaQuiz/victorinaTest";
+import mediaFileSlice from "./victorinaImage";
 
 const store = configureStore({
   reducer: {
@@ -71,6 +73,8 @@ const store = configureStore({
     aboutUzbekistan,
     portalNews,
     webinarSlidesSlice,
+    quizTestSlice,
+    mediaFileSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

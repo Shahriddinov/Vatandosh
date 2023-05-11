@@ -4,18 +4,17 @@ import { BsImage } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { postCommunityImage } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import mediatekaSlice from "../../../../../reduxToolkit/mediatekaSlice";
+import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
+import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function ProjectImgPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const communityCreateData = useSelector(
-    (store) => store.community.communityCreateData
+    (store) => store.mediaFileSlice.communityImagePost
   );
   const [data, setData] = useState({
     document: communityCreateData.document,
-    logo: communityCreateData.logo,
   });
 
   const handleSumbit = (e) => {
@@ -30,8 +29,7 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
       }));
       const logoData = new FormData();
       logoData.append("image", value);
-      logoData.append("folder", "community");
-      dispatch(postCommunityImage({ key, image: logoData }));
+      dispatch(mediaVictorinaImage({ key, image: logoData }));
     } else {
       setData((prev) => ({
         ...prev,
@@ -42,7 +40,7 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
         ...communityCreateData,
         [key]: value,
       };
-      dispatch(mediatekaSlice(newCommunityCreateData));
+      dispatch(mediaFileSlice(newCommunityCreateData));
     }
   };
 
@@ -67,6 +65,8 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
                 type="text"
                 minLength={3}
                 maxLength={30}
+                name="fio"
+                id="fio"
                 placeholder={t("victorina.name")}
               />
             </div>
@@ -82,9 +82,10 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
               <input
                 // required
                 type="file"
-                minLength={3}
-                maxLength={30}
+                id="passport"
+                name="passport"
                 placeholder="Yuklang"
+                accept="application/pdf, image/*"
               />
             </div>
           </label>

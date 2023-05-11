@@ -1,21 +1,76 @@
 import "../ProjectImgPopUp/ProjectImgPopUp.scss";
 import "../../../expert/pages/ExpertRegister/components/customStyles.scss";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState } from "react";
 import { sendVictorinaYoutube } from "../../../../../reduxToolkit/victorinaYoutube/youtube";
+import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
+import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
-  const [dataYoutube, setDataYoutube] = useState();
+  const [dataYoutube, setDataYoutube] = useState({
+    link: "",
+    passport: "",
+    fio: "",
+  });
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const formRef = useRef();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(sendVictorinaYoutube({ id, dataYoutube }));
+  const communityCreateData = useSelector(
+    (store) => store.mediaFileSlice.communityImagePost
+  );
+  const [data, setData] = useState({
+    document: communityCreateData.document,
+  });
+
+  const handleFileSelect = (event) => {
+    const inputValue = event.target.value;
+    setDataYoutube((prevFormData) => ({
+      ...prevFormData,
+      passport: communityCreateData?.document,
+      fio: inputValue,
+    }));
   };
 
-  console.log(dataYoutube);
+  const handleFileSelectOne = (event) => {
+    const linkValue = event.target.value;
+    setDataYoutube((prevFormData) => ({
+      ...prevFormData,
+      link: linkValue,
+    }));
+  };
+
+  const handleChangeApplication = ({ key, value }) => {
+    if (key === "logo" || key === "document") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      dispatch(mediaVictorinaImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "document" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+      dispatch(mediaFileSlice(newCommunityCreateData));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      fio: dataYoutube.fio,
+      passport: dataYoutube.passport,
+      link: dataYoutube.link,
+    };
+    dispatch(sendVictorinaYoutube({ id, data }));
+  };
 
   return (
     <div className="projectImg">
@@ -34,11 +89,12 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
             </p>
             <div>
               <input
-                // required
+                required
                 type="text"
-                minLength={3}
-                maxLength={30}
+                name="fio"
+                id="fio"
                 placeholder={t("victorina.name")}
+                onChange={handleFileSelect}
               />
             </div>
           </label>
@@ -51,11 +107,18 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
             </p>
             <div>
               <input
-                // required
+                required
                 type="file"
-                minLength={3}
-                maxLength={30}
+                id="passport"
+                name="passport"
                 placeholder="Yuklang"
+                accept="application/pdf, image/*"
+                onChange={(evt) =>
+                  handleChangeApplication({
+                    key: "document",
+                    value: evt.target.files[0],
+                  })
+                }
               />
             </div>
           </label>
@@ -66,10 +129,10 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
             <input
               required
               type="url"
-              minLength={3}
-              maxLength={30}
+              name="link"
+              id="link"
               placeholder={t("victorina.videourl")}
-              onChange={(e) => setDataYoutube({ link: e?.target.value })}
+              onChange={handleFileSelectOne}
             />
           </div>
         </label>

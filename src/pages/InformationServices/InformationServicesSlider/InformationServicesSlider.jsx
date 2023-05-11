@@ -35,7 +35,7 @@ export const InformationServicesSlider = ({ data }) => {
 
   return (
     <div className="main-hero">
-      {data.map((card, i) => (
+      {data?.map((card, i) => (
         <React.Fragment key={card.id}>
           <div
             className={`main-hero-slider ${i === img ? "active" : ""}`}
@@ -46,8 +46,7 @@ export const InformationServicesSlider = ({ data }) => {
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
-          >
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
             <div className="main-hero-slider-bottom-title">
               <h2>{card.title}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />

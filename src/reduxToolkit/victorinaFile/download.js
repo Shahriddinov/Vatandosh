@@ -1,16 +1,16 @@
+import { VICTORINA_YOUTUBE } from "../../services/api/utils";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../services/api/axios";
-import { VICTORINA_YOUTUBE } from "../../services/api/utils";
 
-export const sendVictorinaYoutube = createAsyncThunk(
-  "youtube",
+export const sendVictorinaFile = createAsyncThunk(
+  "test",
   async ({ id, data }) => {
     return await axios
       .post(`${VICTORINA_YOUTUBE}/${id}`, data, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => res.data);
+      .then((res) => res?.data);
   }
 );

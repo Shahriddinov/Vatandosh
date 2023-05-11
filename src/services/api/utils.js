@@ -76,8 +76,8 @@ export const GET_ALL_CITY_VIDEO = "/city-video/get-all";
 export const GET_SINGLE_CITY_VIDEO = "/city-video/get-one/";
 export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
 export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
-export const GET_VICTORINA_TEST = "/quiz/quiz/:id";
-export const VICTORINA_YOUTUBE = "/quiz/participant/:id";
+export const GET_VICTORINA_TEST = "/quiz/quiz/2";
+export const VICTORINA_YOUTUBE = "/quiz/participant";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
@@ -93,6 +93,7 @@ export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
 export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create-or-update`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 export const CREATE_MEETING = "/meeting/create/";
+export const VICTORINA_MEDIA_CREATE = "/media/create";
 
 // Update requests
 export const VOLUNTEER_UPDATE = "volunteer/update/";

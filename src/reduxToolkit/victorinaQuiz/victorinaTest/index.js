@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTestQuizz } from "./getTest";
+import { getTestQuizz, sendVictorinaTest } from "./getTest";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: true,
   quizTestData: [],
+  sendTestData: null,
   error: null,
 };
 
@@ -22,6 +24,20 @@ const quizTestSlice = createSlice({
       })
       .addCase(getTestQuizz.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(sendVictorinaTest.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(sendVictorinaTest.fulfilled, (state, action) => {
+        state.loading = false;
+        state.sendTestData = action.payload;
+        toast.success("The test has sent successfully");
+      })
+      .addCase(sendVictorinaTest.rejected, (state, action) => {
+        console.log(action);
+        state.loading = true;
         state.error = action.error.message;
       });
   },
