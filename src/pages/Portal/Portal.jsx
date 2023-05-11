@@ -170,7 +170,7 @@ const HomePage = () => {
 
               <div className="portal-btns">
                 {token ? (
-                  <Link to="/portal/cabinet">Cabinet</Link>
+                  <Link to="/portal-category/cabinet">Cabinet</Link>
                 ) : (
                   <>
                     <Link to="/registration/signup">Sign Up</Link>

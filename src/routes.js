@@ -270,7 +270,6 @@ const NewNumber = lazy(() =>
 const ElectronArchive = lazy(() =>
   import("./pages/Portal/electronicJournal/pages/archive/Archive")
 );
-const Cabinet = lazy(() => import("./pages/Portal/cabinet/Cabinet"));
 
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
@@ -312,6 +311,38 @@ const VisualInformation = lazy(() =>
 
 const VirtualTour = lazy(() =>
   import("./pages/Portal/aboutUzbekistan/pages/virtualTour/VirtualTour")
+);
+
+const CabinetLayout = lazy(() =>
+  import("./pages/Portal/cabinet/CabinetLayout")
+);
+
+const CabinetHome = lazy(() =>
+  import("./pages/Portal/cabinet/pages/cabinetHome/CabinetHome")
+);
+
+const PrivateInformation = lazy(() =>
+  import("./pages/Portal/cabinet/pages/privateInformation/PrivateInformation")
+);
+
+const Volunteering = lazy(() =>
+  import("./pages/Portal/cabinet/pages/volunteering/Volunteering")
+);
+
+const ExpertActivity = lazy(() =>
+  import("./pages/Portal/cabinet/pages/expertActivity/ExpertActivity")
+);
+
+const Organizations = lazy(() =>
+  import("./pages/Portal/cabinet/pages/organizations/Organizations")
+);
+
+const Quiz = lazy(() => import("./pages/Portal/cabinet/pages/quiz/Quiz"));
+
+const Events = lazy(() => import("./pages/Portal/cabinet/pages/events/Events"));
+
+const Certificates = lazy(() =>
+  import("./pages/Portal/cabinet/pages/certificates/Certificates")
 );
 
 const routes = [
@@ -370,14 +401,29 @@ const RoutesContainer = () => {
             {token ? (
               <>
                 <Route path="/registration/register" element={<Register />} />
-                <Route path="/portal/cabinet" element={<Cabinet />} />
+                <Route
+                  path="/portal-category/cabinet"
+                  element={<CabinetLayout />}
+                >
+                  <Route index element={<CabinetHome />} />
+                  <Route
+                    path="private-information"
+                    element={<PrivateInformation />}
+                  />
+                  <Route path="volunteering" element={<Volunteering />} />
+                  <Route path="expert-activity" element={<ExpertActivity />} />
+                  <Route path="organizations" element={<Organizations />} />
+                  <Route path="quiz" element={<Quiz />} />
+                  <Route path="events" element={<Events />} />
+                  <Route path="certificates" element={<Certificates />} />
+                </Route>
                 <Route
                   path="/registration/set-password"
                   element={<Navigate to="/registration/register" />}
                 />
                 <Route
                   path="/registration/signin"
-                  element={<Navigate to="/portal/cabinet" />}
+                  element={<Navigate to="/portal-category/cabinet" />}
                 />
               </>
             ) : (
@@ -405,7 +451,7 @@ const RoutesContainer = () => {
                   element={<EmailVerify />}
                 />
                 <Route
-                  path="/portal/cabinet"
+                  path="/portal-category/cabinet"
                   element={<Navigate to="/portal" />}
                 />
               </>
@@ -541,7 +587,6 @@ const RoutesContainer = () => {
               <Route path="virtual-tour" element={<VirtualTour />} />
               <Route path="contact" element={<Contact />} />
             </Route>
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
