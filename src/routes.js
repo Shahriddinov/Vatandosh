@@ -513,10 +513,13 @@ const RoutesContainer = () => {
 
             <Route path="/portal-category/webinar" element={<WebinarLayout />}>
               <Route index element={<WebinarHome />} />
-              <Route path="webinar-register" element={<WebinarRegister />} />
+              <Route
+                path="webinar-register/:id"
+                element={<WebinarRegister />}
+              />
               <Route path="online-webinar/:id" element={<OnlineWebinar />} />
               <Route path="webinar-about" element={<WebinarAbout />} />
-              <Route path="webinar-events/:event" element={<WebinarEvents />} />
+              <Route path="webinar-events" element={<WebinarEvents />} />
               <Route path="webinar-contact" element={<Contact />} />
             </Route>
 

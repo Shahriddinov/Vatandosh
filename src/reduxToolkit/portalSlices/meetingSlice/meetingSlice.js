@@ -32,15 +32,18 @@ const meetingSlice = createSlice({
     // Get meetings
     builder
       .addCase(getMeetingAll.pending, (state) => {
+        console.log("pending");
         state.meetingsLoading = true;
       })
       .addCase(getMeetingAll.fulfilled, (state, action) => {
         state.meetingsLoading = false;
         state.meetingsData = action.payload;
+        console.log("fullfild");
       })
       .addCase(getMeetingAll.rejected, (state, action) => {
         state.meetingsLoading = false;
         state.error = action.error.message;
+        console.log("error");
       });
 
     // Get one meeting
@@ -80,6 +83,7 @@ const meetingSlice = createSlice({
       .addCase(meetingCreate.fulfilled, (state, action) => {
         state.createMeetingLoading = false;
         state.createMeetingData = action.payload;
+        console.log(action.payload);
         state.status = "succeeded";
       })
       .addCase(meetingCreate.rejected, (state, action) => {
@@ -88,5 +92,7 @@ const meetingSlice = createSlice({
       });
   },
 });
+
+export const { changeStatus } = meetingSlice.actions;
 
 export default meetingSlice.reducer;

@@ -22,12 +22,12 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const dispatch = useDispatch();
 
   const handleChangeApplication3 = ({ key, value }) => {
+    console.log(value);
     if (key === "director_img") {
       setData((prev) => ({
         ...prev,
         [key]: [value],
       }));
-      console.log(value);
       const directorImageData = new FormData();
       directorImageData.append("image", value);
       directorImageData.append("folder", "community");
@@ -73,7 +73,7 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
               {data.director_img.length > 0 ? (
                 <img
                   className="community-association-register3__img"
-                  src={`${PORTAL_IMAGE_URL}/${communityCreateData.director_img}`}
+                  src={`${PORTAL_IMAGE_URL}${communityCreateData.director_img}`}
                   alt={data.director}
                 />
               ) : (
