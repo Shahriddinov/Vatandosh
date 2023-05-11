@@ -7,6 +7,7 @@ import MyInputDate from "../UI/myInputDate/MyInputDate";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import { useEffect } from "react";
 
 const CommunityRegister4 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
@@ -36,6 +37,14 @@ const CommunityRegister4 = ({ activeBarItem, handleClick }) => {
     handleClick("5");
   };
 
+  useEffect(() => {
+    setData({
+      work: communityCreateData.work,
+      created_date: communityCreateData.created_date,
+      members: communityCreateData.members,
+      achievement: communityCreateData.achievement,
+    });
+  }, [communityCreateData]);
   return (
     <div
       className={`community-association-register4  ${

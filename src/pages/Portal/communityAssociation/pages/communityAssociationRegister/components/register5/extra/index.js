@@ -2,19 +2,27 @@ import { postCommunityCreate } from "../../../../../../../../reduxToolkit/portal
 import { communityCreateDataAdd } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 export class CreateFunction {
-  constructor(setData, setLinks, links, communityCreateData, data, dispatch) {
+  constructor(
+    setData,
+    setLinks,
+    links,
+    communityCreateData,
+    data,
+    dispatch,
+    confirm
+  ) {
     this.setData = setData;
     this.setLinks = setLinks;
     this.links = links;
     this.communityCreateData = communityCreateData;
     this.data = data;
+    this.confirm = confirm;
     this.dispatch = dispatch;
   }
 
   extraHandleSubmit = (e) => {
-    console.log(this.data);
     e.preventDefault();
-    if (this.data.confirm) {
+    if (this.confirm) {
       const newCommunityCreateData = {
         ...this.communityCreateData,
         site: this.links.map((link) => link.link).join(","),

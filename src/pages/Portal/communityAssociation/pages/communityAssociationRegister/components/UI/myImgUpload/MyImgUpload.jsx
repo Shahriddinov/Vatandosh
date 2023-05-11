@@ -5,14 +5,7 @@ import { FiEdit } from "react-icons/fi";
 import "./myImgUpload.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../../services/api/utils";
 
-const MyImgUpload = ({
-  data,
-  text,
-  handleChange,
-  valueKey,
-  uploadStatus,
-  required,
-}) => {
+const MyImgUpload = ({ data, text, handleChange, valueKey, uploadStatus }) => {
   const handleChangeInput = (evt) => {
     handleChange({ key: valueKey, value: evt.target.files[0] });
   };
@@ -20,7 +13,7 @@ const MyImgUpload = ({
     <label
       htmlFor={valueKey}
       className={
-        data.length > 0 && uploadStatus === "success"
+        data.length > 0
           ? "my-img-upload-imgInput_edit"
           : "my-img-upload-imgInput"
       }
@@ -46,7 +39,7 @@ const MyImgUpload = ({
             alt="img"
           />
         </div>
-      ) : (uploadStatus === null) | (uploadStatus === "error") ? (
+      ) : (
         <>
           <BsImage />
           <p>
@@ -54,8 +47,6 @@ const MyImgUpload = ({
             <span className="my-img-upload__certificate--required">*</span>
           </p>
         </>
-      ) : (
-        <p>loading...</p>
       )}
     </label>
   );

@@ -6,8 +6,10 @@ import {
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useParams } from "react-router-dom";
 import { getNews } from "../../../../../../reduxToolkit/newsSlice/extraReducer";
+import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 export const useCountryGet = () => {
+  const language = useSelector((store) => store.language.language);
   const { communityCountry } = useParams();
 
   const allRegionsGet = useSelector((store) => store.community.allRegionsGet);
@@ -22,8 +24,8 @@ export const useCountryGet = () => {
     (store) => store.community.allCommunityGetLoading
   );
 
-  const news = useSelector((state) => state.newsSlice.newsData);
-  const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
+  const news = useSelector((store) => store.portalNews.news);
+  const loadingNews = useSelector((store) => store.portalNews.loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,9 +33,9 @@ export const useCountryGet = () => {
     dispatch(getAllCommunity({ region: communityCountry }));
 
     if (!news.length) {
-      dispatch(getNews());
+      dispatch(getPortalNews("community"));
     }
-  }, []);
+  }, [language]);
 
   return {
     allCommunityGet,

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 export const useCommunityHomeFetching = () => {
+  const language = useSelector((store) => store.language.language);
   const communityHomePageData = useSelector(
     (store) => store.community.communityHomePageData
   );
@@ -20,7 +21,7 @@ export const useCommunityHomeFetching = () => {
   useEffect(() => {
     dispatch(getCommunityHomePage());
     dispatch(getPortalNews("community"));
-  }, []);
+  }, [language]);
 
   return {
     communityHomePageData,

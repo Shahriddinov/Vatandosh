@@ -8,9 +8,13 @@ import {
   postCommunityCreate,
   postCommunityImage,
 } from "./communityExtraReducers";
-import { getItem, setItem } from "../../../helpers/persistanceStorage";
+import {
+  getItem,
+  removeItem,
+  setItem,
+} from "../../../helpers/persistanceStorage";
 
-const communityCreateData = {
+const data = {
   name: "",
   title: "",
   description: "",
@@ -29,7 +33,7 @@ const communityCreateData = {
   address: "",
   site: "",
   status: "",
-  attachments: [""],
+  attachments: [],
 };
 
 const initialState = {
@@ -50,7 +54,7 @@ const initialState = {
 
   communityCreateData: getItem("communityCreate")
     ? JSON.parse(getItem("communityCreate"))
-    : communityCreateData,
+    : data,
   communityCreateDataStatus: null,
   communityCreateDataLoading: true,
 
@@ -74,6 +78,10 @@ const communitySlice = createSlice({
     communityCreateDataAdd: (state, { payload }) => {
       state.communityCreateData = payload;
       setItem("communityCreate", JSON.stringify(payload));
+    },
+    communityCreateReset: (state) => {
+      removeItem("communityCreate");
+      state.communityCreateData = data;
     },
   },
   extraReducers: (builder) => {
@@ -168,6 +176,7 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePostStatus = "error";
         state.error = error.message;
+        alert("Fayl yuklanmadi, qaytadan urunib ko'ring");
       });
 
     builder
@@ -189,6 +198,9 @@ const communitySlice = createSlice({
   },
 });
 
-export const { findSingleRegion, communityCreateDataAdd } =
-  communitySlice.actions;
+export const {
+  findSingleRegion,
+  communityCreateDataAdd,
+  communityCreateReset,
+} = communitySlice.actions;
 export default communitySlice.reducer;

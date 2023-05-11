@@ -1,7 +1,4 @@
 import React from "react";
-import About from "../../../expert/components/About/About";
-import { AboutImg } from "../../../../../assets/images/communityAssociation";
-import { CouncilImage2 } from "../../../../../assets/images/expert";
 import { useTranslation } from "react-i18next";
 import { ShareFriends, Spinner } from "../../../../../component";
 import { useCommunityHomeFetching } from "../associationHome/hooks/useCommunityHomeFetching";

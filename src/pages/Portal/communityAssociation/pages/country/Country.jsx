@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Spinner } from "../../../../../component";
 import { Link } from "react-router-dom";
 import { useCountryGet } from "./hooks/useCountryGet";
+import { PortalMiniSlider } from "../../../components/portalMiniSlider/PortalMiniSlider";
 
 const Country = () => {
   const { t } = useTranslation();
@@ -46,6 +47,8 @@ const Country = () => {
     ],
   };
 
+  console.log(news);
+
   return (
     <div className="community-association-country">
       <div className="community-association-country__container container">
@@ -78,7 +81,11 @@ const Country = () => {
             ))}
           </ul>
 
-          <MiniSlider title={`${t("news")}`} data={news} fetchUrl="events" />
+          <PortalMiniSlider
+            title={`${t("news")}`}
+            data={news}
+            fetchUrl="events"
+          />
         </div>
       </div>
     </div>

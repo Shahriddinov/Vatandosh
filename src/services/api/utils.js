@@ -59,6 +59,7 @@ export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-s
 export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
+export const POST_COMMUNITY_NEWS_CREATE = "/community/news";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";

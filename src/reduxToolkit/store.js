@@ -72,6 +72,10 @@ const store = configureStore({
     portalNews,
     webinarSlidesSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

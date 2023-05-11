@@ -7,28 +7,17 @@ import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
 import { InformationServicesSlider } from "../../../../../../InformationServices/InformationServicesSlider/InformationServicesSlider";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getHomeNews } from "../../../../../../../reduxToolkit/newsSlice/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
-import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { getDate } from "../../../../../../../config/constants";
 
 function News({ communityNews }) {
-  const dispatch = useDispatch();
-  const { loadingNews } = useSelector((state) => state.newsSlice);
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
   const { t } = useTranslation();
 
-  useEffect(() => {
-    dispatch(getHomeNews());
-  }, [dispatch]);
-
-  if (loadingNews) return <Spinner position="full" />;
   return (
     <div className="expertnews">
       <div className="container" ref={ref}>
@@ -73,7 +62,13 @@ function News({ communityNews }) {
                         </div>
                         <div className="expertnews-item">
                           <img src={ViewIcon} alt="Calendar Icon" />
-                          <p>100K</p>
+                          <p>
+                            {news.view.toString().length >= 4
+                              ? news.view % 1000 > 1
+                                ? (news.view / 1000).toFixed(1) + "K"
+                                : (news.view / 1000).toFixed()
+                              : news.view}
+                          </p>
                         </div>
                       </div>
                     </div>
