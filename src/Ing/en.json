@@ -415,7 +415,17 @@
     "anthem" : "State anthem of the Republic of Uzbekistan",
     "text" : "Law\"on the state anthem of the Republic of Uzbekistan\" dated December 10, 1992. The Supreme Council of the Republic ofiningo was adopted at its first session",
     "author" : "Mutal Burhonov music-Abdulla Oripov may refer to",
-    "texts" : "Sunshine hur my country, elga happiness, salvation, you are a companion to your friends, kind!Yashnagai to\nforever science, creativity, may your fame shine so that there is a world! Gold these valleys-John Uzbekistan, the spirit of the ancestral Valor go to you!Great people's power Josh\nthe time when he struck, the land that conquered the universe!\nThe indelible faith of a broad Uzbek,Free, young generations are a great wing for you!Istiqlal torch\na peaceful haven, a good friend, a native land, a good abode! \nGold these valleys-John Uzbekistan, the spirit of the ancestral Valor go to you!Great people's power Josh\nthe time when he struck, the land that conquered the universe! "
+    "textsOne": "My country, sunny and free, salvation to your people,\nYou are a warmhearted companion to the friends!",
+    "textsTwo": "Belief of generous Uzbek does not die out,\nFree, young children are a strong wing for you! ",
+    "textsThree": "These golden valleys – dear Uzbekistan,\nManly spirit of ancestors is companion to you!",
+    "textsFour": "When the great power of people became exuberant\nYou are the country that amazes the world!",
+    "textsFive": "Belief of generous Uzbek does not die out,\nFree, young children are a strong wing for you!",
+    "textsSix": "The torch of independence, guardian of peace,\nJust motherland be eternally prosperous!",
 
+    "coat" : "Coat of arms of the Republic of Uzbekistan",
+    "coatAbout" : "The law \"on the state coat of arms of the Republic of Uzbekistan\" was adopted on July 2, 1992 at The X session of the Supreme Council of the Republic of Uzbekistan. The state emblem of the Republic of Uzbekistan from the image of the sun shining over the valley in which it blooms\nalso on the left side are wheat cobs, and on the right side open cotton swabs consist of an interroom with water drop.",
+    "coats" : " At the top of the coat of arms, an eight-pointed star is depicted as a symbol of the Republican Jeeps: a crescent moon and a star, located within eight edges, are symbols of the salvation of Muslims.",
+    "coatCenter" : "In the center of the coat of arms is inscribed the wings of the legendary Humo Bird, a symbol of himmat, nobility and self-sacrifice. These symbols and symbols represent the aspirations of our people on the path to peace, good, happiness, prosperity.",
+    "coatUzb" : "At the bottom of the coat of arms is inscribed \"Uzbekistan” on the band of the chambar ribbon representing the state flag of the Republic."
   }
 }

@@ -422,13 +422,17 @@
     "anthem": "O'zbekiston Respublikasining davlat madhiyasi",
     "text": "\"O'zbekiston Respublikasining davlat madhiyasi to'g'risida\"gi Qonun1992-yil 10-dekabrda O'zbekiston Respublikasi Oliy Kengashiningo'n birinchi sessiyasida qabul qilingan",
     "author": "Mutal Burhonov musiqasi Abdulla Oripov so'zi",
-    "textsOne": "Serquyosh hur o'lkam, elga baxt, najot,Sen o'zing do'stlarga yo'ldosh, mehribon!",
-    "textsTwo": "Yashnagay to abad ilmu fan, ijod, Shuhrating porlasin toki bor jahon! ",
-    "textsThree": "Ulug' xalq qudrati jo'sh urgan zamon, Olamni mahliyo aylagan diyor! ",
-    "textsFour": "Oltin bu vodiylar - jon O'zbekiston, Ajdodlar mardona ruhi senga yor!",
-    "textsFive": " Bag'ri keng o'zbekning o'chmas iymoni, Erkin, yosh avlodlar senga zo'r qanot! ",
-    "textsSix": "Istiqlol mash'ali tinchlik posboni,Xaqsevar, ona yurt, mangu bo'l obod!",
-    "textsSeven": " Oltin bu vodiylar - jon O'zbekiston,Ajdodlar mardona ruhi senga yor!",
-    "textsEight": "Ulug' xalq qudrati jo'sh urgan zamon,Olamni mahliyo aylagan diyor!"
+    "textsOne": "Serquyosh, hur oʻlkam, elga baxt, najot,\nSen oʻzing doʻstlarga yoʻldosh, mehribon – mehribon!",
+    "textsTwo": "Yashnagay to abad ilmu fan, ijod,\nShuhrating porlasin toki bor jahon!",
+    "textsThree": "Oltin bu vodiylar — jon Oʻzbekiston,\nAjdodlar mardona ruhi senga yor!",
+    "textsFour": "Ulugʻ xalq qudrati joʻsh urgan zamon,\nOlamni mahliyo aylagan diyor!",
+    "textsFive": "Bagʻri keng oʻzbekning oʻchmas iymoni,\nErkin, yosh avlodlar senga zoʻr qanot, zoʻr qanot!",
+    "textsSix": "Istiqlol mashʼali, tinchlik posboni,\nHaqsevar, ona yurt, mangu boʻl obod!",
+
+    "coat" : "O‘zbekiston Respublikasi Davlat gerbi ",
+    "coatAbout" : " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
+    "coats" : "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
+    "coatCenter" : "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
+    "coatUzb" : " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
   }
 }

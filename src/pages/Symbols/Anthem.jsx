@@ -28,15 +28,14 @@ function Anthem(props) {
                         {t("symbols.textsFour")} <br/>
                         {t("symbols.textsFive")} <br/>
                         {t("symbols.textsSix")} <br/>
-                        {t("symbols.textsSeven")} <br/>
-                        {t("symbols.textsEight")}
+
                     </div>
-                    {/*<ReactAudioPlayer*/}
-                    {/*    className="symbol_text_audio"*/}
-                    {/*    src={Madhiya}*/}
-                    {/*    autoPlay*/}
-                    {/*    controls*/}
-                    {/*/>*/}
+                    <ReactAudioPlayer
+                        className="symbol_text_audio"
+                        src={Madhiya}
+                        // autoPlay
+                        controls
+                    />
                 </div>
             </div>
         </>
