@@ -345,6 +345,8 @@ const Certificates = lazy(() =>
   import("./pages/Portal/cabinet/pages/certificates/Certificates")
 );
 
+const Chat = lazy(() => import("./pages/Portal/cabinet/pages/chat/Chat"));
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -416,6 +418,7 @@ const RoutesContainer = () => {
                   <Route path="quiz" element={<Quiz />} />
                   <Route path="events" element={<Events />} />
                   <Route path="certificates" element={<Certificates />} />
+                  <Route path="chat" element={<Chat />} />
                 </Route>
                 <Route
                   path="/registration/set-password"

@@ -65,6 +65,10 @@ const CabinetLeftMenu = () => {
     setActivePage(pathname);
   }, []);
 
+  useEffect(() => {
+    setActivePage(pathname);
+  }, [pathname]);
+
   return (
     <div className="cabinet-navbar">
       <div className="container">
