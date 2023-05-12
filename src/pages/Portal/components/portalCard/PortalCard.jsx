@@ -12,7 +12,10 @@ import { getDate } from "../../../../config/constants";
 const PortalCard = (props) => {
   const navigate = useNavigate();
 
-  const tags = props?.tags?.split(",");
+  const tags = props?.tags
+    ? props?.tags?.split(",")
+    : ["Kun fotosi", "Yosh oila"];
+
   const handleClick = (e) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
@@ -27,7 +30,7 @@ const PortalCard = (props) => {
       data-aos-duration="1000"
     >
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+        <img src={`${PORTAL_IMAGE_URL}${props.image}`} alt={props.title} />
       </div>
       <div className="news-information">
         <Link to={`/${props.pathUrl}/${props.id}`}>
@@ -80,7 +83,7 @@ const PortalCard = (props) => {
         <div className="news-views">
           <IoEye />
           <span>
-            {props?.view.toString().length >= 4
+            {props?.view?.toString().length >= 4
               ? props?.view % 1000 > 1
                 ? (props?.view / 1000).toFixed(1) + "K"
                 : (props?.view / 1000).toFixed()

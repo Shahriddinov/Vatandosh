@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
@@ -10,16 +9,16 @@ import { getDate } from "../../../../../config/constants";
 import "./CommunityCard.scss";
 
 const CommunityCard = (props) => {
-  const lan = useSelector((state) => state.language.language);
   const navigate = useNavigate();
-
-  const tags = props[`tag_${lan}`]?.split(",");
 
   const handleClick = (e) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  const text = props.content.replace(/<[^>]+>/g, "");
+  const tags = props?.tags
+    ? props?.tags?.split(",")
+    : ["Italiya", "Yosh oila", "Kun fotosi", "Yosh oila"];
+  const text = props?.content?.replace(/<[^>]+>/g, "");
 
   return (
     <div
@@ -29,34 +28,32 @@ const CommunityCard = (props) => {
       data-aos-duration="1000"
     >
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+        <img src={`${PORTAL_IMAGE_URL}/${props?.image}`} alt={props?.title} />
       </div>
       <div className="news-information">
-        <Link to={`/${props.pathUrl}/${props.id}`}>
-          <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
+        <Link to={`/${props?.pathUrl}/${props?.id}`}>
+          <h5 className="news__card-title">{props.title}</h5>
           <p className="news__card-text">
-            {text.length > 110 ? text.slice(0, 110) + "..." : text}
+            {text?.length > 110 ? text?.slice(0, 110) + "..." : text}
           </p>
         </Link>
       </div>
-      {["Italiya", "Yosh oila", "Kun fotosi", "Yosh oila"]?.length ? (
+      {tags.length ? (
         <div className="tags-box">
           <div className="animation-box">
-            {["Italiya", "Yosh oila", "Kun fotosi", "Yosh oila"]?.map(
-              (tag, id) => {
-                if (tag !== null) {
-                  return (
-                    <div
-                      className="tag-item"
-                      onClick={(e) => handleClick(e)}
-                      key={id}
-                    >
-                      {tag}
-                    </div>
-                  );
-                }
+            {tags.map((tag, id) => {
+              if (tag !== null) {
+                return (
+                  <div
+                    className="tag-item"
+                    onClick={(e) => handleClick(e)}
+                    key={id}
+                  >
+                    {tag}
+                  </div>
+                );
               }
-            )}
+            })}
           </div>
         </div>
       ) : null}

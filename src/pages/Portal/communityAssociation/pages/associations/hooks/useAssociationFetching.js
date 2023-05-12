@@ -3,6 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllCommunity,
+  getAllEvents,
   getAllRegions,
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
@@ -27,8 +28,14 @@ export const useAssociationFetching = () => {
     (store) => store.community.allCommunityGetLoading
   );
 
+  const eventsData = useSelector((state) => state.community.allEvents);
+  const eventsDataLoading = useSelector(
+    (state) => state.community.allEventsLoading
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getAllEvents());
     dispatch(getAllRegions());
     dispatch(getAllCommunity({ page: 1 }));
   }, [language]);
@@ -47,6 +54,8 @@ export const useAssociationFetching = () => {
     allRegionsGetLoading,
     allCommunityGet,
     allCommunityGetLoading,
+    eventsData,
+    eventsDataLoading,
     dispatch,
   };
 };

@@ -8,27 +8,80 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteExpertEducation,
+  getExpertEducation,
+  getExpertSpecialization,
+  postExpertEducation,
+  updateExpertEducation,
+} from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
-export default function RegisterItem2({ activeBarItem }) {
+export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
+  const { education, specialization } = useSelector(
+    (state) => state.expertRegisterSlice
+  );
+
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const [data1, setData1] = useState([
-    { id: 1, institution: "", faculty: "", job: "", type: 1 },
+    { id: Date.now(), institution: "", faculty: "", specialization_id: 1 },
   ]);
+
   const [data2, setData2] = useState([
-    { id: 1, institution: "", faculty: "", job: "Yurist", type: 2 },
+    { id: Date.now(), institution: "", faculty: "", specialization_id: 1 },
   ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const expert = [...data1, data2].map((el) => {
-      return {
-        institution: el.institution,
-      };
+    const datas = [...data1, ...data2];
+    const update = [];
+    const create = [];
+    datas.forEach((edu) => {
+      if (typeof edu.id === "string") create.push(edu);
+      else update.push(edu);
     });
-    console.log({
-      expert,
-    });
-    console.log(data1, data2);
+    if (create.length)
+      dispatch(
+        postExpertEducation({
+          expert: create.map(
+            ({ institution, faculty, specialization_id, level, type }) => ({
+              institution,
+              faculty,
+              specialization_id,
+              level,
+              type,
+            })
+          ),
+        })
+      );
+    if (update.length)
+      update.forEach(
+        async ({
+          id,
+          institution,
+          faculty,
+          specialization_id,
+          level,
+          type,
+        }) => {
+          const res = await dispatch(
+            updateExpertEducation({
+              id,
+              institution,
+              faculty,
+              specialization_id,
+              level,
+              type,
+            })
+          );
+          console.log(res);
+          return;
+        }
+      );
+    setActiveBarItem(2);
   };
 
   const handleChange = (obj) => {
@@ -52,6 +105,51 @@ export default function RegisterItem2({ activeBarItem }) {
     );
   };
 
+  const deleteEducation = async (id) => {
+    if (typeof id === "number") dispatch(deleteExpertEducation(id));
+  };
+
+  useEffect(() => {
+    dispatch(getExpertEducation());
+    dispatch(getExpertSpecialization());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (education) {
+      setData1([]);
+      setData2([]);
+      education.forEach(
+        ({ id, institution, faculty, specialization, type }) => {
+          if (type === 1) {
+            setData1((prev) => [
+              ...prev,
+              {
+                id,
+                institution,
+                level: "Oliy",
+                faculty,
+                specialization_id: specialization.id,
+                type,
+              },
+            ]);
+          } else {
+            setData2((prev) => [
+              ...prev,
+              {
+                id,
+                institution,
+                level: "Oliy",
+                faculty,
+                specialization_id: specialization.id,
+                type,
+              },
+            ]);
+          }
+        }
+      );
+    }
+  }, [education]);
+
   return (
     <form
       className={
@@ -63,168 +161,217 @@ export default function RegisterItem2({ activeBarItem }) {
     >
       <div className="registeritem2-wrapper registeritem-borderLeft">
         <h3 className="registeritem-title">{t("expert.reg2")}</h3>
-        <div className="registeritem-form">
-          {data1.map((el) => (
-            <div key={el.id} className="registeritem2-form-otm">
-              <label htmlFor="" className="registeritem-label">
-                <p className="registeritem-label-delete">
-                  <span>{t("expert.uzbotm")}</span>
-                  <AiOutlineDelete
-                    style={data1.length === 1 ? { display: "none" } : null}
-                    onClick={() =>
-                      setData1(
-                        (prev) =>
-                          (prev = prev.filter((item) => item.id !== el.id))
-                      )
-                    }
-                  />
-                </p>
-                <div>
-                  <input
-                    required
-                    type="text"
-                    value={el.institution}
-                    minLength={3}
-                    maxLength={30}
-                    placeholder={t("expert.inputplaceholder")}
-                    onChange={(e) =>
-                      handleChange({
-                        ...el,
-                        institution: e.target.value.trim(),
-                      })
-                    }
-                  />
-                  <img src={pencil} alt="" />
+        <div className="registeritem-form registeritem-gapNon">
+          <h3>{t("expert.uzbotm")}</h3>
+          {data1.length ? (
+            data1.map((el, index) => (
+              <div key={index} className="registeritem2-form-otm">
+                <label htmlFor="" className="registeritem-label">
+                  <p className="registeritem-label-delete">
+                    <span>{t("expert.uzbotm")}</span>
+                    <AiOutlineDelete
+                      style={data1.length === 1 ? { display: "none" } : null}
+                      onClick={() => {
+                        deleteEducation(el.id);
+                        setData1(
+                          (prev) =>
+                            (prev = prev.filter((item) => item.id !== el.id))
+                        );
+                      }}
+                    />
+                  </p>
+                  <div>
+                    <input
+                      required
+                      type="text"
+                      value={el.institution}
+                      minLength={3}
+                      maxLength={100}
+                      placeholder={t("expert.inputplaceholder")}
+                      onChange={(e) =>
+                        handleChange({
+                          ...el,
+                          institution: e.target.value.trim(),
+                        })
+                      }
+                    />
+                    <img src={pencil} alt="" />
+                  </div>
+                </label>
+                <div className="registeritem-flexbox">
+                  <label htmlFor="" className="registeritem-label">
+                    <p>{t("expert.faculty")}</p>
+                    <div>
+                      <input
+                        required
+                        type="text"
+                        minLength={3}
+                        value={el.faculty}
+                        maxLength={100}
+                        placeholder={t("expert.inputplaceholder")}
+                        onChange={(e) =>
+                          handleChange({ ...el, faculty: e.target.value })
+                        }
+                      />
+                      <img src={pencil} alt="" />
+                    </div>
+                  </label>
+                  <label htmlFor="" className="registeritem-label">
+                    <p>{t("expert.profession")}</p>
+                    <FormControl style={{ padding: 0 }}>
+                      <Select
+                        className="registeritem-select"
+                        value={el.specialization_id}
+                        required
+                        onChange={(e) =>
+                          handleChange({
+                            ...el,
+                            specialization_id: e.target.value,
+                          })
+                        }
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                      >
+                        {specialization ? (
+                          specialization?.map(({ id, title }) => (
+                            <MenuItem key={id} value={id}>
+                              {title}
+                            </MenuItem>
+                          ))
+                        ) : (
+                          <MenuItem value={1}>Yurist</MenuItem>
+                        )}
+                      </Select>
+                    </FormControl>
+                  </label>
                 </div>
-              </label>
-              <div className="registeritem-flexbox">
-                <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.faculty")}</p>
-                  <div>
-                    <input
-                      required
-                      type="text"
-                      minLength={3}
-                      value={el.faculty}
-                      maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
-                      onChange={(e) =>
-                        handleChange({ ...el, faculty: e.target.value.trim() })
-                      }
-                    />
-                    <img src={pencil} alt="" />
-                  </div>
-                </label>
-                <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.profession")}</p>
-                  <div>
-                    <input
-                      required
-                      type="text"
-                      minLength={3}
-                      value={el.job}
-                      maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
-                      onChange={(e) =>
-                        handleChange({ ...el, job: e.target.value.trim() })
-                      }
-                    />
-                    <img src={pencil} alt="" />
-                  </div>
-                </label>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h3>{t("expert.uzbotm")}</h3>
+          )}
           <button
+            type="button"
             className="registeritem-addForm"
+            style={{ marginBottom: "20px" }}
             onClick={() =>
               setData1((prev) => [
                 ...prev,
-                { id: Date.now(), institution: "", faculty: "", job: "" },
+                {
+                  id: "" + Date.now(),
+                  institution: "",
+                  faculty: "",
+                  level: "Oliy",
+                  specialization_id: 1,
+                  type: 1,
+                },
               ])
             }
           >
             <BsPlusCircleFill />
           </button>
-          {data2.map((el) => (
-            <div key={el.id} className="registeritem2-form-otm">
-              <label htmlFor="" className="registeritem-label">
-                <p className="registeritem-label-delete">
-                  <span>{t("expert.xorotm")}</span>
-                  <AiOutlineDelete
-                    style={data2.length === 1 ? { display: "none" } : null}
-                    onClick={() =>
-                      setData2(
-                        (prev) =>
-                          (prev = prev.filter((item) => item.id !== el.id))
-                      )
-                    }
-                  />
-                </p>
-                <div>
-                  <input
-                    required
-                    type="text"
-                    value={el.institution}
-                    minLength={3}
-                    maxLength={30}
-                    placeholder={t("expert.inputplaceholder")}
-                    onChange={(e) =>
-                      handleChangeX({
-                        ...el,
-                        institution: e.target.value.trim(),
-                      })
-                    }
-                  />
-                  <img src={pencil} alt="" />
-                </div>
-              </label>
-              <div className="registeritem-flexbox">
+          <h3>{t("expert.xorotm")}</h3>
+          {data2.length ? (
+            data2.map((el, index) => (
+              <div key={index} className="registeritem2-form-otm">
                 <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.xorfaculty")}</p>
+                  <p className="registeritem-label-delete">
+                    <span>{t("expert.xorotm")}</span>
+                    <AiOutlineDelete
+                      style={data2.length === 1 ? { display: "none" } : null}
+                      onClick={() => {
+                        deleteEducation(el.id);
+                        setData2(
+                          (prev) =>
+                            (prev = prev.filter((item) => item.id !== el.id))
+                        );
+                      }}
+                    />
+                  </p>
                   <div>
                     <input
                       required
                       type="text"
+                      value={el.institution}
                       minLength={3}
-                      value={el.faculty}
-                      maxLength={30}
+                      maxLength={100}
                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
-                        handleChangeX({ ...el, faculty: e.target.value.trim() })
+                        handleChangeX({
+                          ...el,
+                          institution: e.target.value,
+                        })
                       }
                     />
                     <img src={pencil} alt="" />
                   </div>
                 </label>
-                <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.xorprofession")}</p>
-                  <FormControl style={{ padding: 0 }}>
-                    <Select
-                      className="registeritem-select"
-                      value={el.job}
-                      required
-                      onChange={(e) =>
-                        handleChangeX({ ...el, job: e.target.value })
-                      }
-                      displayEmpty
-                      inputProps={{ "aria-label": "Without label" }}
-                    >
-                      <MenuItem value={"Yurist"}>Yurist</MenuItem>
-                      <MenuItem value={"Dasturchi"}>Dasturchi</MenuItem>
-                      <MenuItem value={"Logist"}>Logist</MenuItem>
-                    </Select>
-                  </FormControl>
-                </label>
+                <div className="registeritem-flexbox">
+                  <label htmlFor="" className="registeritem-label">
+                    <p>{t("expert.xorfaculty")}</p>
+                    <div>
+                      <input
+                        required
+                        type="text"
+                        minLength={3}
+                        value={el.faculty}
+                        maxLength={100}
+                        placeholder={t("expert.inputplaceholder")}
+                        onChange={(e) =>
+                          handleChangeX({ ...el, faculty: e.target.value })
+                        }
+                      />
+                      <img src={pencil} alt="" />
+                    </div>
+                  </label>
+                  <label htmlFor="" className="registeritem-label">
+                    <p>{t("expert.xorprofession")}</p>
+                    <FormControl style={{ padding: 0 }}>
+                      <Select
+                        className="registeritem-select"
+                        value={el.specialization_id}
+                        required
+                        onChange={(e) =>
+                          handleChangeX({
+                            ...el,
+                            specialization_id: e.target.value,
+                          })
+                        }
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                      >
+                        {specialization ? (
+                          specialization?.map(({ id, title }) => (
+                            <MenuItem key={id} value={id}>
+                              {title}
+                            </MenuItem>
+                          ))
+                        ) : (
+                          <MenuItem value={1}>Yurist</MenuItem>
+                        )}
+                      </Select>
+                    </FormControl>
+                  </label>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h3>{t("expert.xorotm")}</h3>
+          )}
           <button
+            type="button"
             className="registeritem-addForm"
             onClick={() =>
               setData2((prev) => [
                 ...prev,
-                { id: Date.now(), institution: "", faculty: "", job: "" },
+                {
+                  id: "" + Date.now(),
+                  institution: "",
+                  faculty: "",
+                  level: "Oliy",
+                  specialization_id: 1,
+                  type: 2,
+                },
               ])
             }
           >

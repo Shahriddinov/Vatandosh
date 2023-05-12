@@ -10,7 +10,7 @@ import {
   CommunityAssociationHero,
   CommunityFriendshipInfo,
 } from "./components";
-import { useFetchingData, useModalActive } from "./hooks";
+import { useModalActive } from "./hooks";
 import { useAssociationFetching } from "../associations/hooks/useAssociationFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { ToastContainer, toast } from "react-toastify";
@@ -23,7 +23,6 @@ import "react-toastify/dist/ReactToastify.css";
 const CommunityAssociationDetail = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
-  const { loading, events } = useFetchingData();
   const { open, changeOpen } = useModalActive();
   const { communityCountryId, communityCountry } = useParams();
 
@@ -31,10 +30,12 @@ const CommunityAssociationDetail = () => {
     allRegions,
     allRegionsGetLoading,
     allCommunityGet,
+    eventsData,
+    eventsDataLoading,
     allCommunityGetLoading,
   } = useAssociationFetching();
 
-  if (loading || allRegionsGetLoading || allCommunityGetLoading) {
+  if (eventsDataLoading || allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
   }
 
@@ -44,6 +45,9 @@ const CommunityAssociationDetail = () => {
   const findCountry = allCommunityGet.find(
     (el) => el.id === communityCountryId * 1
   );
+
+  console.log(findCountryCategoryData);
+  console.log(findCountry);
 
   return (
     <>
@@ -79,7 +83,7 @@ const CommunityAssociationDetail = () => {
         <CommunityAssociationCompanyOffer {...findCountry} />
         <PortalMiniSlider
           title={`${t("events")}`}
-          data={events}
+          data={eventsData}
           fetchUrl="events"
         />
 

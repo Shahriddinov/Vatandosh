@@ -20,18 +20,28 @@ export default function ExpertRegister() {
     { title: t("expert.register"), url: "" },
   ];
 
-  const { loading, menu } = useSelector((state) => state.expertRegisterSlice);
+  const {
+    loading,
+    menu,
+    educationLoading,
+    specializationLoading,
+    employmentLoading,
+  } = useSelector((state) => state.expertRegisterSlice);
   const language = useSelector((state) => state.language.language);
 
   useEffect(() => {
     dispatch(getExpertRegisterMenu());
   }, [dispatch]);
 
-  if (loading) return <Spinner position="full" />;
-
   return (
     <>
       <main className="expertregister">
+        {educationLoading ||
+        loading ||
+        specializationLoading ||
+        employmentLoading ? (
+          <Spinner position="full" />
+        ) : null}
         <div className="container">
           <ExpertTitle title={t("expert.register")} url={url} />
           <div className="expertregister-main">
@@ -59,7 +69,10 @@ export default function ExpertRegister() {
             </ul>
             <div className="expertregister-main-list">
               <RegisterItem1 activeBarItem={activeBarItem} />
-              <RegisterItem2 activeBarItem={activeBarItem} />
+              <RegisterItem2
+                activeBarItem={activeBarItem}
+                setActiveBarItem={setactiveBarItem}
+              />
               <RegisterItem3 activeBarItem={activeBarItem} />
               <RegisterItem4 activeBarItem={activeBarItem} />
               <RegisterItem5 activeBarItem={activeBarItem} />
