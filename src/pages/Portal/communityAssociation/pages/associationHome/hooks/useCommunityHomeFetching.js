@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCommunityHomePage } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  getAllCommunity,
+  getAllRegions,
+  getCommunityHomePage,
+} from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useEffect } from "react";
 import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
@@ -16,12 +20,26 @@ export const useCommunityHomeFetching = () => {
   const communityNews = useSelector((store) => store.portalNews.news);
   const communityNewsLoading = useSelector((store) => store.portalNews.loading);
 
+  const allCommunityGet = useSelector(
+    (store) => store.community.allCommunityGet
+  );
+  const allCommunityGetLoading = useSelector(
+    (store) => store.community.allCommunityGetLoading
+  );
+
+  const allRegions = useSelector((store) => store.community.allRegionsGet);
+  const allRegionsGetLoading = useSelector(
+    (store) => store.community.allRegionsGetLoading
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllCommunity({ page: 1 }));
     dispatch(getCommunityHomePage());
-    dispatch(getPortalNews("community"));
-  }, [language]);
+    dispatch(getPortalNews({ type: "community", per_page: "10", page: 1 }));
+    dispatch(getAllRegions());
+  }, [dispatch, language]);
 
   return {
     communityHomePageData,
@@ -29,5 +47,9 @@ export const useCommunityHomeFetching = () => {
     communityHomePageError,
     communityNews,
     communityNewsLoading,
+    allCommunityGet,
+    allCommunityGetLoading,
+    allRegions,
+    allRegionsGetLoading,
   };
 };

@@ -77,7 +77,7 @@ const CommunityCard = (props) => {
         </div>
         <div className="news-views">
           <IoEye />
-          <span>{props?.viewers === null ? 0 : props.viewers} 0</span>
+          <span>{props.view === 0 ? 0 : props.view} </span>
         </div>
       </div>
     </div>

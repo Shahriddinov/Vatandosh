@@ -10,8 +10,15 @@ const initialState = {
 
 export const getPortalNews = createAsyncThunk(
   "get/PortalNews",
-  async (type) => {
-    return await axios.get(GET_PORTAL_NEWS + type).then((res) => res.data);
+  async ({ type, per_page, page }) => {
+    return await axios({
+      url: GET_PORTAL_NEWS,
+      params: {
+        type,
+        per_page,
+        page,
+      },
+    }).then((res) => res.data);
   }
 );
 

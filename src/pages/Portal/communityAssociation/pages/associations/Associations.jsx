@@ -10,29 +10,35 @@ import { Spinner } from "../../../../../component";
 import { useAssociationFetching } from "./hooks/useAssociationFetching";
 import { getAllCommunity } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useState } from "react";
+import { paginationCount } from "../../../../../helpers/extraFunction";
 
 const Associations = () => {
-  const [count, setCount] = useState(8);
-  const [country, setCountry] = useState("Barchasi");
+  const [count, setCount] = useState(1);
+  const [country, setCountry] = useState("Barcha davlatlar");
+  const [conId, setConId] = useState("");
   const { t } = useTranslation();
   const {
     allRegions,
     allRegionsGetLoading,
     allCommunityGet,
     allCommunityGetLoading,
+    communityData,
     dispatch,
   } = useAssociationFetching();
 
   const handleChange = (event, { id, name }) => {
-    dispatch(getAllCommunity({ region: id }));
+    dispatch(getAllCommunity({ region_id: id, per_page: 8 }));
     setCountry(name ? name : "Rossiya");
+    setConId(id);
+    setCount(1);
   };
 
   if (allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
   }
 
-  console.log(allCommunityGet);
+  const pagination = paginationCount(allCommunityGet?.total, 8);
+
   return (
     <div className="associations">
       <div className="container">
@@ -47,15 +53,13 @@ const Associations = () => {
                 sx={{ width: 300 }}
                 onChange={handleChange}
                 value={country}
-                renderInput={(params) => (
-                  <TextField {...params} label="Barcha davlatlar" />
-                )}
+                renderInput={(params) => <TextField {...params} />}
               />
             </FormControl>
           </div>
           <div className="associations__grid">
-            {allCommunityGet.length > 0 ? (
-              allCommunityGet.map((item) => (
+            {communityData.length > 0 ? (
+              communityData.map((item) => (
                 <Fragment key={item.id}>
                   <AssociationsCard {...item} allRegions={allRegions} />
                 </Fragment>
@@ -64,12 +68,20 @@ const Associations = () => {
               <p>Hozirda bu davlatda jamoat birlashmalari mavjud emas</p>
             )}
           </div>
-          {allCommunityGet.length > 8 ? (
+          {allCommunityGet?.total > 8 &&
+          communityData.length > 0 &&
+          count < pagination ? (
             <button
               className="more__less__button"
               onClick={() => {
-                dispatch(getAllCommunity({ page: count + 8 }));
-                setCount((prev) => prev + 8);
+                dispatch(
+                  getAllCommunity({
+                    page: count + 1,
+                    per_page: "8",
+                    region_id: conId,
+                  })
+                );
+                setCount((prev) => prev + 1);
               }}
             >
               {" "}

@@ -108,7 +108,7 @@ const CommunityAssociationCompanyOffer = (props) => {
                       }
                     >
                       <img
-                        src={`${PORTAL_IMAGE_URL}/${item}`}
+                        src={`${PORTAL_IMAGE_URL}${item}`}
                         alt="img"
                         className="community-association-company-offer__inner_img"
                       />

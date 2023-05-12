@@ -20,9 +20,18 @@ const AssociationHome = () => {
     communityHomePageError,
     communityNews,
     communityNewsLoading,
+    allCommunityGet,
+    allCommunityGetLoading,
+    allRegions,
+    allRegionsGetLoading,
   } = useCommunityHomeFetching();
 
-  if (communityHomePageLoading || communityNewsLoading) {
+  if (
+    communityHomePageLoading ||
+    communityNewsLoading ||
+    allCommunityGetLoading ||
+    allRegionsGetLoading
+  ) {
     return <Spinner />;
   } else if (communityHomePageError) {
     return <p className="">{communityHomePageError}</p>;
@@ -52,9 +61,13 @@ const AssociationHome = () => {
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <CommunityHomeCouncil councilData={councilData} />
+      <CommunityHomeCouncil
+        councilData={councilData}
+        allCommunityGet={allCommunityGet}
+        allRegions={allRegions}
+      />
       <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
-      <News communityNews={communityNews} />
+      <News communityNews={communityNews?.data} />
     </>
   );
 };

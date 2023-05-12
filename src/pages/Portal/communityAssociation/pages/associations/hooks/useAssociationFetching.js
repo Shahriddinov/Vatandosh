@@ -6,8 +6,9 @@ import {
   getAllEvents,
   getAllRegions,
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useParams } from "react-router-dom";
 
-export const useAssociationFetching = () => {
+export const useAssociationFetching = (communityCountryId) => {
   const language = useSelector((store) => store.language.language);
   const allRegionsChange = createSelector(
     (store) => store.community.allRegionsGet,
@@ -16,6 +17,21 @@ export const useAssociationFetching = () => {
     }
   );
 
+  const communityDataChange = createSelector(
+    (store) => store.community.allCommunityData,
+    (community) => {
+      const data = [];
+      community.forEach((item) => {
+        const objIndex = data.findIndex((el) => el.id === item.id);
+        if (objIndex < 0) {
+          data.push(item);
+        }
+      });
+      return data;
+    }
+  );
+
+  const { communityCountry } = useParams();
   const allRegions = useSelector(allRegionsChange);
   const allRegionsGetLoading = useSelector(
     (store) => store.community.allRegionsGetLoading
@@ -24,6 +40,7 @@ export const useAssociationFetching = () => {
   const allCommunityGet = useSelector(
     (store) => store.community.allCommunityGet
   );
+  const communityData = useSelector(communityDataChange);
   const allCommunityGetLoading = useSelector(
     (store) => store.community.allCommunityGetLoading
   );
@@ -35,16 +52,20 @@ export const useAssociationFetching = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllEvents());
+    dispatch(getAllEvents({ per_page: 10, page: 1 }));
     dispatch(getAllRegions());
-    dispatch(getAllCommunity({ page: 1 }));
-  }, [language]);
+    if (!communityCountry) {
+      dispatch(getAllCommunity({ page: 1, per_page: 8 }));
+    } else {
+      dispatch(getAllCommunity({ page: 1, region_id: communityCountry }));
+    }
+  }, [dispatch, language]);
 
   allRegions.unshift({
     id: "all",
-    name: "all",
-    label: "All",
-    code: "All",
+    name: "Barcha davlatlar",
+    label: "Barcha davlatlar",
+    code: "Barcha davlatlar",
     flag: null,
     count: 0,
   });
@@ -57,5 +78,6 @@ export const useAssociationFetching = () => {
     eventsData,
     eventsDataLoading,
     dispatch,
+    communityData,
   };
 };

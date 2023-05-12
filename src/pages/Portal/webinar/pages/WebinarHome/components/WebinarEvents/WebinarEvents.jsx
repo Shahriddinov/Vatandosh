@@ -8,12 +8,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMeetingAll } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { Spinner } from "../../../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { createSelector } from "@reduxjs/toolkit";
 
 function WebinarEvents() {
   const { t } = useTranslation();
   const [eventType, setEventType] = useState("webinar");
   const [page, setPage] = useState(1);
-  const meetingsData = useSelector((store) => store.meetingSlice.meetingsData);
+  const сhangeMeetingsData = createSelector(
+    (store) => store.meetingSlice.meetingsData,
+    (meetingsData) => {
+      const data = [];
+      meetingsData.forEach((item) => {
+        const dataFindIndex = data.findIndex((el) => el.id === item.id);
+        if (dataFindIndex < 0) {
+          data.push(item);
+        }
+      });
+      return data;
+    }
+  );
+
+  const meetingsData = useSelector(сhangeMeetingsData);
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
   );
@@ -24,8 +39,6 @@ function WebinarEvents() {
   useEffect(() => {
     dispatch(getMeetingAll({ page, eventType }));
   }, [eventType, page]);
-
-  console.log(meetingsData);
 
   if (meetingsloading) {
     return <Spinner />;
@@ -57,7 +70,7 @@ function WebinarEvents() {
           </div>
         </div>
         <div className="webinar-page">
-          {meetingsData.meetings?.map((webinar) => (
+          {meetingsData.map((webinar) => (
             <div className="webinar-box" key={webinar.id}>
               <img
                 src={`${PORTAL_IMAGE_URL}${webinar.image}`}
@@ -75,7 +88,7 @@ function WebinarEvents() {
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
                   className="webinar-more"
                 >
-                  {t("webinar.header2")}
+                  {t("more")}
                 </Link>
                 <Link
                   to={`/portal-category/webinar/webinar-register/${webinar.id}`}

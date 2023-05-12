@@ -2,21 +2,24 @@ import React from "react";
 import "./associationsEvents.scss";
 
 import { InformationServicesSlider } from "../../../../InformationServices/InformationServicesSlider/InformationServicesSlider";
-import Card from "../../../../../component/card/Card";
 import ArrowRight from "../../../../../assets/images/informationServices/arrowRight.png";
 import { Pagination, Spinner } from "../../../../../component";
 import { useCommunityEventsFetching } from "./hooks/useCommunityEventsFetching";
 import { useTranslation } from "react-i18next";
 import { CommunityCard } from "../../components";
+import { paginationCount } from "../../../../../helpers/extraFunction";
 
 const AssociationsEvents = () => {
-  const { data, dataLoading, paginationFetching } =
+  const { data, dataLoading, paginationFetching, page } =
     useCommunityEventsFetching();
   const { t } = useTranslation();
 
   if (dataLoading) {
     return <Spinner position="full" />;
   }
+  const pagination = paginationCount(data?.total, 6);
+
+  console.log(pagination);
 
   return (
     <div className="container associations__events__container">
@@ -28,20 +31,23 @@ const AssociationsEvents = () => {
           <span>{t("communityAssociation.navbar.navbar_link3")}</span>
         </p>
       </div>
-      <InformationServicesSlider data={data} />
+      <InformationServicesSlider data={data?.data} />
       <div className="events__cards">
-        {data.map((card) => (
+        {data?.data?.map((card) => (
           <div className="main-content-card" key={card.id}>
-            <CommunityCard {...card} pathUrl="events" />
+            <CommunityCard
+              {...card}
+              pathUrl="portal-category/community-association/event"
+            />
           </div>
         ))}
       </div>
-      {2 >= 1 ? (
+      {pagination > 1 ? (
         <div className="associations__events__paginator">
           <Pagination
-            page={1}
+            page={page}
             paginationFetching={paginationFetching}
-            count={10}
+            count={pagination}
           />
         </div>
       ) : null}

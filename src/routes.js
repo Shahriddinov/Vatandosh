@@ -151,6 +151,13 @@ const CommunityAssociationRegister = lazy(() =>
     "./pages/Portal/communityAssociation/pages/communityAssociationRegister/CommunityAssociationRegister"
   )
 );
+
+const ComunityEventsDetail = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityEventsDetail/ComunityEventsDetail"
+  )
+);
+
 const CommunityAssociationDetail = lazy(() =>
   import(
     /*webpackChunkName: CommunityAssociationDetail*/
@@ -436,10 +443,7 @@ const RoutesContainer = () => {
                 element={<CommunityAssociationCountry />}
               />
               <Route path="associations" element={<Associations />} />
-              <Route
-                path=":pageName"
-                element={<CommunityAssociationEvents />}
-              />
+              <Route path="events" element={<CommunityAssociationEvents />} />
               <Route
                 path="country/:communityCountry/:communityCountryId"
                 element={<CommunityAssociationDetail />}
@@ -448,6 +452,7 @@ const RoutesContainer = () => {
                 path="application"
                 element={<CommunityAssociationRegister />}
               />
+              <Route path="event/:eventId" element={<ComunityEventsDetail />} />
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>

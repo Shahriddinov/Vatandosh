@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { webinar } from "../webinar";
 import { CalendarIcon } from "../../../../../assets/images/expert";
@@ -8,11 +8,28 @@ import { Spinner } from "../../../../../component";
 import { getMeetingAll } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useTranslation } from "react-i18next";
+import ArrowDown from "../../../../../assets/images/icons/arrowDown.svg";
+import { createSelector } from "@reduxjs/toolkit";
 
 function WebinarEvents() {
   const { t } = useTranslation();
   const { event } = useParams();
-  const meetingsData = useSelector((store) => store.meetingSlice.meetingsData);
+  const [page, setPage] = useState(1);
+  const сhangeMeetingsData = createSelector(
+    (store) => store.meetingSlice.meetingsData,
+    (meetingsData) => {
+      const data = [];
+      meetingsData.forEach((item) => {
+        const dataFindIndex = data.findIndex((el) => el.id === item.id);
+        if (dataFindIndex < 0) {
+          data.push(item);
+        }
+      });
+      return data;
+    }
+  );
+
+  const meetingsData = useSelector(сhangeMeetingsData);
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
   );
@@ -21,8 +38,8 @@ function WebinarEvents() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMeetingAll());
-  }, []);
+    dispatch(getMeetingAll({ page }));
+  }, [page]);
 
   if (meetingsloading) {
     return <Spinner />;
@@ -36,25 +53,8 @@ function WebinarEvents() {
         <div className="webinar-list">
           <h3 className="webinar-name">Tadbirlar</h3>
         </div>
-        {/* <div className="webinar-page">
-          {webinar?.map((webinar) => (
-            <div className="webinar-box">
-              <img src={webinar.image} alt="" className="webinar-img" />
-              <span>
-                <img src={CalendarIcon} />
-                <p>12.02.2023</p>
-              </span>
-              <h5 className="webinar-names">{webinar.title}</h5>
-              <p className="webinar-text">{webinar.text}</p>
-              <div className="webinar-bottom">
-                <Link className="webinar-more">Batafsil</Link>
-                <Link className="webinar-links">Ishtirok etish</Link>
-              </div>
-            </div>
-          ))}
-        </div> */}
         <div className="webinar-page">
-          {meetingsData.meetings?.map((webinar) => (
+          {meetingsData.map((webinar) => (
             <div className="webinar-box" key={webinar.id}>
               <img
                 src={`${PORTAL_IMAGE_URL}${webinar.image}`}
@@ -72,7 +72,7 @@ function WebinarEvents() {
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
                   className="webinar-more"
                 >
-                  {t("webinar.header2")}
+                  {t("more")}
                 </Link>
                 <Link
                   to={`/portal-category/webinar/webinar-register/${webinar.id}`}
@@ -83,6 +83,12 @@ function WebinarEvents() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="see_more_button">
+          <button onClick={() => setPage(page + 1)}>
+            <img src={ArrowDown} alt="" />
+            Ko'proq ko'rsatish
+          </button>
         </div>
       </div>
     </div>
