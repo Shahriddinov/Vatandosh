@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import scripka from "../../../../../../../assets/images/expert/scripka-icon.svg";
 import { useDispatch } from "react-redux";
-import { postExpertRegister1 } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { postExpertRegister } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
 export default function RegisterItem1({ activeBarItem }) {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export default function RegisterItem1({ activeBarItem }) {
     e.preventDefault();
     if (!formData.avatar_url) return alert(t("expert.uploadnew"));
     if (!formData.passport_file) return alert(t("expert.passportFile"));
-    const res = await dispatch(postExpertRegister1(formData));
+    const res = await dispatch(postExpertRegister(formData));
     console.log(res);
   };
 
