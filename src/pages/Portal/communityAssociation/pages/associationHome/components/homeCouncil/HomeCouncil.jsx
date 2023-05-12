@@ -7,7 +7,7 @@ import { LazySpinner } from "../../../../../../../component";
 import "./communityHomeCouncil.scss";
 import { extraFun } from "./extra";
 
-const CommunityHomeCouncil = ({ councilData }) => {
+const CommunityHomeCouncil = ({ councilData, allCommunityGet }) => {
   const { imgSrc, imgAlt, filteredText } = extraFun(councilData.body);
   const { ref, inView } = useInView({
     threshold: 0,
@@ -33,7 +33,7 @@ const CommunityHomeCouncil = ({ councilData }) => {
                   <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
                 </div>
               </div>
-              <CommunityCouncilStatics />
+              <CommunityCouncilStatics allCommunityGet={allCommunityGet} />
             </>
           ) : (
             <LazySpinner height="350px" />

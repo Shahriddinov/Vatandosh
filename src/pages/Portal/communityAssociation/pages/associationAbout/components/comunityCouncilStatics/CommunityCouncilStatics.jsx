@@ -36,7 +36,7 @@ const data = [
   },
 ];
 
-const CommunityCouncilStatics = () => {
+const CommunityCouncilStatics = ({ allCommunityGet }) => {
   const { t } = useTranslation();
   return (
     <div className="community-home-council-right">
@@ -45,8 +45,8 @@ const CommunityCouncilStatics = () => {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>88</h4>
-        <p>{t("expert.expertsand")}</p>
+        <h4>{allCommunityGet?.total}</h4>
+        <p>{t("communityAssociation.navbar.navbar_link2")}</p>
       </div>
       <div className="community-home-council__bottom">
         <span className="community-home-council__span">

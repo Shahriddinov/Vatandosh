@@ -10,9 +10,18 @@ import {
   POST_COMMUNITY_IMAGE,
 } from "../../../services/api/utils";
 
-export const getAllEvents = createAsyncThunk("getAllEvents", async () => {
-  return await axios.get(GET_COMMUNITY_ALL_EVENT).then((res) => res.data);
-});
+export const getAllEvents = createAsyncThunk(
+  "getAllEvents",
+  async ({ per_page, page }) => {
+    return await axios({
+      url: GET_COMMUNITY_ALL_EVENT,
+      params: {
+        per_page,
+        page,
+      },
+    }).then((res) => res.data);
+  }
+);
 
 export const getLocation = createAsyncThunk("getLocation", async () => {
   return await axios.get(GET_LOCATION).then((res) => res.data);
@@ -24,13 +33,13 @@ export const getAllRegions = createAsyncThunk("getAllRegions", async () => {
 
 export const getAllCommunity = createAsyncThunk(
   "getAllCommunity",
-  async ({ page, region }) => {
+  async ({ page, region_id }) => {
     return await axios({
       url: GET_COMMUNITY_ALL_PAGINATION,
       method: "GET",
       params: {
         page,
-        region,
+        region_id,
       },
     }).then((res) => res.data);
   }
