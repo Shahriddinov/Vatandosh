@@ -4,9 +4,19 @@ import img from "../../../../../assets/images/portal/4.png";
 import "./VictorinaWinner.scss";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { imageUrl } from "../../../../../services/api/utils";
 
 export default function VictorinaWinner() {
   const { t } = useTranslation();
+  const { id } = useParams();
+
+  const quizData = useSelector((state) =>
+    state.quizSlice.quizData.participants.find((evt) => evt?.id === Number(id))
+  );
+
+  console.log(quizData);
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/victorina" },
@@ -29,43 +39,14 @@ export default function VictorinaWinner() {
           <div className="victorinawinner-main">
             <img src={img} alt="error" />
             <div className="victorinawinner-main-profile">
-              <img src={img} alt="error" />
+              <img src={`${imageUrl}/${quizData?.user?.avatar}`} alt="error" />
               <div className="victorinawinner-main-profile-desc">
-                <p>Xayitboev Nurali</p>
-                <span>1-o‘rin g‘olibi</span>
+                <p>{quizData.user.name}</p>
+                <span>{quizData.position}-o‘rin g‘olibi</span>
               </div>
             </div>
             <h3>{t("victorina.winnerprice")}</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+            <p>{quizData.description}</p>
             <ShareFriends />
           </div>
           <CouncilStatics />

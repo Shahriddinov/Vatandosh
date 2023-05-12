@@ -5,7 +5,9 @@ import { imageUrl } from "../../../../../services/api/utils";
 
 export default function WinnerCard({ el }) {
   return (
-    <Link to={"/portal-category/victorina/winner/12"} className="winnercard">
+    <Link
+      to={`/portal-category/victorina/winner/${el?.id}`}
+      className="winnercard">
       <img src={`${imageUrl}/${el?.user.avatar}`} alt="error" />
       <div className="winnercard-desc">
         <span> "ZIYOUZ VIKTORINASI" {el?.position}-o‘rin g‘olibi</span>

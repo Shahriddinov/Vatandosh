@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
 import "./VictorinaProject.scss";
 import img from "../../../../../assets/images/portal/5.png";
-import CouncilStatics from "../../../volunter/pages/VolunterHome/components/Council/CouncilStatics";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
@@ -15,7 +14,7 @@ import TestPopUp from "../../components/TestPopUp/TestPopUp";
 import WinnerCard from "../../components/WinnerCard/WinnerCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
-import victorinaQuiz from "../../../../../reduxToolkit/victorinaQuiz";
+import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -178,7 +177,7 @@ export default function VictorinaProject() {
               <p dangerouslySetInnerHTML={{ __html: quizData?.description }} />
             </div>
           </div>
-          <CouncilStatics />
+          <VictorinaStatics />
         </div>
         <>
           <div

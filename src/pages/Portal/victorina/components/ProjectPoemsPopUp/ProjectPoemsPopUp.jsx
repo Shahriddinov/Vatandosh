@@ -26,7 +26,6 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
     document: communityCreateData.document,
   });
 
-  console.log(communityCreateData.path);
 
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];

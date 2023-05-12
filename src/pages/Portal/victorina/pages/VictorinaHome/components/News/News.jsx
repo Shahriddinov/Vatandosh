@@ -4,10 +4,10 @@ import {
   ViewIcon,
   WhiteCalendar,
 } from "../../../../../../../assets/images/expert";
-import { news } from "../../../../../expert/pages/ExpertHome/news";
+import { imageUrl } from "../../../../../../../services/api/utils";
 import "./News.scss";
 
-function VictorinaNews() {
+function VictorinaNews({ expertNews }) {
   return (
     <div className="expertnews">
       <div className="container">
@@ -25,15 +25,15 @@ function VictorinaNews() {
             <img src={NewsImage} alt="error" />
           </div>
           <div className="expertnews-right">
-            {news.map((news) => (
+            {expertNews?.data?.map((news) => (
               <div className="expertnews-list" key={news.id}>
-                <img src={news.images} alt={news.title} />
+                <img src={`${imageUrl}/${news?.image}`} alt={news.title} />
                 <div>
                   <h5>{news.title}</h5>
                   <div className="expertnews-title">
                     <span className="expertnews-item">
                       <img src={CalendarIcon} alt="Calendar Icon" />
-                      <p>{news.creadData}</p>
+                      <p>{news.created_at.slice(0, 10)}</p>
                     </span>
                     <span className="expertnews-item">
                       <img src={ViewIcon} alt="Calendar Icon" />

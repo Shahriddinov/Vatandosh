@@ -4,7 +4,6 @@ import {
   ExcludeIcon,
   ViewIcon,
 } from "../../../../../assets/images/expert";
-import { victorine } from "../victorina";
 import "./MoreVictorina.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";

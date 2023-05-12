@@ -10,21 +10,21 @@ export default function VictorinaLayout() {
   const { t } = useTranslation();
 
   const navData = [
-    { id: 1, url: "/portal-category/victorina", label: "Asosiy" },
+    { id: 1, url: "/portal-category/victorina", label: t("expert.main") },
     {
       id: 2,
       url: "/portal-category/victorina/victorina-more",
-      label: "Viktorinalar",
+      label: t("victorina.victorinas"),
     },
     {
       id: 3,
       url: "/portal-category/victorina/victorina-finish",
-      label: "Viktorina yakunlanganlar",
+      label: t("victorina.end"),
     },
     {
       id: 4,
       url: "/portal-category/victorina/contact",
-      label: "Bog‘lanish",
+      label: t("communityAssociation.navbar.navbar_link4"),
     },
   ];
 

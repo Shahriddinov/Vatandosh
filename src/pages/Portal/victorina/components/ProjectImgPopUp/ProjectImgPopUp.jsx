@@ -6,10 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
 import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
+import { sendVictorinaFile } from "../../../../../reduxToolkit/victorinaFile/download";
+import { useParams } from "react-router-dom";
 
 export default function ProjectImgPopUp({ setactivePopUp }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const [formData, setFormData] = useState({
+    image: "",
+    passport: "",
+    fio: "",
+  });
+
   const communityCreateData = useSelector(
     (store) => store.mediaFileSlice.communityImagePost
   );
@@ -17,8 +27,12 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
     document: communityCreateData.document,
   });
 
-  const handleSumbit = (e) => {
-    e.preventDefault();
+  const handleValue = (event) => {
+    const selectedValue = event.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      fio: selectedValue,
+    }));
   };
 
   const handleChangeApplication = ({ key, value }) => {
@@ -44,12 +58,46 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
     }
   };
 
+  const handleChangeApplicationOne = ({ key, value }) => {
+    if (key === "logo" || key === "passport") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      dispatch(mediaVictorinaImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "passport" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+      dispatch(mediaFileSlice(newCommunityCreateData));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      fio: formData.fio,
+      passport: communityCreateData?.path,
+      image: communityCreateData?.path,
+    };
+
+    dispatch(sendVictorinaFile({ id, data }));
+  };
+
   return (
     <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}></div>
-      <form onSubmit={handleSumbit} className="victorina-popup">
+      <form onSubmit={handleSubmit} className="victorina-popup">
         <h3 className="victorina-popup-title">{t("victorina.joinproject")}</h3>
         <div style={{ display: "flex", gap: "15px", width: "100%" }}>
           <label
@@ -61,13 +109,12 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
             </p>
             <div>
               <input
-                // required
+                required
                 type="text"
-                minLength={3}
-                maxLength={30}
                 name="fio"
                 id="fio"
                 placeholder={t("victorina.name")}
+                onChange={handleValue}
               />
             </div>
           </label>
@@ -80,12 +127,18 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
             </p>
             <div>
               <input
-                // required
+                required
                 type="file"
                 id="passport"
                 name="passport"
                 placeholder="Yuklang"
                 accept="application/pdf, image/*"
+                onChange={(evt) =>
+                  handleChangeApplicationOne({
+                    key: "passport",
+                    value: evt.target.files[0],
+                  })
+                }
               />
             </div>
           </label>
@@ -94,9 +147,9 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
           htmlFor="registeritem-label-fileinput"
           className="registeritem-imgInput">
           <input
-            required
-            id="registeritem-label-fileinput"
+            requid="registeritem-label-fileinput"
             className="registeritem-label-fileinput"
+            id="registeritem-label-fileinput"
             type="file"
             name="image"
             accept="image/png, image/gif, image/jpeg, image/jpg"

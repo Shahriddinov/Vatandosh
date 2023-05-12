@@ -4,20 +4,10 @@ import {
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
 import "./Victorina.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuizz } from "../../../../../../../reduxToolkit/victorinaQuiz/getquiz";
-import { useEffect } from "react";
 import { imageUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
 
-function Victorina() {
-  const dispatch = useDispatch();
-  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
-
-  useEffect(() => {
-    dispatch(getQuizz());
-  }, []);
-
+function Victorina({ quizData }) {
   return (
     <div className="victorina">
       <div className="container">
