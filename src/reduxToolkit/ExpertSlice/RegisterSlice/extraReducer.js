@@ -6,10 +6,12 @@ import {
   GET_EXPERT_EDUCATION,
   GET_EXPERT_EDUCATION_SPECIALIZATION,
   GET_EXPERT_EMPLOYMENT,
+  GET_EXPERT_REGISTER,
   GET_EXPERT_REGISTER_MENU,
   SEND_EXPERT_EDUCATION,
   SEND_EXPERT_EMPLOYMENT,
   SEND_EXPERT_REGISTER,
+  SEND_EXPERT_SCIENTIFIC,
   UPDATE_EXPERT_EDUCATION,
   UPDATE_EXPERT_EMPLOYMENT,
 } from "../../../services/api/utils";
@@ -22,11 +24,10 @@ export const getExpertRegisterMenu = createAsyncThunk(
     return await axios.get(GET_EXPERT_REGISTER_MENU).then((res) => res.data);
   }
 );
-
+// register
 export const postExpertRegister = createAsyncThunk(
   "expert/register1/post",
   async (payload) => {
-    console.log(payload);
     return await axios
       .post(SEND_EXPERT_REGISTER, payload, {
         headers: {
@@ -35,6 +36,12 @@ export const postExpertRegister = createAsyncThunk(
         },
       })
       .then((res) => res.data);
+  }
+);
+export const getExpertRegister = createAsyncThunk(
+  "expert/register/get",
+  async () => {
+    return await axios.get(GET_EXPERT_REGISTER).then((res) => res.data);
   }
 );
 
@@ -137,6 +144,21 @@ export const deleteExpertEmployment = createAsyncThunk(
   async (id) => {
     return await axios
       .delete(`${DELETE_EXPERT_EMPLOYMENT}/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
+  }
+);
+
+// Scientific degree
+export const postExpertScientific = createAsyncThunk(
+  "expert/scientific/post",
+  async (payload) => {
+    return await axios
+      .post(SEND_EXPERT_SCIENTIFIC, payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
