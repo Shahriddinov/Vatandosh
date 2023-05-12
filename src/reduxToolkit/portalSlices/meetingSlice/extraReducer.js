@@ -24,7 +24,6 @@ export const meetingCreate = createAsyncThunk(
 export const getMeetingAll = createAsyncThunk(
   "getMeetingAll",
   async (props) => {
-    console.log(props);
     return await axios({
       url: GET_MEETINGS,
       method: "GET",

@@ -10,6 +10,7 @@ import {
 const initialState = {
   meetingsLoading: true,
   meetingsData: [],
+  meetingsNumber: null,
   meetingOneLoading: true,
   meetingOnedata: [],
   pageLoading: true,
@@ -31,19 +32,20 @@ const meetingSlice = createSlice({
   extraReducers: (builder) => {
     // Get meetings
     builder
-      .addCase(getMeetingAll.pending, (state) => {
-        console.log("pending");
+      .addCase(getMeetingAll.pending, (state, { meta }) => {
+        if (meta.arg.eventType) {
+          state.meetingsData = [];
+        }
         state.meetingsLoading = true;
       })
-      .addCase(getMeetingAll.fulfilled, (state, action) => {
+      .addCase(getMeetingAll.fulfilled, (state, { payload }) => {
         state.meetingsLoading = false;
-        state.meetingsData = action.payload;
-        console.log("fullfild");
+        state.meetingsData = [...state.meetingsData, ...payload.meetings];
+        console.log(payload);
       })
       .addCase(getMeetingAll.rejected, (state, action) => {
         state.meetingsLoading = false;
         state.error = action.error.message;
-        console.log("error");
       });
 
     // Get one meeting
@@ -83,7 +85,6 @@ const meetingSlice = createSlice({
       .addCase(meetingCreate.fulfilled, (state, action) => {
         state.createMeetingLoading = false;
         state.createMeetingData = action.payload;
-        console.log(action.payload);
         state.status = "succeeded";
       })
       .addCase(meetingCreate.rejected, (state, action) => {

@@ -25,7 +25,7 @@ function WebinarHome() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPortalNews("webinar"));
+    dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
   }, [language]);
 
   const headerData = {
@@ -53,7 +53,7 @@ function WebinarHome() {
       </div>
       <WebinarCouncil councilData={councilData} />
       <WebinarEvents />
-      <News communityNews={meetingNews} />
+      <News communityNews={meetingNews?.data} />
     </div>
   );
 }
