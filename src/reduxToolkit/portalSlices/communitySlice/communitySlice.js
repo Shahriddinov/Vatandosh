@@ -4,6 +4,7 @@ import {
   getAllEvents,
   getAllRegions,
   getCommunityHomePage,
+  getEventsDetail,
   getLocation,
   postCommunityCreate,
   postCommunityImage,
@@ -39,6 +40,9 @@ const data = {
 const initialState = {
   allEvents: [],
   allEventsLoading: true,
+
+  oneEventsDetail: {},
+  oneEventsDetailLoading: true,
 
   locationGet: [],
   locationGetLoading: true,
@@ -113,9 +117,11 @@ const communitySlice = createSlice({
       });
 
     builder
-      .addCase(getAllCommunity.pending, (state) => {
+      .addCase(getAllCommunity.pending, (state, { meta }) => {
         state.allCommunityGetLoading = true;
-        state.communityPayloadCount = 0;
+        if (meta.arg.region_id) {
+          state.allCommunityData = [];
+        }
       })
       .addCase(getAllCommunity.fulfilled, (state, { payload }) => {
         state.allCommunityData = [...state.allCommunityData, ...payload.data];
@@ -125,7 +131,6 @@ const communitySlice = createSlice({
       .addCase(getAllCommunity.rejected, (state, { error }) => {
         state.allRegionsGetLoading = false;
         state.error = error.message;
-        state.communityPayloadCount = 0;
       });
 
     builder
@@ -193,6 +198,19 @@ const communitySlice = createSlice({
       })
       .addCase(getAllEvents.rejected, (state, { error }) => {
         state.allEventsLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getEventsDetail.pending, (state) => {
+        state.oneEventsDetailLoading = true;
+      })
+      .addCase(getEventsDetail.fulfilled, (state, { payload }) => {
+        state.oneEventsDetailLoading = false;
+        state.oneEventsDetail = payload;
+      })
+      .addCase(getEventsDetail.rejected, (state, { error }) => {
+        state.oneEventsDetailLoading = false;
         state.error = error.message;
       });
 

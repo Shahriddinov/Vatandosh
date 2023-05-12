@@ -33,7 +33,7 @@ const CommunityAssociationDetail = () => {
     eventsData,
     eventsDataLoading,
     allCommunityGetLoading,
-  } = useAssociationFetching();
+  } = useAssociationFetching(communityCountryId);
 
   if (eventsDataLoading || allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
@@ -46,7 +46,6 @@ const CommunityAssociationDetail = () => {
     (el) => el.id === communityCountryId * 1
   );
 
-  console.log(findCountry);
   return (
     <>
       <ToastContainer

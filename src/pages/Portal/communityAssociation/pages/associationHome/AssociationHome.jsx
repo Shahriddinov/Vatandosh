@@ -22,12 +22,15 @@ const AssociationHome = () => {
     communityNewsLoading,
     allCommunityGet,
     allCommunityGetLoading,
+    allRegions,
+    allRegionsGetLoading,
   } = useCommunityHomeFetching();
 
   if (
     communityHomePageLoading ||
     communityNewsLoading ||
-    allCommunityGetLoading
+    allCommunityGetLoading ||
+    allRegionsGetLoading
   ) {
     return <Spinner />;
   } else if (communityHomePageError) {
@@ -61,6 +64,7 @@ const AssociationHome = () => {
       <CommunityHomeCouncil
         councilData={councilData}
         allCommunityGet={allCommunityGet}
+        allRegions={allRegions}
       />
       <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
       <News communityNews={communityNews?.data} />

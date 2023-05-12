@@ -6,8 +6,9 @@ import {
   getAllEvents,
   getAllRegions,
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useParams } from "react-router-dom";
 
-export const useAssociationFetching = () => {
+export const useAssociationFetching = (communityCountryId) => {
   const language = useSelector((store) => store.language.language);
   const allRegionsChange = createSelector(
     (store) => store.community.allRegionsGet,
@@ -30,6 +31,7 @@ export const useAssociationFetching = () => {
     }
   );
 
+  const { communityCountry } = useParams();
   const allRegions = useSelector(allRegionsChange);
   const allRegionsGetLoading = useSelector(
     (store) => store.community.allRegionsGetLoading
@@ -52,7 +54,11 @@ export const useAssociationFetching = () => {
   useEffect(() => {
     dispatch(getAllEvents({ per_page: 10, page: 1 }));
     dispatch(getAllRegions());
-    dispatch(getAllCommunity({ page: 1 }));
+    if (!communityCountry) {
+      dispatch(getAllCommunity({ page: 1, per_page: 8 }));
+    } else {
+      dispatch(getAllCommunity({ page: 1, region_id: communityCountry }));
+    }
   }, [dispatch, language]);
 
   allRegions.unshift({

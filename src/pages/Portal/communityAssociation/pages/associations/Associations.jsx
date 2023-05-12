@@ -15,6 +15,7 @@ import { paginationCount } from "../../../../../helpers/extraFunction";
 const Associations = () => {
   const [count, setCount] = useState(1);
   const [country, setCountry] = useState("Barcha davlatlar");
+  const [conId, setConId] = useState("");
   const { t } = useTranslation();
   const {
     allRegions,
@@ -26,16 +27,18 @@ const Associations = () => {
   } = useAssociationFetching();
 
   const handleChange = (event, { id, name }) => {
-    dispatch(getAllCommunity({ region_id: id }));
+    dispatch(getAllCommunity({ region_id: id, per_page: 8 }));
     setCountry(name ? name : "Rossiya");
+    setConId(id);
+    setCount(1);
   };
 
   if (allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
   }
+
   const pagination = paginationCount(allCommunityGet?.total, 8);
 
-  console.log(pagination);
   return (
     <div className="associations">
       <div className="container">
@@ -71,7 +74,13 @@ const Associations = () => {
             <button
               className="more__less__button"
               onClick={() => {
-                dispatch(getAllCommunity({ page: count + 1 }));
+                dispatch(
+                  getAllCommunity({
+                    page: count + 1,
+                    per_page: "8",
+                    region_id: conId,
+                  })
+                );
                 setCount((prev) => prev + 1);
               }}
             >
