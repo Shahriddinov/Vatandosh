@@ -13,10 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLocation } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import {
   createExpertEmployment,
+  deleteExpertEmployment,
   getExpertEmployment,
+  updateExpertEmployment,
 } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
-export default function RegisterItem3({ activeBarItem }) {
+export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { locationGet } = useSelector((state) => state.community);
@@ -79,6 +81,38 @@ export default function RegisterItem3({ activeBarItem }) {
           ),
         })
       );
+    if (update.length) {
+      update.forEach(
+        ({
+          id,
+          company,
+          position,
+          location_id,
+          status,
+          city,
+          start_date,
+          finish_date,
+        }) =>
+          dispatch(
+            updateExpertEmployment({
+              id,
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+              specialization: position,
+            })
+          )
+      );
+      setActiveBarItem(3);
+    }
+  };
+
+  const deleteEmployment = (id) => {
+    dispatch(deleteExpertEmployment(id));
   };
 
   useEffect(() => {
@@ -112,12 +146,13 @@ export default function RegisterItem3({ activeBarItem }) {
               <div className="registeritem-label-delete-single">
                 <AiOutlineDelete
                   style={data.length === 1 ? { display: "none" } : null}
-                  onClick={() =>
+                  onClick={() => {
+                    deleteEmployment(el.id);
                     setData(
                       (prev) =>
                         (prev = prev.filter((item) => item.id !== el.id))
-                    )
-                  }
+                    );
+                  }}
                 />
               </div>
               <div className="registeritem-flexbox">
@@ -210,7 +245,7 @@ export default function RegisterItem3({ activeBarItem }) {
               </label>
               <div className="registeritem-checkbox">
                 <Checkbox
-                  checked={el.status}
+                  checked={el.status || false}
                   inputProps={{ "aria-label": "controlled" }}
                   onChange={(e) => handleChange({ ...el, status: !el.status })}
                 />

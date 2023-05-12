@@ -99,7 +99,9 @@ export const CREATE_MEETING = "/meeting/create/";
 // Update requests
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const UPDATE_EXPERT_EDUCATION = `${portalBaseUrl}/education/update`;
+export const UPDATE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/update`;
 
 // Delete requests
 export const VOLUNTEER_DELETE = "/volunteer/delete/";
 export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;
+export const DELETE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/delete`;
