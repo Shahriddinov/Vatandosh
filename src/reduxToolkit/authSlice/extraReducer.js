@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../services/api/axios";
 
 import {
   GET_NATIONS,
@@ -10,8 +10,6 @@ import {
   SET_PASSWORD,
   VERIFY_TOKEN,
 } from "../../services/api/utils";
-
-const token = localStorage.getItem("token");
 
 // Sign Up
 export const sendEmail = createAsyncThunk(
@@ -97,7 +95,6 @@ export const registerUser = createAsyncThunk(
       .post(REGISTER, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${token}`,
         },
       })
       .then((res) => res.data);
