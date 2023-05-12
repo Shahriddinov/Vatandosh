@@ -59,15 +59,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
       );
     if (update.length)
       update.forEach(
-        async ({
-          id,
-          institution,
-          faculty,
-          specialization_id,
-          level,
-          type,
-        }) => {
-          const res = await dispatch(
+        ({ id, institution, faculty, specialization_id, level, type }) => {
+          dispatch(
             updateExpertEducation({
               id,
               institution,
@@ -77,7 +70,6 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
               type,
             })
           );
-          console.log(res);
           return;
         }
       );

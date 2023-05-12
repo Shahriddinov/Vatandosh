@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
   DELETE_EXPERT_EDUCATION,
+  DELETE_EXPERT_EMPLOYMENT,
   GET_EXPERT_EDUCATION,
   GET_EXPERT_EDUCATION_SPECIALIZATION,
   GET_EXPERT_EMPLOYMENT,
@@ -10,6 +11,7 @@ import {
   SEND_EXPERT_EMPLOYMENT,
   SEND_EXPERT_REGISTER,
   UPDATE_EXPERT_EDUCATION,
+  UPDATE_EXPERT_EMPLOYMENT,
 } from "../../../services/api/utils";
 
 const token = localStorage.getItem("token");
@@ -109,10 +111,37 @@ export const createExpertEmployment = createAsyncThunk(
       .then((res) => res.data);
   }
 );
-
 export const getExpertEmployment = createAsyncThunk(
   "expert/employment/get",
   async () => {
     return await axios.get(GET_EXPERT_EMPLOYMENT).then((res) => res.data);
+  }
+);
+export const updateExpertEmployment = createAsyncThunk(
+  "expert/employment/update",
+  async (payload) => {
+    const id = payload.id;
+    delete payload.id;
+    return await axios
+      .patch(`${UPDATE_EXPERT_EMPLOYMENT}/${id}`, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
+  }
+);
+export const deleteExpertEmployment = createAsyncThunk(
+  "expert/employment/delete",
+  async (id) => {
+    return await axios
+      .delete(`${DELETE_EXPERT_EMPLOYMENT}/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
   }
 );
