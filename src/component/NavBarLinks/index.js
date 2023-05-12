@@ -91,9 +91,10 @@ export const NavBarLinks = () => {
     },
     {
       title: t("contects"),
-    },{
-      title: t("contects"),
     },
+    // {
+    //   title: t("contects"),
+    // },
     {
       title: t("information"),
       links: [
@@ -127,9 +128,10 @@ export const NavBarLinks = () => {
     {
       title: t("link"),
       url: "/contact",
-    }, {
-      title: t("link"),
-      url: "/contact",
     },
+    // {
+    //   title: t("link"),
+    //   url: "/contact",
+    // },
   ];
 };
