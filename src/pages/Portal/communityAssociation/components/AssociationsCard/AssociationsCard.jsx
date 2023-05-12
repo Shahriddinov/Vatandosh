@@ -12,11 +12,11 @@ const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
       <div className="association__country">
         <img
           src={
-            countryInfo.flag ? `${PORTAL_IMAGE_URL}${countryInfo?.flag}` : Flag
+            countryInfo?.flag ? `${PORTAL_IMAGE_URL}${countryInfo?.flag}` : Flag
           }
           alt=""
         />
-        {countryInfo.name}
+        {countryInfo?.name}
       </div>
       <div className="association__info">
         <p className="association__name">
@@ -28,7 +28,7 @@ const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
       </div>
       <p>Chop etilgan maqolalar soni: {countryInfo?.count}</p>
       <Link
-        to={`/portal-category/community-association/country/${countryInfo.id}/${id}`}
+        to={`/portal-category/community-association/country/${countryInfo?.id}/${id}`}
         className="more__button"
       >
         Batafsil

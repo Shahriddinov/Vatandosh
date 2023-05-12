@@ -42,13 +42,11 @@ const CommunityAssociationDetail = () => {
   const findCountryCategoryData = allRegions.find(
     (el) => el.id === communityCountry * 1
   );
-  const findCountry = allCommunityGet.find(
+  const findCountry = allCommunityGet?.data?.find(
     (el) => el.id === communityCountryId * 1
   );
 
-  console.log(findCountryCategoryData);
   console.log(findCountry);
-
   return (
     <>
       <ToastContainer
@@ -83,7 +81,7 @@ const CommunityAssociationDetail = () => {
         <CommunityAssociationCompanyOffer {...findCountry} />
         <PortalMiniSlider
           title={`${t("events")}`}
-          data={eventsData}
+          data={eventsData?.data}
           fetchUrl="events"
         />
 

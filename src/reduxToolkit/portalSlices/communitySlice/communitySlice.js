@@ -46,7 +46,8 @@ const initialState = {
   allRegionsGet: [],
   allRegionsGetLoading: true,
 
-  allCommunityGet: [],
+  allCommunityGet: {},
+  allCommunityData: [],
   allCommunityGetLoading: true,
 
   communityHomePageData: {},
@@ -114,16 +115,17 @@ const communitySlice = createSlice({
     builder
       .addCase(getAllCommunity.pending, (state) => {
         state.allCommunityGetLoading = true;
+        state.communityPayloadCount = 0;
       })
       .addCase(getAllCommunity.fulfilled, (state, { payload }) => {
-        state.allCommunityGetLoading = false;
-        let payloadCount = 0;
-
+        state.allCommunityData = [...state.allCommunityData, ...payload.data];
         state.allCommunityGet = payload;
+        state.allCommunityGetLoading = false;
       })
       .addCase(getAllCommunity.rejected, (state, { error }) => {
         state.allRegionsGetLoading = false;
         state.error = error.message;
+        state.communityPayloadCount = 0;
       });
 
     builder

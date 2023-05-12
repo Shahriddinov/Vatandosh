@@ -28,14 +28,12 @@ export const useCountryGet = () => {
   const loadingNews = useSelector((store) => store.portalNews.loading);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllRegions());
     dispatch(getAllCommunity({ region: communityCountry }));
-
-    if (!news.length) {
-      dispatch(getPortalNews("community"));
-    }
-  }, [language]);
+    dispatch(getPortalNews({ type: "community", per_page: "10", page: 1 }));
+  }, [dispatch, language, communityCountry]);
 
   return {
     allCommunityGet,

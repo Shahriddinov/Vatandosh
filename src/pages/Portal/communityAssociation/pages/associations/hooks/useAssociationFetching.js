@@ -16,6 +16,20 @@ export const useAssociationFetching = () => {
     }
   );
 
+  const communityDataChange = createSelector(
+    (store) => store.community.allCommunityData,
+    (community) => {
+      const data = [];
+      community.forEach((item) => {
+        const objIndex = data.findIndex((el) => el.id === item.id);
+        if (objIndex < 0) {
+          data.push(item);
+        }
+      });
+      return data;
+    }
+  );
+
   const allRegions = useSelector(allRegionsChange);
   const allRegionsGetLoading = useSelector(
     (store) => store.community.allRegionsGetLoading
@@ -24,6 +38,7 @@ export const useAssociationFetching = () => {
   const allCommunityGet = useSelector(
     (store) => store.community.allCommunityGet
   );
+  const communityData = useSelector(communityDataChange);
   const allCommunityGetLoading = useSelector(
     (store) => store.community.allCommunityGetLoading
   );
@@ -35,16 +50,16 @@ export const useAssociationFetching = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllEvents());
+    dispatch(getAllEvents({ per_page: 10, page: 1 }));
     dispatch(getAllRegions());
     dispatch(getAllCommunity({ page: 1 }));
-  }, [language]);
+  }, [dispatch, language]);
 
   allRegions.unshift({
     id: "all",
-    name: "all",
-    label: "All",
-    code: "All",
+    name: "Barcha davlatlar",
+    label: "Barcha davlatlar",
+    code: "Barcha davlatlar",
     flag: null,
     count: 0,
   });
@@ -57,5 +72,6 @@ export const useAssociationFetching = () => {
     eventsData,
     eventsDataLoading,
     dispatch,
+    communityData,
   };
 };

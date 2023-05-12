@@ -47,7 +47,7 @@ const Country = () => {
     ],
   };
 
-  console.log(news);
+  console.log(allCommunityGet);
 
   return (
     <div className="community-association-country">
@@ -56,12 +56,12 @@ const Country = () => {
           <PageTop pageTopData={pageTopData} />
 
           <ul className="community-association-country__list">
-            {allCommunityGet.map((item, i) => (
+            {allCommunityGet?.data?.map((item, i) => (
               <li className="community-association-country__item" key={item.id}>
                 <span className="community-association-country__item--text">
                   {i + 1}.{" "}
-                  {item.name
-                    .split(" ")
+                  {item?.name
+                    ?.split(" ")
                     .slice(0, item.name.split(" ").length - 1)
                     .join(" ")}
                   <Link
@@ -69,7 +69,7 @@ const Country = () => {
                     to={`/portal-category/community-association/country/${communityCountry}/${item?.id}`}
                   >
                     {" "}
-                    {item.name.split(" ")[item.name.split(" ").length - 1]}
+                    {item?.name?.split(" ")[item?.name?.split(" ").length - 1]}
                   </Link>
                 </span>
                 <img
@@ -83,7 +83,7 @@ const Country = () => {
 
           <PortalMiniSlider
             title={`${t("news")}`}
-            data={news}
+            data={news?.data}
             fetchUrl="events"
           />
         </div>
