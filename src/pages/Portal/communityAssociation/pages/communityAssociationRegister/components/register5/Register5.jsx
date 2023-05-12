@@ -16,8 +16,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { CreateFunction } from "./extra";
 import { useEffect } from "react";
 import { communityCreateReset } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
 import { useState } from "react";
 const options = {
   position: "top-right",
@@ -35,6 +33,8 @@ const cityData = [
   { id: 2, label: "Toshkent" },
   { id: 3, label: "Samarqand" },
   { id: 4, label: "Buxora" },
+  { id: 5, label: "Xorazim" },
+  { id: 6, label: "Namangan" },
 ];
 
 const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
@@ -72,6 +72,8 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
     if (communityCreateDataStatus === "success") {
       toast.success("success sending !", options);
       dispatch(communityCreateReset());
+      setConfirm(false);
+      setLinks([{ id: 1, link: "" }]);
       handleClick("1");
     } else if (communityCreateDataStatus === "error") {
       toast.error("error sending!", options);
@@ -82,8 +84,8 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
     return null;
   }
 
-  console.log(confirm);
-
+  const countryNameValue = locationData.find((el) => el.id === data.region_id);
+  const cityNameValue = cityData.find((el) => el.id === data.city_id);
   return (
     <>
       <ToastContainer
@@ -115,7 +117,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
         >
           <div className="community-association-register5__input_box">
             <MySelect
-              value={data.region_id}
+              value={countryNameValue?.label ? countryNameValue.label : ""}
               handleChange={handleChangeApplication5}
               data={locationData}
               text={t("communityAssociation.menu5_info.input1_name")}
@@ -123,7 +125,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
             />
 
             <MySelect
-              value={data.city_id}
+              value={cityNameValue?.label ? cityNameValue.label : ""}
               handleChange={handleChangeApplication5}
               data={cityData}
               text={t("communityAssociation.menu5_info.input2_name")}
@@ -206,6 +208,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
               control={<Checkbox />}
               label={t("communityAssociation.menu5_info.input7_name")}
               onChange={(e) => setConfirm(e.target.checked)}
+              checked={confirm}
             />
           </div>
           <button

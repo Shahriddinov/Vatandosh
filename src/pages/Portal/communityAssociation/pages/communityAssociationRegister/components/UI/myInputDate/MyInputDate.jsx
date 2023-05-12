@@ -12,7 +12,6 @@ const MyInputDate = ({ text, handleChange, valueKey, value }) => {
     console.log(val);
     handleChange({ key: valueKey, value: val });
   };
-  console.log(value);
 
   return (
     <div className="my-input-date">
@@ -28,7 +27,7 @@ const MyInputDate = ({ text, handleChange, valueKey, value }) => {
           <DatePicker
             onChange={handleChangeDate}
             style={{ width: "100%" }}
-            defaultValue={dayjs(value)}
+            value={value ? dayjs(value) : "__ __ ____"}
             required
           />
         </DemoContainer>
