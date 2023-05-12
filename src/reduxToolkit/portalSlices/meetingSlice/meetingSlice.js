@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
   getMeetingAll,
+  getMeetingCount,
   getMeetingOne,
   getMeetingPage,
   meetingCreate,
@@ -10,7 +11,8 @@ import {
 const initialState = {
   meetingsLoading: true,
   meetingsData: [],
-  meetingsNumber: null,
+  meetingsCountLoading: true,
+  meetingsCount: 0,
   meetingOneLoading: true,
   meetingOnedata: [],
   pageLoading: true,
@@ -33,7 +35,7 @@ const meetingSlice = createSlice({
     // Get meetings
     builder
       .addCase(getMeetingAll.pending, (state, { meta }) => {
-        if (meta.arg.eventType) {
+        if (meta.arg.eventType || meta.arg.pageType) {
           state.meetingsData = [];
         }
         state.meetingsLoading = true;
@@ -41,10 +43,23 @@ const meetingSlice = createSlice({
       .addCase(getMeetingAll.fulfilled, (state, { payload }) => {
         state.meetingsLoading = false;
         state.meetingsData = [...state.meetingsData, ...payload.meetings];
-        console.log(payload);
       })
       .addCase(getMeetingAll.rejected, (state, action) => {
         state.meetingsLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Get meetings count
+    builder
+      .addCase(getMeetingCount.pending, (state) => {
+        state.meetingsCountLoading = true;
+      })
+      .addCase(getMeetingCount.fulfilled, (state, { payload }) => {
+        state.meetingsCountLoading = false;
+        state.meetingsCount = payload.count;
+      })
+      .addCase(getMeetingCount.rejected, (state, action) => {
+        state.meetingsCountLoading = false;
         state.error = action.error.message;
       });
 

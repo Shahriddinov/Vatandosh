@@ -1,40 +1,43 @@
-import React from 'react'
-import './bookCard.scss'
+import React from "react";
+import "./bookCard.scss";
 
-import FullStar from '../../../../../assets/images/library/fullStar.svg'
-import EmptyStar from '../../../../../assets/images/library/emptyStar.svg'
+import FullStar from "../../../../../assets/images/library/fullStar.svg";
+import EmptyStar from "../../../../../assets/images/library/emptyStar.svg";
+import { Link } from "react-router-dom";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
-const BookCard = ({cover, title, author, rating, ratingCount}) => {
+const BookCard = ({ thumbnail, title, author, stars, id }) => {
+  const fullStars = Math.floor(stars / 2);
+  const emptyStars = 5 - fullStars;
 
-    const fullStars = Math.floor(rating)
-    const emptyStars = 5 - fullStars
+  const starsImg = [];
 
-    const stars = [];
+  for (let i = 0; i < fullStars; i++) {
+    starsImg.push(<img src={FullStar} alt="" key={i} />);
+  }
 
-    for (let i = 0; i < fullStars; i++) {
-        stars.push(<img src={FullStar} alt="" />)
-    }
+  for (let i = 0; i < emptyStars; i++) {
+    starsImg.push(<img src={EmptyStar} alt="" key={i + 6} />);
+  }
 
-    for (let i = 0; i < emptyStars; i++) {
-        stars.push(<img src={EmptyStar} alt="" />)
-    }
-
-    return (
-        <div className="book__card">
-            <div className="book__cover">
-                <img src={cover} alt="" />
-            </div>
-            <div className="book__info">
-                <h3>{title}</h3>
-                <p>{author}</p>
-                <div className="book__rating">
-                    <p>{rating}</p>
-                    {stars}
-                    <span>({ratingCount})</span>
-                </div>
-            </div>
+  return (
+    <Link to={`/portal-category/library/about/${id}`}>
+      <div className="book__card">
+        <div className="book__cover">
+          <img src={`${PORTAL_IMAGE_URL}${thumbnail}`} alt="" />
         </div>
-    )
-}
+        <div className="book__info">
+          <h3>{title}</h3>
+          <p>{author}</p>
+          <div className="book__rating">
+            <p>{stars / 2}</p>
+            {starsImg}
+            <span>(421)</span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
 
-export default BookCard
+export default BookCard;

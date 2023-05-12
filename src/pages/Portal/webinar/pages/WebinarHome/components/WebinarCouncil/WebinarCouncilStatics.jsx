@@ -1,5 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
+import { getMeetingCount } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Spinner } from "../../../../../../../component";
 
 const data = [
   {
@@ -36,6 +40,27 @@ const data = [
 
 function WebinarCouncilStatics() {
   const { t } = useTranslation();
+
+  const meetingsCount = useSelector(
+    (store) => store.meetingSlice.meetingsCount
+  );
+  const meetingsCountLoading = useSelector(
+    (store) => store.meetingSlice.meetingsCountLoading
+  );
+  const meetingError = useSelector((store) => store.meetingSlice.error);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMeetingCount());
+  }, []);
+
+  if (meetingsCountLoading) {
+    return <Spinner />;
+  } else if (meetingError) {
+    return <p>Error</p>;
+  }
+
   return (
     <div>
       <div className="council-right">
@@ -44,7 +69,7 @@ function WebinarCouncilStatics() {
             <h5>O'tkazilgan tadbirlar soni</h5>
             <img src={UserIcon} alt="error" />
           </span>
-          <h4>250</h4>
+          <h4>{meetingsCount}</h4>
           <p>Tadbirlar</p>
         </div>
         <div style={{ marginTop: "15px" }}>

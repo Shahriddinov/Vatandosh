@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import {
-  getLibraryAll,
-  getLibraryOne
-} from "./extraReducer";
+import { getLibraryAll, getLibraryOne, getLibrarySlider } from "./extraReducer";
 
 const initialState = {
   libraryLoading: true,
   libraryData: [],
   ebookLoading: true,
   ebookData: [],
+  librarySliderLoading: true,
+  librarySliderData: [],
   error: null,
 };
 
@@ -43,6 +42,20 @@ const librarySlice = createSlice({
       })
       .addCase(getLibraryOne.rejected, (state, action) => {
         state.ebookLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Get slider
+    builder
+      .addCase(getLibrarySlider.pending, (state) => {
+        state.librarySliderLoading = true;
+      })
+      .addCase(getLibrarySlider.fulfilled, (state, action) => {
+        state.librarySliderLoading = false;
+        state.librarySliderData = action.payload;
+      })
+      .addCase(getLibrarySlider.rejected, (state, action) => {
+        state.librarySliderLoading = false;
         state.error = action.error.message;
       });
   },

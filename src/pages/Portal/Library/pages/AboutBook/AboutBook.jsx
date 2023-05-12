@@ -1,127 +1,161 @@
-import React from 'react'
-import './aboutBook.scss'
-import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
+import React from "react";
+import "./aboutBook.scss";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
-import FullStar from '../../../../../assets/images/library/fullStar.svg'
-import EmptyStar from '../../../../../assets/images/library/emptyStar.svg'
-import { Button } from '@mui/material'
+import FullStar from "../../../../../assets/images/library/fullStar.svg";
+import EmptyStar from "../../../../../assets/images/library/emptyStar.svg";
+import { Button } from "@mui/material";
 
-import Book1 from '../../../../../assets/images/library/ken.png'
-import Book2 from '../../../../../assets/images/library/agata.png'
-import Book3 from '../../../../../assets/images/library/jeyn.png'
-import Book4 from '../../../../../assets/images/library/paulo.png'
-import BookCard from '../../components/BookCard/BookCard'
+import Book1 from "../../../../../assets/images/library/ken.png";
+import Book2 from "../../../../../assets/images/library/agata.png";
+import Book3 from "../../../../../assets/images/library/jeyn.png";
+import Book4 from "../../../../../assets/images/library/paulo.png";
+import BookCard from "../../components/BookCard/BookCard";
+import { useParams } from "react-router-dom";
+import { useEbookFetching } from "../../hooks/ebookFetching";
+import { Spinner } from "../../../../../component";
+import { useLibraryFetching } from "../../hooks/libraryFetching";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const AboutBook = () => {
+  const lng = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
+  const { id } = useParams();
 
-    const lng = useSelector((state) => state.language.language);
-    const { t } = useTranslation();
+  const { ebookData, ebookLoading } = useEbookFetching(id);
+  const { libraryData, libraryLoading } = useLibraryFetching(4);
 
-    const rating = 4
-    const ratingCount = 421
+  const handleButtonClick = () => {
+    const url = PORTAL_IMAGE_URL + pdfFile[0].download_link;
+    window.open(url, "_blank");
+  };
 
-    const fullStars = Math.floor(rating)
-    const emptyStars = 5 - fullStars
+  const ratingCount = 421;
 
-    const stars = [];
+  const fullStars = Math.floor(ebookData.stars / 2);
+  const emptyStars = 5 - fullStars;
 
-    for (let i = 0; i < fullStars; i++) {
-        stars.push(<img src={FullStar} alt="" />)
-    }
+  const stars = [];
 
-    for (let i = 0; i < emptyStars; i++) {
-        stars.push(<img src={EmptyStar} alt="" />)
-    }
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<img src={FullStar} alt="" key={i} />);
+  }
 
-    const books = [
-        {
-            id: 121,
-            cover: Book1,
-            title: "Kakku uyasi uzra parvoz",
-            author: "Ken Kizi",
-            rating: 4.2,
-            ratingCount: 421
-        },
-        {
-            id: 122,
-            cover: Book2,
-            title: "Sharqiy ekspressdagi qotillik",
-            author: "Erix Mariya Remark",
-            rating: 5,
-            ratingCount: 421
-        },
-        {
-            id: 123,
-            cover: Book3,
-            title: "Andisha va g'urur",
-            author: "Jeyn Ostin",
-            rating: 3.2,
-            ratingCount: 421
-        },
-        {
-            id: 123,
-            cover: Book4,
-            title: "Alkimyogar",
-            author: "Paulo Koelo",
-            rating: 4.2,
-            ratingCount: 421
-        }
-    ]
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(<img src={EmptyStar} alt="" key={i + 5} />);
+  }
 
-    return (
-        <div className="about__book">
-            <div className="container about__book__wrapper">
-                <div className="book">
-                    <div className="about__book__cover">
-                        <img src={Book1} alt="" />
-                    </div>
-                    <div className="book__description">
-                        <h1>Book title</h1>
-                        <div className="book__rating">
-                            <p>{rating}</p>
-                            {stars}
-                            <span>({ratingCount})</span>
-                        </div>
-                        <h3>{t("library.author")}: <span>Falonchi</span></h3>
-                        <h3>{t("library.language")}: <span>Falonchi</span></h3>
-                        <Button variant="contained" size="large"  sx={{ width: "max-content", padding: '12px 22px', margin: "8px 0", boxShadow: 0, borderRadius: '12px', background: '#065EA9', textTransform: 'none', fontFamily: "Inter", fontSize: '14px', lineHeight: '24px', fontWeight: 400}}>
-                            {t("library.read_online")}
-                        </Button>
-                        <h3>{t("library.about")}</h3>
-                        <p className='description__text'>Based on an original new story by J.K. Rowling, Jack Thorne and John Tiffany, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play will receive its world premiere in London’s West End on 30th July 2016. It was always difficult being Harry Potter and it isn’t much easier now that he is an overworked employee of the Ministry of Magic, a husband, and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he </p>
-                        <span className='description__more'>{t("library.read_more")}</span>
-                    </div>
-                </div>
-                <div className="book__details">
-                    <h2>{t("library.about_the_book")}</h2>
-                    <div className="horizontal__line"/>
-                    <div className="details__row">
-                        <ul>
-                            <li>{t("library.for_ages")}: <span>9 years or older</span></li>
-                            <li>{t("library.format")}: <span>Hard cover</span></li>
-                            <li>{t("library.published_date")}: <span>January 1, 1998</span></li>
-                            <li>{t("library.language")}: <span>English</span></li>
-                        </ul>
-                        <ul>
-                            <li>For ages: <span>9 years or older</span></li>
-                            <li>Format: <span>Hard cover</span></li>
-                            <li>Published date: <span>January 1, 1998</span></li>
-                            <li>Language: <span>English</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="recommended__books">
-                    <h1>{t("library.suggestions")}</h1>
-                    <div className="books__row">
-                        {books.map((book) => (
-                            <BookCard {...book}/>
-                        ))}
-                    </div>
-                </div>
+  if (ebookLoading) {
+    return <Spinner />;
+  }
+  const pdfFile = JSON.parse(ebookData.book_file);
+
+  return (
+    <div className="about__book">
+      <div className="container about__book__wrapper">
+        <div className="book">
+          <div className="about__book__cover">
+            <img src={`${PORTAL_IMAGE_URL}${ebookData.image}`} alt="" />
+          </div>
+          <div className="book__description">
+            <h1>{ebookData.title}</h1>
+            <div className="book__rating">
+              <p>{ebookData.stars}</p>
+              {stars}
+              <span>({ratingCount})</span>
             </div>
+            <h3>
+              {t("library.author")}: <span>{ebookData.author}</span>
+            </h3>
+            <h3>
+              {t("library.language")}: <span>{ebookData.language}</span>
+            </h3>
+            <Button
+              onClick={handleButtonClick}
+              variant="contained"
+              size="large"
+              sx={{
+                width: "max-content",
+                padding: "12px 22px",
+                margin: "8px 0",
+                boxShadow: 0,
+                borderRadius: "12px",
+                background: "#065EA9",
+                textTransform: "none",
+                fontFamily: "Inter",
+                fontSize: "14px",
+                lineHeight: "24px",
+                fontWeight: 400,
+              }}
+            >
+              {t("library.read_online")}
+            </Button>
+            <h3>{t("library.about")}</h3>
+            <p className="description__text">{ebookData.text}</p>
+            <span className="description__more">{t("library.read_more")}</span>
+          </div>
         </div>
-    )
-}
+        <div className="book__details">
+          <h2>{t("library.about_the_book")}</h2>
+          <div className="horizontal__line" />
+          <div className="details__row">
+            <ul>
+              <li>
+                {t("library.for_ages")}:{" "}
+                <span>{ebookData.ages} years or older</span>
+              </li>
+              <li>
+                {t("library.format")}: <span>{ebookData.format}</span>
+              </li>
+              <li>
+                {t("library.published_date")}:{" "}
+                <span>
+                  {new Date(ebookData.publication).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+              </li>
+              <li>
+                {t("library.language")}: <span>{ebookData.language}</span>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                Pages: <span>{ebookData.pages}</span>
+              </li>
+              <li>
+                STIR: <span>{ebookData.stir}</span>
+              </li>
+              <li>
+                Uploaded date:{" "}
+                <span>
+                  {new Date(ebookData.created_at).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+              </li>
+              <li>
+                Genre: <span>{ebookData.type}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="recommended__books">
+          <h1>{t("library.suggestions")}</h1>
+          <div className="books__row">
+            {libraryData.data?.map((book) => (
+              <BookCard {...book} key={book.id} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default AboutBook
+export default AboutBook;

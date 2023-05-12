@@ -23,12 +23,15 @@ import Book4 from "../../../../../assets/images/library/paulo.png";
 import Suggest from "../../components/suggestModal/Suggest";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useLibraryFetching } from "../../hooks/libraryFetching";
+import { Pagination, Spinner } from "../../../../../component";
+import { paginationCount } from "../../../../../helpers/extraFunction";
 
 const AllBooks = () => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
-  const [activeSort, setActiveSort] = useState("new");
+  const [activeSort, setActiveSort] = useState("all");
   const [suggestModal, setSuggestModal] = useState(false);
 
   const toggleModal = () => {
@@ -40,6 +43,15 @@ const AllBooks = () => {
       });
     }
   };
+
+  const {
+    libraryData,
+    libraryLoading,
+    librarySliderData,
+    librarySliderLoading,
+    activPage,
+    changePagination,
+  } = useLibraryFetching(12);
 
   const sliderData = [
     {
@@ -59,40 +71,11 @@ const AllBooks = () => {
     },
   ];
 
-  const books = [
-    {
-      id: 121,
-      cover: Book1,
-      title: "Kakku uyasi uzra parvoz",
-      author: "Ken Kizi",
-      rating: 4.2,
-      ratingCount: 421,
-    },
-    {
-      id: 122,
-      cover: Book2,
-      title: "Sharqiy ekspressdagi qotillik",
-      author: "Erix Mariya Remark",
-      rating: 5,
-      ratingCount: 421,
-    },
-    {
-      id: 123,
-      cover: Book3,
-      title: "Andisha va g'urur",
-      author: "Jeyn Ostin",
-      rating: 3.2,
-      ratingCount: 421,
-    },
-    {
-      id: 123,
-      cover: Book4,
-      title: "Alkimyogar",
-      author: "Paulo Koelo",
-      rating: 4.2,
-      ratingCount: 421,
-    },
-  ];
+  if (libraryLoading) {
+    return <Spinner />;
+  }
+
+  const totalPagination = paginationCount(libraryData?.total, 12);
 
   return (
     <>
@@ -204,6 +187,12 @@ const AllBooks = () => {
           <div className="all__books__sort">
             <ul>
               <li
+                className={activeSort === "all" ? "active" : ""}
+                onClick={() => setActiveSort("all")}
+              >
+                Barchasi
+              </li>
+              <li
                 className={activeSort === "new" ? "active" : ""}
                 onClick={() => setActiveSort("new")}
               >
@@ -221,10 +210,17 @@ const AllBooks = () => {
       </div>
       <div className="grey__bg">
         <div className="all__books__grid container">
-          {books.map((book) => (
+          {libraryData.data?.map((book) => (
             <BookCard {...book} key={book.id} />
           ))}
         </div>
+      </div>
+      <div className="all__books__pagination">
+        <Pagination
+          count={totalPagination}
+          paginationFetching={changePagination}
+          page={activPage}
+        />
       </div>
       {suggestModal && <Suggest toggleModal={toggleModal} lng={lng} t={t} />}
     </>

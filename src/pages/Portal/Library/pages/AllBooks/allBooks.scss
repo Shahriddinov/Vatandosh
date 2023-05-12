@@ -58,8 +58,7 @@
 .all__books__grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
+  gap: 78px;
   padding: 30px 25px;
 }
 
@@ -166,5 +165,14 @@
     font-size: 16px !important;
     height: 48px !important;
     border-radius: 12px !important;
+  }
+}
+
+.all__books__pagination {
+  padding-bottom: 60px;
+  background-color: #f4f5f7;
+
+  > div:first-child {
+    margin-top: 0;
   }
 }
