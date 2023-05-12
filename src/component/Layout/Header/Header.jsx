@@ -66,7 +66,7 @@ const Header = () => {
       <div className="header">
         <div className="header_navbar">
           <Link to="/" className="header_navbar_left">
-            <img src={Logo} alt="logo" />
+            <img className="header_navbar_left_logos" src={Logo} alt="logo" />
           </Link>
           <a
             href={`tel: ${contactData?.phone}`}

@@ -238,6 +238,11 @@ const Menus = () => {
             })}
           </Menu>
         </li>
+        <li className="menus_item ">
+          <Link to="/faq" className="menus_link">
+            {t("faq")}
+          </Link>
+        </li>
 
         <li className="menus_item">
           <Link to="/contact" className="menus_link">

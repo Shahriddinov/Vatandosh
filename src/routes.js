@@ -19,6 +19,7 @@ import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
+import FAQ from "./pages/Faq/Faq"
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -339,6 +340,7 @@ const routes = [
   { path: "/:page/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
+  { path: "/faq", element: FAQ },
   { path: "/flag", element: Flags },
   { path: "/anthem", element: Anthem },
   { path: "/coat", element: Coat },
