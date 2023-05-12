@@ -25,7 +25,7 @@ function VictorinaNews({ expertNews }) {
             <img src={NewsImage} alt="error" />
           </div>
           <div className="expertnews-right">
-            {expertNews?.map((news) => (
+            {expertNews?.data?.map((news) => (
               <div className="expertnews-list" key={news.id}>
                 <img src={`${imageUrl}/${news?.image}`} alt={news.title} />
                 <div>

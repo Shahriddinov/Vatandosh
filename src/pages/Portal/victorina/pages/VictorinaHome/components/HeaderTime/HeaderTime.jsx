@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./HeaderTime.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuizz } from "../../../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { imageUrl } from "../../../../../../../services/api/utils";
 
-function HeaderTime() {
+function HeaderTime({ quizData }) {
   const [slideIndex, setSlideIndex] = useState(1);
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
 
   const handleLeft = () => {
     if (slideIndex === 1) {
@@ -28,10 +23,6 @@ function HeaderTime() {
       setSlideIndex(slideIndex + 1);
     }
   };
-
-  useEffect(() => {
-    dispatch(getQuizz());
-  }, []);
 
   const [days, setDays] = useState("00");
   const [hours, setHours] = useState("00");

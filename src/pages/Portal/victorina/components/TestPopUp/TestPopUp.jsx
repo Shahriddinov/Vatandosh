@@ -25,9 +25,8 @@ export default function TestPopUp({ setactivePopUp }) {
   );
 
   const { t } = useTranslation();
-
   useEffect(() => {
-    dispatch(getTestQuizz(id));
+    dispatch(getTestQuizz({ id }));
   }, []);
 
   function prev() {
@@ -100,7 +99,12 @@ export default function TestPopUp({ setactivePopUp }) {
             className={`victorina-test-wrapper ${
               currentQuiz === evt?.id ? "active" : ""
             }`}>
-            <p className="victorina-test-list-desc">{evt.question}</p>
+            <p
+              className="victorina-test-list-desc"
+              dangerouslySetInnerHTML={{
+                __html: evt.question,
+              }}
+            />
             <div className="victorina-test-list-wrapper">
               <ul className="victorina-test-list">
                 {evt?.answers?.map((el) => (

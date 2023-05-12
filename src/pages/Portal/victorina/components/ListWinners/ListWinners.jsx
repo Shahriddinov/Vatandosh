@@ -3,29 +3,20 @@ import "./ListWinners.scss";
 import "swiper/css";
 import { Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import WinnerCard from "../WinnerCard/WinnerCard";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 
-export default function ListWinners() {
-  const dispatch = useDispatch();
+export default function ListWinners({ quizDataWinner }) {
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
-  const quizData = useSelector(
-    (state) => state.quizSlice.quizData.participants
-  );
+
   const { t } = useTranslation();
 
   const handleChange = (swiper) => {
     setisHiddenLeftBtn(swiper.isBeginning);
     setisHiddenRightBtn(swiper.isEnd);
   };
-
-  useEffect(() => {
-    dispatch(getQuizz());
-  }, []);
 
   return (
     <div className="listwinners">
@@ -68,7 +59,7 @@ export default function ListWinners() {
             },
           }}
           className="listwinners-list">
-          {quizData?.map((el) => (
+          {quizDataWinner?.map((el) => (
             <SwiperSlide key={el}>
               <WinnerCard el={el} />
             </SwiperSlide>
