@@ -68,7 +68,10 @@ export default function ExpertRegister() {
                 : null}
             </ul>
             <div className="expertregister-main-list">
-              <RegisterItem1 activeBarItem={activeBarItem} />
+              <RegisterItem1
+                activeBarItem={activeBarItem}
+                setActiveBarItem={setactiveBarItem}
+              />
               <RegisterItem2
                 activeBarItem={activeBarItem}
                 setActiveBarItem={setactiveBarItem}
@@ -77,7 +80,10 @@ export default function ExpertRegister() {
                 activeBarItem={activeBarItem}
                 setActiveBarItem={setactiveBarItem}
               />
-              <RegisterItem4 activeBarItem={activeBarItem} />
+              <RegisterItem4
+                activeBarItem={activeBarItem}
+                setactiveBarItem={setactiveBarItem}
+              />
               <RegisterItem5 activeBarItem={activeBarItem} />
             </div>
           </div>

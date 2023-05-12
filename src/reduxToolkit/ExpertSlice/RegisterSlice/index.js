@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getExpertEducation,
   getExpertEmployment,
+  getExpertRegister,
   getExpertRegisterMenu,
   getExpertSpecialization,
 } from "./extraReducer";
@@ -10,6 +11,10 @@ const initialState = {
   loading: true,
   error: null,
   menu: [],
+
+  userLoading: true,
+  user: null,
+  userError: null,
 
   education: [],
   educationLoading: true,
@@ -29,8 +34,8 @@ const expertRegisterSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // register
     builder
-      // register
       .addCase(getExpertRegisterMenu.pending, (state) => {
         state.loading = true;
       })
@@ -41,6 +46,19 @@ const expertRegisterSlice = createSlice({
       .addCase(getExpertRegisterMenu.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      });
+
+    builder
+      .addCase(getExpertRegister.pending, (state) => {
+        state.userLoading = true;
+      })
+      .addCase(getExpertRegister.fulfilled, (state, action) => {
+        state.userLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(getExpertRegister.rejected, (state, action) => {
+        state.userLoading = false;
+        state.userError = action.error.message;
       });
 
     // register education

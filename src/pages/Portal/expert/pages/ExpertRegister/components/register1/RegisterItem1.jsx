@@ -5,29 +5,50 @@ import pencil from "../../../../../../../assets/images/expert/input-pencil.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import scripka from "../../../../../../../assets/images/expert/scripka-icon.svg";
-import { useDispatch } from "react-redux";
-import { postExpertRegister } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getExpertRegister,
+  postExpertRegister,
+} from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { useEffect } from "react";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
-export default function RegisterItem1({ activeBarItem }) {
+export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.expertRegisterSlice);
+
   const [uploadImg, setuploadImg] = useState(null);
+  const [passport_file, setPassportFile] = useState();
   const [formData, setFormData] = useState({
     first_name: "",
     second_name: "",
     last_name: "",
-    avatar_url: null,
-    passport_file: null,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.avatar_url) return alert(t("expert.uploadnew"));
-    if (!formData.passport_file) return alert(t("expert.passportFile"));
-    const res = await dispatch(postExpertRegister(formData));
-    console.log(res);
+    const { first_name, second_name, last_name } = formData;
+
+    dispatch(
+      postExpertRegister({
+        first_name,
+        second_name,
+        last_name,
+        avatar_url: uploadImg,
+        passport_file,
+      })
+    );
+    setActiveBarItem(1);
   };
 
+  useEffect(() => {
+    dispatch(getExpertRegister());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFormData(user);
+  }, [user]);
   return (
     <form
       className={
@@ -44,7 +65,11 @@ export default function RegisterItem1({ activeBarItem }) {
             <div className="registeritem1-form-uploadImg-inputs">
               <img
                 src={
-                  uploadImg ? URL.createObjectURL(uploadImg) : DefaultProfilePic
+                  uploadImg
+                    ? URL.createObjectURL(uploadImg)
+                    : formData?.avatar_url
+                    ? `${PORTAL_IMAGE_URL}${formData?.avatar_url}`
+                    : DefaultProfilePic
                 }
                 alt=""
               />
@@ -59,7 +84,6 @@ export default function RegisterItem1({ activeBarItem }) {
                       ...args,
                       avatar_url: e.target.files[0],
                     }));
-                    e.target.files = null;
                   }}
                 />
                 {t("expert.uploadnew")}
@@ -78,7 +102,7 @@ export default function RegisterItem1({ activeBarItem }) {
               </button>
             </div>
             <span className="registeritem1-form-uploadImg-desc">
-              {formData.avatar_url?.name
+              {formData?.avatar_url?.name
                 ? formData.avatar_url.name
                 : t("expert.uploaddesc")}
             </span>
@@ -94,7 +118,7 @@ export default function RegisterItem1({ activeBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={30}
-                  value={formData.second_name}
+                  value={formData?.second_name ? formData.second_name : ""}
                   onChange={(e) => {
                     e.target.value = e.target.value.trim();
                     setFormData((args) => ({
@@ -117,7 +141,7 @@ export default function RegisterItem1({ activeBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={30}
-                  value={formData.first_name}
+                  value={formData?.first_name ? formData.first_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
                     e.target.value = e.target.value.trim();
@@ -140,7 +164,7 @@ export default function RegisterItem1({ activeBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={30}
-                  value={formData.last_name}
+                  value={formData?.last_name ? formData.last_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
                     e.target.value = e.target.value.trim();
@@ -158,27 +182,17 @@ export default function RegisterItem1({ activeBarItem }) {
                 {t("expert.passportFile")}
                 <span>*</span>
               </p>
-              <label htmlFor="registeritem-label-fileinput" required>
+              <label htmlFor="registeritem-label-fileinput-htmlFor" required>
                 <input
-                  id="registeritem-label-fileinput"
+                  id="registeritem-label-fileinput-htmlFor"
                   className="registeritem-label-fileinput"
                   type="file"
                   accept=".pdf, .doc"
-                  placeholder={
-                    formData.passport_file
-                      ? formData.passport_file.name
-                      : t("expert.inputplaceholder")
-                  }
-                  onChange={(e) => {
-                    setFormData((args) => ({
-                      ...args,
-                      passport_file: e.target.files[0],
-                    }));
-                  }}
+                  onChange={(e) => setPassportFile(e.target.files[0])}
                 />
                 <p>
-                  {formData.passport_file?.name
-                    ? formData.passport_file.name
+                  {formData?.passport_file?.name
+                    ? formData?.passport_file.name
                     : t("expert.uploadfile")}
                 </p>
                 <img src={scripka} alt="" />

@@ -34,8 +34,7 @@ export default function RegisterItem5({ activeBarItem }) {
 
     if (formData.suggestions.trim() && formData.suggestions.trim()) {
       const res = await dispatch(postSuggestions(formData));
-      console.log(res);
-      if (res) {
+      if (!res.error) {
         alert("Suggestion succesfull create!");
         history("/portal-category/expert");
       }

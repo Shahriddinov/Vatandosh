@@ -1,14 +1,29 @@
 import "../customStyles.scss";
 import scripka from "../../../../../../../assets/images/expert/scripka-icon.svg";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import { postExpertScientific } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { useDispatch } from "react-redux";
 
-export default function RegisterItem4({ activeBarItem }) {
+export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const [data, setData] = useState({
+    academic_degree: "",
+    scientific_title: "",
+    topic_of_scientific_article: "",
+    article_published_journal_name: "",
+    scientific_article_created_at: "",
+    article_url: "",
+    article_file: null,
+    main_science_directions: [],
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await dispatch(postExpertScientific(data));
+    if (res.payload) setactiveBarItem(4);
   };
-
   return (
     <form
       className={
@@ -30,8 +45,15 @@ export default function RegisterItem4({ activeBarItem }) {
                 <input
                   required
                   type="text"
+                  value={data.academic_degree}
                   minLength={3}
                   maxLength={100}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      academic_degree: e.target.value,
+                    }))
+                  }
                   placeholder={t("expert.inputplaceholder")}
                 />
               </div>
@@ -46,7 +68,14 @@ export default function RegisterItem4({ activeBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={100}
+                  value={data.scientific_title}
                   placeholder={t("expert.inputplaceholder")}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      scientific_title: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </label>
@@ -61,7 +90,14 @@ export default function RegisterItem4({ activeBarItem }) {
                 type="text"
                 minLength={3}
                 maxLength={100}
+                value={data.topic_of_scientific_article}
                 placeholder={t("expert.inputplaceholder")}
+                onChange={(e) =>
+                  setData((prev) => ({
+                    ...prev,
+                    topic_of_scientific_article: e.target.value,
+                  }))
+                }
               />
             </div>
           </label>
@@ -76,8 +112,15 @@ export default function RegisterItem4({ activeBarItem }) {
                   required
                   type="text"
                   minLength={3}
-                  maxLength={50}
+                  maxLength={100}
+                  value={data.article_published_journal_name}
                   placeholder={t("expert.inputplaceholder")}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      article_published_journal_name: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </label>
@@ -90,39 +133,55 @@ export default function RegisterItem4({ activeBarItem }) {
                   required
                   type="date"
                   placeholder={t("expert.inputplaceholder")}
+                  value={data.scientific_article_created_at}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      scientific_article_created_at: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </label>
           </div>
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.articlelink")} <span>*</span>
-              </p>
+              <p>{t("expert.articlelink")}</p>
               <div>
                 <input
-                  required
                   type="text"
                   minLength={3}
                   maxLength={50}
                   placeholder={t("expert.inputplaceholder")}
+                  value={data.article_url}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      article_url: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.articlefile")}
-                <span>*</span>
-              </p>
-              <label htmlFor="registeritem-label-fileinput" required>
+              <p>{t("expert.articlefile")}</p>
+              <label htmlFor="registeritem-label-fileinput-id">
                 <input
-                  required
-                  id="registeritem-label-fileinput"
+                  id="registeritem-label-fileinput-id"
                   className="registeritem-label-fileinput"
                   type="file"
-                  placeholder={t("expert.inputplaceholder")}
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      article_file: e.target.files[0],
+                    }))
+                  }
                 />
-                <p>{t("expert.uploadfile")}</p>
+                <p>
+                  {data.article_file
+                    ? data.article_file?.name
+                    : t("expert.uploadfile")}
+                </p>
                 <img src={scripka} alt="" />
               </label>
             </label>
@@ -139,12 +198,23 @@ export default function RegisterItem4({ activeBarItem }) {
                 minLength={3}
                 maxLength={50}
                 placeholder={t("expert.inputplaceholder")}
+                onChange={(e) => {
+                  const arr = e.target.value.split(",");
+                  setData((prev) => ({
+                    ...prev,
+                    main_science_directions: arr,
+                  }));
+                }}
               />
             </div>
-            <ul className="registeritem-interest-list">
-              <li>Global governance</li>
-              <li>International trade and development</li>
-            </ul>
+            {data.main_science_directions.length ? (
+              <ul className="registeritem-interest-list">
+                {data.main_science_directions.map((el, index) => {
+                  if (el.trim().length) return <li key={index}>{el}</li>;
+                  else return null;
+                })}
+              </ul>
+            ) : null}
           </label>
         </div>
       </div>
