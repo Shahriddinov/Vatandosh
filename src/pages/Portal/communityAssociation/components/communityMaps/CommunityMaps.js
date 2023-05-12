@@ -2,15 +2,15 @@ import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { findSingleRegion } from "../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import CommunityAssociationMapModal from "../CommunityAssociationMapModal/CommunityAssociationMapModal";
-import { getAllRegions } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
-const CommunityMaps = ({ title = "dwfewfew" }) => {
+const CommunityMaps = ({ title }) => {
   const [active, setActive] = useState(false);
   const svgRef = useRef(null);
   const zoomValue = useRef(1);
+  const language = useSelector((store) => store.language.language);
   const data = [
     "EN",
     "UZ",
@@ -47,8 +47,7 @@ const CommunityMaps = ({ title = "dwfewfew" }) => {
         el.style.fill = "#93C5FD";
       }
     });
-    dispatch(getAllRegions());
-  }, []);
+  }, [dispatch, language, data]);
 
   const changeActive = (val) => {
     if (svgRef.current) {

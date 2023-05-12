@@ -4,6 +4,7 @@ import {
   GET_COMMUNITY_ALL_EVENT,
   GET_COMMUNITY_ALL_PAGINATION,
   GET_COMMUNITY_ALL_REGIONS,
+  GET_COMMUNITY_EVENT_DETAIL,
   GET_COMMUNITY_HOMEPAGE_DATA,
   GET_LOCATION,
   POST_COMMUNITY_CREATE,
@@ -23,6 +24,15 @@ export const getAllEvents = createAsyncThunk(
   }
 );
 
+export const getEventsDetail = createAsyncThunk(
+  "getEventsDetail",
+  async (eventId) => {
+    return await axios({
+      url: GET_COMMUNITY_EVENT_DETAIL + eventId,
+    }).then((res) => res.data);
+  }
+);
+
 export const getLocation = createAsyncThunk("getLocation", async () => {
   return await axios.get(GET_LOCATION).then((res) => res.data);
 });
@@ -33,13 +43,14 @@ export const getAllRegions = createAsyncThunk("getAllRegions", async () => {
 
 export const getAllCommunity = createAsyncThunk(
   "getAllCommunity",
-  async ({ page, region_id }) => {
+  async ({ page, region_id, per_page }) => {
     return await axios({
       url: GET_COMMUNITY_ALL_PAGINATION,
       method: "GET",
       params: {
         page,
         region_id,
+        per_page,
       },
     }).then((res) => res.data);
   }

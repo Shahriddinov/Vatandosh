@@ -35,7 +35,10 @@ const AssociationsEvents = () => {
       <div className="events__cards">
         {data?.data?.map((card) => (
           <div className="main-content-card" key={card.id}>
-            <CommunityCard {...card} pathUrl="events" />
+            <CommunityCard
+              {...card}
+              pathUrl="portal-category/community-association/event"
+            />
           </div>
         ))}
       </div>

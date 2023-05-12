@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllCommunity,
+  getAllRegions,
   getCommunityHomePage,
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useEffect } from "react";
@@ -25,12 +26,19 @@ export const useCommunityHomeFetching = () => {
   const allCommunityGetLoading = useSelector(
     (store) => store.community.allCommunityGetLoading
   );
+
+  const allRegions = useSelector((store) => store.community.allRegionsGet);
+  const allRegionsGetLoading = useSelector(
+    (store) => store.community.allRegionsGetLoading
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllCommunity({ page: 1 }));
     dispatch(getCommunityHomePage());
     dispatch(getPortalNews({ type: "community", per_page: "10", page: 1 }));
+    dispatch(getAllRegions());
   }, [dispatch, language]);
 
   return {
@@ -41,5 +49,7 @@ export const useCommunityHomeFetching = () => {
     communityNewsLoading,
     allCommunityGet,
     allCommunityGetLoading,
+    allRegions,
+    allRegionsGetLoading,
   };
 };

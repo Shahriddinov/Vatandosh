@@ -47,7 +47,7 @@ const Country = () => {
     ],
   };
 
-  console.log(allCommunityGet);
+  // console.log(allCommunityGet);
 
   return (
     <div className="community-association-country">
