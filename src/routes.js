@@ -489,7 +489,7 @@ const RoutesContainer = () => {
             <Route path="/portal-category/library" element={<LibraryLayout />}>
               <Route index element={<LibraryAllBooks />} />
               <Route path="search" element={<LibrarySearchBooks />} />
-              <Route path="about" element={<LibraryAboutBook />} />
+              <Route path="about/:id" element={<LibraryAboutBook />} />
             </Route>
 
             <Route

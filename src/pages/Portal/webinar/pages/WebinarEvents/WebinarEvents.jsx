@@ -38,8 +38,8 @@ function WebinarEvents() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMeetingAll({ page }));
-  }, [page]);
+    dispatch(getMeetingAll({ page, pageType: "events" }));
+  }, []);
 
   if (meetingsloading) {
     return <Spinner />;
@@ -85,7 +85,12 @@ function WebinarEvents() {
           ))}
         </div>
         <div className="see_more_button">
-          <button onClick={() => setPage(page + 1)}>
+          <button
+            onClick={() => {
+              setPage(page + 1);
+              dispatch(getMeetingAll({ page: page + 1 }));
+            }}
+          >
             <img src={ArrowDown} alt="" />
             Ko'proq ko'rsatish
           </button>

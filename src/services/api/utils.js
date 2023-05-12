@@ -65,6 +65,7 @@ export const POST_COMMUNITY_IMAGE = "/media/create";
 export const POST_COMMUNITY_NEWS_CREATE = "/community/news";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
+export const GET_LIBRARY_SLIDER = "/ebook/all-slider-images";
 export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 export const GET_MEETINGS = "/meeting/meetings";

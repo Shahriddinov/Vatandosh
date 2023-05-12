@@ -35,6 +35,13 @@ export const getMeetingAll = createAsyncThunk(
   }
 );
 
+export const getMeetingCount = createAsyncThunk("getMeetingCount", async () => {
+  return await axios({
+    url: GET_MEETINGS,
+    method: "GET",
+  }).then((res) => res.data);
+});
+
 export const getMeetingOne = createAsyncThunk("getMeetingOne", async (id) => {
   return await axios.get(`${GET_MEETING_BY_ID}${id}`).then((res) => res.data);
 });
