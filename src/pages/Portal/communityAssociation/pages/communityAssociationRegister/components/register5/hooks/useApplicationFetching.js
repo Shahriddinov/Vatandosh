@@ -13,11 +13,25 @@ const useApplicationFetching = () => {
       }));
     }
   );
+  const cityDataChange = createSelector(
+    (store) => store.community.allCitiesGet,
+    (cities) => {
+      return cities.map((el) => ({
+        ...el,
+        label: el.name ? el.name : "Toshkent",
+      }));
+    }
+  );
   const language = useSelector((store) => store.language.language);
   const locationData = useSelector(locationDataChange);
   const locationLoading = useSelector(
     (store) => store.community.locationGetLoading
   );
+
+  const allCitiesGetLoading = useSelector(
+    (store) => store.community.allCitiesGetLoading
+  );
+  const allCitiesGet = useSelector(cityDataChange);
 
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
@@ -73,6 +87,8 @@ const useApplicationFetching = () => {
     locationData,
     locationLoading,
     communityCreateDataStatus,
+    allCitiesGetLoading,
+    allCitiesGet,
   };
 };
 

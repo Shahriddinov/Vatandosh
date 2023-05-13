@@ -1,4 +1,7 @@
-import { postCommunityCreate } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  getCountryCities,
+  postCommunityCreate,
+} from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 export class CreateFunction {
@@ -42,6 +45,9 @@ export class CreateFunction {
   extraHandleChangeApplication = ({ key, value, id }) => {
     if (key !== "link") {
       this.setData((prev) => ({ ...prev, [key]: value }));
+    }
+    if (key === "region_id") {
+      this.dispatch(getCountryCities({ location_id: value }));
     }
 
     const newArr = this.links.map((el) => {

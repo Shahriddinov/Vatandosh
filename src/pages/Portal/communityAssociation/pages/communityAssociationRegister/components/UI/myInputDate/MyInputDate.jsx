@@ -13,6 +13,7 @@ const MyInputDate = ({ text, handleChange, valueKey, value }) => {
     handleChange({ key: valueKey, value: val });
   };
 
+  console.log(value);
   return (
     <div className="my-input-date">
       <FormHelperText id="outlined-weight-helper-text">

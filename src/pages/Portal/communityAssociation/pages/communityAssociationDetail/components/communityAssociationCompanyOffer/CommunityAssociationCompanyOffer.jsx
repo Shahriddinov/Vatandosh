@@ -92,7 +92,7 @@ const CommunityAssociationCompanyOffer = (props) => {
               >
                 {props.attachments?.map((item, i) => (
                   <SwiperSlide
-                    key={item.id}
+                    key={i}
                     className="community-association-company-offer__inner_item community-association-company-offer__inner_card "
                   >
                     <div

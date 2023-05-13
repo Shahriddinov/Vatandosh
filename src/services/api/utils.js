@@ -51,6 +51,7 @@ export const GET_PORTAL_NEWS = "/news";
 export const GET_LOCATION = "/location/get-all";
 export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
+export const GET_CITIES = "/location/get-all";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
 export const GET_COMMUNITY_ALL_EVENT = "/community/all-event";

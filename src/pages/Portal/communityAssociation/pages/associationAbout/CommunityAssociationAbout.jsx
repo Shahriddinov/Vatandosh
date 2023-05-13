@@ -6,15 +6,24 @@ import CommunityPageTop from "./components/communityPageTop/CommunityPageTop";
 import CommunityCouncilStatics from "./components/comunityCouncilStatics/CommunityCouncilStatics";
 import DOMPurify from "dompurify";
 
+import "./communityAbout.scss";
 const CommunityAssociationAbout = () => {
   const { t } = useTranslation();
   const {
     communityHomePageData,
     communityHomePageLoading,
     communityHomePageError,
+    allRegions,
+    allRegionsGetLoading,
+    allCommunityGet,
+    allCommunityGetLoading,
   } = useCommunityHomeFetching();
 
-  if (communityHomePageLoading) {
+  if (
+    communityHomePageLoading ||
+    allRegionsGetLoading ||
+    allCommunityGetLoading
+  ) {
     return <Spinner />;
   } else if (communityHomePageError) {
     return <p className="">{communityHomePageError}</p>;
@@ -39,19 +48,23 @@ const CommunityAssociationAbout = () => {
   };
 
   return (
-    <div className="about">
-      <div className="container">
+    <div className="community_about">
+      <div className="community_about__container container">
         <CommunityPageTop pageTopData={pageTopData} />
-        <div className="about-page">
-          <div className="about-left">
+        <div className="community_about-page">
+          <div className="community_about-left">
             <div
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(communityHomePageData.body),
               }}
+              className="community_about-left-body"
             />
             <ShareFriends />
           </div>
-          <CommunityCouncilStatics />
+          <CommunityCouncilStatics
+            allCommunityGet={allCommunityGet}
+            allRegions={allRegions}
+          />
         </div>
       </div>
     </div>

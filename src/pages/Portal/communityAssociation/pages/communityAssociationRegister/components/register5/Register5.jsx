@@ -48,6 +48,8 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
     locationLoading,
     communityCreateData,
     communityCreateDataStatus,
+    allCitiesGetLoading,
+    allCitiesGet,
   } = useApplicationFetching();
   const [confirm, setConfirm] = useState(false);
 
@@ -85,7 +87,9 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
   }
 
   const countryNameValue = locationData.find((el) => el.id === data.region_id);
-  const cityNameValue = cityData.find((el) => el.id === data.city_id);
+  const cityNameValue = allCitiesGet.find((el) => el.id === data.city_id);
+
+  console.log(cityNameValue);
   return (
     <>
       <ToastContainer
@@ -127,7 +131,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
             <MySelect
               value={cityNameValue?.label ? cityNameValue.label : ""}
               handleChange={handleChangeApplication5}
-              data={cityData}
+              data={allCitiesGet}
               text={t("communityAssociation.menu5_info.input2_name")}
               valueKey="city_id"
               placeholder="Barcha davlatlar"
