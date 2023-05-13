@@ -4,6 +4,7 @@ import { getMeetingCount } from "../../../../../../../reduxToolkit/portalSlices/
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../../../../../../../component";
+import "../../WebinarHome.scss";
 
 const data = [
   {
@@ -70,7 +71,7 @@ function WebinarCouncilStatics() {
             <img src={UserIcon} alt="error" />
           </span>
           <h4>{meetingsCount}</h4>
-          <p>Tadbirlar</p>
+          <p className="margin_bottom_60">Tadbirlar</p>
         </div>
         <div style={{ marginTop: "15px" }}>
           <span className="council--span">
@@ -78,7 +79,7 @@ function WebinarCouncilStatics() {
             <img src={UserIcon} alt="error" />
           </span>
           <h4>3505</h4>
-          <p>Ishtirokchilari</p>
+          <p className="margin_bottom_60">Ishtirokchilari</p>
         </div>
         <div className="council-bottom">
           <span className="council--span">
