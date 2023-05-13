@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 export const useCommunityDetailFetching = () => {
   const language = useSelector((store) => store.language.language);
   const params = useParams();
-  console.log(params);
 
   const allRegions = useSelector((store) => store.community.allRegionsGet);
   const allRegionsGetLoading = useSelector(

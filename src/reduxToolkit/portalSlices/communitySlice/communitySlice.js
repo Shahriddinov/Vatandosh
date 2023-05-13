@@ -4,6 +4,7 @@ import {
   getAllEvents,
   getAllRegions,
   getCommunityHomePage,
+  getCountryCities,
   getEventsDetail,
   getLocation,
   postCommunityCreate,
@@ -51,6 +52,9 @@ const initialState = {
   allRegionsGet: [],
   allRegionsGetLoading: true,
 
+  allCitiesGet: [],
+  allCitiesGetLoading: true,
+
   allCommunityGet: {},
   allCommunityData: [],
   allCommunityGetLoading: true,
@@ -89,6 +93,13 @@ const communitySlice = createSlice({
       removeItem("communityCreate");
       state.communityCreateData = data;
     },
+    deleteAvatar: (state) => {
+      state.communityCreateData = {
+        ...state.communityCreateData,
+        director_img: "",
+      };
+      state.communityCreateData = data;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -113,17 +124,29 @@ const communitySlice = createSlice({
         state.allRegionsGet = payload;
       })
       .addCase(getAllRegions.rejected, (state, { error }) => {
-        state.allCommunityGetLoading = false;
+        state.allRegionsGetLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getCountryCities.pending, (state) => {
+        state.allCitiesGetLoading = true;
+      })
+      .addCase(getCountryCities.fulfilled, (state, { payload }) => {
+        state.allCitiesGetLoading = false;
+        state.allCitiesGet = payload;
+      })
+      .addCase(getCountryCities.rejected, (state, { error }) => {
+        state.allCitiesGetLoading = false;
         state.error = error.message;
       });
 
     builder
       .addCase(getAllCommunity.pending, (state, { meta }) => {
         state.allCommunityGetLoading = true;
-        if (meta.arg.region_id) {
+        if (meta.arg.country || meta.arg.typePage) {
           state.allCommunityData = [];
         }
-        console.log("meta");
       })
       .addCase(getAllCommunity.fulfilled, (state, { payload }) => {
         state.allCommunityData = [...state.allCommunityData, ...payload.data];
@@ -131,7 +154,7 @@ const communitySlice = createSlice({
         state.allCommunityGetLoading = false;
       })
       .addCase(getAllCommunity.rejected, (state, { error }) => {
-        state.allRegionsGetLoading = false;
+        state.allCommunityGetLoading = false;
         state.error = error.message;
       });
 
@@ -226,5 +249,6 @@ export const {
   findSingleRegion,
   communityCreateDataAdd,
   communityCreateReset,
+  deleteAvatar,
 } = communitySlice.actions;
 export default communitySlice.reducer;

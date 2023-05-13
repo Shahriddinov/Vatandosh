@@ -6,15 +6,24 @@ import { UserIcon } from "../../../../../../../assets/images/communityAssociatio
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
+import {
+  communityCreateDataAdd,
+  deleteAvatar,
+} from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { useEffect } from "react";
 import MyInputDate from "../UI/myInputDate/MyInputDate";
+import { Skeleton } from "@mui/material";
 
 const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
+
+  const avatarLoading = useSelector(
+    (store) => store.community.communityImagePostLoading
+  );
+
   const [data, setData] = useState({
     director: communityCreateData.director,
     director_img: communityCreateData.director_img,
@@ -74,11 +83,20 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
           <div className="community-association-register3__user">
             <div className="community-association-register3__user_img">
               {data.director_img.length > 0 ? (
-                <img
-                  className="community-association-register3__img"
-                  src={`${PORTAL_IMAGE_URL}${communityCreateData.director_img}`}
-                  alt={data.director}
-                />
+                avatarLoading ? (
+                  <Skeleton
+                    variant="circular"
+                    width={80}
+                    height={80}
+                    sx={{ bgcolor: "grey.400" }}
+                  />
+                ) : (
+                  <img
+                    className="community-association-register3__img"
+                    src={`${PORTAL_IMAGE_URL}${communityCreateData.director_img}`}
+                    alt={data.director}
+                  />
+                )
               ) : (
                 <img
                   className="community-association-register3__img--icon"
@@ -108,7 +126,10 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
                 required
               />
             </label>
-            <button className="community-association-register3__user_delete">
+            <button
+              className="community-association-register3__user_delete"
+              onClick={() => dispatch(deleteAvatar())}
+            >
               {t("communityAssociation.delete")}
             </button>
           </div>

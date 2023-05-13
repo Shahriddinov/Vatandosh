@@ -15,8 +15,6 @@ export const useAssociationFetching = () => {
       return location.map((el) => ({ ...el, label: el.name }));
     }
   );
-  const params = useParams();
-  console.log(params);
 
   const communityDataChange = createSelector(
     (store) => store.community.allCommunityData,
@@ -48,9 +46,14 @@ export const useAssociationFetching = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllRegions());
-    getAllCommunity({ page: 1, per_page: 8, region_id: "" });
-    console.log("kejhg");
-  }, [language]);
+    dispatch(
+      getAllCommunity({
+        page: 1,
+        per_page: 8,
+        typePage: "association",
+      })
+    );
+  }, [dispatch, language]);
 
   allRegions.unshift({
     id: "all",

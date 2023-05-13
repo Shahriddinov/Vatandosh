@@ -11,7 +11,6 @@ import {
   CommunityFriendshipInfo,
 } from "./components";
 import { useModalActive } from "./hooks";
-import { useAssociationFetching } from "../associations/hooks/useAssociationFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { ToastContainer, toast } from "react-toastify";
 
