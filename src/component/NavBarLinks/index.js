@@ -93,7 +93,7 @@ export const NavBarLinks = () => {
       title: t("contects"),
     },
     // {
-    //   title: t("contects"),
+    //   title: t("faq"),
     // },
     {
       title: t("information"),
@@ -129,9 +129,9 @@ export const NavBarLinks = () => {
       title: t("link"),
       url: "/contact",
     },
-    // {
-    //   title: t("link"),
-    //   url: "/contact",
-    // },
+    {
+      title: t("faq"),
+      url: "/contact",
+    },
   ];
 };
