@@ -163,7 +163,6 @@ export default function Volunteer({ activeBarItem }) {
                         type="file"
                         accept="image/png, image/gif, image/jpeg, image/jpg"
                         onChange={(e) => {
-                          console.log(el);
                           handleChange({
                             ...el,
                             images: [...el.images, e.target.files[0]],
