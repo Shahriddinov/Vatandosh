@@ -23,6 +23,7 @@ const data = {
   document: "",
   director: "",
   director_img: "",
+  director_date: "",
   work: "",
   created_date: "",
   members: 0,
@@ -122,6 +123,7 @@ const communitySlice = createSlice({
         if (meta.arg.region_id) {
           state.allCommunityData = [];
         }
+        console.log("meta");
       })
       .addCase(getAllCommunity.fulfilled, (state, { payload }) => {
         state.allCommunityData = [...state.allCommunityData, ...payload.data];

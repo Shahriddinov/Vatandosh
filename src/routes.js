@@ -157,6 +157,12 @@ const ComunityEventsDetail = lazy(() =>
   )
 );
 
+const CommunityNewsDetail = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityNewsDetail/CommunityNewsDetail"
+  )
+);
+
 const CommunityAssociationDetail = lazy(() =>
   import(
     /*webpackChunkName: CommunityAssociationDetail*/
@@ -451,6 +457,7 @@ const RoutesContainer = () => {
                 element={<CommunityAssociationRegister />}
               />
               <Route path="event/:eventId" element={<ComunityEventsDetail />} />
+              <Route path="news/:newsId" element={<CommunityNewsDetail />} />
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>

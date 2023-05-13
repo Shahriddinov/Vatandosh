@@ -19,6 +19,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "./communityAssociationDetail.scss";
 
 import "react-toastify/dist/ReactToastify.css";
+import { useCommunityDetailFetching } from "./hooks/useCommunityDetailFetching";
 
 const CommunityAssociationDetail = () => {
   const { navData, navbarUrl } = useOutletContext();
@@ -30,10 +31,10 @@ const CommunityAssociationDetail = () => {
     allRegions,
     allRegionsGetLoading,
     allCommunityGet,
+    allCommunityGetLoading,
     eventsData,
     eventsDataLoading,
-    allCommunityGetLoading,
-  } = useAssociationFetching(communityCountryId);
+  } = useCommunityDetailFetching();
 
   if (eventsDataLoading || allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
@@ -42,6 +43,7 @@ const CommunityAssociationDetail = () => {
   const findCountryCategoryData = allRegions.find(
     (el) => el.id === communityCountry * 1
   );
+
   const findCountry = allCommunityGet?.data?.find(
     (el) => el.id === communityCountryId * 1
   );
@@ -64,7 +66,7 @@ const CommunityAssociationDetail = () => {
         <div
           className="community-association-detail__top"
           style={{
-            backgroundImage: `url(${PORTAL_IMAGE_URL}${findCountry.b_image})`,
+            backgroundImage: `url(${PORTAL_IMAGE_URL}${findCountry?.b_image})`,
           }}
         >
           <Navbar navbarUrl={navbarUrl} />
@@ -81,14 +83,14 @@ const CommunityAssociationDetail = () => {
         <PortalMiniSlider
           title={`${t("events")}`}
           data={eventsData?.data}
-          fetchUrl="events"
+          fetchUrl="portal-category/community-association/event"
         />
 
         <AddNewsModal
           open={open}
           handleClose={changeOpen}
           toast={toast}
-          id={findCountry.id}
+          id={findCountry?.id}
         />
       </div>
     </>

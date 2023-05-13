@@ -9,6 +9,7 @@ import { postCommunityImage } from "../../../../../../../reduxToolkit/portalSlic
 import { communityCreateDataAdd } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { useEffect } from "react";
+import MyInputDate from "../UI/myInputDate/MyInputDate";
 
 const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
@@ -17,6 +18,7 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const [data, setData] = useState({
     director: communityCreateData.director,
     director_img: communityCreateData.director_img,
+    director_date: communityCreateData.director_date,
   });
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -51,6 +53,7 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
     setData({
       director: communityCreateData.director,
       director_img: communityCreateData.director_img,
+      director_date: communityCreateData.director_date,
     });
   }, [communityCreateData]);
 
@@ -114,16 +117,27 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
           </p>
         </div>
 
-        <MyInput
-          value={data.director}
-          text={t("communityAssociation.menu3_info.input2_name")}
-          placeholder={t("communityAssociation.menu3_info.input2_placeholder")}
-          handleChange={handleChangeApplication3}
-          type="text"
-          inputType="input"
-          valueKey="director"
-          required={true}
-        />
+        <div className="community-association-register3__user_module">
+          <MyInput
+            value={data.director}
+            text={t("communityAssociation.menu3_info.input2_name")}
+            placeholder={t(
+              "communityAssociation.menu3_info.input2_placeholder"
+            )}
+            handleChange={handleChangeApplication3}
+            type="text"
+            inputType="input"
+            valueKey="director"
+            required={true}
+          />
+
+          <MyInputDate
+            text={t("communityAssociation.menu4_info.input2_name")}
+            handleChange={handleChangeApplication3}
+            valueKey="director_date"
+            value={data.director_date}
+          />
+        </div>
 
         <button
           className="community-association-register__form--btn"
