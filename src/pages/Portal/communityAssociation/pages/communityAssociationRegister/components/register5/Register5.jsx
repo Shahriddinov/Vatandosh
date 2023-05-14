@@ -28,21 +28,12 @@ const options = {
   theme: "dark",
 };
 
-const cityData = [
-  { id: 1, label: "Farg'ona" },
-  { id: 2, label: "Toshkent" },
-  { id: 3, label: "Samarqand" },
-  { id: 4, label: "Buxora" },
-  { id: 5, label: "Xorazim" },
-  { id: 6, label: "Namangan" },
-];
-
 const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
   const {
     data,
     setData,
-    links,
-    setLinks,
+    site,
+    setSite,
     dispatch,
     locationData,
     locationLoading,
@@ -58,8 +49,8 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
   const { extraHandleSubmit, extraHandleChangeApplication } =
     new CreateFunction(
       setData,
-      setLinks,
-      links,
+      site,
+      setSite,
       communityCreateData,
       data,
       dispatch,
@@ -75,7 +66,14 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
       toast.success("success sending !", options);
       dispatch(communityCreateReset());
       setConfirm(false);
-      setLinks([{ id: 1, link: "" }]);
+      setSite([{ id: 1, link: "" }]);
+      setData({
+        region_id: "",
+        city_id: "",
+        phone: "",
+        email: "",
+        address: "",
+      });
       handleClick("1");
     } else if (communityCreateDataStatus === "error") {
       toast.error("error sending!", options);
@@ -89,7 +87,6 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
   const countryNameValue = locationData.find((el) => el.id === data.region_id);
   const cityNameValue = allCitiesGet.find((el) => el.id === data.city_id);
 
-  console.log(cityNameValue);
   return (
     <>
       <ToastContainer
@@ -146,12 +143,13 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
               </FormHelperText>
               <PhoneInput
                 className="community-association-register__phone"
-                placeholder="+998"
+                // placeholder="+998"
                 value={data.phone}
                 defaultCountry="UZ"
-                onChange={(e) =>
-                  handleChangeApplication5({ key: "phone", value: e })
-                }
+                onChange={(e) => {
+                  handleChangeApplication5({ key: "phone", value: e });
+                  console.log(e);
+                }}
                 required
               />
             </div>
@@ -178,7 +176,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
             valueKey="address"
             required={true}
           />
-          {links.map((el) => (
+          {site.map((el) => (
             <MyInput
               key={el.id}
               value={el.link}
@@ -187,7 +185,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
               placeholder="https://"
               type="text"
               inputType="input"
-              valueKey="link"
+              valueKey="site"
               id={el.id}
               required={true}
             />
@@ -202,7 +200,7 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
               alt="add link"
               className="community-association-register5__add_link--img"
               onClick={() =>
-                setLinks((prev) => [...prev, { id: Date.now(), link: "" }])
+                setSite((prev) => [...prev, { id: Date.now(), link: "" }])
               }
             />
           </button>
