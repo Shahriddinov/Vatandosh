@@ -17,7 +17,7 @@ function CommunityEventCouncilStatics({ allCommunityGet, allRegion }) {
           <img src={UserIcon} alt="error" />
         </span>
         <h4>{allCommunityGet?.total}</h4>
-        <p>{t("expert.expertsand")}</p>
+        <p>{t("communityAssociation.navbar.navbar_link2")}</p>
       </div>
       <div className="council-bottom">
         <span className="council--span">
