@@ -2,7 +2,6 @@ import React from "react";
 import "./country.scss";
 import { PageTop } from "../../components";
 import { ArrowRight } from "../../../../../assets/images/communityAssociation";
-import { MiniSlider } from "../../../../../component/miniSlider/MiniSlider";
 import { useTranslation } from "react-i18next";
 import { Spinner } from "../../../../../component";
 import { Link } from "react-router-dom";
@@ -47,8 +46,6 @@ const Country = () => {
     ],
   };
 
-  // console.log(allCommunityGet);
-
   return (
     <div className="community-association-country">
       <div className="community-association-country__container container">
@@ -84,7 +81,7 @@ const Country = () => {
           <PortalMiniSlider
             title={`${t("news")}`}
             data={news?.data}
-            fetchUrl="events"
+            fetchUrl="portal-category/community-association/news"
           />
         </div>
       </div>

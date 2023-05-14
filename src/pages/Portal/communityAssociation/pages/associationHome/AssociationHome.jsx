@@ -66,8 +66,14 @@ const AssociationHome = () => {
         allCommunityGet={allCommunityGet}
         allRegions={allRegions}
       />
-      <CommunityMaps title={t("communityAssociation.navbar.navbar_link2")} />
-      <News communityNews={communityNews?.data} />
+      <CommunityMaps
+        allRegions={allRegions}
+        title={t("communityAssociation.navbar.navbar_link2")}
+      />
+      <News
+        communityNews={communityNews?.data}
+        url="/portal-category/community-association/news"
+      />
     </>
   );
 };

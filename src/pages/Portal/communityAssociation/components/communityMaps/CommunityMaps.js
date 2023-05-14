@@ -6,29 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { findSingleRegion } from "../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 import CommunityAssociationMapModal from "../CommunityAssociationMapModal/CommunityAssociationMapModal";
 
-const CommunityMaps = ({ title }) => {
+const CommunityMaps = ({ title, allRegions }) => {
   const [active, setActive] = useState(false);
   const svgRef = useRef(null);
   const zoomValue = useRef(1);
   const language = useSelector((store) => store.language.language);
-  const data = [
-    "EN",
-    "UZ",
-    "RU",
-    "BH",
-    "AD",
-    "BB",
-    "BL",
-    "AR",
-    "CA",
-    "MX",
-    "CN",
-    "KZ",
-    "SA",
-    "FR",
-    "CD",
-  ];
   const dispatch = useDispatch();
+
+  const data = allRegions.filter((el) => el.count > 0).map((el) => el.code);
+
+  console.log(data);
 
   useEffect(() => {
     const mapsData =

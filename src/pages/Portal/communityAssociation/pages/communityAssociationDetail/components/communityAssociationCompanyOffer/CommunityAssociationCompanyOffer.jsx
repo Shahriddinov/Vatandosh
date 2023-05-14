@@ -17,6 +17,8 @@ const CommunityAssociationCompanyOffer = (props) => {
     triggerOnce: true,
   });
 
+  console.log(props);
+
   const { t } = useTranslation();
   const [activeImage, setActiveImage] = useState({
     id: 0,
@@ -92,7 +94,7 @@ const CommunityAssociationCompanyOffer = (props) => {
               >
                 {props.attachments?.map((item, i) => (
                   <SwiperSlide
-                    key={item.id}
+                    key={i}
                     className="community-association-company-offer__inner_item community-association-company-offer__inner_card "
                   >
                     <div
