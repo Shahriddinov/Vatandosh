@@ -34,7 +34,7 @@ function VictorinaFinish() {
       <div className="container">
         <div className="victorinafinish-top">
           <h2>Viktorina yakunlanganlar</h2>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
+          {/* <FormControl sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
@@ -46,10 +46,10 @@ function VictorinaFinish() {
               <MenuItem value="2022-2024">2022-2024</MenuItem>
               <MenuItem value="2022-2025">2022-2025</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
         </div>
         <div className="victorina-page">
-          {quizData.map((victorina) => (
+          {quizData?.map((victorina) => (
             <div className="victorina-list">
               <img
                 src={`${imageUrl}/${victorina?.image}`}
@@ -58,22 +58,22 @@ function VictorinaFinish() {
               />
               <div className="victorina-items">
                 <h4 className="victorina-subname">{victorina.title}</h4>
-                <div className="victorina-lists">
-                  <div className="victorina-item">
-                    <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.started_at}</p>
-                  </div>
-                  <div className="victorina-item">
-                    <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.count}</p>
-                  </div>
-                </div>
                 <p
                   dangerouslySetInnerHTML={{ __html: victorina.description }}
                 />
                 <button className="victorina-button">
                   VIKTORINA YAKUNLANDI!
                 </button>
+                <div className="victorina-lists">
+                  <div className="victorina-item">
+                    <img src={CalendarIcon} alt="" className="victorina-icon" />
+                    <p>{victorina.started_at.slice(0,10)}</p>
+                  </div>
+                  <div className="victorina-item">
+                    <img src={ViewIcon} alt="" className="victorina-icon" />
+                    <p>{victorina.count}</p>
+                  </div>
+                </div>
                 <a
                   href="finished-projects/image-project"
                   className="victorina-link">
@@ -83,10 +83,10 @@ function VictorinaFinish() {
             </div>
           ))}
         </div>
-        <a href="#" className="victorinafinish-finish">
+        {/* <a href="#" className="victorinafinish-finish">
           <img src={ExcludeIcon} alt="" className="victorinafinish-cion" />
           Barcha Viktorina yakunlanganlar
-        </a>
+        </a> */}
       </div>
     </div>
   );

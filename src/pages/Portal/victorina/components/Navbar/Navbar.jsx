@@ -58,12 +58,16 @@ function Navbar({ navbarUrl }) {
           </li>
         </ul>
         <div className="navbar-list">
-          <button className="navbarpage-icon">
-            <img src={GerbIcon} />
-          </button>
-          <button className="navbarpage-icon">
-            <img src={BayroqIcon} />
-          </button>
+          <Link to="/flag">
+            <button className="navbarpage-icon">
+              <img src={GerbIcon} />
+            </button>
+          </Link>
+          <Link to="/coat">
+            <button className="navbarpage-icon">
+              <img src={BayroqIcon} />
+            </button>
+          </Link>
           <button className="navbarpage--icon">
             <MusicIcon />
           </button>

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { useEffect } from "react";
 import { imageUrl } from "../../../../../services/api/utils";
+import { Link } from "react-router-dom";
 
 function MoreVictorina() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function MoreVictorina() {
       <div className="container">
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
-          {quizData.map((victorina) => (
+          {quizData?.map((victorina) => (
             <div className="victorina-list">
               <img
                 src={`${imageUrl}/${victorina?.image}`}
@@ -58,19 +59,19 @@ function MoreVictorina() {
                     <p>Daqiqa</p>
                   </span>
                 </div>
-                <a
-                  href="/portal-category/victorina/youtube-project"
+                <Link
+                   to={`/portal-category/victorina/image-project/${victorina?.id}`}
                   className="victorina-link">
                   Batafsil ma'lumot
-                </a>
+                </Link>
               </div>
             </div>
           ))}
         </div>
-        <a href="#" className="morevictorina-finish">
+        {/* <a href="#" className="morevictorina-finish">
           <img src={ExcludeIcon} alt="" className="victorinafinish-cion" />
           Barcha viktorinalar
-        </a>
+        </a> */}
       </div>
     </div>
   );
