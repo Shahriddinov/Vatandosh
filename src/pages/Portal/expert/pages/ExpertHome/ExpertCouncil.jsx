@@ -9,9 +9,14 @@ import Navbar from "../../components/Navbar/Navbar";
 import backImg from "../../../../../assets/images/expert/bgexpert.png";
 import { CouncilImage } from "../../../../../assets/images/expert";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
+import { Spinner } from "../../../../../component";
 
 function ExpertCouncil() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const { navData, navbarUrl } = useOutletContext();
   const headerData = {
     title: t("expert.headertitle"),
@@ -27,19 +32,30 @@ function ExpertCouncil() {
     pathUrl: "/portal-category/expert/council-about",
   };
 
+  const communityNews = useSelector((store) => store.portalNews.news);
+  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
+  }, [dispatch]);
+
   return (
     <>
       <div
         className="expert-council"
         style={{ backgroundImage: `url(${backImg})` }}
       >
+        {communityNewsLoading ? <Spinner position={"full"} /> : null}
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} />
       <Expert />
-      <News />
+      <News
+        communityNews={communityNews?.data}
+        url={"/portal-category/community-association/news"}
+      />
     </>
   );
 }

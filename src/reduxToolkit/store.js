@@ -24,6 +24,8 @@ import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
+import education from "./ExpertSlice/ExpertEducation/index";
+import employment from "./ExpertSlice/ExpertEmployment/index";
 // import expertMenu from "./ExpertMenu";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
@@ -42,7 +44,9 @@ const store = configureStore({
     newsSlice,
     eventsSlice,
     partnersSlice,
+    employment,
     directionSlice,
+    education,
     peaceful,
     language,
     mapSlice,
