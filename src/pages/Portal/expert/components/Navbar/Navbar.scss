@@ -1,6 +1,48 @@
+@import "../../../../../assets/style/global.scss";
 .expert-header {
   background-color: #fff;
   background-image: url("../../../../../assets//images/body-bg.png");
+}
+
+.expert-header-cabinet {
+  position: relative;
+
+  &-bar {
+    width: 120px;
+    padding: 6px;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+
+    &-cabinet,
+    &-logout {
+      padding: 8px 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+
+      & > span {
+        @include fontStyles(500, 12px, 15px, #4b5157);
+      }
+
+      & > svg {
+        width: 20px;
+        height: 20px;
+        color: #065ea9;
+      }
+    }
+
+    &-logout {
+      & > svg,
+      & > span {
+        color: #cc2727;
+      }
+    }
+  }
 }
 
 .navbarpage {
@@ -85,7 +127,7 @@
     }
   }
   .navbar--button {
-    background: #EAEDF6;
+    background: #eaedf6;
     border-radius: 12px;
     width: 120px;
     height: 40px;
@@ -95,8 +137,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #EAEDF6;
-    color: #5D6B8A;
+    border: 2px solid #eaedf6;
+    color: #5d6b8a;
     cursor: pointer;
 
     svg {
