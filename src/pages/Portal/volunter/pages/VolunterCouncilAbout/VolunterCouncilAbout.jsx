@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import {
   CopyIcon,
   FacebookIcon,
@@ -8,8 +9,26 @@ import {
 import { CouncilImage } from "../../../../../assets/images/volunter";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterCouncilAbout.scss";
+import { useEffect } from "react";
+import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
+import { Spinner } from "../../../../../component";
 
 function VolunterCouncilAbout() {
+  const language = useSelector((store) => store.language.language);
+  const volunteers = useSelector((store) => store.volunteerSlice.volunteerData);
+  const volunteersLoading = useSelector(
+    (store) => store.volunteerSlice.volunteerLoading
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getVolunteerAll(1));
+  }, [language]);
+
+  if (volunteersLoading) {
+    return <Spinner />;
+  }
   return (
     <div className="about">
       <div className="container">
@@ -76,7 +95,7 @@ function VolunterCouncilAbout() {
               </li>
             </ul>
           </div>
-          <CouncilStatics />
+          <CouncilStatics count={volunteers.total} />
         </div>
       </div>
     </div>

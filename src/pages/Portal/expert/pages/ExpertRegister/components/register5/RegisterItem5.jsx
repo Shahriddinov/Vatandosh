@@ -5,18 +5,19 @@ import { useTranslation } from "react-i18next";
 import { BsImage } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { postSuggestions } from "../../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function RegisterItem5({ activeBarItem }) {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
   const history = useNavigate();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const [formData, setFormData] = useState({
     suggestions: "",
     additional_information: "",
     image: null,
-    type: 1,
+    type: pathname.includes("expert") ? 1 : 2,
   });
 
   const handleChangeCheckbox = (event) => {

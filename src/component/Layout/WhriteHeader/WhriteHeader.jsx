@@ -73,7 +73,7 @@ const WhriteHeader = () => {
       <div className="header">
         <div className="header_navbar">
           <Link to="/" className="header_navbar_left">
-            <img src={Logos} alt="logo" />
+            <img className="header_navbar_left_logos" src={Logos} alt="logo" />
           </Link>
           <a
             href={`tel: ${contactData?.phone}`}

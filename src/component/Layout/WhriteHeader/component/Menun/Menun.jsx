@@ -231,7 +231,11 @@ const Menun = () => {
             })}
           </Menu>
         </li>
-
+        <li className="menu_item">
+          <Link to="/faq" className="menu_link">
+            {t("faq")}
+          </Link>
+        </li>
         <li className="menu_item">
           <Link to="/contact" className="menu_link">
             {t("link")}

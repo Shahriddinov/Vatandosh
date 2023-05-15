@@ -6,11 +6,15 @@ import {
   volunteerCreate,
   volunteerUpdate,
   deleteVolunteerOne,
+  getVolunteerActivity,
+  getVolunteerCity,
 } from "./extraReducer";
 
 const initialState = {
   volunteerLoading: true,
   volunteerData: [],
+  volunteerCityLoading: true,
+  volunteerCity: [],
   volunteerOneLoading: true,
   volunteerOneData: [],
   deleteLoading: true,
@@ -18,6 +22,9 @@ const initialState = {
   volunteerCreateData: [],
   volunteerUpdateLoading: true,
   volunteerUpdateData: [],
+  volunteerActivity: [],
+  volunteerActivityLoading: true,
+  volunteerActivityError: null,
   status: "idle",
   error: null,
 };
@@ -56,6 +63,20 @@ const volunteerSlice = createSlice({
       })
       .addCase(getVolunteerOne.rejected, (state, action) => {
         state.volunteerOneLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Get city
+    builder
+      .addCase(getVolunteerCity.pending, (state) => {
+        state.volunteerCityLoading = true;
+      })
+      .addCase(getVolunteerCity.fulfilled, (state, action) => {
+        state.volunteerCityLoading = false;
+        state.volunteerCity = action.payload;
+      })
+      .addCase(getVolunteerCity.rejected, (state, action) => {
+        state.volunteerCityLoading = false;
         state.error = action.error.message;
       });
 
@@ -103,6 +124,20 @@ const volunteerSlice = createSlice({
       .addCase(volunteerUpdate.rejected, (state, action) => {
         state.volunteerUpdateLoading = false;
         state.error = action.error.message;
+      });
+
+    // get volunteer activity
+    builder
+      .addCase(getVolunteerActivity.pending, (state) => {
+        state.volunteerActivityLoading = true;
+      })
+      .addCase(getVolunteerActivity.fulfilled, (state, action) => {
+        state.volunteerActivityLoading = false;
+        state.volunteerActivity = action.payload;
+      })
+      .addCase(getVolunteerActivity.rejected, (state, action) => {
+        state.volunteerActivityLoading = false;
+        state.volunteerActivityError = action.error.message;
       });
   },
 });

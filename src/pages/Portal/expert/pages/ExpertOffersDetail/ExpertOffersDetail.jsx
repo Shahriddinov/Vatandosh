@@ -5,42 +5,53 @@ import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
 import CouncilStatics from "../ExpertHome/components/Council/CouncilStatics";
 import ExpertProfileInfo from "../ExpertOffers/components/ExpertProfileInfo";
 import "./ExpertOffersDetail.scss";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getExpert } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { useLocation, useParams } from "react-router-dom";
+import NotFound from "../../../../404";
+import { Spinner } from "../../../../../component";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 export default function ExpertOffersDetail() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
     { title: t("expert.offers"), url: "/portal-category/expert/offers" },
     { title: t("expert.offer"), url: "" },
   ];
+
+  const { expert: expertData, loading } = useSelector(
+    (state) => state.expertSlice
+  );
+
+  useEffect(() => {
+    if (pathname.includes("expert")) {
+      dispatch(getExpert(id));
+    }
+  }, [dispatch, pathname, id]);
+
+  if (!expertData) return <NotFound />;
+
   return (
     <main className="expertofferdetail">
+      {loading ? <Spinner position="full" /> : null}
       <div className="container">
         <ExpertTitle title={t("expert.offer")} url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img src={DefaultProfilePic} alt="error" />
             <ExpertProfileInfo
-              profileImg={DefaultProfilePic}
-              name={"Xatamov Akbarjon O‘tkir o‘g‘li"}
-              address={"Parij, Fransiya"}
-              position={"Jurnalistika"}
+              profileImg={PORTAL_IMAGE_URL + expertData?.user_id?.avatar}
+              name={expertData?.user_profile_id?.user_id?.name}
+              address={expertData?.user_profile_id?.international_address}
+              position={expertData?.user_profile_id?.job_position}
             />
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry. Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book.
-            </p>
+            <p>{expertData?.suggestions}</p>
+            <p>{expertData?.additional_information}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">

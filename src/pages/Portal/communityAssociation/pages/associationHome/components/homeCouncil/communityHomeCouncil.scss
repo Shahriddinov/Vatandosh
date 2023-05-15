@@ -4,7 +4,7 @@
 
   &__inner {
     display: grid;
-    grid-template-columns: minmax(200px, 770px) 1fr;
+    grid-template-columns: minmax(200px, 770px) 370px;
     justify-content: space-between;
   }
 
@@ -54,11 +54,11 @@
   }
 
   &-right {
-    justify-self: flex-end;
     div {
       background: rgba(240, 242, 249, 0.5);
       border-radius: 10px;
-      width: 370px;
+      width: 100%;
+      max-width: 370px;
       padding: 16px;
 
       h4 {

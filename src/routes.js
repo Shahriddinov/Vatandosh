@@ -19,7 +19,8 @@ import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
-import FAQ from "./pages/Faq/Faq"
+import FAQ from "./pages/Faq/Faq";
+import VictorinaWinnerWin from "./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -155,6 +156,12 @@ const CommunityAssociationRegister = lazy(() =>
 const ComunityEventsDetail = lazy(() =>
   import(
     "./pages/Portal/communityAssociation/pages/communityEventsDetail/ComunityEventsDetail"
+  )
+);
+
+const CommunityNewsDetail = lazy(() =>
+  import(
+    "./pages/Portal/communityAssociation/pages/communityNewsDetail/CommunityNewsDetail"
   )
 );
 
@@ -502,6 +509,7 @@ const RoutesContainer = () => {
                 element={<CommunityAssociationRegister />}
               />
               <Route path="event/:eventId" element={<ComunityEventsDetail />} />
+              <Route path="news/:newsId" element={<CommunityNewsDetail />} />
               <Route path="contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
@@ -511,7 +519,7 @@ const RoutesContainer = () => {
               element={<VolunterLayout />}
             >
               <Route index element={<VolunterHome />} />
-              <Route path="profile" element={<VolunterProfile />} />
+              <Route path="profile/:id" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
               <Route path="volunter-employe" element={<VolunterAbout />} />
               <Route path="council-about" element={<VolunterCouncilAbout />} />
@@ -557,16 +565,14 @@ const RoutesContainer = () => {
               <Route path="listwinners" element={<ListOfWinners />} />
               <Route path="winner/:id" element={<VictorinaWinner />} />
               <Route path="image-project/:id" element={<VictorinaProject />} />
-              {/* <Route path="youtube-project" element={<VictorinaProject />} />
-              <Route path="poem-project" element={<VictorinaProject />} />
-              <Route path="edu-branding" element={<VictorinaProject />} /> */}
               <Route path="victorina-finish" element={<VictorinaFinish />} />
               <Route path="victorina-more" element={<MoreVictorina />} />
               <Route path="about" element={<VictorinaAbout />} />
               <Route path="projects" element={<MoreVictorina />} />
               <Route path="finished-projects" element={<VictorinaFinish />} />
+              <Route path="victorinatest-finish" element={<VictorinaWinnerWin />} />
               <Route
-                path="finished-projects/image-project"
+                path="finished-projects/image-project/:id"
                 element={<VictorinaProject />}
               />
             </Route>
@@ -597,7 +603,7 @@ const RoutesContainer = () => {
                 element={<AboutUzbekistanTouristFacilities />}
               />
               <Route path="city" element={<AboutUzbekistanCity />} />
-              <Route path="virtual-tour" element={<VirtualTour />} />
+              <Route path="virtual-tour/:cityId" element={<VirtualTour />} />
               <Route path="contact" element={<Contact />} />
             </Route>
             <Route path="*" element={<NotFound />} />

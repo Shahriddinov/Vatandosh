@@ -16,15 +16,14 @@ export const useVictorinaFetching = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getQuizz());
+    dispatch(getQuizz({ status: "1" }));
     dispatch(getQuizPage());
-    dispatch(getPortalNews("quiz"));
-  }, [language]);
-
+    dispatch(getPortalNews({ type: "quiz", per_page: "10", page: 1 }));
+  }, [dispatch, language]);
   return {
     communityNews,
     quizData,
     pageData,
-    quizDataWinner
+    quizDataWinner,
   };
 };

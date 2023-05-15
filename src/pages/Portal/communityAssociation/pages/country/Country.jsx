@@ -2,7 +2,6 @@ import React from "react";
 import "./country.scss";
 import { PageTop } from "../../components";
 import { ArrowRight } from "../../../../../assets/images/communityAssociation";
-import { MiniSlider } from "../../../../../component/miniSlider/MiniSlider";
 import { useTranslation } from "react-i18next";
 import { Spinner } from "../../../../../component";
 import { Link } from "react-router-dom";
@@ -47,7 +46,7 @@ const Country = () => {
     ],
   };
 
-  // console.log(allCommunityGet);
+  console.log(allCommunityGet?.data[0].name.trim().split(" "));
 
   return (
     <div className="community-association-country">
@@ -61,15 +60,20 @@ const Country = () => {
                 <span className="community-association-country__item--text">
                   {i + 1}.{" "}
                   {item?.name
+                    .trim()
                     ?.split(" ")
-                    .slice(0, item.name.split(" ").length - 1)
+                    .slice(0, item?.name?.trim().split(" ").length - 1)
                     .join(" ")}
                   <Link
                     className="associations__accordion_item--link"
                     to={`/portal-category/community-association/country/${communityCountry}/${item?.id}`}
                   >
                     {" "}
-                    {item?.name?.split(" ")[item?.name?.split(" ").length - 1]}
+                    {
+                      item?.name?.trim().split(" ")[
+                        item?.name?.trim().split(" ").length - 1
+                      ]
+                    }
                   </Link>
                 </span>
                 <img
@@ -84,7 +88,7 @@ const Country = () => {
           <PortalMiniSlider
             title={`${t("news")}`}
             data={news?.data}
-            fetchUrl="events"
+            fetchUrl="portal-category/community-association/news"
           />
         </div>
       </div>

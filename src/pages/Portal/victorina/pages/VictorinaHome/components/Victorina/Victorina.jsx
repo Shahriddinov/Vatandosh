@@ -1,6 +1,7 @@
 import React from "react";
 import {
   CalendarIcon,
+  ExcludeIcon,
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
 import "./Victorina.scss";
@@ -35,17 +36,18 @@ function Victorina({ quizData }) {
                 <p
                   dangerouslySetInnerHTML={{ __html: victorina.description }}
                 />
+
                 <div className="victorina__list">
                   <span className="victorina__item">
-                    <p>{victorina.started_at.slice(9, 11)}</p>
+                    <p>{victorina.finished_at.slice(9, 11)}</p>
                     <p>Kun</p>
                   </span>
                   <span className="victorina__item">
-                    <p>{victorina.started_at.slice(11, 13)}</p>
+                    <p>{victorina.finished_at.slice(11, 13)}</p>
                     <p>Soat</p>
                   </span>
                   <span className="victorina__item">
-                    <p>{victorina.started_at.slice(14, 16)}</p>
+                    <p>{victorina.finished_at.slice(14, 16)}</p>
                     <p>Daqiqa</p>
                   </span>
                 </div>
@@ -58,6 +60,10 @@ function Victorina({ quizData }) {
             </div>
           ))}
         </div>
+        <Link className="victorina_link" to="victorina-more">
+          <img src={ExcludeIcon} alt="error" />
+          Barcha viktorinalar
+        </Link>
       </div>
     </div>
   );
