@@ -90,9 +90,11 @@ function Expert() {
                       src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
                       alt="error"
                     />
-                    <p>{evt.user_profile_id.international_location_id.name}</p>
-                    <h3>{evt.user_id.name}</h3>
-                    <h4>{evt.user_profile_id.job_position}</h4>
+                    <p>
+                      {evt?.user_profile_id?.international_location_id?.name}
+                    </p>
+                    <h3>{evt?.user_id?.name}</h3>
+                    <h4>{evt?.user_profile_id?.job_position}</h4>
                   </div>
                   <Link
                     className="employe-link"

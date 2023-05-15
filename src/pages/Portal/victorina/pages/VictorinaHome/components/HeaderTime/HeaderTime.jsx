@@ -35,7 +35,6 @@ function HeaderTime({ quizData }) {
 
     const updateCountdown = () => {
       const currentTime = new Date().getTime();
-      console.log(currentTime);
       const remainingTime = targetDate - currentTime;
 
       if (remainingTime > 0) {

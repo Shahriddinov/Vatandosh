@@ -44,6 +44,7 @@ export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
+export const GET_VICTORINA_FINISH = `/quiz/quizzes`
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";
@@ -108,6 +109,8 @@ export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 export const SEND_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/create`;
 export const SEND_EXPERT_SCIENTIFIC = `${portalBaseUrl}/scientificDegree/create`;
+export const GET_EDUCATION = `${portalBaseUrl}/education/show-one-user`;
+export const GET_EMPLOYMENT = `${portalBaseUrl}/employment/show-one-user`;
 export const POST_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/create`;
 export const CREATE_MEETING = "/meeting/create/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";
