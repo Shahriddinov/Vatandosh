@@ -1,6 +1,6 @@
-import user1 from "../../../../../assets/images/cabinet/1.png";
-import user2 from "../../../../../assets/images/cabinet/2.png";
-import user3 from "../../../../../assets/images/cabinet/3.jpg";
+import user1 from "../../../../../../../assets/images/cabinet/1.png";
+import user2 from "../../../../../../../assets/images/cabinet/2.png";
+import user3 from "../../../../../../../assets/images/cabinet/3.jpg";
 
 export const users = [
   {
