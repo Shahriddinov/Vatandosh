@@ -19,8 +19,6 @@ const AssociationsEvents = () => {
   }
   const pagination = paginationCount(data?.total, 6);
 
-  console.log(pagination);
-
   return (
     <div className="container associations__events__container">
       <div className="associations__events__top">

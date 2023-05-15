@@ -15,10 +15,12 @@ import WinnerCard from "../../components/WinnerCard/WinnerCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
+import ProjectPassportPopUp from "../../components/ProjectPassportPopUp/ProjectPassportPopUp";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
   const [PopUp, setPopUp] = useState(false);
+  const [PopUpVerify, setPopUpVerify] = useState("");
   const { t } = useTranslation();
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -157,7 +159,11 @@ export default function VictorinaProject() {
                 </div>
                 <button
                   className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                  onClick={() => setPopUp(pathname)}>
+                  onClick={() => {
+                    setPopUp(quizData.type === "test" ? "verify_popup" : true);
+                    setPopUpVerify("verify");
+                  }}
+                >
                   {t("victorina.joinproject")}
                 </button>
               </>
@@ -182,7 +188,8 @@ export default function VictorinaProject() {
         <>
           <div
             style={{ marginBottom: "50px" }}
-            className="victorinaproject-winners">
+            className="victorinaproject-winners"
+          >
             <h3>{t("victorina.winnerlist")}</h3>
             <div className="victorinaproject-winners-list">
               {winnerData?.map((el) => (
@@ -201,7 +208,13 @@ export default function VictorinaProject() {
       {PopUp && quizData.type === "video" ? (
         <ProjectYouTubePopUp setactivePopUp={setPopUp} id={id} />
       ) : null}
-      {PopUp && quizData.type === "test" ? (
+      {PopUp === "verify_popup" && PopUpVerify === "verify" ? (
+        <ProjectPassportPopUp
+          setactivePopUp={setPopUp}
+          setPopUpVerify={setPopUpVerify}
+        />
+      ) : null}
+      {PopUp === "test" && quizData.type === "test" ? (
         <TestPopUp setactivePopUp={setPopUp} />
       ) : null}
       {PopUp && quizData.type === "text" ? (
