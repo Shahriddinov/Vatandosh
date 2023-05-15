@@ -2,7 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { baseServerUrl } from "../../../../../services/api/utils";
+import {
+  PORTAL_IMAGE_URL,
+  baseServerUrl,
+} from "../../../../../services/api/utils";
 import "./communityAssociationMapModal.scss";
 import { UzFlag } from "../../../../../assets/images/communityAssociation";
 import { useCommunityAssociationModalFetching } from "./hooks/useCommunityAssociationModalFetching ";
@@ -29,7 +32,7 @@ const CommunityAssociationMapModal = ({ changeActive }) => {
               <img
                 className="communityAssociationMapModal__body_img"
                 src={
-                  country.flag ? `${baseServerUrl}/${country?.image}` : UzFlag
+                  country.flag ? `${PORTAL_IMAGE_URL}${country?.flag}` : UzFlag
                 }
                 alt={country?.name}
               />

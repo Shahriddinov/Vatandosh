@@ -19,7 +19,7 @@ import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
-import FAQ from "./pages/Faq/Faq"
+import FAQ from "./pages/Faq/Faq";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -604,7 +604,7 @@ const RoutesContainer = () => {
                 element={<AboutUzbekistanTouristFacilities />}
               />
               <Route path="city" element={<AboutUzbekistanCity />} />
-              <Route path="virtual-tour" element={<VirtualTour />} />
+              <Route path="virtual-tour/:cityId" element={<VirtualTour />} />
               <Route path="contact" element={<Contact />} />
             </Route>
             <Route path="*" element={<NotFound />} />
