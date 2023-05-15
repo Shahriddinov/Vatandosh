@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 import "./view3d.scss";
 
-const View3D = () => {
+const View3D = ({ data }) => {
+  console.log(data);
   return (
     <div className="facilities_3d">
       <div className="facilities_3d_circle">
         <div className="facilities_3d_circle_inner">
           <Link
-            to="/portal-category/about-uzbekistan/virtual-tour"
+            to={`/portal-category/about-uzbekistan/virtual-tour/${data.city_id}`}
             className="facilities_3d_circle_inner_inner"
           >
             Start 3D tour

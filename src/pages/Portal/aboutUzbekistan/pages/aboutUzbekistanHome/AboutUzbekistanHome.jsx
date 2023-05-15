@@ -7,12 +7,29 @@ import Slider from "../../components/slider/Slider";
 
 import "./aboutUzbekistanHome.scss";
 import { useLocation, useOutletContext } from "react-router-dom";
+import { useAboutHomeFetching } from "./hooks/useAboutHomeFetching";
+import { Spinner } from "../../../../../component";
 
 const AboutUzbekistanHome = () => {
   const { menu } = useOutletContext();
   const { pathname } = useLocation();
   const heroData = menu.find((el) => el.url === pathname);
+  const {
+    allCitySightseeingLoading,
+    allCitySightseeing,
+    allCity3dLoading,
+    allCity3D,
+    allGalleryLoading,
+    allGallery,
+  } = useAboutHomeFetching();
 
+  if (allCitySightseeingLoading || allCity3dLoading || allGalleryLoading) {
+    return <Spinner position="full" />;
+  }
+
+  // console.log(allCitySightseeing);
+  // console.log(allCity3D);
+  // console.log(allGallery);
   return (
     <div className="about-uzbekistan-home">
       <div className="container">
@@ -24,7 +41,7 @@ const AboutUzbekistanHome = () => {
           <p>{heroData.content[0].text}</p>
         </div>
         <Slider title="Туристические объекты" />
-        <View3D />
+        <View3D data={allCity3D[0]} />
         <AboutUzbekistanGallery />
         <div className="about-uzbekistan-home__bottom">
           <h2 className="about-uzbekistan-title">
