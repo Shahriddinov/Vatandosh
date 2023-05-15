@@ -14,20 +14,24 @@ import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { Pagination } from "../../../../../../../component";
 import { useState } from "react";
+import { getExpertSpecialization } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { getLocation } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 function Employe() {
   const [activePage, setActivePage] = useState(1);
   const { t } = useTranslation();
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
+  const [age, setAge] = useState("1");
+  const [country, setCountry] = useState("1");
   const dispatch = useDispatch();
+
+  const { specialization } = useSelector((state) => state.expertRegisterSlice);
+  const { locationGet } = useSelector((state) => state.community);
   const { expertData, loading } = useSelector((state) => state.expertSlice);
+
   useEffect(() => {
     dispatch(getExperts());
+    dispatch(getExpertSpecialization());
+    dispatch(getLocation());
   }, [dispatch]);
 
   if (loading) {
@@ -54,11 +58,17 @@ function Employe() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha mutaxassislar"
-                onChange={handleChange}
+                onChange={(e) => {
+                  setAge(e.target.value);
+                }}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {specialization.length
+                  ? specialization.map((el) => (
+                      <MenuItem value={el.id} key={el.id}>
+                        {el.title}
+                      </MenuItem>
+                    ))
+                  : null}
               </Select>
             </FormControl>
             <FormControl sx={{ m: 3, minWidth: 270 }}>
@@ -68,13 +78,19 @@ function Employe() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
-                value={age}
+                value={country}
                 label="Barcha davlatlar"
-                onChange={handleChange}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {locationGet.length
+                  ? locationGet.map((el) => (
+                      <MenuItem key={el.id} value={el.id}>
+                        {el.name}
+                      </MenuItem>
+                    ))
+                  : null}
               </Select>
             </FormControl>
           </div>
@@ -83,15 +99,19 @@ function Employe() {
           {expertData?.data?.map((evt) => (
             <div key={evt.id}>
               <img
-                src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
+                src={
+                  evt?.user_profile_id?.avatar_url
+                    ? `${PORTAL_IMAGE_URL}${evt?.user_profile_id?.avatar_url}`
+                    : `${PORTAL_IMAGE_URL}${evt?.user_id?.avatar}`
+                }
                 alt="error"
               />
-              <p>{evt.user_profile_id.international_location_id.name}</p>
-              <h3>{evt.user_id.name}</h3>
-              <h4>{evt.user_profile_id.job_position}</h4>
+              <p>{evt?.user_profile_id?.international_location_id?.name}</p>
+              <h3>{evt?.user_id?.name}</h3>
+              <h4>{evt?.user_profile_id?.job_position}</h4>
               <Link
                 className="employe-link"
-                to={`/portal-category/expert/profile/${evt.id}`}
+                to={`/portal-category/expert/profile/${evt?.id}`}
               >
                 <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />

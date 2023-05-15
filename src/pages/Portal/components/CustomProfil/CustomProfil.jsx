@@ -13,13 +13,23 @@ import { getExpert } from "../../../../reduxToolkit/ExpertSlice/ExpertsSlice/Exp
 import Spinner from "../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 import NotFound from "../../../404";
+import { getExpertOneEducation } from "../../../../reduxToolkit/ExpertSlice/ExpertEducation/extraReducer";
+import { getExpertOneEmployment } from "../../../../reduxToolkit/ExpertSlice/ExpertEmployment/extraReducer";
 
 export default function CustomProfil() {
   const { pathname } = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { expert: expertData, loading } = useSelector(
-    (state) => state.expertSlice
+  const {
+    expert: expertData,
+    loading,
+    error,
+  } = useSelector((state) => state.expertSlice);
+  const { education, educationLoading } = useSelector(
+    (state) => state.education
+  );
+  const { employment, employmentLoading } = useSelector(
+    (state) => state.employment
   );
 
   useEffect(() => {
@@ -28,12 +38,20 @@ export default function CustomProfil() {
     }
   }, [dispatch, pathname, id]);
 
-  if (loading) return <Spinner position="full" />;
-  if (!expertData) return <NotFound />;
-  console.log(expertData);
+  useEffect(() => {
+    if (expertData) {
+      dispatch(getExpertOneEducation(expertData?.id));
+      dispatch(getExpertOneEmployment(expertData?.id));
+    }
+  }, [expertData, dispatch]);
+
+  if (error) return <NotFound />;
 
   return expertData ? (
     <div className="customprofil-wrapper">
+      {loading || educationLoading || employmentLoading ? (
+        <Spinner position="full" />
+      ) : null}
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
@@ -60,34 +78,44 @@ export default function CustomProfil() {
           </AccordionSummary>
           <AccordionDetails>
             <div className="customprofil-list-otm">
-              <div className="customprofil-list-otm-item">
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.uzbotm")}</span>
-                  <p>{expertData?.user_education_id?.institution}</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.faculty")}</span>
-                  <p>{expertData?.user_education_id?.faculty}</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.profession")}</span>
-                  <p>{expertData?.user_education_id?.level}</p>
-                </div>
-              </div>
-              <div className="customprofil-list-otm-item">
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.xorotm")}</span>
-                  <p>American University of Sharjah</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.xorfaculty")}</span>
-                  <p>Bachelor of Business Administration</p>
-                </div>
-                <div className="customprofil-list-otm-desc">
-                  <span>{t("expert.xorprofession")}</span>
-                  <p>Administration</p>
-                </div>
-              </div>
+              {education.length
+                ? education.map((el) => {
+                    if (el?.type === 1)
+                      return (
+                        <div key={el.id} className="customprofil-list-otm-item">
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.uzbotm")}</span>
+                            <p>{el?.institution}</p>
+                          </div>
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.faculty")}</span>
+                            <p>{el?.faculty}</p>
+                          </div>
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.profession")}</span>
+                            <p>{el?.level}</p>
+                          </div>
+                        </div>
+                      );
+                    else
+                      return (
+                        <div className="customprofil-list-otm-item">
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.xorotm")}</span>
+                            <p>{el?.institution}</p>
+                          </div>
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.xorfaculty")}</span>
+                            <p>{el?.faculty}</p>
+                          </div>
+                          <div className="customprofil-list-otm-desc">
+                            <span>{t("expert.xorprofession")}</span>
+                            <p>{el?.level}</p>
+                          </div>
+                        </div>
+                      );
+                  })
+                : null}
             </div>
           </AccordionDetails>
         </Accordion>
@@ -100,34 +128,36 @@ export default function CustomProfil() {
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <div className="customprofil-list-workexp">
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.workspace")}</span>
-                <p>{expertData?.user_employment_info_id?.company}</p>
-              </div>
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.workcountry")}</span>
-                <p>
-                  {expertData?.user_profile_id?.international_location_id?.name}
-                </p>
-              </div>
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.workregion")}</span>
-                <p>{expertData?.user_employment_info_id?.city}</p>
-              </div>
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.position")}</span>
-                <p>{expertData?.user_employment_info_id?.specialization}</p>
-              </div>
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.workstart")}</span>
-                <p>{expertData?.user_employment_info_id?.start_date}</p>
-              </div>
-              <div className="customprofil-list-workexp-item">
-                <span>{t("expert.workend")}</span>
-                <p>{expertData?.user_employment_info_id?.finish_date}</p>
-              </div>
-            </div>
+            {employment.length
+              ? employment.map((el) => (
+                  <div className="customprofil-list-workexp">
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.workspace")}</span>
+                      <p>{el?.company}</p>
+                    </div>
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.workcountry")}</span>
+                      <p>{el?.location_name}</p>
+                    </div>
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.workregion")}</span>
+                      <p>{el?.city}</p>
+                    </div>
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.position")}</span>
+                      <p>{el?.specialization}</p>
+                    </div>
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.workstart")}</span>
+                      <p>{el?.start_date}</p>
+                    </div>
+                    <div className="customprofil-list-workexp-item">
+                      <span>{t("expert.workend")}</span>
+                      <p>{el?.finish_date}</p>
+                    </div>
+                  </div>
+                ))
+              : null}
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -193,7 +223,9 @@ export default function CustomProfil() {
                   <span>{t("expert.offer")}</span>
                   <p>{expertData?.suggestions}</p>
                   <button className="customprofil-list-offer-info-desc-btn">
-                    <Link to={"/portal-category/expert/offers/1"}>
+                    <Link
+                      to={"/portal-category/expert/offers/" + expertData?.id}
+                    >
                       {t("expert.detail")}
                     </Link>
                   </button>

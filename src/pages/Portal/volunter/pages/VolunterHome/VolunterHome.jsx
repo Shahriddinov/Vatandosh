@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Volunter from "./components/VolunterCouncil/VolunterCouncil";
 import "./VolunterHome.scss";
 import { useOutletContext } from "react-router-dom";
@@ -10,10 +10,14 @@ import Council from "./components/Council/Council";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
+import { Spinner } from "../../../../../component";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const headerData = {
     title: `${t("voluntery.headertitle")}`,
     subTitle: `${t("voluntery.headertext")}`,
@@ -26,6 +30,12 @@ function VolunterHome() {
     image: heroImg,
     pathUrl: "/portal-category/volunteer/council-about",
   };
+  const communityNews = useSelector((store) => store.portalNews.news);
+  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
+  }, [dispatch]);
 
   return (
     <>
@@ -33,13 +43,14 @@ function VolunterHome() {
         className="volunter-home"
         style={{ backgroundImage: `url(${backImg})` }}
       >
+        {communityNewsLoading ? <Spinner position={"full"} /> : null}
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} />
       <Volunter />
-      <News />
+      <News communityNews={communityNews?.data} />
     </>
   );
 }

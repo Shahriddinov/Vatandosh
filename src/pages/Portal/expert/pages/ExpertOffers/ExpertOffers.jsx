@@ -5,90 +5,72 @@ import { BsArrowDownCircleFill } from "react-icons/bs";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
 import ExpertProfileInfo from "./components/ExpertProfileInfo";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getExperts } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { Spinner } from "../../../../../component";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useState } from "react";
 
 export default function ExpertOffers() {
+  const [page, SetPage] = useState(1);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
     { title: t("expert.offers"), url: "/portal-category/expert/offers" },
   ];
 
+  const { expertData, loading } = useSelector((state) => state.expertSlice);
+
+  useEffect(() => {
+    dispatch(getExperts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getExperts(page));
+  }, [page, dispatch]);
+
   return (
     <main className="expertoffer">
+      {loading ? <Spinner position={"full"} /> : null}
       <div className="container">
         <ExpertTitle title={t("expert.offers")} url={url} />
         <div className="expertoffer-list">
-          <div className="expertoffer-list-item">
-            <img src={DefaultProfilePic} alt="error" />
-            <div className="expertoffer-list-item-desc">
-              <ExpertProfileInfo
-                profileImg={DefaultProfilePic}
-                name={"Xatamov Akbarjon O‘tkir o‘g‘li"}
-                address={"Parij, Fransiya"}
-                position={"Jurnalistika"}
-              />
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s, when an unknown
-                printer took a galley of type and scrambled it to make a type
-                specimen book.
-              </p>
-              <div className="expertoffer-list-item-desc-button">
-                <button>
-                  <Link to={"/portal-category/expert/offers/12"}>
-                    {t("expert.detail")}
-                  </Link>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="expertoffer-list-item">
-            <img src={DefaultProfilePic} alt="error" />
-            <div className="expertoffer-list-item-desc">
-              <ExpertProfileInfo
-                profileImg={DefaultProfilePic}
-                name={"Xatamov Akbarjon O‘tkir o‘g‘li"}
-                address={"Parij, Fransiya"}
-                position={"Jurnalistika"}
-              />
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s, when an unknown
-                printer took a galley of type and scrambled it to make a type
-                specimen book.
-              </p>
-              <div className="expertoffer-list-item-desc-button">
-                <button>
-                  <Link to={"/expert/offers/12"}>{t("expert.detail")}</Link>
-                </button>
-              </div>
-            </div>
-          </div>
+          {expertData?.data?.length
+            ? expertData.data.map((el) => (
+                <div className="expertoffer-list-item" key={el.id}>
+                  <img src={DefaultProfilePic} alt="error" />
+                  <div className="expertoffer-list-item-desc">
+                    <ExpertProfileInfo
+                      profileImg={PORTAL_IMAGE_URL + el?.user_id?.avatar}
+                      name={el?.user_profile_id?.user_id?.name}
+                      address={el?.user_profile_id?.international_address}
+                      position={el?.user_profile_id?.job_position}
+                    />
+                    <p>{el?.suggestions}</p>
+                    <div className="expertoffer-list-item-desc-button">
+                      <button>
+                        <Link to={"/portal-category/expert/offers/" + el?.id}>
+                          {t("expert.detail")}
+                        </Link>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : null}
           <div className="expertoffer-list-morebtn">
-            <button>
-              <BsArrowDownCircleFill />
-              <span>{t("expert.alloffers")}</span>
-            </button>
+            {expertData?.total - 12 * page > 0 ? (
+              <button
+                onClick={() => {
+                  SetPage((prev) => ++prev);
+                }}
+              >
+                <BsArrowDownCircleFill />
+                <span>{t("expert.alloffers")}</span>
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
