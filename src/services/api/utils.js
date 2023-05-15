@@ -72,6 +72,7 @@ export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const GET_LIBRARY_SLIDER = "/ebook/all-slider-images";
 export const VOLUNTEER_SHOW_USER = "/volunteer/get-all/";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
+export const VOLUNTEER_CITY = "/volunteer/get-volunteer-city";
 export const GET_MEETINGS = "/meeting/meetings";
 export const GET_MEETING_BY_ID = "/meeting/meeting/";
 export const GET_MEETING_PAGE = "/meeting/page";

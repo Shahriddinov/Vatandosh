@@ -7,11 +7,14 @@ import {
   volunteerUpdate,
   deleteVolunteerOne,
   getVolunteerActivity,
+  getVolunteerCity,
 } from "./extraReducer";
 
 const initialState = {
   volunteerLoading: true,
   volunteerData: [],
+  volunteerCityLoading: true,
+  volunteerCity: [],
   volunteerOneLoading: true,
   volunteerOneData: [],
   deleteLoading: true,
@@ -60,6 +63,20 @@ const volunteerSlice = createSlice({
       })
       .addCase(getVolunteerOne.rejected, (state, action) => {
         state.volunteerOneLoading = false;
+        state.error = action.error.message;
+      });
+
+    // Get city
+    builder
+      .addCase(getVolunteerCity.pending, (state) => {
+        state.volunteerCityLoading = true;
+      })
+      .addCase(getVolunteerCity.fulfilled, (state, action) => {
+        state.volunteerCityLoading = false;
+        state.volunteerCity = action.payload;
+      })
+      .addCase(getVolunteerCity.rejected, (state, action) => {
+        state.volunteerCityLoading = false;
         state.error = action.error.message;
       });
 
