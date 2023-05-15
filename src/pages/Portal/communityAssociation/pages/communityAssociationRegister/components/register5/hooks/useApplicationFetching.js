@@ -1,7 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocation } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  getCountryCities,
+  getLocation,
+} from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 const useApplicationFetching = () => {
   const locationDataChange = createSelector(
@@ -13,11 +16,25 @@ const useApplicationFetching = () => {
       }));
     }
   );
+  const cityDataChange = createSelector(
+    (store) => store.community.allCitiesGet,
+    (cities) => {
+      return cities.map((el) => ({
+        ...el,
+        label: el.name ? el.name : "Toshkent",
+      }));
+    }
+  );
   const language = useSelector((store) => store.language.language);
   const locationData = useSelector(locationDataChange);
   const locationLoading = useSelector(
     (store) => store.community.locationGetLoading
   );
+
+  const allCitiesGetLoading = useSelector(
+    (store) => store.community.allCitiesGetLoading
+  );
+  const allCitiesGet = useSelector(cityDataChange);
 
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
@@ -30,24 +47,27 @@ const useApplicationFetching = () => {
   const [data, setData] = useState({
     region_id: communityCreateData.region_id,
     city_id: communityCreateData.city_id,
-    phone: communityCreateData.phone ? communityCreateData.phone : "+998",
+    phone: communityCreateData.phone ? communityCreateData.phone : "",
     email: communityCreateData.email,
     address: communityCreateData.address,
     confirm: false,
   });
 
   const linksData = communityCreateData.site
-    ? communityCreateData.site
-        .split(",")
-        .map((el, i) => ({ id: i + 1, link: el }))
+    ? communityCreateData.site.map((el, i) => ({ id: i + 1, link: el }))
     : [{ id: 1, link: "" }];
 
-  const [links, setLinks] = useState(linksData);
+  const [site, setSite] = useState(linksData);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getLocation());
+    if (communityCreateData.city_id) {
+      dispatch(
+        getCountryCities({ location_id: communityCreateData.region_id * 1 })
+      );
+    }
   }, [dispatch, language]);
 
   useEffect(() => {
@@ -58,21 +78,20 @@ const useApplicationFetching = () => {
       email: communityCreateData.email,
       address: communityCreateData.address,
     });
-  }, [communityCreateData]);
-
-  // console.log(data);
-  // console.log(locationData);
+  }, []);
 
   return {
     data,
     setData,
     communityCreateData,
-    links,
-    setLinks,
+    site,
+    setSite,
     dispatch,
     locationData,
     locationLoading,
     communityCreateDataStatus,
+    allCitiesGetLoading,
+    allCitiesGet,
   };
 };
 

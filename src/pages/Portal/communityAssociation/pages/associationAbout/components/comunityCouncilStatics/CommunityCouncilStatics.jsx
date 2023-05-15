@@ -11,24 +11,23 @@ const CommunityCouncilStatics = ({ allCommunityGet, allRegions }) => {
     .sort((a, b) => b.count - a.count)
     .slice(0, 5);
 
-  console.log(data);
   return (
-    <div className="community-home-council-right">
+    <div className="about-right">
       <div>
-        <span className="community-home-council__span">
+        <span className="about__span">
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
         <h4>{allCommunityGet?.total}</h4>
         <p>{t("communityAssociation.navbar.navbar_link2")}</p>
       </div>
-      <div className="community-home-council__bottom">
-        <span className="community-home-council__span">
+      <div className="about__bottom">
+        <span className="about__span">
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
         {data?.map((data) => (
-          <span className="community-home-council-span" key={data?.id}>
+          <span className="about-span" key={data?.id}>
             <h5>{data.name}</h5>
             <p>{data.count}</p>
           </span>

@@ -1,15 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../../../src/services/api/axios";
-import { GET_PORTAL_NEWS } from "../../../services/api/utils";
+import {
+  GET_PORTAL_NEWS,
+  GET_PORTAL_NEWS_DETAIL,
+} from "../../../services/api/utils";
 
 const initialState = {
   news: [],
   loading: true,
+
+  oneNews: {},
+  oneNewsLoading: true,
   error: null,
 };
 
 export const getPortalNews = createAsyncThunk(
-  "get/PortalNews",
+  "get/portalNews",
   async ({ type, per_page, page }) => {
     return await axios({
       url: GET_PORTAL_NEWS,
@@ -18,6 +24,15 @@ export const getPortalNews = createAsyncThunk(
         per_page,
         page,
       },
+    }).then((res) => res.data);
+  }
+);
+
+export const getPortalOneNews = createAsyncThunk(
+  "get/portalOneNews",
+  async (id) => {
+    return await axios({
+      url: GET_PORTAL_NEWS_DETAIL + id,
     }).then((res) => res.data);
   }
 );
@@ -36,6 +51,19 @@ const portalNewsSlice = createSlice({
       })
       .addCase(getPortalNews.rejected, (state, { error }) => {
         state.loading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getPortalOneNews.pending, (state) => {
+        state.oneNewsLoading = true;
+      })
+      .addCase(getPortalOneNews.fulfilled, (state, { payload }) => {
+        state.oneNewsLoading = false;
+        state.oneNews = payload;
+      })
+      .addCase(getPortalOneNews.rejected, (state, { error }) => {
+        state.oneNewsLoading = false;
         state.error = error.message;
       });
   },

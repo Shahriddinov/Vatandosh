@@ -1,19 +1,22 @@
-import { postCommunityCreate } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  getCountryCities,
+  postCommunityCreate,
+} from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { communityCreateDataAdd } from "../../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
 
 export class CreateFunction {
   constructor(
     setData,
-    setLinks,
-    links,
+    site,
+    setSite,
     communityCreateData,
     data,
     dispatch,
     confirm
   ) {
     this.setData = setData;
-    this.setLinks = setLinks;
-    this.links = links;
+    this.setSite = setSite;
+    this.site = site;
     this.communityCreateData = communityCreateData;
     this.data = data;
     this.confirm = confirm;
@@ -25,7 +28,6 @@ export class CreateFunction {
     if (this.confirm) {
       const newCommunityCreateData = {
         ...this.communityCreateData,
-        site: this.links.map((link) => link.link).join(","),
       };
 
       this.dispatch(communityCreateDataAdd(newCommunityCreateData));
@@ -34,6 +36,7 @@ export class CreateFunction {
         postCommunityCreate({
           ...newCommunityCreateData,
           attachments: [newCommunityCreateData.attachments],
+          site: newCommunityCreateData.site.join(","),
         })
       );
     }
@@ -43,8 +46,10 @@ export class CreateFunction {
     if (key !== "link") {
       this.setData((prev) => ({ ...prev, [key]: value }));
     }
-
-    const newArr = this.links.map((el) => {
+    if (key === "region_id") {
+      this.dispatch(getCountryCities({ location_id: value }));
+    }
+    const newArr = this.site.map((el) => {
       if (el.id === id) {
         return {
           ...el,
@@ -54,11 +59,12 @@ export class CreateFunction {
       return el;
     });
 
-    this.setLinks(newArr);
+    this.setSite(newArr);
     const newCommunityCreateData = {
       ...this.communityCreateData,
-      [key]: value,
+      [key]: key === "site" ? newArr.map((el) => el.link) : value,
     };
+
     this.dispatch(communityCreateDataAdd(newCommunityCreateData));
   };
 }

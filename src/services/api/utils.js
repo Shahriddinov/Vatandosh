@@ -51,6 +51,7 @@ export const GET_PORTAL_NEWS = "/news";
 export const GET_LOCATION = "/location/get-all";
 export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
+export const GET_CITIES = "/location/get-all";
 export const GET_COMMUNITY_ALL_PAGINATION = "/community/all-community";
 export const GET_COMMUNITY_HOMEPAGE_DATA = "/community/page";
 export const GET_COMMUNITY_ALL_EVENT = "/community/all-event";
@@ -84,6 +85,7 @@ export const GET_SINGLE_CITY_VIDEO = "/city-video/get-one/";
 export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
 export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
 export const GET_VICTORINA_TEST = "/quiz/quiz";
+export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer-user`;
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 
 // Post requests
@@ -101,6 +103,7 @@ export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 export const SEND_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/create`;
 export const SEND_EXPERT_SCIENTIFIC = `${portalBaseUrl}/scientificDegree/create`;
+export const POST_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/create`;
 export const CREATE_MEETING = "/meeting/create/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";
 
@@ -108,8 +111,10 @@ export const VICTORINA_MEDIA_CREATE = "/media/create";
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const UPDATE_EXPERT_EDUCATION = `${portalBaseUrl}/education/update`;
 export const UPDATE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/update`;
+export const UPDATE_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/update`;
 
 // Delete requests
 export const VOLUNTEER_DELETE = "/volunteer/delete/";
 export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;
 export const DELETE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/delete`;
+export const DELETE_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/delete`;

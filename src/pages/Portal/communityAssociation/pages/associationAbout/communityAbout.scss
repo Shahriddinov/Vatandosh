@@ -1,0 +1,58 @@
+.community_about {
+  &-page {
+    display: grid;
+    grid-template-columns: minmax(200px, 770px) minmax(200px, 370px);
+    justify-content: space-between;
+    padding-bottom: 100px;
+    padding-top: 30px;
+  }
+
+  &-left {
+    width: 100%;
+    max-width: 770px;
+
+    img {
+      width: 100% !important;
+      height: 420px;
+    }
+  }
+
+  &-left-body {
+    padding-bottom: 30px;
+  }
+
+  &-right {
+    div {
+      background: rgba(240, 242, 249, 0.5);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 370px;
+      padding: 16px;
+      height: auto;
+
+      h4 {
+        font-weight: 800;
+        font-size: 57px;
+        line-height: 69px;
+        color: #5d6b8a;
+        text-align: center;
+        margin-top: 60px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #5d6b8a;
+        text-align: center;
+      }
+    }
+    .council-bottom {
+      width: 370px;
+      margin-top: 30px;
+
+      .council-span {
+        margin: 10px 0;
+      }
+    }
+  }
+}

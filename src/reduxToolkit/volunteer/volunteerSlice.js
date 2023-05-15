@@ -6,6 +6,7 @@ import {
   volunteerCreate,
   volunteerUpdate,
   deleteVolunteerOne,
+  getVolunteerActivity,
 } from "./extraReducer";
 
 const initialState = {
@@ -18,6 +19,9 @@ const initialState = {
   volunteerCreateData: [],
   volunteerUpdateLoading: true,
   volunteerUpdateData: [],
+  volunteerActivity: [],
+  volunteerActivityLoading: true,
+  volunteerActivityError: null,
   status: "idle",
   error: null,
 };
@@ -103,6 +107,20 @@ const volunteerSlice = createSlice({
       .addCase(volunteerUpdate.rejected, (state, action) => {
         state.volunteerUpdateLoading = false;
         state.error = action.error.message;
+      });
+
+    // get volunteer activity
+    builder
+      .addCase(getVolunteerActivity.pending, (state) => {
+        state.volunteerActivityLoading = true;
+      })
+      .addCase(getVolunteerActivity.fulfilled, (state, action) => {
+        state.volunteerActivityLoading = false;
+        state.volunteerActivity = action.payload;
+      })
+      .addCase(getVolunteerActivity.rejected, (state, action) => {
+        state.volunteerActivityLoading = false;
+        state.volunteerActivityError = action.error.message;
       });
   },
 });

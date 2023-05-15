@@ -27,10 +27,23 @@ const Associations = () => {
   } = useAssociationFetching();
 
   const handleChange = (event, { id, name }) => {
-    dispatch(getAllCommunity({ region_id: id, per_page: 8 }));
+    dispatch(
+      getAllCommunity({ region_id: id, per_page: 8, country: "change" })
+    );
     setCountry(name ? name : "Rossiya");
     setConId(id);
     setCount(1);
+  };
+
+  const handleClick = () => {
+    dispatch(
+      getAllCommunity({
+        page: count + 1,
+        per_page: "8",
+        region_id: conId,
+      })
+    );
+    setCount((prev) => prev + 1);
   };
 
   if (allRegionsGetLoading || allCommunityGetLoading) {
@@ -71,19 +84,7 @@ const Associations = () => {
           {allCommunityGet?.total > 8 &&
           communityData.length > 0 &&
           count < pagination ? (
-            <button
-              className="more__less__button"
-              onClick={() => {
-                dispatch(
-                  getAllCommunity({
-                    page: count + 1,
-                    per_page: "8",
-                    region_id: conId,
-                  })
-                );
-                setCount((prev) => prev + 1);
-              }}
-            >
+            <button className="more__less__button" onClick={handleClick}>
               {" "}
               <img src={ArrowDown} alt="" />
               {t("communityAssociation.view_all")}

@@ -11,7 +11,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
 import { getDate } from "../../../../../../../config/constants";
 
-function News({ communityNews }) {
+function News({ communityNews, url }) {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -29,7 +29,7 @@ function News({ communityNews }) {
               <div className="expertnews-right">
                 {communityNews?.map((news) => (
                   <Link
-                    to={`/news/${news.id}`}
+                    to={`${url}/${news.id}`}
                     className="expertnews-list"
                     key={news.id}
                   >

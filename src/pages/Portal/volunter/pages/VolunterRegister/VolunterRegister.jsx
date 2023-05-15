@@ -7,6 +7,8 @@ import RegisterItem3 from "../../../expert/pages/ExpertRegister/components/regis
 import RegisterItem4 from "../../../expert/pages/ExpertRegister/components/register4/RegisterItem4";
 import RegisterItem5 from "../../../expert/pages/ExpertRegister/components/register5/RegisterItem5";
 import Volunteer from "./components/volunteer/Volunteer";
+import { useSelector } from "react-redux";
+import Spinner from "../../../../../component/Spinner/Spinner";
 
 export default function VolunterRegister() {
   let [activeBarItem, setactiveBarItem] = useState(0);
@@ -15,9 +17,14 @@ export default function VolunterRegister() {
     { title: "Ariza berish", url: "/portal-category/volunter/register" },
   ];
 
+  const { volunteerActivityLoading } = useSelector(
+    (state) => state.volunteerSlice
+  );
+
   return (
     <>
       <main className="expertregister">
+        {volunteerActivityLoading ? <Spinner position={"full"} /> : null}
         <div className="container">
           <ExpertTitle title={"Ariza berish"} url={url} />
           <div className="expertregister-main">
@@ -49,10 +56,22 @@ export default function VolunterRegister() {
               })}
             </ul>
             <div className="expertregister-main-list">
-              <RegisterItem1 activeBarItem={activeBarItem} />
-              <RegisterItem2 activeBarItem={activeBarItem} />
-              <RegisterItem3 activeBarItem={activeBarItem} />
-              <RegisterItem4 activeBarItem={activeBarItem} />
+              <RegisterItem1
+                activeBarItem={activeBarItem}
+                setActiveBarItem={setactiveBarItem}
+              />
+              <RegisterItem2
+                activeBarItem={activeBarItem}
+                setActiveBarItem={setactiveBarItem}
+              />
+              <RegisterItem3
+                activeBarItem={activeBarItem}
+                setActiveBarItem={setactiveBarItem}
+              />
+              <RegisterItem4
+                activeBarItem={activeBarItem}
+                setactiveBarItem={setactiveBarItem}
+              />
               <RegisterItem5 activeBarItem={activeBarItem} />
               <Volunteer activeBarItem={activeBarItem} />
             </div>

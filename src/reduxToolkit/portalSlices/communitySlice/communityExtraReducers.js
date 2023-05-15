@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../../services/api/axios";
 import {
+  GET_CITIES,
   GET_COMMUNITY_ALL_EVENT,
   GET_COMMUNITY_ALL_PAGINATION,
   GET_COMMUNITY_ALL_REGIONS,
@@ -41,9 +42,22 @@ export const getAllRegions = createAsyncThunk("getAllRegions", async () => {
   return await axios.get(GET_COMMUNITY_ALL_REGIONS).then((res) => res.data);
 });
 
+export const getCountryCities = createAsyncThunk(
+  "getCountryCities",
+  async ({ location_id }) => {
+    return await axios({
+      url: GET_CITIES,
+      params: {
+        location_id,
+      },
+    }).then((res) => res.data);
+  }
+);
+
 export const getAllCommunity = createAsyncThunk(
   "getAllCommunity",
-  async ({ page, region_id, per_page }) => {
+  async (payload) => {
+    const { page, region_id, per_page } = payload;
     return await axios({
       url: GET_COMMUNITY_ALL_PAGINATION,
       method: "GET",
