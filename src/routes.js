@@ -20,6 +20,7 @@ import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
 import FAQ from "./pages/Faq/Faq"
+import VictorinaWinnerWin from "./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -572,6 +573,7 @@ const RoutesContainer = () => {
               <Route path="about" element={<VictorinaAbout />} />
               <Route path="projects" element={<MoreVictorina />} />
               <Route path="finished-projects" element={<VictorinaFinish />} />
+              <Route path="victorinatest-finish" element={<VictorinaWinnerWin />} />
               <Route
                 path="finished-projects/image-project"
                 element={<VictorinaProject />}

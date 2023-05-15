@@ -7,7 +7,9 @@ import { imageUrl } from "../../../../../../../services/api/utils";
 function HeaderTime({ quizData }) {
   const [slideIndex, setSlideIndex] = useState(1);
   const { t } = useTranslation();
+  const filterTime = quizData?.find((evt) => evt?.id === Number(slideIndex));
 
+  const filterDay = filterTime?.finished_at;
   const handleLeft = () => {
     if (slideIndex === 1) {
       setSlideIndex(quizData.length);
@@ -29,10 +31,11 @@ function HeaderTime({ quizData }) {
   const [minutes, setMinutes] = useState("00");
 
   useEffect(() => {
-    const targetDate = new Date("2023-05-20T00:00:00Z");
+    const targetDate = new Date(filterDay);
 
     const updateCountdown = () => {
       const currentTime = new Date().getTime();
+      console.log(currentTime);
       const remainingTime = targetDate - currentTime;
 
       if (remainingTime > 0) {
@@ -77,7 +80,8 @@ function HeaderTime({ quizData }) {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [filterDay]);
+
   return (
     <div className="headertime">
       <div className="hero__container container">

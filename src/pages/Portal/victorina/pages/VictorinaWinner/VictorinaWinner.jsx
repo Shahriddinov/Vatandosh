@@ -7,6 +7,8 @@ import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { imageUrl } from "../../../../../services/api/utils";
+import { MdArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function VictorinaWinner() {
   const { t } = useTranslation();
@@ -25,7 +27,7 @@ export default function VictorinaWinner() {
       url: "/portal-category/victorina/finished-projects",
     },
     {
-      title: t("victorina.bestimgproject"),
+      title: quizData.quiz.title,
       url: "/portal-category/victorina/finished-projects/image-project",
     },
     { title: t("victorina.winner"), url: "" },
@@ -34,7 +36,17 @@ export default function VictorinaWinner() {
   return (
     <main className="victorinawinner">
       <div className="container">
-        <ExpertTitle title={t("victorina.winner")} url={url} />
+        <div className="experttitle-title">
+          <h1 className="experttitle-title-text">{quizData.quiz.title}</h1>
+          <div className="experttitle-title-url">
+            {url?.map((el, index) => (
+              <Link key={index} to={el.url}>
+                {el.title}
+                <MdArrowRight />
+              </Link>
+            ))}
+          </div>
+        </div>
         <div className="victorinawinner-wrapper">
           <div className="victorinawinner-main">
             <img src={img} alt="error" />

@@ -13,19 +13,21 @@ function VictorinaNews({ expertNews }) {
       <div className="container">
         <h3>Yangiliklar</h3>
         <div className="expertnews-page">
-          <div className="expertnews-left">
-            <h4>
-              "Vatandoshlar" jamoat fondi rahbariyati Rossiya Federatsiyasiga
-              bo'lgan xizmat safari davomida ...
-            </h4>
-            <span className="expertnews-span">
-              <img src={WhiteCalendar} alt="Calendar Icon" />
-              <p>12.02.2023</p>
-            </span>
-            <img src={NewsImage} alt="error" />
-          </div>
+          {expertNews?.data?.slice(0, 1)?.map((evt) => (
+            <div className="expertnews-left">
+              <h4>
+                {evt.title}
+              </h4>
+              <span className="expertnews-span">
+                <img src={WhiteCalendar} alt="Calendar Icon" />
+                <p>{evt.created_at.slice(0, 10)}</p>
+              </span>
+              <img className="victorina-newsimage" src={`${imageUrl}/${evt?.image}`} alt={evt.title} />
+            </div>
+          ))}
+       
           <div className="expertnews-right">
-            {expertNews?.data?.map((news) => (
+            {expertNews?.data?.slice(1, 4).map((news) => (
               <div className="expertnews-list" key={news.id}>
                 <img src={`${imageUrl}/${news?.image}`} alt={news.title} />
                 <div>
