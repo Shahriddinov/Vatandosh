@@ -44,7 +44,7 @@ function CouncilStatics() {
           <img src={UserIcon} alt="error" />
         </span>
         <h4>88</h4>
-        <p>{t("expert.expertsand")}</p>
+        <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="council-bottom">
         <span className="council--span">

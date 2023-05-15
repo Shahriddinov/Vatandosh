@@ -518,7 +518,7 @@ const RoutesContainer = () => {
               element={<VolunterLayout />}
             >
               <Route index element={<VolunterHome />} />
-              <Route path="profile" element={<VolunterProfile />} />
+              <Route path="profile/:id" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
               <Route path="volunter-employe" element={<VolunterAbout />} />
               <Route path="council-about" element={<VolunterCouncilAbout />} />
