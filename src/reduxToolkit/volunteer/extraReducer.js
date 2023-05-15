@@ -41,9 +41,14 @@ export const volunteerUpdate = createAsyncThunk(
   }
 );
 
-export const getVolunteerAll = createAsyncThunk("getVolunteerAll", async () => {
-  return await axios.get(VOLUNTEER_SHOW_USER).then((res) => res.data);
-});
+export const getVolunteerAll = createAsyncThunk(
+  "getVolunteerAll",
+  async (page) => {
+    return await axios
+      .get(`${VOLUNTEER_SHOW_USER}${page}`)
+      .then((res) => res.data);
+  }
+);
 
 export const getVolunteerOne = createAsyncThunk(
   "getVolunteerOne",

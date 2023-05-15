@@ -2,24 +2,33 @@ import {
   ArrowIcon,
   ExcludeIcon,
 } from "../../../../../../../assets/images/expert";
+import { Spinner } from "../../../../../../../component";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { data } from "../../data";
 import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
-function Volunter() {
+function Volunter({ volunteers, volunteersLoading }) {
+  if (volunteersLoading) {
+    return <Spinner />;
+  }
+  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">
         <h2>Volontyorlar</h2>
         <div className="volunter-list">
-          {data.map((evt) => (
-            <div key={evt.id}>
-              <img src={evt.images} alt="error" />
-              <p>{evt.country}</p>
-              <h3>{evt.name}</h3>
-              <h4>{evt.job}</h4>
-              <h4>{evt.location}</h4>
-              <Link className="employe-link" to="profile/1">
+          {volunteers.map((volunteer) => (
+            <div key={volunteer.id}>
+              <img
+                src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
+                alt="error"
+              />
+              <p>{volunteer.user_profile_id.international_location_id.name}</p>
+              <h3>{volunteer.user_id.name}</h3>
+              <h4>{volunteer.user_employment_info_id.specialization}</h4>
+              <h4>{volunteer.user_employment_info_id.city}</h4>
+              <Link className="employe-link" to={`profile/${volunteer.id}`}>
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>

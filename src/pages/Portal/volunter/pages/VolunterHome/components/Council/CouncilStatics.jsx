@@ -33,7 +33,7 @@ const data = [
   },
 ];
 
-function CouncilStatics() {
+function CouncilStatics({ count }) {
   return (
     <div className="council-right">
       <div>
@@ -41,8 +41,8 @@ function CouncilStatics() {
           <h5>Ro‘yxatdan o‘tganlar</h5>
           <img src={UserIcon} />
         </span>
-        <h4>88</h4>
-        <p>Xalqaro olimlar va ekspertlar</p>
+        <h4>{count}</h4>
+        <p>Volontyorlar</p>
       </div>
       <div className="council-bottom">
         <span className="council--span">

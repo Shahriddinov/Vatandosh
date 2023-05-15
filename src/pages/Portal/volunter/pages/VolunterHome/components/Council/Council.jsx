@@ -15,7 +15,7 @@ function Council({ councilData }) {
             <Link to={councilData.pathUrl}>Batafsil</Link>
           </div>
         </div>
-        <CouncilStatics />
+        <CouncilStatics count={councilData.count} />
       </div>
     </div>
   );
