@@ -12,7 +12,6 @@ function Volunter({ volunteers, volunteersLoading }) {
   if (volunteersLoading) {
     return <Spinner />;
   }
-  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">
