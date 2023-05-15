@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllAboutUzbMenu,
   getAllCity,
+  getAllCity3D,
   getAllCityContent,
   getAllCityVideo,
+  getAllGallery,
   getAllSightseeing,
+  getOneCity3D,
+  getOneGallery,
   getSingleAboutUzbMenu,
   getSingleCity,
   getSingleCityVideo,
@@ -38,6 +42,18 @@ const initialState = {
 
   singleCitySightseeing: {},
   singleCitySightseeingLoading: true,
+
+  allGallery: [],
+  allGalleryLoading: true,
+
+  singleGallery: {},
+  singleGalleryLoading: true,
+
+  allCity3D: [],
+  allCity3dLoading: true,
+
+  singleCity3D: {},
+  singleCity3dLoading: true,
 
   error: null,
 };
@@ -82,6 +98,7 @@ const aboutUzbekistanSlice = createSlice({
         state.allCityContentLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getAllCity.pending, (state) => {
         state.allCityLoading = true;
@@ -94,6 +111,7 @@ const aboutUzbekistanSlice = createSlice({
         state.allCityLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getSingleCity.pending, (state) => {
         state.singleCityLoading = true;
@@ -154,6 +172,58 @@ const aboutUzbekistanSlice = createSlice({
       })
       .addCase(getSingleSightseeing.rejected, (state, { error }) => {
         state.singleCitySightseeingLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getAllCity3D.pending, (state) => {
+        state.allCity3dLoading = true;
+      })
+      .addCase(getAllCity3D.fulfilled, (state, { payload }) => {
+        state.allCity3dLoading = false;
+        state.allCity3D = payload;
+      })
+      .addCase(getAllCity3D.rejected, (state, { error }) => {
+        state.allCity3dLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getOneCity3D.pending, (state) => {
+        state.singleCity3dLoading = true;
+      })
+      .addCase(getOneCity3D.fulfilled, (state, { payload }) => {
+        state.singleCity3dLoading = false;
+        state.singleCity3D = payload;
+      })
+      .addCase(getOneCity3D.rejected, (state, { error }) => {
+        state.singleCity3dLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getAllGallery.pending, (state) => {
+        state.allGalleryLoading = true;
+      })
+      .addCase(getAllGallery.fulfilled, (state, { payload }) => {
+        state.allGalleryLoading = false;
+        state.allGallery = payload;
+      })
+      .addCase(getAllGallery.rejected, (state, { error }) => {
+        state.allGalleryLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getOneGallery.pending, (state) => {
+        state.singleGalleryLoading = true;
+      })
+      .addCase(getOneGallery.fulfilled, (state, { payload }) => {
+        state.singleGalleryLoading = false;
+        state.singleGallery = payload;
+      })
+      .addCase(getOneGallery.rejected, (state, { error }) => {
+        state.singleGalleryLoading = false;
         state.error = error.message;
       });
 
