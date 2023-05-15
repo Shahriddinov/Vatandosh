@@ -19,7 +19,7 @@ function VolunterAbout() {
     <div className="employe">
       <div className="container">
         <div className="employe-list">
-          <h3>Ekspertlar kengashi</h3>
+          <h3>Volontyorlar</h3>
           <div className="employe-item">
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
@@ -30,7 +30,8 @@ function VolunterAbout() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha mutaxassislar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -45,7 +46,8 @@ function VolunterAbout() {
                 id="demo-simple-select-helper"
                 value={age}
                 label="Barcha davlatlar"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
                 <MenuItem value={30}>Thirty</MenuItem>
@@ -63,7 +65,8 @@ function VolunterAbout() {
               <h4>{evt.location}</h4>
               <Link
                 className="employe-link"
-                to="/portal-category/expert/profile/1">
+                to="/portal-category/volunteer/profile/1"
+              >
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>

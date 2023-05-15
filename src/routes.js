@@ -19,7 +19,7 @@ import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
 import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEvents";
-import FAQ from "./pages/Faq/Faq"
+import FAQ from "./pages/Faq/Faq";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   import(
@@ -518,7 +518,7 @@ const RoutesContainer = () => {
               element={<VolunterLayout />}
             >
               <Route index element={<VolunterHome />} />
-              <Route path="profile" element={<VolunterProfile />} />
+              <Route path="profile/:id" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
               <Route path="volunter-employe" element={<VolunterAbout />} />
               <Route path="council-about" element={<VolunterCouncilAbout />} />

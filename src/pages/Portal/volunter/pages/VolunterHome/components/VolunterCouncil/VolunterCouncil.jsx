@@ -10,7 +10,7 @@ function Volunter() {
   return (
     <div className="expert">
       <div className="container">
-        <h2>Ekspertlar kengashi</h2>
+        <h2>Volontyorlar</h2>
         <div className="volunter-list">
           {data.map((evt) => (
             <div key={evt.id}>
@@ -19,7 +19,7 @@ function Volunter() {
               <h3>{evt.name}</h3>
               <h4>{evt.job}</h4>
               <h4>{evt.location}</h4>
-              <Link className="employe-link" to="profile">
+              <Link className="employe-link" to="profile/1">
                 <span>Batafsil</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>

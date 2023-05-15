@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Volunter from "./components/VolunterCouncil/VolunterCouncil";
 import "./VolunterHome.scss";
 import { useOutletContext } from "react-router-dom";
@@ -10,10 +10,22 @@ import Council from "./components/Council/Council";
 import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
+  const language = useSelector((store) => store.language.language);
+  const meetingNews = useSelector((store) => store.portalNews.news);
+  const meetingNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
+  }, [language]);
+
   const headerData = {
     title: `${t("voluntery.headertitle")}`,
     subTitle: `${t("voluntery.headertext")}`,
@@ -39,7 +51,7 @@ function VolunterHome() {
       </div>
       <Council councilData={councilData} />
       <Volunter />
-      <News />
+      <News communityNews={meetingNews?.data} />
     </>
   );
 }

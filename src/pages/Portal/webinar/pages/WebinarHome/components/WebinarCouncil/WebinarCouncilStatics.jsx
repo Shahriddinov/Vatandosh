@@ -10,32 +10,32 @@ const data = [
   {
     id: 1,
     country: "Rossiya",
-    number: 24,
+    number: 0,
   },
   {
     id: 2,
     country: "Turkiya",
-    number: 18,
+    number: 0,
   },
   {
     id: 3,
     country: "Germaniya",
-    number: 16,
+    number: 0,
   },
   {
     id: 4,
     country: "Rossiya",
-    number: 8,
+    number: 0,
   },
   {
     id: 5,
     country: "Malayziya",
-    number: 4,
+    number: 0,
   },
   {
     id: 6,
     country: "Rossiya",
-    number: 2,
+    number: 0,
   },
 ];
 
@@ -78,7 +78,7 @@ function WebinarCouncilStatics() {
             <h5>Jami tadbirlar qatnashganlar</h5>
             <img src={UserIcon} alt="error" />
           </span>
-          <h4>3505</h4>
+          <h4>0</h4>
           <p className="margin_bottom_60">Ishtirokchilari</p>
         </div>
         <div className="council-bottom">

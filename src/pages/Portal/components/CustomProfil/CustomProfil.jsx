@@ -23,7 +23,7 @@ export default function CustomProfil() {
   );
 
   useEffect(() => {
-    if (pathname.includes("expert")) {
+    if (pathname.includes("expert") || pathname.includes("volunteer")) {
       dispatch(getExpert(id));
     }
   }, [dispatch, pathname, id]);
