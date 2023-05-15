@@ -107,12 +107,12 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
             })
           )
       );
-      setActiveBarItem(3);
     }
+    setActiveBarItem(3);
   };
 
   const deleteEmployment = (id) => {
-    dispatch(deleteExpertEmployment(id));
+    if (typeof id === "number") dispatch(deleteExpertEmployment(id));
   };
 
   useEffect(() => {
