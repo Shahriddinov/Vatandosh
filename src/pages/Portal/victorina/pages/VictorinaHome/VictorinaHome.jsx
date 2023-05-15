@@ -16,7 +16,6 @@ function VictorinaHome() {
 
   const { communityNews, quizData, pageData, quizDataWinner } =
     useVictorinaFetching();
-  console.log(pageData);
   return (
     <div>
       <div className="victorina-home">

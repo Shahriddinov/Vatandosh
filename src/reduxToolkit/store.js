@@ -38,6 +38,7 @@ import portalNews from "./portalSlices/portalNewsSlice/portalNewsSlice";
 import webinarSlidesSlice from "./webinarSlider";
 import quizTestSlice from "./victorinaQuiz/victorinaTest";
 import mediaFileSlice from "./victorinaImage";
+import quizFinishSlice from './victorinaQuiz/victorinafinish'
 
 const store = configureStore({
   reducer: {
@@ -79,6 +80,7 @@ const store = configureStore({
     webinarSlidesSlice,
     quizTestSlice,
     mediaFileSlice,
+    quizFinishSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
