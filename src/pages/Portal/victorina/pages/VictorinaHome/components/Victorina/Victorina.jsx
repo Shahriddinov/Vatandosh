@@ -1,6 +1,7 @@
 import React from "react";
 import {
   CalendarIcon,
+  ExcludeIcon,
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
 import "./Victorina.scss";
@@ -58,6 +59,10 @@ function Victorina({ quizData }) {
             </div>
           ))}
         </div>
+        <Link className="victorina_link" to="victorina-more">
+          <img src={ExcludeIcon} alt="error" />
+          Barcha viktorinalar
+        </Link>
       </div>
     </div>
   );
