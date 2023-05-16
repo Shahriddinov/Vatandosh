@@ -37,8 +37,8 @@ export default function WebinarRegister() {
   const [formData, setFormData] = useState({
     first_name: "",
     second_name: "",
-    fathers_name: "",
-    phone_number: "",
+    last_name: "",
+    phone: "",
     email: "",
   });
 
@@ -60,8 +60,8 @@ export default function WebinarRegister() {
     const data = new FormData();
     data.append("first_name", formData.first_name);
     data.append("second_name", formData.second_name);
-    data.append("fathers_name", formData.fathers_name);
-    data.append("phone_number", formData.phone_number);
+    data.append("last_name", formData.last_name);
+    data.append("phone", formData.phone);
     data.append("email", formData.email);
     data.append("img", uploadImg);
 
@@ -151,7 +151,7 @@ export default function WebinarRegister() {
                       maxLength={30}
                       placeholder={t("expert.inputplaceholder")}
                       name="fathers_name"
-                      value={formData.fathers_name}
+                      value={formData.last_name}
                       onChange={handleInputChange}
                     />
                     <img src={pencil} alt="" />

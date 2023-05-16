@@ -11,9 +11,13 @@ import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
 import { useDispatch, useSelector } from "react-redux";
-import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
+import {
+  getVolunteerAll,
+  getVolunteerCity,
+} from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { Spinner } from "../../../../../component";
+import { createSelector } from "@reduxjs/toolkit";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -30,6 +34,7 @@ function VolunterHome() {
   useEffect(() => {
     dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
     dispatch(getVolunteerAll(8));
+    dispatch(getVolunteerCity());
   }, [language]);
 
   const dispatch = useDispatch();

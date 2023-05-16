@@ -23,7 +23,7 @@ function VolunterAbout() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVolunteerAll(8));
+    dispatch(getVolunteerAll(12));
   }, [language]);
 
   const handleChange = (event) => {
