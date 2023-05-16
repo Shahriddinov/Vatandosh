@@ -34,7 +34,7 @@ const data = [
   },
 ];
 
-function CouncilStatics() {
+function CouncilStatics({ expertCount }) {
   const { t } = useTranslation();
   return (
     <div className="council-right">
@@ -43,7 +43,7 @@ function CouncilStatics() {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>88</h4>
+        <h4>{expertCount?.length}</h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="council-bottom">
@@ -51,10 +51,10 @@ function CouncilStatics() {
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
-        {data.map((data) => (
+        {expertCount.slice(0, 5).map((data) => (
           <span className="council-span" key={data.id}>
-            <h5>{data.country}</h5>
-            <p>{data.number}</p>
+            <h5>{data?.name}</h5>
+            <p>{data?.users?.length}</p>
           </span>
         ))}
       </div>

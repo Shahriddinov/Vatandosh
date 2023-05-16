@@ -6,9 +6,10 @@ import Council from "./components/Council/Council";
 import Expert from "./components/ExpertCouncil/ExpertCouncil";
 import { useOutletContext } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
-import backImg from "../../../../../assets/images/expert/bgexpert.png";
-import { CouncilImage } from "../../../../../assets/images/expert";
 import { useTranslation } from "react-i18next";
+
+import { useExpertHome } from "./hooks/useExpertHome";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
@@ -18,17 +19,36 @@ function ExpertCouncil() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { navData, navbarUrl } = useOutletContext();
+
+  const {
+    expertCount,
+    expertCountLoading,
+    expertPageLoading,
+    expertPage,
+    lan,
+    expertError,
+  } = useExpertHome();
+
+  if (expertCountLoading || expertPageLoading) {
+    return <Spinner position="full" />;
+  } else if (expertError) {
+    return <p>{expertError}</p>;
+  }
+  const findExpertHeroPage = expertPage.find((el) => el.type === 3);
+  const findExpertAboutPage = expertPage.find((el) => el.type === 1);
   const headerData = {
-    title: t("expert.headertitle"),
-    subTitle: t("expert.headersubtitle"),
+    title: findExpertHeroPage[`title_${lan}`],
+    subTitle: findExpertHeroPage[`text_${lan}`],
     link: "/portal-category/expert/register",
     btnText: t("expert.register"),
   };
 
   const councilData = {
-    title: t("expert.counciltitle"),
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised...",
-    image: CouncilImage,
+    title: findExpertAboutPage[`title_${lan}`],
+    desc:
+      findExpertAboutPage[`text_${lan}`]?.split(" ")?.slice(0, 25)?.join(" ") +
+      "...",
+    image: PORTAL_IMAGE_URL + findExpertAboutPage?.image,
     pathUrl: "/portal-category/expert/council-about",
   };
 
@@ -43,14 +63,16 @@ function ExpertCouncil() {
     <>
       <div
         className="expert-council"
-        style={{ backgroundImage: `url(${backImg})` }}
+        style={{
+          backgroundImage: `url(${PORTAL_IMAGE_URL}${findExpertHeroPage.image})`,
+        }}
       >
         {communityNewsLoading ? <Spinner position={"full"} /> : null}
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <Council councilData={councilData} />
+      <Council councilData={councilData} expertCount={expertCount} />
       <Expert />
       <News
         communityNews={communityNews?.data}
