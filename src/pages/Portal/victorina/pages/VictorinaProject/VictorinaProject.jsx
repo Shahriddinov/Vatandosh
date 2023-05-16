@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
 import ProjectPassportPopUp from "../../components/ProjectPassportPopUp/ProjectPassportPopUp";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -129,96 +131,119 @@ export default function VictorinaProject() {
   }, []);
 
   return (
-    <main className="victorinaproject">
-      <div className="container">
-        <h1 style={{ marginBottom: "25px" }} className="experttitle-title-text">
-          {quizData?.title}
-        </h1>
-        <div className="victorinaproject-wrapper">
-          <div className="victorinaproject-main">
-            <img src={img} alt="error" />
-            {pathname.includes("finished-projects") ? (
-              <button className="victorinaproject-main-btn">
-                {t("victorina.endproject")}
-              </button>
-            ) : (
-              <>
-                <div className="victorinaproject-main-timer">
-                  <div>
-                    <span>7</span>
-                    <span>Kun</span>
-                  </div>
-                  <div>
-                    <span>12</span>
-                    <span>Soat</span>
-                  </div>
-                  <div>
-                    <span>45</span>
-                    <span>Daqiqa</span>
-                  </div>
-                </div>
-                <button
-                  className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                  onClick={() => {
-                    setPopUp(quizData.type === "test" ? "verify_popup" : true);
-                    setPopUpVerify("verify");
-                  }}
-                >
-                  {t("victorina.joinproject")}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <main className="victorinaproject">
+        <div className="container">
+          <h1
+            style={{ marginBottom: "25px" }}
+            className="experttitle-title-text">
+            {quizData?.title}
+          </h1>
+          <div className="victorinaproject-wrapper">
+            <div className="victorinaproject-main">
+              <img src={img} alt="error" />
+              {pathname.includes("finished-projects") ? (
+                <button className="victorinaproject-main-btn">
+                  {t("victorina.endproject")}
                 </button>
-              </>
-            )}
-            <div className="victorinaproject-main-desc">
-              <h3>{quizData?.title}</h3>
-              <div className="victorinaproject-main-desc-action">
-                <div className="victorinaproject-main-desc-action-date">
-                  <BsFillCalendarEventFill />
-                  <span>{quizData?.started_at}</span>
+              ) : (
+                <>
+                  <div className="victorinaproject-main-timer">
+                    <div>
+                      <span>7</span>
+                      <span>Kun</span>
+                    </div>
+                    <div>
+                      <span>12</span>
+                      <span>Soat</span>
+                    </div>
+                    <div>
+                      <span>45</span>
+                      <span>Daqiqa</span>
+                    </div>
+                  </div>
+                  <button
+                    className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    onClick={() => {
+                      setPopUp(
+                        quizData.type === "test" ? "verify_popup" : true
+                      );
+                      setPopUpVerify("verify");
+                    }}>
+                    {t("victorina.joinproject")}
+                  </button>
+                </>
+              )}
+              <div className="victorinaproject-main-desc">
+                <h3>{quizData?.title}</h3>
+                <div className="victorinaproject-main-desc-action">
+                  <div className="victorinaproject-main-desc-action-date">
+                    <BsFillCalendarEventFill />
+                    <span>{quizData?.started_at}</span>
+                  </div>
+                  <div className="victorinaproject-main-desc-action-views">
+                    <AiFillEye />
+                    <span>{quizData?.count}</span>
+                  </div>
                 </div>
-                <div className="victorinaproject-main-desc-action-views">
-                  <AiFillEye />
-                  <span>{quizData?.count}</span>
-                </div>
+                <p
+                  dangerouslySetInnerHTML={{ __html: quizData?.description }}
+                />
               </div>
-              <p dangerouslySetInnerHTML={{ __html: quizData?.description }} />
             </div>
+            <VictorinaStatics />
           </div>
-          <VictorinaStatics />
+          <>
+            <div
+              style={{ marginBottom: "50px" }}
+              className="victorinaproject-winners">
+              <h3>{t("victorina.winnerlist")}</h3>
+              <div className="victorinaproject-winners-list">
+                {winnerData?.map((el) => (
+                  <WinnerCard key={el} el={el} />
+                ))}
+              </div>
+            </div>
+          </>
+          <ShareFriends />
         </div>
-        <>
-          <div
-            style={{ marginBottom: "50px" }}
-            className="victorinaproject-winners"
-          >
-            <h3>{t("victorina.winnerlist")}</h3>
-            <div className="victorinaproject-winners-list">
-              {winnerData?.map((el) => (
-                <WinnerCard key={el} el={el} />
-              ))}
-            </div>
-          </div>
-        </>
-        <ShareFriends />
-      </div>
 
-      {PopUp && quizData.type === "images" ? (
-        <ProjectImgPopUp setactivePopUp={setPopUp} />
-      ) : null}
-      {PopUp && quizData.type === "video" ? (
-        <ProjectYouTubePopUp setactivePopUp={setPopUp} id={id} />
-      ) : null}
-      {PopUp === "verify_popup" && PopUpVerify === "verify" ? (
-        <ProjectPassportPopUp
-          setactivePopUp={setPopUp}
-          setPopUpVerify={setPopUpVerify}
-        />
-      ) : null}
-      {PopUp === "test" && quizData.type === "test" ? (
-        <TestPopUp setactivePopUp={setPopUp} />
-      ) : null}
-      {PopUp && quizData.type === "text" ? (
-        <ProjectPoemsPopUp setactivePopUp={setPopUp} />
-      ) : null}
-    </main>
+        {PopUp && quizData.type === "images" ? (
+          <ProjectImgPopUp toast={toast} setactivePopUp={setPopUp} />
+        ) : null}
+        {PopUp && quizData.type === "video" ? (
+          <ProjectYouTubePopUp
+            toast={toast}
+            setactivePopUp={setPopUp}
+            id={id}
+          />
+        ) : null}
+        {PopUp === "verify_popup" && PopUpVerify === "verify" ? (
+          <ProjectPassportPopUp
+            setactivePopUp={setPopUp}
+            setPopUpVerify={setPopUpVerify}
+            toast={toast}
+          />
+        ) : null}
+        {PopUp === "test" && quizData.type === "test" ? (
+          <TestPopUp toast={toast} setactivePopUp={setPopUp} />
+        ) : null}
+        {PopUp && quizData.type === "text" ? (
+          <ProjectPoemsPopUp toast={toast} setactivePopUp={setPopUp} />
+        ) : null}
+      </main>
+    </>
   );
 }

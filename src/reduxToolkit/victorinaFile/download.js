@@ -4,13 +4,14 @@ import axios from "../../services/api/axios";
 
 export const sendVictorinaFile = createAsyncThunk(
   "test",
-  async ({ id, data }) => {
+  async ({ id, data, setactivePopUp }) => {
     return await axios
       .post(`${VICTORINA_YOUTUBE}/${id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => res?.data);
+      .then((res) => res?.data)
+      .then((res) => setactivePopUp(false));
   }
 );

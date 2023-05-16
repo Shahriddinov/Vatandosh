@@ -20,10 +20,10 @@ const victorinaYoutubeSlice = createSlice({
       .addCase(sendVictorinaYoutube.fulfilled, (state, action) => {
         state.loading = false;
         state.sendData = action.payload;
-        toast.success("The youtube link has sent successfully");
+        state.sendData = "success";
+        toast.success("This is the information succes done!");
       })
       .addCase(sendVictorinaYoutube.rejected, (state, action) => {
-        console.log(action);
         state.loading = true;
         state.error = action.error.message;
       });
