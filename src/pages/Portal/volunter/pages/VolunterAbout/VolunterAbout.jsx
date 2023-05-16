@@ -23,7 +23,7 @@ function VolunterAbout() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVolunteerAll(8));
+    dispatch(getVolunteerAll(12));
   }, [language]);
 
   const handleChange = (event) => {
@@ -42,7 +42,7 @@ function VolunterAbout() {
           <div className="employe-item">
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha mutaxassislar
+                Barcha Davlatlar
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
@@ -58,7 +58,7 @@ function VolunterAbout() {
             </FormControl>
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha davlatlar
+                Barcha Shaharlar
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"

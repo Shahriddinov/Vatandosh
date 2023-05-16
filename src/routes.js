@@ -294,6 +294,10 @@ const OnlineWebinar = lazy(() =>
   import("./pages/Portal/webinar/pages/OnlineWebinar/OnlineWebinar")
 );
 
+const WebinarArchive = lazy(() =>
+  import("./pages/Portal/webinar/pages/WebinarArchive/WebinarArchive")
+);
+
 const PassTheTest = lazy(() =>
   import("./pages/Portal/OnlineTeaching/pages/PassTheTest/PassTheTest")
 );
@@ -538,6 +542,7 @@ const RoutesContainer = () => {
               <Route path="online-webinar/:id" element={<OnlineWebinar />} />
               <Route path="webinar-about" element={<WebinarAbout />} />
               <Route path="webinar-events" element={<WebinarEvents />} />
+              <Route path="webinar-archive" element={<WebinarArchive />} />
               <Route path="webinar-contact" element={<Contact />} />
             </Route>
 
@@ -570,7 +575,10 @@ const RoutesContainer = () => {
               <Route path="about" element={<VictorinaAbout />} />
               <Route path="projects" element={<MoreVictorina />} />
               <Route path="finished-projects" element={<VictorinaFinish />} />
-              <Route path="victorinatest-finish" element={<VictorinaWinnerWin />} />
+              <Route
+                path="victorinatest-finish"
+                element={<VictorinaWinnerWin />}
+              />
               <Route
                 path="finished-projects/image-project/:id"
                 element={<VictorinaProject />}

@@ -116,13 +116,11 @@ export const GET_EMPLOYMENT = `${portalBaseUrl}/employment/show-one-user`;
 export const POST_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/create`;
 export const CREATE_MEETING = "/meeting/create/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";
-
 // Update requests
 export const VOLUNTEER_UPDATE = "volunteer/update/";
 export const UPDATE_EXPERT_EDUCATION = `${portalBaseUrl}/education/update`;
 export const UPDATE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/update`;
 export const UPDATE_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/update`;
-
 // Delete requests
 export const VOLUNTEER_DELETE = "/volunteer/delete/";
 export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;

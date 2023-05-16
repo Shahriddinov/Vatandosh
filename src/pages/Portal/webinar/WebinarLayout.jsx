@@ -18,7 +18,7 @@ export default function WebinarLayout() {
     },
     {
       id: 3,
-      url: "/portal-category/volunteer/arxiv",
+      url: "/portal-category/webinar/webinar-archive",
       label: t("webinar.nav3"),
     },
     {
