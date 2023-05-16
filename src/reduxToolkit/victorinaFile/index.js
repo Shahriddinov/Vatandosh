@@ -20,6 +20,7 @@ const quizFileSlice = createSlice({
       .addCase(sendVictorinaFile.fulfilled, (state, action) => {
         state.loading = false;
         state.fileData = action.payload;
+        toast.success("This is the information succes done!");
       })
       .addCase(sendVictorinaFile.rejected, (state, action) => {
         state.loading = false;

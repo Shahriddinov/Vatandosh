@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { sendVictorinaYoutube } from "../../../../../reduxToolkit/victorinaYoutube/youtube";
 import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
 import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
+import { sendVictorinaFile } from "../../../../../reduxToolkit/victorinaFile/download";
 
 export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
   const [dataYoutube, setDataYoutube] = useState({
@@ -69,7 +70,7 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
       passport: dataYoutube.passport,
       link: dataYoutube.link,
     };
-    dispatch(sendVictorinaYoutube({ id, data }));
+    dispatch(sendVictorinaFile({ id, data, setactivePopUp }));
   };
 
   return (

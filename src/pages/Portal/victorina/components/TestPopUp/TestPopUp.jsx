@@ -117,9 +117,6 @@ export default function TestPopUp({ setactivePopUp }) {
     }
   };
 
-  const handOpenModal = () => {
-    setactivePopUp(false);
-  };
 
   return (
     <div className="projectImg">

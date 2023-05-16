@@ -83,10 +83,10 @@ function VictorinaFinish() {
             </div>
           ))}
         </div>
-        <Link className="victorina_link" to="victorina-more">
+        {/* <Link className="victorina_link" to="victorina-more">
           <img src={ExcludeIcon} alt="error" />
           Barcha Viktorina yakunlanganlar
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
