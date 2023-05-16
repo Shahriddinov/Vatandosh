@@ -13,6 +13,8 @@ import WebinarNews from "./components/WebinarNews/WebinarNews";
 import { useDispatch, useSelector } from "react-redux";
 import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
+import { getMeetingPage } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { Spinner } from "../../../../../component";
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -21,11 +23,16 @@ function WebinarHome() {
 
   const meetingNews = useSelector((store) => store.portalNews.news);
   const meetingNewsLoading = useSelector((store) => store.portalNews.loading);
+  const meetingPage = useSelector((store) => store.meetingSlice.pageData);
+  const meetingPageLoading = useSelector(
+    (store) => store.meetingSlice.pageLoading
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
+    dispatch(getMeetingPage());
   }, [language]);
 
   const headerData = {
@@ -38,8 +45,12 @@ function WebinarHome() {
     title: t("webinar.council"),
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     image: CouncilImage,
-    pathUrl: "/portal-category/expert/council-about",
+    pathUrl: "/portal-category/webinar/webinar-about",
   };
+
+  if (meetingPageLoading || meetingNewsLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
@@ -51,7 +62,7 @@ function WebinarHome() {
         <Nav navData={navData} />
         <WebinarHeader headerData={headerData} />
       </div>
-      <WebinarCouncil councilData={councilData} />
+      <WebinarCouncil councilData={councilData} meetingPage={meetingPage} />
       <WebinarEvents />
       <News communityNews={meetingNews?.data} />
     </div>

@@ -1,0 +1,135 @@
+.webinar {
+  padding: 30px 0;
+  margin-bottom: 50px;
+  background-image: url("../../../../../assets//images/body-bg.png");
+
+  &-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-name {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    color: #10131b;
+    font-family: "Inter";
+  }
+  &-lists {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 85px;
+  }
+  &-page {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-top: 30px;
+  }
+  &-box {
+    box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+    border-radius: 15px;
+    background: #ffffff;
+    border: 1px solid #eaedf6;
+    width: 370px;
+    height: auto;
+  }
+  &-names {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+    color: #065ea9;
+    padding-left: 15px;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #5d6b8a;
+    margin: 15px;
+  }
+  &-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+    color: #5d6b8a;
+    margin: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  &-more {
+    border: 1px solid #5d6b8a;
+    border-radius: 16px;
+    width: 162px;
+    height: 48px;
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #5d6b8a;
+    justify-content: center;
+  }
+  &-links {
+    background: #065ea9;
+    border-radius: 16px;
+    padding: 8px 30px;
+    width: 175px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px;
+  }
+  &-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+  }
+}
+
+.see_more_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 22px;
+    gap: 10px;
+    background: #e3f0ff;
+    border-radius: 16px;
+    border: none;
+    font-size: 14px;
+    line-height: 24px;
+    color: #065ea9;
+    transition: ease-in-out 100ms;
+    cursor: pointer;
+
+    &:hover {
+      background: #d7e7fa;
+    }
+  }
+}

@@ -11,9 +11,13 @@ import { useTranslation } from "react-i18next";
 import Header from "../../components/Header/Header";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
 import { useDispatch, useSelector } from "react-redux";
-import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
+import {
+  getVolunteerAll,
+  getVolunteerCity,
+} from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { Spinner } from "../../../../../component";
+import { createSelector } from "@reduxjs/toolkit";
 
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
@@ -26,10 +30,37 @@ function VolunterHome() {
     (store) => store.volunteerSlice.volunteerLoading
   );
 
+  // const changeVolunteerCount = createSelector(
+  //   (state) => state.volunteerSlice.volunteerCity,
+  //   (expert) => {
+  //     const volunteerCount = expert.filter((el) => {
+  //       let count = 0;
+  //       if (el.users.length > 0) {
+  //         for (let i = 0; i < el.users.length; i++) {
+  //           if (el.users[i].volunteer !== null) {
+  //             if (el.users[i].volunteer[0].includes("VOLUNTEER")) {
+  //               count += 1;
+  //             }
+  //           }
+  //         }
+  //       }
+  //       if (count > 0) {
+  //         return el;
+  //       }
+  //     });
+
+  //     return volunteerCount;
+  //   }
+  // );
+
+  // const countCountries = useSelector(changeVolunteerCount);
+
+  // console.log(countCountries);
 
   useEffect(() => {
     dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
     dispatch(getVolunteerAll(8));
+    dispatch(getVolunteerCity());
   }, [language]);
 
   const dispatch = useDispatch();
@@ -65,8 +96,6 @@ function VolunterHome() {
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} />
-
-      <News communityNews={communityNews?.data} />
       <Volunter
         volunteers={volunteers.data}
         volunteersLoading={volunteersLoading}

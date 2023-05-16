@@ -2,7 +2,7 @@ import "./OnlineWebinar.scss";
 import "../../../victorina/pages/VictorinaProject/VictorinaProject.scss";
 import { ExpertTitle } from "../../../expert/components";
 import { useTranslation } from "react-i18next";
-import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
+import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics1";
 import img from "../../../../../assets/images/portal/5.png";
 import { Link, useLocation, useParams } from "react-router-dom";
 import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/ExpertProfileInfo";
@@ -21,6 +21,7 @@ export default function OnlineWebinar() {
     (store) => store.meetingSlice.meetingOneLoading
   );
   const meetingError = useSelector((store) => store.meetingSlice.error);
+  console.log(meetingOnedata);
 
   const dispatch = useDispatch();
 
@@ -145,7 +146,7 @@ export default function OnlineWebinar() {
               </div>
               <ShareFriends />
             </div>
-            <CouncilStatics />
+            <CouncilStatics meetingOnedata={meetingOnedata} />
           </div>
         </div>
       </main>

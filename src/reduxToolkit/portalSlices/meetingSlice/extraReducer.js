@@ -30,6 +30,7 @@ export const getMeetingAll = createAsyncThunk(
       params: {
         page: props?.page,
         type: props?.eventType,
+        is_end: props?.is_end,
       },
     }).then((res) => res.data);
   }
@@ -46,6 +47,6 @@ export const getMeetingOne = createAsyncThunk("getMeetingOne", async (id) => {
   return await axios.get(`${GET_MEETING_BY_ID}${id}`).then((res) => res.data);
 });
 
-export const getMeetingPage = createAsyncThunk("getMeetingPage", async (id) => {
-  return await axios.delete(GET_MEETING_PAGE).then((res) => res.data);
+export const getMeetingPage = createAsyncThunk("getMeetingPage", async () => {
+  return await axios.get(GET_MEETING_PAGE).then((res) => res.data);
 });

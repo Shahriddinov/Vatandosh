@@ -39,7 +39,7 @@ const data = [
   },
 ];
 
-function WebinarCouncilStatics() {
+function WebinarCouncilStatics({ count, locations, attendees }) {
   const { t } = useTranslation();
 
   const meetingsCount = useSelector(
@@ -70,7 +70,7 @@ function WebinarCouncilStatics() {
             <h5>O'tkazilgan tadbirlar soni</h5>
             <img src={UserIcon} alt="error" />
           </span>
-          <h4>{meetingsCount}</h4>
+          <h4>{count}</h4>
           <p className="margin_bottom_60">Tadbirlar</p>
         </div>
         <div style={{ marginTop: "15px" }}>
@@ -78,7 +78,7 @@ function WebinarCouncilStatics() {
             <h5>Jami tadbirlar qatnashganlar</h5>
             <img src={UserIcon} alt="error" />
           </span>
-          <h4>0</h4>
+          <h4>{attendees}</h4>
           <p className="margin_bottom_60">Ishtirokchilari</p>
         </div>
         <div className="council-bottom">
@@ -86,10 +86,10 @@ function WebinarCouncilStatics() {
             <h5>{t("expert.country")}</h5>
             <img src={Globe} alt="error" />
           </span>
-          {data.map((data) => (
-            <span className="council-span" key={data.id}>
-              <h5>{data.country}</h5>
-              <p>{data.number}</p>
+          {locations.map((location) => (
+            <span className="council-span" key={location.id}>
+              <h5>{location.name}</h5>
+              <p>{location.count}</p>
             </span>
           ))}
         </div>
