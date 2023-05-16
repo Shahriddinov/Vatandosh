@@ -3,9 +3,11 @@ import CouncilStatics from "../../pages/ExpertHome/components/Council/CouncilSta
 import "./About.scss";
 import { PageTop } from "../../../communityAssociation/components";
 
-function About({ aboutData }) {
+console.log();
+function About({ aboutData, expertCount }) {
   const pageTopData = {
     title: aboutData?.title,
+
     pathUrl: [
       {
         id: 1,
@@ -31,11 +33,11 @@ function About({ aboutData }) {
             <img src={aboutData?.img1} alt="img" />
             <h3 className="about-title">{aboutData?.title2}</h3>
             <p className="about-text">{aboutData?.desc1}</p>
-            <img src={aboutData?.img2} alt="img" />
+            {aboutData?.img2 && <img src={aboutData?.img2} alt="img" />}
             <p className="about-text">{aboutData?.desc2}</p>
             <ShareFriends />
           </div>
-          <CouncilStatics />
+          <CouncilStatics expertCount={expertCount} />
         </div>
       </div>
     </div>

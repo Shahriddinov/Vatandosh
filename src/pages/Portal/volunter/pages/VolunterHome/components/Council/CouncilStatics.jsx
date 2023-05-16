@@ -33,7 +33,7 @@ const data = [
   },
 ];
 
-function CouncilStatics({ count }) {
+function CouncilStatics({ count, VolunteerCount }) {
   return (
     <div className="council-right">
       <div>
@@ -49,12 +49,14 @@ function CouncilStatics({ count }) {
           <h5>Xorijiy davlatlar</h5>
           <img src={Globe} />
         </span>
-        {data.map((data) => (
-          <span className="council-span" key={data.id}>
-            <h5>{data.country}</h5>
-            <p>{data.number}</p>
-          </span>
-        ))}
+        {VolunteerCount.sort((a, b) => b.users.length - a.users.length)
+          .slice(0, 5)
+          .map((data) => (
+            <span className="council-span" key={data.id}>
+              <h5>{data.name}</h5>
+              <p>{data.users.length}</p>
+            </span>
+          ))}
       </div>
     </div>
   );

@@ -2,14 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getExpertCount,
   getExpertPage,
-  getExperts,
 } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
-export const useExpertHome = () => {
+export const useAboutCouncil = () => {
   const lan = useSelector((state) => state.language.language);
+
   const changeExpertCount = createSelector(
     (state) => state.expertSlice.expertCount,
     (expert) => {
@@ -39,22 +39,15 @@ export const useExpertHome = () => {
   const expertPageLoading = useSelector(
     (state) => state.expertSlice.expertPageLoading
   );
+
   const expertPage = useSelector((state) => state.expertSlice.expertPage);
   const expertError = useSelector((state) => state.expertSlice.error);
-
-  const communityNews = useSelector((store) => store.portalNews.news);
-  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
-
-  const expertData = useSelector((state) => state.expertSlice.expertData);
-  const loading = useSelector((state) => state.expertSlice.loading);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getExpertCount());
     dispatch(getExpertPage());
-    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-    dispatch(getExperts());
   }, [lan]);
 
   return {
@@ -64,9 +57,5 @@ export const useExpertHome = () => {
     expertPage,
     lan,
     expertError,
-    communityNewsLoading,
-    communityNews,
-    expertData,
-    loading,
   };
 };
