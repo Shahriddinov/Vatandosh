@@ -10,6 +10,7 @@ import { useCommunityHomeFetching } from "./hooks/useCommunityHomeFetching";
 import { Spinner } from "../../../../../component";
 import { CommunityHomeCouncil } from "./components";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { extraFun } from "./components/homeCouncil/extra";
 
 const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
@@ -36,10 +37,11 @@ const AssociationHome = () => {
   } else if (communityHomePageError) {
     return <p className="">{communityHomePageError}</p>;
   }
+  const { filteredText } = extraFun(communityHomePageData?.body);
 
   const headerData = {
     title: communityHomePageData?.title,
-    subTitle: communityHomePageData?.excerpt,
+    subTitle: filteredText[1].split(" ").slice(0, 5).join(" ") + "...",
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };

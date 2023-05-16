@@ -1,9 +1,9 @@
-import { CouncilImage } from "../../../../../../../assets/images/volunter";
 import "./Council.scss";
 import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
 
-function Council({ councilData }) {
+function Council({ councilData, VolunteerCount }) {
+  const dataCount = VolunteerCount.map((el) => el.users).flat();
   return (
     <div className="council">
       <div className="container">
@@ -15,7 +15,10 @@ function Council({ councilData }) {
             <Link to={councilData.pathUrl}>Batafsil</Link>
           </div>
         </div>
-        <CouncilStatics count={councilData.count} />
+        <CouncilStatics
+          count={dataCount.length}
+          VolunteerCount={VolunteerCount}
+        />
       </div>
     </div>
   );

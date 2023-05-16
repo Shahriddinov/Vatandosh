@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
 
-function Council({ councilData, expertCount }) {
+function Council({ councilData, expertCount, expertData }) {
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -25,7 +25,7 @@ function Council({ councilData, expertCount }) {
                 <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
               </div>
             </div>
-            <CouncilStatics expertCount={expertCount} />
+            <CouncilStatics expertCount={expertCount} expertData={expertData} />
           </>
         ) : (
           <LazySpinner height="350px" />
