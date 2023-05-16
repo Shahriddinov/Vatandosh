@@ -12,6 +12,10 @@ import "./VolunterCouncilAbout.scss";
 import { useEffect } from "react";
 import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
+import { getExpertPage } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { t } from "i18next";
+import { Link } from "react-router-dom";
 
 function VolunterCouncilAbout() {
   const language = useSelector((store) => store.language.language);
@@ -19,54 +23,51 @@ function VolunterCouncilAbout() {
   const volunteersLoading = useSelector(
     (store) => store.volunteerSlice.volunteerLoading
   );
+  const volunteerPageLoading = useSelector(
+    (state) => state.volunteerSlice.expertPageLoading
+  );
+  const volunteerPage = useSelector((state) => state.expertSlice.expertPage);
+  const expertError = useSelector((state) => state.expertSlice.error);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getVolunteerAll(1));
+    dispatch(getExpertPage());
   }, [language]);
 
-  if (volunteersLoading) {
+  if (volunteersLoading || volunteerPageLoading) {
     return <Spinner />;
+  } else if (expertError) {
+    return <p>{expertError}</p>;
   }
+
+  const findExpertAboutPage = volunteerPage.find((el) => el.type === 2);
   return (
     <div className="about">
       <div className="container">
         <div className="about-top">
-          <h3>Volontyorlar haqida</h3>
+          <h3>{t("voluntery.about-title")}</h3>
           <span>
-            <a href="#">Asosiy</a>
-            <p>Batafsil</p>
+            <Link to="/portal-category/volunteer">
+              {t("voluntery.about-url-home")}
+            </Link>
+            <p>{t("voluntery.about-url-detail")}</p>
           </span>
         </div>
         <div className="about-page">
           <div className="about-left">
-            <img src={CouncilImage} />
+            <img
+              src={`${PORTAL_IMAGE_URL}${findExpertAboutPage.image}`}
+              alt={findExpertAboutPage[`title_${language}`]}
+            />
             <h3 className="about-title">
-              “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro Volontyorlar
+              {findExpertAboutPage[`title_${language}`]}
             </h3>
             <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised...
+              {findExpertAboutPage[`text_${language}`]}
             </p>
-            <img src={CouncilImage} />
-            <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+
             <ul className="about-list">
               <li className="about-item">
                 <a href="#" className="about-link">
