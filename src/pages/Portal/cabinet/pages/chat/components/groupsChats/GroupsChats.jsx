@@ -54,7 +54,11 @@ const GroupsChats = ({
               )}
             </div>
             {group.messages ? (
-              <div className="groups__has-message">{group.messages}</div>
+              <div className="groups__has-message">
+                {group.messages > 1000
+                  ? `${Math.round(group.messages / 1000)}k`
+                  : group.messages}
+              </div>
             ) : null}
           </div>
         );

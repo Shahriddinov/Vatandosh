@@ -52,7 +52,11 @@ const PrivateChats = ({
               )}
             </div>
             {user.message ? (
-              <div className="users__has-message">{user.message}</div>
+              <div className="users__has-message">
+                {user.message > 1000
+                  ? `${Math.round(user.message / 1000)}k`
+                  : user.message}
+              </div>
             ) : null}
           </div>
         );

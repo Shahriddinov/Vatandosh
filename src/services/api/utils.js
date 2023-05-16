@@ -19,6 +19,8 @@ export const GET_ALL_TRUSTEES_URL = `${baseUrl}/trusts`;
 export const GET_TRUSTEES_URL = `${baseUrl}/trusts/page/`;
 export const GET_MAP_DATA_URL = `${baseUrl}/country_relationship/`;
 export const GET_COUNTRIES = `${baseUrl}/countries`;
+export const GET_ALL_COUNTRIES =
+  "https://vatandoshlar.napaautomotive.uz/api/community/all-region";
 export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
 export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`;

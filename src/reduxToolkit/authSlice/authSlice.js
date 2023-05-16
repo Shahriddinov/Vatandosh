@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getAllCountries,
   getAllNations,
   recoverPassword,
   registerUser,
@@ -22,6 +23,8 @@ const initialState = {
   userData: getItem("user") ? JSON.parse(getItem("user")) : null,
   nationsData: null,
   nationsLoading: true,
+  countriesData: null,
+  countriesLoading: false,
   token: localStorage.getItem("token"),
   message: "",
   tokenMessage: null,
@@ -121,7 +124,6 @@ const authSlice = createSlice({
 
         if (action.payload.errors) {
           state.error = action.payload.errors.email;
-          // alert(action.payload.errors.email);
         } else {
           state.message = action.payload.message;
         }
@@ -140,7 +142,6 @@ const authSlice = createSlice({
         state.resetLoading = false;
         if (action.payload.errors) {
           state.error = action.payload.errors.message;
-          // alert(action.payload.errors.message);
         } else {
           state.message = action.payload.message;
           state.success = true;
@@ -178,6 +179,20 @@ const authSlice = createSlice({
       .addCase(getAllNations.rejected, (state, action) => {
         state.nationsLoading = false;
         state.error = action.error.message;
+      });
+
+    // Get All Countries
+    build
+      .addCase(getAllCountries.pending, (state) => {
+        state.countriesLoading = true;
+      })
+      .addCase(getAllCountries.fulfilled, (state, action) => {
+        state.countriesLoading = false;
+        state.countriesData = action.payload;
+      })
+      .addCase(getAllCountries.rejected, (state, action) => {
+        state.countriesLoading = false;
+        state.countriesData = action.error.message;
       });
   },
 });

@@ -19,7 +19,32 @@
 
   &__body {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(250px, 400px));
     gap: 30px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .search {
+    &__body {
+      grid-template-columns: repeat(3, minmax(250px, 400px));
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .search {
+    &__body {
+      grid-template-columns: repeat(2, minmax(200px, 400px));
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .search {
+    &__body {
+      grid-template-columns: repeat(1, minmax(250px, 400px));
+      justify-content: center;
+    }
   }
 }

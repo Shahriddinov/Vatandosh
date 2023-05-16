@@ -446,7 +446,7 @@ const RoutesContainer = () => {
                 />
                 <Route
                   path="/registration/signin"
-                  element={<Navigate to="/portal-category/cabinet" />}
+                  element={<Navigate to="/portal" />}
                 />
               </>
             ) : (
