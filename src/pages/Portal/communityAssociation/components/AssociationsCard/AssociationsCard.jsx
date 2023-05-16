@@ -3,10 +3,11 @@ import "./associationsCard.scss";
 import Flag from "../../../../../assets/images/flagkgz.png";
 import { Link } from "react-router-dom";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
-const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
+const AssociationsCard = ({ allRegions, region_id, logo, name, news, id }) => {
   const countryInfo = allRegions.find((el) => el.id === region_id);
-
+  const { t } = useTranslation();
   return (
     <div className="association__card">
       <div className="association__country">
@@ -26,12 +27,14 @@ const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
           <img src={`${PORTAL_IMAGE_URL}${logo}`} alt={name} />
         </div>
       </div>
-      <p>Chop etilgan maqolalar soni: {countryInfo?.count}</p>
+      <p>
+        {t("communityAssociation.card_articles")}: {news}
+      </p>
       <Link
         to={`/portal-category/community-association/country/${countryInfo?.id}/${id}`}
         className="more__button"
       >
-        Batafsil
+        {t("communityAssociation.detail")}
       </Link>
     </div>
   );
