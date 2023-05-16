@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import {
   CopyIcon,
   FacebookIcon,
@@ -6,13 +5,9 @@ import {
   TelegramIcon,
   InstagramIcon,
 } from "../../../../../assets/images/expert";
-import { CouncilImage } from "../../../../../assets/images/volunter";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterCouncilAbout.scss";
-import { useEffect } from "react";
-import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
-import { getExpertPage } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
