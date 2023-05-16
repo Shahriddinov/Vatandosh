@@ -107,12 +107,18 @@ export default function OnlineWebinar() {
                         <span>Daqiqa</span>
                       </div>
                     </div>
-                    <Link
-                      to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                    >
-                      {t("webinar.join-webinar")}
-                    </Link>
+                    {meetingOnedata.status == 1 ? (
+                      <Link
+                        to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
+                        className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                      >
+                        {t("webinar.join-webinar")}
+                      </Link>
+                    ) : (
+                      <Link className="victorinaproject-main-btn">
+                        Vebinar yakunlangan
+                      </Link>
+                    )}
                   </>
                 )}
                 {meetingOnedata.speakers?.map((speaker) => (
