@@ -6,11 +6,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
-
 function Volunter({ volunteers }) {
-  console.log(volunteers);
-
-
   return (
     <div className="expert">
       <div className="container">
