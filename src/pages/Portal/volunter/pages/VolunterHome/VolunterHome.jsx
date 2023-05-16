@@ -66,7 +66,7 @@ function VolunterHome() {
       </div>
       <Council councilData={councilData} />
 
-      <News communityNews={communityNews?.data} />
+      {/*<News communityNews={communityNews?.data} />*/}
       <Volunter
         volunteers={volunteers.data}
         volunteersLoading={volunteersLoading}
