@@ -115,14 +115,15 @@ export default function OnlineWebinar() {
                     </Link>
                   </>
                 )}
-                <ExpertProfileInfo
-                  profileImg={img}
-                  name={"Muqimov Otabek"}
-                  address={"Cпикер"}
-                  position={
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
-                  }
-                />
+                {meetingOnedata.speakers?.map((speaker) => (
+                  <ExpertProfileInfo
+                    key={speaker.id}
+                    profileImg={`${PORTAL_IMAGE_URL}${speaker.image}`}
+                    name={speaker.full_name}
+                    address={speaker.special}
+                    position={speaker.info}
+                  />
+                ))}
                 <div className="victorinaproject-main-desc">
                   <h3>Onlayn vebinarni o’tkazishdan maqsadi</h3>
                   <div className="victorinaproject-main-desc-action">
