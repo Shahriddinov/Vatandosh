@@ -75,6 +75,7 @@
   "Associations": "Birlashmalar",
   "staffCount": "Xodimlar soni",
   "leader": "Rahbar",
+  "thereIsNotFound":"Hozirda bu davlatda jamoat birlashmalari mavjud emas",
   "founding_date": "Tashkilot tashkil topgan sana",
   "election_leader": "Rahbar saylangan sana",
   "mediaVideo": "Video lavhalar",
@@ -208,6 +209,12 @@
     "form_cancel": "Bekor qilish",
     "form_submit": "Yuborish"
   },
+  "countrys":{
+    "russia":"Rossiya",
+    "turkey":"Turkiya",
+    "germany":"Germaniya",
+    "malaziy":"malaziya"
+  },
   "expert": {
     "register": "Ro‘yxatdan o‘tish",
     "registered": "Ro‘yxatdan o‘tganlar",
@@ -220,6 +227,7 @@
     "headersubtitle": "Vatandosh ekspertlar kengashining elektron platformasi",
     "counciltitle": "“VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi",
     "main": "Asosiy",
+    "more":"batafsil",
     "expertCouncil": "Ekspertlar kengashi",
     "offers": "Takliflar",
     "offer": "Taklif",
@@ -377,13 +385,17 @@
     "voluntery": "Volontyorlar",
     "nav1": "Volontyorlar",
     "nav2": "Volontyorlarni faoliyati",
-    "nav3": "Bog‘lanish"
+    "nav3": "Bog‘lanish",
+    "nav4":"Volonyorlik faoliyati",
+    "Signup":"Ro'xatdan otish"
+
   },
   "webinar": {
     "tel": "Telefon",
     "email": "Email pochtangizni kiriting",
     "online-webinar": "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
     "webinars": "Vebinarlar",
+    "conferences":"Konferensiyalar",
     "join-webinar": "Vebinarga ishtirok etish",
     "date": "Webinar sanasi:",
     "nav2": "Tadbirlar",

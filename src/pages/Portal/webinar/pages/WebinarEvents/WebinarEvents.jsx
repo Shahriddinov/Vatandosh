@@ -51,7 +51,7 @@ function WebinarEvents() {
     <div className="webinar">
       <div className="container">
         <div className="webinar-list">
-          <h3 className="webinar-name">Tadbirlar</h3>
+          <h3 className="webinar-name">{t("webinar.nav2")}</h3>
         </div>
         <div className="webinar-page">
           {meetingsData.map((webinar) => (
@@ -92,7 +92,7 @@ function WebinarEvents() {
             }}
           >
             <img src={ArrowDown} alt="" />
-            Ko'proq ko'rsatish
+            {t("projects_page.see-more")}
           </button>
         </div>
       </div>

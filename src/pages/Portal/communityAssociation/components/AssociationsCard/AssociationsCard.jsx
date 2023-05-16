@@ -3,10 +3,11 @@ import "./associationsCard.scss";
 import Flag from "../../../../../assets/images/flagkgz.png";
 import { Link } from "react-router-dom";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
   const countryInfo = allRegions.find((el) => el.id === region_id);
-
+  const {t} = useTranslation()
   return (
     <div className="association__card">
       <div className="association__country">
@@ -31,7 +32,7 @@ const AssociationsCard = ({ allRegions, region_id, logo, name, id }) => {
         to={`/portal-category/community-association/country/${countryInfo?.id}/${id}`}
         className="more__button"
       >
-        Batafsil
+        {t("more")}
       </Link>
     </div>
   );

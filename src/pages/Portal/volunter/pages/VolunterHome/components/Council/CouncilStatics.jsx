@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
 
 const data = [
@@ -34,19 +35,20 @@ const data = [
 ];
 
 function CouncilStatics({ count }) {
+  const {t} = useTranslation()
   return (
     <div className="council-right">
       <div>
         <span className="council--span">
-          <h5>Ro‘yxatdan o‘tganlar</h5>
+          <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} />
         </span>
         <h4>{count}</h4>
-        <p>Volontyorlar</p>
+        <p>{t("voluntery.voluntery")}</p>
       </div>
       <div className="council-bottom">
         <span className="council--span">
-          <h5>Xorijiy davlatlar</h5>
+          <h5>{t("expert.country")}</h5>
           <img src={Globe} />
         </span>
         {data.map((data) => (

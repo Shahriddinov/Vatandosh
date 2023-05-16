@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 function VolunterAbout() {
   const [age, setAge] = React.useState("");
@@ -19,7 +20,7 @@ function VolunterAbout() {
   const volunteersLoading = useSelector(
     (store) => store.volunteerSlice.volunteerLoading
   );
-
+  const {t} = useTranslation()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -89,7 +90,7 @@ function VolunterAbout() {
                 className="employe-link"
                 to={`/portal-category/volunteer/profile/${volunteer.id}`}
               >
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>

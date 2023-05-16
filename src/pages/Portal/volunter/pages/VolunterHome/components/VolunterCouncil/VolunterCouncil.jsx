@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   ArrowIcon,
   ExcludeIcon,
@@ -9,6 +10,7 @@ import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
 function Volunter({ volunteers, volunteersLoading }) {
+  const {t} = useTranslation()
   if (volunteersLoading) {
     return <Spinner />;
   }
@@ -30,7 +32,7 @@ function Volunter({ volunteers, volunteersLoading }) {
               <h4>{volunteer.user_employment_info_id.specialization}</h4>
               <h4>{volunteer.user_employment_info_id.city}</h4>
               <Link className="employe-link" to={`profile/${volunteer.id}`}>
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
@@ -39,7 +41,7 @@ function Volunter({ volunteers, volunteersLoading }) {
         <div className="expert-item">
           <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
-            Barcha olim va ekspertlar
+           {t("expert.allexperts")}
           </Link>
         </div>
       </div>

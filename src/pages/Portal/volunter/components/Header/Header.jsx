@@ -9,7 +9,7 @@ function Header({ headerData }) {
       <div className="container">
         <h2>{headerData.title}</h2>
         <p className="headeres--text">{headerData.subTitle}</p>
-        <Link to="/portal-category/volunteer/register">Ro'yxatdan o'tish</Link>
+        <Link to="/portal-category/volunteer/register">{t("voluntery.Signup")}</Link>
       </div>
     </div>
   );
