@@ -301,6 +301,7 @@
       "navbar_link3": "Events",
       "navbar_link4": "Contact"
     },
+    "card_articles": "Number of articles published",
     "communityMapErrorText": "There are no public associations in the state of {{countryName.name}}.",
     "cabinet": "Cabinet",
     "home_title": "Compatriots Public Associations",
