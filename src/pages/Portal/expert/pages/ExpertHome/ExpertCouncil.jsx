@@ -28,6 +28,12 @@ function ExpertCouncil() {
     lan,
     expertError,
   } = useExpertHome();
+  const communityNews = useSelector((store) => store.portalNews.news);
+  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
+  }, [dispatch]);
 
   if (expertCountLoading || expertPageLoading) {
     return <Spinner position="full" />;
@@ -36,6 +42,7 @@ function ExpertCouncil() {
   }
   const findExpertHeroPage = expertPage.find((el) => el.type === 3);
   const findExpertAboutPage = expertPage.find((el) => el.type === 1);
+
   const headerData = {
     title: findExpertHeroPage[`title_${lan}`],
     subTitle: findExpertHeroPage[`text_${lan}`],
@@ -52,21 +59,13 @@ function ExpertCouncil() {
     pathUrl: "/portal-category/expert/council-about",
   };
 
-  const communityNews = useSelector((store) => store.portalNews.news);
-  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
-
-  useEffect(() => {
-    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-  }, [dispatch]);
-
   return (
     <>
       <div
         className="expert-council"
         style={{
           backgroundImage: `url(${PORTAL_IMAGE_URL}${findExpertHeroPage.image})`,
-        }}
-      >
+        }}>
         {communityNewsLoading ? <Spinner position={"full"} /> : null}
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
