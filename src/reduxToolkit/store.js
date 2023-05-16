@@ -24,6 +24,8 @@ import formDataSlice from "./projectsSlice/projectsSlice";
 import { community } from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
+import education from "./ExpertSlice/ExpertEducation/index";
+import employment from "./ExpertSlice/ExpertEmployment/index";
 // import expertMenu from "./ExpertMenu";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
@@ -36,13 +38,16 @@ import portalNews from "./portalSlices/portalNewsSlice/portalNewsSlice";
 import webinarSlidesSlice from "./webinarSlider";
 import quizTestSlice from "./victorinaQuiz/victorinaTest";
 import mediaFileSlice from "./victorinaImage";
+import quizFinishSlice from './victorinaQuiz/victorinafinish'
 
 const store = configureStore({
   reducer: {
     newsSlice,
     eventsSlice,
     partnersSlice,
+    employment,
     directionSlice,
+    education,
     peaceful,
     language,
     mapSlice,
@@ -75,6 +80,7 @@ const store = configureStore({
     webinarSlidesSlice,
     quizTestSlice,
     mediaFileSlice,
+    quizFinishSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

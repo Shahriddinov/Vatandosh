@@ -11,6 +11,7 @@ import {
   POST_VOLUNTEER_ACTIVITY,
   UPDATE_VOLUNTEER_ACTIVITY,
   DELETE_VOLUNTEER_ACTIVITY,
+  VOLUNTEER_CITY,
 } from "../../services/api/utils";
 
 const token = localStorage.getItem("token");
@@ -41,9 +42,14 @@ export const volunteerUpdate = createAsyncThunk(
   }
 );
 
-export const getVolunteerAll = createAsyncThunk("getVolunteerAll", async () => {
-  return await axios.get(VOLUNTEER_SHOW_USER).then((res) => res.data);
-});
+export const getVolunteerAll = createAsyncThunk(
+  "getVolunteerAll",
+  async (page) => {
+    return await axios
+      .get(`${VOLUNTEER_SHOW_USER}${page}`)
+      .then((res) => res.data);
+  }
+);
 
 export const getVolunteerOne = createAsyncThunk(
   "getVolunteerOne",
@@ -51,6 +57,13 @@ export const getVolunteerOne = createAsyncThunk(
     return await axios
       .get(`${VOLUNTEER_SHOW_USER_BY_ID}${id}`)
       .then((res) => res.data);
+  }
+);
+
+export const getVolunteerCity = createAsyncThunk(
+  "getVolunteerCity",
+  async (id) => {
+    return await axios.get(VOLUNTEER_CITY).then((res) => res.data);
   }
 );
 

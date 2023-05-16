@@ -44,6 +44,7 @@ export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
+export const GET_VICTORINA_FINISH = `/quiz/quizzes`
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";
@@ -72,8 +73,9 @@ export const POST_COMMUNITY_NEWS_CREATE = "/community/news";
 export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const GET_LIBRARY_SLIDER = "/ebook/all-slider-images";
-export const VOLUNTEER_SHOW_USER = "/volunteer/show-volunteer-user";
+export const VOLUNTEER_SHOW_USER = "/volunteer/get-all/";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
+export const VOLUNTEER_CITY = "/volunteer/get-volunteer-city";
 export const GET_MEETINGS = "/meeting/meetings";
 export const GET_MEETING_BY_ID = "/meeting/meeting/";
 export const GET_MEETING_PAGE = "/meeting/page";
@@ -109,6 +111,8 @@ export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 export const SEND_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/create`;
 export const SEND_EXPERT_SCIENTIFIC = `${portalBaseUrl}/scientificDegree/create`;
+export const GET_EDUCATION = `${portalBaseUrl}/education/show-one-user`;
+export const GET_EMPLOYMENT = `${portalBaseUrl}/employment/show-one-user`;
 export const POST_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/create`;
 export const CREATE_MEETING = "/meeting/create/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";

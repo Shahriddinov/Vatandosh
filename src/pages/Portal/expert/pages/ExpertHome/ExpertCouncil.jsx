@@ -7,12 +7,17 @@ import Expert from "./components/ExpertCouncil/ExpertCouncil";
 import { useOutletContext } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
 import { useTranslation } from "react-i18next";
+
 import { useExpertHome } from "./hooks/useExpertHome";
-import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
+import { Spinner } from "../../../../../component";
 
 function ExpertCouncil() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const { navData, navbarUrl } = useOutletContext();
 
   const {
@@ -47,6 +52,13 @@ function ExpertCouncil() {
     pathUrl: "/portal-category/expert/council-about",
   };
 
+  const communityNews = useSelector((store) => store.portalNews.news);
+  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
+  }, [dispatch]);
+
   return (
     <>
       <div
@@ -55,13 +67,17 @@ function ExpertCouncil() {
           backgroundImage: `url(${PORTAL_IMAGE_URL}${findExpertHeroPage.image})`,
         }}
       >
+        {communityNewsLoading ? <Spinner position={"full"} /> : null}
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
       <Council councilData={councilData} expertCount={expertCount} />
       <Expert />
-      <News />
+      <News
+        communityNews={communityNews?.data}
+        url={"/portal-category/community-association/news"}
+      />
     </>
   );
 }

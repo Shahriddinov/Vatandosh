@@ -11,6 +11,8 @@ import {
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { imageUrl } from "../../../../../services/api/utils";
+import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
+import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function TestPopUp({ setactivePopUp }) {
   const [currentQuiz, setCurrentQuiz] = useState(1);
@@ -23,6 +25,12 @@ export default function TestPopUp({ setactivePopUp }) {
   const testData = useSelector(
     (state) => state?.quizTestSlice?.quizTestData?.questions
   );
+  const communityCreateData = useSelector(
+    (store) => store.mediaFileSlice.communityImagePost
+  );
+  const [data, setData] = useState({
+    document: communityCreateData.document,
+  });
 
   const { t } = useTranslation();
   useEffect(() => {
@@ -39,12 +47,15 @@ export default function TestPopUp({ setactivePopUp }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const inputValue = e.target.value;
     const newArray = newObj(test);
     dispatch(
       sendVictorinaTest({
         id,
         data: {
           answers: newArray,
+          passport: communityCreateData?.document,
+          fio: inputValue,
         },
       })
     );
@@ -57,7 +68,6 @@ export default function TestPopUp({ setactivePopUp }) {
     });
     return obj;
   }
-
   const handleQuestion = ({ q, a }) => {
     setQuestion(q);
     setAnswerId(a);
@@ -84,15 +94,39 @@ export default function TestPopUp({ setactivePopUp }) {
     });
   };
 
+  const handleChangeApplication = ({ key, value }) => {
+    if (key === "logo" || key === "document") {
+      setData((prev) => ({
+        ...prev,
+        [key]: [value],
+      }));
+      const logoData = new FormData();
+      logoData.append("image", value);
+      dispatch(mediaVictorinaImage({ key, image: logoData }));
+    } else {
+      setData((prev) => ({
+        ...prev,
+        [key]: key === "document" ? [value.name] : value,
+      }));
+
+      const newCommunityCreateData = {
+        ...communityCreateData,
+        [key]: value,
+      };
+      dispatch(mediaFileSlice(newCommunityCreateData));
+    }
+  };
+
+  const handOpenModal = () => {
+    setactivePopUp(false);
+  };
+
   return (
     <div className="projectImg">
       <div
         className="victorina-overlay"
         onClick={() => setactivePopUp(false)}></div>
       <form className="victorina-test" onSubmit={handleSubmit}>
-        <div className="victorina-test-title">
-          <h3>01. Введение</h3>
-        </div>
         {testData?.map((evt, index) => (
           <div
             key={index}

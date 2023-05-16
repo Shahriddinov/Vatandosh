@@ -204,7 +204,6 @@ export default function VictorinaProject() {
       {PopUp && quizData.type === "images" ? (
         <ProjectImgPopUp setactivePopUp={setPopUp} />
       ) : null}
-
       {PopUp && quizData.type === "video" ? (
         <ProjectYouTubePopUp setactivePopUp={setPopUp} id={id} />
       ) : null}
