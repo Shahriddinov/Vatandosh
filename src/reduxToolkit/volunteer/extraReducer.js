@@ -5,6 +5,8 @@ import {
   VOLUNTEER_CREATE,
   VOLUNTEER_UPDATE,
   VOLUNTEER_SHOW_USER,
+  VOLUNTEER_BY_COUNTRY,
+  VOLUNTEER_BY_CITY,
   VOLUNTEER_SHOW_USER_BY_ID,
   VOLUNTEER_DELETE,
   GET_VOLUNTEER_ACTIVITY,
@@ -47,6 +49,24 @@ export const getVolunteerAll = createAsyncThunk(
   async (page) => {
     return await axios
       .get(`${VOLUNTEER_SHOW_USER}${page}`)
+      .then((res) => res.data);
+  }
+);
+
+export const getVolunteerByCountry = createAsyncThunk(
+  "getVolunteerByCountry",
+  async (country) => {
+    return await axios
+      .get(`${VOLUNTEER_BY_COUNTRY}${country}`)
+      .then((res) => res.data);
+  }
+);
+
+export const getVolunteerByCity = createAsyncThunk(
+  "getVolunteerByCity",
+  async ({ city, country }) => {
+    return await axios
+      .get(VOLUNTEER_BY_CITY + country + "/" + city)
       .then((res) => res.data);
   }
 );
