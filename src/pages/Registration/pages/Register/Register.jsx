@@ -4,10 +4,11 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import Spinner from "../../../../component/Spinner/Spinner";
 import {
+  getAllCountries,
   getAllNations,
   registerUser,
 } from "../../../../reduxToolkit/authSlice/extraReducer";
-import { getLocation } from "../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { getCountryCities } from "../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 
 import "../../../../assets/style/global.scss";
 import "./register.scss";
@@ -36,9 +37,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 const Register = () => {
   const createCountries = createSelector(
-    (state) => state.community.locationGet,
+    (state) => state.authSlice.countriesData,
     (countries) => {
-      return countries.map((country) => ({ ...country, label: country.name }));
+      return countries?.map((country) => ({ ...country, label: country.name }));
+    }
+  );
+  const createCities = createSelector(
+    (state) => state.community.allCitiesGet,
+    (cities) => {
+      return cities?.map((city) => ({ ...city, label: city.name }));
     }
   );
   const dispatch = useDispatch();
@@ -50,6 +57,7 @@ const Register = () => {
     (state) => state.community.locationGetLoading
   );
   const allCountries = useSelector(createCountries);
+  const countryCities = useSelector(createCities);
   const formRef = useRef();
 
   const [agree, setAgree] = useState(false);
@@ -64,7 +72,7 @@ const Register = () => {
     national_address: "",
     international_location_id: "",
     job_position: "",
-    international_address: "",
+    international_address_id: "",
     phone_number: "",
     passport_file: "",
     academic_degree: "",
@@ -147,7 +155,7 @@ const Register = () => {
       "international_location_id",
       formData.international_location_id
     );
-    data.append("international_address", formData.international_address);
+    data.append("international_address_id", formData.international_address_id);
     data.append("national_id", formData.national_id);
     data.append("birth_date", formData.birth_date);
     data.append("gender", formData.gender);
@@ -179,10 +187,10 @@ const Register = () => {
 
   useEffect(() => {
     dispatch(getAllNations());
-    dispatch(getLocation());
+    dispatch(getAllCountries());
   }, []);
 
-  if (loading || loadingNations || loadingCountries) {
+  if (loading || loadingNations) {
     return <Spinner position="full" />;
   }
 
@@ -329,13 +337,33 @@ const Register = () => {
                 id={formData.international_location_id}
                 options={allCountries}
                 onChange={(event, value) => {
-                  setFormData((prevFormData) => ({
-                    ...prevFormData,
-                    international_location_id: value.id.toString(),
-                  }));
+                  if (value) {
+                    setFormData((prevFormData) => ({
+                      ...prevFormData,
+                      international_location_id: value.id.toString(),
+                    }));
+                    dispatch(getCountryCities({ location_id: value.id }));
+                  }
                 }}
                 renderInput={(params) => (
                   <TextField {...params} label="Xorijiy davlat" />
+                )}
+              />
+              <Autocomplete
+                required
+                disablePortal
+                id={formData.international_address_id}
+                options={countryCities}
+                onChange={(event, value) => {
+                  if (value) {
+                    setFormData((prevFormData) => ({
+                      ...prevFormData,
+                      international_address_id: value.id.toString(),
+                    }));
+                  }
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Xorijdagi manzil" />
                 )}
               />
               <TextField
@@ -345,15 +373,6 @@ const Register = () => {
                 variant="outlined"
                 name="job_position"
                 value={formData.job_position}
-                onChange={handleInputChange}
-              />
-              <TextField
-                required
-                id="outlined-basic"
-                label="Xorijdagi manzil"
-                variant="outlined"
-                name="international_address"
-                value={formData.international_address}
                 onChange={handleInputChange}
               />
               <TextField

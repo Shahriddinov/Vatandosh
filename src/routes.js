@@ -442,7 +442,7 @@ const RoutesContainer = () => {
                 />
                 <Route
                   path="/registration/signin"
-                  element={<Navigate to="/portal-category/cabinet" />}
+                  element={<Navigate to="/portal" />}
                 />
               </>
             ) : (
@@ -570,7 +570,10 @@ const RoutesContainer = () => {
               <Route path="about" element={<VictorinaAbout />} />
               <Route path="projects" element={<MoreVictorina />} />
               <Route path="finished-projects" element={<VictorinaFinish />} />
-              <Route path="victorinatest-finish" element={<VictorinaWinnerWin />} />
+              <Route
+                path="victorinatest-finish"
+                element={<VictorinaWinnerWin />}
+              />
               <Route
                 path="finished-projects/image-project/:id"
                 element={<VictorinaProject />}
