@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import {
   CopyIcon,
   FacebookIcon,
@@ -6,40 +5,31 @@ import {
   TelegramIcon,
   InstagramIcon,
 } from "../../../../../assets/images/expert";
-import { CouncilImage } from "../../../../../assets/images/volunter";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterCouncilAbout.scss";
-import { useEffect } from "react";
-import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
-import { getExpertPage } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
+import { useVolunteerCouncilAbout } from "./hooks/useVoulunteerCouncilAbout";
 
 function VolunterCouncilAbout() {
-  const language = useSelector((store) => store.language.language);
-  const volunteers = useSelector((store) => store.volunteerSlice.volunteerData);
-  const volunteersLoading = useSelector(
-    (store) => store.volunteerSlice.volunteerLoading
-  );
-  const volunteerPageLoading = useSelector(
-    (state) => state.volunteerSlice.expertPageLoading
-  );
-  const volunteerPage = useSelector((state) => state.expertSlice.expertPage);
-  const expertError = useSelector((state) => state.expertSlice.error);
+  const {
+    volunteers,
+    volunteersLoading,
+    volunteerPageLoading,
+    volunteerPage,
+    expertError,
+    language,
+    VolunteerCountLoading,
+    VolunteerCount,
+    VolunteerError,
+  } = useVolunteerCouncilAbout();
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getVolunteerAll(1));
-    dispatch(getExpertPage());
-  }, [language]);
-
-  if (volunteersLoading || volunteerPageLoading) {
-    return <Spinner />;
-  } else if (expertError) {
-    return <p>{expertError}</p>;
+  if (volunteersLoading || volunteerPageLoading || VolunteerCountLoading) {
+    return <Spinner position="full" />;
+  } else if (expertError || VolunteerError) {
+    return <p>{expertError ? expertError : VolunteerError}</p>;
   }
 
   const findExpertAboutPage = volunteerPage.find((el) => el.type === 2);
@@ -96,7 +86,10 @@ function VolunterCouncilAbout() {
               </li>
             </ul>
           </div>
-          <CouncilStatics count={volunteers.total} />
+          <CouncilStatics
+            count={volunteers.total}
+            VolunteerCount={VolunteerCount}
+          />
         </div>
       </div>
     </div>
