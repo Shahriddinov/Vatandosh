@@ -36,7 +36,6 @@ function Victorina({ quizData }) {
                 <p
                   dangerouslySetInnerHTML={{ __html: victorina.description }}
                 />
-
                 <div className="victorina__list">
                   <span className="victorina__item">
                     <p>{victorina.finished_at.slice(9, 11)}</p>
