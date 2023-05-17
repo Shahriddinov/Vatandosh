@@ -1,38 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
 
-const data = [
-  {
-    id: 1,
-    country: "Rossiya",
-    number: 24,
-  },
-  {
-    id: 2,
-    country: "Turkiya",
-    number: 18,
-  },
-  {
-    id: 3,
-    country: "Germaniya",
-    number: 16,
-  },
-  {
-    id: 4,
-    country: "Rossiya",
-    number: 8,
-  },
-  {
-    id: 5,
-    country: "Malayziya",
-    number: 4,
-  },
-  {
-    id: 6,
-    country: "Rossiya",
-    number: 2,
-  },
-];
+
 
 function CouncilStatics({ expertCount }) {
   const { t } = useTranslation();
@@ -51,7 +20,7 @@ function CouncilStatics({ expertCount }) {
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
-        {expertCount.slice(0, 5).map((data) => (
+        {expertCount?.slice(0, 5)?.map((data) => (
           <span className="council-span" key={data.id}>
             <h5>{data?.name}</h5>
             <p>{data?.users?.length}</p>

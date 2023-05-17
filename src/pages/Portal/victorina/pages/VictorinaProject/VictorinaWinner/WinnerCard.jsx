@@ -1,9 +1,8 @@
 import "./WinnerCard.scss";
-import img from "../../../../../assets/images/portal/2.png";
 import { Link } from "react-router-dom";
-import { imageUrl } from "../../../../../services/api/utils";
+import { imageUrl } from "../../../../../../services/api/utils";
 
-export default function WinnerCard({ el }) {
+export default function WinnerCardVictorina({ el }) {
   return (
     <Link
       to={`/portal-category/victorina/winner/${el?.id}`}
