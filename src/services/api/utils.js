@@ -47,6 +47,7 @@ export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
 export const GET_VICTORINA_FINISH = `/quiz/quizzes`;
+export const GET_VICTORINA_BYID = `/quiz/quiz`;
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";

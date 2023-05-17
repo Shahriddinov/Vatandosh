@@ -11,13 +11,14 @@ import ProjectYouTubePopUp from "../../components/ProjectYouTubePopUp/ProjectYou
 import ProjectImgPopUp from "../../components/ProjectImgPopUp/ProjectImgPopUp";
 import ProjectPoemsPopUp from "../../components/ProjectPoemsPopUp/ProjectPoemsPopUp";
 import TestPopUp from "../../components/TestPopUp/TestPopUp";
-import WinnerCard from "../../components/WinnerCard/WinnerCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
 import ProjectPassportPopUp from "../../components/ProjectPassportPopUp/ProjectPassportPopUp";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid/quizid";
+import WinnerCardVictorina from "./VictorinaWinner/WinnerCard";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -32,7 +33,7 @@ export default function VictorinaProject() {
   );
 
   const winnerData = useSelector(
-    (state) => state.quizSlice.quizData.participants
+    (state) => state.quizByIdSlice.quizByIdData.participants
   );
 
   useEffect(() => {
@@ -128,7 +129,10 @@ export default function VictorinaProject() {
 
   useEffect(() => {
     dispatch(getQuizz());
+    dispatch(getByIdQuizz({ id }));
   }, []);
+
+  console.log(winnerData);
 
   return (
     <>
@@ -212,7 +216,7 @@ export default function VictorinaProject() {
               <h3>{t("victorina.winnerlist")}</h3>
               <div className="victorinaproject-winners-list">
                 {winnerData?.map((el) => (
-                  <WinnerCard key={el} el={el} />
+                  <WinnerCardVictorina key={el} el={el} />
                 ))}
               </div>
             </div>
