@@ -37,7 +37,9 @@ export const useCommunityHomeFetching = () => {
   useEffect(() => {
     dispatch(getAllCommunity({ page: 1 }));
     dispatch(getCommunityHomePage());
-    dispatch(getPortalNews({ type: "community", per_page: "10", page: 1 }));
+    dispatch(
+      getPortalNews({ type: "community-association", per_page: "10", page: 1 })
+    );
     dispatch(getAllRegions());
   }, [dispatch, language]);
 

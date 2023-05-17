@@ -74,7 +74,7 @@ const AssociationHome = () => {
       />
       <News
         communityNews={communityNews?.data}
-        url="/portal-category/community-association/news"
+        url="/portal-category/community-association"
       />
     </>
   );

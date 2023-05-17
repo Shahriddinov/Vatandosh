@@ -518,6 +518,7 @@ const RoutesContainer = () => {
               <Route path="event/:eventId" element={<ComunityEventsDetail />} />
               <Route path="news/:newsId" element={<CommunityNewsDetail />} />
               <Route path="contact" element={<Contact />} />
+              <Route path=":newsId" element={<PortalNews />} />
               <Route path="*" element={<NotFound />} />
             </Route>
 
