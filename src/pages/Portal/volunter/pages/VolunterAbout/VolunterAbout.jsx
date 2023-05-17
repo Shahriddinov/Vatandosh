@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -8,30 +8,55 @@ import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../assets/images/expert";
 import { data } from "../VolunterHome/data";
 import { useDispatch, useSelector } from "react-redux";
-import { getVolunteerAll } from "../../../../../reduxToolkit/volunteer/extraReducer";
+import {
+  getVolunteerAll,
+  getVolunteerByCity,
+  getVolunteerByCountry,
+} from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import {
+  getLocation,
+  getLocationOne,
+} from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useTranslation } from "react-i18next";
 
 function VolunterAbout() {
   const [age, setAge] = React.useState("");
+  const [data, setData] = useState({ country: "", city: "" });
   const language = useSelector((store) => store.language.language);
+  const {t}= useTranslation()
   const volunteers = useSelector((store) => store.volunteerSlice.volunteerData);
   const volunteersLoading = useSelector(
     (store) => store.volunteerSlice.volunteerLoading
   );
-  const {t} = useTranslation()
+  const locations = useSelector((store) => store.community.locationGet);
+  const locationsLoading = useSelector(
+    (store) => store.community.locationGetLoading
+  );
+  const location = useSelector((store) => store.community.locationGetOne);
+  const locationLoading = useSelector(
+    (store) => store.community.locationGetOneLoading
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getVolunteerAll(12));
+    dispatch(getLocation());
   }, [language]);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleСlick = ({ id, type }) => {
+    setData((prev) => ({ ...prev, [type]: id }));
+    if (type === "country") {
+      dispatch(getVolunteerByCountry(id));
+      dispatch(getLocationOne(id));
+    } else if (type === "city") {
+      dispatch(getVolunteerByCity({ country: data.country, city: id }));
+    }
   };
 
-  if (volunteersLoading) {
+  if (volunteersLoading || locationsLoading) {
     return <Spinner />;
   }
 
@@ -48,13 +73,21 @@ function VolunterAbout() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
-                value={age}
-                label="Barcha mutaxassislar"
-                onChange={handleChange}
+                value={data.country}
+                label="Barcha Davlatlar"
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {locations?.map((location) => (
+                  <MenuItem
+                    onClick={() =>
+                      handleСlick({ id: location.id, type: "country" })
+                    }
+                    value={location.id}
+                    key={location.id}
+                    name={location.name}
+                  >
+                    {location.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <FormControl sx={{ m: 3, minWidth: 270 }}>
@@ -64,13 +97,22 @@ function VolunterAbout() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
-                value={age}
+                // value={city}
                 label="Barcha davlatlar"
-                onChange={handleChange}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {location.length < 0
+                  ? ""
+                  : location.cities?.map((city) => (
+                      <MenuItem
+                        onClick={() =>
+                          handleСlick({ id: city.id, type: "city" })
+                        }
+                        value={city.id}
+                        key={city.id}
+                      >
+                        {city.city}
+                      </MenuItem>
+                    ))}
               </Select>
             </FormControl>
           </div>

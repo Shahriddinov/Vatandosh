@@ -3,28 +3,22 @@ import {
   ArrowIcon,
   ExcludeIcon,
 } from "../../../../../../../assets/images/expert";
-import { Spinner } from "../../../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
-import { data } from "../../data";
 import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
-function Volunter({ volunteers, volunteersLoading }) {
-  const {t} = useTranslation()
-  if (volunteersLoading) {
-    return <Spinner />;
-  }
 
-  console.log(volunteers);
+function Volunter({ volunteers }) {
+  const {t}= useTranslation()
   return (
     <div className="expert">
       <div className="container">
-        <h2>Volontyorlar</h2>
+        <h2>{t("voluntery.voluntery")}</h2>
         <div className="volunter-list">
           {volunteers.map((volunteer) => (
             <div key={volunteer.id}>
               <img
-                src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
+                src={`${PORTAL_IMAGE_URL}${volunteer.user_profile_id.user_id.avatar}`}
                 alt="error"
               />
               <p>{volunteer.user_profile_id.international_location_id.name}</p>

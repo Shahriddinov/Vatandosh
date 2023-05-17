@@ -16,7 +16,7 @@ function MoreVictorina() {
   const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
 
   useEffect(() => {
-    dispatch(getQuizz());
+    dispatch(getQuizz({ status: 1 }));
   }, []);
   return (
     <div className="morevictorina">
@@ -60,7 +60,7 @@ function MoreVictorina() {
                   </span>
                 </div>
                 <Link
-                   to={`/portal-category/victorina/image-project/${victorina?.id}`}
+                  to={`/portal-category/victorina/image-project/${victorina?.id}`}
                   className="victorina-link">
                   Batafsil ma'lumot
                 </Link>

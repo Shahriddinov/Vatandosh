@@ -1,41 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
+import { Globe, UserIcon } from "../../../../../../../assets/images/expert";
 
-const data = [
-  {
-    id: 1,
-    country: "Rossiya",
-    number: 24,
-  },
-  {
-    id: 2,
-    country: "Turkiya",
-    number: 18,
-  },
-  {
-    id: 3,
-    country: "Germaniya",
-    number: 16,
-  },
-  {
-    id: 4,
-    country: "Rossiya",
-    number: 8,
-  },
-  {
-    id: 5,
-    country: "Malayziya",
-    number: 4,
-  },
-  {
-    id: 6,
-    country: "Rossiya",
-    number: 2,
-  },
-];
-
-function CouncilStatics({ expertCount }) {
+function CouncilStatics({ expertCount, expertData }) {
   const { t } = useTranslation();
+
   return (
     <div className="council-right">
       <div>
@@ -43,7 +11,7 @@ function CouncilStatics({ expertCount }) {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>{expertCount?.length}</h4>
+        <h4>{expertData?.total ? expertData?.total : 0}</h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="council-bottom">
@@ -51,12 +19,14 @@ function CouncilStatics({ expertCount }) {
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
-        {expertCount.slice(0, 5).map((data) => (
-          <span className="council-span" key={data.id}>
-            <h5>{data?.name}</h5>
-            <p>{data?.users?.length}</p>
-          </span>
-        ))}
+        {expertCount?.length > 0
+          ? expertCount.slice(0, 5).map((data) => (
+              <span className="council-span" key={data.id}>
+                <h5>{data?.name}</h5>
+                <p>{data?.users?.length}</p>
+              </span>
+            ))
+          : "Expert mavjud emas"}
       </div>
     </div>
   );

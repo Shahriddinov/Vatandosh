@@ -44,12 +44,13 @@ export const GET_EXPERT_MENU = `/all`;
 export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
-export const GET_VICTORINA_FINISH = `/quiz/quizzes`
+export const GET_VICTORINA_FINISH = `/quiz/quizzes`;
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";
 export const GET_PORTAL_NEWS = "/news";
 export const GET_LOCATION = "/location/get-all";
+export const GET_LOCATION_ONE = "/location/get-one-with-cities/";
 export const GET_LOCATION_Cities = "/location/get-all?location_id=";
 export const GET_COMMUNITY_ALL_REGIONS = "/community/all-region";
 export const GET_CITIES = "/location/get-all";
@@ -74,6 +75,8 @@ export const GET_LIBRARY_ALL = "/ebook/get-all/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const GET_LIBRARY_SLIDER = "/ebook/all-slider-images";
 export const VOLUNTEER_SHOW_USER = "/volunteer/get-all/";
+export const VOLUNTEER_BY_COUNTRY = "/volunteer/filter-all-volunteer/";
+export const VOLUNTEER_BY_CITY = "/volunteer/filter-volunteer/";
 export const VOLUNTEER_SHOW_USER_BY_ID = "/volunteer/show-volunteer-user/";
 export const VOLUNTEER_CITY = "/volunteer/get-volunteer-city";
 export const GET_MEETINGS = "/meeting/meetings";

@@ -3,6 +3,7 @@ import "./HeaderTime.scss";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { imageUrl } from "../../../../../../../services/api/utils";
+import { Link } from "react-router-dom";
 
 function HeaderTime({ quizData }) {
   const [slideIndex, setSlideIndex] = useState(1);
@@ -116,11 +117,12 @@ function HeaderTime({ quizData }) {
                     <p>DAQIQA</p>
                   </div>
                 </div>
-                <button
+                <Link
+                  to={`/portal-category/victorina/image-project/${slider.id}`}
                   style={{ width: "163px" }}
                   className="headertime-button">
                   Batafsil ma’lumot
-                </button>
+                </Link>
               </div>
             </div>
           ))}

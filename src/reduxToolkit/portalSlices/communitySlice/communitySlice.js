@@ -7,6 +7,7 @@ import {
   getCountryCities,
   getEventsDetail,
   getLocation,
+  getLocationOne,
   postCommunityCreate,
   postCommunityImage,
 } from "./communityExtraReducers";
@@ -48,6 +49,9 @@ const initialState = {
 
   locationGet: [],
   locationGetLoading: true,
+
+  locationGetOne: [],
+  locationGetOneLoading: true,
 
   allRegionsGet: [],
   allRegionsGetLoading: true,
@@ -112,6 +116,19 @@ const communitySlice = createSlice({
       })
       .addCase(getLocation.rejected, (state, { error }) => {
         state.locationGetLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(getLocationOne.pending, (state) => {
+        state.locationGetOneLoading = true;
+      })
+      .addCase(getLocationOne.fulfilled, (state, { payload }) => {
+        state.locationGetOneLoading = false;
+        state.locationGetOne = payload;
+      })
+      .addCase(getLocationOne.rejected, (state, { error }) => {
+        state.locationGetOneLoading = false;
         state.error = error.message;
       });
 

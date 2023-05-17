@@ -9,7 +9,7 @@ import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 import { sendVictorinaFile } from "../../../../../reduxToolkit/victorinaFile/download";
 import { useParams } from "react-router-dom";
 
-export default function ProjectImgPopUp({ setactivePopUp }) {
+export default function ProjectImgPopUp({ setactivePopUp, toast }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -89,7 +89,7 @@ export default function ProjectImgPopUp({ setactivePopUp }) {
       image: communityCreateData?.path,
     };
 
-    dispatch(sendVictorinaFile({ id, data }));
+    dispatch(sendVictorinaFile({ id, data,setactivePopUp }));
   };
 
   return (

@@ -150,7 +150,7 @@ export default function WebinarRegister() {
                       minLength={3}
                       maxLength={30}
                       placeholder={t("expert.inputplaceholder")}
-                      name="fathers_name"
+                      name="last_name"
                       value={formData.last_name}
                       onChange={handleInputChange}
                     />

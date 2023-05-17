@@ -24,7 +24,7 @@ const mediaFileSlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePost = action.payload;
         state.communityImagePostStatus = "success";
-        toast.success("The image upload success!");
+        toast.success("This is the information succes done!");
       })
       .addCase(mediaVictorinaImage.rejected, (state, { error }) => {
         state.communityImagePostLoading = false;

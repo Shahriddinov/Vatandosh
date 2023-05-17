@@ -317,6 +317,7 @@
       "navbar_link3": "Tadbirlar",
       "navbar_link4": "Bog‘lanish"
     },
+    "card_articles": "Chop etilgan maqolalar soni",
     "communityMapErrorText": "{{countryName.name}} davlatida jamoat birlashmalari mavjud emas.",
     "cabinet": "Kabinet",
     "home_title": "“Vatandoshlar” Jamoat birlashmalari",
@@ -382,6 +383,9 @@
     "headertitle": "“Vatandoshlar” Volontyorlar",
     "headertext": "Vatandosh volontyorlar elektron platformasi",
     "headersubmit": "Chop etish",
+    "about-title": "Volontyorlar haqida",
+    "about-url-home": "Asosiy",
+    "about-url-detail": "Batafsil",
     "voluntery": "Volontyorlar",
     "nav1": "Volontyorlar",
     "nav2": "Volontyorlarni faoliyati",
@@ -404,7 +408,10 @@
     "header1": "Ishtirok etish",
     "header2": "Batafsil ma’lumot",
     "headerName": "“Vatandoshlar” Vebinari",
-    "council": "Vebinar platformasi nima?"
+    "council": "Vebinar platformasi nima?",
+    "countofEvents":"O'tkazilgan tadbirlar soni",
+    "totalOfEventsattendance":"Jami tadbirlar qatnashganlar",
+    "participants":"Ishtirokchilari"
   },
   "library": {
     "library": "Kutubxona",

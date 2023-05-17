@@ -309,6 +309,7 @@
       "navbar_link3": "Events",
       "navbar_link4": "Contact"
     },
+    "card_articles": "Number of articles published",
     "communityMapErrorText": "There are no public associations in the state of {{countryName.name}}.",
     "cabinet": "Cabinet",
     "home_title": "Compatriots Public Associations",
@@ -375,6 +376,9 @@
     "headertitle": "“Compatriots” Volunteers",
     "headertext": "Electronic platform of compatriot volunteers",
     "headersubmit": "Print",
+    "about-title": "About volunteers",
+    "about-url-home": "Home",
+    "about-url-detail": "More",
     "voluntery": "Volunteers",
     "nav1": "Volunteers",
     "nav2": "Volunteer activities",
@@ -396,7 +400,10 @@
     "header1": "Participation",
     "header2": "To learn more",
     "headerName": "“Compatriots” Webinar",
-    "council": "What is a webinar platform?"
+    "council": "What is a webinar platform?",
+    "countofEvents":"Number of events held",
+    "totalOfEventsattendance":"Total event attendance",
+    "participants":"Participants"
   },
   "library": {
     "library": "Library",

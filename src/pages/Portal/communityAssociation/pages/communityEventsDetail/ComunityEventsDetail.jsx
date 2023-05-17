@@ -33,7 +33,6 @@ export default function CommunityEventsDetail() {
     return <p>{error}</p>;
   }
 
-  console.log(oneEventsDetail);
   return (
     <main className="volunteractivitydetail">
       <div className="container">

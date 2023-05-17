@@ -26,7 +26,6 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
     document: communityCreateData.document,
   });
 
-
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
     setFormData((prevFormData) => ({
@@ -75,7 +74,7 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
       text: formData.text,
     };
 
-    dispatch(sendVictorinaFile({ id, data }));
+    dispatch(sendVictorinaFile({ id, data, setactivePopUp }));
   };
 
   return (

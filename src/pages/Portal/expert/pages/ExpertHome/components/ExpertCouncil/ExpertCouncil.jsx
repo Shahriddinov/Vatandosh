@@ -2,23 +2,16 @@ import { useTranslation } from "react-i18next";
 import { ArrowIcon } from "../../../../../../../assets/images/expert";
 import "./ExpertCouncil.scss";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import "swiper/css";
 import { Navigation } from "swiper";
-import { getExperts } from "../../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
-function Expert() {
+function Expert({ expertData, loading }) {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const {
-    expertData: { data },
-    loading,
-  } = useSelector((state) => state.expertSlice);
 
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
@@ -28,15 +21,11 @@ function Expert() {
     setisHiddenRightBtn(swiper.isEnd);
   };
 
-  useEffect(() => {
-    dispatch(getExperts());
-  }, [dispatch]);
-
   if (loading) {
     return <Spinner position="full" />;
   }
 
-  return data?.length ? (
+  return expertData?.data?.length ? (
     <div className="expert">
       <div className="container">
         <h2>{t("expert.expertCouncil")}</h2>
@@ -82,7 +71,7 @@ function Expert() {
             }}
             className="listwinners-list"
           >
-            {data?.map((evt) => (
+            {expertData?.data?.map((evt) => (
               <SwiperSlide key={evt.id}>
                 <div className="expert-list-item">
                   <div className="expert-list-item-desc">
