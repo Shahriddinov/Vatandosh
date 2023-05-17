@@ -53,9 +53,15 @@ function WebinarAbout() {
           <div className="about-left">
             <img src={`${PORTAL_IMAGE_URL}${meetingPage?.image}`} alt="img" />
             <h3 className="about-title">{meetingPage?.title}</h3>
-            <p className="about-text">{meetingPage?.body}</p>
+            <p
+              className="about-text"
+              dangerouslySetInnerHTML={{ __html: meetingPage.body }}
+            />
             <img src={`${PORTAL_IMAGE_URL}${meetingPage?.image}`} alt="img" />
-            <p className="about-text">{meetingPage?.body}</p>
+            <p
+              className="about-text"
+              dangerouslySetInnerHTML={{ __html: meetingPage.body }}
+            />
             <ShareFriends />
           </div>
           <WebinarCouncilStatics
