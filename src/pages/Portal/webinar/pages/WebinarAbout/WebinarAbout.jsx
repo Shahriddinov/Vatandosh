@@ -22,6 +22,8 @@ function WebinarAbout() {
       },
     ],
   };
+
+  console.log(aboutData);
   return (
     <div className="about">
       <div className="container">
