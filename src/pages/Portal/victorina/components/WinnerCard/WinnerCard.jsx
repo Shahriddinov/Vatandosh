@@ -10,7 +10,9 @@ export default function WinnerCard({ el }) {
       className="winnercard">
       <img src={`${imageUrl}/${el?.user.avatar}`} alt="error" />
       <div className="winnercard-desc">
-        <span> "ZIYOUZ VIKTORINASI" {el?.position}-o‘rin g‘olibi</span>
+        <span>
+          "{el?.quiz?.title}" {el?.position}-o‘rin g‘olibi
+        </span>
         <h4>{el?.user?.name}</h4>
         <p>{el.description}</p>
       </div>
