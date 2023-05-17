@@ -11,10 +11,13 @@ function WebinarHeader({ headerData }) {
         <h2>{headerData.title}</h2>
         <p className="webinarheader-text">{headerData.subTitle}</p>
         <div className="webinarheader-list">
-          <Link className="webinarheader-more" to="/expert/register">
+          <Link
+            className="webinarheader-more"
+            to="/portal-category/webinar/webinar-register/2"
+          >
             {t("webinar.header1")}
           </Link>
-          <Link className="webinarheader-link" to="/expert/register">
+          <Link className="webinarheader-link" to="/portal-category/webinar">
             {t("webinar.header2")}
           </Link>
         </div>
