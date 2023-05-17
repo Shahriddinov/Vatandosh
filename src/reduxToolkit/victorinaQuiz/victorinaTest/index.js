@@ -36,7 +36,6 @@ const quizTestSlice = createSlice({
         toast.success("This is the information succes done!");
       })
       .addCase(sendVictorinaTest.rejected, (state, action) => {
-        console.log(action);
         state.loading = true;
         state.error = action.error.message;
       });

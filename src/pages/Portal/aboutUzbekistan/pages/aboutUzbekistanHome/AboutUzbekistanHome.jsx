@@ -27,9 +27,6 @@ const AboutUzbekistanHome = () => {
     return <Spinner position="full" />;
   }
 
-  // console.log(allCitySightseeing);
-  // console.log(allCity3D);
-  // console.log(allGallery);
   return (
     <div className="about-uzbekistan-home">
       <div className="container">

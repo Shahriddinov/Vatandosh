@@ -9,7 +9,6 @@ import dayjs from "dayjs";
 import "./myInputDate.scss";
 const MyInputDate = ({ text, handleChange, valueKey, value }) => {
   const handleChangeDate = (val) => {
-    console.log(val);
     handleChange({ key: valueKey, value: val });
   };
 

@@ -17,7 +17,6 @@ const CommunityAssociationCompanyOffer = (props) => {
     triggerOnce: true,
   });
 
-  console.log(props);
 
   const { t } = useTranslation();
   const [activeImage, setActiveImage] = useState({

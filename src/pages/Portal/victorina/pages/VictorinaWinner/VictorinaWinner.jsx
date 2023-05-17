@@ -18,7 +18,6 @@ export default function VictorinaWinner() {
     state.quizSlice.quizData.participants.find((evt) => evt?.id === Number(id))
   );
 
-  console.log(quizData);
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/victorina" },

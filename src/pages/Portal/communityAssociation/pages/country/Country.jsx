@@ -46,7 +46,6 @@ const Country = () => {
     ],
   };
 
-  console.log(allCommunityGet?.data[0].name.trim().split(" "));
 
   return (
     <div className="community-association-country">

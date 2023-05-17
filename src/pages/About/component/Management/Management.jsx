@@ -17,7 +17,6 @@ function Management(props) {
 
   const ManagementData = useSelector((state) => state.managementSlice.managementData);
   const { t } = useTranslation();
-  console.log(ManagementData);
   const heroData = {
     title: `${t("about_items.item3")}`,
     // description: `${t("aboutPage.section1.ptext")}`,

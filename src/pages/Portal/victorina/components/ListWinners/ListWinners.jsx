@@ -18,7 +18,6 @@ export default function ListWinners({ quizDataWinner }) {
     setisHiddenRightBtn(swiper.isEnd);
   };
 
-  console.log(quizDataWinner);
 
   return (
     <div className="listwinners">

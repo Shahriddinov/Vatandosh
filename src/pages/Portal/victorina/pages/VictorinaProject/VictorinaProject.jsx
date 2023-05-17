@@ -132,7 +132,6 @@ export default function VictorinaProject() {
     dispatch(getByIdQuizz({ id }));
   }, []);
 
-  console.log(winnerData);
 
   return (
     <>

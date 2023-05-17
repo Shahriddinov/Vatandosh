@@ -95,7 +95,6 @@ export const postCommunityCreate = createAsyncThunk(
 export const postCommunityImage = createAsyncThunk(
   "postCommunityImage",
   async (data) => {
-    console.log(data);
     return await axios({
       url: POST_COMMUNITY_IMAGE,
       method: "POST",

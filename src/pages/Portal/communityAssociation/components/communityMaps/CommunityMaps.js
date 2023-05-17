@@ -15,7 +15,6 @@ const CommunityMaps = ({ title, allRegions }) => {
 
   const data = allRegions.filter((el) => el.count > 0).map((el) => el.code);
 
-  console.log(data);
 
   useEffect(() => {
     const mapsData =

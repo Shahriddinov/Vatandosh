@@ -21,7 +21,6 @@ const VirtualTour = () => {
     return <Spinner />;
   }
 
-  console.log(singleCity3D);
   return (
     <>
       <div className="virtual_tour">

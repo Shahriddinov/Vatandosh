@@ -35,7 +35,6 @@ const data = [
 ];
 
 function CouncilStatics({ meetingOnedata }) {
-  console.log(meetingOnedata);
   const { t } = useTranslation();
   return (
     <div className="council-right">

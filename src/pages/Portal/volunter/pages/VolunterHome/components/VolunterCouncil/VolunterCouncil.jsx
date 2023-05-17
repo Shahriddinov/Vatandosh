@@ -13,7 +13,6 @@ function Volunter({ volunteers, volunteersLoading }) {
     return <Spinner />;
   }
 
-  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">

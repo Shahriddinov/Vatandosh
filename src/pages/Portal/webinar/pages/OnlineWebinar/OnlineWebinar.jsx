@@ -21,7 +21,6 @@ export default function OnlineWebinar() {
     (store) => store.meetingSlice.meetingOneLoading
   );
   const meetingError = useSelector((store) => store.meetingSlice.error);
-  console.log(meetingOnedata);
 
   const dispatch = useDispatch();
 

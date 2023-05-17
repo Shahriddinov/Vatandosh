@@ -31,7 +31,6 @@ const OfferStatesFriendship = (props) => {
     image: images[0].image,
   });
 
-  console.log(props);
   return (
     <section className="offer-state-friendship">
       <div className="offer-state-friendship__container container" ref={ref}>
