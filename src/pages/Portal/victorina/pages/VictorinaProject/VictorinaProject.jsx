@@ -166,15 +166,15 @@ export default function VictorinaProject() {
                 <>
                   <div className="victorinaproject-main-timer">
                     <div>
-                      <span>7</span>
+                      <span>{quizData?.finished_at?.slice(9, 11)}</span>
                       <span>Kun</span>
                     </div>
                     <div>
-                      <span>12</span>
+                      <span>{quizData?.finished_at?.slice(11, 13)}</span>
                       <span>Soat</span>
                     </div>
                     <div>
-                      <span>45</span>
+                      <span>{quizData?.finished_at?.slice(14, 16)}</span>
                       <span>Daqiqa</span>
                     </div>
                   </div>
@@ -216,7 +216,11 @@ export default function VictorinaProject() {
               <h3>{t("victorina.winnerlist")}</h3>
               <div className="victorinaproject-winners-list">
                 {winnerData?.map((el) => (
-                  <WinnerCardVictorina key={el} el={el} />
+                  <WinnerCardVictorina
+                    title={quizData?.title}
+                    key={el}
+                    el={el}
+                  />
                 ))}
               </div>
             </div>
