@@ -298,6 +298,8 @@ const WebinarArchive = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarArchive/WebinarArchive")
 );
 
+const PortalNews = lazy(() => import("./pages/Portal/portalNews/PortalNews"));
+
 const PassTheTest = lazy(() =>
   import("./pages/Portal/OnlineTeaching/pages/PassTheTest/PassTheTest")
 );
@@ -489,6 +491,7 @@ const RoutesContainer = () => {
               <Route path="offers/:id" element={<ExpertOffersDetail />} />
               <Route path="contact" element={<Contact />} />
               <Route path="register" element={<ExpertRegister />} />
+              <Route path=":newsId" element={<PortalNews />} />
               <Route path="*" element={<NotFound />} />
             </Route>
 
@@ -531,6 +534,7 @@ const RoutesContainer = () => {
               <Route path="article/:id" element={<VolunterArticleDetail />} />
               <Route path="activity" element={<VolunterActivity />} />
               <Route path="activity/:id" element={<VolunterActivityDetail />} />
+              <Route path=":newsId" element={<PortalNews />} />
             </Route>
 
             <Route path="/portal-category/webinar" element={<WebinarLayout />}>
@@ -544,6 +548,7 @@ const RoutesContainer = () => {
               <Route path="webinar-events" element={<WebinarEvents />} />
               <Route path="webinar-archive" element={<WebinarArchive />} />
               <Route path="webinar-contact" element={<Contact />} />
+              <Route path=":newsId" element={<PortalNews />} />
             </Route>
 
             <Route

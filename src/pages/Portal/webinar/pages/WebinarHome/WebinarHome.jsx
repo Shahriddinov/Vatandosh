@@ -64,7 +64,10 @@ function WebinarHome() {
       </div>
       <WebinarCouncil councilData={councilData} meetingPage={meetingPage} />
       <WebinarEvents />
-      <News communityNews={meetingNews?.data} />
+      <News
+        communityNews={meetingNews?.data}
+        url={"/portal-category/webinar"}
+      />
     </div>
   );
 }
