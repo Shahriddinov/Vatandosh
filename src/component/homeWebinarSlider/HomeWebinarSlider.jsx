@@ -101,7 +101,9 @@ const HomeWebinarSlider = ({ sliderData, error, loading }) => {
                     </button>
                     <button
                       onClick={() =>
-                        navigate(`/portal-category/webinar/webinar-register`)
+                        navigate(
+                          `/portal-category/webinar/webinar-register/${slider.id}`
+                        )
                       }
                       className=" webinar-slider__slider-left-bottom-buttons-participate-button"
                     >
