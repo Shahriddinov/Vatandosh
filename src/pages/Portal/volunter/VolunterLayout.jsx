@@ -18,7 +18,7 @@ export default function VolunterLayout() {
     },
     {
       id: 3,
-      url: "/portal-category/volunteer/council-about",
+      url: "/portal-category/volunteer/activity",
       label: `${t("voluntery.nav2")}`,
     },
     {

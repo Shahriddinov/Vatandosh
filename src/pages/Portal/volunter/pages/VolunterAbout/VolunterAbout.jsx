@@ -59,6 +59,7 @@ function VolunterAbout() {
     return <Spinner />;
   }
 
+  console.log(volunteers);
   return (
     <div className="employe">
       <div className="container">
@@ -123,10 +124,12 @@ function VolunterAbout() {
                 src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
                 alt="error"
               />
-              <p>{volunteer.user_profile_id.international_location_id.name}</p>
+              <p>
+                {volunteer?.user_profile_id?.international_location_id?.name}
+              </p>
               <h3>{volunteer.user_id.name}</h3>
-              <h4>{volunteer.user_employment_info_id.specialization}</h4>
-              <h4>{volunteer.user_employment_info_id.city}</h4>
+              <h4>{volunteer.user_employment_info_id?.specialization}</h4>
+              <h4>{volunteer.user_employment_info_id?.city}</h4>
               <Link
                 className="employe-link"
                 to={`/portal-category/volunteer/profile/${volunteer.id}`}
