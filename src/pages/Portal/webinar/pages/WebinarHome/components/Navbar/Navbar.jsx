@@ -15,13 +15,14 @@ import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { languageChange } from "../../../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../../../component/Layout/data";
-import { BsPersonFill } from "react-icons/bs";
 import { GoSignOut } from "react-icons/go";
+import { BsPersonFill } from "react-icons/bs";
+import { GrayContext } from "../../../../../../../context/GrayContext";
 
 function Navbar({ navbarUrl }) {
   const { t } = useTranslation();
@@ -33,6 +34,8 @@ function Navbar({ navbarUrl }) {
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
   const [activeKabinet, setActiveKabinet] = useState(false);
+  const { grayScale } = useContext(GrayContext);
+
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -93,10 +96,14 @@ function Navbar({ navbarUrl }) {
           </ul>
           <div className="navbar-list">
             <button className="navbarpage-icon">
-              <img src={GerbIcon} />
+              <Link to={"/flag"}>
+                <img src={GerbIcon} alt="" />
+              </Link>
             </button>
             <button className="navbarpage-icon">
-              <img src={BayroqIcon} />
+              <Link to={"/coat"}>
+                <img src={BayroqIcon} alt="" />
+              </Link>
             </button>
             <button
               className={
@@ -105,9 +112,12 @@ function Navbar({ navbarUrl }) {
                   : `navbarpage--icon`
               }
             >
-              <MusicIcon />
+              <Link to={"/anthem"}>
+                <MusicIcon />
+              </Link>
             </button>
             <button
+              onClick={() => grayScale()}
               className={
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`

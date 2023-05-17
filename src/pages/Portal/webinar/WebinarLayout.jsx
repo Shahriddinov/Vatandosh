@@ -38,7 +38,7 @@ export default function WebinarLayout() {
       {editClass.length > 3 && editClass[3] && (
         <WebinarHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData, navbarUrl }} />
+      <Outlet context={{ navData, navbarUrl, category: "webinar" }} />
       <ExpertFooter navData={navData} />
     </>
   );
