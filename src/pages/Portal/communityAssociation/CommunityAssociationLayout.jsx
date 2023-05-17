@@ -42,7 +42,9 @@ const CommunityAssociationLayout = () => {
       {editClass.length > 3 && editClass[3] && !communityCountryId && (
         <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData, navbarUrl }} />
+      <Outlet
+        context={{ navData, navbarUrl, category: "community-association" }}
+      />
       <ExpertFooter navData={navData} />
     </>
   );

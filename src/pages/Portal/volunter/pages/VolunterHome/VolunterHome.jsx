@@ -12,7 +12,6 @@ import { Spinner } from "../../../../../component";
 import { useVolunteerHomeFetching } from "./hooks/useVolunteerHomeFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
-
 function VolunterHome() {
   const { navData, navbarUrl } = useOutletContext();
   const {
@@ -50,7 +49,6 @@ function VolunterHome() {
     );
   }
 
-
   const findExpertHeroPage = volunteerPage.find((el) => el.type === 4);
   const findExpertAboutPage = volunteerPage.find((el) => el.type === 2);
   const headerData = {
@@ -81,8 +79,10 @@ function VolunterHome() {
       </div>
       <Council councilData={councilData} VolunteerCount={VolunteerCount} />
       <Volunter volunteers={volunteers.data} />
-      <News communityNews={volunteerNews?.data} />
-
+      <News
+        communityNews={volunteerNews?.data}
+        url={"/portal-category/volunteer"}
+      />
     </>
   );
 }

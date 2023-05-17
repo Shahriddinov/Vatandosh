@@ -77,7 +77,7 @@ function ExpertCouncil() {
       <Expert expertData={expertData} loading={loading} />
       <News
         communityNews={communityNews?.data}
-        url={"/portal-category/community-association/news"}
+        url={"/portal-category/expert"}
       />
     </>
   );
