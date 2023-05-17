@@ -17,7 +17,10 @@ function WebinarHeader({ headerData }) {
           >
             {t("webinar.header1")}
           </Link>
-          <Link className="webinarheader-link" to="/portal-category/webinar">
+          <Link
+            className="webinarheader-link"
+            to="/portal-category/webinar/online-webinar/2"
+          >
             {t("webinar.header2")}
           </Link>
         </div>
