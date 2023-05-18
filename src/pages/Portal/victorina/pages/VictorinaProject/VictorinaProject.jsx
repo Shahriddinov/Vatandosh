@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid/quizid";
 import WinnerCardVictorina from "./VictorinaWinner/WinnerCard";
+import { imageUrl } from "../../../../../services/api/utils";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -132,6 +133,7 @@ export default function VictorinaProject() {
     dispatch(getByIdQuizz({ id }));
   }, []);
 
+  console.log(quizData);
 
   return (
     <>
@@ -156,7 +158,7 @@ export default function VictorinaProject() {
           </h1>
           <div className="victorinaproject-wrapper">
             <div className="victorinaproject-main">
-              <img src={img} alt="error" />
+              <img src={`${imageUrl}/${quizData?.image}`} alt="error" />
               {pathname.includes("finished-projects") ? (
                 <button className="victorinaproject-main-btn">
                   {t("victorina.endproject")}
@@ -209,20 +211,24 @@ export default function VictorinaProject() {
             <VictorinaStatics />
           </div>
           <>
-            <div
-              style={{ marginBottom: "50px" }}
-              className="victorinaproject-winners">
-              <h3>{t("victorina.winnerlist")}</h3>
-              <div className="victorinaproject-winners-list">
-                {winnerData?.map((el) => (
-                  <WinnerCardVictorina
-                    title={quizData?.title}
-                    key={el}
-                    el={el}
-                  />
-                ))}
+            {pathname.includes("finished-projects") ? (
+              <div
+                style={{ marginBottom: "50px" }}
+                className="victorinaproject-winners">
+                <h3>{t("victorina.winnerlist")}</h3>
+                <div className="victorinaproject-winners-list">
+                  {winnerData?.map((el) => (
+                    <WinnerCardVictorina
+                      title={quizData?.title}
+                      key={el.id}
+                      el={el}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </>
           <ShareFriends />
         </div>

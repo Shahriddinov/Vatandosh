@@ -1,6 +1,4 @@
 import { useTranslation } from "react-i18next";
-import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
-import img from "../../../../../assets/images/portal/4.png";
 import "./VictorinaWinner.scss";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
@@ -15,9 +13,8 @@ export default function VictorinaWinner() {
   const { id } = useParams();
 
   const quizData = useSelector((state) =>
-    state.quizSlice.quizData.participants.find((evt) => evt?.id === Number(id))
+    state.quizSlice.quizData.participants?.find((evt) => evt?.id === Number(id))
   );
-
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/victorina" },
@@ -36,10 +33,10 @@ export default function VictorinaWinner() {
     <main className="victorinawinner">
       <div className="container">
         <div className="experttitle-title">
-          <h1 className="experttitle-title-text">{quizData.quiz.title}</h1>
+          <h1 className="experttitle-title-text">{quizData?.quiz?.title}</h1>
           <div className="experttitle-title-url">
             {url?.map((el, index) => (
-              <Link key={index} to={el.url}>
+              <Link key={el.id} to={el.url}>
                 {el.title}
                 <MdArrowRight />
               </Link>
@@ -48,7 +45,11 @@ export default function VictorinaWinner() {
         </div>
         <div className="victorinawinner-wrapper">
           <div className="victorinawinner-main">
-            <img src={img} alt="error" />
+            <img
+              className="victorinawinner-winner-img"
+              src={`${imageUrl}/${quizData?.quiz?.image}`}
+              alt="error"
+            />
             <div className="victorinawinner-main-profile">
               <img src={`${imageUrl}/${quizData?.user?.avatar}`} alt="error" />
               <div className="victorinawinner-main-profile-desc">

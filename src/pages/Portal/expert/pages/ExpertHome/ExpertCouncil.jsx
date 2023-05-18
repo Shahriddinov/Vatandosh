@@ -10,14 +10,10 @@ import { useTranslation } from "react-i18next";
 
 import { useExpertHome } from "./hooks/useExpertHome";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { Spinner } from "../../../../../component";
 
 function ExpertCouncil() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const { navData, navbarUrl } = useOutletContext();
 
   const {
@@ -27,22 +23,24 @@ function ExpertCouncil() {
     expertPage,
     lan,
     expertError,
+    communityNewsLoading,
+    communityNews,
+    expertData,
+    loading,
   } = useExpertHome();
-  const communityNews = useSelector((store) => store.portalNews.news);
-  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
 
-  useEffect(() => {
-    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-  }, [dispatch]);
-
-  if (expertCountLoading || expertPageLoading) {
+  if (
+    expertCountLoading ||
+    expertPageLoading ||
+    communityNewsLoading ||
+    loading
+  ) {
     return <Spinner position="full" />;
   } else if (expertError) {
     return <p>{expertError}</p>;
   }
   const findExpertHeroPage = expertPage.find((el) => el.type === 3);
   const findExpertAboutPage = expertPage.find((el) => el.type === 1);
-
   const headerData = {
     title: findExpertHeroPage[`title_${lan}`],
     subTitle: findExpertHeroPage[`text_${lan}`],
@@ -65,17 +63,21 @@ function ExpertCouncil() {
         className="expert-council"
         style={{
           backgroundImage: `url(${PORTAL_IMAGE_URL}${findExpertHeroPage.image})`,
-        }}>
-        {communityNewsLoading ? <Spinner position={"full"} /> : null}
+        }}
+      >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <Council councilData={councilData} expertCount={expertCount} />
-      <Expert />
+      <Council
+        expertData={expertData}
+        councilData={councilData}
+        expertCount={expertCount.slice(0, 5)}
+      />
+      <Expert expertData={expertData} loading={loading} />
       <News
         communityNews={communityNews?.data}
-        url={"/portal-category/community-association/news"}
+        url={"/portal-category/expert"}
       />
     </>
   );

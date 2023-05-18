@@ -1,35 +1,35 @@
+import { useTranslation } from "react-i18next";
 import {
   ArrowIcon,
   ExcludeIcon,
 } from "../../../../../../../assets/images/expert";
-import { Spinner } from "../../../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
-import { data } from "../../data";
 import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
-function Volunter({ volunteers, volunteersLoading }) {
-  if (volunteersLoading) {
-    return <Spinner />;
-  }
-
+function Volunter({ volunteers }) {
+  const { t } = useTranslation();
   return (
     <div className="expert">
       <div className="container">
-        <h2>Volontyorlar</h2>
+        <h2>{t("voluntery.voluntery")}</h2>
         <div className="volunter-list">
           {volunteers.map((volunteer) => (
             <div key={volunteer.id}>
               <img
-                src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
+                src={`${PORTAL_IMAGE_URL}${volunteer?.user_profile_id?.user_id.avatar}`}
                 alt="error"
               />
-              <p>{volunteer.user_profile_id.international_location_id.name}</p>
-              <h3>{volunteer.user_id.name}</h3>
-              <h4>{volunteer.user_employment_info_id.specialization}</h4>
-              <h4>{volunteer.user_employment_info_id.city}</h4>
+              <p>
+                {volunteer?.user_profile_id?.international_location_id.name}
+              </p>
+              <h3 style={{ color: "#065EA9" }}>{volunteer.user_id.name}</h3>
+              <p style={{ color: "#656B70", fontWeight: 700 }}>
+                Chop etilgan maqolalar soni:{" "}
+                <b style={{ color: "#065EA9" }}>23</b>
+              </p>
               <Link className="employe-link" to={`profile/${volunteer.id}`}>
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
@@ -38,7 +38,7 @@ function Volunter({ volunteers, volunteersLoading }) {
         <div className="expert-item">
           <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
-            Barcha olim va ekspertlar
+            {t("expert.allexperts")}
           </Link>
         </div>
       </div>

@@ -4,7 +4,7 @@
   padding-bottom: 80px;
   &-cardlist {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 400px);
     gap: 30px;
 
     &-title {

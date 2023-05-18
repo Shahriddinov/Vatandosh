@@ -117,7 +117,6 @@ export default function TestPopUp({ setactivePopUp }) {
     }
   };
 
-
   return (
     <div className="projectImg">
       <div
@@ -126,7 +125,7 @@ export default function TestPopUp({ setactivePopUp }) {
       <form className="victorina-test" onSubmit={handleSubmit}>
         {testData?.map((evt, index) => (
           <div
-            key={index}
+            key={evt.id}
             className={`victorina-test-wrapper ${
               currentQuiz === evt?.id ? "active" : ""
             }`}>

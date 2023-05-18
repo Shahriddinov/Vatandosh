@@ -38,7 +38,7 @@ function WebinarHome() {
   const headerData = {
     title: t("webinar.headerName"),
     subTitle: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy `,
-    link: "/portal-category/volunteer/register",
+    link: "/portal-category/webinar",
   };
 
   const councilData = {
@@ -64,7 +64,10 @@ function WebinarHome() {
       </div>
       <WebinarCouncil councilData={councilData} meetingPage={meetingPage} />
       <WebinarEvents />
-      <News communityNews={meetingNews?.data} />
+      <News
+        communityNews={meetingNews?.data}
+        url={"/portal-category/webinar"}
+      />
     </div>
   );
 }

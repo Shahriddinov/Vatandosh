@@ -136,12 +136,9 @@ export default function SignIn() {
             </form>
             <div className="auth-links">
               <div className="auth-links-list">
-                <a
-                  href="http://www.google.com"
-                  className="auth-links-list-item"
-                >
+                <div className="auth-links-list-item">
                   <img src={google} alt="icon" />
-                </a>
+                </div>
                 <a href="http://www.apple.com" className="auth-links-list-item">
                   <img src={apple} alt="icon" />
                 </a>

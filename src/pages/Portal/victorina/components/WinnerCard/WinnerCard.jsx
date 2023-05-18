@@ -3,9 +3,10 @@ import img from "../../../../../assets/images/portal/2.png";
 import { Link } from "react-router-dom";
 import { imageUrl } from "../../../../../services/api/utils";
 
-export default function WinnerCard({ el }) {
+export default function WinnerCard({ el, key }) {
   return (
     <Link
+      key={key}
       to={`/portal-category/victorina/winner/${el?.id}`}
       className="winnercard">
       <img src={`${imageUrl}/${el?.user.avatar}`} alt="error" />

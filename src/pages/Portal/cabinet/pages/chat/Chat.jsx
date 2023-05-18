@@ -17,6 +17,7 @@ const Chat = () => {
   const [groupData, setGroupData] = useState(null);
   const [showDocs, setShowDocs] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [showMembers, setShowMembers] = useState(false);
 
   return (
     <div className="chat">
@@ -57,6 +58,7 @@ const Chat = () => {
               activeGroup={activeGroup}
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
+              setShowMembers={setShowMembers}
             />
           )}
         </div>
@@ -79,6 +81,8 @@ const Chat = () => {
             showDocs={showDocs}
             setShowLinks={setShowLinks}
             showLinks={showLinks}
+            setShowMembers={setShowMembers}
+            showMembers={showMembers}
           />
         )}
       </div>

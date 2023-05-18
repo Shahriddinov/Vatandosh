@@ -52,6 +52,7 @@ const Associations = () => {
 
   const pagination = paginationCount(allCommunityGet?.total, 8);
 
+  console.log(communityData);
   return (
     <div className="associations">
       <div className="container">
@@ -78,7 +79,7 @@ const Associations = () => {
                 </Fragment>
               ))
             ) : (
-              <p>Hozirda bu davlatda jamoat birlashmalari mavjud emas</p>
+              <p>{t("thereIsNotFound")}</p>
             )}
           </div>
           {allCommunityGet?.total > 8 &&

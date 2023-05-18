@@ -1,9 +1,12 @@
-import { CouncilImage } from "../../../../../../../assets/images/volunter";
 import "./Council.scss";
 import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
+import { useTranslation } from "react-i18next";
 
-function Council({ councilData }) {
+
+function Council({ councilData, VolunteerCount }) {
+  const {t} = useTranslation()
+  const dataCount = VolunteerCount.map((el) => el.users).flat();
   return (
     <div className="council">
       <div className="container">
@@ -12,10 +15,13 @@ function Council({ councilData }) {
           <h3>{councilData?.title}</h3>
           <p>{councilData?.desc}</p>
           <div>
-            <Link to={councilData.pathUrl}>Batafsil</Link>
+            <Link to={councilData.pathUrl}>{t("expert.more")}</Link>
           </div>
         </div>
-        <CouncilStatics count={councilData.count} />
+        <CouncilStatics
+          count={dataCount.length}
+          VolunteerCount={VolunteerCount}
+        />
       </div>
     </div>
   );

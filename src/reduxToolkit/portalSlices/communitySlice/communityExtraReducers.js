@@ -8,6 +8,7 @@ import {
   GET_COMMUNITY_EVENT_DETAIL,
   GET_COMMUNITY_HOMEPAGE_DATA,
   GET_LOCATION,
+  GET_LOCATION_ONE,
   POST_COMMUNITY_CREATE,
   POST_COMMUNITY_IMAGE,
 } from "../../../services/api/utils";
@@ -36,6 +37,10 @@ export const getEventsDetail = createAsyncThunk(
 
 export const getLocation = createAsyncThunk("getLocation", async () => {
   return await axios.get(GET_LOCATION).then((res) => res.data);
+});
+
+export const getLocationOne = createAsyncThunk("getLocationOne", async (id) => {
+  return await axios.get(`${GET_LOCATION_ONE}${id}`).then((res) => res.data);
 });
 
 export const getAllRegions = createAsyncThunk("getAllRegions", async () => {

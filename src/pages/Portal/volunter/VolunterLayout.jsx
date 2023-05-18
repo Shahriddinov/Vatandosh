@@ -18,7 +18,7 @@ export default function VolunterLayout() {
     },
     {
       id: 3,
-      url: "/portal-category/volunteer/council-about",
+      url: "/portal-category/volunteer/activity",
       label: `${t("voluntery.nav2")}`,
     },
     {
@@ -38,7 +38,7 @@ export default function VolunterLayout() {
       {editClass.length > 3 && editClass[3] && (
         <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
-      <Outlet context={{ navData, navbarUrl }} />
+      <Outlet context={{ navData, navbarUrl, category: "volunteer" }} />
       <ExpertFooter navData={navData} />
     </>
   );
