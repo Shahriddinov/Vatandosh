@@ -198,7 +198,9 @@ const HomePage = () => {
                 {navbarList.map((navbar) => {
                   return (
                     <SwiperSlide key={navbar.id}>
-                      <Link to={navbar.url}>{navbar.label}</Link>
+                      <Link to={token ? navbar.url : "/registration/signin"}>
+                        {navbar.label}
+                      </Link>
                     </SwiperSlide>
                   );
                 })}

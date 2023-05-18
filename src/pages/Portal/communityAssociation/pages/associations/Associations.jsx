@@ -79,7 +79,7 @@ const Associations = () => {
                 </Fragment>
               ))
             ) : (
-              <p>Hozirda bu davlatda jamoat birlashmalari mavjud emas</p>
+              <p>{t("thereIsNotFound")}</p>
             )}
           </div>
           {allCommunityGet?.total > 8 &&

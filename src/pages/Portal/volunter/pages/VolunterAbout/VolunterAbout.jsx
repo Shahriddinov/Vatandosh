@@ -22,6 +22,8 @@ function VolunterAbout() {
     volunteers,
     dispatch,
   } = useVolunteerAbout();
+  const {t}= useTranslation()
+
 
   const handleСlick = ({ id, type }) => {
     setData((prev) => ({ ...prev, [type]: id }));

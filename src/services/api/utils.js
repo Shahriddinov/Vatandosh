@@ -19,6 +19,7 @@ export const GET_ALL_TRUSTEES_URL = `${baseUrl}/trusts`;
 export const GET_TRUSTEES_URL = `${baseUrl}/trusts/page/`;
 export const GET_MAP_DATA_URL = `${baseUrl}/country_relationship/`;
 export const GET_COUNTRIES = `${baseUrl}/countries`;
+export const GET_ALL_COUNTRIES = `${portalBaseUrl}/community/all-region`;
 export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
 export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`;
@@ -45,6 +46,7 @@ export const GET_VICTORINA_QUIZ = `/quiz/quizzes`;
 export const GET_VICTORINA_PAGE = `/quiz/page`;
 export const GET_WEBINAR_SLIDER = `${baseUrl}/webinars`;
 export const GET_VICTORINA_FINISH = `/quiz/quizzes`;
+export const GET_VICTORINA_BYID = `/quiz/quiz`;
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";
@@ -99,6 +101,7 @@ export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
 export const GET_VICTORINA_TEST = "/quiz/quiz";
 export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer-user`;
 export const VICTORINA_YOUTUBE = "/quiz/participant";
+export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

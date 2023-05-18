@@ -13,7 +13,7 @@ function Header({ headerData }) {
         <p className="headeres--text">
           {headerData.subTitle
             ? headerData.subTitle
-            : "Vatandosh jamoat birlashmalaring elektron platformasi"}
+            : "Vatandosh jamoat birlashmalaring elektron platformasining"}
         </p>
         <Link to={headerData.link}>{headerData.btnText}</Link>
       </div>

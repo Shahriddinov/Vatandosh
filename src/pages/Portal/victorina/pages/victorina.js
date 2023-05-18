@@ -16,6 +16,7 @@ export const victorine = [
     image: VictorinaOne,
     waiting: true,
   },
+
   {
     id: 2,
     title: "Ayol qo'li-San'at javhari loyihasi",
@@ -24,6 +25,7 @@ export const victorine = [
     image: VictorinaTwo,
     waiting: false,
   },
+  
   {
     id: 3,
     title: "'Ilm fan chegarani bilmas' tanlovda",
