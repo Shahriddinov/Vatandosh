@@ -1,11 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { sendMessage } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 import "./groupsMessages.scss";
 
 import userImg from "../../../../../../../assets/images/cabinet/user.png";
+import GroupMembers from "../groupMembers/GroupMembers";
 
 const GroupsMessages = ({
   groupData,
@@ -15,12 +19,28 @@ const GroupsMessages = ({
   showDocs,
   setShowLinks,
   showLinks,
+  setShowMembers,
+  showMembers,
 }) => {
+  const dispatch = useDispatch();
   const inputRef = useRef();
   const sendRef = useRef();
   const messagesRef = useRef();
   const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(true);
+  const [sendMessageData, setSendMessageData] = useState({
+    chat_room_id: null,
+    message: "",
+    type: null,
+  });
+
+  const messagesLoading = useSelector(
+    (state) => state.chatSlice.messagesLoading
+  );
+  const messagesData = useSelector((state) => state.chatSlice.messagesData);
+  const sendMessageStatus = useSelector(
+    (state) => state.chatSlice.sendMessageStatus
+  );
 
   const messages = [
     {
@@ -124,6 +144,8 @@ const GroupsMessages = ({
       sendRef.current.style.pointerEvents = "all";
       sendRef.current.style.cursor = "pointer";
       sendRef.current.style.opacity = 1;
+
+      setSendMessageData({ ...sendMessageData, message: input.target.value });
     } else {
       sendRef.current.style.pointerEvents = "none";
       sendRef.current.style.opacity = 0.5;
@@ -136,29 +158,72 @@ const GroupsMessages = ({
     if (type === "docs") {
       setShowDocs(!showDocs);
       setShowLinks(false);
-    } else {
+      setShowMembers(false);
+    } else if (type === "links") {
       setShowLinks(!showLinks);
+      setShowDocs(false);
+      setShowMembers(false);
+    } else {
+      setShowMembers(!showMembers);
+      setShowLinks(false);
       setShowDocs(false);
     }
   };
 
+  const handleSend = () => {
+    setSendMessageData({
+      ...sendMessageData,
+      chat_room_id: groupData.group.chat_room_id,
+      type: 1,
+    });
+
+    dispatch(
+      sendMessage({
+        ...sendMessageData,
+        chat_room_id: groupData.group.chat_room_id,
+        type: 1,
+      })
+    );
+
+    inputRef.current.value = "";
+  };
+
   useEffect(() => {
-    if (showDocs || showLinks) {
+    if (showDocs || showLinks || showMembers) {
       setShow(false);
     } else {
       setShow(true);
     }
 
-    if (showDocs || showLinks) {
-      messagesRef.current.style.height = "calc(100% - 120px)";
-    } else {
-      messagesRef.current.style.height = "calc(100% - 190px)";
+    if (messagesRef.current) {
+      if (showDocs || showLinks || showMembers) {
+        messagesRef.current.style.height = "calc(100% - 120px)";
+      } else {
+        messagesRef.current.style.height = "calc(100% - 190px)";
+      }
     }
-  }, [showDocs, showLinks]);
+  }, [showDocs, showLinks, showMembers]);
 
   useEffect(() => {
-    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-  }, [showGroupMessages, activeGroup, showDocs, showLinks]);
+    // console.log(messagesRef.current);
+    if (messagesRef.current) {
+      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+      // console.log("Working: ", messagesRef.current.scrollTop);
+    }
+
+    // console.log("group: ", activeGroup);
+  }, [
+    showGroupMessages,
+    activeGroup,
+    showDocs,
+    showLinks,
+    showMembers,
+    sendMessageStatus,
+  ]);
+
+  if (messagesLoading) {
+    return <Spinner position="full" />;
+  }
 
   return (
     <div className="group-message">
@@ -167,13 +232,13 @@ const GroupsMessages = ({
           <div className="group-message__picture">{groupData.groupImg}</div>
           <div className="group-message__name-status">
             <h4>{groupData.group.name}</h4>
-            {groupData.group.online_users ? (
+            {groupData.group.online_count > 0 ? (
               <p>
-                {groupData.group.all_users} ta a'zo,{" "}
-                {groupData.group.online_users} ta online
+                {groupData.group.users_count} ta a'zo,{" "}
+                {groupData.group.online_count} ta online
               </p>
             ) : (
-              <p>{groupData.group.all_users} ta a'zo</p>
+              <p>{groupData.group.users_count} ta a'zo</p>
             )}
           </div>
           <div className="group-message__extra-functions">
@@ -199,6 +264,7 @@ const GroupsMessages = ({
                   setShowModal(!showModal);
                   setShowDocs(false);
                   setShowLinks(false);
+                  setShowMembers(false);
                 }}
               >
                 <svg width="22" height="21" viewBox="0 0 22 21" fill="none">
@@ -243,7 +309,7 @@ const GroupsMessages = ({
               </div>
               <div
                 className="group-message__members"
-                onClick={() => setShowModal(!showModal)}
+                onClick={() => handleClick("members")}
               >
                 <svg width="22" height="17" viewBox="0 0 22 17" fill="none">
                   <path
@@ -292,36 +358,31 @@ const GroupsMessages = ({
         </div>
       ) : null}
       <div className="group-message__messages-body" ref={messagesRef}>
-        <ChatDocs
-          docsData={docs}
-          setShowDocs={setShowDocs}
-          showDocs={showDocs}
-        />
-        <ChatLinks
-          linksData={links}
-          setShowLinks={setShowLinks}
-          showLinks={showLinks}
-        />
+        <ChatDocs docsData={docs} showDocs={showDocs} />
+        <ChatLinks linksData={links} showLinks={showLinks} />
+        <GroupMembers members={messagesData?.users} showMembers={showMembers} />
         {activeGroup ? (
           <div
             className={`group-message__messages-container ${
               show ? "show-messages" : ""
             }`}
           >
-            {messages.map((message) =>
+            {messagesData?.messages.data.map((message) =>
               message.user_id === activeGroup ? (
                 <div
                   key={message.id}
                   className="group-message__received-container"
                 >
                   <div className="group-message__received-user">
-                    {groupData && groupData.profileImg}
+                    {groupData && <img src={groupData.groupImg.props.src} />}
                   </div>
                   <div className="group-message__received-details">
                     <p className="group-message__received-message">
                       {message.message}
                     </p>
-                    <span>{message.message_time}</span>
+                    <span>
+                      {message.created_at.split("T")[1].split(".")[0]}
+                    </span>
                   </div>
                 </div>
               ) : (
@@ -362,7 +423,7 @@ const GroupsMessages = ({
             fill="#065EA9"
           />
         </svg>
-        <div className="group-message__send" ref={sendRef}>
+        <div className="group-message__send" ref={sendRef} onClick={handleSend}>
           <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
             <path
               d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
