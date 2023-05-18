@@ -28,14 +28,12 @@ export const getExpertPage = createAsyncThunk("getExpertPage", async () => {
 
 export const getExpertFilter = createAsyncThunk(
   "getExpertFilterCountry",
-  async ({ countryId, specialization, perPage = 12 }) => {
-    console.log(specialization);
-    console.log(countryId);
+  async ({ country, specialization, perPage = 12 }) => {
     return await axios({
       url: GET_EXPERT_FILTER + perPage,
       method: "GET",
       params: {
-        countryId: countryId === "all" ? "" : countryId,
+        country: country === "all" ? "" : country,
         specialization: specialization === "all" ? "" : specialization,
       },
     }).then((res) => res.data);

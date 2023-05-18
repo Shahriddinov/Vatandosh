@@ -5,7 +5,6 @@ import {
 } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
-import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 export const useAboutCouncil = () => {
   const lan = useSelector((state) => state.language.language);

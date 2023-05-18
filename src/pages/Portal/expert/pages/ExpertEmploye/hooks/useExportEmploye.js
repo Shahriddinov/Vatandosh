@@ -31,9 +31,7 @@ export const useExportEmploy = () => {
   useEffect(() => {
     dispatch(getExpertSpecialization());
     dispatch(getAllRegions());
-    dispatch(
-      getExpertFilter({ perPage: 12, countryId: "", specialization: "" })
-    );
+    dispatch(getExpertFilter({ perPage: 12, country: "", specialization: "" }));
   }, [dispatch, language]);
 
   allRegions.unshift({
