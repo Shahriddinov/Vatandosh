@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   getExpertCount,
+  getExpertFilter,
   getExpertPage,
   getExperts,
 } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
@@ -10,15 +11,20 @@ import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/porta
 
 export const useExpertHome = () => {
   const lan = useSelector((state) => state.language.language);
+
   const changeExpertCount = createSelector(
     (state) => state.expertSlice.expertCount,
     (expert) => {
       const expertCount = expert.filter((el) => {
         let count = 0;
-        for (let i = 0; i < el.users.length; i++) {
-          if (el.users[i].expert !== null) {
-            if (el.users[i].expert.includes("EXPERT")) {
-              count += 1;
+        if (el.users.length > 0) {
+          for (let i = 0; i < el.users.length; i++) {
+            if (el.users[i].expert.length > 0) {
+              if (el.users[i].expert[0].type !== null) {
+                if (el.users[i].expert[0].type.includes("EXPERT")) {
+                  count += 1;
+                }
+              }
             }
           }
         }
@@ -26,8 +32,18 @@ export const useExpertHome = () => {
           return el;
         }
       });
+      const data = [];
+      expertCount.forEach((item) => {
+        let users = [];
+        for (let i = 0; i < item.users.length; i++) {
+          if (item.users[i].expert.length > 0) {
+            users.push(item.users[i]);
+          }
+        }
+        data.push({ ...item, users });
+      });
 
-      return expertCount;
+      return data;
     }
   );
 
@@ -50,12 +66,14 @@ export const useExpertHome = () => {
 
   const dispatch = useDispatch();
 
+  console.log(expertCount);
+
   useEffect(() => {
     dispatch(getExpertCount());
     dispatch(getExpertPage());
     dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-    dispatch(getExperts());
-  }, [lan]);
+    dispatch(getExpertFilter({ perPage: 12 }));
+  }, [dispatch, lan]);
 
   return {
     expertCount,

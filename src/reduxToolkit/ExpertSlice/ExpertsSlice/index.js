@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getExpert,
   getExpertCount,
+  getExpertFilter,
+  getExpertFilterCountry,
   getExpertPage,
   getExperts,
 } from "./ExpertSliceExtraReducer";
@@ -13,7 +15,8 @@ const initialState = {
   expertCountLoading: true,
   expertPage: [],
   expertPageLoading: true,
-  expert: null,
+  expert: {},
+  expertLoading: {},
   error: null,
 };
 
@@ -37,14 +40,14 @@ const expertsSlice = createSlice({
 
     builder
       .addCase(getExpert.pending, (state) => {
-        state.loading = true;
+        state.expertLoading = true;
       })
       .addCase(getExpert.fulfilled, (state, action) => {
-        state.loading = false;
+        state.expertLoading = false;
         state.expert = action.payload;
       })
       .addCase(getExpert.rejected, (state, action) => {
-        state.loading = false;
+        state.expertLoading = false;
         state.error = action.error.message;
       });
 
@@ -71,6 +74,19 @@ const expertsSlice = createSlice({
       })
       .addCase(getExpertPage.rejected, (state, action) => {
         state.expertPageLoading = false;
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(getExpertFilter.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getExpertFilter.fulfilled, (state, action) => {
+        state.loading = false;
+        state.expertData = action.payload;
+      })
+      .addCase(getExpertFilter.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       });
   },
