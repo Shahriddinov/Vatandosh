@@ -101,7 +101,7 @@ export default function CustomProfil() {
                       );
                     else
                       return (
-                        <div className="customprofil-list-otm-item">
+                        <div key={el.id} className="customprofil-list-otm-item">
                           <div className="customprofil-list-otm-desc">
                             <span>{t("expert.xorotm")}</span>
                             <p>{el?.institution}</p>
@@ -132,7 +132,7 @@ export default function CustomProfil() {
           <AccordionDetails>
             {employment.length
               ? employment.map((el) => (
-                  <div className="customprofil-list-workexp">
+                  <div key={el.id} className="customprofil-list-workexp">
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workspace")}</span>
                       <p>{el?.company}</p>
