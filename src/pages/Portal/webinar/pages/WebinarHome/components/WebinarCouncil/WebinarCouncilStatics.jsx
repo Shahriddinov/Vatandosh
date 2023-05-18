@@ -67,19 +67,19 @@ function WebinarCouncilStatics({ count, locations, attendees }) {
       <div className="council-right">
         <div>
           <span className="council--span">
-            <h5>O'tkazilgan tadbirlar soni</h5>
+            <h5>{t("webinar.countofEvents")}</h5>
             <img src={UserIcon} alt="error" />
           </span>
           <h4>{count}</h4>
-          <p className="margin_bottom_60">Tadbirlar</p>
+          <p className="margin_bottom_60">{t("webinar.nav2")}</p>
         </div>
         <div style={{ marginTop: "15px" }}>
           <span className="council--span">
-            <h5>Jami tadbirlar qatnashganlar</h5>
+            <h5>{t("webinar.totalOfEventsattendance")}</h5>
             <img src={UserIcon} alt="error" />
           </span>
           <h4>{attendees}</h4>
-          <p className="margin_bottom_60">Ishtirokchilari</p>
+          <p className="margin_bottom_60">{t("webinar.participants")}</p>
         </div>
         <div className="council-bottom">
           <span className="council--span">

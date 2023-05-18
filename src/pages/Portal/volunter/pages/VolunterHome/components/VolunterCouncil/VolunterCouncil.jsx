@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   ArrowIcon,
   ExcludeIcon,
@@ -8,10 +9,11 @@ import { Link } from "react-router-dom";
 
 
 function Volunter({ volunteers }) {
+  const {t}= useTranslation()
   return (
     <div className="expert">
       <div className="container">
-        <h2>Volontyorlar</h2>
+        <h2>{t("voluntery.voluntery")}</h2>
         <div className="volunter-list">
           {volunteers.map((volunteer) => (
             <div key={volunteer.id}>
@@ -24,7 +26,7 @@ function Volunter({ volunteers }) {
               <h4>{volunteer.user_employment_info_id.specialization}</h4>
               <h4>{volunteer.user_employment_info_id.city}</h4>
               <Link className="employe-link" to={`profile/${volunteer.id}`}>
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
@@ -33,7 +35,7 @@ function Volunter({ volunteers }) {
         <div className="expert-item">
           <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
-            Barcha olim va ekspertlar
+           {t("expert.allexperts")}
           </Link>
         </div>
       </div>

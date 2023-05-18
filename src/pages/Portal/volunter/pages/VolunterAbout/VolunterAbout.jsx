@@ -19,12 +19,13 @@ import {
   getLocation,
   getLocationOne,
 } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useTranslation } from "react-i18next";
 
 function VolunterAbout() {
   const [age, setAge] = React.useState("");
   const [data, setData] = useState({ country: "", city: "" });
   const language = useSelector((store) => store.language.language);
-
+  const {t}= useTranslation()
   const volunteers = useSelector((store) => store.volunteerSlice.volunteerData);
   const volunteersLoading = useSelector(
     (store) => store.volunteerSlice.volunteerLoading
@@ -134,7 +135,7 @@ function VolunterAbout() {
                 className="employe-link"
                 to={`/portal-category/volunteer/profile/${volunteer.id}`}
               >
-                <span>Batafsil</span>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>

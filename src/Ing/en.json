@@ -75,6 +75,7 @@
   "Associations": "Associations",
   "staffCount": "The number of employees",
   "leader": "Leader",
+  "thereIsNotFound":"There are currently no public associations in this state",
   "founding_date": "Founding date",
   "election_leader": "Date of election of leader",
   "mediaVideo": "Video footage",
@@ -208,6 +209,12 @@
     "form_cancel": "Cancel",
     "form_submit": "Send"
   },
+  "countrys":{
+    "russia":"Russia",
+    "turkey":"Turkey",
+    "germany":"Germany",
+    "malaziy":"Malayziya"
+  },
   "expert": {
     "register": "Register",
     "registered": "Registrants",
@@ -219,6 +226,7 @@
     "headertitle": "“EXPERT COUNCIL” COMPATRIOTS",
     "headersubtitle": "Electronic platform of the compatriot expert council",
     "counciltitle": "“International expert council under the foundation” compatriots",
+    "more":"More",
     "main": "Main",
     "expertCouncil": "Expert council",
     "offers": "Suggestions",
@@ -374,13 +382,16 @@
     "voluntery": "Volunteers",
     "nav1": "Volunteers",
     "nav2": "Volunteer activities",
-    "nav3": "Connect"
+    "nav3": "Connect",
+    "nav4":"Volunteer activities",
+    "Signup":"Sign up"
   },
   "webinar": {
     "tel": "Phone",
     "email": "Enter your email address",
     "online-webinar": "Online webinar on scientific literacy",
     "webinars": "Webinars",
+    "conferences":"Conferences",
     "join-webinar": "Join the webinar",
     "date": "Webinar date:",
     "nav2": "Events",
@@ -389,7 +400,10 @@
     "header1": "Participation",
     "header2": "To learn more",
     "headerName": "“Compatriots” Webinar",
-    "council": "What is a webinar platform?"
+    "council": "What is a webinar platform?",
+    "countofEvents":"Number of events held",
+    "totalOfEventsattendance":"Total event attendance",
+    "participants":"Participants"
   },
   "library": {
     "library": "Library",

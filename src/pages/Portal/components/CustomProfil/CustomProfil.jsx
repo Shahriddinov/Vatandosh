@@ -15,8 +15,10 @@ import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 import NotFound from "../../../404";
 import { getExpertOneEducation } from "../../../../reduxToolkit/ExpertSlice/ExpertEducation/extraReducer";
 import { getExpertOneEmployment } from "../../../../reduxToolkit/ExpertSlice/ExpertEmployment/extraReducer";
+import { useTranslation } from "react-i18next";
 
 export default function CustomProfil() {
+  const {t} = useTranslation()
   const { pathname } = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -245,7 +247,7 @@ export default function CustomProfil() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Volonyorlik faoliyati</Typography>
+              <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
               {[1, 2, 3, 4].map((id) => (
@@ -282,7 +284,7 @@ export default function CustomProfil() {
                       </p>
                       <button className="customprofil-list-offer-info-desc-btn">
                         <Link to={"/portal-category/volunteer/article/2"}>
-                          Batafsil
+                         {t("expert.detail")}
                         </Link>
                       </button>
                     </div>

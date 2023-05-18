@@ -57,7 +57,7 @@ function WebinarEvents() {
                 eventType == "webinar" ? "webinar-top" : "webinar-tops"
               }
             >
-              Vebinarlar
+              {t("webinar.webinars")}
             </button>
             <button
               onClick={() => setEventType("conference")}
@@ -65,7 +65,7 @@ function WebinarEvents() {
                 eventType == "conference" ? "webinar-top" : "webinar-tops"
               }
             >
-              Konferensiyalar
+              {t("webinar.conferences")}
             </button>
           </div>
         </div>
