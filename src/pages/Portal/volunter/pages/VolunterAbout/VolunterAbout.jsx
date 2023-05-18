@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -22,8 +22,6 @@ function VolunterAbout() {
     volunteers,
     dispatch,
   } = useVolunteerAbout();
-  const {t}= useTranslation()
-
 
   const handleСlick = ({ id, type }) => {
     setData((prev) => ({ ...prev, [type]: id }));
@@ -40,7 +38,6 @@ function VolunterAbout() {
     return <Spinner />;
   }
 
-  console.log(allCitiesGet);
   return (
     <div className="employe">
       <div className="container">
