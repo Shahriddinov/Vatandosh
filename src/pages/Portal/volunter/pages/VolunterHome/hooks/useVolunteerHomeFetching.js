@@ -9,6 +9,7 @@ import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/porta
 import {
   getVolunteerAll,
   getVolunteerCity,
+  getVolunteerFilter,
 } from "../../../../../../reduxToolkit/volunteer/extraReducer";
 
 export const useVolunteerHomeFetching = () => {
@@ -73,7 +74,7 @@ export const useVolunteerHomeFetching = () => {
 
   useEffect(() => {
     dispatch(getPortalNews({ type: "volunteer", per_page: 3, page: 1 }));
-    dispatch(getVolunteerAll(8));
+    dispatch(getVolunteerFilter({ country: "", city: "" }));
     dispatch(getExpertPage());
     dispatch(getVolunteerCity());
   }, [dispatch, lan]);

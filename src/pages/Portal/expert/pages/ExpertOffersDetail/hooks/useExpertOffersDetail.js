@@ -1,13 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getExpertCount,
-  getExpertPage,
-} from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
+import {
+  getExpert,
+  getExpertCount,
+} from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
-import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
-export const useAboutCouncil = () => {
+export const useExportOfferDetail = () => {
+  const { pathname } = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
 
   const changeExpertCount = createSelector(
@@ -50,26 +53,22 @@ export const useAboutCouncil = () => {
   );
   const expertCount = useSelector(changeExpertCount);
 
-  const expertPageLoading = useSelector(
-    (state) => state.expertSlice.expertPageLoading
-  );
-
-  const expertPage = useSelector((state) => state.expertSlice.expertPage);
-  const expertError = useSelector((state) => state.expertSlice.error);
-
-  const dispatch = useDispatch();
+  const expertData = useSelector((state) => state.expertSlice.expert);
+  const expertLoading = useSelector((state) => state.expertSlice.expertLoading);
+  const error = useSelector((state) => state.expertSlice.error);
 
   useEffect(() => {
-    dispatch(getExpertCount());
-    dispatch(getExpertPage());
-  }, [lan]);
+    if (pathname.includes("expert")) {
+      dispatch(getExpert(id));
+      dispatch(getExpertCount());
+    }
+  }, [dispatch, pathname, id, lan]);
 
   return {
-    expertCount,
+    expertData,
+    expertLoading,
+    error,
     expertCountLoading,
-    expertPageLoading,
-    expertPage,
-    lan,
-    expertError,
+    expertCount,
   };
 };
