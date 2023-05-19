@@ -82,7 +82,18 @@ const expertRegisterSlice = createSlice({
       })
       .addCase(getExpertSpecialization.fulfilled, (state, action) => {
         state.specializationLoading = false;
-        state.specialization = action.payload;
+        const obj = {
+          id: "all",
+          title: "Barcha mutaxassislar",
+          label: "Barcha mutaxassislar",
+          created_at: "2023-05-05T13:03:07.000000Z",
+          updated_at: "2023-05-05T13:03:07.000000Z",
+        };
+        const changeData = action.payload.map((el) => ({
+          ...el,
+          label: el.title,
+        }));
+        state.specialization = [obj, ...changeData];
       })
       .addCase(getExpertSpecialization.rejected, (state, action) => {
         state.specializationLoading = false;

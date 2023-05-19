@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -6,53 +6,31 @@ import Select from "@mui/material/Select";
 import "./VolunterAbout.scss";
 import { Link } from "react-router-dom";
 import { ArrowIcon } from "../../../../../assets/images/expert";
-import { data } from "../VolunterHome/data";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getVolunteerAll,
-  getVolunteerByCity,
-  getVolunteerByCountry,
-} from "../../../../../reduxToolkit/volunteer/extraReducer";
+import { getVolunteerFilter } from "../../../../../reduxToolkit/volunteer/extraReducer";
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
-import {
-  getLocation,
-  getLocationOne,
-} from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import { useTranslation } from "react-i18next";
+import { getCountryCities } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { useVolunteerAbout } from "./hooks/useVolunterAbout";
 
 function VolunterAbout() {
-  const [age, setAge] = React.useState("");
   const [data, setData] = useState({ country: "", city: "" });
-  const language = useSelector((store) => store.language.language);
-  const {t}= useTranslation()
-  const volunteers = useSelector((store) => store.volunteerSlice.volunteerData);
-  const volunteersLoading = useSelector(
-    (store) => store.volunteerSlice.volunteerLoading
-  );
-  const locations = useSelector((store) => store.community.locationGet);
-  const locationsLoading = useSelector(
-    (store) => store.community.locationGetLoading
-  );
-  const location = useSelector((store) => store.community.locationGetOne);
-  const locationLoading = useSelector(
-    (store) => store.community.locationGetOneLoading
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getVolunteerAll(12));
-    dispatch(getLocation());
-  }, [language]);
+  const {
+    allCitiesGet,
+    locationsLoading,
+    locations,
+    volunteersLoading,
+    volunteers,
+    dispatch,
+  } = useVolunteerAbout();
 
   const handleСlick = ({ id, type }) => {
     setData((prev) => ({ ...prev, [type]: id }));
     if (type === "country") {
-      dispatch(getVolunteerByCountry(id));
-      dispatch(getLocationOne(id));
+      dispatch(getVolunteerFilter({ country: id, city: data.city }));
+      dispatch(getCountryCities({ location_id: id }));
     } else if (type === "city") {
-      dispatch(getVolunteerByCity({ country: data.country, city: id }));
+      dispatch(getVolunteerFilter({ country: data.country, city: id }));
+      console.log(id);
     }
   };
 
@@ -60,7 +38,6 @@ function VolunterAbout() {
     return <Spinner />;
   }
 
-  console.log(volunteers);
   return (
     <div className="employe">
       <div className="container">
@@ -98,12 +75,12 @@ function VolunterAbout() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
-                // value={city}
+                value={data.city}
                 label="Barcha davlatlar"
               >
-                {location.length < 0
+                {allCitiesGet.length < 0
                   ? ""
-                  : location.cities?.map((city) => (
+                  : allCitiesGet?.map((city) => (
                       <MenuItem
                         onClick={() =>
                           handleСlick({ id: city.id, type: "city" })
@@ -111,7 +88,7 @@ function VolunterAbout() {
                         value={city.id}
                         key={city.id}
                       >
-                        {city.city}
+                        {city.name}
                       </MenuItem>
                     ))}
               </Select>
@@ -119,27 +96,31 @@ function VolunterAbout() {
           </div>
         </div>
         <div className="employe-page">
-          {volunteers.data.map((volunteer) => (
-            <div key={volunteer.id}>
-              <img
-                src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
-                alt="error"
-              />
-              <p>
-                {volunteer?.user_profile_id?.international_location_id?.name}
-              </p>
-              <h3>{volunteer.user_id.name}</h3>
-              <h4>{volunteer.user_employment_info_id?.specialization}</h4>
-              <h4>{volunteer.user_employment_info_id?.city}</h4>
-              <Link
-                className="employe-link"
-                to={`/portal-category/volunteer/profile/${volunteer.id}`}
-              >
-                <span>{t("expert.detail")}</span>
-                <img src={ArrowIcon} alt="Arrow Icon" />
-              </Link>
-            </div>
-          ))}
+          {volunteers.data.length > 0 ? (
+            volunteers.data.map((volunteer) => (
+              <div key={volunteer.id}>
+                <img
+                  src={`${PORTAL_IMAGE_URL}/${volunteer.user_id.avatar}`}
+                  alt="error"
+                />
+                <p>
+                  {volunteer?.user_profile_id?.international_location_id?.name}
+                </p>
+                <h3>{volunteer.user_id.name}</h3>
+                <h4>{volunteer.user_employment_info_id?.specialization}</h4>
+                <h4>{volunteer.user_employment_info_id?.city}</h4>
+                <Link
+                  className="employe-link"
+                  to={`/portal-category/volunteer/profile/${volunteer.id}`}
+                >
+                  <span>Batafsil</span>
+                  <img src={ArrowIcon} alt="Arrow Icon" />
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>Valantiyorlar mavjud emas</p>
+          )}
         </div>
       </div>
     </div>
