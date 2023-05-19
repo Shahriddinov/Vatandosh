@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./view3d.scss";
 
 const View3D = ({ data }) => {
-  console.log(data);
   return (
     <div className="facilities_3d">
       <div className="facilities_3d_circle">

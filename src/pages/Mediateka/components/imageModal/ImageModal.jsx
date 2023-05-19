@@ -1,7 +1,6 @@
 import React from "react";
 import { saveAs } from "file-saver";
-
-import { baseServerUrl } from "../../../../services/api/utils";
+import Img from "../../../../assets/images/EyeGlass.png";
 
 import "./imageModal.scss";
 
@@ -16,27 +15,30 @@ const ImageModal = ({
   rightRef,
 }) => {
   const downloadImage = () => {
-    saveAs(
-      "https://github.githubassets.com/images/modules/profile/badge--acv-64.png",
-      activeImage
-    );
+    // saveAs(
+    //   "https://github.githubassets.com/images/modules/profile/badge--acv-64.png",
+    //   activeImage
+    // );
+    console.log(activeImage);
   };
 
   return (
     <div className={`image-modal ${showImageModal ? "show-modal" : ""}`}>
-      <div className="image-modal__download" onClick={downloadImage}>
-        <svg
-          width="17"
-          height="21"
-          viewBox="0 0 17 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.71656 0.838478C4.47311 0.913385 4.25775 1.08193 4.12666 1.29729L4.00026 1.51733L3.98621 6.65316L3.97685 11.7937H2.38507C1.05078 11.7937 0.760513 11.8077 0.61538 11.8686C0.0723009 12.0933 -0.157103 12.73 0.114436 13.2731C0.203389 13.451 1.05078 14.3218 3.79894 17.0653C5.76526 19.0269 7.446 20.6702 7.53495 20.717C7.75499 20.8341 8.25125 20.8341 8.47129 20.717C8.56025 20.6702 10.2503 19.0176 12.226 17.0419C15.0023 14.2703 15.8403 13.4089 15.9105 13.245C16.0931 12.8424 16.0042 12.3508 15.6999 12.0652C15.419 11.803 15.3581 11.7937 13.6212 11.7937H12.0294L12.02 6.65316L12.006 1.51733L11.8749 1.29729C11.7906 1.15215 11.6689 1.03043 11.5238 0.946157L11.3037 0.815069L8.07335 0.805706C6.29898 0.801025 4.78679 0.815069 4.71656 0.838478Z"
-            fill="#062A49"
-          />
-        </svg>
+      <div className="image-modal__download">
+        <a href={Img} download={true}>
+          <svg
+            width="17"
+            height="21"
+            viewBox="0 0 17 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.71656 0.838478C4.47311 0.913385 4.25775 1.08193 4.12666 1.29729L4.00026 1.51733L3.98621 6.65316L3.97685 11.7937H2.38507C1.05078 11.7937 0.760513 11.8077 0.61538 11.8686C0.0723009 12.0933 -0.157103 12.73 0.114436 13.2731C0.203389 13.451 1.05078 14.3218 3.79894 17.0653C5.76526 19.0269 7.446 20.6702 7.53495 20.717C7.75499 20.8341 8.25125 20.8341 8.47129 20.717C8.56025 20.6702 10.2503 19.0176 12.226 17.0419C15.0023 14.2703 15.8403 13.4089 15.9105 13.245C16.0931 12.8424 16.0042 12.3508 15.6999 12.0652C15.419 11.803 15.3581 11.7937 13.6212 11.7937H12.0294L12.02 6.65316L12.006 1.51733L11.8749 1.29729C11.7906 1.15215 11.6689 1.03043 11.5238 0.946157L11.3037 0.815069L8.07335 0.805706C6.29898 0.801025 4.78679 0.815069 4.71656 0.838478Z"
+              fill="#062A49"
+            />
+          </svg>
+        </a>
       </div>
       <div className="image-modal__share" onClick={() => {}}>
         <svg
@@ -84,9 +86,7 @@ const ImageModal = ({
         <FiChevronRight />
       </div>
       <div className="image-modal__image-modal-container">
-        {activeImage ? (
-          <img src={`${baseServerUrl}/${activeImage}`} alt="mediatake" />
-        ) : null}
+        {activeImage ? <img src={activeImage} alt="mediatake" /> : null}
       </div>
     </div>
   );
