@@ -2,7 +2,7 @@ import {
   CalendarIcon,
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
-import "./News.scss";
+import "./NewsExpert.scss";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
@@ -20,7 +20,7 @@ function News({ communityNews, url }) {
 
   return (
     <div className="expertnews">
-      <div className="container" ref={ref}>
+      <div className="container expertnews-container" ref={ref}>
         {inView ? (
           <>
             <h3>{t("news")}</h3>
@@ -36,6 +36,7 @@ function News({ communityNews, url }) {
                     <img
                       src={`${PORTAL_IMAGE_URL}/${news.image}`}
                       alt={news.title}
+                      className="expertnews-img"
                     />
                     <div className="expertnews-content">
                       <h5>{news.title}</h5>

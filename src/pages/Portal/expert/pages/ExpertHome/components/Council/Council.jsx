@@ -13,11 +13,11 @@ function Council({ councilData, expertCount, expertData }) {
   });
   const { t } = useTranslation();
   return (
-    <div className="council">
-      <div className="container" ref={ref}>
+    <div className="expert-council">
+      <div className="container expert-council-container" ref={ref}>
         {inView ? (
           <>
-            <div className="council-left">
+            <div className="expert-council-left">
               <img src={councilData?.image} alt="img" />
               <h3>{councilData?.title}</h3>
               <p>{councilData?.desc}</p>
