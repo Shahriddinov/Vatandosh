@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import "./About.scss";
 import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
 import Table from "./component/Table/Table";
@@ -15,21 +14,23 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../component/Spinner";
 import { baseServerUrl } from "../../services/api/utils";
 import Aos from "aos";
-import Gallery from '../Projects/gallery'
-import {getAbout} from "../../reduxToolkit/About/About";
-
-
+import { getAbout } from "../../reduxToolkit/About/About";
 
 const About = () => {
-  const state = useLocation();
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
   const loading = useSelector((state) => state.aboutSlice.loading);
-  const aboutData = useSelector((state)=>state.aboutSlice.aboutData);
+  const aboutData = useSelector((state) => state.aboutSlice.aboutData);
   const { t } = useTranslation();
   const heroData = {
     title: `${t("aboutPage.section1.htext")}`,
-    description: `${t("aboutPage.section1.ptext")}`,
+    description: (
+      <p
+        dangerouslySetInnerHTML={{
+          __html: aboutData[`head_text_${lan}`],
+        }}
+      ></p>
+    ),
     pagePath: `${t("aboutPage.section1.foottext2")}`,
   };
 
@@ -63,7 +64,7 @@ const About = () => {
 
   useEffect(() => {
     dispatch(getAbout());
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return <Spinner />;
@@ -93,24 +94,12 @@ const About = () => {
           data-aos-offset="500"
           data-aos-duration="2000"
         >
-          <div className="about_card_right_text">
-            {t("aboutPage.section2.htext1")}
-          </div>
           <div className="about_card_right_title">
-            {t("aboutPage.section2.ptext1-1")}
-          </div>
-          <div className="about_card_right_text">
-            105{" "}
-            <span className="about_card_right_text_info">
-              {t("aboutPage.section2.ptext1-2")}
-            </span>{" "}
-            2.4 mln{" "}
-            <span className="about_card_right_text_info">
-              {t("aboutPage.section2.ptext1-3")}
-            </span>
-          </div>
-          <div className="about_card_right_title">
-            {t("aboutPage.section2.ptext1-4")}
+            <p
+              dangerouslySetInnerHTML={{
+                __html: aboutData[`text_${lan}`],
+              }}
+            ></p>
           </div>
         </div>
       </div>
@@ -118,7 +107,8 @@ const About = () => {
         <div>
           <video autoPlay muted loop className="about_videos_links">
             <source
-              src={`${baseServerUrl}/${JSON.parse(aboutData?.videofile)[0]?.download_link
+              src={`${baseServerUrl}/${
+                JSON.parse(aboutData?.videofile)[0]?.download_link
               }`}
             />
           </video>
@@ -132,21 +122,10 @@ const About = () => {
       >
         <div className="about_direction_fon">
           <span
-
-              dangerouslySetInnerHTML={{
-                __html: aboutData[`history_${lan}`],
-              }}
+            dangerouslySetInnerHTML={{
+              __html: aboutData[`history_${lan}`],
+            }}
           />
-        </div>
-        <div className="about_direction_cards">
-          <p className="about_direction_cards_information">
-            <span
-
-                dangerouslySetInnerHTML={{
-                  __html: aboutData[`text_${lan}`],
-                }}
-            />
-          </p>
         </div>
       </div>
       <div className="">
@@ -168,15 +147,21 @@ const About = () => {
             initialSlide={1}
             loop={true}
             {...swiperParams}
-        >
-            {Gallery.map((obj, index) => {
-                return (
+          >
+            {aboutData?.images
+              ? JSON.parse(aboutData.images).map((obj, index) => {
+                  return (
                     <SwiperSlide key={index}>
-                        <img src={obj.image} alt=""/>
+                      <img
+                        className="about_caruosel-img"
+                        src={`${baseServerUrl}/${obj}`}
+                        alt=""
+                      />
                     </SwiperSlide>
-                )
-            })}
-        </Swiper>
+                  );
+                })
+              : null}
+          </Swiper>
         </div>
       </div>
     </div>

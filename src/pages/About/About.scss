@@ -1,7 +1,7 @@
 @import "../../assets/style/global";
 
 .about {
-  padding: 0!important;
+  padding: 0 !important;
   &_card {
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +20,6 @@
       }
 
       &_boss {
-
         &_level {
           font-weight: 400;
           font-size: 12px;
@@ -29,7 +28,6 @@
           align-items: center;
           letter-spacing: 0.2px;
           color: $colorGrey;
-
         }
 
         &_name {
@@ -43,15 +41,14 @@
       .sub {
         margin-top: 20%;
       }
-
     }
 
     &_right {
       width: 50%;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 20px;
       .tops {
         width: 50%;
         margin-top: 10%;
@@ -59,6 +56,7 @@
       }
 
       &_text {
+        margin-bottom: 20px;
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
@@ -70,7 +68,6 @@
           font-size: 18px;
           line-height: 22px;
           color: $colorGrey;
-
         }
       }
 
@@ -79,9 +76,15 @@
         font-size: 16px;
         line-height: 19px;
         letter-spacing: 0.2px;
+        align-items: center;
         color: $colorGrey;
-      }
 
+        & p {
+          display: flex;
+          text-align: justify;
+          line-height: 150%;
+        }
+      }
     }
   }
 
@@ -96,34 +99,45 @@
 
   &_direction {
     &_fon {
-      font-weight: 700;
-      font-size: 32px;
-      line-height: 39px;
       display: flex;
       align-items: center;
-      padding-top: 3%;
-      color: $colorTitle;
-    }
+      padding: 60px 0 60px;
 
+      & p:first-child {
+        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+        color: $colorTitle;
+      }
+
+      & p:not(:first-child) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.2px;
+        color: #5d6b8a;
+      }
+    }
 
     &_cards {
       margin-top: 5%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      &_information{
+      &_information {
         font-weight: 400;
         font-size: 16px;
         line-height: 25px;
         letter-spacing: 0.2px;
-        color: #5D6B8A;
+        color: #5d6b8a;
         margin-bottom: 5%;
       }
 
       &_boxs {
         width: 45%;
         padding: 15px;
-        background: #F0F2F9;
+        background: #f0f2f9;
         border-radius: 20px;
         position: relative;
         margin-bottom: 5%;
@@ -135,8 +149,6 @@
           color: $colorTitle;
           margin-top: 2%;
           margin-bottom: 5%;
-
-
         }
 
         &_img {
@@ -159,12 +171,13 @@
   }
 
   .increase {
+    .container {
+      padding-bottom: 32px;
+    }
     margin-bottom: 5%;
   }
 
-
   &_fatherland {
-
     padding: 0 16%;
     font-weight: 700;
     font-size: 24px;
@@ -178,16 +191,19 @@
   &_caruosel {
     margin-bottom: 5%;
     margin-top: 5%;
+
+    &-img {
+      width: 320px;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
   @media only screen and (max-width: 1000px) {
-
-      .cards {
-        display: flex;
-        flex-direction: column;
-      }
-
-
+    .cards {
+      display: flex;
+      flex-direction: column;
+    }
 
     &_card {
       display: block;
@@ -203,7 +219,6 @@
             width: 100%;
           }
         }
-
 
         &_boss {
           width: 45%;
@@ -235,7 +250,5 @@
         }
       }
     }
-
-
   }
 }

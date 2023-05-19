@@ -5,7 +5,6 @@ import {
 } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
-import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 export const useAboutCouncil = () => {
   const lan = useSelector((state) => state.language.language);
@@ -15,10 +14,14 @@ export const useAboutCouncil = () => {
     (expert) => {
       const expertCount = expert.filter((el) => {
         let count = 0;
-        for (let i = 0; i < el.users.length; i++) {
-          if (el.users[i].expert !== null) {
-            if (el.users[i].expert.includes("EXPERT")) {
-              count += 1;
+        if (el.users.length > 0) {
+          for (let i = 0; i < el.users.length; i++) {
+            if (el.users[i].expert.length > 0) {
+              if (el.users[i].expert[0].type !== null) {
+                if (el.users[i].expert[0].type.includes("EXPERT")) {
+                  count += 1;
+                }
+              }
             }
           }
         }
@@ -26,8 +29,18 @@ export const useAboutCouncil = () => {
           return el;
         }
       });
+      const data = [];
+      expertCount.forEach((item) => {
+        let users = [];
+        for (let i = 0; i < item.users.length; i++) {
+          if (item.users[i].expert.length > 0) {
+            users.push(item.users[i]);
+          }
+        }
+        data.push({ ...item, users });
+      });
 
-      return expertCount;
+      return data;
     }
   );
 

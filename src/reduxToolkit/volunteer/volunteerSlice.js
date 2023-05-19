@@ -10,6 +10,7 @@ import {
   deleteVolunteerOne,
   getVolunteerActivity,
   getVolunteerCity,
+  getVolunteerFilter,
 } from "./extraReducer";
 
 const initialState = {
@@ -42,42 +43,14 @@ const volunteerSlice = createSlice({
   extraReducers: (builder) => {
     // Get volunteers
     builder
-      .addCase(getVolunteerAll.pending, (state) => {
+      .addCase(getVolunteerFilter.pending, (state) => {
         state.volunteerLoading = true;
       })
-      .addCase(getVolunteerAll.fulfilled, (state, action) => {
+      .addCase(getVolunteerFilter.fulfilled, (state, action) => {
         state.volunteerLoading = false;
         state.volunteerData = action.payload;
       })
-      .addCase(getVolunteerAll.rejected, (state, action) => {
-        state.volunteerLoading = false;
-        state.error = action.error.message;
-      });
-
-    // Get volunteers by country
-    builder
-      .addCase(getVolunteerByCountry.pending, (state) => {
-        state.volunteerLoading = true;
-      })
-      .addCase(getVolunteerByCountry.fulfilled, (state, action) => {
-        state.volunteerLoading = false;
-        state.volunteerData = action.payload;
-      })
-      .addCase(getVolunteerByCountry.rejected, (state, action) => {
-        state.volunteerLoading = false;
-        state.error = action.error.message;
-      });
-
-    // Get volunteers by country
-    builder
-      .addCase(getVolunteerByCity.pending, (state) => {
-        state.volunteerLoading = true;
-      })
-      .addCase(getVolunteerByCity.fulfilled, (state, action) => {
-        state.volunteerLoading = false;
-        state.volunteerData = action.payload;
-      })
-      .addCase(getVolunteerByCity.rejected, (state, action) => {
+      .addCase(getVolunteerFilter.rejected, (state, action) => {
         state.volunteerLoading = false;
         state.error = action.error.message;
       });

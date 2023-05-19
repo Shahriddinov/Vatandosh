@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getExpertCount,
-  getExpertFilter,
-  getExpertPage,
-  getExperts,
-} from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
+import {
+  getExpert,
+  getExpertCount,
+} from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
-import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
-export const useExpertHome = () => {
+export const useExportOfferDetail = () => {
+  const { pathname } = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
 
   const changeExpertCount = createSelector(
@@ -52,39 +53,22 @@ export const useExpertHome = () => {
   );
   const expertCount = useSelector(changeExpertCount);
 
-  const expertPageLoading = useSelector(
-    (state) => state.expertSlice.expertPageLoading
-  );
-  const expertPage = useSelector((state) => state.expertSlice.expertPage);
-  const expertError = useSelector((state) => state.expertSlice.error);
-
-  const communityNews = useSelector((store) => store.portalNews.news);
-  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
-
-  const expertData = useSelector((state) => state.expertSlice.expertData);
-  const loading = useSelector((state) => state.expertSlice.loading);
-
-  const dispatch = useDispatch();
-
-  console.log(expertCount);
+  const expertData = useSelector((state) => state.expertSlice.expert);
+  const expertLoading = useSelector((state) => state.expertSlice.expertLoading);
+  const error = useSelector((state) => state.expertSlice.error);
 
   useEffect(() => {
-    dispatch(getExpertCount());
-    dispatch(getExpertPage());
-    dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-    dispatch(getExpertFilter({ perPage: 12 }));
-  }, [dispatch, lan]);
+    if (pathname.includes("expert")) {
+      dispatch(getExpert(id));
+      dispatch(getExpertCount());
+    }
+  }, [dispatch, pathname, id, lan]);
 
   return {
-    expertCount,
-    expertCountLoading,
-    expertPageLoading,
-    expertPage,
-    lan,
-    expertError,
-    communityNewsLoading,
-    communityNews,
     expertData,
-    loading,
+    expertLoading,
+    error,
+    expertCountLoading,
+    expertCount,
   };
 };

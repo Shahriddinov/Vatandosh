@@ -32,7 +32,6 @@ const CouncilHero = ({ title, description, pagePath }) => {
             </ul>
           </nav>
           <h2 className="council-hero__title">{title}</h2>
-
           <p className="council-hero__desc">{description}</p>
 
           <nav

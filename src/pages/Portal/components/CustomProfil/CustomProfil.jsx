@@ -6,7 +6,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { t } from "i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getExpert } from "../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
@@ -18,7 +17,7 @@ import { getExpertOneEmployment } from "../../../../reduxToolkit/ExpertSlice/Exp
 import { useTranslation } from "react-i18next";
 
 export default function CustomProfil() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -46,6 +45,8 @@ export default function CustomProfil() {
       dispatch(getExpertOneEmployment(expertData?.id));
     }
   }, [expertData, dispatch]);
+
+  console.log(educationLoading, employmentLoading, loading);
 
   if (error) return <NotFound />;
 
@@ -101,7 +102,7 @@ export default function CustomProfil() {
                       );
                     else
                       return (
-                        <div className="customprofil-list-otm-item">
+                        <div key={el.id} className="customprofil-list-otm-item">
                           <div className="customprofil-list-otm-desc">
                             <span>{t("expert.xorotm")}</span>
                             <p>{el?.institution}</p>
@@ -132,7 +133,7 @@ export default function CustomProfil() {
           <AccordionDetails>
             {employment.length
               ? employment.map((el) => (
-                  <div className="customprofil-list-workexp">
+                  <div key={el.id} className="customprofil-list-workexp">
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workspace")}</span>
                       <p>{el?.company}</p>
@@ -284,7 +285,7 @@ export default function CustomProfil() {
                       </p>
                       <button className="customprofil-list-offer-info-desc-btn">
                         <Link to={"/portal-category/volunteer/article/2"}>
-                         {t("expert.detail")}
+                          {t("expert.detail")}
                         </Link>
                       </button>
                     </div>

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Globe, UserIcon } from "../../../../../../../assets/images/expert";
 
-function CouncilStatics({ expertCount, expertData }) {
+function CouncilStatics({ expertCount }) {
   const { t } = useTranslation();
 
   return (
@@ -11,7 +11,11 @@ function CouncilStatics({ expertCount, expertData }) {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>{expertData?.total ? expertData?.total : 0}</h4>
+        <h4>
+          {expertCount?.length
+            ? expertCount.map((el) => el.users).flat().length
+            : 0}
+        </h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="council-bottom">

@@ -62,12 +62,16 @@ export const getVolunteerByCountry = createAsyncThunk(
   }
 );
 
-export const getVolunteerByCity = createAsyncThunk(
+export const getVolunteerFilter = createAsyncThunk(
   "getVolunteerByCity",
-  async ({ city, country }) => {
-    return await axios
-      .get(VOLUNTEER_BY_CITY + country + "/" + city)
-      .then((res) => res.data);
+  async ({ city, country, perPage = 12 }) => {
+    return await axios({
+      url: VOLUNTEER_BY_CITY + perPage,
+      params: {
+        country: country === "all" ? "" : country,
+        city,
+      },
+    }).then((res) => res.data);
   }
 );
 

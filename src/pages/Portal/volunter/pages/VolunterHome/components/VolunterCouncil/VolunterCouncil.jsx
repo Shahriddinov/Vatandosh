@@ -17,8 +17,8 @@ function Volunter({ volunteers }) {
           {volunteers.map((volunteer) => (
             <div key={volunteer.id}>
               <img
-                src={`${PORTAL_IMAGE_URL}${volunteer?.user_profile_id?.user_id.avatar}`}
-                alt="error"
+                src={`${PORTAL_IMAGE_URL}${volunteer?.user_profile_id?.user_id?.avatar}`}
+                alt={volunteer?.user_id?.name}
               />
               <p>
                 {volunteer?.user_profile_id?.international_location_id.name}
@@ -26,7 +26,9 @@ function Volunter({ volunteers }) {
               <h3 style={{ color: "#065EA9" }}>{volunteer.user_id.name}</h3>
               <p style={{ color: "#656B70", fontWeight: 700 }}>
                 Chop etilgan maqolalar soni:{" "}
-                <b style={{ color: "#065EA9" }}>23</b>
+                <b style={{ color: "#065EA9" }}>
+                  {volunteer?.user_volunteer_activity?.length}
+                </b>
               </p>
               <Link className="employe-link" to={`profile/${volunteer.id}`}>
                 <span>{t("expert.detail")}</span>
