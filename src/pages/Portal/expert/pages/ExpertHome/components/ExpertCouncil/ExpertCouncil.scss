@@ -5,8 +5,7 @@
     width: 100%;
   }
 
-  .container {
-    padding: 0;
+  &-container {
     padding-left: 20px;
   }
 
@@ -27,16 +26,17 @@
       background: #f6f7fb;
       border: 1px solid #eaedf6;
       border-radius: 10px;
-      max-width: 270px;
+      width: 100%;
       height: 449px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
 
-      & > img {
+      &-img {
         width: 100%;
         height: 270px;
+        object-fit: cover;
       }
 
       h3 {
@@ -45,10 +45,10 @@
         line-height: 20px;
         color: #065ea9;
         margin: 7px 0;
-        margin-left: 10px;
+        margin-left: 15px;
       }
       p {
-        margin-left: 10px;
+        margin-left: 15px;
         color: #656b70;
       }
       h4 {
@@ -58,7 +58,7 @@
         letter-spacing: 0.2px;
         color: #656b70;
         margin: 8px 0;
-        margin-left: 10px;
+        margin-left: 15px;
       }
 
       a {
@@ -87,5 +87,33 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .expert {
+    padding: 0;
+
+    &-container {
+      padding: 0 40px !important;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .expert {
+    padding: 0;
+
+    &-container {
+      padding: 0 16px !important;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 34px;
+    }
+    .expert-list {
+      margin-top: 20px;
+    }
   }
 }

@@ -27,7 +27,7 @@ function Expert({ expertData, loading }) {
 
   return expertData?.data?.length ? (
     <div className="expert">
-      <div className="container">
+      <div className="container expert-container">
         <h2>{t("expert.expertCouncil")}</h2>
         <div className="expert-list">
           <button
@@ -52,20 +52,20 @@ function Expert({ expertData, loading }) {
               nextEl: ".slider_controls__right",
             }}
             breakpoints={{
-              0: {
-                slidesPerView: 2.5,
-                spaceBetween: 10,
+              375: {
+                slidesPerView: 1,
+                spaceBetween: 30,
               },
               768: {
-                slidesPerView: 3.5,
-                spaceBetween: 10,
+                slidesPerView: 2.5,
+                spaceBetween: 30,
               },
               992: {
-                slidesPerView: 4.5,
+                slidesPerView: 3,
                 spaceBetween: 30,
               },
               1300: {
-                slidesPerView: 4.5,
+                slidesPerView: 4,
                 spaceBetween: 30,
               },
             }}
@@ -78,6 +78,7 @@ function Expert({ expertData, loading }) {
                     <img
                       src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
                       alt="error"
+                      className="expert-list-item-img"
                     />
                     <p>
                       {evt?.user_profile_id?.international_location_id?.name}
