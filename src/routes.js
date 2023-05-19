@@ -450,6 +450,10 @@ const RoutesContainer = () => {
                   path="/registration/signin"
                   element={<Navigate to="/portal" />}
                 />
+                <Route
+                  path="/registration/register"
+                  element={<Navigate to="/portal-category/cabinet" />}
+                />
               </>
             ) : (
               <>
@@ -476,7 +480,7 @@ const RoutesContainer = () => {
                   element={<EmailVerify />}
                 />
                 <Route
-                  path="/portal-category/cabinet"
+                  path="/portal-category/*"
                   element={<Navigate to="/portal" />}
                 />
               </>
