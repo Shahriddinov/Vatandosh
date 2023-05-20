@@ -27,6 +27,9 @@ const AboutUzbekistanHome = () => {
     return <Spinner position="full" />;
   }
 
+  console.log(allCitySightseeing);
+  // console.log(allCity3D);
+  // console.log(allGallery);
   return (
     <div className="about-uzbekistan-home">
       <div className="container">
@@ -39,7 +42,7 @@ const AboutUzbekistanHome = () => {
         </div>
         <Slider title="Туристические объекты" />
         <View3D data={allCity3D[0]} />
-        <AboutUzbekistanGallery />
+        <AboutUzbekistanGallery allGallery={allGallery} />
         <div className="about-uzbekistan-home__bottom">
           <h2 className="about-uzbekistan-title">
             Откройте для себя новый Узбекистан!

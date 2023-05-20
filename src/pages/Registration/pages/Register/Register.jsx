@@ -183,6 +183,7 @@ const Register = () => {
     data.append("passport_file", formData.passport_file);
 
     dispatch(registerUser(data));
+    console.log(data);
   };
 
   useEffect(() => {
@@ -335,7 +336,7 @@ const Register = () => {
                 required
                 disablePortal
                 id={formData.international_location_id}
-                options={allCountries}
+                options={allCountries ? allCountries : []}
                 onChange={(event, value) => {
                   if (value) {
                     setFormData((prevFormData) => ({
@@ -353,13 +354,14 @@ const Register = () => {
                 required
                 disablePortal
                 id={formData.international_address_id}
-                options={countryCities}
+                options={countryCities ? countryCities : []}
                 onChange={(event, value) => {
                   if (value) {
                     setFormData((prevFormData) => ({
                       ...prevFormData,
                       international_address_id: value.id.toString(),
                     }));
+                    console.log(value.id);
                   }
                 }}
                 renderInput={(params) => (

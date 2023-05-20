@@ -3,14 +3,14 @@ import "./Header.scss";
 
 function Header({ headerData }) {
   return (
-    <div className="headeres">
-      <div className="container">
+    <div className="expert-headeres">
+      <div className="container expert-headeres-container">
         <h2>
           {headerData.title
             ? headerData.title
             : "“Vatandoshlar” Jamoat birlashmalari"}
         </h2>
-        <p className="headeres--text">
+        <p className="expert-headeres--text">
           {headerData.subTitle
             ? headerData.subTitle
             : "Vatandosh jamoat birlashmalaring elektron platformasining"}
