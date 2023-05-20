@@ -34,7 +34,7 @@ const data = [
   },
 ];
 
-function VictorinaStatics() {
+function VictorinaStatics({ pageData }) {
   const { t } = useTranslation();
   return (
     <div className="council-right">
@@ -43,7 +43,7 @@ function VictorinaStatics() {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>88</h4>
+        <h4>{pageData.count}</h4>
         <p>{t("expert.expertsand")}</p>
       </div>
       <div className="council-bottom">
@@ -51,10 +51,10 @@ function VictorinaStatics() {
           <h5>{t("expert.country")}</h5>
           <img src={Globe} alt="error" />
         </span>
-        {data.map((data) => (
+        {pageData?.locations?.map((data) => (
           <span className="council-span" key={data.id}>
-            <h5>{data.country}</h5>
-            <p>{data.number}</p>
+            <h5>{data.name}</h5>
+            <p>{data.count}</p>
           </span>
         ))}
       </div>

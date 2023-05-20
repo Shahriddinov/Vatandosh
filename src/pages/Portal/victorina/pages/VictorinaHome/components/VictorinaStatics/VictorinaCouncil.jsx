@@ -5,6 +5,7 @@ import VictorinaStatics from "./VictorinaStatics";
 import { imageUrl } from "../../../../../../../services/api/utils";
 
 function VictorinaCouncil({ pageData }) {
+  console.log(pageData);
   const { t } = useTranslation();
   return (
     <div className="council">
@@ -23,7 +24,7 @@ function VictorinaCouncil({ pageData }) {
             </Link>
           </div>
         </div>
-        <VictorinaStatics />
+        <VictorinaStatics pageData={pageData} />
       </div>
     </div>
   );

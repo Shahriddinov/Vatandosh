@@ -12,6 +12,7 @@ export const useVictorinaFetching = () => {
     (state) => state.quizSlice.quizData?.participants
   );
   const pageData = useSelector((state) => state.pageSlice?.pageData);
+  const error = useSelector((store) => store.community.error);
 
   const dispatch = useDispatch();
 
@@ -25,5 +26,6 @@ export const useVictorinaFetching = () => {
     quizData,
     pageData,
     quizDataWinner,
+    error
   };
 };

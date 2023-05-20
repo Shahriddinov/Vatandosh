@@ -9,21 +9,33 @@ import { Link } from "react-router-dom";
 
 function Volunter({ volunteers }) {
   const { t } = useTranslation();
+  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">
         <h2>{t("voluntery.voluntery")}</h2>
         <div className="volunter-list">
-          {volunteers.map((volunteer) => (
+          {volunteers?.map((volunteer) => (
             <div key={volunteer.id}>
               <img
-                src={`${PORTAL_IMAGE_URL}${volunteer?.user_profile_id?.user_id?.avatar}`}
-                alt={volunteer?.user_id?.name}
+                style={{
+                  width: "270px",
+                  height: "270px",
+                }}
+                src={`${PORTAL_IMAGE_URL}${
+                  volunteer?.user_profile?.avatar_url
+                    ? volunteer?.user_profile?.avatar_url
+                    : volunteer?.user?.avatar
+                }`}
+                alt={volunteer?.user_profile?.second_name}
               />
               <p>
-                {volunteer?.user_profile_id?.international_location_id.name}
+                {volunteer?.user_profile?.international_location_id?.name}
+                {volunteer?.user_profile?.international_address_id?.name}
               </p>
-              <h3 style={{ color: "#065EA9" }}>{volunteer.user_id.name}</h3>
+              <h3 style={{ color: "#065EA9" }}>
+                {volunteer?.user_profile?.second_name}
+              </h3>
               <p style={{ color: "#656B70", fontWeight: 700 }}>
                 Chop etilgan maqolalar soni:{" "}
                 <b style={{ color: "#065EA9" }}>

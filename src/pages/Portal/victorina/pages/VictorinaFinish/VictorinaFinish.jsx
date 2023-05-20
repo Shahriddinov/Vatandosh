@@ -25,9 +25,11 @@ function VictorinaFinish() {
   };
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
+  
 
   useEffect(() => {
     dispatch(getQuizzFinish({ status: "0", year: year }));
+    
   }, []);
 
   return (
