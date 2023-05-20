@@ -1,30 +1,35 @@
-import { CouncilImage } from "../../../../../../../assets/images/expert";
 import "./Council.scss";
 import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
+import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
+import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
 
-function Council() {
+function Council({ councilData, expertCount, expertData }) {
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+  const { t } = useTranslation();
   return (
-    <div className="council">
-      <div className="container">
-        <div className="council-left">
-          <img src={CouncilImage} />
-          <h3>
-            “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi
-          </h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised...
-          </p>
-          <div>
-            <Link to="/expert/council/about">Batafsil</Link>
-          </div>
-        </div>
-        <CouncilStatics />
+    <div className="expert-council">
+      <div className="container expert-council-container" ref={ref}>
+        {inView ? (
+          <>
+            <div className="expert-council-left">
+              <img src={councilData?.image} alt="img" />
+              <h3>{councilData?.title}</h3>
+              <p>{councilData?.desc}</p>
+              <div>
+                <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
+              </div>
+            </div>
+            <CouncilStatics expertCount={expertCount} expertData={expertData} />
+          </>
+        ) : (
+          <LazySpinner height="350px" />
+        )}
       </div>
     </div>
   );

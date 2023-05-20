@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import WhriteHeader from "../../component/Layout/WhriteHeader/WhriteHeader";
-import SiteHero from "../../component/siteHero/SiteHero";
 import IntroSection from "./components/IntroSection/IntroSection";
 
 import "./singlePage.scss";
-import { Spinner } from "../../component";
+import { SiteHero, Spinner } from "../../component";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSingleData } from "./hooks/useSingleData";
 import { useEffect } from "react";

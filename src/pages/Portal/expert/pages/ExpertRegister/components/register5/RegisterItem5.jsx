@@ -1,17 +1,45 @@
 import "../customStyles.scss";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BsImage } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { postSuggestions } from "../../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function RegisterItem5({ activeBarItem }) {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const [formData, setFormData] = useState({
+    suggestions: "",
+    additional_information: "",
+    image: null,
+    type: pathname.includes("expert") ? 1 : 2,
+  });
 
   const handleChangeCheckbox = (event) => {
     setChecked(event.target.checked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.image) return alert(t("expert.offerforimg"));
+    setFormData((args) => ({
+      ...args,
+      suggestions: formData.suggestions.trim(),
+      additional_information: formData.additional_information.trim(),
+    }));
+
+    if (formData.suggestions.trim() && formData.suggestions.trim()) {
+      const res = await dispatch(postSuggestions(formData));
+      if (!res.error) {
+        alert("Suggestion succesfull create!");
+        history("/portal-category/expert");
+      }
+    }
   };
 
   return (
@@ -24,50 +52,71 @@ export default function RegisterItem5({ activeBarItem }) {
       onSubmit={handleSubmit}
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">V. Taklifingiz</h3>
+        <h3 className="registeritem-title">{t("expert.reg5")}</h3>
         <div className="registeritem-form">
           <label
-            htmlFor="registeritem-label-fileinput"
+            htmlFor="uploadSuggestionImage"
             className="registeritem-imgInput"
           >
             <input
-              required
-              id="registeritem-label-fileinput"
+              id="uploadSuggestionImage"
               className="registeritem-label-fileinput"
               type="file"
-              minLength={3}
-              maxLength={50}
-              placeholder={"Kiriting"}
+              accept="image/png, image/gif, image/jpeg, image/jpg"
+              onChange={(e) =>
+                setFormData((args) => ({
+                  ...args,
+                  image: e.target.files[0],
+                }))
+              }
             />
             <BsImage />
-            <p>Taklifingiz uchun rasm</p>
+            <p>
+              {formData.image?.name
+                ? formData.image?.name
+                : t("expert.offerforimg")}
+            </p>
           </label>
           <label htmlFor="" className="registeritem-label">
             <p>
-              O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida
-              takliflaringiz<span>*</span>
+              {t("expert.articleoffer")}
+              <span>*</span>
             </p>
             <div className="registeritem-label-textarea">
               <textarea
                 required
                 type="text"
+                value={formData.suggestions}
                 minLength={3}
-                maxLength={500}
-                placeholder={"Kiriting"}
+                maxLength={1000}
+                placeholder={t("expert.inputplaceholder")}
+                onChange={(e) =>
+                  setFormData((args) => ({
+                    ...args,
+                    suggestions: e.target.value,
+                  }))
+                }
               />
             </div>
           </label>
           <label htmlFor="" className="registeritem-label">
             <p>
-              Qo‘shimcha ma’lumotlar <span>*</span>
+              {t("expert.information")} <span>*</span>
             </p>
             <div className="registeritem-label-textarea">
               <textarea
                 required
                 type="text"
+                value={formData.additional_information}
                 minLength={3}
-                maxLength={500}
-                placeholder={"Kiriting"}
+                maxLength={1000}
+                placeholder={t("expert.inputplaceholder")}
+                onChange={(e) =>
+                  setFormData((args) => ({
+                    ...args,
+                    additional_information: e.target.value,
+                  }))
+                }
               />
             </div>
           </label>
@@ -78,17 +127,18 @@ export default function RegisterItem5({ activeBarItem }) {
               required
               inputProps={{ "aria-label": "controlled" }}
             />
-            <p>Hozirda shu sohada ishlayapti</p>
+            <p>{t("expert.register5")}</p>
           </div>
         </div>
       </div>
       <div className="registeritem-btnWrapper">
         <button
           type="submit"
-          disabled={true}
+          disabled={!checked}
+          style={checked ? null : { opacity: 0.4, cursor: "auto" }}
           className="registeritem-submitBtn"
         >
-          Saqlash
+          {t("expert.save")}
         </button>
       </div>
     </form>

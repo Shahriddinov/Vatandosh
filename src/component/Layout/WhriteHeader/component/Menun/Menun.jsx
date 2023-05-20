@@ -83,7 +83,7 @@ const Menun = () => {
             aria-controls={openAbout ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openAbout ? "true" : undefined}
-            onMouseOver={handleClickAbout}
+            onClick={handleClickAbout}
             className="menu_link"
           >
             {navLinks[0].title}
@@ -119,7 +119,7 @@ const Menun = () => {
             aria-controls={openCitizin ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openCitizin ? "true" : undefined}
-            onMouseOver={handleClickCitizin}
+            onClick={handleClickCitizin}
             className="menu_link"
           >
             {navLinks[1].title}
@@ -155,7 +155,7 @@ const Menun = () => {
             aria-controls={openProject ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openProject ? "true" : undefined}
-            onMouseOver={handleClickProject}
+            onClick={handleClickProject}
             className="menu_link"
           >
             {navLinks[2].title}
@@ -202,7 +202,7 @@ const Menun = () => {
             aria-controls={openInformation ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={openInformation ? "true" : undefined}
-            onMouseOver={handleClickInformation}
+            onClick={handleClickInformation}
             className="menu_link"
           >
             {navLinks[4].title}
@@ -231,7 +231,11 @@ const Menun = () => {
             })}
           </Menu>
         </li>
-
+        <li className="menu_item">
+          <Link to="/faq" className="menu_link">
+            {t("faq")}
+          </Link>
+        </li>
         <li className="menu_item">
           <Link to="/contact" className="menu_link">
             {t("link")}

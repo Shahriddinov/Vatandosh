@@ -1,82 +1,43 @@
-import {
-  CouncilImage,
-  CopyIcon,
-  FacebookIcon,
-  TwitterIcon,
-  TelegramIcon,
-  InstagramIcon,
-} from "../../../../../assets/images/expert";
+import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import CouncilStatics from "../../pages/ExpertHome/components/Council/CouncilStatics";
 import "./About.scss";
+import { PageTop } from "../../../communityAssociation/components";
 
-function About() {
+console.log();
+function About({ aboutData, expertCount }) {
+  const pageTopData = {
+    title: aboutData?.title,
+
+    pathUrl: [
+      {
+        id: 1,
+        pathUrl: aboutData?.path.pageHomeUrl,
+        label: aboutData?.path.pageHomeName,
+        active: false,
+      },
+      {
+        id: 2,
+        pathUrl: null,
+        label: aboutData?.path.pageName,
+        active: true,
+      },
+    ],
+  };
+
   return (
     <div className="about">
       <div className="container">
-        <div className="about-top">
-          <h3>Kengashi haqida</h3>
-          <span>
-            <a href="#">Asosiy</a>
-            <p>Batafsil</p>
-          </span>
-        </div>
+        <PageTop pageTopData={pageTopData} />
         <div className="about-page">
           <div className="about-left">
-            <img src={CouncilImage} />
-            <h3 className="about-title">
-              “VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi
-            </h3>
-            <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised...
-            </p>
-            <img src={CouncilImage} />
-            <p className="about-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
-            <ul className="about-list">
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={CopyIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={FacebookIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={TwitterIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={TelegramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={InstagramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-            </ul>
+            <img src={aboutData?.img1} alt="img" />
+            <h3 className="about-title">{aboutData?.title2}</h3>
+            <p className="about-text">{aboutData?.desc1}</p>
+            {aboutData?.img2 && <img src={aboutData?.img2} alt="img" />}
+            <p className="about-text">{aboutData?.desc2}</p>
+            <ShareFriends />
           </div>
-          <CouncilStatics />
+          <CouncilStatics expertCount={expertCount} />
         </div>
       </div>
     </div>

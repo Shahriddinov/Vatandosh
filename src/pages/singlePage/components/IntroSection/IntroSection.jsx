@@ -1,10 +1,8 @@
-import Card from "../../../../component/card/Card";
-
 import "./introSection.scss";
 import { useSelector } from "react-redux";
-import { Paginator } from "../../../../component/Pagination/Pagination";
 import { useSinglePaginationData } from "../../hooks/useSinglePaginationData";
 import { getPaginationCount } from "../../extraFunck";
+import { Card, Pagination } from "../../../../component";
 
 const IntroSection = ({ data }) => {
   const {
@@ -51,7 +49,7 @@ const IntroSection = ({ data }) => {
                 ))}
               </ul>
               {paginationCount >= 2 ? (
-                <Paginator
+                <Pagination
                   page={page}
                   paginationFetching={paginationFetching}
                   count={paginationCount}

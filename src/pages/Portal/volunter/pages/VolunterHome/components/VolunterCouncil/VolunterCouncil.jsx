@@ -1,35 +1,42 @@
+import { useTranslation } from "react-i18next";
 import {
   ArrowIcon,
   ExcludeIcon,
 } from "../../../../../../../assets/images/expert";
-import { data } from "../../data";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import "./VolunterCouncil.scss";
 import { Link } from "react-router-dom";
 
-function Volunter() {
+function Volunter({ volunteers }) {
+  const {t}= useTranslation()
   return (
     <div className="expert">
       <div className="container">
-        <h2>Ekspertlar kengashi</h2>
-        <div className="expert-list">
-          {data.map((evt) => (
-            <div>
-              <img src={evt.images} alt="error" />
-              <p>{evt.country}</p>
-              <h3>{evt.name}</h3>
-              <h4>{evt.job}</h4>
-              <h4>{evt.location}</h4>
-              <Link className="employe-link" to="/expert/employe">
-                <span>Batafsil</span>
+        <h2>{t("voluntery.voluntery")}</h2>
+        <div className="volunter-list">
+          {volunteers.map((volunteer) => (
+            <div key={volunteer.id}>
+              <img
+                src={`${PORTAL_IMAGE_URL}${volunteer?.user_profile_id?.user_id?.avatar}`}
+                alt={volunteer?.user_id?.name}
+              />
+              <p>
+                {volunteer?.user_profile_id?.international_location_id?.name}
+              </p>
+              <h3>{volunteer?.user_id?.name}</h3>
+              <h4>{volunteer?.user_employment_info_id?.specialization}</h4>
+              <h4>{volunteer?.user_employment_info_id?.city}</h4>
+              <Link className="employe-link" to={`profile/${volunteer?.id}`}>
+                <span>{t("expert.detail")}</span>
                 <img src={ArrowIcon} alt="Arrow Icon" />
               </Link>
             </div>
           ))}
         </div>
         <div className="expert-item">
-          <Link to="/expert/employe" className="expert-link">
+          <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
-            Barcha olim va ekspertlar
+           {t("expert.allexperts")}
           </Link>
         </div>
       </div>

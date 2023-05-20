@@ -9,9 +9,12 @@ import "swiper/css/pagination";
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import ChatModal from "./components/PortalChatModal/ChatModal";
 
+import { FaLinkedinIn, FaTelegramPlane, FaYoutube } from "react-icons/fa";
+
 import "./portal.scss";
 
 const HomePage = () => {
+  const token = useSelector((state) => state.authSlice.token);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -19,26 +22,40 @@ const HomePage = () => {
   const [horizontal, setHorizontal] = useState(false);
 
   const navbarList = [
-    { id: 1, label: t("uzLearning"), url: "/" },
+    { id: 1, label: t("uzLearning"), url: "/portal-category/online-teaching" },
     { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/expert" },
+    { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
     { id: 4, label: t("virtualTalking"), url: "/" },
     { id: 5, label: t("eventBase"), url: "/" },
-    { id: 6, label: t("electronLibrary"), url: "/" },
-    { id: 7, label: t("electronBook"), url: "/" },
-    { id: 8, label: t("aboutUzbekistan"), url: "/" },
-    { id: 9, label: t("participationProject"), url: "/" },
+    { id: 6, label: t("electronLibrary"), url: "/portal-category/library" },
+    {
+      id: 7,
+      label: t("electronBook"),
+      url: "/portal-category/electronic-journal",
+    },
+    {
+      id: 8,
+      label: t("aboutUzbekistan"),
+      url: "/portal-category/about-uzbekistan",
+    },
+    {
+      id: 9,
+      label: t("participationProject"),
+      url: "/portal-category/victorina",
+    },
     {
       id: 10,
       label: t("electronCommunity"),
       url: "/portal-category/community-association",
     },
-    { id: 11, label: t("compatriotsValunteer"), url: "/volunter" },
+    {
+      id: 11,
+      label: t("compatriotsValunteer"),
+      url: "/portal-category/volunteer",
+    },
   ];
 
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   useEffect(() => {
     dispatch(getContact());
@@ -59,13 +76,7 @@ const HomePage = () => {
         <div className="portal-body">
           <div className="portal-body-middle">
             <div className="social-media">
-              <svg
-                width="2"
-                height="104"
-                viewBox="0 0 2 104"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="2" height="104" viewBox="0 0 2 104" fill="none">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -86,23 +97,8 @@ const HomePage = () => {
                   </linearGradient>
                 </defs>
               </svg>
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
-              </svg>
               <a href={contactData?.instagram}>
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -112,13 +108,7 @@ const HomePage = () => {
                 </svg>
               </a>
               <a href={contactData?.twitter}>
-                <svg
-                  width="18"
-                  height="15"
-                  viewBox="0 0 18 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="18" height="15" viewBox="0 0 18 15" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -128,13 +118,7 @@ const HomePage = () => {
                 </svg>
               </a>
               <a href={contactData?.facebook}>
-                <svg
-                  width="10"
-                  height="18"
-                  viewBox="0 0 10 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -143,22 +127,16 @@ const HomePage = () => {
                   />
                 </svg>
               </a>
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="4" cy="4" r="4" fill="#D9D9D9" fillOpacity="0.9" />
-              </svg>
-              <svg
-                width="2"
-                height="104"
-                viewBox="0 0 2 104"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <a href={contactData?.telegram}>
+                <FaTelegramPlane />
+              </a>
+              <a href={contactData?.linkedin}>
+                <FaLinkedinIn />
+              </a>
+              <a href={contactData?.youtube}>
+                <FaYoutube />
+              </a>
+              <svg width="2" height="104" viewBox="0 0 2 104" fill="none">
                 <path
                   d="M1 1V103"
                   stroke="url(#paint0_linear_42_1145)"
@@ -182,20 +160,23 @@ const HomePage = () => {
             </div>
             <div className="register-field">
               <h2>
-                “<span>VATANDOSHLAR</span>” <br /> Jamoat Fondining Yagona
+                <span>“VATANDOSHLAR”</span> <br /> Jamoat Fondining Yagona
                 Avtomatlashtirilgan Axborot Tizimi
               </h2>
               <p>
                 Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 vulputate libero et velit interdum, ac aliquet odio mattis.{" "}
               </p>
+
               <div className="portal-btns">
-                <button onClick={() => navigate("/registration/signup")}>
-                  Sign Up
-                </button>
-                <button onClick={() => navigate("/registration/signin")}>
-                  Log In
-                </button>
+                {token ? (
+                  <Link to="/portal-category/cabinet">Cabinet</Link>
+                ) : (
+                  <>
+                    <Link to="/registration/signup">Sign Up</Link>
+                    <Link to="/registration/signin">Log In</Link>
+                  </>
+                )}
               </div>
             </div>
             <div className="navbar-side">
@@ -217,7 +198,9 @@ const HomePage = () => {
                 {navbarList.map((navbar) => {
                   return (
                     <SwiperSlide key={navbar.id}>
-                      <Link to={navbar.url}>{navbar.label}</Link>
+                      <Link to={token ? navbar.url : "/registration/signin"}>
+                        {navbar.label}
+                      </Link>
                     </SwiperSlide>
                   );
                 })}

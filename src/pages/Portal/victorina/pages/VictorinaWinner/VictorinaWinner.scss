@@ -1,0 +1,51 @@
+@import "../../../../../assets/style/global.scss";
+
+.victorinawinner {
+  padding: 30px 0 100px;
+
+  &-wrapper {
+    display: flex;
+  }
+
+  &-main {
+    & > img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    &-profile {
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      & > img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      &-desc {
+        & > p {
+          @include fontStyles(600, 20px, 24px, $colorBlack);
+        }
+        & > span {
+          margin-top: 5px;
+          @include fontStyles(700, 14px, 17px, #656b70);
+        }
+      }
+    }
+
+    & > h3 {
+      margin-bottom: 20px;
+      @include fontStyles(600, 28px, 34px, $colorBlack);
+    }
+    & > p {
+      text-align: justify;
+      margin-bottom: 30px;
+      @include fontStyles(400, 16px, 19px, #434b54);
+    }
+  }
+}

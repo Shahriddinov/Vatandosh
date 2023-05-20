@@ -8,6 +8,7 @@ import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
+import { baseServerUrl } from "../../services/api/utils";
 
 export default function Detail(data) {
   const lan = useSelector((state) => state.language.language);
@@ -39,16 +40,13 @@ export default function Detail(data) {
           <div className="newsdetail-main">
             <div className="newsdetail-main-desc">
               <div className="newsdetail-main-desc-img">
-                <img
-                  src={`https://vatanparvarbackend.napaautomotive.uz/storage/${data?.image}`}
-                  alt=""
-                />
+                <img src={`${baseServerUrl}/${data?.image}`} alt="" />
               </div>
               <div className="newsdetail-main-desc-action">
                 <div className="newsdetail-main-desc-action-date-viewers">
                   <div className="newsdetail-main-desc-action-date">
                     <BsFillCalendar2EventFill />
-                    <span>{data.created_at?.split("T")[0]}</span>
+                    <span>{data.data}</span>
                   </div>
                   <div className="newsdetail-main-desc-action-viewers">
                     <AiFillEye />
@@ -56,8 +54,16 @@ export default function Detail(data) {
                   </div>
                 </div>
                 <div className="newsdetail-main-desc-action-tags">
-                  {data?.tags?.split(",").map((el, index) => {
-                    return <span key={index}>{el}</span>;
+                  {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
+                    return (
+                      <Link
+                        to={`/hashtag/${el.trim()}`}
+                        key={index}
+                        className="populartags-tag"
+                      >
+                        {el}
+                      </Link>
+                    );
                   })}
                 </div>
               </div>
@@ -68,10 +74,10 @@ export default function Detail(data) {
                 }}
               ></div>
               {data?.images
-                ? JSON.parse(data?.images).length > 2 && (
+                ? JSON.parse(data?.images).length >= 1 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
-                        src={`https://vatanparvarbackend.napaautomotive.uz/storage/${
+                        src={`${baseServerUrl}/${
                           galleryMainImg
                             ? galleryMainImg
                             : JSON.parse(data?.images)[0]
@@ -85,7 +91,7 @@ export default function Detail(data) {
                             return (
                               <li key={index}>
                                 <img
-                                  src={`https://vatanparvarbackend.napaautomotive.uz/storage/${el}`}
+                                  src={`${baseServerUrl}/${el}`}
                                   alt="error"
                                   className="newsdetail-main-desc-gallery-list-item"
                                   onClick={() => setgalleryMainImg(el)}

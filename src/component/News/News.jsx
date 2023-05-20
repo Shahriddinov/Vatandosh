@@ -2,44 +2,48 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Aos from "aos";
 
-import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
+import { getHomeNews } from "../../reduxToolkit/newsSlice/extraReducer";
 import Card from "../card/Card";
 
 import "./News.scss";
-import Aos from "aos";
 
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import { getEvents } from "../../reduxToolkit/eventsSlice/extraReducer";
+import { getEventsHome } from "../../reduxToolkit/eventsSlice/extraReducer";
 import { baseServerUrl } from "../../services/api/utils";
-import { NavBarLinks } from "../NavBarLinks";
+import Spinner from "../Spinner/Spinner";
 
 const News = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const newsData = useSelector((state) => state.newsSlice.newsData);
+  const newsData = useSelector((state) => state.newsSlice.newsHomeData);
+  const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
   const error = useSelector((state) => state.newsSlice.error);
-  const eventsData = useSelector((state) => state.eventsSlice.eventsData);
+  const eventsData = useSelector((state) => state.eventsSlice.homeEventData);
+  const eventsLoading = useSelector((state) => state.eventsSlice.eventLoading);
   const errorEvents = useSelector((state) => state.eventsSlice.error);
   const projectMenu = useSelector((state) => state.peaceful.menuData);
   const lan = useSelector((state) => state.language.language);
   const [activeCard, setActiveCard] = useState(true);
-
-  const data = useSelector((store) => store.singleSlice.projectsData);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
 
   useEffect(() => {
-    dispatch(getNews());
-    dispatch(getEvents());
+    dispatch(getHomeNews());
+    dispatch(getEventsHome());
     dispatch(getProjectsMenu());
   }, []);
 
   if (error || errorEvents) {
     return <p>{error}</p>;
+  }
+
+  if (loadingNews || eventsLoading) {
+    return <Spinner position="full" />;
   }
 
   return (
@@ -72,7 +76,7 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {newsData?.map((news) => (
+              {newsData.map((news) => (
                 <Card key={news.id} {...news} pathUrl="news" />
               ))}
               <div className="all-btn-mobile">
@@ -80,7 +84,7 @@ const News = () => {
               </div>
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
-              {eventsData?.map((event) => (
+              {eventsData[0].data.map((event) => (
                 <Card key={event.id} {...event} />
               ))}
               <div className="all-btn-mobile">

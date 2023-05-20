@@ -1,15 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
-function Header() {
+function Header({ headerData }) {
   return (
-    <div className="headeres">
-      <div className="container">
-        <h2>“Vatandoshlar” ekspertlar kengashi</h2>
-        <p className="headeres--text">
-          Vatandosh ekspertlar kengashining elektron platformasi
+    <div className="expert-headeres">
+      <div className="container expert-headeres-container">
+        <h2>
+          {headerData.title
+            ? headerData.title
+            : "“Vatandoshlar” Jamoat birlashmalari"}
+        </h2>
+        <p className="expert-headeres--text">
+          {headerData.subTitle
+            ? headerData.subTitle
+            : "Vatandosh jamoat birlashmalaring elektron platformasining"}
         </p>
-        <Link to="/expert/register">Ro‘yxatdan o‘tish</Link>
+        <Link to={headerData.link}>{headerData.btnText}</Link>
       </div>
     </div>
   );

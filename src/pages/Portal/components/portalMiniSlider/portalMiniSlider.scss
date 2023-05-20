@@ -1,0 +1,124 @@
+.compatriots-events {
+  padding: 30px 0 64px 0;
+  background-color: #fff;
+  background-image: url("../../../../assets/images/body-bg.png");
+  overflow-x: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 48px;
+    margin-bottom: 34px;
+  }
+
+  a {
+    text-decoration: none;
+    color: transparent;
+  }
+
+  &__slider_item {
+    display: block;
+    width: 100%;
+    min-height: 230px;
+    border: 1px solid rgba(234, 237, 246, 0.7);
+    box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+    border-radius: 12px;
+  }
+
+  &__single-card {
+    background-color: #fff;
+    border-radius: 12px;
+  }
+
+  &__img-container {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  &__img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  &__body {
+    padding: 12px;
+    border-bottom: 1px solid #f0f2f9;
+  }
+
+  &__card--title {
+    margin-bottom: 17px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #065ea9;
+  }
+
+  &__card--text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+    color: #5d6b8a;
+  }
+
+  &__card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  &__card--date {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #5d6b8a;
+  }
+}
+
+.slider_controls {
+  display: flex;
+  gap: 20px;
+
+  &___control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid #eaedf6;
+    transition: all 0.3s linear;
+    cursor: pointer;
+  }
+
+  &___control:hover {
+    background-color: #e3f0ff;
+    transition: all 0.3s linear;
+    border: 1px solid #065ea9;
+  }
+
+  &___control:hover svg path {
+    fill: #065ea9;
+  }
+}
+
+.compatriots-events__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #065ea9;
+}

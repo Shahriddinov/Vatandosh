@@ -1,0 +1,55 @@
+@import "../../../../../assets/style/global";
+.OnlineTeachingInfos{
+
+  background: #F6FCFF;
+  height: 600px;
+  background-repeat:no-repeat ;
+  background-position:left bottom, bottom right, right top;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  background-image: url("../../../../../assets/images/online-teaching/leftLines.png"),
+  url("../../../../../assets/images/online-teaching/Group.svg"),
+  url("../../../../../assets/images/online-teaching/lines.png");
+  &_count{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_categors{
+      max-width: 450px;
+      position: relative;
+      margin-top: 5%;
+      &_pattern{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    &_writ{
+      width: 60%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-wrap: wrap;
+      &_course{
+        width: 45%;
+        color: $colorTitle;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+      }
+      &_courseText{
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 134%;
+        padding-top: 5%;
+        padding-right: 20%;
+      }
+    }
+  }
+.border{
+  border-radius: 20px;
+}
+}

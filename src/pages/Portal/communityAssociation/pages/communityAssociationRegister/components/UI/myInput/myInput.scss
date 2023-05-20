@@ -1,0 +1,58 @@
+.my-input {
+  .MuiFormHelperText-root {
+    font-family: "Inter" !important;
+    font-style: normal !important;
+    font-size: 14px !important;
+    line-height: 17px !important;
+    color: #1e202c !important;
+    text-align: left;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 5px !important;
+    margin-left: 0 !important;
+  }
+
+  &__required {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fb2047;
+  }
+
+  .MuiInputBase-input {
+    font-family: "Inter" !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 19px !important;
+    padding: 14px 12px !important;
+    background: #ffffff !important;
+    border: 1px solid #eaedf6;
+    border-radius: 6px;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: transparent !important;
+  }
+
+  .MuiFormControl-root {
+    margin: 0 !important;
+  }
+
+  &__textarea {
+    padding: 8px 0px 0px 8px;
+    gap: 24px;
+    width: 100%;
+    min-height: 112px;
+    font-size: 16px !important;
+    background-color: #ffffff;
+    border: 1px solid #d9dde3;
+    border-radius: 4px;
+  }
+
+  &__textarea:focus {
+    outline: 0;
+    background-color: #ffffff;
+    border: 1px solid #d9dde3;
+  }
+}

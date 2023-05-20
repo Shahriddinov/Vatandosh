@@ -1,0 +1,12 @@
+export { default as WebinarOne } from "./book1.png";
+export { default as WebinarTwo } from "./book2.png";
+export { default as WebinarThree } from "./book3.png";
+export { default as WebinarFour } from "./book4.png";
+export { default as WebinarFive } from "./book5.png";
+export { default as CouncilImage } from "./council.png";
+export { default as PhoneOne } from "./photo (7).png";
+export { default as PhoneTwo } from "./photo (8).png";
+export { default as PhoneThree } from "./photo (9).png";
+export { default as PhoneFour } from "./photo (10).png";
+export { default as PhoneFive } from "./photo (11).png";
+export { default as PhoneSix } from "./photo (12).png";

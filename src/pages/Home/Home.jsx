@@ -6,27 +6,45 @@ import Peaceful from "../../component/peaceful/Peaceful";
 import InteractiveServices from "../../component/interactiveServices/InteractiveServices";
 import MapsHome from "../../component/maps-home/MapsHome";
 import Partners from "../../component/partners/Partners";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPeaceful } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import ContactUs from "../../component/ContactUs/ContactUs";
 import Header from "../../component/Layout/Header/Header";
+import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
+import { t } from "i18next";
+import HomeWebinarSlider from "../../component/homeWebinarSlider/HomeWebinarSlider";
+import { getWebinarSlider } from "../../reduxToolkit/webinarSlider/extraReducer";
 
 const Home = () => {
   const dispatch = useDispatch();
 
+  const sliderData = useSelector((state) => state.sliderSlice.sliderData);
+  const error = useSelector((state) => state.sliderSlice.error);
+  const loading = useSelector((state) => state.sliderSlice.loading);
+  const webinarData = useSelector((state) => state.webinarSlidesSlice.data);
+  const webinarDataLoading = useSelector(
+    (state) => state.webinarSlidesSlice.dataLoading
+  );
+  const webinarError = useSelector((state) => state.webinarSlidesSlice.error);
+
   useEffect(() => {
     dispatch(getPeaceful());
-  }, []);
+    dispatch(getSlider());
+    dispatch(getWebinarSlider());
+  }, [dispatch]);
 
   return (
     <div className="home">
       <Header />
-
-      <Hero />
+      <Hero sliderData={sliderData} error={error} loading={loading} />
       <News />
+      <HomeWebinarSlider
+        sliderData={webinarData}
+        error={webinarError}
+        loading={webinarDataLoading}
+      />
       <Peaceful />
       <InteractiveServices />
-      <MapsHome />
+      <MapsHome title={t("mapTitle")} />
       <Partners />
     </div>
   );

@@ -6,8 +6,8 @@
 	justify-content: center;
 	min-height: 60vh;
 	.img-box {
-		position: relative;
-		width: 700px;
+		//position: relative;
+		//width: 700px;
 		.back-image {
 			width: 100%;
 		}
@@ -29,31 +29,30 @@
 		}
 	}
 	.title {
-		font-weight: 400;
-		font-size: 18px;
+		font-weight: 800;
+		font-size: 24px;
 		line-height: 24px;
 		text-align: center;
-		color: #727785;
-		margin-top: 40px;
+		color: black;
+		//margin-top: 40px;
 	}
 
 	.go-home-btn {
-		background: #08381d;
-		border-radius: 2px;
-		border: 1px solid #08381d;
+		background: #065EA9;
+		border-radius: 16PX;
+		border: 1px solid #065EA9;
+		margin-bottom: 3%;
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 22px;
+		padding: 15px;
 		text-align: center;
 		letter-spacing: 0.04em;
-		padding: 5px 24px;
 		color: #ffffff;
 		margin-top: 20px;
 		text-decoration: none;
 		transition: 0.5s all ease-in;
 		&:hover {
-			background: #ffffff;
-			color: #323232;
 			font-weight: 500;
 			transition: 0.5s ease-in-out all;
 		}

@@ -1,0 +1,79 @@
+.employe {
+  h3 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    color: #10131b;
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-page {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -25px;
+
+    div {
+      background: #f6f7fb;
+      border: 1px solid #eaedf6;
+      border-radius: 10px;
+      width: 270px;
+      height: 449px;
+      margin: 25px;
+    }
+    h3 {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 20px;
+      color: #065ea9;
+      margin: 7px 0;
+      margin-left: 10px;
+    }
+    p {
+      margin-left: 10px;
+      color: #656b70;
+    }
+    h4 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      letter-spacing: 0.2px;
+      color: #656b70;
+      margin: 8px 0;
+      margin-left: 10px;
+    }
+  }
+  &-link {
+    background: #065ea9;
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    margin-top: 15px;
+    transition: all 0.5s;
+    justify-content: center;
+
+    & > span {
+      display: none;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      color: #ffffff;
+    }
+
+    &:hover {
+      width: 240px;
+      & > span {
+        display: block;
+      }
+    }
+  }
+}

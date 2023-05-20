@@ -1,0 +1,107 @@
+@import "../../../../../../../assets/style/global.scss";
+
+.VideoTutorial {
+  &-video {
+    width: 70%;
+    position: relative;
+    & > img {
+      width: 100%;
+      height: 474px;
+      border-radius: 20px;
+    }
+
+    &-playBtn {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #ffffff;
+      z-index: 10;
+      cursor: pointer;
+
+      & > svg {
+        width: 34px;
+        height: 34px;
+        color: $colorTitle;
+      }
+    }
+  }
+
+  &-wrapper {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+  }
+
+  &-menuList {
+    width: 30%;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    height: fit-content;
+
+    .Mui-expanded {
+      margin: 0;
+    }
+
+    .MuiPaper-root::before {
+      display: none;
+    }
+    .MuiPaper-root {
+      box-shadow: none;
+    }
+
+    .MuiButtonBase-root {
+      border-top: 1px dashed #e6e8ec;
+    }
+
+    &-title {
+      padding: 22px 15px;
+
+      & > p {
+        @include fontStyles(600, 16px, 16px, #141619);
+      }
+    }
+
+    &-item {
+      &-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        & > svg {
+          width: 20px;
+          height: 20px;
+          color: $colorTitle;
+        }
+        & > span {
+          @include fontStyles(600, 16px, 16px, #141619);
+        }
+      }
+
+      &-ul > li {
+        padding: 22px 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px dashed #e6e8ec;
+        cursor: pointer;
+
+        & > svg {
+          width: 20px;
+          height: 20px;
+          color: $colorTitle;
+        }
+
+        & > span {
+          @include fontStyles(400, 14px, 16px, #141619);
+        }
+      }
+    }
+  }
+}

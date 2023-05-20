@@ -1,0 +1,52 @@
+.chat {
+  height: 100%;
+  padding: 30px 50px;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba($color: #000000, $alpha: 0.15);
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__left {
+    width: 35%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    &.active {
+      color: #fff;
+      border: 2px solid #065ea9;
+      background: #065ea9;
+    }
+  }
+
+  &__chats,
+  &__groups {
+    padding: 12px 22px;
+    color: #065ea9;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 16px;
+    border: 2px solid #eaedf6;
+    cursor: pointer;
+
+    &.active {
+      color: #fff;
+      border-color: #065ea9;
+      background: #065ea9;
+    }
+  }
+}

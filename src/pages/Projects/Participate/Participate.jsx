@@ -1,5 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './participate.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { sendFormData } from '../../../reduxToolkit/projectsSlice/extraReducer';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
@@ -12,11 +17,24 @@ import Dropzone from 'react-dropzone';
 import AddIcon from '../../../assets/images/icons/add-circle.svg'
 import Trash from '../../../assets/images/icons/trash.svg'
 import ImgIcon from '../../../assets/images/icons/img.svg'
+import { changeStatus } from '../../../reduxToolkit/projectsSlice/projectsSlice';
 
 const Participate = (props) => {
 
     const lng = props.lng
     const t = props.t
+    const dispatch = useDispatch();
+    const status = useSelector(store => store.formDataSlice.status);
+
+    useEffect(() => {
+        if (status === 'succeeded') {
+            toast.success('Success Notification !', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            props.toggleModal()
+            dispatch(changeStatus())
+        }
+    }, [status]);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -82,7 +100,19 @@ const Participate = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(formData)
+        
+        const data = new FormData()
+        data.append("name", formData.name)
+        data.append("email", formData.email)
+        data.append("phone", formData.phoneNumber)
+        data.append("columnName", formData.category)
+        data.append("about", formData.aboutParticipant)
+        for (var i = 0; i < formData.images.length; i++) {
+            data.append('files[]', formData.images[i]);
+        }
+        data.append("socials", formData.links[0])
+
+        dispatch(sendFormData(data));
     }
 
     const inputs = [];
@@ -225,6 +255,7 @@ const Participate = (props) => {
                     <button className='submit__button' type="submit">{t("projects_page.form_submit")}</button>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     </div>
   )

@@ -1,113 +1,126 @@
 .site-hero {
-    position: relative;
-    z-index: 2;
-    min-height: 572px;
+  position: relative;
+  z-index: 2;
+  min-height: 572px;
+
+  &__inner {
+    padding-top: 30px;
+  }
+
+  &__breadcrumb_nav {
+    display: block;
+    margin-bottom: 131px;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  &__breadcrumb_item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  &__breadcrumb_link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .breadcrumb_item_active {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__title {
+    width: 100%;
+    max-width: 442px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 44px;
+    color: #ffffff;
+  }
+
+  &__desc {
+    width: 100%;
+    max-width: 454px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 1000px) {
+  .site-hero {
+    min-height: 304px;
 
     &__inner {
-        padding-top: 131px;
+      padding-top: 80px;
+    }
+
+    &__breadcrumb_nav {
+      margin-bottom: 10px;
     }
 
     &__breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
-    }
-
-    &__breadcrumb_item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+      justify-content: flex-start;
     }
 
     &__breadcrumb_link {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .breadcrumb_item_active {
-        color: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
     }
 
     &__title {
-        width: 100%;
-        max-width: 442px;
-        margin-bottom: 20px;
-        font-weight: 800;
-        font-size: 36px;
-        line-height: 44px;
-        color: #FFFFFF;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
     }
 
     &__desc {
-        width: 100%;
-        max-width: 454px;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0.2px;
-        color: #FFFFFF;
+      width: 100%;
+      max-width: 454px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.2px;
+      color: #ffffff;
     }
+  }
 }
 
-@media(max-width: 1000px) {
-    .site-hero {
-        min-height: 304px;
-    
-        &__inner {
-            padding-top: 60px;
-        }
-    
-        &__breadcrumb_link {
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 17px;
-        }
-    
-        &__title {
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 29px;;
-        }
-    
-        &__desc {
-            width: 100%;
-            max-width: 454px;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-            letter-spacing: 0.2px;
-            color: #FFFFFF;
-        }
+@media (max-width: 601px) {
+  .site-hero {
+    min-height: 560px;
+
+    &__inner {
+      padding-top: 15px;
     }
-}
 
-@media(max-width: 601px) {
-    .site-hero {
-        min-height: 560px;
-    
-        &__inner {
-            padding-top: 18px;
-        }
-
-        &__breadcrumb {
-            margin-bottom: 164px;
-        }
-
-        &__breadcrumb_item {
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 15px;
-        }
-    
-        &__breadcrumb_link {
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 15px;
-        }   
+    &__breadcrumb_nav {
+      margin-bottom: 164px;
     }
+
+    &__breadcrumb_item {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__breadcrumb_link {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
 }

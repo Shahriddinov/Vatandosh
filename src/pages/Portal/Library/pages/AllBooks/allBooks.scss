@@ -1,0 +1,178 @@
+.MuiOutlinedInput-notchedOutline {
+  border-color: #eaedf6 !important;
+}
+
+.all__books__search {
+  margin: 0 25px;
+  display: flex;
+  flex-flow: column;
+  row-gap: 20px;
+
+  h2 {
+    font-size: 28px;
+    line-height: 44px;
+    color: #065ea9;
+  }
+}
+
+.all__books__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.all__books__search__input {
+  display: flex;
+  gap: 20px;
+}
+
+.all__books__filter {
+  display: flex;
+  gap: 20px;
+}
+
+.all__books__sort {
+  ul {
+    display: flex;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9d9d9d;
+
+    li {
+      padding: 10px 16px;
+      border-top: solid 2px transparent;
+      border-bottom: solid 2px #e7e9ee;
+      cursor: pointer;
+    }
+
+    .active {
+      color: #065ea9;
+      border-bottom-color: #065ea9;
+    }
+  }
+}
+
+.grey__bg {
+  background-color: #f4f5f7;
+}
+
+.all__books__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 78px;
+  padding: 30px 25px;
+}
+
+.hero__container {
+  padding: 0 20px;
+  max-width: 1300px;
+  margin: 30px auto;
+}
+
+.online-teaching-header {
+  box-shadow: none;
+}
+
+@media (max-width: 1000px) {
+  .all__books__search {
+    row-gap: 30px;
+
+    h2 {
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 58px;
+    }
+  }
+  .all__books__sort {
+    ul {
+      font-size: 22px;
+      line-height: 24px;
+
+      li {
+        padding: 12px 44px;
+      }
+    }
+  }
+
+  .all__books__row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero__container {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .all__books__grid {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+  .all__books__search__input {
+    flex-direction: column;
+  }
+
+  .MuiPaper-root {
+    width: auto !important;
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+    min-width: auto;
+    height: 60px !important;
+  }
+
+  .MuiButtonBase-root,
+  .MuiInputBase-root {
+    font-size: 18px !important;
+    height: 60px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .all__books__filter {
+    flex-direction: column;
+  }
+  .all__books__search {
+    row-gap: 20px;
+    h2 {
+      font-size: 22px;
+      line-height: 35px;
+    }
+  }
+  .all__books__sort {
+    ul {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      li {
+        padding: 10px 0;
+        width: 50%;
+        text-align: center;
+      }
+    }
+  }
+
+  .MuiFormControl-root {
+    height: 48px !important;
+    border-radius: 12px !important;
+  }
+
+  .MuiButtonBase-root,
+  .MuiInputBase-root,
+  .MuiPaper-root {
+    font-size: 16px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+  }
+}
+
+.all__books__pagination {
+  padding-bottom: 60px;
+  background-color: #f4f5f7;
+
+  > div:first-child {
+    margin-top: 0;
+  }
+}

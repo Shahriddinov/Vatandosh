@@ -1,0 +1,92 @@
+@import "../../../../../../../assets/style/global.scss";
+.community-association-register__title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #10131b;
+  margin-bottom: 30px;
+}
+.community-association-register1 {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__certificate {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__certificate--span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+
+  &__certificate--box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 12px;
+    background: #ffffff;
+    border: 1px solid #eaedf6;
+    border-radius: 6px;
+  }
+
+  &__certificate--input {
+    display: none;
+  }
+
+  &__certificate--text {
+    font-size: 16px;
+    line-height: 19px;
+    color: #9d9d9d;
+  }
+
+  &__certificate--required {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fb2047;
+  }
+}
+
+.community-association-register__form--btn {
+  display: inline-block;
+  margin-left: auto;
+  padding: 12px 22px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  border: 1px solid #065ea9;
+  background-color: #065ea9;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.community-association-register__form--btn:hover {
+  background-color: #93c5fd;
+  border: 1px solid #065ea9;
+  transition: all 0.3s linear;
+}
+
+.disabled {
+  display: inline-block;
+  margin-left: auto;
+  padding: 12px 22px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #8c8e91;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #8c8e91;
+  cursor: pointer;
+}

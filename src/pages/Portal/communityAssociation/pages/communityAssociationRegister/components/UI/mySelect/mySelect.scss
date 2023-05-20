@@ -1,0 +1,46 @@
+.my-select {
+  .disabled {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #9d9d9d;
+  }
+
+  .MuiFormControl-root {
+    margin: 0 !important;
+  }
+  .MuiFormHelperText-root {
+    font-family: "Inter" !important;
+    font-style: normal !important;
+    font-size: 14px !important;
+    line-height: 17px !important;
+    color: #1e202c !important;
+    text-align: left;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 5px !important;
+    margin-left: 0 !important;
+  }
+
+  .MuiAutocomplete-root {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 14px 12px !important;
+    background-color: #fff;
+    border: 1px solid #eaedf6;
+  }
+
+  .MuiOutlinedInput-root,
+  .MuiAutocomplete-input {
+    padding: 0 !important;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: 0 !important;
+  }
+}

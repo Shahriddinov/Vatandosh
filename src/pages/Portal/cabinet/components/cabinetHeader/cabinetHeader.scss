@@ -1,0 +1,138 @@
+@import "../../../../../assets/style/global.scss";
+
+.cabinet-header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  border-bottom: 1px solid #eaedf6;
+
+  &__user-information {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__user-data {
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #10131b;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 12px;
+      color: #5d6b8a;
+
+      span {
+        color: #10131b;
+      }
+    }
+  }
+
+  &__right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__glasses,
+  &__chat,
+  &__notification,
+  &__logout {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #eaedf6;
+    cursor: pointer;
+  }
+
+  &__chat {
+    &.active {
+      background: #065ea9;
+
+      svg path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__language {
+    position: relative;
+
+    &-wrapper {
+      padding: 7px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 12px;
+      background: #065ea9;
+      cursor: pointer;
+    }
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+      color: #ffff;
+    }
+
+    &-iconArrow {
+      width: 16px;
+      height: 16px;
+      color: #ffff;
+    }
+
+    & > span {
+      display: flex;
+      align-items: center;
+      @include fontStyles(400, 14px, 17px, #062a49);
+    }
+
+    &-bar {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      width: 75px;
+      right: 0;
+      top: 50px;
+      border-radius: 12px;
+      background: #065ea9;
+      z-index: 10;
+      color: white;
+      overflow: hidden;
+
+      & > p {
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      & > p:hover {
+        background-color: grey;
+        color: $colorLight;
+      }
+    }
+  }
+}

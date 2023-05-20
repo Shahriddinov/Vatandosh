@@ -1,34 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-
-import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
+import { useNavigate } from "react-router-dom";
 
 import "./Hero.scss";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { baseServerUrl } from "../../services/api/utils";
+import Spinner from "../Spinner/Spinner";
 
-const Hero = () => {
-  const dispatch = useDispatch();
+const Hero = ({ sliderData, error, loading }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
-
-  const sliderData = useSelector((state) => state.sliderSlice.sliderData);
-  const error = useSelector((state) => state.sliderSlice.error);
-  const loading = useSelector((state) => state.sliderSlice.loading);
+  const navigate = useNavigate();
 
   const handleLeft = () => {
     if (slideIndex === 1) {
-      setSlideIndex(3);
+      setSlideIndex(sliderData.length);
     } else {
       setSlideIndex(slideIndex - 1);
     }
   };
 
   const handleRight = () => {
-    if (slideIndex === 3) {
+    if (slideIndex === sliderData.length) {
       setSlideIndex(1);
     } else {
       setSlideIndex(slideIndex + 1);
@@ -46,12 +42,8 @@ const Hero = () => {
     return () => clearInterval(slideInterval);
   }, [slideIndex]);
 
-  useEffect(() => {
-    dispatch(getSlider());
-  }, []);
-
   if (loading) {
-    return null;
+    return <Spinner position="full" />;
   }
 
   if (error) {
@@ -69,11 +61,11 @@ const Hero = () => {
               }`}
               key={slider.id}
             >
-              {slider.img ? (
+              {slider.image ? (
                 <div
                   className={`hero__slider-item`}
                   style={{
-                    backgroundImage: `url(${baseServerUrl}/${slider?.img})`,
+                    backgroundImage: `url(${baseServerUrl}/${slider?.image})`,
                   }}
                 ></div>
               ) : (
@@ -96,38 +88,20 @@ const Hero = () => {
                     __html: slider[`text_${lan}`],
                   }}
                 />
-                <button>{t("more")}</button>
+                <button
+                  onClick={() => navigate(`/sliders/${slider.id}`)}
+                  className={`${
+                    JSON.parse(slider.video).length ? "hide-btn" : ""
+                  }`}
+                >
+                  {t("more")}
+                </button>
                 <div
                   className={`navigation-line ${
                     slideIndex === slider?.id ? "active" : ""
                   }`}
                 ></div>
               </div>
-              {/* {slider.img ? (
-                <div className="hero__slider-left-bottom">
-                  <span>#{slider[`title_${lan}`]}</span>
-                  <h3
-                    dangerouslySetInnerHTML={{
-                      __html: slider[`text_${lan}`],
-                    }}
-                  />
-                  <button>{t("more")}</button>
-                  <div
-                    className={`navigation-line ${
-                      slideIndex === slider?.id ? "active" : ""
-                    }`}
-                  ></div>
-                </div>
-              ) : (
-                <div className="hero__slider-left-bottom">
-                  <span>#{slider[`title_${lan}`]}</span>
-                  <h3
-                    dangerouslySetInnerHTML={{
-                      __html: slider[`text_${lan}`],
-                    }}
-                  />
-                </div>
-              )} */}
             </div>
           ))}
         </div>

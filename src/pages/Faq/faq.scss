@@ -1,0 +1,36 @@
+.faq {
+  &_Names {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #065EA9;
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+  }
+
+  &_textes {
+    margin-bottom: 60px;
+
+    &_oneses {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.2px;
+      color: #656B70;
+    }
+
+    &_twos {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.2px;
+      color: #656B70;
+    }
+    &_icons{
+      color: #065EA9;
+    }
+  }
+}

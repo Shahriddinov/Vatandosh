@@ -1,0 +1,25 @@
+.nav {
+  padding: 20px 0;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-link {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  li {
+    margin: 0 25px;
+  }
+  &--link {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5d6b8a;
+  }
+}

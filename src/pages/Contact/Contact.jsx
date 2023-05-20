@@ -36,7 +36,7 @@ export default function Contact() {
 
   return (
     <>
-      {pathname.includes("expert") ? null : <Header />}
+      {pathname.split("/")[1] === "contact" && <Header />}
       <div className="contact">
         <div className="container">
           <div className="contact-wrapper">
@@ -52,7 +52,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="contact-desc-text">
-                <p>{t("aboutPage.section1.ptext")}</p>
+                {/* <p>{t("aboutPage.section1.ptext")}</p> */}
               </div>
             </div>
             <div className="contact-action">

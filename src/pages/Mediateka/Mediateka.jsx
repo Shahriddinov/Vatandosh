@@ -17,7 +17,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 
 import "./mediateka.scss";
-import { Paginator } from "../../component/Pagination/Pagination";
 import VideoModal from "./components/videoModal/VideoModal";
 import ImageModal from "./components/imageModal/ImageModal";
 import VideoList from "./components/videoList/VideoList";
@@ -25,6 +24,7 @@ import ImagesList from "./components/imageList/ImagesList";
 import { mediaPagination, showMediaModal, slideMove } from "./extraFunc";
 import { useMediaFetching } from "./hooks/useMediaFetching";
 import { useTranslation } from "react-i18next";
+import { Pagination } from "../../component";
 
 const Mediateka = () => {
   const { t } = useTranslation();
@@ -35,7 +35,7 @@ const Mediateka = () => {
   const [activeVideo, setActiveVideo] = useState("");
   const [activeImage, setActiveImage] = useState("");
   const [categoryId, setCategoryId] = useState(0);
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(2);
 
   const {
     mediaData,
@@ -205,7 +205,7 @@ const Mediateka = () => {
           />
         </div>
         {paginationCount >= 2 ? (
-          <Paginator
+          <Pagination
             count={paginationCount}
             page={activePage}
             paginationFetching={fetchingData}

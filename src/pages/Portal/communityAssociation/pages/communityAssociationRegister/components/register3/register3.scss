@@ -1,0 +1,81 @@
+.community-association-register3 {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user_module {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  &__user_img--desc {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #9d9d9d;
+  }
+
+  &__user_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    background-color: #e3f0ff;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__user_label {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 12px 22px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+    border: 2px solid #065ea9;
+    background-color: #065ea9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+  &__user_label:hover {
+    background-color: #93c5fd;
+    border: 2px solid #065ea9;
+    transition: all 0.3s linear;
+  }
+
+  &__user_input {
+    display: none;
+  }
+
+  &__user_delete {
+    padding: 12px 22px;
+    border: 1px solid #eb5757;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #eb5757;
+    cursor: pointer;
+  }
+}

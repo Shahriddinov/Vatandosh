@@ -1,0 +1,43 @@
+@import "../../../../../assets/style/global.scss";
+
+.passTheTest {
+  padding: 20px 0 60px;
+  background: #f4f5f7;
+
+  &-active {
+    transition: scale 0.5s;
+    scale: 1 !important;
+  }
+
+  &-navList {
+    display: flex;
+    gap: 20px;
+
+    &-item {
+      padding: 18px 32px;
+      background: #ffffff;
+      border: 2px solid #e6e8ec;
+      border-radius: 16px;
+      @include fontStyles(700, 16px, 16px, $colorTitle);
+      cursor: pointer;
+      transition: all 0.5s;
+
+      &-active {
+        color: #ffffff;
+        border-color: $colorTitle;
+        background-color: $colorTitle;
+      }
+    }
+  }
+  &-scaleHidden {
+    height: 0;
+    overflow: hidden;
+    transform: scaleY(0);
+  }
+
+  &-scaleActive {
+    transform-origin: center center;
+    transform: scaleY(1);
+    transition: transform 0.5s ease;
+  }
+}

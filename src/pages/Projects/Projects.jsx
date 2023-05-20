@@ -26,6 +26,7 @@ import Participate from '../../assets/images/projects/participate.png'
 import Pattern1 from '../../assets/images/projects/patternLeft.svg'
 import Pattern2 from '../../assets/images/projects/patternCenter.svg'
 import Pattern3 from '../../assets/images/projects/patternRight.svg'
+import { ToastContainer } from 'react-toastify';
 
 const Projects = () => {
 
@@ -271,6 +272,7 @@ const Projects = () => {
                 </div>
             </div>
             {modalOn && <><WhriteHeader /><ParticipateModal toggleModal={toggleModal} lng={lng} t={t}/></>}
+            <ToastContainer />
         </>
     )
 }

@@ -1,11 +1,13 @@
-.headeres {
+.expert-headeres {
+  &-container {
+    padding: 85px 20px !important;
+  }
   h2 {
     font-weight: 600;
     font-size: 46px;
     line-height: 56px;
     text-transform: uppercase;
     color: #fff;
-    margin-top: 100px;
     width: 600px;
     margin-bottom: 15px;
   }
@@ -17,12 +19,47 @@
     margin-bottom: 30px;
   }
   a {
+    display: inline-block;
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: 16px;
     padding: 12px 22px;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
     color: #065ea9;
+  }
+}
+
+@media (max-width: 768px) {
+  .expert-headeres {
+    &-container {
+      padding: 132px 40px 185px 40px !important;
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 36px;
+      width: 450px;
+    }
+    &--text {
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .expert-headeres {
+    &-container {
+      padding: 60px 16px 54px 16px !important;
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 29px;
+      width: 343px;
+    }
+    &--text {
+      font-size: 16px;
+      line-height: 19px;
+    }
   }
 }

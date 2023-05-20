@@ -1,0 +1,54 @@
+.chat-docs {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 10px 20px;
+  transition: 0.4s;
+  background: #fff;
+  z-index: 9;
+  transform: translateX(100%);
+  overflow: hidden;
+
+  &.show {
+    height: auto;
+    overflow: auto;
+    transform: translateX(0);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__no-file {
+    align-self: center;
+  }
+
+  &__one-doc {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e3f0ff;
+  }
+
+  &__file-name {
+    max-width: 520px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    color: #065ea9;
+  }
+}

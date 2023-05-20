@@ -1,0 +1,181 @@
+.learn-magazines {
+  position: relative;
+  min-height: 640px;
+  margin-bottom: 60px;
+  background-color: #f5fcff;
+  overflow: hidden;
+  background-image: url("../../../../../../../assets/images/electronic-journal/home-bg4.svg");
+  background-repeat: no-repeat;
+  background-position: right calc(100% + 132px);
+
+  &__container {
+    position: relative;
+  }
+
+  &__inner {
+    padding: 60px 0;
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    align-items: center;
+    gap: 60px;
+  }
+
+  &__inner_img {
+    position: relative;
+    max-width: 450px;
+    height: 520px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__inner_img::before {
+    position: absolute;
+    top: -87px;
+    left: calc(50% - 300px);
+    z-index: 0;
+    width: 195px;
+    height: 195px;
+    background-image: url("../../../../../../../assets/images/electronic-journal/home-bg3.svg");
+    content: "";
+  }
+
+  &__inner_title {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 344px;
+    margin-bottom: 23px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #065ea9;
+  }
+
+  &__inner_desc {
+    width: 100%;
+    max-width: 553px;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 134%;
+    color: #141619;
+  }
+}
+
+.learn-magazines::before {
+  position: absolute;
+  bottom: -200px;
+  left: calc(50% - 960px);
+  z-index: 0;
+  width: 444px;
+  height: 646px;
+  background-image: url("../../../../../../../assets/images/electronic-journal/home-bg1.svg");
+  content: "";
+}
+
+.learn-magazines::after {
+  position: absolute;
+  top: -50px;
+  left: calc(50% + 325px);
+  z-index: 0;
+  width: 527px;
+  height: 489px;
+  background-image: url("../../../../../../../assets/images/electronic-journal/home-bg2.svg");
+  content: "";
+}
+
+@media (max-width: 1000px) {
+  .learn-magazines {
+    &__inner {
+      gap: 20px;
+    }
+  }
+}
+
+@media (max-width: 868px) {
+  .learn-magazines {
+    margin-bottom: 0px;
+    padding-bottom: 28px;
+    background-position: calc(100% + 130px) calc(100% + 180px);
+
+    &__inner {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 0;
+    }
+
+    .container {
+      padding: 0;
+    }
+
+    &__inner_img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 0;
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__inner_img::before {
+      left: calc(50% - 400px);
+    }
+
+    &__inner_content {
+      padding: 0 20px;
+    }
+
+    &__inner_title {
+      max-width: 100%;
+      margin: 20px 0 40px 0;
+      font-weight: 700;
+      font-size: 53px;
+      line-height: 65px;
+      text-align: center;
+    }
+
+    &__inner_desc {
+      width: 100%;
+      max-width: 100%;
+      font-size: 30px;
+      line-height: 134%;
+      color: #141619;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .learn-magazines {
+    &__inner_img::before {
+      left: calc(50% - 370px);
+    }
+
+    &__inner_content {
+      padding: 0 20px;
+    }
+
+    &__inner_title {
+      max-width: 100%;
+      margin: 10px 0 12px 0;
+      font-size: 32px;
+      line-height: 39px;
+    }
+
+    &__inner_desc {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 134%;
+    }
+  }
+}

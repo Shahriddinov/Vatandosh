@@ -1,0 +1,136 @@
+@import "./src/assets/style/global";
+
+.OnlineTeachingFooter {
+  width: 100%;
+
+  background: #062a49;
+
+  &__inner {
+    padding: 20px 0;
+  }
+
+  &___boxes_list {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &_boxes {
+    display: grid;
+    grid-template-columns: 198px 1fr;
+    color: white;
+    gap: 60px;
+
+    &_ended_step {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      // margin-top: 15px;
+      opacity: 0.5;
+      &_division {
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+    }
+    &_end {
+      display: flex;
+      // flex-wrap: wrap;
+      justify-content: end;
+
+      &_contacts {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      &_phones {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        &_number {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+  &_production {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_napa {
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    &_year {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}
+
+@media (max-width: 868px) {
+  .OnlineTeachingFooter {
+    width: 100%;
+    background: #062a49;
+
+    &__inner {
+      padding: 20px 0;
+    }
+
+    &_boxes {
+      color: white;
+      gap: 20px;
+
+      &_ended_step {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        // margin-top: 15px;
+        opacity: 0.5;
+        &_division {
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+      &_end {
+        display: flex;
+        // flex-wrap: wrap;
+        justify-content: end;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .OnlineTeachingFooter {
+    &__logo {
+      display: block;
+    }
+
+    &___boxes_list {
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    &_boxes {
+      display: block;
+
+      &_ended_step {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        opacity: 0.5;
+        &_division {
+          margin-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &_production {
+      flex-direction: column;
+    }
+  }
+}

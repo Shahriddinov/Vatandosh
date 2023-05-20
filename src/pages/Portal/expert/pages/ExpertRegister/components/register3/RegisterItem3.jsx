@@ -7,18 +7,33 @@ import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLocation } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import {
+  createExpertEmployment,
+  deleteExpertEmployment,
+  getExpertEmployment,
+  updateExpertEmployment,
+} from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
-export default function RegisterItem3({ activeBarItem }) {
+export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { locationGet } = useSelector((state) => state.community);
+  const { employment } = useSelector((state) => state.expertRegisterSlice);
   const [data, setData] = useState([
     {
-      id: 1,
-      workCountry: "",
-      workRegion: "",
+      id: "1",
+      company: "",
       position: "",
-      workSpace: "",
-      checkBox: false,
-      startAtWork: "",
-      endAtWork: "",
+      location_id: 3,
+      status: false,
+      city: "",
+      start_date: "",
+      finish_date: "",
+      specialization: "",
     },
   ]);
 
@@ -35,7 +50,84 @@ export default function RegisterItem3({ activeBarItem }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const update = [];
+    const create = [];
+    data.forEach((emp) => {
+      if (typeof emp.id === "string") create.push(emp);
+      else update.push(emp);
+    });
+    if (create.length)
+      dispatch(
+        createExpertEmployment({
+          expert: create.map(
+            ({
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+            }) => ({
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+              specialization: position,
+            })
+          ),
+        })
+      );
+    if (update.length) {
+      update.forEach(
+        ({
+          id,
+          company,
+          position,
+          location_id,
+          status,
+          city,
+          start_date,
+          finish_date,
+        }) =>
+          dispatch(
+            updateExpertEmployment({
+              id,
+              company,
+              position,
+              location_id,
+              status,
+              city,
+              start_date,
+              finish_date,
+              specialization: position,
+            })
+          )
+      );
+    }
+    setActiveBarItem(3);
   };
+
+  const deleteEmployment = (id) => {
+    if (typeof id === "number") dispatch(deleteExpertEmployment(id));
+  };
+
+  useEffect(() => {
+    dispatch(getLocation());
+    dispatch(getExpertEmployment());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (employment.length) {
+      setData(() => []);
+      employment.forEach((el) => {
+        setData((prev) => [...prev, el]);
+      });
+    }
+  }, [employment]);
 
   return (
     <form
@@ -47,46 +139,54 @@ export default function RegisterItem3({ activeBarItem }) {
       onSubmit={handleSubmit}
     >
       <div className="registeritem3-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">III. Mehnat faoliyatigiz</h3>
+        <h3 className="registeritem-title">{t("expert.reg3")}</h3>
         <div className="registeritem3-list">
           {data.map((el) => (
             <div key={el.id} className="registeritem-form">
               <div className="registeritem-label-delete-single">
                 <AiOutlineDelete
                   style={data.length === 1 ? { display: "none" } : null}
-                  onClick={() =>
+                  onClick={() => {
+                    deleteEmployment(el.id);
                     setData(
                       (prev) =>
                         (prev = prev.filter((item) => item.id !== el.id))
-                    )
-                  }
+                    );
+                  }}
                 />
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
                   <p>
-                    Ish joyi joylashgan davlat<span>*</span>
+                    {t("expert.workcountry")}
+                    <span>*</span>
                   </p>
                   <FormControl style={{ padding: 0 }}>
                     <Select
                       className="registeritem-select"
-                      value={el.workCountry}
+                      value={el.location_id}
                       required
                       onChange={(e) =>
-                        handleChange({ ...el, workCountry: e.target.value })
+                        handleChange({ ...el, location_id: e.target.value })
                       }
                       displayEmpty
                       inputProps={{ "aria-label": "Without label" }}
                     >
-                      <MenuItem value={10}>AQSH</MenuItem>
-                      <MenuItem value={20}>GERMANIYA</MenuItem>
-                      <MenuItem value={30}>ITALIYA</MenuItem>
+                      {locationGet.length ? (
+                        locationGet.map((el, index) => (
+                          <MenuItem key={index} value={el.id}>
+                            {el.name}
+                          </MenuItem>
+                        ))
+                      ) : (
+                        <MenuItem value={3}>Albania</MenuItem>
+                      )}
                     </Select>
                   </FormControl>
                 </label>
                 <label htmlFor="" className="registeritem-label">
                   <p>
-                    Ish joyi joylashgan davlatni mintaqasi yoki shahar
+                    {t("expert.workregionorcity")}
                     <span>*</span>
                   </p>
                   <div>
@@ -95,12 +195,12 @@ export default function RegisterItem3({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={200}
-                      value={el.workRegion}
-                      placeholder={"Kiriting"}
+                      value={el.city}
+                      placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          workRegion: e.target.value.trim(),
+                          city: e.target.value,
                         })
                       }
                     />
@@ -108,17 +208,16 @@ export default function RegisterItem3({ activeBarItem }) {
                 </label>
               </div>
               <label htmlFor="" className="registeritem-label">
-                <p>Lavozimi</p>
+                <p>{t("expert.position")}</p>
                 <div>
                   <input
-                    required
                     type="text"
                     minLength={3}
                     maxLength={50}
-                    placeholder={"Kiriting"}
+                    placeholder={t("expert.inputplaceholder")}
                     value={el.position}
                     onChange={(e) =>
-                      handleChange({ ...el, position: e.target.value.trim() })
+                      handleChange({ ...el, position: e.target.value })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -126,7 +225,8 @@ export default function RegisterItem3({ activeBarItem }) {
               </label>
               <label htmlFor="" className="registeritem-label">
                 <p>
-                  Ish joyi<span>*</span>
+                  {t("expert.workspace")}
+                  <span>*</span>
                 </p>
                 <div>
                   <input
@@ -134,10 +234,10 @@ export default function RegisterItem3({ activeBarItem }) {
                     type="text"
                     minLength={3}
                     maxLength={100}
-                    value={el.workSpace}
-                    placeholder={"Kiriting"}
+                    value={el.company}
+                    placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
-                      handleChange({ ...el, workSpace: e.target.value.trim() })
+                      handleChange({ ...el, company: e.target.value })
                     }
                   />
                   <img src={pencil} alt="" />
@@ -145,18 +245,17 @@ export default function RegisterItem3({ activeBarItem }) {
               </label>
               <div className="registeritem-checkbox">
                 <Checkbox
-                  checked={el.checkBox}
+                  checked={el.status || false}
                   inputProps={{ "aria-label": "controlled" }}
-                  onChange={(e) =>
-                    handleChange({ ...el, checkBox: !el.checkBox })
-                  }
+                  onChange={(e) => handleChange({ ...el, status: !el.status })}
                 />
-                <p>Hozirda shu sohada ishlayapti</p>
+                <p>{t("expert.nowwork")}</p>
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
                   <p>
-                    Ish boshlagan yili<span>*</span>
+                    {t("expert.workstart")}
+                    <span>*</span>
                   </p>
                   <div>
                     <input
@@ -164,12 +263,12 @@ export default function RegisterItem3({ activeBarItem }) {
                       type="date"
                       minLength={3}
                       maxLength={100}
-                      placeholder={"Kiriting"}
-                      value={el.startAtWork}
+                      placeholder={t("expert.inputplaceholder")}
+                      value={el.start_date}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          startAtWork: e.target.value.trim(),
+                          start_date: e.target.value,
                         })
                       }
                     />
@@ -177,7 +276,8 @@ export default function RegisterItem3({ activeBarItem }) {
                 </label>
                 <label htmlFor="" className="registeritem-label">
                   <p>
-                    Tamomlagan yil<span>*</span>
+                    {t("expert.workend")}
+                    <span>*</span>
                   </p>
                   <div>
                     <input
@@ -185,12 +285,12 @@ export default function RegisterItem3({ activeBarItem }) {
                       type="date"
                       minLength={3}
                       maxLength={30}
-                      placeholder={"Kiriting"}
-                      value={el.endAtWork}
+                      placeholder={t("expert.inputplaceholder")}
+                      value={el.finish_date}
                       onChange={(e) =>
                         handleChange({
                           ...el,
-                          endAtWork: e.target.value.trim(),
+                          finish_date: e.target.value,
                         })
                       }
                     />
@@ -200,19 +300,21 @@ export default function RegisterItem3({ activeBarItem }) {
             </div>
           ))}
           <button
+            type="button"
             className="registeritem-addForm"
             onClick={() =>
               setData((prev) => [
                 ...prev,
                 {
-                  id: Date.now(),
-                  workCountry: "",
-                  workRegion: "",
+                  id: "" + Date.now(),
+                  company: "",
                   position: "",
-                  workSpace: "",
-                  checkBox: false,
-                  startAtWork: "",
-                  endAtWork: "",
+                  location_id: 3,
+                  status: false,
+                  city: "",
+                  start_date: "",
+                  finish_date: "",
+                  specialization: "",
                 },
               ])
             }
@@ -223,7 +325,7 @@ export default function RegisterItem3({ activeBarItem }) {
       </div>
       <div className="registeritem-btnWrapper">
         <button type="submit" className="registeritem-submitBtn">
-          Keyingisi
+          {t("expert.nextbtn")}
         </button>
       </div>
     </form>

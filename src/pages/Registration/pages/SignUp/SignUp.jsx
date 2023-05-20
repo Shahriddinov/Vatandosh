@@ -1,6 +1,35 @@
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { sendEmail } from "../../../../reduxToolkit/authSlice/extraReducer";
+import Spinner from "../../../../component/Spinner/Spinner";
+
 import "../SignIn/SignIn.scss";
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const emailRef = useRef();
+  const [isValid, setIsValid] = useState(false);
+  const loading = useSelector((store) => store.authSlice.emailLoading);
+  const message = useSelector((store) => store.authSlice.message);
+  const error = useSelector((store) => store.authSlice.error);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(sendEmail({ email: emailRef.current.value }));
+    setIsValid(true);
+  };
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
+  if (error) {
+    alert(error);
+  }
+
   return (
     <div className="auth">
       <div className="container">
@@ -26,13 +55,19 @@ export default function SignUp() {
                 tashdiqlash kodini yuboramiz
               </p>
             </div>
-            <form className="auth-form-inputs">
+            <form
+              className="auth-form-inputs"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
                 <span>Email pochtangizni kiriting</span>
-                <input type="email" onFocus={console.log("el")} />
+                <input type="email" ref={emailRef} required />
               </label>
-              <p className="auth-form-inputs-sendMail">
-                Email pochtangizga xabar yuborildi
+              <p
+                className="auth-form-inputs-sendMail"
+                style={isValid ? { display: "block" } : { display: "none" }}
+              >
+                {message ? message : "Loading..."}
               </p>
               <button type="submit" className="auth-form-inputs-submitBtn">
                 Davom etish
