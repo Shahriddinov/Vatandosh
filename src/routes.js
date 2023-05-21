@@ -620,7 +620,7 @@ const RoutesContainer = () => {
                 path="tourist-facilities"
                 element={<AboutUzbekistanTouristFacilities />}
               />
-              <Route path="city" element={<AboutUzbekistanCity />} />
+              <Route path="city/:idCity" element={<AboutUzbekistanCity />} />
               <Route path="virtual-tour/:cityId" element={<VirtualTour />} />
               <Route path="contact" element={<Contact />} />
             </Route>

@@ -12,46 +12,8 @@ import "swiper/css/pagination";
 import "./slider.scss";
 import { memo } from "react";
 import { LazySpinner } from "../../../../../component";
-import CardImg1 from "../../../../../assets/images/tourist-facilities/bazaar.png";
-import CardImg2 from "../../../../../assets/images/tourist-facilities/street.png";
-import CardImg3 from "../../../../../assets/images/tourist-facilities/palace.png";
-import { useSelector } from "react-redux";
 
 export const Slider = memo(({ title, data }) => {
-  const data1 = useSelector((store) => store.aboutUzbekistan);
-  const cardData = [
-    {
-      id: 1,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 2,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 3,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 4,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 5,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 6,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-  ];
-
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -130,7 +92,7 @@ export const Slider = memo(({ title, data }) => {
               }}
               className="mySwiper"
             >
-              {cardData?.map((item) => (
+              {data?.map((item) => (
                 <SwiperSlide
                   className="compatriots-events__slider-list"
                   key={item.id}

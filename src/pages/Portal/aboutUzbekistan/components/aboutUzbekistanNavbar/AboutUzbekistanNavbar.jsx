@@ -24,7 +24,13 @@ const AboutUzbekistanNavbar = ({ menu }) => {
                   active === menuItem.url ? "active" : ""
                 }`}
               >
-                <Link to={menuItem.url}>{menuItem.name}</Link>
+                {menuItem.id === 3 ? (
+                  <a href={menuItem.url} target="blank">
+                    {menuItem.name}
+                  </a>
+                ) : (
+                  <Link to={menuItem.url}>{menuItem.name}</Link>
+                )}
               </li>
             ))}
           </ul>

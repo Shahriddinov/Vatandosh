@@ -31,7 +31,7 @@ export const useAboutHomeFetching = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSightseeing());
+    dispatch(getAllSightseeing({ paginate: 9, city: 10 }));
     dispatch(getAllGallery());
     dispatch(getAllCity3D());
   }, [lan, dispatch]);

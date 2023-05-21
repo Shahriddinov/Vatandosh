@@ -17,6 +17,7 @@ const AboutUzbekistan = () => {
     return <Spinner position="full" />;
   }
 
+  console.log(menu);
   return (
     <div>
       {(transparentIsTrue === "virtual-tour") |

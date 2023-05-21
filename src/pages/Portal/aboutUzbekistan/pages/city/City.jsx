@@ -4,140 +4,77 @@ import "./city.scss";
 import View3D from "../../components/view3D/View3D";
 import Slider from "../../components/slider/Slider";
 import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
-import { useMediaFetching } from "../../../../Mediateka/hooks/useMediaFetching";
 import { Spinner } from "../../../../../component";
 import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutUzbekistanVideos";
-import VideoCard from "../../components/videoCard/VideoCard";
 
-import CardImg1 from "../../../../../assets/images/tourist-facilities/bazaar.png";
-import CardImg2 from "../../../../../assets/images/tourist-facilities/street.png";
-import CardImg3 from "../../../../../assets/images/tourist-facilities/palace.png";
+import { useCityFetching } from "./hooks/useCityFetching";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const City = () => {
-  const { mediaData, dataLoading, lan } = useMediaFetching();
-
-  if (dataLoading) {
+  const { error, singleCitySightseeing, singleCitySightseeingLoading } =
+    useCityFetching();
+  if (singleCitySightseeingLoading) {
     return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
   }
 
-  const cardData = [
-    {
-      id: 1,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 2,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 3,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 4,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 5,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 6,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-  ];
+  const videoData = singleCitySightseeing?.city?.cityVideos;
+  const galeresData = singleCitySightseeing?.city?.cityGalleries;
+  const sightseeingPlaces = singleCitySightseeing?.city?.sightseeingPlaces;
+  const contentInfo = singleCitySightseeing?.city?.cityContentInfo;
+  const CityPhoto = singleCitySightseeing?.city["3DCityPhoto"];
 
   return (
     <>
       <div className="city">
-        <div className="city_hero">
-          <h2>Ташкент</h2>
+        <div
+          className="city_hero"
+          style={{
+            backgroundImage: `url(${PORTAL_IMAGE_URL}${singleCitySightseeing?.image})`,
+          }}
+        >
+          <h2>{singleCitySightseeing?.city?.name}</h2>
           <h1>
-            Дом-музей <br />
-            Джахан-Отин Увайси
+            {singleCitySightseeing?.content_title} <br />
+            {singleCitySightseeing?.text}
           </h1>
           <div className="city_hero_line" />
         </div>
         <div className="city_body container">
-          <div className="city_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
+          {contentInfo[0] ? (
+            <div className="city_intro">
+              <h1>{contentInfo[0]?.title}</h1>
+              <p>{contentInfo[0]?.content}</p>
+            </div>
+          ) : null}
           <div className="city_videos">
             <h1>Видеоклипы</h1>
-            <AboutUzbekistanVideos mediaData={mediaData} lan={lan} />
+            <AboutUzbekistanVideos mediaData={videoData} />
           </div>
-          <div className="city_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
-          <View3D />
-          <div className="city_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
-          <AboutUzbekistanGallery />
-          <div className="city_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
+          {contentInfo[1] ? (
+            <div className="city_intro">
+              <h1>{contentInfo[1]?.title}</h1>
+              <p>{contentInfo[1]?.content}</p>
+            </div>
+          ) : null}
+          <View3D data={CityPhoto} />
+          {contentInfo[2] ? (
+            <div className="city_intro">
+              <h1>{contentInfo[2]?.title}</h1>
+              <p>{contentInfo[2]?.content}</p>
+            </div>
+          ) : null}
+          <AboutUzbekistanGallery allGallery={galeresData} />
+          {contentInfo[3] ? (
+            <div className="city_intro">
+              <h1>{contentInfo[3]?.title}</h1>
+              <p>{contentInfo[3]?.content}</p>
+            </div>
+          ) : null}
           <Slider
             title="Другие туристические объекты в Ташкенте"
-            data={cardData}
+            data={sightseeingPlaces}
           />
         </div>
       </div>

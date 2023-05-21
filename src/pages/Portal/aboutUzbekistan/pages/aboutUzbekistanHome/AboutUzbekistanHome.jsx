@@ -18,7 +18,6 @@ const AboutUzbekistanHome = () => {
     allCitySightseeingLoading,
     allCitySightseeing,
     allCity3dLoading,
-    allCity3D,
     allGalleryLoading,
     allGallery,
   } = useAboutHomeFetching();
@@ -27,50 +26,29 @@ const AboutUzbekistanHome = () => {
     return <Spinner position="full" />;
   }
 
-  console.log(allCitySightseeing);
-  // console.log(allCity3D);
-  // console.log(allGallery);
   return (
     <div className="about-uzbekistan-home">
       <div className="container">
-        <AboutUzbekistanHero />
-        <div className="about-uzbekistan-home__open-uzbekistan">
-          <h2 className="about-uzbekistan-title">
-            {heroData.content[0].title}
-          </h2>
-          <p>{heroData.content[0].text}</p>
-        </div>
-        <Slider title="Туристические объекты" />
-        <View3D data={allCity3D[0]} />
+        <AboutUzbekistanHero data={JSON.parse(heroData.image)} />
+        {heroData.page_menu_contents[0] ? (
+          <div className="about-uzbekistan-home__open-uzbekistan">
+            <h2 className="about-uzbekistan-title">
+              {heroData.page_menu_contents[0].title}
+            </h2>
+            <p>{heroData.page_menu_contents[0].text}</p>
+          </div>
+        ) : null}
+        <Slider title="Туристические объекты" data={allCitySightseeing?.data} />
+        <View3D />
         <AboutUzbekistanGallery allGallery={allGallery} />
-        <div className="about-uzbekistan-home__bottom">
-          <h2 className="about-uzbekistan-title">
-            Откройте для себя новый Узбекистан!
-          </h2>
-          <p>
-            Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-            давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-            қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини таклиф
-            этади. Биз, касаба уюшмаларига ишонган ва унинг ҳаракатларини
-            қўллаб-қувватлаган 6 000 000 нафардан кўпроқ меҳнаткашлар
-            аудиториясига эгамиз! Буюк инглиз шоири Марк Твен вақт ўтгани сари
-            ҳаётда биз икки нарсани афсус билан ёд этамиз деб ёзади, булар:
-            ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат қилганмиздир.
-            “Kasaba sayr” туристик корхонаси билан Сиз бундай афсусларга батамом
-            барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат қилинг, севинг,
-            ҳаётнинг ҳар лаҳзасидан роҳатланинг!»Сиз ва Сизнинг ходимларингизга
-            узоқ вақт орзу қилган шаҳар ёки давлатларингиз бўйлаб энг арзон
-            нарҳларда мароқли дам олиш ҳамда қулай бўлган вақтда айнан Сизлар
-            учун ёқимли саёҳат турларини таклиф этади. Биз, касаба уюшмаларига
-            ишонган ва унинг ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан
-            кўпроқ меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк
-            Твен вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз
-            деб ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-            қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-            афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-            қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-          </p>
-        </div>
+        {heroData.page_menu_contents[1] ? (
+          <div className="about-uzbekistan-home__open-uzbekistan">
+            <h2 className="about-uzbekistan-title">
+              {heroData.page_menu_contents[1].title}
+            </h2>
+            <p>{heroData.page_menu_contents[1].text}</p>
+          </div>
+        ) : null}
       </div>
     </div>
   );
