@@ -22,7 +22,7 @@ const VisualInformation = () => {
   } = useVisualInformation();
   const [activePage, setActivePage] = useState(1);
 
-  if (allGalleryLoading || allCityVideo?.data?.length < 0) {
+  if (allGalleryLoading || allCityVideo?.length <= 0) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
@@ -52,7 +52,7 @@ const VisualInformation = () => {
         ) : null}
         <div className="visual-information__videos">
           <AboutUzbekistanVideos
-            mediaData={allCityVideo.data}
+            mediaData={allCityVideo?.data}
             lan={lan}
             countPagination={countPagination}
             activePage={activePage}

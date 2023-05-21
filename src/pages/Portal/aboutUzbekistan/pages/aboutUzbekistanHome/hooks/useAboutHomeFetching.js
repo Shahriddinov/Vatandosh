@@ -16,12 +16,6 @@ export const useAboutHomeFetching = () => {
     (store) => store.aboutUzbekistan.allCitySightseeing
   );
 
-  const allCity3dLoading = useSelector(
-    (store) => store.aboutUzbekistan.allCity3dLoading
-  );
-
-  const allCity3D = useSelector((store) => store.aboutUzbekistan.allCity3D);
-
   const allGalleryLoading = useSelector(
     (store) => store.aboutUzbekistan.allGalleryLoading
   );
@@ -32,15 +26,12 @@ export const useAboutHomeFetching = () => {
 
   useEffect(() => {
     dispatch(getAllSightseeing({ paginate: 9, city: 10 }));
-    dispatch(getAllGallery());
-    dispatch(getAllCity3D());
+    dispatch(getAllGallery({ paginate: 8 }));
   }, [lan, dispatch]);
 
   return {
     allCitySightseeingLoading,
     allCitySightseeing,
-    allCity3dLoading,
-    allCity3D,
     allGalleryLoading,
     allGallery,
   };

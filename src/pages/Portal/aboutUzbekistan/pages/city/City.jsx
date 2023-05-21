@@ -19,8 +19,6 @@ const City = () => {
     return <p>{error}</p>;
   }
 
-  console.log(singleCitySightseeing);
-
   const videoData = singleCitySightseeing[0]?.city_videos;
   const galeresData = singleCitySightseeing[0]?.city_galleries;
   const sightseeingPlaces = singleCitySightseeing[0]?.sightseeing_places;

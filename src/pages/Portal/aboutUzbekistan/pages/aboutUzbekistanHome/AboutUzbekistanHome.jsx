@@ -17,12 +17,11 @@ const AboutUzbekistanHome = () => {
   const {
     allCitySightseeingLoading,
     allCitySightseeing,
-    allCity3dLoading,
     allGalleryLoading,
     allGallery,
   } = useAboutHomeFetching();
 
-  if (allCitySightseeingLoading || allCity3dLoading || allGalleryLoading) {
+  if (allCitySightseeingLoading || allGalleryLoading) {
     return <Spinner position="full" />;
   }
 
@@ -40,7 +39,7 @@ const AboutUzbekistanHome = () => {
         ) : null}
         <Slider title="Туристические объекты" data={allCitySightseeing?.data} />
         <View3D />
-        <AboutUzbekistanGallery allGallery={allGallery} />
+        <AboutUzbekistanGallery allGallery={allGallery?.data} />
         {heroData.page_menu_contents[1] ? (
           <div className="about-uzbekistan-home__open-uzbekistan">
             <h2 className="about-uzbekistan-title">
