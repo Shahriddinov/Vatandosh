@@ -14,7 +14,9 @@ export const aboutUzbShowMediaModal = ({ mediaData, videoId, imgUrl }) => {
   }
 
   if (videoId) {
-    indexMedia = data.findIndex((video) => video.video_url === videoId);
+    indexMedia = data.findIndex(
+      (video) => JSON.parse(video.video)[0].download_link === videoId
+    );
     activeMedia = videoId;
   } else if (imgUrl) {
     indexMedia = data.findIndex((image) => image.image === imgUrl);
@@ -62,7 +64,6 @@ export const aboutUzbSlideMove = ({
   const data = mediaData;
 
   if (activeVideo) {
-    console.log("fdsakj");
     indexMedia = data.findIndex((video) => video.video_url === activeVideo);
     activeMedia = activeVideo;
   } else if (activeImage) {

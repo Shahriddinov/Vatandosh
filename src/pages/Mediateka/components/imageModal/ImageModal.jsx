@@ -5,6 +5,7 @@ import Img from "../../../../assets/images/EyeGlass.png";
 import "./imageModal.scss";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 
 const ImageModal = ({
   showImageModal,
@@ -86,7 +87,9 @@ const ImageModal = ({
         <FiChevronRight />
       </div>
       <div className="image-modal__image-modal-container">
-        {activeImage ? <img src={activeImage} alt="mediatake" /> : null}
+        {activeImage ? (
+          <img src={`${PORTAL_IMAGE_URL}${activeImage}`} alt="mediatake" />
+        ) : null}
       </div>
     </div>
   );

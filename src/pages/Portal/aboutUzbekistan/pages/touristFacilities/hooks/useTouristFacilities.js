@@ -39,7 +39,7 @@ export const useTouristFacilities = () => {
   const activeMenu = menu.find((el) => el.url === pathname);
 
   useEffect(() => {
-    dispatch(getAllSightseeing({ paginate: 2, city: 1 }));
+    dispatch(getAllSightseeing({ paginate: 9, city: 1 }));
     dispatch(getAllCity());
   }, [dispatch, lan]);
 

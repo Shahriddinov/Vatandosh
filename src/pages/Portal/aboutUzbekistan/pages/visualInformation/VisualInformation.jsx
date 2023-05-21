@@ -1,69 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
-import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutUzbekistanVideos";
-import { useMediaFetching } from "../../../../Mediateka/hooks/useMediaFetching";
-import { Spinner } from "../../../../../component";
+import { MyButton, Spinner } from "../../../../../component";
 
 import "./visualInformation.scss";
+import { useVisualInformation } from "./hooks/useVisualInformation";
+import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutUzbekistanVideos";
+import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
+import { paginationCount } from "../../../../../helpers/extraFunction";
+import { getAllCityVideo } from "../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 
 const VisualInformation = () => {
-  const { mediaData, dataLoading, lan } = useMediaFetching();
+  const {
+    error,
+    allCityVideoLoading,
+    allCityVideo,
+    activeMenu,
+    lan,
+    allGalleryLoading,
+    allGallery,
+    dispatch,
+  } = useVisualInformation();
+  const [activePage, setActivePage] = useState(1);
 
-  if (dataLoading) {
+  if (allGalleryLoading || allCityVideo?.data?.length < 0) {
     return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
   }
 
+  const moreData = () => {
+    setActivePage((prev) => prev + 1);
+    dispatch(getAllCityVideo({ paginate: (activePage + 1) * 9 }));
+  };
+
+  const countPagination = !allCityVideoLoading
+    ? paginationCount(allCityVideo?.total, 9)
+    : 0;
   return (
     <div className="visual-information">
       <div className="container">
         <div className="visual-information__hero">
-          <h2>Vizual ma'lumot</h2>
+          <h2>{activeMenu.name}</h2>
         </div>
-        <div className="visual-information__open-uzbekistan">
-          <h2 className="about-uzbekistan-title">
-            Откройте для себя новый Ташкент!
-          </h2>
-          <p>
-            Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-            давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-            қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини таклиф
-            этади. Биз, касаба уюшмаларига ишонган ва унинг ҳаракатларини
-            қўллаб-қувватлаган 6 000 000 нафардан кўпроқ меҳнаткашлар
-            аудиториясига эгамиз! Буюк инглиз шоири Марк Твен вақт ўтгани сари
-            ҳаётда биз икки нарсани афсус билан ёд этамиз деб ёзади, булар:
-            ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат қилганмиздир.
-            “Kasaba sayr” туристик корхонаси билан Сиз бундай афсусларга батамом
-            барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат қилинг, севинг,
-            ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-          </p>
-        </div>
+        {activeMenu?.page_menu_contents[0] ? (
+          <div className="visual-information__open-uzbekistan">
+            <h2 className="about-uzbekistan-title">
+              {activeMenu?.page_menu_contents[0]?.title}
+            </h2>
+            <p>{activeMenu?.page_menu_contents[0]?.text}</p>
+          </div>
+        ) : null}
         <div className="visual-information__videos">
           <AboutUzbekistanVideos
-            mediaData={mediaData}
+            mediaData={allCityVideo.data}
             lan={lan}
-            hasMoreBtn="true"
+            countPagination={countPagination}
+            activePage={activePage}
+            moreData={moreData}
           />
+          {allCityVideoLoading ? <Spinner /> : null}
         </div>
-        <div className="visual-information__open-uzbekistan-second">
-          <h2 className="about-uzbekistan-title">
-            Откройте для себя новый Ташкент!
-          </h2>
-          <p>
-            Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-            давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-            қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини таклиф
-            этади. Биз, касаба уюшмаларига ишонган ва унинг ҳаракатларини
-            қўллаб-қувватлаган 6 000 000 нафардан кўпроқ меҳнаткашлар
-            аудиториясига эгамиз! Буюк инглиз шоири Марк Твен вақт ўтгани сари
-            ҳаётда биз икки нарсани афсус билан ёд этамиз деб ёзади, булар:
-            ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат қилганмиздир.
-            “Kasaba sayr” туристик корхонаси билан Сиз бундай афсусларга батамом
-            барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат қилинг, севинг,
-            ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-          </p>
-        </div>
-        <AboutUzbekistanGallery />
+        {activeMenu?.page_menu_contents[1] ? (
+          <div className="visual-information__open-uzbekistan">
+            <h2 className="about-uzbekistan-title">
+              {activeMenu?.page_menu_contents[1]?.title}
+            </h2>
+            <p>{activeMenu?.page_menu_contents[1]?.text}</p>
+          </div>
+        ) : null}
+        <AboutUzbekistanGallery allGallery={allGallery.data} />
       </div>
     </div>
   );
