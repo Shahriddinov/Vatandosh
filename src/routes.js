@@ -330,10 +330,6 @@ const VisualInformation = lazy(() =>
   )
 );
 
-const VirtualTour = lazy(() =>
-  import("./pages/Portal/aboutUzbekistan/pages/virtualTour/VirtualTour")
-);
-
 const CabinetLayout = lazy(() =>
   import("./pages/Portal/cabinet/CabinetLayout")
 );
@@ -621,7 +617,6 @@ const RoutesContainer = () => {
                 element={<AboutUzbekistanTouristFacilities />}
               />
               <Route path="city/:idCity" element={<AboutUzbekistanCity />} />
-              <Route path="virtual-tour/:cityId" element={<VirtualTour />} />
               <Route path="contact" element={<Contact />} />
             </Route>
             <Route path="*" element={<NotFound />} />

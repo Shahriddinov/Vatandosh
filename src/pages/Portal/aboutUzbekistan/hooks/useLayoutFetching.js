@@ -45,7 +45,6 @@ const CreateMenu = createSelector(
         }
       }
     });
-
     return data;
   }
 );

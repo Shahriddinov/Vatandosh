@@ -3,6 +3,7 @@ import React from "react";
 import "./playerModal.scss";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const PlayerModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
   return (
@@ -32,13 +33,11 @@ const PlayerModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
       </div>
       <div className="video-modal__video-modal-container">
         {activeVideo ? (
-          <iframe
-            className="active-video"
-            src={`https://www.youtube.com/embed/${activeVideo}`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <video
+            src={`${PORTAL_IMAGE_URL}${activeVideo}`}
+            controls
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          ></video>
         ) : null}
       </div>
       <div

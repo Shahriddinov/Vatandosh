@@ -37,7 +37,7 @@ const TouristFacilities = () => {
   const moreData = () => {
     setActivePage((prev) => prev + 1);
     dispatch(
-      getAllSightseeing({ paginate: (activePage + 1) * 2, city: activeCity })
+      getAllSightseeing({ paginate: (activePage + 1) * 9, city: activeCity })
     );
   };
 

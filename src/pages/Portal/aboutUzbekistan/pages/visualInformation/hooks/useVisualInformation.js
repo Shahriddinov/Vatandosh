@@ -1,33 +1,48 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useOutletContext } from "react-router-dom";
-import { getAllSightseeing } from "../../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
+import {
+  getAllCityVideo,
+  getAllGallery,
+  getAllSightseeing,
+} from "../../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 
 export const useVisualInformation = () => {
   const { menu } = useOutletContext();
   const { pathname } = useLocation();
+
   const lan = useSelector((state) => state.language.language);
-  const allCitySightseeingLoading = useSelector(
-    (store) => store.aboutUzbekistan.allCitySightseeingLoading
+
+  const allCityVideoLoading = useSelector(
+    (store) => store.aboutUzbekistan.allCityVideoLoading
   );
-  const allCitySightseeing = useSelector(
-    (store) => store.aboutUzbekistan.allCitySightseeing
+  const allCityVideo = useSelector(
+    (store) => store.aboutUzbekistan.allCityVideo
   );
+
+  const allGalleryLoading = useSelector(
+    (store) => store.aboutUzbekistan.allGalleryLoading
+  );
+  const allGallery = useSelector((store) => store.aboutUzbekistan.allGallery);
 
   const error = useSelector((store) => store.aboutUzbekistan.error);
   const dispatch = useDispatch();
 
-  console.log(menu);
-  const activeMenu = menu.find((el) => (el.url = pathname));
+  const activeMenu = menu.find((el) => el.url === pathname);
 
   useEffect(() => {
-    dispatch(getAllSightseeing());
+    dispatch(getAllCityVideo({ paginate: 9 }));
+    dispatch(getAllGallery({ paginate: 8 }));
   }, [dispatch, lan]);
 
   return {
     error,
-    allCitySightseeingLoading,
-    allCitySightseeing,
+    allCityVideoLoading,
+    allCityVideo,
     activeMenu,
+    lan,
+    dispatch,
+    allGalleryLoading,
+    allGallery,
   };
 };
