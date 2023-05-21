@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
-import { sendMessage } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
+import {
+  leaveGroup,
+  sendMessage,
+} from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 import "./groupsMessages.scss";
 
-import userImg from "../../../../../../../assets/images/cabinet/user.png";
 import GroupMembers from "../groupMembers/GroupMembers";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 const GroupsMessages = ({
   groupData,
@@ -38,75 +41,9 @@ const GroupsMessages = ({
     (state) => state.chatSlice.messagesLoading
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
-  const sendMessageStatus = useSelector(
-    (state) => state.chatSlice.sendMessageStatus
-  );
 
-  const messages = [
-    {
-      id: 1,
-      user_id: 1,
-      message_time: "20:00 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 2,
-      user_id: 6,
-      message_time: "20:03 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 3,
-      user_id: 1,
-      message_time: "20:06 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 4,
-      user_id: 3,
-      message_time: "20:10 PM",
-      message:
-        "Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 5,
-      user_id: 6,
-      message_time: "20:12 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 6,
-      user_id: 2,
-      message_time: "21:00 PM",
-      message:
-        "Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 7,
-      user_id: 5,
-      message_time: "21:10 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 8,
-      user_id: 5,
-      message_time: "21:20 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 9,
-      user_id: 4,
-      message_time: "21:21 PM",
-      message:
-        "Lorem4 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-  ];
+  const user = useSelector((state) => state.authSlice.userData);
+  const loading = useSelector((state) => state.authSlice.passwordLoading);
 
   const docs = [
     { id: 1, name: "Group Ekspertlar1 kengashi guruhi.pdf" },
@@ -170,7 +107,9 @@ const GroupsMessages = ({
     }
   };
 
-  const handleSend = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     setSendMessageData({
       ...sendMessageData,
       chat_room_id: groupData.group.chat_room_id,
@@ -205,23 +144,12 @@ const GroupsMessages = ({
   }, [showDocs, showLinks, showMembers]);
 
   useEffect(() => {
-    // console.log(messagesRef.current);
     if (messagesRef.current) {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-      // console.log("Working: ", messagesRef.current.scrollTop);
     }
+  }, [activeGroup, showDocs, showLinks, showMembers, messagesLoading]);
 
-    // console.log("group: ", activeGroup);
-  }, [
-    showGroupMessages,
-    activeGroup,
-    showDocs,
-    showLinks,
-    showMembers,
-    sendMessageStatus,
-  ]);
-
-  if (messagesLoading) {
+  if (messagesLoading || loading) {
     return <Spinner position="full" />;
   }
 
@@ -341,7 +269,12 @@ const GroupsMessages = ({
               </div>
               <div
                 className="group-message__logout"
-                onClick={() => setShowModal(!showModal)}
+                onClick={() => {
+                  setShowModal(!showModal);
+                  dispatch(
+                    leaveGroup({ chat_room_id: groupData?.group?.chat_room_id })
+                  );
+                }}
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path
@@ -367,8 +300,9 @@ const GroupsMessages = ({
               show ? "show-messages" : ""
             }`}
           >
-            {messagesData?.messages.data.map((message) =>
-              message.user_id === activeGroup ? (
+            {messagesData?.messages.data.map((message) => {
+              const userId = user.user_id ? user.user_id.id : user.id;
+              return message?.user_id !== userId ? (
                 <div
                   key={message.id}
                   className="group-message__received-container"
@@ -391,54 +325,63 @@ const GroupsMessages = ({
                     <p className="group-message__sent-message">
                       {message.message}
                     </p>
-                    <span>{message.message_time}</span>
+                    <span>
+                      {message.created_at.split("T")[1].split(".")[0]}
+                    </span>
                   </div>
                   <div className="group-message__sent-user">
-                    <img src={userImg} alt="user" />
+                    <img
+                      src={`${PORTAL_IMAGE_URL}${
+                        user.avatar_url ? user.avatar_url : user.avatar
+                      }`}
+                      alt="user"
+                    />
                   </div>
                 </div>
-              )
-            )}
+              );
+            })}
           </div>
         ) : (
           <p className="group-message__no-group">
-            Select a chat to start messaging
+            Select a chat to start messaging.
           </p>
         )}
       </div>
-      <div
-        className={`group-message__messages-bottom ${
-          showGroupMessages && show ? "show" : ""
-        }`}
-      >
-        <svg
-          className="group-message__file"
-          width="11"
-          height="22"
-          viewBox="0 0 11 22"
-          fill="none"
+      <form onSubmit={handleSubmit}>
+        <div
+          className={`group-message__messages-bottom ${
+            showGroupMessages && show ? "show" : ""
+          }`}
         >
-          <path
-            d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
-            fill="#065EA9"
-          />
-        </svg>
-        <div className="group-message__send" ref={sendRef} onClick={handleSend}>
-          <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <svg
+            className="group-message__file"
+            width="11"
+            height="22"
+            viewBox="0 0 11 22"
+            fill="none"
+          >
             <path
-              d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
-              fill="white"
+              d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
+              fill="#065EA9"
             />
           </svg>
+          <button type="submit" className="group-message__send" ref={sendRef}>
+            <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
+              <path
+                d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <input
+            ref={inputRef}
+            onChange={(e) => handleChange(e)}
+            type="text"
+            className="group-message__send-message"
+            placeholder="Type message..."
+          />
         </div>
-        <input
-          ref={inputRef}
-          onChange={(e) => handleChange(e)}
-          type="text"
-          className="group-message__send-message"
-          placeholder="Type message..."
-        />
-      </div>
+      </form>
     </div>
   );
 };

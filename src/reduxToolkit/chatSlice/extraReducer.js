@@ -30,3 +30,10 @@ export const sendMessage = createAsyncThunk("send/message", async (payload) => {
     })
     .then((res) => res.data);
 });
+
+// Leave Group
+export const leaveGroup = createAsyncThunk("leave/group", async (payload) => {
+  return await axios
+    .post(`${GET_CHAT_DATA}/left`, payload)
+    .then((res) => res.data);
+});
