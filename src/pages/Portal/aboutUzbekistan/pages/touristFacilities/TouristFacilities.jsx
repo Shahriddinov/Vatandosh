@@ -31,7 +31,7 @@ const TouristFacilities = () => {
 
   const handleClick = (id) => {
     setActiveCity(id);
-    dispatch(getAllSightseeing({ paginate: 2, city: id }));
+    dispatch(getAllSightseeing({ paginate: 9, city: id }));
   };
 
   const moreData = () => {
@@ -42,7 +42,7 @@ const TouristFacilities = () => {
   };
 
   const countPagination = !allCitySightseeingLoading
-    ? paginationCount(allCitySightseeing?.total, 2)
+    ? paginationCount(allCitySightseeing?.total, 9)
     : 0;
 
   return (
