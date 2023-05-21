@@ -7,6 +7,7 @@ import {
   getAllCityVideo,
   getAllGallery,
   getAllSightseeing,
+  getAllSightseeingPaginate,
   getOneCity3D,
   getOneGallery,
   getSingleAboutUzbMenu,
@@ -65,6 +66,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllAboutUzbMenu.pending, (state) => {
         state.allAboutUzbMenuLoading = true;
+        state.error = null;
       })
       .addCase(getAllAboutUzbMenu.fulfilled, (state, { payload }) => {
         state.allAboutUzbMenuLoading = false;
@@ -77,6 +79,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getSingleAboutUzbMenu.pending, (state) => {
         state.singleAboutUzbMenuLoading = true;
+        state.error = null;
       })
       .addCase(getSingleAboutUzbMenu.fulfilled, (state, { payload }) => {
         state.singleAboutUzbMenuLoading = false;
@@ -89,6 +92,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllCityContent.pending, (state) => {
         state.allCityContentLoading = true;
+        state.error = null;
       })
       .addCase(getAllCityContent.fulfilled, (state, { payload }) => {
         state.allCityContentLoading = false;
@@ -102,6 +106,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllCity.pending, (state) => {
         state.allCityLoading = true;
+        state.error = null;
       })
       .addCase(getAllCity.fulfilled, (state, { payload }) => {
         state.allCityLoading = false;
@@ -110,11 +115,13 @@ const aboutUzbekistanSlice = createSlice({
       .addCase(getAllCity.rejected, (state, { error }) => {
         state.allCityLoading = false;
         state.error = error.message;
+        console.log("getAllCity error");
       });
 
     builder
       .addCase(getSingleCity.pending, (state) => {
         state.singleCityLoading = true;
+        state.error = null;
       })
       .addCase(getSingleCity.fulfilled, (state, { payload }) => {
         state.singleCityLoading = false;
@@ -128,6 +135,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllCityVideo.pending, (state) => {
         state.allCityVideoLoading = true;
+        state.error = null;
       })
       .addCase(getAllCityVideo.fulfilled, (state, { payload }) => {
         state.allCityVideoLoading = false;
@@ -141,6 +149,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getSingleCityVideo.pending, (state) => {
         state.singleCityVideoLoading = true;
+        state.error = null;
       })
       .addCase(getSingleCityVideo.fulfilled, (state, { payload }) => {
         state.singleCityVideoLoading = false;
@@ -150,9 +159,11 @@ const aboutUzbekistanSlice = createSlice({
         state.singleCityVideoLoading = false;
         state.error = error.message;
       });
+
     builder
       .addCase(getAllSightseeing.pending, (state) => {
         state.allCitySightseeingLoading = true;
+        state.error = null;
       })
       .addCase(getAllSightseeing.fulfilled, (state, { payload }) => {
         state.allCitySightseeingLoading = false;
@@ -161,10 +172,12 @@ const aboutUzbekistanSlice = createSlice({
       .addCase(getAllSightseeing.rejected, (state, { error }) => {
         state.allCitySightseeingLoading = false;
         state.error = error.message;
+        console.log("allCitySightseeing error");
       });
     builder
       .addCase(getSingleSightseeing.pending, (state) => {
         state.singleCitySightseeingLoading = true;
+        state.error = null;
       })
       .addCase(getSingleSightseeing.fulfilled, (state, { payload }) => {
         state.singleCitySightseeingLoading = false;
@@ -178,6 +191,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllCity3D.pending, (state) => {
         state.allCity3dLoading = true;
+        state.error = null;
       })
       .addCase(getAllCity3D.fulfilled, (state, { payload }) => {
         state.allCity3dLoading = false;
@@ -191,6 +205,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getOneCity3D.pending, (state) => {
         state.singleCity3dLoading = true;
+        state.error = null;
       })
       .addCase(getOneCity3D.fulfilled, (state, { payload }) => {
         state.singleCity3dLoading = false;
@@ -204,6 +219,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getAllGallery.pending, (state) => {
         state.allGalleryLoading = true;
+        state.error = null;
       })
       .addCase(getAllGallery.fulfilled, (state, { payload }) => {
         state.allGalleryLoading = false;
@@ -217,6 +233,7 @@ const aboutUzbekistanSlice = createSlice({
     builder
       .addCase(getOneGallery.pending, (state) => {
         state.singleGalleryLoading = true;
+        state.error = null;
       })
       .addCase(getOneGallery.fulfilled, (state, { payload }) => {
         state.singleGalleryLoading = false;

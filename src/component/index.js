@@ -17,6 +17,7 @@ import ContactUs from "./ContactUs/ContactUs";
 import FooterBottom from "./footerBottom/FooterBottom";
 import Hero from "./Hero/Hero";
 import LazySpinner from "./lazySpinner/LazySpinner";
+import MyButton from "./MyButton/MyButton";
 
 export {
   Spinner,
@@ -38,4 +39,5 @@ export {
   FooterBottom,
   Hero,
   LazySpinner,
+  MyButton,
 };

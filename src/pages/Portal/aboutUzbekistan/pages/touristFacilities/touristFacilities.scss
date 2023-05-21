@@ -14,7 +14,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background: url("../../../../../assets/images/tourist-facilities/charvak.png");
     background-repeat: no-repeat;
     border-radius: 30px;
     background-size: cover;
@@ -61,6 +60,12 @@
       font-size: 16px;
       line-height: 134%;
       color: #141619;
+    }
+
+    &_btn {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 72px;
     }
   }
 

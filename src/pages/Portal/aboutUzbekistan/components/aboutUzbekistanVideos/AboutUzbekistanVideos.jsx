@@ -5,6 +5,10 @@ import PlayerModal from "../playerModal/PlayerModal";
 import VideoGrid from "../videoGrid/VideoGrid";
 
 import "./aboutUzbekistanVideos.scss";
+import {
+  aboutUzbShowMediaModal,
+  aboutUzbSlideMove,
+} from "../aboutUzbekistanGallery/extra";
 
 const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +17,7 @@ const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
   const [categoryId, setCategoryId] = useState(0);
 
   const moveSlide = (value) => {
-    slideMove({
+    aboutUzbSlideMove({
       mediaData,
       activeVideo,
       setActiveVideo,
@@ -24,7 +28,7 @@ const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
   const handleClick = (videoId) => {
     setActiveVideo(videoId);
     setShowModal(true);
-    showMediaModal({ mediaData, videoId });
+    aboutUzbShowMediaModal({ mediaData, videoId });
   };
 
   return (
@@ -39,7 +43,7 @@ const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
       <VideoGrid
         activeCard={activeCard}
         categoryId={categoryId}
-        data={mediaData[0].data}
+        data={mediaData}
         handleClick={handleClick}
         lan={lan}
       />

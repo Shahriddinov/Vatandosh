@@ -12,12 +12,16 @@ const VideoGrid = ({ activeCard, data, handleClick, lan }) => {
               onClick={() => handleClick(video.video_url)}
               className="videos__play-video"
             ></div>
-            <iframe
+            <img
+              src="https://media.graphassets.com/wA6c5PTCRteMAYZHEPrx"
+              alt="img"
+            />
+            {/* <iframe
               src={`https://www.youtube.com/embed/${video.video_url}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            />
+            /> */}
           </div>
           <div className="videos__video-name">
             <p

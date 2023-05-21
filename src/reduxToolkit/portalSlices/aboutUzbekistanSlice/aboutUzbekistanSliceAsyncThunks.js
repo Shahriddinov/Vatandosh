@@ -97,8 +97,16 @@ export const getSingleCityVideo = createAsyncThunk(
 //<====================================GET_ALL_SIGHTSEEING============================>
 export const getAllSightseeing = createAsyncThunk(
   "get/getAllSightseeing",
-  async () => {
-    return await axios.get(GET_ALL_SIGHTSEEING).then((res) => res.data);
+  async ({ paginate, city }) => {
+    // console.log(paginate, city);
+    return await axios({
+      url: GET_ALL_SIGHTSEEING,
+      method: "GET",
+      params: {
+        paginate,
+        city,
+      },
+    }).then((res) => res.data);
   }
 );
 
