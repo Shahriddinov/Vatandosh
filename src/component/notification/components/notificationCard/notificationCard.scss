@@ -1,0 +1,55 @@
+.notification-card {
+  &__inner {
+    display: flex;
+    gap: 16px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1a1f36;
+  }
+
+  &__img {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+
+  &__img_dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #eb5757;
+    border: 1px solid #eb5757;
+  }
+
+  &__text {
+    width: 100%;
+    max-width: 360px;
+    white-space: normal;
+  }
+
+  &__time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: #eb5757;
+  }
+
+  &__time_date {
+    color: #a5acb8;
+  }
+}

@@ -19,10 +19,10 @@ const City = () => {
     return <p>{error}</p>;
   }
 
-  const videoData = singleCitySightseeing[0]?.city_videos;
-  const galeresData = singleCitySightseeing[0]?.city_galleries;
-  const sightseeingPlaces = singleCitySightseeing[0]?.sightseeing_places;
-  const city_content_infos = singleCitySightseeing[0]?.city_content_infos;
+  const videoData = singleCitySightseeing[1]?.city_videos;
+  const galeresData = singleCitySightseeing[1]?.city_galleries;
+  const sightseeingPlaces = singleCitySightseeing[1]?.sightseeing_places;
+  const city_content_infos = singleCitySightseeing[1]?.city_content_infos;
 
   return (
     <>
@@ -30,13 +30,13 @@ const City = () => {
         <div
           className="city_hero"
           style={{
-            backgroundImage: `url(${PORTAL_IMAGE_URL}${singleCitySightseeing?.image})`,
+            backgroundImage: `url(${PORTAL_IMAGE_URL}${singleCitySightseeing[0]?.image})`,
           }}
         >
-          <h2>{singleCitySightseeing[0]?.name}</h2>
+          <h2>{singleCitySightseeing[1]?.name}</h2>
           <h1>
-            {singleCitySightseeing[0]?.content_title} <br />
-            {singleCitySightseeing[0]?.text}
+            {singleCitySightseeing[0]?.title} <br />
+            {/* {singleCitySightseeing[0]?.content_title} */}
           </h1>
           <div className="city_hero_line" />
         </div>
