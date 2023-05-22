@@ -9,6 +9,8 @@ export const PORTAL_IMAGE_URL =
 export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
 
 // Get requests
+export const GET_ALL_PROJECTS = `${baseUrl}/headcolumns`;
+export const GET_ABOUT_ALL_PROJECTS = `${baseUrl}/aboutcolumns`;
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
 export const GET_PARTNERS_URL = `${baseUrl}/sponsrs`;

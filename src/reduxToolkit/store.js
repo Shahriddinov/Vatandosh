@@ -41,6 +41,7 @@ import mediaFileSlice from "./victorinaImage";
 import quizFinishSlice from "./victorinaQuiz/victorinafinish";
 import quizByIdSlice from "./victorinaQuiz/quizbyid";
 import chatSlice from "./chatSlice";
+import AllProjectSlice from "./AllProjectSlice";
 
 const store = configureStore({
   reducer: {
@@ -69,6 +70,7 @@ const store = configureStore({
     formDataSlice,
     community,
     expertSlice,
+    AllProjectSlice,
     // expertMenu,
     quizSlice,
     pageSlice,

@@ -17,6 +17,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.expertRegisterSlice);
+  console.log(user);
 
   const [uploadImg, setuploadImg] = useState(null);
   const [passport_file, setPassportFile] = useState();
@@ -191,8 +192,10 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   onChange={(e) => setPassportFile(e.target.files[0])}
                 />
                 <p>
-                  {formData?.passport_file?.name
-                    ? formData?.passport_file.name
+                  {passport_file?.name
+                    ? passport_file.name
+                    : user?.passport_file
+                    ? user?.passport_file
                     : t("expert.uploadfile")}
                 </p>
                 <img src={scripka} alt="" />
