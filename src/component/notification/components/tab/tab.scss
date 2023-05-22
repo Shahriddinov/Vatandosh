@@ -1,0 +1,41 @@
+.notification-tab {
+  padding: 18px 16px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__item {
+    position: relative;
+    padding: 8px 22px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #065ea9;
+    background-color: #ffffff;
+    border: 2px solid #eaedf6;
+    border-radius: 16px;
+  }
+
+  &__item_dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #eb5757;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+  }
+
+  .active {
+    background-color: #065ea9;
+    border: 2px solid #065ea9;
+    color: #fff;
+  }
+}

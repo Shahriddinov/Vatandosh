@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./videoGrid.scss";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const VideoGrid = ({ data, handleClick }) => {
   return (
@@ -12,7 +13,7 @@ const VideoGrid = ({ data, handleClick }) => {
               onClick={() => handleClick(video.video)}
               className="videos__play-video"
             ></div>
-            <img src={video.content} alt="img" />
+            <img src={`${PORTAL_IMAGE_URL}${video.content}`} alt="img" />
           </div>
           <div className="videos__video-name">
             <p>{video.title}</p>
