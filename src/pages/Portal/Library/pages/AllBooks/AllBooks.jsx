@@ -76,6 +76,7 @@ const AllBooks = () => {
   }
 
   const totalPagination = paginationCount(libraryData?.total, 12);
+    console.log(totalPagination)
 
   return (
     <>
