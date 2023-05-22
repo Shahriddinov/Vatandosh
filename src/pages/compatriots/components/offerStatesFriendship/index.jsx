@@ -21,14 +21,14 @@ const OfferStatesFriendship = (props) => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
-  const images = JSON.parse(props.images)?.map((el, i) => ({
+  const images = JSON.parse(props?.images)?.map((el, i) => ({
     id: i + 1,
     image: el,
   }));
 
   const [activeImage, setActiveImage] = useState({
-    id: images[0].id,
-    image: images[0].image,
+    id: images ? images[0]?.id : 1,
+    image: images ? images[0]?.image : null,
   });
 
   return (
@@ -40,7 +40,7 @@ const OfferStatesFriendship = (props) => {
               <div className="offer-state-friendship__box_img">
                 <img
                   className="offer-state-friendship__img"
-                  src={`${baseServerUrl}/${activeImage.image}`}
+                  src={`${baseServerUrl}/${activeImage?.image}`}
                   alt={props.name}
                 />
               </div>
