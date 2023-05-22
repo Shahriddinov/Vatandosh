@@ -7,6 +7,7 @@ import "./VictorinaAbout.scss";
 import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
 import { useEffect } from "react";
 import { imageUrl } from "../../../../../services/api/utils";
+import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
 
 function VictorinaAbout() {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function VictorinaAbout() {
             />
             <ShareFriends />
           </div>
-          <CouncilStatics />
+          <VictorinaStatics pageData={pageData} />
         </div>
       </div>
     </div>

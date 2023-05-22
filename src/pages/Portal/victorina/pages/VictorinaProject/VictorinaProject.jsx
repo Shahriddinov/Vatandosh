@@ -20,6 +20,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid/quizid";
 import WinnerCardVictorina from "./VictorinaWinner/WinnerCard";
 import { imageUrl } from "../../../../../services/api/utils";
+import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
 
 export default function VictorinaProject() {
   const [projectData, setProjectData] = useState(null);
@@ -32,6 +33,7 @@ export default function VictorinaProject() {
   const quizData = useSelector((state) =>
     state.quizSlice.quizData.quizzes?.find((evt) => evt.id === Number(id))
   );
+  const pageData = useSelector((state) => state.pageSlice.pageData);
 
   const winnerData = useSelector(
     (state) => state.quizByIdSlice.quizByIdData.participants
@@ -131,9 +133,8 @@ export default function VictorinaProject() {
   useEffect(() => {
     dispatch(getQuizz());
     dispatch(getByIdQuizz({ id }));
+    dispatch(getQuizPage());
   }, []);
-
-  console.log(quizData);
 
   return (
     <>
@@ -208,7 +209,7 @@ export default function VictorinaProject() {
                 />
               </div>
             </div>
-            <VictorinaStatics />
+            <VictorinaStatics pageData={pageData} />
           </div>
           <>
             {pathname.includes("finished-projects") ? (
