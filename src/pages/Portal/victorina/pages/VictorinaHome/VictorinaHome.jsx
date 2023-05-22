@@ -33,7 +33,7 @@ function VictorinaHome() {
       <VictorinaCouncil pageData={pageData} />
       <Victorina quizData={quizData} />
       <ListWinners quizDataWinner={quizDataWinner} />
-      <VictorinaNews expertNews={communityNews} />
+      <VictorinaNews communityNews={communityNews} />
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 function Expert({ expertData, loading }) {
   const { t } = useTranslation();
+  console.log(expertData);
 
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
   const [isHiddenRightBtn, setisHiddenRightBtn] = useState(false);
@@ -32,14 +33,12 @@ function Expert({ expertData, loading }) {
         <div className="expert-list">
           <button
             className="listwinners-list-leftbtn slider_controls__left"
-            style={isHiddenLeftBtn ? { display: "none" } : null}
-          >
+            style={isHiddenLeftBtn ? { display: "none" } : null}>
             <MdKeyboardArrowLeft />
           </button>
           <button
             className="listwinners-list-rightbtn slider_controls__right"
-            style={isHiddenRightBtn ? { display: "none" } : null}
-          >
+            style={isHiddenRightBtn ? { display: "none" } : null}>
             <MdKeyboardArrowRight />
           </button>
           <Swiper
@@ -69,26 +68,29 @@ function Expert({ expertData, loading }) {
                 spaceBetween: 30,
               },
             }}
-            className="listwinners-list"
-          >
+            className="listwinners-list">
             {expertData?.data?.map((evt) => (
               <SwiperSlide key={evt.id}>
                 <div className="expert-list-item">
                   <div className="expert-list-item-desc">
                     <img
-                      src={`${PORTAL_IMAGE_URL}/${evt.user_id.avatar}`}
                       alt="error"
+                      src={`${PORTAL_IMAGE_URL}${
+                        evt?.user_profile?.avatar_url
+                          ? evt?.user_profile?.avatar_url
+                          : evt?.user?.avatar
+                      }`}
                     />
                     <p>
-                      {evt?.user_profile_id?.international_location_id?.name}
+                      {evt?.user_profile?.international_location_id?.name}
+                      {evt?.user_profile?.international_address_id?.name}
                     </p>
-                    <h3>{evt?.user_id?.name}</h3>
-                    <h4>{evt?.user_profile_id?.job_position}</h4>
+                    <h3>{evt?.user_profile?.second_name}</h3>
+                    <h4>{evt?.user_profile?.job_position}</h4>
                   </div>
                   <Link
                     className="employe-link"
-                    to={`/portal-category/expert/profile/${evt.id}`}
-                  >
+                    to={`/portal-category/expert/profile/${evt.id}`}>
                     <span>{t("expert.detail")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
                   </Link>
