@@ -1,14 +1,126 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 import CabinetHeader from "./components/cabinetHeader/CabinetHeader";
 import CabinetLeftMenu from "./components/cabinetLeftMenu/CabinetLeftMenu";
-
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import "./cabinetLayout.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { btnHandler } from "../../../reduxToolkit/orgPageSlice";
 
 const CabinetLayout = () => {
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [imgUpload, setImgUpload] = useState([]);
+  const controls = useAnimation();
+  const btnOrgPageToggle = useSelector((state) => state.orgPageSlice.btnToggle);
+  const dispatch = useDispatch();
+  const toggleSwitchHandler = () => {
+    dispatch(btnHandler());
+  };
+
+  const titleHandler = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const textHandler = (e) => {
+    setText(e.target.value);
+  };
+  const uploadHandler = (e) => {
+    setImgUpload(e.target.files[0]);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (title === "" || text === "" || imgUpload.length === 0) {
+      controls.start({
+        x: 0,
+        transition: {
+          type: "spring",
+          velocity: 600,
+          stiffness: 5000,
+          damping: 15,
+        },
+      });
+      return;
+    }
+    dispatch(btnHandler());
+    setTitle("");
+    setText("");
+    setImgUpload([]);
+    return;
+  };
+
+  useEffect(() => {}, [title]);
+  useEffect(() => {}, [text]);
+
   return (
     <div className="cabinet-layout">
+      {btnOrgPageToggle ? (
+        <div
+          className="overlay-organizations"
+          onClick={toggleSwitchHandler}
+        ></div>
+      ) : null}
+      <AnimatePresence>
+        {btnOrgPageToggle && (
+          <div className="modal-orgPage">
+            <motion.div
+              initial={{ x: -2000 }}
+              animate={{ x: 0 }}
+              exit={{ x: -2000 }}
+              transition={{ type: "spring", stiffness: 250, damping: 18 }}
+              className="modal-orgPage-container"
+            >
+              <h1>Tadbir yuborish</h1>
+              <form
+                onSubmit={submitHandler}
+                className="modal-orgPage-container-form"
+              >
+                <label
+                  htmlFor="title"
+                  className="modal-orgPage-container-form-title"
+                >
+                  <span>Title</span> <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Kiriting"
+                  className="modal-orgPage-container-form-titleInput"
+                  onChange={titleHandler}
+                />
+                <label
+                  className="modal-orgPage-container-form-comment"
+                  htmlFor="Izoh"
+                >
+                  <span>Izoh</span> <span>*</span>
+                </label>
+                <textarea
+                  onChange={textHandler}
+                  className="modal-orgPage-container-form-commentTextArea"
+                  placeholder="Izoh"
+                ></textarea>
+                <div className="modal-orgPage-container-form-fileUploadContainer">
+                  <input type="file" id="file" onChange={uploadHandler} />
+                  <label htmlFor="file">Taklifingiz uchun rasm</label>
+                  {imgUpload.length !== 0 && (
+                    <img src={URL.createObjectURL(imgUpload)} alt="uploadImg" />
+                  )}
+                </div>
+                <div className="modal-orgPage-container-form-submitContainer">
+                  <motion.button
+                    animate={controls}
+                    whileTap={{ scale: 0.9 }}
+                    type="submit"
+                  >
+                    Yuborish
+                  </motion.button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       <div className="cabinet-layout__left">
         <CabinetLeftMenu />
       </div>

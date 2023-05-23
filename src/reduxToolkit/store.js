@@ -41,6 +41,7 @@ import mediaFileSlice from "./victorinaImage";
 import quizFinishSlice from "./victorinaQuiz/victorinafinish";
 import quizByIdSlice from "./victorinaQuiz/quizbyid";
 import chatSlice from "./chatSlice";
+import orgPageSlice from "./orgPageSlice/index";
 
 const store = configureStore({
   reducer: {
@@ -85,6 +86,7 @@ const store = configureStore({
     quizByIdSlice,
     quizFinishSlice,
     chatSlice,
+    orgPageSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

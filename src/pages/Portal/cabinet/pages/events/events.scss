@@ -1,0 +1,105 @@
+@import "../../../../../assets/style/global.scss";
+
+.container-events {
+  &-inner {
+    padding: 50px;
+    max-width: 1150px;
+
+    & > h1 {
+      @include fontStyles(700, 20px, 24px, $colorTitle);
+    }
+
+    &-box {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 30px;
+      &-each {
+        max-width: 330px;
+        height: 474px;
+        border: 1px solid $ButtonBackground;
+        box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+        border-radius: 15px;
+        & > img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+        &_bottomBox {
+          padding: 15px;
+          &-dateBox {
+            display: flex;
+            align-items: center;
+            gap: 9.33px;
+            & > img {
+              width: 13.33px;
+              height: 13.33px;
+            }
+            & > span {
+              @include fontStyles(400, 14px, 20px, $colorGrey);
+            }
+          }
+
+          & > h1 {
+            margin-top: 10px;
+            @include fontStyles(700, 16px, 19px, $colorTitle);
+          }
+
+          & > p {
+            margin-top: 10px;
+            @include fontStyles(400, 14px, 17px, $colorGrey);
+            height: 51px;
+            overflow: hidden;
+          }
+          &-timerBox {
+            margin-top: 19px;
+            display: flex;
+            justify-content: space-around;
+            // gap: 51.95px;
+            &-box {
+              display: flex;
+              flex-direction: column;
+
+              & > span {
+                text-align: center;
+                @include fontStyles(600, 13.2px, 16px, #5c5c5c);
+              }
+            }
+            &-vl {
+              width: 1.62px;
+              height: 32px;
+              background-color: #f0f2f9;
+            }
+          }
+          &-timerBox2 {
+            & > span {
+            }
+          }
+
+          &-btnBox {
+            margin-top: 14px;
+            display: grid;
+            column-gap: 15px;
+            grid-template-columns: 1fr 1fr;
+
+            & > button {
+              padding: 12px 26.5px;
+              @include fontStyles(500, 14px, 24px, #5d6b8a);
+              height: 48px;
+              border-radius: 16px;
+              border: none;
+            }
+            & > button:hover {
+              cursor: pointer;
+            }
+
+            & > button:last-child {
+              @include fontStyles(500, 14px, 24px, #ffffff);
+              background-color: #065ea9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
