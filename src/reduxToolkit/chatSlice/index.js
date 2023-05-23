@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getAllChats, getMessages, sendMessage } from "./extraReducer";
+import {
+  getAllChats,
+  getMessages,
+  leaveGroup,
+  sendMessage,
+} from "./extraReducer";
 
 const initialState = {
   allChatLoading: true,
@@ -12,6 +17,9 @@ const initialState = {
   sendLoading: false,
   sendMessage: null,
   sendMessageStatus: null,
+
+  leaveLoading: false,
+  leaveData: null,
 
   errors: null,
 };
@@ -43,7 +51,6 @@ const chatSlice = createSlice({
       .addCase(getMessages.fulfilled, (state, action) => {
         state.messagesLoading = false;
         state.messagesData = action.payload;
-        console.log(action.payload);
       })
       .addCase(getMessages.rejected, (state, action) => {
         state.messagesLoading = false;
@@ -60,11 +67,25 @@ const chatSlice = createSlice({
         state.messagesLoading = false;
         state.sendMessage = action.payload;
         state.sendMessageStatus = "success";
-        console.log(action.payload);
       })
       .addCase(sendMessage.rejected, (state, action) => {
         state.messagesLoading = false;
         state.sendMessageStatus = "error";
+        state.errors = action.error.message;
+      });
+
+    // Leave Group
+    build
+      .addCase(leaveGroup.pending, (state) => {
+        state.leaveLoading = true;
+      })
+      .addCase(leaveGroup.fulfilled, (state, action) => {
+        state.leaveLoading = false;
+        state.leaveData = action.payload;
+        console.log(action.payload);
+      })
+      .addCase(leaveGroup.rejected, (state, action) => {
+        state.leaveLoading = false;
         state.errors = action.error.message;
       });
   },
