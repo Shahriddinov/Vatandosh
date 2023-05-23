@@ -21,6 +21,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(data);
     const res = await dispatch(postExpertScientific(data));
     if (res.payload) setactiveBarItem(4);
   };
