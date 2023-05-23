@@ -9,6 +9,7 @@
     flex-wrap: wrap-reverse;
 
     &-text {
+      width: 80%;
       @include fontStyles(600, 32px, 39px, $colorBlack);
     }
 

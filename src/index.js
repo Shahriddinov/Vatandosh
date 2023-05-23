@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-
 import store from "./reduxToolkit/store";
-
 import Routes from "./routes";
 import i18 from "./services/i18n/i18n";
 import GrayContextProvider from "./context/GrayContext";

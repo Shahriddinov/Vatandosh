@@ -1,101 +1,105 @@
 import React from "react";
 import "./touristFacilities.scss";
 
-import CardImg1 from "../../../../../assets/images/tourist-facilities/bazaar.png";
-import CardImg2 from "../../../../../assets/images/tourist-facilities/street.png";
-import CardImg3 from "../../../../../assets/images/tourist-facilities/palace.png";
 import FacilitiesCard from "../../components/facilitiesCard/FacilitiesCard";
+import { useTouristFacilities } from "./hooks/useTouristFacilities";
+import { MyButton, Spinner } from "../../../../../component";
+import { useState } from "react";
 import View3D from "../../components/view3D/View3D";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { getAllSightseeing } from "../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
+import { paginationCount } from "../../../../../helpers/extraFunction";
 
 const TouristFacilities = () => {
-  const cardData = [
-    {
-      id: 1,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 2,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 3,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 4,
-      image: CardImg2,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 5,
-      image: CardImg3,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-    {
-      id: 6,
-      image: CardImg1,
-      text: "Дом-музей Джахан-Отин Увайси",
-    },
-  ];
+  const {
+    error,
+    allCitySightseeingLoading,
+    allCitySightseeing,
+    activeMenu,
+    allCityLoading,
+    allCity,
+    dispatch,
+  } = useTouristFacilities();
+  const [activeCity, setActiveCity] = useState(1);
+  const [activePage, setActivePage] = useState(1);
+
+  if (allCityLoading) {
+    return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
+  const handleClick = (id) => {
+    setActiveCity(id);
+    dispatch(getAllSightseeing({ paginate: 9, city: id }));
+  };
+
+  const moreData = () => {
+    setActivePage((prev) => prev + 1);
+    dispatch(
+      getAllSightseeing({ paginate: (activePage + 1) * 9, city: activeCity })
+    );
+  };
+
+  const countPagination = !allCitySightseeingLoading
+    ? paginationCount(allCitySightseeing?.total, 9)
+    : 0;
 
   return (
     <>
       <div className="facilities">
         <div className="container">
-          <div className="facilities_hero">
-            <h1>Туристик объектлар</h1>
+          <div
+            className="facilities_hero"
+            style={{
+              backgroundImage: `url(${PORTAL_IMAGE_URL}${
+                JSON.parse(activeMenu.image)[0]
+              })`,
+            }}
+          >
+            <h1>{activeMenu?.name}</h1>
           </div>
-          <div className="facilities_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
+          {activeMenu?.page_menu_contents[0] ? (
+            <div className="facilities_intro">
+              <h1>{activeMenu?.page_menu_contents[0]?.title}</h1>
+              <p>{activeMenu?.page_menu_contents[0]?.text}</p>
+            </div>
+          ) : null}
           <div className="facilities_grid">
             <h1>Туристические объекты</h1>
             <ul>
-              <li className="active_li">Toshkent</li>
-              <li>Samarqand</li>
-              <li>Buxoro</li>
-              <li>Namangan</li>
-              <li>Xorazm</li>
-            </ul>
-            <div className="facilities_grid_cards">
-              {cardData.map((card) => (
-                <FacilitiesCard {...card} key={card.id} />
+              {allCity?.map((item) => (
+                <li
+                  className={`${item.id === activeCity ? "active_li" : ""}`}
+                  onClick={() => handleClick(item.id)}
+                >
+                  {item.name}
+                </li>
               ))}
+            </ul>
+            {allCitySightseeing?.data.length ? (
+              <div className="facilities_grid_cards">
+                {allCitySightseeing?.data?.map((card) => (
+                  <FacilitiesCard {...card} key={card.id} />
+                ))}
+              </div>
+            ) : (
+              <p>Hozirda bu shaharda turistik ob'ektlar mvjud emas </p>
+            )}
+            {allCitySightseeingLoading ? <Spinner /> : null}
+          </div>
+          {countPagination > 1 && activePage < countPagination ? (
+            <div className="facilities_intro_btn">
+              <MyButton onClick={moreData}>Ko'proq ko'rish</MyButton>
             </div>
-          </div>
+          ) : null}
           <View3D />
-          <div className="facilities_intro">
-            <h1>Откройте для себя новый Ташкент!</h1>
-            <p>
-              Сиз ва Сизнинг ходимларингизга узоқ вақт орзу қилган шаҳар ёки
-              давлатларингиз бўйлаб энг арзон нарҳларда мароқли дам олиш ҳамда
-              қулай бўлган вақтда айнан Сизлар учун ёқимли саёҳат турларини
-              таклиф этади. Биз, касаба уюшмаларига ишонган ва унинг
-              ҳаракатларини қўллаб-қувватлаган 6 000 000 нафардан кўпроқ
-              меҳнаткашлар аудиториясига эгамиз! Буюк инглиз шоири Марк Твен
-              вақт ўтгани сари ҳаётда биз икки нарсани афсус билан ёд этамиз деб
-              ёзади, булар: ҳаётимизни жуда кам севганимиз ва жуда кам саёҳат
-              қилганмиздир. “Kasaba sayr” туристик корхонаси билан Сиз бундай
-              афсусларга батамом барҳам берасиз, зеро бизнинг шиоримиз: «Саёҳат
-              қилинг, севинг, ҳаётнинг ҳар лаҳзасидан роҳатланинг!»
-            </p>
-          </div>
+          {activeMenu?.page_menu_contents[1] ? (
+            <div className="facilities_intro">
+              <h1>{activeMenu?.page_menu_contents[1]?.title}</h1>
+              <p>{activeMenu?.page_menu_contents[1]?.text}</p>
+            </div>
+          ) : null}
         </div>
       </div>
     </>

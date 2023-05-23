@@ -8,6 +8,7 @@ import RegisterFooter from "../../pages/Registration/pages/Layout/Footer/Registe
 import { useProjectsData } from "./hooks/useProjectsData";
 import { useSelector } from "react-redux";
 import Test from "../test/Test";
+import Notification from "../notification/Notification";
 
 const Layout = ({ children }) => {
   const { error } = useProjectsData();
@@ -48,6 +49,7 @@ const Layout = ({ children }) => {
         {registerHeader === "portal" && <HeaderPortal />}
         {registerHeader.includes("registration") && <RegisterHeader />}
         <div className="page-content">{children}</div>
+        <Notification />
         <FooterComponent />
       </div>
     </>

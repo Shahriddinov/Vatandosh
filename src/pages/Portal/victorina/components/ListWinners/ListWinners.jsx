@@ -18,8 +18,6 @@ export default function ListWinners({ quizDataWinner }) {
     setisHiddenRightBtn(swiper.isEnd);
   };
 
-  console.log(quizDataWinner);
-
   return (
     <div className="listwinners">
       <div className="container">
@@ -61,8 +59,8 @@ export default function ListWinners({ quizDataWinner }) {
             },
           }}
           className="listwinners-list">
-          {quizDataWinner?.map((el) => (
-            <SwiperSlide key={el}>
+          {quizDataWinner?.map((el, index) => (
+            <SwiperSlide key={index}>
               <WinnerCard el={el} />
             </SwiperSlide>
           ))}

@@ -66,9 +66,18 @@ export const getSingleCity = createAsyncThunk(
 );
 
 //<====================================GET_ALL_GALLERY============================>
-export const getAllGallery = createAsyncThunk("get/getAllGallery", async () => {
-  return await axios.get(GET_ALL_GALLERY).then((res) => res.data);
-});
+export const getAllGallery = createAsyncThunk(
+  "get/getAllGallery",
+  async ({ paginate }) => {
+    return await axios({
+      url: GET_ALL_GALLERY,
+      method: "GET",
+      params: {
+        paginate,
+      },
+    }).then((res) => res.data);
+  }
+);
 
 //<====================================GET_ONE_GALLERY============================>
 export const getOneGallery = createAsyncThunk(
@@ -81,8 +90,14 @@ export const getOneGallery = createAsyncThunk(
 //<====================================GET_ALL_CITY_VIDEO============================>
 export const getAllCityVideo = createAsyncThunk(
   "get/getAllCityVideo",
-  async () => {
-    return await axios.get(GET_ALL_CITY_VIDEO).then((res) => res.data);
+  async ({ paginate }) => {
+    return await axios({
+      url: GET_ALL_CITY_VIDEO,
+      method: "GET",
+      params: {
+        paginate,
+      },
+    }).then((res) => res.data);
   }
 );
 
@@ -97,8 +112,16 @@ export const getSingleCityVideo = createAsyncThunk(
 //<====================================GET_ALL_SIGHTSEEING============================>
 export const getAllSightseeing = createAsyncThunk(
   "get/getAllSightseeing",
-  async () => {
-    return await axios.get(GET_ALL_SIGHTSEEING).then((res) => res.data);
+  async ({ paginate, city }) => {
+    // console.log(paginate, city);
+    return await axios({
+      url: GET_ALL_SIGHTSEEING,
+      method: "GET",
+      params: {
+        paginate,
+        city,
+      },
+    }).then((res) => res.data);
   }
 );
 

@@ -148,7 +148,6 @@ const CommunityRegister5 = ({ activeBarItem, handleClick }) => {
                 defaultCountry="UZ"
                 onChange={(e) => {
                   handleChangeApplication5({ key: "phone", value: e });
-                  console.log(e);
                 }}
                 required
               />

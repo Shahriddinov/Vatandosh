@@ -24,7 +24,7 @@ function MoreVictorina() {
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
           {quizData?.map((victorina) => (
-            <div className="victorina-list">
+            <div key={victorina?.id} className="victorina-list">
               <img
                 src={`${imageUrl}/${victorina?.image}`}
                 alt=""

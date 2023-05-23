@@ -14,7 +14,8 @@ export const useProjectsData = () => {
     if (
       pathStatus !== "portal" &&
       pathStatus !== "registration" &&
-      pathStatus !== "expert"
+      pathStatus !== "expert" &&
+      pathStatus !== "portal-category"
     ) {
       dispatch(getColumnMenu());
     }

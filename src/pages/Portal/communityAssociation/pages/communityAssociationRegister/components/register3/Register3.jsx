@@ -33,7 +33,6 @@ const CommunityRegister3 = ({ activeBarItem, handleClick }) => {
   const dispatch = useDispatch();
 
   const handleChangeApplication3 = ({ key, value }) => {
-    console.log(value);
     if (key === "director_img") {
       setData((prev) => ({
         ...prev,

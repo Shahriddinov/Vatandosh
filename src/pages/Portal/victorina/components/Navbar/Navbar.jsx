@@ -19,6 +19,10 @@ import i18next from "i18next";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
 import { useTranslation } from "react-i18next";
+import { GoSignOut } from "react-icons/go";
+import { BsPersonFill } from "react-icons/bs";
+import { openNotification } from "../../../../../reduxToolkit/notificationSlice/notificationSlice";
+import { Tooltip } from "@mui/material";
 
 function Navbar({ navbarUrl }) {
   const { t } = useTranslation();
@@ -28,11 +32,21 @@ function Navbar({ navbarUrl }) {
   const { id } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
+  const [activeKabinet, setActiveKabinet] = useState(false);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
+  };
+
+  const logOut = () => {
+    localStorage.clear();
+    window.location = "/portal";
+  };
+
+  const handleClick = (event) => {
+    dispatch(openNotification(event.currentTarget));
   };
   return (
     <div className="navbarvictorina">
@@ -74,7 +88,8 @@ function Navbar({ navbarUrl }) {
           <div className="navbarvictorina_language">
             <div
               className="navbarvictorina_language-wrapper"
-              onClick={() => setactiveLang((el) => !el)}>
+              onClick={() => setactiveLang((el) => !el)}
+            >
               <CiGlobe className="navbarvictorina_language-icon" />
               <span style={{ color: "white" }}>
                 {languageList.find((lan) => lan.type === language)?.label}
@@ -83,29 +98,59 @@ function Navbar({ navbarUrl }) {
             </div>
             <div
               className="navbarvictorina_language-bar"
-              style={activeLang ? { display: "flex" } : null}>
+              style={activeLang ? { display: "flex" } : null}
+            >
               {languageList.map((el, index) => (
                 <p
                   key={index}
                   onClick={() => {
                     handleChangeLng(el.type);
-                  }}>
+                  }}
+                >
                   {el.label}
                 </p>
               ))}
             </div>
           </div>
 
-          <button className="navbarpage--notification">
-            <NotificationIcon />
+          <button className="navbarpage--notification" onClick={handleClick}>
+            <Tooltip title="Account settings">
+              <NotificationIcon />
+            </Tooltip>
           </button>
           <button className="navbarpage--notification">
             <MessengerIcon />
           </button>
-          <Link to="/portal" className="navbar--button">
-            <ExitIcon />
-            Kirish
-          </Link>
+          <div
+            className="expert-header-cabinet"
+            onClick={() => setActiveKabinet((prev) => !prev)}
+          >
+            <div className="navbar--button">
+              <ExitIcon />
+              Кабинет
+            </div>
+            {activeKabinet ? (
+              <div
+                style={{ marginLeft: "-20px" }}
+                className="expert-header-cabinet-bar"
+              >
+                <Link
+                  to={"/portal-category/cabinet"}
+                  className="expert-header-cabinet-bar-cabinet"
+                >
+                  <BsPersonFill />
+                  <span>Кабинет</span>
+                </Link>
+                <div
+                  className="expert-header-cabinet-bar-logout"
+                  onClick={logOut}
+                >
+                  <GoSignOut />
+                  <span>Выйти</span>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

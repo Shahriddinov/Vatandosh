@@ -1,24 +1,24 @@
 import { useTranslation } from "react-i18next";
-import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
-import img from "../../../../../assets/images/portal/4.png";
 import "./VictorinaWinner.scss";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { imageUrl } from "../../../../../services/api/utils";
 import { MdArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
+import { useEffect } from "react";
+import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
 
 export default function VictorinaWinner() {
   const { t } = useTranslation();
   const { id } = useParams();
-
+  const dispatch = useDispatch()
   const quizData = useSelector((state) =>
-    state.quizSlice.quizData.participants.find((evt) => evt?.id === Number(id))
+    state.quizSlice.quizData.participants?.find((evt) => evt?.id === Number(id))
   );
-
-  console.log(quizData);
+  const pageData = useSelector((state) => state.pageSlice.pageData);
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/victorina" },
@@ -33,14 +33,17 @@ export default function VictorinaWinner() {
     { title: t("victorina.winner"), url: "" },
   ];
 
+  useEffect(() => {
+    dispatch(getQuizPage());
+  }, []);
   return (
     <main className="victorinawinner">
       <div className="container">
         <div className="experttitle-title">
-          <h1 className="experttitle-title-text">{quizData.quiz.title}</h1>
+          <h1 className="experttitle-title-text">{quizData?.quiz?.title}</h1>
           <div className="experttitle-title-url">
             {url?.map((el, index) => (
-              <Link key={index} to={el.url}>
+              <Link key={el.id} to={el.url}>
                 {el.title}
                 <MdArrowRight />
               </Link>
@@ -49,7 +52,11 @@ export default function VictorinaWinner() {
         </div>
         <div className="victorinawinner-wrapper">
           <div className="victorinawinner-main">
-            <img src={img} alt="error" />
+            <img
+              className="victorinawinner-winner-img"
+              src={`${imageUrl}/${quizData?.quiz?.image}`}
+              alt="error"
+            />
             <div className="victorinawinner-main-profile">
               <img src={`${imageUrl}/${quizData?.user?.avatar}`} alt="error" />
               <div className="victorinawinner-main-profile-desc">
@@ -61,7 +68,7 @@ export default function VictorinaWinner() {
             <p>{quizData.description}</p>
             <ShareFriends />
           </div>
-          <CouncilStatics />
+          <VictorinaStatics pageData={pageData} />
         </div>
       </div>
     </main>

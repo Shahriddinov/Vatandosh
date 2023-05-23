@@ -15,7 +15,7 @@ function Victorina({ quizData }) {
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
-            <div key={index} className="victorina-list">
+            <div key={victorina.id} className="victorina-list">
               <img
                 src={`${imageUrl}/${victorina?.image}`}
                 alt=""

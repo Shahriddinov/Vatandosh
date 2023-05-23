@@ -17,7 +17,8 @@ import ContactUs from "./ContactUs/ContactUs";
 import FooterBottom from "./footerBottom/FooterBottom";
 import Hero from "./Hero/Hero";
 import LazySpinner from "./lazySpinner/LazySpinner";
-
+import MyButton from "./MyButton/MyButton";
+import Notification from "./notification/Notification";
 export {
   Spinner,
   Layout,
@@ -38,4 +39,6 @@ export {
   FooterBottom,
   Hero,
   LazySpinner,
+  MyButton,
+  Notification,
 };

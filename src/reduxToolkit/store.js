@@ -41,7 +41,13 @@ import mediaFileSlice from "./victorinaImage";
 import quizFinishSlice from "./victorinaQuiz/victorinafinish";
 import quizByIdSlice from "./victorinaQuiz/quizbyid";
 import chatSlice from "./chatSlice";
+<<<<<<< HEAD
 import orgPageSlice from "./orgPageSlice/index";
+=======
+import AllProjectSlice from "./AllProjectSlice";
+import notification from "./notificationSlice/notificationSlice";
+import webinarBodySlice from './webinar'
+>>>>>>> ee58b7d497dcd35f89e82dd3320d41091418c6b3
 
 const store = configureStore({
   reducer: {
@@ -70,6 +76,7 @@ const store = configureStore({
     formDataSlice,
     community,
     expertSlice,
+    AllProjectSlice,
     // expertMenu,
     quizSlice,
     pageSlice,
@@ -86,7 +93,12 @@ const store = configureStore({
     quizByIdSlice,
     quizFinishSlice,
     chatSlice,
+<<<<<<< HEAD
     orgPageSlice,
+=======
+    notification,
+    webinarBodySlice
+>>>>>>> ee58b7d497dcd35f89e82dd3320d41091418c6b3
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

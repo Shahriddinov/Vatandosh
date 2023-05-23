@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 
-import { showMediaModal, slideMove } from "../../../../Mediateka/extraFunc";
 import PlayerModal from "../playerModal/PlayerModal";
 import VideoGrid from "../videoGrid/VideoGrid";
 
 import "./aboutUzbekistanVideos.scss";
+import {
+  aboutUzbShowMediaModal,
+  aboutUzbSlideMove,
+} from "../aboutUzbekistanGallery/extra";
+import { MyButton } from "../../../../../component";
 
-const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
+const AboutUzbekistanVideos = ({
+  mediaData,
+  countPagination,
+  activePage,
+  moreData,
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
-  const [activeCard, setActiveCard] = useState("videos");
-  const [categoryId, setCategoryId] = useState(0);
 
   const moveSlide = (value) => {
-    slideMove({
+    aboutUzbSlideMove({
       mediaData,
       activeVideo,
       setActiveVideo,
@@ -22,13 +29,14 @@ const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
   };
 
   const handleClick = (videoId) => {
-    setActiveVideo(videoId);
+    const video = JSON.parse(videoId)[0].download_link;
+    setActiveVideo(video);
     setShowModal(true);
-    showMediaModal({ mediaData, videoId });
+    aboutUzbShowMediaModal({ mediaData, video });
   };
 
   return (
-    <>
+    <div className="about-uzbekistan_videos">
       <PlayerModal
         showModal={showModal}
         setShowModal={setShowModal}
@@ -36,20 +44,17 @@ const AboutUzbekistanVideos = ({ mediaData, lan, hasMoreBtn }) => {
         activeVideo={activeVideo}
       />
 
-      <VideoGrid
-        activeCard={activeCard}
-        categoryId={categoryId}
-        data={mediaData[0].data}
-        handleClick={handleClick}
-        lan={lan}
-      />
+      <VideoGrid data={mediaData} handleClick={handleClick} />
 
-      {hasMoreBtn ? (
-        <div className="about-uzbekistan-more-btn">
-          <button>Ko‘proq ko‘rish</button>
+      {countPagination > 1 && activePage < countPagination ? (
+        <div
+          className="facilities_intro_btn"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <MyButton onClick={moreData}>Ko'proq ko'rish</MyButton>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
 

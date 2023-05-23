@@ -5,6 +5,7 @@ import ImageModal from "../../../../Mediateka/components/imageModal/ImageModal";
 
 import "./aboutUzbekistanGallery.scss";
 import { aboutUzbShowMediaModal, aboutUzbSlideMove } from "./extra";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const images = [
   { id: 1, size: "small" },
@@ -47,8 +48,8 @@ const AboutUzbekistanGallery = ({ allGallery }) => {
             onClick={() => handleImageModal({ id: image.id, img: image.image })}
             key={image.id}
             className={`about-uzbekistan-gallery__${image.size}`}
-            src={image.image}
-            alt={image.title}
+            src={`${PORTAL_IMAGE_URL}${image?.image}`}
+            alt={image?.title}
           />
         ))}
       </div>

@@ -13,7 +13,7 @@ const navbarItems = [
   {
     id: 3,
     name: "3D SAYOHAT",
-    url: "/portal-category/about-uzbekistan/virtual-tour",
+    url: "https://uzbekistan360.uz/",
   },
   {
     id: 4,
@@ -26,16 +26,26 @@ const navbarItems = [
     url: "/portal-category/about-uzbekistan/contact",
   },
 ];
+
 const CreateMenu = createSelector(
   (state) => state.aboutUzbekistan.allAboutUzbMenu,
   (menu) => {
-    return menu.map((el, i) => {
-      return {
-        ...el,
-        url: navbarItems[i].url,
-        id: navbarItems[i].id,
-      };
+    const data = [];
+    menu.forEach((el, index) => {
+      for (let i = 0; i < menu.length; i++) {
+        if (
+          menu[i].page_menu_contents[0].about_uzbekistan_page_menu_id ===
+          navbarItems[index].id
+        ) {
+          data.push({
+            ...menu[i],
+            url: navbarItems[index].url,
+            id: navbarItems[index].id,
+          });
+        }
+      }
     });
+    return data;
   }
 );
 
@@ -48,7 +58,7 @@ export const useLayoutFetching = () => {
 
   useEffect(() => {
     dispatch(getAllAboutUzbMenu());
-  }, []);
+  }, [dispatch]);
 
   return { dispatch, menu, menuLoading };
 };

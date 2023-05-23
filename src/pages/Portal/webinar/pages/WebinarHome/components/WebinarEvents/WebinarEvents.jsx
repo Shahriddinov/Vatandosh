@@ -45,6 +45,7 @@ function WebinarEvents() {
   } else if (meetingError) {
     return <p>Error</p>;
   }
+  console.log(meetingsData)
   return (
     <div className="webinar">
       <div className="container">
@@ -55,16 +56,14 @@ function WebinarEvents() {
               onClick={() => setEventType("webinar")}
               className={
                 eventType == "webinar" ? "webinar-top" : "webinar-tops"
-              }
-            >
+              }>
               {t("webinar.webinars")}
             </button>
             <button
               onClick={() => setEventType("conference")}
               className={
                 eventType == "conference" ? "webinar-top" : "webinar-tops"
-              }
-            >
+              }>
               {t("webinar.conferences")}
             </button>
           </div>
@@ -79,21 +78,19 @@ function WebinarEvents() {
               />
               <span>
                 <img src={CalendarIcon} />
-                <p>{webinar.start_date}</p>
+                <p>{webinar.start_date.split(" ")[0]}</p>
               </span>
               <h5 className="webinar-names">{webinar.title}</h5>
               <p className="webinar-text">{webinar.description}</p>
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
-                  className="webinar-more"
-                >
+                  className="webinar-more">
                   {t("more")}
                 </Link>
                 <Link
                   to={`/portal-category/webinar/webinar-register/${webinar.id}`}
-                  className="webinar-links"
-                >
+                  className="webinar-links">
                   {t("webinar.header1")}
                 </Link>
               </div>

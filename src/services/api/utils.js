@@ -9,6 +9,8 @@ export const PORTAL_IMAGE_URL =
 export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
 
 // Get requests
+export const GET_ALL_PROJECTS = `${baseUrl}/headcolumns`;
+export const GET_ABOUT_ALL_PROJECTS = `${baseUrl}/aboutcolumns`;
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
 export const GET_PARTNERS_URL = `${baseUrl}/sponsrs`;
@@ -102,6 +104,7 @@ export const GET_VICTORINA_TEST = "/quiz/quiz";
 export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer-user`;
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
+export const GET_WEBINAR_BODY = `/meeting`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

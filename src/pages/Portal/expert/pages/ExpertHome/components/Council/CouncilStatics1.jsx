@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
 
 function CouncilStatics({ meetingOnedata }) {
-  console.log(meetingOnedata);
   const { t } = useTranslation();
   return (
     <div className="expert-council-right">

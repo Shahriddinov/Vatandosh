@@ -9,13 +9,20 @@ import Victorina from "./components/Victorina/Victorina";
 import ListWinners from "../../components/ListWinners/ListWinners";
 import { useVictorinaFetching } from "../hooks/useVictorinaFetching";
 import VictorinaNews from "./components/News/News";
+import { Spinner } from "../../../../../component";
 
 function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
 
-  const { communityNews, quizData, pageData, quizDataWinner } =
+  const { communityNews, quizData, pageData, quizDataWinner, error } =
     useVictorinaFetching();
+  // if (communityNews || quizData || pageData || quizDataWinner) {
+  //   return <Spinner position="full" />;
+  // } else if (error) {
+  //   return <p>{error}</p>;
+  // }
+
   return (
     <div>
       <div className="victorina-home">
@@ -26,7 +33,7 @@ function VictorinaHome() {
       <VictorinaCouncil pageData={pageData} />
       <Victorina quizData={quizData} />
       <ListWinners quizDataWinner={quizDataWinner} />
-      <VictorinaNews expertNews={communityNews} />
+      <VictorinaNews communityNews={communityNews} />
     </div>
   );
 }

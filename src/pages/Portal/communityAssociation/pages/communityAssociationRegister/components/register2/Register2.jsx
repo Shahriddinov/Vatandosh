@@ -31,7 +31,6 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
         ...prev,
         [key]: [value],
       }));
-      console.log(value);
       const attachmentsData = new FormData();
       attachmentsData.append("image", value);
       attachmentsData.append("folder", "community");

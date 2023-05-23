@@ -21,7 +21,6 @@ const CommunityAssociationMapModal = ({ changeActive }) => {
   const country = useSelector((state) => state.community.singleRegion);
   const countryName = { name: country.name };
 
-  console.log(country);
 
   return (
     <div className="communityAssociationMapModal" onClickCapture={handleClick}>

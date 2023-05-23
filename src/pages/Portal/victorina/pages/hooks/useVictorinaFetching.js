@@ -7,11 +7,13 @@ import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina
 export const useVictorinaFetching = () => {
   const language = useSelector((store) => store.language.language);
   const communityNews = useSelector((store) => store.portalNews?.news);
+  console.log(communityNews);
   const quizData = useSelector((state) => state.quizSlice.quizData?.quizzes);
   const quizDataWinner = useSelector(
     (state) => state.quizSlice.quizData?.participants
   );
   const pageData = useSelector((state) => state.pageSlice?.pageData);
+  const error = useSelector((store) => store.community.error);
 
   const dispatch = useDispatch();
 
@@ -25,5 +27,6 @@ export const useVictorinaFetching = () => {
     quizData,
     pageData,
     quizDataWinner,
+    error
   };
 };
