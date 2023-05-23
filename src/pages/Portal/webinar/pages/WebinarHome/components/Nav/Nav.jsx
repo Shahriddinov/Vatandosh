@@ -17,8 +17,7 @@ function Nav({ navData }) {
                 ? "transparent"
                 : "#eaedf6",
             padding: "14px",
-          }}
-        >
+          }}>
           <ul>
             {navData?.map((navItem) => (
               <li key={navItem.id}>
@@ -28,8 +27,7 @@ function Nav({ navData }) {
                     editClass.length <= 3 || communityCountryId !== undefined
                       ? `nav-link`
                       : `nav--link`
-                  }
-                >
+                  }>
                   {navItem.label}
                 </Link>
               </li>

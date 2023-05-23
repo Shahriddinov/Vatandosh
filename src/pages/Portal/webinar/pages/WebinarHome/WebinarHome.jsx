@@ -15,15 +15,20 @@ import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNe
 import News from "../../../expert/pages/ExpertHome/components/News/News";
 import { getMeetingPage } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { Spinner } from "../../../../../component";
+import { getWebinarBody } from "../../../../../reduxToolkit/webinar/getwebinarbody";
 
 function WebinarHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
   const language = useSelector((store) => store.language.language);
-
+  const error = useSelector((state) => state.sliderSlice.error);
+  const loading = useSelector((state) => state.sliderSlice.loading);
   const meetingNews = useSelector((store) => store.portalNews.news);
   const meetingNewsLoading = useSelector((store) => store.portalNews.loading);
   const meetingPage = useSelector((store) => store.meetingSlice.pageData);
+  const sliderData = useSelector(
+    (state) => state.webinarBodySlice.webinarDataBody
+  );
   const meetingPageLoading = useSelector(
     (store) => store.meetingSlice.pageLoading
   );
@@ -33,6 +38,7 @@ function WebinarHome() {
   useEffect(() => {
     dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
     dispatch(getMeetingPage());
+    dispatch(getWebinarBody());
   }, [language]);
 
   const headerData = {
@@ -54,13 +60,17 @@ function WebinarHome() {
 
   return (
     <div>
-      <div
-        style={{ backgroundImage: `url(${Webinar})` }}
-        className="webinar-home"
-      >
-        <Navbar navbarUrl={navbarUrl} />
-        <Nav navData={navData} />
-        <WebinarHeader headerData={headerData} />
+      <div className="webinar-home">
+        <div className="webinar-body">
+          <Navbar navbarUrl={navbarUrl} />
+          <Nav navData={navData} />
+        </div>
+        <WebinarHeader
+          loading={loading}
+          error={error}
+          headerData={headerData}
+          sliderData={sliderData}
+        />
       </div>
       <WebinarCouncil councilData={councilData} meetingPage={meetingPage} />
       <WebinarEvents />

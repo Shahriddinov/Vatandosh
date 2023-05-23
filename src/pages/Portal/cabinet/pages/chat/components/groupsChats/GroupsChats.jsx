@@ -41,7 +41,7 @@ const GroupsChats = ({
     dispatch(
       getMessages({
         chat_id: group.chat_room_id,
-        per_page: 50,
+        per_page: 100,
         chat_type: 1,
         page: activePage,
       })
@@ -53,7 +53,7 @@ const GroupsChats = ({
       dispatch(
         getMessages({
           chat_id: chatRoomId,
-          per_page: 50,
+          per_page: 100,
           chat_type: 1,
           page: activePage,
         })
@@ -71,46 +71,53 @@ const GroupsChats = ({
 
   return (
     <div className="groups">
-      {allChatsData?.chats.map((group) => {
-        let groupImg;
-        if (group.avatar_image) {
-          groupImg = (
-            <img src={`${PORTAL_IMAGE_URL}${group.avatar_image}`} alt="group" />
-          );
-        } else {
-          const names = group.name.split(" ");
-          groupImg = names[0][0] + names[1][0];
-        }
+      {allChatsData?.chats.length === 0 ? (
+        <p className="groups__no-group">You have not joined any group yet.</p>
+      ) : (
+        allChatsData?.chats.map((group) => {
+          let groupImg;
+          if (group.avatar_image) {
+            groupImg = (
+              <img
+                src={`${PORTAL_IMAGE_URL}${group.avatar_image}`}
+                alt="group"
+              />
+            );
+          } else {
+            const names = group.name.split(" ");
+            groupImg = names[0][0] + names[1][0];
+          }
 
-        return (
-          <div
-            key={group.id}
-            className={`groups__one-group ${
-              group.id === activeGroup ? "active" : ""
-            }`}
-            onClick={() => handleClick(group, groupImg)}
-          >
-            <div className="groups__group-image">{groupImg}</div>
-            <div className="groups__group-information">
-              <h4>{group.name}</h4>
-              {group.online_count > 0 ? (
-                <p>
-                  {group.users_count} ta a'zo, {group.online_count} ta online
-                </p>
-              ) : (
-                <p>{group.users_count} ta a'zo</p>
-              )}
-            </div>
-            {group.messages ? (
-              <div className="groups__has-message">
-                {group.messages > 1000
-                  ? `${Math.round(group.messages / 1000)}k`
-                  : group.messages}
+          return (
+            <div
+              key={group.id}
+              className={`groups__one-group ${
+                group.id === activeGroup ? "active" : ""
+              }`}
+              onClick={() => handleClick(group, groupImg)}
+            >
+              <div className="groups__group-image">{groupImg}</div>
+              <div className="groups__group-information">
+                <h4>{group.name}</h4>
+                {group.online_count > 0 ? (
+                  <p>
+                    {group.users_count} ta a'zo, {group.online_count} ta online
+                  </p>
+                ) : (
+                  <p>{group.users_count} ta a'zo</p>
+                )}
               </div>
-            ) : null}
-          </div>
-        );
-      })}
+              {group.messages ? (
+                <div className="groups__has-message">
+                  {group.messages > 1000
+                    ? `${Math.round(group.messages / 1000)}k`
+                    : group.messages}
+                </div>
+              ) : null}
+            </div>
+          );
+        })
+      )}
     </div>
   );
 };

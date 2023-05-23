@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 import Spinner from "../../../../component/Spinner/Spinner";
 import {
@@ -36,6 +37,7 @@ import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const Register = () => {
+  const navigate = useNavigate();
   const createCountries = createSelector(
     (state) => state.authSlice.countriesData,
     (countries) => {
@@ -193,6 +195,12 @@ const Register = () => {
 
   if (loading || loadingNations) {
     return <Spinner position="full" />;
+  }
+
+  const user = localStorage.getItem("user");
+
+  if (JSON.parse(user).first_name) {
+    navigate("/portal-category/cabinet");
   }
 
   return (

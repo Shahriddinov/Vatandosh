@@ -13,7 +13,8 @@ import { removeToken } from "../../../../../reduxToolkit/authSlice/authSlice";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 
-import userImg from "../../../../../assets/images/cabinet/user.png";
+import Spinner from "../../../../../component/Spinner/Spinner";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const CabinetHeader = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,8 @@ const CabinetHeader = () => {
   const { grayScale } = useContext(GrayContext);
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
+  const user = useSelector((state) => state.authSlice.userData);
+  const loading = useSelector((state) => state.authSlice.passwordLoading);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -28,14 +31,27 @@ const CabinetHeader = () => {
     setActiveLang((el) => !el);
   };
 
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
   return (
     <div className="cabinet-header">
       <div className="cabinet-header__user-information">
         <div className="cabinet-header__user-image">
-          <img src={userImg} alt="user" />
+          <img
+            src={`${PORTAL_IMAGE_URL}${
+              user.avatar_url ? user.avatar_url : user.avatar
+            }`}
+            alt="user"
+          />
         </div>
         <div className="cabinet-header__user-data">
-          <h4>Xatamov Akbarjon O‘tkir o‘g‘li</h4>
+          <h4>
+            {user.first_name
+              ? user.first_name + " " + user.last_name
+              : user.name}
+          </h4>
           <p>
             Umumiy ish staji: <span>4 yil</span>
           </p>

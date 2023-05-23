@@ -6,6 +6,11 @@
   padding-right: 5px;
   overflow-y: auto;
 
+  &__no-group {
+    margin-top: 50px;
+    text-align: center;
+  }
+
   &__one-group {
     width: 100%;
     display: flex;

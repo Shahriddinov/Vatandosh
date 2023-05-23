@@ -23,6 +23,8 @@ import { languageList } from "../../../../../../../component/Layout/data";
 import { GoSignOut } from "react-icons/go";
 import { BsPersonFill } from "react-icons/bs";
 import { GrayContext } from "../../../../../../../context/GrayContext";
+import { Tooltip } from "@mui/material";
+import { openNotification } from "../../../../../../../reduxToolkit/notificationSlice/notificationSlice";
 
 function Navbar({ navbarUrl }) {
   const { t } = useTranslation();
@@ -36,7 +38,6 @@ function Navbar({ navbarUrl }) {
   const [activeKabinet, setActiveKabinet] = useState(false);
   const { grayScale } = useContext(GrayContext);
 
-
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
@@ -48,6 +49,9 @@ function Navbar({ navbarUrl }) {
     window.location = "/portal";
   };
 
+  const handleClick = (event) => {
+    dispatch(openNotification(event.currentTarget));
+  };
   return (
     <div className="navbarpage">
       <div className="container">
@@ -172,13 +176,16 @@ function Navbar({ navbarUrl }) {
               </div>
             </div>
             <button
+              onClick={handleClick}
               className={
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
               }
             >
-              <NotificationIcon />
+              <Tooltip title="Account settings">
+                <NotificationIcon />
+              </Tooltip>
             </button>
             <button
               className={

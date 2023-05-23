@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import OfferStatesFriendship from "../components/offerStatesFriendship";
 import { baseServerUrl } from "../../../services/api/utils";
 
+import "./statesFriendshipSociety.scss";
+
 const StatesFriendshipSociety = () => {
   const lan = useSelector((state) => state.language.language);
 

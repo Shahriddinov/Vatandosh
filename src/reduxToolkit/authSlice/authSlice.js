@@ -15,7 +15,7 @@ import { getItem, setItem } from "../../helpers/persistanceStorage";
 const initialState = {
   emailLoading: false,
   verifyLoading: true,
-  passwordLoading: true,
+  passwordLoading: false,
   loginLoading: true,
   resetLoading: false,
   registerLoading: false,
@@ -38,6 +38,7 @@ const authSlice = createSlice({
   reducers: {
     removeToken: (state) => {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
       state.token = null;
     },
   },

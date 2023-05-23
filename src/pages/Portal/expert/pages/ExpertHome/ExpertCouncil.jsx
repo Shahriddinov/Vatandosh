@@ -57,6 +57,8 @@ function ExpertCouncil() {
     pathUrl: "/portal-category/expert/council-about",
   };
 
+  console.log(expertData);
+
   return (
     <>
       <div

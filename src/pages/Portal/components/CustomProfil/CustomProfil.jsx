@@ -46,15 +46,10 @@ export default function CustomProfil() {
     }
   }, [expertData, dispatch]);
 
-  console.log(educationLoading, employmentLoading, loading);
-
   if (error) return <NotFound />;
 
   return expertData ? (
     <div className="customprofil-wrapper">
-      {loading || educationLoading || employmentLoading ? (
-        <Spinner position="full" />
-      ) : null}
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
@@ -75,8 +70,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.education")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -126,8 +120,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -167,8 +160,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.activity")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -212,8 +204,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.ownoffers")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -227,8 +218,7 @@ export default function CustomProfil() {
                   <p>{expertData?.suggestions}</p>
                   <button className="customprofil-list-offer-info-desc-btn">
                     <Link
-                      to={"/portal-category/expert/offers/" + expertData?.id}
-                    >
+                      to={"/portal-category/expert/offers/" + expertData?.id}>
                       {t("expert.detail")}
                     </Link>
                   </button>
@@ -246,8 +236,7 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
+              id="panel1a-header">
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -257,8 +246,7 @@ export default function CustomProfil() {
                     className="customprofil-list-offer-info"
                     style={
                       id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                    }
-                  >
+                    }>
                     <div className="customprofil-list-offer-info-img">
                       <img
                         src={DefaultProfilePic}

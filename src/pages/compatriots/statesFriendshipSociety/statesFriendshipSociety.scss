@@ -1,111 +1,109 @@
 .state-friendship-society {
-    position: relative;
-    background-color: transparent;
+  position: relative;
+  background-color: transparent;
 
+  &__head {
+    min-height: 740px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: top center !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .state-friendship-society {
     &__head {
-        min-height: 740px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top center;
+      background-position: center -80px !important;
     }
+  }
 }
 
-@media(min-width: 1600px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -80px !important;
-        }
-
+@media (min-width: 1750px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -160px !important;
     }
+  }
 }
 
-@media(min-width: 1750px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -160px !important;
-        }
+@media (min-width: 2000px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -285px !important;
     }
+  }
 }
 
-@media(min-width: 2000px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -285px !important;
-        }
+@media (min-width: 2200px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -390px !important;
     }
+  }
 }
 
-@media(min-width: 2200px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -390px !important;
-        }
+@media (min-width: 2400px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -490px !important;
     }
+  }
 }
 
-@media(min-width: 2400px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -490px !important;
-        }
+@media (min-width: 2900px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -700px !important;
     }
+  }
 }
 
-@media(min-width: 2900px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -700px !important;
-        }
+@media (min-width: 3500px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -950px !important;
     }
+  }
 }
 
-@media(min-width: 3500px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -950px !important;
-        }
+@media (min-width: 4000px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -1100px !important;
     }
+  }
 }
 
-@media(min-width: 4000px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -1100px !important;
-        }
+@media (min-width: 4500px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -1250px !important;
     }
+  }
 }
 
-@media(min-width: 4500px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -1250px !important;
-        }
+@media (min-width: 5000px) {
+  .state-friendship-society {
+    &__head {
+      background-position: center -1390px !important;
     }
+  }
 }
 
-
-@media(min-width: 5000px) {
-    .state-friendship-society {
-        &__head {
-            background-position: center -1390px !important;
-        }
+@media (max-width: 1000px) {
+  .state-friendship-society {
+    &__head {
+      min-height: 394px;
+      background-position: center -50px;
     }
+  }
 }
 
-@media(max-width: 1000px) {
-    .state-friendship-society {
-        &__head {
-            min-height: 394px;
-            background-position: center -50px;
-        }
+@media (max-width: 601px) {
+  .state-friendship-society {
+    &__head {
+      min-height: 650px;
+      background-position: center 0;
     }
-}
-
-@media(max-width: 601px) {
-    .state-friendship-society {
-        &__head {
-            min-height: 650px;
-            background-position: center 0;
-        }
-    }
+  }
 }
