@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import "./searchBooks.scss";
-import Hero from "../../components/Hero/Hero";
+import React, { useEffect, useState } from "react";
+import "../AllBooks/allBooks.scss";
 import BookCard from "../../components/BookCard/BookCard";
 
 import { CiSearch } from "react-icons/ci";
@@ -9,61 +8,73 @@ import { HiOutlineChevronDown } from "react-icons/hi";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
 
-import HeroImage from "../../../../../assets/images/library/libraryHero.png";
-import HeroImage1 from "../../../../../assets/images/library/libraryHero1.png";
-import HeroImage2 from "../../../../../assets/images/library/libraryHero2.png";
 import { FormControl, MenuItem, Select } from "@mui/material";
-
-import Book1 from "../../../../../assets/images/library/ken.png";
-import Book2 from "../../../../../assets/images/library/agata.png";
-import Book3 from "../../../../../assets/images/library/jeyn.png";
-import Book4 from "../../../../../assets/images/library/paulo.png";
+import Suggest from "../../components/suggestModal/Suggest";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLibraryFetching } from "../../hooks/libraryFetching";
+import { Pagination, Spinner } from "../../../../../component";
+import { paginationCount } from "../../../../../helpers/extraFunction";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SearchBooks = () => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeSort, setActiveSort] = useState("all");
+  const [suggestModal, setSuggestModal] = useState(false);
+  const [data, setData] = useState({
+    lang: "",
+    type: "",
+    new: null,
+    popular: null,
+    search: "",
+  });
 
-  const [activeSort, setActiveSort] = useState("new");
+  const {
+    libraryData,
+    libraryLoading,
+    librarySliderData,
+    librarySliderLoading,
+    activPage,
+    changePagination,
+    filterBooks,
+    filterBooksType,
+    searchBook,
+  } = useLibraryFetching(12);
 
-  const books = [
-    {
-      id: 121,
-      cover: Book1,
-      title: "Kakku uyasi uzra parvoz",
-      author: "Ken Kizi",
-      rating: 4.2,
-      ratingCount: 421,
-    },
-    {
-      id: 122,
-      cover: Book2,
-      title: "Sharqiy ekspressdagi qotillik",
-      author: "Erix Mariya Remark",
-      rating: 5,
-      ratingCount: 421,
-    },
-    {
-      id: 123,
-      cover: Book3,
-      title: "Andisha va g'urur",
-      author: "Jeyn Ostin",
-      rating: 3.2,
-      ratingCount: 421,
-    },
-    {
-      id: 124,
-      cover: Book4,
-      title: "Alkimyogar",
-      author: "Paulo Koelo",
-      rating: 4.2,
-      ratingCount: 421,
-    },
-  ];
+  useEffect(() => {
+    searchBook({ search: location.state });
+  }, []);
+
+  const handleСlick = ({ sort, type }) => {
+    setData((prev) => ({ ...prev, [type]: sort }));
+    if (type === "lang") {
+      filterBooks({ lang: sort });
+    } else if (type === "type") {
+      filterBooksType({ type: sort });
+    } else if (type === "new") {
+    } else if (type === "popular") {
+    } else if (type === "search") {
+      searchBook({ search: sort });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  if (libraryLoading) {
+    return <Spinner />;
+  }
+
+  const totalPagination = paginationCount(libraryData?.total, 12);
 
   return (
     <>
@@ -118,11 +129,17 @@ const SearchBooks = () => {
                   }}
                   placeholder={t("library.search")}
                   inputProps={{ "aria-label": t("library.search") }}
+                  name="search"
+                  value={data.search}
+                  onChange={handleInputChange}
                 />
                 <IconButton
                   type="button"
                   sx={{ p: "10px" }}
                   aria-label="search"
+                  onClick={() =>
+                    handleСlick({ sort: data.search, type: "search" })
+                  }
                 >
                   <CiSearch color="#065EA9" size={24} />
                 </IconButton>
@@ -133,7 +150,7 @@ const SearchBooks = () => {
                 <Select
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}
-                  value=""
+                  value={data.lang}
                   IconComponent={HiOutlineChevronDown}
                   sx={{
                     fontFamily: "Inter",
@@ -144,17 +161,43 @@ const SearchBooks = () => {
                     boxShadow: 0,
                   }}
                 >
-                  <MenuItem value="">{t("library.sort_by_language")}</MenuItem>
-                  <MenuItem value={10}>English</MenuItem>
-                  <MenuItem value={20}>O'zbek</MenuItem>
-                  <MenuItem value={30}>Русский</MenuItem>
+                  <MenuItem
+                    value=""
+                    onClick={() => handleСlick({ sort: "", type: "lang" })}
+                  >
+                    {t("library.sort_by_language")}
+                  </MenuItem>
+                  <MenuItem
+                    value={"English"}
+                    onClick={() =>
+                      handleСlick({ sort: "English", type: "lang" })
+                    }
+                  >
+                    English
+                  </MenuItem>
+                  <MenuItem
+                    value={"O'zbek"}
+                    onClick={() =>
+                      handleСlick({ sort: "O'zbek", type: "lang" })
+                    }
+                  >
+                    O'zbek
+                  </MenuItem>
+                  <MenuItem
+                    value={"Русский"}
+                    onClick={() =>
+                      handleСlick({ sort: "Русский", type: "lang" })
+                    }
+                  >
+                    Русский
+                  </MenuItem>
                 </Select>
               </FormControl>
               <FormControl sx={{ minWidth: 180, height: 48 }}>
                 <Select
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}
-                  value=""
+                  value={data.type}
                   IconComponent={HiOutlineChevronDown}
                   sx={{
                     fontFamily: "Inter",
@@ -165,16 +208,48 @@ const SearchBooks = () => {
                     boxShadow: 0,
                   }}
                 >
-                  <MenuItem value="">{t("library.sort_by_genre")}</MenuItem>
-                  <MenuItem value={10}>Criminal</MenuItem>
-                  <MenuItem value={20}>Romance</MenuItem>
-                  <MenuItem value={30}>Satiric</MenuItem>
+                  <MenuItem
+                    value=""
+                    onClick={() => handleСlick({ sort: "", type: "type" })}
+                  >
+                    {t("library.sort_by_genre")}
+                  </MenuItem>
+                  <MenuItem
+                    value={"Badiiy adabiyot"}
+                    onClick={() =>
+                      handleСlick({ sort: "Badiiy adabiyot", type: "type" })
+                    }
+                  >
+                    Badiiy adabiyot
+                  </MenuItem>
+                  <MenuItem
+                    value={"Ilmiy-marifiy"}
+                    onClick={() =>
+                      handleСlick({ sort: "Ilmiy-marifiy", type: "type" })
+                    }
+                  >
+                    Ilmiy-marifiy
+                  </MenuItem>
+                  <MenuItem
+                    value={"Diniy-marifiy"}
+                    onClick={() =>
+                      handleСlick({ sort: "Diniy-marifiy", type: "type" })
+                    }
+                  >
+                    Diniy-marifiy
+                  </MenuItem>
                 </Select>
               </FormControl>
             </div>
           </div>
           <div className="all__books__sort">
             <ul>
+              <li
+                className={activeSort === "all" ? "active" : ""}
+                onClick={() => setActiveSort("all")}
+              >
+                Barchasi
+              </li>
               <li
                 className={activeSort === "new" ? "active" : ""}
                 onClick={() => setActiveSort("new")}
@@ -193,10 +268,17 @@ const SearchBooks = () => {
       </div>
       <div className="grey__bg">
         <div className="all__books__grid container">
-          {books.map((book) => (
+          {libraryData.data?.map((book) => (
             <BookCard {...book} key={book.id} />
           ))}
         </div>
+      </div>
+      <div className="all__books__pagination">
+        <Pagination
+          count={totalPagination}
+          paginationFetching={changePagination}
+          page={activPage}
+        />
       </div>
     </>
   );
