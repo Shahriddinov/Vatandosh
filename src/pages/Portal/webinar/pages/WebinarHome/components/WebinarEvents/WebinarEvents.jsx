@@ -45,6 +45,7 @@ function WebinarEvents() {
   } else if (meetingError) {
     return <p>Error</p>;
   }
+  console.log(meetingsData)
   return (
     <div className="webinar">
       <div className="container">
@@ -79,7 +80,7 @@ function WebinarEvents() {
               />
               <span>
                 <img src={CalendarIcon} />
-                <p>{webinar.start_date}</p>
+                <p>{webinar.start_date.split(" ")[0]}</p>
               </span>
               <h5 className="webinar-names">{webinar.title}</h5>
               <p className="webinar-text">{webinar.description}</p>
