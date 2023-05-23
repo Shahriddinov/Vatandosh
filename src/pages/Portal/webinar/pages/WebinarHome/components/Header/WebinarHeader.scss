@@ -1,59 +1,415 @@
-.webinarheader {
-  padding-bottom: 60px;
-  padding-top: 150px;
+.webinar-slider {
+  padding: 30px 0;
+  height: 100vh;
+  margin-top: -30px;
+  &__slider {
+    height: 584px;
+    display: flex;
+    position: relative;
+  }
 
-  h2 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 46px;
-    line-height: 56px;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-  p {
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 25px;
-    color: rgba(255, 255, 255, 0.87);
-    font-family: "Inter";
-    width: 670px;
-    margin-top: 15px;
-  }
-  &-link {
-    background: #065ea9;
-    border-radius: 16px;
-    width: 180px;
-    height: 48px;
-    padding: 12px 22px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #ffffff;
-    border: 2px solid #065ea9;
+  &__slider-box {
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+
+    &.active {
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  &__slider-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.5s;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+
+  &__slider-item {
+    width: 100%;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    top: -80%;
+    background-size: 100% 100%;
+    background-position: center center;
+    color: #fff;
+    background-repeat: no-repeat;
+    transition: all 0.5s;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 70px !important;
+  }
+
+  &__slider-left-bottom {
+    position: relative;
+    max-width: 670px;
+    background-position: left -60px top -60px, right -60px bottom -60px;
+    z-index: 999;
+    transition: 0.3s;
+
+    &-text {
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-bottom: 30px;
+      h1 {
+        font-weight: 600;
+        font-size: 46px;
+        line-height: 56px;
+        text-transform: uppercase;
+      }
+      p {
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 25px;
+        color: rgba(255, 255, 255, 0.87);
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 30px;
+
+      button {
+        padding: 12px 22px;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 20px;
+        border: none;
+        cursor: pointer;
+      }
+      &-more-button {
+        background: #ffffff;
+        color: #065ea9;
+      }
+      &-participate-button {
+        background: #065ea9;
+        color: #ffffff;
+      }
+    }
+
+    .navigation-line {
+      max-width: 380px;
+      height: 1px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.3);
+
+      &::before {
+        content: "";
+        width: 0;
+        height: 1px;
+        position: absolute;
+        background: #fff;
+      }
+
+      &.active::before {
+        animation: 8s linear sliderProgress;
+      }
+    }
+  }
+
+  &__bottom {
+    position: relative;
+  }
+
+  &__bottom-right {
+    width: 120px;
+    height: 60px;
+    display: flex;
     justify-content: center;
-    margin-top: 30px;
-  }
-  &-more {
-    background: #FFFFFF;
-    border-radius: 16px;
-    width: 180px;
-    height: 48px;
-    padding: 12px 22px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: #065EA9;
-    border: 2px solid #fff;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 30px;
+    gap: 15px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    transition: 0.5s;
+    z-index: 3;
+
+    .vertical-line {
+      height: 38px;
+      width: 1px;
+      background: #fff;
+    }
+
+    .arrow-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+
+      svg {
+        color: #065ea9;
+        font-size: 1.5rem;
+      }
+
+      &:hover {
+        background: #e3f0ff;
+        border: 1px solid #065ea9;
+      }
+    }
   }
-  &-list{
+  &__bullets {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    flex-direction: row;
+    width: max-content;
+    gap: 8px;
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+
+    &-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e7eff7;
+      transition: all 0.5s;
+    }
+
+    &-bullet-active {
+      background: #065ea9 !important;
+    }
   }
+}
+
+@keyframes sliderProgress {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1041px) {
+  .webinar-slider {
+    &__slider {
+      height: 420px;
+    }
+
+    &__slider-video {
+      height: 420px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .webinar-slider {
+    &__slider {
+      height: 400px;
+      padding-top: 30px;
+    }
+
+    &__bottom-right {
+      bottom: 0;
+    }
+
+    &__slider-video {
+      height: 400px;
+    }
+  }
+}
+
+@media (max-width: 723px) {
+  .webinar-slider {
+    &__slider {
+      height: 360px;
+      padding-top: 30px;
+    }
+
+    &__slider-video {
+      height: 360px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .webinar-slider {
+    &__slider {
+      height: 350px;
+    }
+
+    &__slider-box {
+      border-radius: 8px;
+    }
+
+    &__slider-video {
+      height: 350px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .webinar-slider {
+    &__slider {
+      height: 300px;
+    }
+
+    &__slider-video {
+      height: 300px;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .webinar-slider {
+    &__slider {
+      height: 250px;
+    }
+
+    &__slider-video {
+      height: 250px;
+
+      video {
+        height: 250px;
+        width: 100vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .webinar-slider {
+    &__container {
+      padding: 0;
+    }
+
+    &__slider {
+      height: 410px;
+      padding-top: 0;
+    }
+
+    &__slider-box {
+      flex-direction: column;
+      border-radius: 0;
+    }
+
+    &__slider-video {
+      height: 250px;
+      position: static;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__slider-item {
+      height: 250px;
+      position: static;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__slider-left-bottom {
+      max-width: 100%;
+      position: static;
+      padding: 20px 20px 0 20px;
+
+      span {
+        color: #161616;
+      }
+
+      h3 {
+        color: #065ea9;
+      }
+
+      button {
+        width: 100%;
+        color: #fff;
+        margin-bottom: 0;
+        background: #065ea9;
+      }
+
+      .navigation-line {
+        display: none;
+      }
+    }
+
+    &__bottom {
+      display: none;
+    }
+  }
+}
+
+.webinar-body-text {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: rgba(255, 255, 255, 0.87);
+  margin: 15px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.webinar-body-name {
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 56px;
+  color: #ffffff;
+  margin: 15px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
