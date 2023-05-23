@@ -8,7 +8,7 @@ import {
 
 export const getLibraryAll = createAsyncThunk(
   "getLibraryAll",
-  async ({ count, page, lang, type, search }) => {
+  async ({ count, page, lang, type, search, neW, popular }) => {
     return await axios({
       url: GET_LIBRARY_ALL + count,
       params: {
@@ -16,6 +16,8 @@ export const getLibraryAll = createAsyncThunk(
         lang,
         type,
         search,
+        new: neW,
+        popular,
       },
     }).then((res) => res.data);
   }

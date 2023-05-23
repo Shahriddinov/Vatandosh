@@ -98,7 +98,6 @@ export const useLibraryFetching = (count) => {
         })
       );
     }
-    console.log(type);
     setGenre(type);
   };
 
@@ -121,6 +120,33 @@ export const useLibraryFetching = (count) => {
     }
   };
 
+  const sortBook = ({ sort }) => {
+    if (sort === "all") {
+      dispatch(
+        getLibraryAll({
+          count: count,
+          page: activPage,
+        })
+      );
+    } else if (sort === "new") {
+      dispatch(
+        getLibraryAll({
+          count: count,
+          page: activPage,
+          neW: true,
+        })
+      );
+    } else if (sort === "popular") {
+      dispatch(
+        getLibraryAll({
+          count: count,
+          page: activPage,
+          popular: true,
+        })
+      );
+    }
+  };
+
   useEffect(() => {
     dispatch(getLibraryAll({ count: count }));
     dispatch(getLibrarySlider());
@@ -136,5 +162,6 @@ export const useLibraryFetching = (count) => {
     filterBooks,
     filterBooksType,
     searchBook,
+    sortBook,
   };
 };

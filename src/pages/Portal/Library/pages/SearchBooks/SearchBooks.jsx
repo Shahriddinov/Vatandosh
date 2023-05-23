@@ -43,6 +43,7 @@ const SearchBooks = () => {
     filterBooks,
     filterBooksType,
     searchBook,
+    sortBook,
   } = useLibraryFetching(12);
 
   useEffect(() => {
@@ -55,8 +56,8 @@ const SearchBooks = () => {
       filterBooks({ lang: sort });
     } else if (type === "type") {
       filterBooksType({ type: sort });
-    } else if (type === "new") {
-    } else if (type === "popular") {
+    } else if (type === "sort") {
+      sortBook({ sort: sort });
     } else if (type === "search") {
       searchBook({ search: sort });
     }
@@ -245,20 +246,20 @@ const SearchBooks = () => {
           <div className="all__books__sort">
             <ul>
               <li
-                className={activeSort === "all" ? "active" : ""}
-                onClick={() => setActiveSort("all")}
+                className={data.sort === "all" ? "active" : ""}
+                onClick={() => handleСlick({ sort: "all", type: "sort" })}
               >
                 Barchasi
               </li>
               <li
-                className={activeSort === "new" ? "active" : ""}
-                onClick={() => setActiveSort("new")}
+                className={data.sort === "new" ? "active" : ""}
+                onClick={() => handleСlick({ sort: "new", type: "sort" })}
               >
                 {t("library.new")}
               </li>
               <li
-                className={activeSort === "popular" ? "active" : ""}
-                onClick={() => setActiveSort("popular")}
+                className={data.sort === "popular" ? "active" : ""}
+                onClick={() => handleСlick({ sort: "popular", type: "sort" })}
               >
                 {t("library.popular")}
               </li>
