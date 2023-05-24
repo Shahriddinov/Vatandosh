@@ -7,9 +7,11 @@ function App({ children }) {
   const [messages, setMessages] = useState([]);
 
   const token = useSelector((state) => state.authSlice.token);
+
   const socket = new WebSocket(
     `wss://vatandoshlar.napaautomotive.uz/ws/messages/?token=${token}`
   );
+
   useEffect(() => {
     socket.onopen = (e) => {
       console.log(e);
@@ -24,6 +26,7 @@ function App({ children }) {
       console.log(error);
     };
   }, []);
+
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>
       {children}

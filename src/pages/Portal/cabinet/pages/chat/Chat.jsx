@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useWebSocket from "react-use-websocket";
 import { useSelector } from "react-redux";
 
 import "./chat.scss";
@@ -25,14 +24,16 @@ const Chat = () => {
   const [activePage, setActivePage] = useState(1);
 
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
-
+  const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
   const { setMessages } = useContext(MessagesContext);
 
   useEffect(() => {
     if (messagesData) {
-      setMessages((prev) => [...prev, ...messagesData.messages.data]);
+      setMessages([...messagesData.messages.data]);
     }
   }, [messagesData]);
+
+  const data = allChatsData?.chats?.filter((el) => el.type === activeChat);
 
   return (
     <div className="chat">
@@ -65,6 +66,8 @@ const Chat = () => {
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
               activePage={activePage}
+              activeChat={activeChat}
+              data={data}
             />
           ) : (
             <GroupsChats
@@ -76,6 +79,8 @@ const Chat = () => {
               setShowLinks={setShowLinks}
               setShowMembers={setShowMembers}
               activePage={activePage}
+              activeChat={activeChat}
+              data={data}
             />
           )}
         </div>

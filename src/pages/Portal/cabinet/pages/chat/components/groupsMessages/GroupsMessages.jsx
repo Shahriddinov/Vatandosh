@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useWebSocket from "react-use-websocket";
 
 import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
@@ -28,8 +27,6 @@ const GroupsMessages = ({
   showMembers,
   setActivePage,
   activePage,
-  socketUrl,
-  webSocket,
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -43,7 +40,6 @@ const GroupsMessages = ({
     type: null,
   });
   const [scrollTop, setScrollTop] = useState(0);
-  const [data, setData] = useState([]);
 
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
@@ -51,7 +47,6 @@ const GroupsMessages = ({
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
 
   const user = useSelector((state) => state.authSlice.userData);
-  const loading = useSelector((state) => state.authSlice.passwordLoading);
 
   const docs = [
     { id: 1, name: "Group Ekspertlar1 kengashi guruhi.pdf" },
@@ -84,9 +79,7 @@ const GroupsMessages = ({
     { id: 15, url: "https://Group Ekspertlar15 kengashi guruhi.link" },
   ];
 
-  const { messages, setMessages } = useContext(MessagesContext);
-
-  // console.log("Messages: ", messages);
+  const { messages } = useContext(MessagesContext);
 
   const handleChange = (input) => {
     if (input.target.value !== "") {
@@ -122,9 +115,9 @@ const GroupsMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const findUser = messagesData.messages.data.find(
-      (l) => l.user_id === user.id
-    );
+    // const findUser = messagesData.messages.data.find(
+    //   (l) => l.user_id === user.id
+    // );
 
     const mess = {
       ...sendMessageData,
@@ -135,7 +128,7 @@ const GroupsMessages = ({
 
     dispatch(sendMessage(mess));
 
-    setMessages((prev) => [...prev, { ...findUser, ...mess }]);
+    // setMessages((prev) => [...prev, { ...findUser, ...mess }]);
 
     inputRef.current.value = "";
   };
@@ -176,6 +169,8 @@ const GroupsMessages = ({
   //   });
   //   setScrollTop(message.scrollTop);
   // }, [scrollTop]);
+
+  // console.log(messages);
 
   return (
     <div className="group-message">
@@ -332,30 +327,31 @@ const GroupsMessages = ({
                   className="group-message__received-container"
                 >
                   <div className="group-message__received-user">
-                    {/* {message.message.avatar ? (
+                    {message?.user?.avatar ? (
                       <img
-                        src={`${PORTAL_IMAGE_URL}${message.message.avatar}`}
+                        src={`${PORTAL_IMAGE_URL}${message?.user?.avatar}`}
                         alt="user"
                       />
                     ) : (
-                      message.message.name[0] + message.message.name[1]
-                    )} */}
+                      message?.user?.name.split(" ")[0][0] +
+                      message?.user?.name.split(" ")[1][0]
+                    )}
                   </div>
                   <div className="group-message__received-details">
                     <p className="group-message__received-message">
-                      {message.message}
+                      {message?.message}
                     </p>
-                    {/* <span>
-                      {message.message.created_at
+                    <span>
+                      {message.created_at
                         .split("T")[1]
                         .split(".")[0]
                         .split(":")[0] +
                         ":" +
-                        message.message.created_at
+                        message.created_at
                           .split("T")[1]
                           .split(".")[0]
                           .split(":")[1]}
-                    </span> */}
+                    </span>
                   </div>
                 </div>
               ) : (

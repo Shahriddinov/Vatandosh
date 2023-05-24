@@ -18,12 +18,13 @@ const PrivateChats = ({
   setShowDocs,
   setShowLinks,
   activePage,
+  activeChat,
+  data,
 }) => {
   const dispatch = useDispatch();
 
   const allChatLoading = useSelector((state) => state.chatSlice.allChatLoading);
   const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
-  const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
   );
@@ -35,14 +36,14 @@ const PrivateChats = ({
     console.log(user);
     setActiveUser(user.id);
     setUserData({ user, profileImg });
-    setChatRoomId(messagesData.chat.id);
+    setChatRoomId(data.chat.id);
     setShowMessages(true);
     setShowDocs(false);
     setShowLinks(false);
 
     dispatch(
       getMessages({
-        chat_id: messagesData.chat.id,
+        chat_id: data.chat.id,
         chat_type: 1,
         page: activePage,
       })
@@ -63,31 +64,17 @@ const PrivateChats = ({
 
   useEffect(() => {
     dispatch(getAllChats());
-    // dispatch(
-    //   getMessages({
-    //     chat_id: 13,
-    //     chat_type: 1,
-    //     page: activePage,
-    //   })
-    // );
   }, []);
 
-  // if (allChatLoading || messagesLoading) {
-  //   return <Spinner position="full" />;
-  // }
-
   const privateUser =
-    messagesData &&
-    messagesData?.messages?.data?.find((el) => el.user_id !== user.id).user;
-
-  console.log(allChatsData);
+    data?.length !== 0 && data?.find((el) => el.user_id !== user.id).user;
 
   return (
     <div className="users">
-      {allChatsData?.chats.length === 0 ? (
+      {data?.length === 0 ? (
         <p className="users__no-users">You have not any chat yet.</p>
       ) : (
-        allChatsData?.chats.map((chat) => {
+        data?.map((chat) => {
           // console.log(chat, activeUser);
           let profileImg;
           if (privateUser?.avatar) {
@@ -102,7 +89,7 @@ const PrivateChats = ({
             // profileImg = names[0][0] + names[1][0];
           }
 
-          return chat.type === "private" ? (
+          return (
             <div
               key={chat.id}
               className={`users__one-user ${
@@ -132,7 +119,7 @@ const PrivateChats = ({
                 </div>
               ) : null}
             </div>
-          ) : null;
+          );
         })
       )}
     </div>

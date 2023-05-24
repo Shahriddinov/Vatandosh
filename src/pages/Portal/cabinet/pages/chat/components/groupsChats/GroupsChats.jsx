@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllChats } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 import Spinner from "../../../../../../../component/Spinner";
 
-import { groups } from "./groups";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { getMessages } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 import "./groupsChats.scss";
-import { MessagesContext } from "../../../../../../../App";
 
 const GroupsChats = ({
   setGroupData,
@@ -20,15 +18,11 @@ const GroupsChats = ({
   setShowLinks,
   setShowMembers,
   activePage,
+  activeChat,
+  data,
 }) => {
   const dispatch = useDispatch();
   const [chatRoomId, setChatRoomId] = useState(null);
-
-  const allChatLoading = useSelector((state) => state.chatSlice.allChatLoading);
-  const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
-  const sendMessageStatus = useSelector(
-    (state) => state.chatSlice.sendMessageStatus
-  );
 
   const handleClick = (group, groupImg) => {
     setActiveGroup(group.id);
@@ -64,16 +58,12 @@ const GroupsChats = ({
     dispatch(getAllChats());
   }, []);
 
-  // if (allChatLoading) {
-  //   return <Spinner position="full" />;
-  // }
-
   return (
     <div className="groups">
-      {allChatsData?.chats.length === 0 ? (
+      {data?.length === 0 ? (
         <p className="groups__no-group">You have not joined any group yet.</p>
       ) : (
-        allChatsData?.chats.map((group) => {
+        data?.map((group) => {
           let groupImg;
           if (group.avatar_image) {
             groupImg = (
