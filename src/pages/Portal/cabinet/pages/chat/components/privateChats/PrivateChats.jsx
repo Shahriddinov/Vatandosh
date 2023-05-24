@@ -80,54 +80,61 @@ const PrivateChats = ({
     messagesData &&
     messagesData?.messages?.data?.find((el) => el.user_id !== user.id).user;
 
-  // console.log(allChatsData);
+  console.log(allChatsData);
 
   return (
     <div className="users">
-      {allChatsData?.chats.map((chat) => {
-        // console.log(chat, activeUser);
-        let profileImg;
-        if (privateUser?.avatar) {
-          profileImg = (
-            <img src={`${PORTAL_IMAGE_URL}${privateUser?.avatar}`} alt="user" />
-          );
-        } else {
-          const names = privateUser?.name.split(" ");
-          // profileImg = names[0][0] + names[1][0];
-        }
+      {allChatsData?.chats.length === 0 ? (
+        <p className="users__no-users">You have not any chat yet.</p>
+      ) : (
+        allChatsData?.chats.map((chat) => {
+          // console.log(chat, activeUser);
+          let profileImg;
+          if (privateUser?.avatar) {
+            profileImg = (
+              <img
+                src={`${PORTAL_IMAGE_URL}${privateUser?.avatar}`}
+                alt="user"
+              />
+            );
+          } else {
+            const names = privateUser?.name.split(" ");
+            // profileImg = names[0][0] + names[1][0];
+          }
 
-        return chat.type === "private" ? (
-          <div
-            key={chat.id}
-            className={`users__one-user ${
-              chat.user_id !== activeUser ? "active" : ""
-            }`}
-            onClick={() => handleClick(privateUser, profileImg)}
-          >
-            <div className="users__user-image">
-              {profileImg}
-              {!privateUser?.last_online_at ? (
-                <span className="users__online"></span>
+          return chat.type === "private" ? (
+            <div
+              key={chat.id}
+              className={`users__one-user ${
+                chat.user_id !== activeUser ? "active" : ""
+              }`}
+              onClick={() => handleClick(privateUser, profileImg)}
+            >
+              <div className="users__user-image">
+                {profileImg}
+                {!privateUser?.last_online_at ? (
+                  <span className="users__online"></span>
+                ) : null}
+              </div>
+              <div className="users__user-information">
+                <h4>{privateUser?.name}</h4>
+                {!privateUser?.last_online_at ? (
+                  <p>Online</p>
+                ) : (
+                  <p>Last seen {privateUser?.last_online_at}</p>
+                )}
+              </div>
+              {chat.messages ? (
+                <div className="users__has-message">
+                  {chat.message > 1000
+                    ? `${Math.round(chat.message / 1000)}k`
+                    : chat.message}
+                </div>
               ) : null}
             </div>
-            <div className="users__user-information">
-              <h4>{privateUser?.name}</h4>
-              {!privateUser?.last_online_at ? (
-                <p>Online</p>
-              ) : (
-                <p>Last seen {privateUser?.last_online_at}</p>
-              )}
-            </div>
-            {chat.messages ? (
-              <div className="users__has-message">
-                {chat.message > 1000
-                  ? `${Math.round(chat.message / 1000)}k`
-                  : chat.message}
-              </div>
-            ) : null}
-          </div>
-        ) : null;
-      })}
+          ) : null;
+        })
+      )}
     </div>
   );
 };

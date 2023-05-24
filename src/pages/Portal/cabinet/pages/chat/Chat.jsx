@@ -22,7 +22,6 @@ const Chat = () => {
   const [showDocs, setShowDocs] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
-  const [socket, setSocket] = useState(null);
   const [activePage, setActivePage] = useState(1);
 
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
