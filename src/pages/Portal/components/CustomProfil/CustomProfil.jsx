@@ -48,6 +48,7 @@ export default function CustomProfil() {
 
   if (error) return <NotFound />;
 
+  console.log(expertData);
 
   return expertData ? (
     <div className="customprofil-wrapper">
@@ -59,7 +60,11 @@ export default function CustomProfil() {
           />
         </div>
         <div className="customprofil-detail-desc">
-          <h4>{expertData?.user_profile?.last_name} {expertData?.user_profile?.first_name} {expertData?.user_profile?.second_name}</h4>
+          <h4>
+            {expertData?.user_profile?.last_name}{" "}
+            {expertData?.user_profile?.first_name}{" "}
+            {expertData?.user_profile?.second_name}
+          </h4>
           <div className="customprofil-detail-desc-workexp">
             <span>{t("expert.workexp")}</span>
             <span>{expertData?.user_profile?.work_experience}</span>
@@ -76,8 +81,8 @@ export default function CustomProfil() {
           </AccordionSummary>
           <AccordionDetails>
             <div className="customprofil-list-otm">
-              {education.length
-                ? education.map((el) => {
+              {expertData.user_education?.length
+                ? expertData.user_education?.map((el) => {
                     if (el?.type === 1)
                       return (
                         <div key={el.id} className="customprofil-list-otm-item">
@@ -125,8 +130,8 @@ export default function CustomProfil() {
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {employment.length
-              ? employment.map((el) => (
+            {expertData.user_employment_info?.length
+              ? expertData.user_employment_info?.map((el) => (
                   <div key={el.id} className="customprofil-list-workexp">
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workspace")}</span>
@@ -212,7 +217,10 @@ export default function CustomProfil() {
             <div className="customprofil-list-offer">
               <div className="customprofil-list-offer-info">
                 <div className="customprofil-list-offer-info-img">
-                  <img src={DefaultProfilePic} alt="error" />
+                  <img
+                    src={`${PORTAL_IMAGE_URL}/${expertData?.article_file}`}
+                    alt="error"
+                  />
                 </div>
                 <div className="customprofil-list-offer-info-desc">
                   <span>{t("expert.offer")}</span>
