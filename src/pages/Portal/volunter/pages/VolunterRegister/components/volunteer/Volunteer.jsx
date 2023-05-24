@@ -104,7 +104,7 @@ export default function Volunteer({ activeBarItem }) {
   return (
     <form
       className={
-        activeBarItem !== 5
+        activeBarItem !== 4
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }

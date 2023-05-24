@@ -34,7 +34,6 @@ export default function VolunterRegister() {
                 "Oliy ma’lumotingiz",
                 "Mehnat faoliyatingiz",
                 "Ilmiy faoliyatingiz",
-                "Taklifingiz",
                 "Volonyorlik faoliyati",
               ].map((el, index) => {
                 return (
@@ -72,7 +71,7 @@ export default function VolunterRegister() {
                 activeBarItem={activeBarItem}
                 setactiveBarItem={setactiveBarItem}
               />
-              <RegisterItem5 activeBarItem={activeBarItem} />
+
               <Volunteer activeBarItem={activeBarItem} />
             </div>
           </div>
