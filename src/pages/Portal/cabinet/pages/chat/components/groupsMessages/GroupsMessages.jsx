@@ -1,5 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useWebSocket from "react-use-websocket";
 
 import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
@@ -13,6 +14,7 @@ import "./groupsMessages.scss";
 
 import GroupMembers from "../groupMembers/GroupMembers";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { MessagesContext } from "../../../../../../../App";
 
 const GroupsMessages = ({
   groupData,
@@ -24,6 +26,10 @@ const GroupsMessages = ({
   showLinks,
   setShowMembers,
   showMembers,
+  setActivePage,
+  activePage,
+  socketUrl,
+  webSocket,
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -36,6 +42,8 @@ const GroupsMessages = ({
     message: "",
     type: null,
   });
+  const [scrollTop, setScrollTop] = useState(0);
+  const [data, setData] = useState([]);
 
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
@@ -76,6 +84,10 @@ const GroupsMessages = ({
     { id: 15, url: "https://Group Ekspertlar15 kengashi guruhi.link" },
   ];
 
+  const { messages, setMessages } = useContext(MessagesContext);
+
+  // console.log("Messages: ", messages);
+
   const handleChange = (input) => {
     if (input.target.value !== "") {
       sendRef.current.style.pointerEvents = "all";
@@ -110,19 +122,20 @@ const GroupsMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setSendMessageData({
-      ...sendMessageData,
-      chat_room_id: groupData.group.chat_room_id,
-      type: 1,
-    });
-
-    dispatch(
-      sendMessage({
-        ...sendMessageData,
-        chat_room_id: groupData.group.chat_room_id,
-        type: 1,
-      })
+    const findUser = messagesData.messages.data.find(
+      (l) => l.user_id === user.id
     );
+
+    const mess = {
+      ...sendMessageData,
+      chat_room_id: groupData.group.id,
+      type: 1,
+    };
+    setSendMessageData(mess);
+
+    dispatch(sendMessage(mess));
+
+    setMessages((prev) => [...prev, { ...findUser, ...mess }]);
 
     inputRef.current.value = "";
   };
@@ -147,11 +160,22 @@ const GroupsMessages = ({
     if (messagesRef.current) {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }
-  }, [activeGroup, showDocs, showLinks, showMembers, messagesLoading]);
+  }, [activeGroup, showDocs, showLinks, showMembers, messages]);
 
-  if (messagesLoading || loading) {
-    return <Spinner position="full" />;
-  }
+  // useEffect(() => {
+  //   const message = messagesRef.current;
+  //   const pageNumber = Math.floor(messagesData?.messages?.total / 5);
+  //   message.addEventListener("scroll", () => {
+  //     console.log(message.scrollTop);
+  //     if (
+  //       message.scrollHeight - message.scrollTop - message.offsetHeight <
+  //       10
+  //     ) {
+  //       setActivePage(activePage + 1);
+  //     }
+  //   });
+  //   setScrollTop(message.scrollTop);
+  // }, [scrollTop]);
 
   return (
     <div className="group-message">
@@ -300,7 +324,7 @@ const GroupsMessages = ({
               show ? "show-messages" : ""
             }`}
           >
-            {messagesData?.messages.data.map((message) => {
+            {messages?.map((message) => {
               const userId = user.user_id ? user.user_id.id : user.id;
               return message?.user_id !== userId ? (
                 <div
@@ -308,15 +332,30 @@ const GroupsMessages = ({
                   className="group-message__received-container"
                 >
                   <div className="group-message__received-user">
-                    {groupData && <img src={groupData.groupImg.props.src} />}
+                    {/* {message.message.avatar ? (
+                      <img
+                        src={`${PORTAL_IMAGE_URL}${message.message.avatar}`}
+                        alt="user"
+                      />
+                    ) : (
+                      message.message.name[0] + message.message.name[1]
+                    )} */}
                   </div>
                   <div className="group-message__received-details">
                     <p className="group-message__received-message">
                       {message.message}
                     </p>
-                    <span>
-                      {message.created_at.split("T")[1].split(".")[0]}
-                    </span>
+                    {/* <span>
+                      {message.message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
+                    </span> */}
                   </div>
                 </div>
               ) : (
@@ -326,7 +365,15 @@ const GroupsMessages = ({
                       {message.message}
                     </p>
                     <span>
-                      {message.created_at.split("T")[1].split(".")[0]}
+                      {message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
                     </span>
                   </div>
                   <div className="group-message__sent-user">
@@ -345,6 +392,11 @@ const GroupsMessages = ({
           <p className="group-message__no-group">
             Select a chat to start messaging.
           </p>
+        )}
+        {messagesLoading && (
+          <div className="group-message__loading">
+            <Spinner />
+          </div>
         )}
       </div>
       <form onSubmit={handleSubmit}>

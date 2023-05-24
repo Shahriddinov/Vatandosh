@@ -28,6 +28,7 @@ export default function ExpertOffersDetail() {
   } else if (!expertData) return <NotFound />;
 
   console.log(expertData);
+
   return (
     <main className="expertofferdetail">
       <div className="container">
@@ -35,8 +36,9 @@ export default function ExpertOffersDetail() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}/${expertData?.article_file}`}
+              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
               alt="error"
+              className="expertofferdetail-pic"
             />
             <ExpertProfileInfo
               profileImg={

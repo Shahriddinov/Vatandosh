@@ -25,7 +25,7 @@ const initialState = {
   nationsLoading: true,
   countriesData: null,
   countriesLoading: false,
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
   message: "",
   tokenMessage: null,
   success: false,

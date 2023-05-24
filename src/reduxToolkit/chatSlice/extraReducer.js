@@ -11,10 +11,10 @@ export const getAllChats = createAsyncThunk("get/allChats", async () => {
 // Get Messages
 export const getMessages = createAsyncThunk(
   "get/messages",
-  async ({ chat_id, per_page, chat_type, page }) => {
+  async ({ chat_id, chat_type, page }) => {
     return await axios
       .get(
-        `${GET_CHAT_DATA}/chat/${chat_id}?per_page=${per_page}&type=${chat_type}&page=${page}`
+        `${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=${chat_type}&page=${page}`
       )
       .then((res) => res.data);
   }
