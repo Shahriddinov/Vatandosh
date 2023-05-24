@@ -34,7 +34,10 @@ export default function ExpertOffersDetail() {
         <ExpertTitle title={t("expert.offer")} url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
-            <img src={DefaultProfilePic} alt="error" />
+            <img
+              src={`${PORTAL_IMAGE_URL}/${expertData?.article_file}`}
+              alt="error"
+            />
             <ExpertProfileInfo
               profileImg={
                 PORTAL_IMAGE_URL + expertData?.user_profile?.avatar_url
