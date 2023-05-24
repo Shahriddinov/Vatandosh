@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useWebSocket from "react-use-websocket";
+import { useSelector } from "react-redux";
 
 import "./chat.scss";
 
@@ -6,6 +8,8 @@ import PrivateChats from "./components/privateChats/PrivateChats";
 import PrivateMessages from "./components/privateMessages/PrivateMessages";
 import GroupsChats from "./components/groupsChats/GroupsChats";
 import GroupsMessages from "./components/groupsMessages/GroupsMessages";
+import { useContext } from "react";
+import { MessagesContext } from "../../../../../App";
 
 const Chat = () => {
   const [activeChat, setActiveChat] = useState("private");
@@ -18,6 +22,18 @@ const Chat = () => {
   const [showDocs, setShowDocs] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
+  const [socket, setSocket] = useState(null);
+  const [activePage, setActivePage] = useState(1);
+
+  const messagesData = useSelector((state) => state.chatSlice.messagesData);
+
+  const { setMessages } = useContext(MessagesContext);
+
+  useEffect(() => {
+    if (messagesData) {
+      setMessages((prev) => [...prev, ...messagesData.messages.data]);
+    }
+  }, [messagesData]);
 
   return (
     <div className="chat">
@@ -49,6 +65,7 @@ const Chat = () => {
               activeUser={activeUser}
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
+              activePage={activePage}
             />
           ) : (
             <GroupsChats
@@ -59,6 +76,7 @@ const Chat = () => {
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
               setShowMembers={setShowMembers}
+              activePage={activePage}
             />
           )}
         </div>
@@ -83,6 +101,8 @@ const Chat = () => {
             showLinks={showLinks}
             setShowMembers={setShowMembers}
             showMembers={showMembers}
+            setActivePage={setActivePage}
+            activePage={activePage}
           />
         )}
       </div>

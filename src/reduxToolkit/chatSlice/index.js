@@ -64,12 +64,12 @@ const chatSlice = createSlice({
         state.sendMessageStatus = null;
       })
       .addCase(sendMessage.fulfilled, (state, action) => {
-        state.messagesLoading = false;
+        state.sendLoading = false;
         state.sendMessage = action.payload;
         state.sendMessageStatus = "success";
       })
       .addCase(sendMessage.rejected, (state, action) => {
-        state.messagesLoading = false;
+        state.sendLoading = false;
         state.sendMessageStatus = "error";
         state.errors = action.error.message;
       });
