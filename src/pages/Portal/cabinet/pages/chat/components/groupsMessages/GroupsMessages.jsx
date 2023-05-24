@@ -86,7 +86,7 @@ const GroupsMessages = ({
 
   const { messages, setMessages } = useContext(MessagesContext);
 
-  console.log("Messages: ", messages);
+  // console.log("Messages: ", messages);
 
   const handleChange = (input) => {
     if (input.target.value !== "") {
