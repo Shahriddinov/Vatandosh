@@ -53,7 +53,7 @@ export default function CustomProfil() {
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
-            src={`${PORTAL_IMAGE_URL}/${expertData?.user_id?.avatar}`}
+            src={`${PORTAL_IMAGE_URL}${expertData?.user_id?.avatar}`}
             alt="error"
           />
         </div>
