@@ -26,7 +26,7 @@ import { GrayContext } from "../../../../../context/GrayContext";
 import { Tooltip } from "@mui/material";
 import { openNotification } from "../../../../../reduxToolkit/notificationSlice/notificationSlice";
 
-function Navbar({ navbarUrl }) {
+const Navbar = ({ navbarUrl }) => {
   const { t } = useTranslation();
   const location = useLocation();
   const editClass = location.pathname.split("/");
@@ -235,5 +235,5 @@ function Navbar({ navbarUrl }) {
       </div>
     </div>
   );
-}
+};
 export default Navbar;
