@@ -2,7 +2,8 @@
 
 .container-organizations {
   &-inner {
-    max-width: 1150px;
+    // max-width: 1150px;
+    max-width: 100%;
     padding: 50px;
     &-top {
       display: flex;
@@ -35,7 +36,7 @@
     &-bottom {
       margin-top: 42px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, min-content));
       gap: 30px;
       &-card {
         max-width: 240px;

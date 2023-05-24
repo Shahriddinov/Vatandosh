@@ -67,12 +67,7 @@ const Organizations = () => {
             whileTap={{ scale: 0.9 }}
             onClick={toggleSwitchHandler}
           >
-            <motion.img
-              animate={{ rotate: btnToggle ? 360 : 0 }}
-              src={plusIcon}
-              alt="icon"
-            />{" "}
-            <span>Tadbir</span>
+            <img src={plusIcon} alt="icon" /> <span>Tadbir</span>
           </motion.button>
         </div>
 
