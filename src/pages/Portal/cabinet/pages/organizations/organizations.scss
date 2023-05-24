@@ -1,0 +1,100 @@
+@import "../../../../../assets/style/global.scss";
+
+.container-organizations {
+  &-inner {
+    // max-width: 1150px;
+    max-width: 100%;
+    padding: 50px;
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      & > span {
+        @include fontStyles(700, 20px, 24px, $colorTitle);
+      }
+      & > button {
+        padding: 12px 22px;
+        border: 1px solid $colorTitle;
+        border-radius: 16px;
+        background: $colorTitle;
+        display: flex;
+        align-items: center;
+        gap: 13.33px;
+        & > img {
+          color: #ffffff;
+          @include fontStyles(700, 14px, 24px, #ffffff);
+        }
+        & > span {
+          color: #ffffff;
+        }
+      }
+
+      & > button:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-bottom {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, min-content));
+      gap: 30px;
+      &-card {
+        max-width: 240px;
+        height: 291px;
+        background: #f6f7fb;
+        border: 1px solid #eaedf6;
+        border-radius: 10px;
+        padding: 15px 12px;
+
+        &_cardTop {
+          display: grid;
+          column-gap: 12px;
+          grid-auto-flow: column;
+          justify-content: flex-start;
+
+          & > img {
+            border-radius: 50%;
+          }
+          & > span {
+            @include fontStyles(700, 14px, 22px, $colorTitle);
+          }
+        }
+
+        &_hl {
+          height: 1px;
+          width: 100%;
+          background: #eaedf6;
+          margin-top: 15px;
+        }
+        &_text {
+          @include fontStyles(400, 14px, 18px, #4b5157);
+          margin-top: 15px;
+          text-align: center;
+        }
+        & > img {
+          margin-top: 8px;
+          display: block;
+          margin-inline: auto;
+        }
+
+        &_bottomText {
+          margin-top: 12px;
+          @include fontStyles(400, 14px, 18px, #4b5157);
+        }
+
+        & > button {
+          margin-top: 12px;
+          @include fontStyles(500, 14px, 17px, $colorTitle);
+          padding: 12.5px 0;
+          width: 100%;
+          border: 1px solid #eaedf6;
+          border-radius: 12px;
+          background: rgba(6, 94, 169, 0.1);
+        }
+        & > button:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

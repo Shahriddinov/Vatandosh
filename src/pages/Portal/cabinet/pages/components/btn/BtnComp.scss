@@ -1,0 +1,18 @@
+.btnComp {
+  padding: 12px 22px;
+  border-radius: 16px;
+  outline: none;
+  border: none;
+  color: #065ea9;
+  border: 2px solid #eaedf6;
+  background-color: white;
+}
+
+.btnComp:hover {
+  cursor: pointer;
+}
+
+.btnComp.active {
+  color: #ffffff;
+  background-color: #065ea9;
+}

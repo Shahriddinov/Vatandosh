@@ -1,0 +1,25 @@
+@import "../../../../../assets/style/global.scss";
+
+.container-quiz {
+  max-width: 100%;
+  &-inner {
+    padding: 50px;
+
+    &_btnContainer {
+      max-width: 100%;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 20px;
+      justify-content: flex-start;
+    }
+
+    &_cardContainer {
+      margin-top: 30px;
+      border-radius: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, max-content));
+      column-gap: 32px;
+      row-gap: 32px;
+    }
+  }
+}
