@@ -48,20 +48,21 @@ export default function CustomProfil() {
 
   if (error) return <NotFound />;
 
+
   return expertData ? (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
-            src={`${PORTAL_IMAGE_URL}/${expertData?.user_id?.avatar}`}
+            src={`${PORTAL_IMAGE_URL}/${expertData?.user_profile?.avatar_url}`}
             alt="error"
           />
         </div>
         <div className="customprofil-detail-desc">
-          <h4>{expertData?.user_id?.name}</h4>
+          <h4>{expertData?.user_profile?.last_name} {expertData?.user_profile?.first_name} {expertData?.user_profile?.second_name}</h4>
           <div className="customprofil-detail-desc-workexp">
             <span>{t("expert.workexp")}</span>
-            <span>{expertData?.user_profile_id?.work_experience}</span>
+            <span>{expertData?.user_profile?.work_experience}</span>
           </div>
         </div>
       </div>
