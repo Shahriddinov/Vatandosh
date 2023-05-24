@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllChats } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
@@ -9,6 +9,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { getMessages } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 import "./groupsChats.scss";
+import { MessagesContext } from "../../../../../../../App";
 
 const GroupsChats = ({
   setGroupData,
@@ -18,9 +19,9 @@ const GroupsChats = ({
   setShowDocs,
   setShowLinks,
   setShowMembers,
+  activePage,
 }) => {
   const dispatch = useDispatch();
-  const [activePage, setActivePage] = useState(1);
   const [chatRoomId, setChatRoomId] = useState(null);
 
   const allChatLoading = useSelector((state) => state.chatSlice.allChatLoading);
@@ -31,7 +32,7 @@ const GroupsChats = ({
 
   const handleClick = (group, groupImg) => {
     setActiveGroup(group.id);
-    setChatRoomId(group.chat_room_id);
+    setChatRoomId(group.id);
     setGroupData({ group, groupImg });
     setShowGroupMessages(true);
     setShowDocs(false);
@@ -40,8 +41,7 @@ const GroupsChats = ({
 
     dispatch(
       getMessages({
-        chat_id: group.chat_room_id,
-        per_page: 100,
+        chat_id: group.id,
         chat_type: 1,
         page: activePage,
       })
@@ -49,25 +49,24 @@ const GroupsChats = ({
   };
 
   useEffect(() => {
-    if (sendMessageStatus === "success") {
+    if (chatRoomId) {
       dispatch(
         getMessages({
           chat_id: chatRoomId,
-          per_page: 100,
           chat_type: 1,
           page: activePage,
         })
       );
     }
-  }, [sendMessageStatus, chatRoomId]);
+  }, [chatRoomId, activePage]);
 
   useEffect(() => {
     dispatch(getAllChats());
   }, []);
 
-  if (allChatLoading) {
-    return <Spinner position="full" />;
-  }
+  // if (allChatLoading) {
+  //   return <Spinner position="full" />;
+  // }
 
   return (
     <div className="groups">
@@ -88,7 +87,7 @@ const GroupsChats = ({
             groupImg = names[0][0] + names[1][0];
           }
 
-          return (
+          return group.type === "group" ? (
             <div
               key={group.id}
               className={`groups__one-group ${
@@ -115,7 +114,7 @@ const GroupsChats = ({
                 </div>
               ) : null}
             </div>
-          );
+          ) : null;
         })
       )}
     </div>
