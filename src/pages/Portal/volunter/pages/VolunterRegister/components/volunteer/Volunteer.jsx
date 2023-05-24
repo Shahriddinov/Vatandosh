@@ -112,7 +112,7 @@ export default function Volunteer({ activeBarItem }) {
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
-          <h3 className="registeritem-title">VI. Volonyorlik faoliyati</h3>
+          <h3 className="registeritem-title">V. Volonyorlik faoliyati</h3>
           {volunteerProfile?.length
             ? volunteerProfile?.map((el, index) => (
                 <div key={index} className="registeritem-form">

@@ -12,7 +12,7 @@ import { ExpertTitle } from "../../../../../expert/components";
 import { changeStatus } from "../../../../../../../reduxToolkit/projectsSlice/projectsSlice";
 import { meetingCreate } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 
-export default function RegisterOne() {
+export default function RegisterOne({ activeBarItem }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [uploadImg, setuploadImg] = useState(null);
@@ -69,10 +69,19 @@ export default function RegisterOne() {
   };
 
   return (
-    <main className="webinar-register">
-      <div className="container">
-        <ExpertTitle title={t("projects_page.participate_btn")} url={url} />
-        <form className="registeritem1" onSubmit={handleSubmit}>
+    <main
+      className={
+        activeBarItem !== 0
+          ? "webinar-register registeritem-scaleHidden"
+          : "webinar-register registeritem-scaleActive"
+      }
+    >
+      <div className="registeritem1-wrapper registeritem-borderLeft">
+        <h3 className="registeritem-title">Shahsiy malumotlaringiz</h3>
+        <form
+          className="webinar-register-item registeritem1"
+          onSubmit={handleSubmit}
+        >
           <div className="registeritem1-wrapper">
             <div className="registeritem1-form">
               <div className="registeritem1-form-uploadImg">
