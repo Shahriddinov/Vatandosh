@@ -6,11 +6,13 @@ import { BsImage } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postSuggestions } from "../../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function RegisterTwo({ activeBarItem }) {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
   const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [formData, setFormData] = useState({
@@ -36,8 +38,12 @@ export default function RegisterTwo({ activeBarItem }) {
     if (formData.suggestions.trim() && formData.suggestions.trim()) {
       const res = await dispatch(postSuggestions(formData));
       if (!res.error) {
-        alert("Suggestion succesfull create!");
-        history("/portal-category/expert");
+        toast.success("Taklifingiz qabul qilindi!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setTimeout(() => {
+          navigate("/portal-category/webinar");
+        }, 5000);
       }
     }
   };
@@ -45,17 +51,19 @@ export default function RegisterTwo({ activeBarItem }) {
   return (
     <form
       className={
-        activeBarItem !== 4
+        activeBarItem !== 1
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+    >
       <div className="registeritem5-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">{t("expert.reg5")}</h3>
+        <h3 className="registeritem-title">Taklifingiz</h3>
         <div className="registeritem-form">
           <label
             htmlFor="uploadSuggestionImage"
-            className="registeritem-imgInput">
+            className="registeritem-imgInput"
+          >
             <input
               id="uploadSuggestionImage"
               className="registeritem-label-fileinput"
@@ -134,7 +142,8 @@ export default function RegisterTwo({ activeBarItem }) {
           type="submit"
           disabled={!checked}
           style={checked ? null : { opacity: 0.4, cursor: "auto" }}
-          className="registeritem-submitBtn">
+          className="registeritem-submitBtn"
+        >
           {t("expert.save")}
         </button>
       </div>

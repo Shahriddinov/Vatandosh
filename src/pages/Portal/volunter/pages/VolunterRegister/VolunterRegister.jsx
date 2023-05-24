@@ -72,7 +72,7 @@ export default function VolunterRegister() {
                 setactiveBarItem={setactiveBarItem}
               />
 
-              <Volunteer activeBarItem={activeBarItem} />
+              <Volunteer activeBarItem={activeBarItem + 1} />
             </div>
           </div>
         </div>
