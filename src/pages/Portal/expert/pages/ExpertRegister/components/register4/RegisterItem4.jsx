@@ -15,12 +15,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
     article_published_journal_name: "",
     scientific_article_created_at: "",
     article_url: "",
-    article_file: null,
+    article_file: "",
     main_science_directions: [],
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(data);
     const res = await dispatch(postExpertScientific(data));
     if (res.payload) setactiveBarItem(4);
   };

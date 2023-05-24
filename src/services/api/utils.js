@@ -105,6 +105,14 @@ export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
 export const GET_WEBINAR_BODY = `/meeting`;
+export const GET_MAGAZINE_ABOUT = "/magazine/get-about";
+export const GET_MAGAZINE_ONE_ABOUT = "/magazine/get-one-about";
+export const GET_MAGAZINE_ALL = "/magazine/get-all";
+export const GET_MAGAZINE_ONE = "/magazine/get-one/";
+export const GET_MAGAZINE_MENU = "/magazine/get-menu";
+export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
+export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
+export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

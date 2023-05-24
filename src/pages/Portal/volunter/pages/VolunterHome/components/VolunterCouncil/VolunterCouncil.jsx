@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 function Volunter({ volunteers }) {
   const { t } = useTranslation();
-  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">
