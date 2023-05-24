@@ -1,11 +1,12 @@
 import React from "react";
 import NotificationCard from "../notificationCard/NotificationCard";
 
-const NotificationList = () => {
+import "./notificationList.scss";
+const NotificationList = ({ data }) => {
   return (
     <ul className="notification-list">
-      {[1, 2].map((el) => (
-        <NotificationCard />
+      {data.map((el) => (
+        <NotificationCard key={el.id} {...el} />
       ))}
     </ul>
   );

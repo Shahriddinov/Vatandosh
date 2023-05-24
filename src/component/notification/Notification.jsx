@@ -1,27 +1,28 @@
 import { useState } from "react";
-import { Avatar, Box, Menu, MenuItem, Typography } from "@mui/material";
+import { Menu, Typography } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
 import { closeNotification } from "../../reduxToolkit/notificationSlice/notificationSlice";
 
 import "./notification.scss";
 import { NotificationList, Tab } from "./components";
+import { admin, events, news } from "./data";
+
 const Notification = () => {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState("admin");
 
   const anchorEl = useSelector((store) => store.notification.open);
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
 
   const handleClose = (evt) => {
-    if (!evt.target.matches(".cabinet-notification__tab_item")) {
-      dispatch(closeNotification(null));
+    if (!evt.target.parentElement.matches(".notification-tab__item")) {
+      if (!evt.target.parentElement.matches(".notification-tab__list")) {
+        dispatch(closeNotification(null));
+      }
     }
   };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   return (
     <div className="cabinet-notification_box">
       <Menu
@@ -68,9 +69,10 @@ const Notification = () => {
         >
           Notifications
         </Typography>
-        <Tab />
-
-        <NotificationList />
+        <Tab value={value} handleClose={handleClose} setValue={setValue} />
+        <NotificationList
+          data={value === "admin" ? admin : value === "news" ? news : events}
+        />
       </Menu>
     </div>
   );
