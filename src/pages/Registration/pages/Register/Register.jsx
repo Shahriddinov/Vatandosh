@@ -52,19 +52,14 @@ const Register = () => {
   );
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.authSlice.registerLoading);
-  const registerData = useSelector((state) => state.authSlice.registerData);
   const loadingNations = useSelector((state) => state.authSlice.nationsLoading);
   const nationsData = useSelector((state) => state.authSlice.nationsData);
-  const loadingCountries = useSelector(
-    (state) => state.community.locationGetLoading
-  );
   const allCountries = useSelector(createCountries);
   const countryCities = useSelector(createCities);
-  const formRef = useRef();
 
   const [agree, setAgree] = useState(false);
   const [formData, setFormData] = useState({
-    avatar_url: DefaultProfilePic,
+    avatar_url: "",
     first_name: "",
     second_name: "",
     last_name: "",
@@ -185,7 +180,6 @@ const Register = () => {
     data.append("passport_file", formData.passport_file);
 
     dispatch(registerUser(data));
-    console.log(data);
   };
 
   useEffect(() => {
@@ -231,8 +225,8 @@ const Register = () => {
             <div className="profile__img">
               <img
                 src={
-                  typeof formData.avatar_url === "string"
-                    ? formData.avatar_url
+                  formData.avatar_url === ""
+                    ? DefaultProfilePic
                     : URL.createObjectURL(formData.avatar_url)
                 }
                 alt="user img"
