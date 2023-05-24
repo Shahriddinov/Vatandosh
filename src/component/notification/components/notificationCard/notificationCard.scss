@@ -26,8 +26,8 @@
 
   &__img_dot {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -8px;
+    left: -8px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -50,6 +50,7 @@
   }
 
   &__time_date {
+    margin-top: 10px;
     color: #a5acb8;
   }
 }

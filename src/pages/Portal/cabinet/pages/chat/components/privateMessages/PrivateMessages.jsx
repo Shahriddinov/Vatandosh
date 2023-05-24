@@ -253,7 +253,7 @@ const PrivateMessages = ({
           </div>
         ) : (
           <p className="private-message__no-user">
-            Select a chat to start messaging
+            Select a chat to start messaging.
           </p>
         )}
       </div>

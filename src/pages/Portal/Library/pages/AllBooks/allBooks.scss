@@ -72,6 +72,26 @@
   box-shadow: none;
 }
 
+.path {
+  display: flex;
+  justify-content: end;
+  margin: 20px 0;
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .current_path {
+    color: #065ea9;
+  }
+  a:visited {
+    color: #5d6b8a;
+  }
+}
+
 @media (max-width: 1000px) {
   .all__books__search {
     row-gap: 30px;

@@ -154,7 +154,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
       <div className="registeritem2-wrapper registeritem-borderLeft">
         <h3 className="registeritem-title">{t("expert.reg2")}</h3>
         <div className="registeritem-form registeritem-gapNon">
-          <h3>{t("expert.uzbotm")}</h3>
+          {/*<h3>{t("expert.uzbotm")}</h3>*/}
           {data1.length ? (
             data1.map((el, index) => (
               <div key={index} className="registeritem2-form-otm">
@@ -240,7 +240,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
               </div>
             ))
           ) : (
-            <h3>{t("expert.uzbotm")}</h3>
+            ""
           )}
           <button
             type="button"
@@ -262,7 +262,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
           >
             <BsPlusCircleFill />
           </button>
-          <h3>{t("expert.xorotm")}</h3>
+          {/*<h3>{t("expert.xorotm")}</h3>*/}
           {data2.length ? (
             data2.map((el, index) => (
               <div key={index} className="registeritem2-form-otm">
@@ -348,7 +348,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
               </div>
             ))
           ) : (
-            <h3>{t("expert.xorotm")}</h3>
+           ""
           )}
           <button
             type="button"
