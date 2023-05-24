@@ -4,8 +4,18 @@ import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFoo
 import { Header } from "./components";
 
 import "./electronikJournalLayout.scss";
+import { useElectronicJournalLayout } from "./hooks/useElectronicJournalLayout";
+import { Spinner } from "../../../component";
 
 const ElectronicJournalLayout = () => {
+  const { menu, menuLoading, lan, error } = useElectronicJournalLayout();
+
+  if (menuLoading) {
+    return <Spinner position="full" />;
+  }
+
+  console.log(menu);
+
   const navData = [
     {
       id: 1,

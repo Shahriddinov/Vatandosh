@@ -43,7 +43,8 @@ import quizByIdSlice from "./victorinaQuiz/quizbyid";
 import chatSlice from "./chatSlice";
 import AllProjectSlice from "./AllProjectSlice";
 import notification from "./notificationSlice/notificationSlice";
-import webinarBodySlice from './webinar'
+import webinarBodySlice from "./webinar";
+import journal from "./portalSlices/electronicJournalSlice/electronicJournalSlice";
 
 const store = configureStore({
   reducer: {
@@ -90,7 +91,8 @@ const store = configureStore({
     quizFinishSlice,
     chatSlice,
     notification,
-    webinarBodySlice
+    webinarBodySlice,
+    journal,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
