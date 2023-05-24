@@ -31,6 +31,8 @@ export default function ExpertOffers() {
     dispatch(getExperts(page));
   }, [page, dispatch]);
 
+  console.log(expertData);
+
   return (
     <main className="expertoffer">
       {loading ? <Spinner position={"full"} /> : null}
@@ -43,10 +45,14 @@ export default function ExpertOffers() {
                   <img src={DefaultProfilePic} alt="error" />
                   <div className="expertoffer-list-item-desc">
                     <ExpertProfileInfo
-                      profileImg={PORTAL_IMAGE_URL + el?.user_id?.avatar}
-                      name={el?.user_profile_id?.user_id?.name}
-                      address={el?.user_profile_id?.international_address}
-                      position={el?.user_profile_id?.job_position}
+                      profileImg={`${PORTAL_IMAGE_URL}/${el?.user_profile?.avatar_url}`}
+                      name={
+                        el?.user_profile?.last_name &&
+                        el?.user_profile?.first_name &&
+                        el?.user_profile?.second_name
+                      }
+                      address={el?.user_profile?.international_address}
+                      position={el?.user_profile?.job_position}
                     />
                     <p>{el?.suggestions}</p>
                     <div className="expertoffer-list-item-desc-button">
@@ -65,8 +71,7 @@ export default function ExpertOffers() {
               <button
                 onClick={() => {
                   SetPage((prev) => ++prev);
-                }}
-              >
+                }}>
                 <BsArrowDownCircleFill />
                 <span>{t("expert.alloffers")}</span>
               </button>

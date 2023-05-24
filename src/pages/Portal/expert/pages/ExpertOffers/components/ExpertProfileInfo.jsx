@@ -6,6 +6,9 @@ export default function ExpertProfileInfo({
   name,
   address,
   position,
+  nameOne,
+  nameTwo,
+  addressOne,
 }) {
   const { pathname } = useLocation();
 
@@ -14,8 +17,12 @@ export default function ExpertProfileInfo({
       <div className="expertprofile-info-main">
         <img src={profileImg} alt="error" />
         <div className="expertprofile-info-main-desc">
-          <span>{address}</span>
-          <h4>{name}</h4>
+          <span>
+            {addressOne}, {address}
+          </span>
+          <h4>
+            {name} {nameOne} {nameTwo}
+          </h4>
           <strong>{position}</strong>
         </div>
       </div>

@@ -36,10 +36,17 @@ export default function ExpertOffersDetail() {
           <div className="expertofferdetail-main">
             <img src={DefaultProfilePic} alt="error" />
             <ExpertProfileInfo
-              profileImg={PORTAL_IMAGE_URL + expertData?.user_id?.avatar}
-              name={expertData?.user_profile_id?.user_id?.name}
-              address={expertData?.user_profile_id?.international_address}
-              position={expertData?.user_profile_id?.job_position}
+              profileImg={
+                PORTAL_IMAGE_URL + expertData?.user_profile?.avatar_url
+              }
+              name={expertData?.user_profile?.last_name}
+              nameOne={expertData?.user_profile?.first_name}
+              nameTwo={expertData?.user_profile?.second_name}
+              address={expertData?.user_profile?.international_address_id.name}
+              addressOne={
+                expertData.user_profile.international_location_id.name
+              }
+              position={expertData?.user_profile?.job_position}
             />
             <p>{expertData?.suggestions}</p>
             <p>{expertData?.additional_information}</p>
