@@ -279,7 +279,7 @@ const ElectronicJournalAbout = lazy(() =>
 );
 
 const NewNumber = lazy(() =>
-  import("./pages/Portal/electronicJournal/pages/newNumber/NuwNumber")
+  import("./pages/Portal/electronicJournal/pages/newNumber/NewNumber")
 );
 
 const ElectronArchive = lazy(() =>
@@ -596,7 +596,10 @@ const RoutesContainer = () => {
               element={<ElectronicJournalLayout />}
             >
               <Route index element={<ElectronicJournalHome />} />
-              <Route path="about" element={<ElectronicJournalAbout />} />
+              <Route
+                path="about/:journalId"
+                element={<ElectronicJournalAbout />}
+              />
               <Route path="new-number" element={<NewNumber />} />
               <Route path="archive" element={<ElectronArchive />} />
               <Route path="contact" element={<Contact />} />

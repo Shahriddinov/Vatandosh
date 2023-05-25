@@ -37,6 +37,7 @@
     display: block;
     width: 100%;
     max-width: 533px;
+    height: 315px;
     border-radius: 15px;
   }
 
@@ -78,12 +79,7 @@
 
     &__content-image {
       justify-self: center;
-    }
-
-    &__content-image {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 15px;
+      height: 315px;
     }
 
     &__content-image:nth-child(2) {
@@ -121,6 +117,10 @@
       margin-bottom: 20px;
     }
 
+    &__content-image {
+      justify-self: center;
+      height: 229px;
+    }
     &__content-image:nth-child(2) {
       justify-self: center;
     }

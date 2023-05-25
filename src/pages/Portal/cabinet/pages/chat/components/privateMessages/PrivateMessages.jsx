@@ -1,24 +1,26 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useRef, useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
 
 import "./privateMessages.scss";
 
-import userImg from "../../../../../../../assets/images/cabinet/user.png";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { MessagesContext } from "../../../../../../../App";
+import { sendMessage } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 const PrivateMessages = ({
-  userData,
   showMessages,
   activeUser,
   setShowDocs,
   showDocs,
   setShowLinks,
   showLinks,
+  privateChatRoomId,
 }) => {
+  const dispatch = useDispatch();
   const inputRef = useRef();
   const sendRef = useRef();
   const messagesRef = useRef();
@@ -28,78 +30,13 @@ const PrivateMessages = ({
     message: "",
     type: null,
   });
+  const { messages } = useContext(MessagesContext);
 
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const user = useSelector((state) => state.authSlice.userData);
-
-  const messages = [
-    {
-      id: 1,
-      user_id: 1,
-      message_time: "20:00 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 2,
-      user_id: 6,
-      message_time: "20:03 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 3,
-      user_id: 1,
-      message_time: "20:06 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 4,
-      user_id: 3,
-      message_time: "20:10 PM",
-      message:
-        "Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 5,
-      user_id: 6,
-      message_time: "20:12 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 6,
-      user_id: 2,
-      message_time: "21:00 PM",
-      message:
-        "Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 7,
-      user_id: 5,
-      message_time: "21:10 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 8,
-      user_id: 5,
-      message_time: "21:20 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 9,
-      user_id: 4,
-      message_time: "21:21 PM",
-      message:
-        "Lorem4 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-  ];
 
   const docs = [
     { id: 1, name: "Ekspertlar1 kengashi guruhi.pdf" },
@@ -133,7 +70,7 @@ const PrivateMessages = ({
   ];
 
   const handleChange = (input) => {
-    if (input.target.value !== "") {
+    if (input.target.value.length >= 2) {
       sendRef.current.style.pointerEvents = "all";
       sendRef.current.style.cursor = "pointer";
       sendRef.current.style.opacity = 1;
@@ -158,13 +95,20 @@ const PrivateMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setSendMessageData({
+    const mess = {
       ...sendMessageData,
-      user_id: userData.user.id,
+      chat_room_id: privateChatRoomId,
       type: 1,
-    });
+    };
+
+    setSendMessageData(mess);
+
+    dispatch(sendMessage(mess));
 
     inputRef.current.value = "";
+
+    sendRef.current.style.pointerEvents = "none";
+    sendRef.current.style.opacity = 0.5;
   };
 
   useEffect(() => {
@@ -181,15 +125,12 @@ const PrivateMessages = ({
     }
   }, [showDocs, showLinks]);
 
-  // useEffect(() => {
-  //   messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-  // }, [showMessages, activeUser, showDocs, showLinks]);
+  useEffect(() => {
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+  }, [showMessages, activeUser, showDocs, showLinks, messages]);
 
   const privateUser =
-    messagesData &&
-    messagesData?.messages?.data?.find((el) => el.user_id !== user.id).user;
-
-  // console.log(messagesData);
+    messagesData && messagesData?.users?.find((el) => el.id !== user.id);
 
   return (
     <div className="private-message">
@@ -264,7 +205,7 @@ const PrivateMessages = ({
               show ? "show-messages" : ""
             }`}
           >
-            {messagesData?.messages?.data.map((message) => {
+            {messages?.map((message) => {
               const userId = user.user_id ? user.user_id.id : user.id;
               return message.user.id !== userId ? (
                 <div
@@ -286,7 +227,15 @@ const PrivateMessages = ({
                       {message.message}
                     </p>
                     <span>
-                      {message.created_at.split("T")[1].split(".")[0]}
+                      {message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
                     </span>
                   </div>
                 </div>
@@ -300,7 +249,15 @@ const PrivateMessages = ({
                       {message.message}
                     </p>
                     <span>
-                      {message.created_at.split("T")[1].split(".")[0]}
+                      {message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
                     </span>
                   </div>
                   <div className="private-message__sent-user">
@@ -345,14 +302,14 @@ const PrivateMessages = ({
               fill="#065EA9"
             />
           </svg>
-          <div className="private-message__send" ref={sendRef}>
+          <button className="private-message__send" ref={sendRef}>
             <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
               <path
                 d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
                 fill="white"
               />
             </svg>
-          </div>
+          </button>
           <input
             ref={inputRef}
             onChange={(e) => handleChange(e)}

@@ -1,13 +1,15 @@
 import React from "react";
 import "./journalHomeHero.scss";
 import { Link } from "react-router-dom";
-import { HeroImg } from "../../../../../../../assets/images/electronic-journal";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
-const JournalHomeHero = () => {
-  let text = `Based on an original new story by J.K. Rowling, Jack Thorne and
-  John Tiffany, a new play by Jack Thorne, Harry Potter and the
-  Cursed Child is the eighth story in the Harry Potter series and
-  the first official Harry Potter story to be presented on stage dwdew.`;
+const JournalHomeHero = ({ allMagazine }) => {
+  const data = allMagazine?.data[0];
+  const time = data?.start_data_edition
+    .slice(0, 10)
+    .split("-")
+    .reverse()
+    .join(".");
 
   return (
     <section className="journal-home-hero">
@@ -15,27 +17,27 @@ const JournalHomeHero = () => {
         <div className="journal-home-hero__inner">
           <div className="journal-home-hero__inner-img">
             <img
-              src={HeroImg}
+              src={`${PORTAL_IMAGE_URL}${data?.thumbnail}`}
               className="journal-home-hero__img"
-              alt="inner img"
+              alt={data?.title}
             />
           </div>
 
           <div className="journal-home-hero__inner-content">
             <span className="journal-home-hero__inner-content--time">
-              Выпуск: 01.02.2022
+              Выпуск: {time}
             </span>
-            <h2 className="journal-home-hero__inner-title">
-              Vatandosh jurnalining yanvar oyidagi soni
-            </h2>
+            <h2 className="journal-home-hero__inner-title">{data?.title}</h2>
 
             <b className="journal-home-hero__inner-about">О журнале</b>
             <p className="journal-home-hero__inner-desc">
-              {text.length > 259 ? text.slice(0, 259) + "..." : text}
+              {data?.short_content?.length > 259
+                ? data?.short_content?.slice(0, 259) + "..."
+                : data?.short_content}
             </p>
 
             <Link
-              to="/portal-category/electronic-journal/about"
+              to={`/portal-category/electronic-journal/about/${data?.id}`}
               className="journal-home-hero__inner-btn"
             >
               Подробнее
