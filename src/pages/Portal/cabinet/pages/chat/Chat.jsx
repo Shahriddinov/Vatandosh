@@ -22,6 +22,7 @@ const Chat = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
   const [activePage, setActivePage] = useState(1);
+  const [privateChatRoomId, setPrivateChatId] = useState(null);
 
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
@@ -68,6 +69,7 @@ const Chat = () => {
               activePage={activePage}
               activeChat={activeChat}
               data={data}
+              setPrivateChatId={setPrivateChatId}
             />
           ) : (
             <GroupsChats
@@ -93,6 +95,8 @@ const Chat = () => {
             showDocs={showDocs}
             setShowLinks={setShowLinks}
             showLinks={showLinks}
+            data={data}
+            privateChatRoomId={privateChatRoomId}
           />
         ) : (
           <GroupsMessages

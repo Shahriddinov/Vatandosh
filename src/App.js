@@ -13,8 +13,8 @@ function App({ children }) {
   );
 
   useEffect(() => {
-    socket.onopen = (e) => {
-      console.log(e);
+    socket.onopen = (event) => {
+      console.log("Websocket connected!");
     };
     socket.onmessage = (event) => {
       setMessages((prev) => [...prev, JSON.parse(event.data).message]);

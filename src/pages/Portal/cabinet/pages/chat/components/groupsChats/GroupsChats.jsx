@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { getAllChats } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
-import Spinner from "../../../../../../../component/Spinner";
 
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { getMessages } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
@@ -18,7 +17,6 @@ const GroupsChats = ({
   setShowLinks,
   setShowMembers,
   activePage,
-  activeChat,
   data,
 }) => {
   const dispatch = useDispatch();
