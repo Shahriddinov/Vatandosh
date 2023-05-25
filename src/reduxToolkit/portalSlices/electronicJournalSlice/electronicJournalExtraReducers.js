@@ -49,9 +49,28 @@ export const magazinePopularAll = createAsyncThunk(
 );
 
 //=========================================GET_MAGAZINE_ALL================================
-export const magazineGetAll = createAsyncThunk("magazineGetAll", async () => {
-  return await axios.get(GET_MAGAZINE_ALL).then((res) => res.data);
-});
+export const lastMagazineGet = createAsyncThunk(
+  "lastMagazineGet",
+  async ({ paginate }) => {
+    return await axios({
+      url: GET_MAGAZINE_ALL,
+      method: "GET",
+      params: { paginate },
+    }).then((res) => res.data);
+  }
+);
+
+//=========================================GET_MAGAZINE_ALL================================
+export const magazineGetAll = createAsyncThunk(
+  "magazineGetAll",
+  async ({ paginate, page }) => {
+    return await axios({
+      url: GET_MAGAZINE_ALL,
+      method: "GET",
+      params: { paginate, page },
+    }).then((res) => res.data);
+  }
+);
 
 //=========================================GET_MAGAZINE_ONE================================
 export const magazineGetOne = createAsyncThunk(

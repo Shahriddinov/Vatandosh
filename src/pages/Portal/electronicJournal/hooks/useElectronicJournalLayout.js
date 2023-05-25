@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  magazineGetAll,
+  lastMagazineGet,
   magazineGetMenu,
 } from "../../../../reduxToolkit/portalSlices/electronicJournalSlice/electronicJournalExtraReducers";
 import { createSelector } from "@reduxjs/toolkit";
@@ -30,7 +30,7 @@ const navData = [
 
 const changeMenu = createSelector(
   (state) => state.journal.menu,
-  (state) => state.journal.allMagazine,
+  (state) => state.journal.lastMagazine,
   (menu, journals) => {
     const journal = journals?.data?.length > 0 ? journals.data[0] : {};
     const data = menu?.slice(0, 5)?.map((el, index) => {
@@ -57,8 +57,8 @@ export const useElectronicJournalLayout = () => {
   const menu = useSelector(changeMenu);
   const menuLoading = useSelector((state) => state.journal.menuLoading);
 
-  const allMagazineLoading = useSelector(
-    (state) => state.journal.allMagazineLoading
+  const lastMagazineLoading = useSelector(
+    (state) => state.journal.lastMagazineLoading
   );
 
   const error = useSelector((state) => state.journal.error);
@@ -67,8 +67,8 @@ export const useElectronicJournalLayout = () => {
 
   useEffect(() => {
     dispatch(magazineGetMenu());
-    dispatch(magazineGetAll(2));
+    dispatch(lastMagazineGet({ paginate: 2 }));
   }, [dispatch, lan]);
 
-  return { menu, menuLoading, allMagazineLoading, error };
+  return { menu, menuLoading, lastMagazineLoading, error };
 };

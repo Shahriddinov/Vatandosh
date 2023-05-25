@@ -23,7 +23,7 @@ export const useElectronicJournalAbout = () => {
 
   useEffect(() => {
     dispatch(magazineGetOne({ id: journalId }));
-  }, [dispatch, lan]);
+  }, [dispatch, lan, journalId]);
 
   return {
     lan,
