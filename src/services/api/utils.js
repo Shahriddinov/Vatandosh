@@ -65,6 +65,7 @@ export const GET_COMMUNITY_EVENT_DETAIL = "/community/event/";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/2`;
 export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
 export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
+export const GET_EXPERT_SUGGESTIONS_MENU = `/suggestion/all-or-one-expert-suggestion`;
 export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const GET_EXPERT_EDUCATION = `${portalBaseUrl}/education/show-user`;
 export const GET_EXPERT_EDUCATION_SPECIALIZATION = `${portalBaseUrl}/specialization/get-all`;

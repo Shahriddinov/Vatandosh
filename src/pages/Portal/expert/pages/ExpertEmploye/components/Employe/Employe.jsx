@@ -75,6 +75,8 @@ function Employe() {
 
   const countPagination = paginationCount(expertData?.total, 12);
 
+  console.log(expertData);
+
   return (
     <div className="employe">
       <div className="container">
