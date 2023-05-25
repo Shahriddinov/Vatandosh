@@ -82,7 +82,7 @@ const GroupsMessages = ({
   const { messages } = useContext(MessagesContext);
 
   const handleChange = (input) => {
-    if (input.target.value !== "") {
+    if (input.target.value.length >= 2) {
       sendRef.current.style.pointerEvents = "all";
       sendRef.current.style.cursor = "pointer";
       sendRef.current.style.opacity = 1;
@@ -115,10 +115,6 @@ const GroupsMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const findUser = messagesData.messages.data.find(
-    //   (l) => l.user_id === user.id
-    // );
-
     const mess = {
       ...sendMessageData,
       chat_room_id: groupData.group.id,
@@ -128,9 +124,10 @@ const GroupsMessages = ({
 
     dispatch(sendMessage(mess));
 
-    // setMessages((prev) => [...prev, { ...findUser, ...mess }]);
-
     inputRef.current.value = "";
+
+    sendRef.current.style.pointerEvents = "none";
+    sendRef.current.style.opacity = 0.5;
   };
 
   useEffect(() => {
@@ -169,8 +166,6 @@ const GroupsMessages = ({
   //   });
   //   setScrollTop(message.scrollTop);
   // }, [scrollTop]);
-
-  // console.log(messages);
 
   return (
     <div className="group-message">
