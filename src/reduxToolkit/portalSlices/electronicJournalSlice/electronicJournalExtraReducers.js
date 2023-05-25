@@ -8,6 +8,7 @@ import {
   GET_MAGAZINE_ONE_ABOUT,
   GET_MAGAZINE_ONE_MENU,
   GET_MAGAZINE_ONE_TIPS,
+  GET_MAGAZINE_POPULAR,
   GET_MAGAZINE_TIPS,
 } from "../../../services/api/utils";
 
@@ -28,6 +29,20 @@ export const magazineGetOneAbout = createAsyncThunk(
       method: "GET",
       params: {
         aboutEMagazine,
+      },
+    }).then((res) => res.data);
+  }
+);
+
+//=========================================GET_MAGAZINE_POPULAR================================
+export const magazinePopularAll = createAsyncThunk(
+  "magazinePopularAll",
+  async (paginate) => {
+    return await axios({
+      url: GET_MAGAZINE_POPULAR,
+      method: "GET",
+      params: {
+        paginate,
       },
     }).then((res) => res.data);
   }

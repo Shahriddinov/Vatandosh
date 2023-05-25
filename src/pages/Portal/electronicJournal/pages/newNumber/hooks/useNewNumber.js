@@ -5,7 +5,7 @@ import {
   magazinePopularAll,
 } from "../../../../../../reduxToolkit/portalSlices/electronicJournalSlice/electronicJournalExtraReducers";
 
-export const useElectronicJournalHome = () => {
+export const useNewNumber = () => {
   const lan = useSelector((state) => state.language.language);
 
   const allMagazinePopular = useSelector(

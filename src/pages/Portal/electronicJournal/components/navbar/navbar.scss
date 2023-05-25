@@ -38,8 +38,13 @@
   }
 
   .navbar-item {
+    position: relative;
     display: flex;
     align-items: center;
+
+    .expert-header-cabinet-bar {
+      left: 0;
+    }
   }
 
   .navbar-button {

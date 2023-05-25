@@ -6,14 +6,14 @@ import burger from "../../../../../assets/images/icons/burger.svg";
 import { useTranslation } from "react-i18next";
 import NavbarList from "./navbarList/NavbarList";
 
-const Navbar = ({ navbarUrl, setActive }) => {
+const Navbar = ({ setActive }) => {
   const { t } = useTranslation();
 
   return (
     <div className="community-navbar">
       <div className="container">
         <div className="community-navbar__inner">
-          <Link to={navbarUrl?.home}>
+          <Link to="/portal">
             <div className="navbar-list">
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4 className={`navbar--subname`}>{t("expert.headtitle")}</h4>
@@ -26,7 +26,7 @@ const Navbar = ({ navbarUrl, setActive }) => {
           >
             <img src={burger} alt="menu burger" className="" />
           </button>
-          <NavbarList navbarUrl={navbarUrl} />
+          <NavbarList />
         </div>
       </div>
     </div>

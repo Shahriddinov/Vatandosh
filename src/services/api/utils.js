@@ -108,6 +108,7 @@ export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
 export const GET_WEBINAR_BODY = `/meeting`;
 export const GET_MAGAZINE_ABOUT = "/magazine/get-about";
 export const GET_MAGAZINE_ONE_ABOUT = "/magazine/get-one-about";
+export const GET_MAGAZINE_POPULAR = "/magazine/get-popular";
 export const GET_MAGAZINE_ALL = "/magazine/get-all";
 export const GET_MAGAZINE_ONE = "/magazine/get-one/";
 export const GET_MAGAZINE_MENU = "/magazine/get-menu";

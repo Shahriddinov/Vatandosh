@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./newNumber.scss";
 import { NewNumberCard } from "./components";
 import { newNumberData } from "../../data";
 
-const NuwNumber = () => {
+import "./newNumber.scss";
+const NewNumber = () => {
   return (
     <main className="new-number">
       <div className="new-number__container container">
@@ -21,4 +21,4 @@ const NuwNumber = () => {
   );
 };
 
-export default NuwNumber;
+export default NewNumber;

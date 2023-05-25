@@ -10,7 +10,7 @@ import {
   signIn,
   verifyToken,
 } from "./extraReducer";
-import { getItem, setItem } from "../../helpers/persistanceStorage";
+import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
 
 const initialState = {
   emailLoading: false,
@@ -37,8 +37,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     removeToken: (state) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
+      removeItem("token");
+      removeItem("user");
       state.token = null;
     },
   },
