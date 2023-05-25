@@ -1,14 +1,21 @@
 import React from "react";
-import "./electronicJournalHome.scss";
+import "./electronicJournalAbout.scss";
 import { JournalAboutContent, JournalAboutHero } from "./components";
+import { useElectronicJournalAbout } from "./hooks/useElectronicJournalAbout";
+import { Spinner } from "../../../../../component";
 const ElectronicJournalAbout = () => {
+  const { lan, error, oneMagazineLoading, oneMagazine, pageMenu } =
+    useElectronicJournalAbout();
+
+  if (oneMagazineLoading) {
+    return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <main className="electronic-journal-about">
-      <JournalAboutHero
-        title="О ЖУРНАЛЕ"
-        desc="В этом разделе вы можете узнать о журналах."
-      />
-      <JournalAboutContent />
+      <JournalAboutHero pageMenu={pageMenu} />
+      <JournalAboutContent oneMagazine={oneMagazine} />
     </main>
   );
 };

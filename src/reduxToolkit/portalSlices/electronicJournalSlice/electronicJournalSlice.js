@@ -8,6 +8,7 @@ import {
   magazineGetOneMenu,
   magazineGetOneTips,
   magazineGetTips,
+  magazinePopularAll,
 } from "./electronicJournalExtraReducers";
 
 const initialState = {
@@ -16,6 +17,9 @@ const initialState = {
 
   oneAbout: {},
   oneAboutLoading: true,
+
+  allMagazinePopular: [],
+  allMagazinePopularLoading: true,
 
   allMagazine: [],
   allMagazineLoading: true,
@@ -68,6 +72,20 @@ const electronicJournalSlice = createSlice({
       })
       .addCase(magazineGetOneAbout.rejected, (state, { error }) => {
         state.oneAboutLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(magazinePopularAll.pending, (state) => {
+        state.allMagazinePopularLoading = true;
+        state.error = null;
+      })
+      .addCase(magazinePopularAll.fulfilled, (state, { payload }) => {
+        state.allMagazinePopularLoading = false;
+        state.allMagazinePopular = payload;
+      })
+      .addCase(magazinePopularAll.rejected, (state, { error }) => {
+        state.allMagazinePopularLoading = false;
         state.error = error.message;
       });
 
