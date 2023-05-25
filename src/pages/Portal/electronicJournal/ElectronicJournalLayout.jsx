@@ -14,8 +14,6 @@ const ElectronicJournalLayout = () => {
     return <Spinner position="full" />;
   }
 
-  console.log(menu);
-
   const navData = [
     {
       id: 1,
