@@ -17,16 +17,26 @@ import { useState } from "react";
 import i18next from "i18next";
 import { languageChange } from "../../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../../component/Layout/data";
+import { BsPersonFill } from "react-icons/bs";
+import { GoSignOut } from "react-icons/go";
+import { removeItem } from "../../../../../../helpers/persistanceStorage";
 
-const NavbarList = ({ navbarUrl }) => {
-  const [activeLang, setactiveLang] = useState(false);
+const NavbarList = () => {
+  const [activeLang, setActiveLang] = useState(false);
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
+  const [activeCabinet, setActiveCabinet] = useState(false);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
-    setactiveLang((el) => !el);
+    setActiveLang((el) => !el);
+  };
+
+  const logOut = () => {
+    removeItem("token");
+    removeItem("user");
+    window.location = "/portal";
   };
 
   return (
@@ -88,7 +98,7 @@ const NavbarList = ({ navbarUrl }) => {
                 style={{
                   background: `#065EA9`,
                 }}
-                onClick={() => setactiveLang((el) => !el)}
+                onClick={() => setActiveLang((el) => !el)}
               >
                 <CiGlobe className="community-navbar_language-icon" />
                 <span style={{ color: "white" }}>
@@ -122,10 +132,32 @@ const NavbarList = ({ navbarUrl }) => {
           </li>
 
           <li className="navbar-item">
-            <Link to={navbarUrl?.register} className={`navbar--button`}>
+            <button
+              className={`navbar--button`}
+              onClick={() => setActiveCabinet((prev) => !prev)}
+            >
               <ExitIcon />
               Кабинет
-            </Link>
+            </button>
+
+            {activeCabinet ? (
+              <div className="expert-header-cabinet-bar">
+                <Link
+                  to={"/portal-category/cabinet"}
+                  className="expert-header-cabinet-bar-cabinet"
+                >
+                  <BsPersonFill />
+                  <span>Кабинет</span>
+                </Link>
+                <div
+                  className="expert-header-cabinet-bar-logout"
+                  onClick={logOut}
+                >
+                  <GoSignOut />
+                  <span>Выйти</span>
+                </div>
+              </div>
+            ) : null}
           </li>
         </ul>
       </li>
