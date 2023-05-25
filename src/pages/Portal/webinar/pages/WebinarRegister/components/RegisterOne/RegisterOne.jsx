@@ -9,8 +9,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { ExpertTitle } from "../../../../../expert/components";
-import { changeStatus } from "../../../../../../../reduxToolkit/projectsSlice/projectsSlice";
 import { meetingCreate } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { changeStatus } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/meetingSlice";
 
 export default function RegisterOne({ activeBarItem }) {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ export default function RegisterOne({ activeBarItem }) {
   const navigate = useNavigate();
 
   const status = useSelector((store) => store.meetingSlice.status);
+  console.log(status);
 
   useEffect(() => {
     if (status === "succeeded") {
@@ -28,6 +29,7 @@ export default function RegisterOne({ activeBarItem }) {
         position: toast.POSITION.TOP_RIGHT,
       });
       setTimeout(() => {
+        console.log("ishladi");
         navigate("/portal-category/webinar");
         dispatch(changeStatus());
       }, 5000);
@@ -216,7 +218,6 @@ export default function RegisterOne({ activeBarItem }) {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </main>
   );
 }
