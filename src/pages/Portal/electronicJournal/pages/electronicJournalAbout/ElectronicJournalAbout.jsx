@@ -4,7 +4,7 @@ import { JournalAboutContent, JournalAboutHero } from "./components";
 import { useElectronicJournalAbout } from "./hooks/useElectronicJournalAbout";
 import { Spinner } from "../../../../../component";
 const ElectronicJournalAbout = () => {
-  const { lan, error, oneMagazineLoading, oneMagazine, pageMenu } =
+  const { error, oneMagazineLoading, oneMagazine, pageMenu } =
     useElectronicJournalAbout();
 
   if (oneMagazineLoading) {

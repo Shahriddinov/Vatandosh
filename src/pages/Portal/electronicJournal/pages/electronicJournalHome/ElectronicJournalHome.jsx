@@ -14,7 +14,7 @@ const ElectronicJournalHome = () => {
     error,
     tipsLoading,
     tips,
-    allMagazine,
+    lastMagazine,
     allMagazinePopularLoading,
     allMagazinePopular,
   } = useElectronicJournalHome();
@@ -26,7 +26,7 @@ const ElectronicJournalHome = () => {
   }
   return (
     <main className="electronic-journal-home">
-      <JournalHomeHero allMagazine={allMagazine} />
+      <JournalHomeHero allMagazine={lastMagazine} />
       <PopularJournalSlider allMagazinePopular={allMagazinePopular} />
       <LearnMagazines tips={tips} />
     </main>

@@ -15,7 +15,7 @@ export const useElectronicJournalHome = () => {
     (state) => state.journal.allMagazinePopularLoading
   );
 
-  const allMagazine = useSelector((state) => state.journal.allMagazine);
+  const lastMagazine = useSelector((state) => state.journal.lastMagazine);
 
   const tips = useSelector((state) => state.journal.tips);
   const tipsLoading = useSelector((state) => state.journal.tipsLoading);
@@ -33,7 +33,7 @@ export const useElectronicJournalHome = () => {
     error,
     tipsLoading,
     tips,
-    allMagazine,
+    lastMagazine,
     allMagazinePopularLoading,
     allMagazinePopular,
   };

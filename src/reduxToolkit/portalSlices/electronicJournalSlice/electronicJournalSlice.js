@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  lastMagazineGet,
   magazineGetAbout,
   magazineGetAll,
   magazineGetMenu,
@@ -26,6 +27,9 @@ const initialState = {
 
   oneMagazine: {},
   oneMagazineLoading: true,
+
+  lastMagazine: {},
+  lastMagazineLoading: true,
 
   menu: [],
   menuLoading: true,
@@ -86,6 +90,20 @@ const electronicJournalSlice = createSlice({
       })
       .addCase(magazinePopularAll.rejected, (state, { error }) => {
         state.allMagazinePopularLoading = false;
+        state.error = error.message;
+      });
+
+    builder
+      .addCase(lastMagazineGet.pending, (state) => {
+        state.lastMagazineLoading = true;
+        state.error = null;
+      })
+      .addCase(lastMagazineGet.fulfilled, (state, { payload }) => {
+        state.lastMagazineLoading = false;
+        state.lastMagazine = payload;
+      })
+      .addCase(lastMagazineGet.rejected, (state, { error }) => {
+        state.lastMagazineLoading = false;
         state.error = error.message;
       });
 
