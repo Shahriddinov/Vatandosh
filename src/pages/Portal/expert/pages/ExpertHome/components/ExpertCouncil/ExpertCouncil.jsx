@@ -25,6 +25,7 @@ function Expert({ expertData, loading }) {
     return <Spinner position="full" />;
   }
 
+
   return expertData?.data?.length ? (
     <div className="expert">
       <div className="container expert-container">
@@ -85,7 +86,11 @@ function Expert({ expertData, loading }) {
                       {evt?.user_profile?.international_location_id?.name}
                       {evt?.user_profile?.international_address_id?.name}
                     </p>
-                    <h3>{evt?.user_profile?.second_name}</h3>
+                    <h3>
+                      {evt?.user_profile?.last_name}{" "}
+                      {evt?.user_profile?.first_name}{" "}
+                      {evt?.user_profile?.second_name}
+                    </h3>
                     <h4>{evt?.user_profile?.job_position}</h4>
                   </div>
                   <Link

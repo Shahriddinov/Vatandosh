@@ -28,13 +28,18 @@ export default function ExpertOffersDetail() {
   } else if (!expertData) return <NotFound />;
 
   console.log(expertData);
+
   return (
     <main className="expertofferdetail">
       <div className="container">
         <ExpertTitle title={t("expert.offer")} url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
-            <img src={DefaultProfilePic} alt="error" />
+            <img
+              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
+              alt="error"
+              className="expertofferdetail-pic"
+            />
             <ExpertProfileInfo
               profileImg={
                 PORTAL_IMAGE_URL + expertData?.user_profile?.avatar_url

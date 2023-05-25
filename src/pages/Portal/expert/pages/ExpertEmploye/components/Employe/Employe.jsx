@@ -75,7 +75,6 @@ function Employe() {
 
   const countPagination = paginationCount(expertData?.total, 12);
 
-
   return (
     <div className="employe">
       <div className="container">
@@ -112,16 +111,27 @@ function Employe() {
               expertData?.data?.map((evt) => (
                 <div key={evt.id}>
                   <img
-                    src={`${PORTAL_IMAGE_URL}${evt?.user_id?.avatar}`}
-                    alt={`${evt?.user_id?.name}`}
+                    alt="error"
+                    src={`${PORTAL_IMAGE_URL}${
+                      evt?.user_profile?.avatar_url
+                        ? evt?.user_profile?.avatar_url
+                        : evt?.user?.avatar
+                    }`}
+                    className="employee-img"
                   />
-                  <p>{evt?.user_profile_id?.international_location_id?.name}</p>
-                  <h3>{evt?.user_id?.name}</h3>
-                  <h4>{evt?.user_profile_id?.job_position}</h4>
+                  <p>
+                    {evt?.user_profile?.international_location_id?.name}
+                    {evt?.user_profile?.international_address_id?.name}
+                  </p>
+                  <h3>
+                    {evt?.user_profile?.last_name}{" "}
+                    {evt?.user_profile?.first_name}{" "}
+                    {evt?.user_profile?.second_name}
+                  </h3>
+                  <h4>{evt?.user_profile?.job_position}</h4>
                   <Link
                     className="employe-link"
-                    to={`/portal-category/expert/profile/${evt?.id}`}
-                  >
+                    to={`/portal-category/expert/profile/${evt?.id}`}>
                     <span>{t("expert.detail")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
                   </Link>
