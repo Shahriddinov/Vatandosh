@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSuggestions } from "./extraReducer";
+import { getSuggestionMenu, getSuggestions } from "./extraReducer";
 
 const initialState = {
   loading: true,
