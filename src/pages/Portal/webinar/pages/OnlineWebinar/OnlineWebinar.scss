@@ -5,6 +5,11 @@
 
   &-wrapper {
     display: flex;
+    gap: 30px;
+  }
+
+  &-hero-img {
+    width: 100% !important;
   }
 
   &-main {

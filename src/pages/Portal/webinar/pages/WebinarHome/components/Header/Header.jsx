@@ -77,12 +77,14 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
               className={`webinar-slider__slider-box ${
                 slideIndex === index ? "active" : ""
               }`}
-              key={index}>
+              key={index}
+            >
               <div
                 className={`webinar-slider__slider-item`}
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imageUrl}/${slider.image})`,
-                }}></div>
+                }}
+              ></div>
               <div className="container webinar-slider__content">
                 <div className="webinar-slider__slider-left-bottom">
                   <div className="webinar-slider__slider-left-bottom-text">
@@ -91,8 +93,13 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                   </div>
                   <div className="webinar-slider__slider-left-bottom-buttons">
                     <button
-                      onClick={() => navigate(`/portal-category/webinar`)}
-                      className="webinar-slider__slider-left-bottom-buttons-more-button">
+                      onClick={() =>
+                        navigate(
+                          `/portal-category/webinar/online-webinar/${slider.id}`
+                        )
+                      }
+                      className="webinar-slider__slider-left-bottom-buttons-more-button"
+                    >
                       {t("webinar.header2")}
                     </button>
                     <button
@@ -101,14 +108,16 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                           `/portal-category/webinar/webinar-register/${slider.id}`
                         )
                       }
-                      className=" webinar-slider__slider-left-bottom-buttons-participate-button">
+                      className=" webinar-slider__slider-left-bottom-buttons-participate-button"
+                    >
                       {t("webinar.header1")}
                     </button>
                   </div>
                   <div
                     className={`navigation-line ${
                       slideIndex === index ? "active" : ""
-                    }`}></div>
+                    }`}
+                  ></div>
                 </div>
                 <div className="webinar-slider__bottom">
                   <div className="webinar-slider__bottom-right">
