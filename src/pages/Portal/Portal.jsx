@@ -25,7 +25,7 @@ const HomePage = () => {
     { id: 1, label: t("uzLearning"), url: "/portal-category/online-teaching" },
     { id: 2, label: t("applyUniversity"), url: "/" },
     { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
-    { id: 4, label: t("virtualTalking"), url: "/" },
+    { id: 4, label: t("virtualTalking"), url: "/portal-category/webinar" },
     { id: 5, label: t("eventBase"), url: "/" },
     { id: 6, label: t("electronLibrary"), url: "/portal-category/library" },
     {

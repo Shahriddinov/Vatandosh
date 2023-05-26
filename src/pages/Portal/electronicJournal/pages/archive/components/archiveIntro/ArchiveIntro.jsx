@@ -1,31 +1,29 @@
 import React from "react";
 import { ArchiveCard } from "../";
-import { archiveData } from "../../../../data";
 
 import "./archiveIntro.scss";
 import { Pagination } from "../../../../../../../component";
+import { paginationCount } from "../../../../../../../helpers/extraFunction";
 
-const ArchiveIntro = () => {
-  const paginationCount = 10;
-  const paginationFetching = (e) => {
-    console.log(e);
-  };
-
+const ArchiveIntro = ({ allMagazine, activePage, paginationFetching }) => {
+  const totalPaginate = paginationCount(allMagazine?.total, 5);
   return (
     <section className="archive-intro">
       <div className="archive-intro__container container">
         <div className="archive-intro__inner">
-          <h3 className="archive-intro__title">В архиве 121 журнал есть</h3>
+          <h3 className="archive-intro__title">
+            В архиве {allMagazine?.total} журнал есть
+          </h3>
           <ul className="archive-intro__list">
-            {archiveData.map((el) => (
+            {allMagazine?.data?.map((el) => (
               <ArchiveCard key={el.id} {...el} />
             ))}
           </ul>
-          {paginationCount >= 2 ? (
+          {totalPaginate > 1 ? (
             <Pagination
-              page={1}
+              page={activePage}
               paginationFetching={paginationFetching}
-              count={paginationCount}
+              count={totalPaginate}
             />
           ) : null}
         </div>

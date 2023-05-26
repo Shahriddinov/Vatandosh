@@ -53,15 +53,19 @@ export default function CustomProfil() {
       <div className="customprofil-detail">
         <div className="customprofil-detail-img">
           <img
-            src={`${PORTAL_IMAGE_URL}/${expertData?.user_id?.avatar}`}
+            src={`${PORTAL_IMAGE_URL}/${expertData?.user_profile?.avatar_url}`}
             alt="error"
           />
         </div>
         <div className="customprofil-detail-desc">
-          <h4>{expertData?.user_id?.name}</h4>
+          <h4>
+            {expertData?.user_profile?.last_name}{" "}
+            {expertData?.user_profile?.first_name}{" "}
+            {expertData?.user_profile?.second_name}
+          </h4>
           <div className="customprofil-detail-desc-workexp">
             <span>{t("expert.workexp")}</span>
-            <span>{expertData?.user_profile_id?.work_experience}</span>
+            <span>{expertData?.user_profile?.work_experience}</span>
           </div>
         </div>
       </div>
@@ -75,8 +79,8 @@ export default function CustomProfil() {
           </AccordionSummary>
           <AccordionDetails>
             <div className="customprofil-list-otm">
-              {education.length
-                ? education.map((el) => {
+              {expertData.user_education?.length
+                ? expertData.user_education?.map((el) => {
                     if (el?.type === 1)
                       return (
                         <div key={el.id} className="customprofil-list-otm-item">
@@ -124,8 +128,8 @@ export default function CustomProfil() {
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {employment.length
-              ? employment.map((el) => (
+            {expertData.user_employment_info?.length
+              ? expertData.user_employment_info?.map((el) => (
                   <div key={el.id} className="customprofil-list-workexp">
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workspace")}</span>
@@ -211,7 +215,10 @@ export default function CustomProfil() {
             <div className="customprofil-list-offer">
               <div className="customprofil-list-offer-info">
                 <div className="customprofil-list-offer-info-img">
-                  <img src={DefaultProfilePic} alt="error" />
+                  <img
+                    src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
+                    alt="error"
+                  />
                 </div>
                 <div className="customprofil-list-offer-info-desc">
                   <span>{t("expert.offer")}</span>
@@ -249,7 +256,7 @@ export default function CustomProfil() {
                     }>
                     <div className="customprofil-list-offer-info-img">
                       <img
-                        src={DefaultProfilePic}
+                        src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
                         alt="error"
                         className="valontery-desc-img"
                       />
@@ -258,21 +265,12 @@ export default function CustomProfil() {
                       <p className="customprofil-list-offer-info-desc-text">
                         {`${id}. “O‘zbekiston zamini” ilmiy-amaliy va innovatsion maqola`}
                       </p>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged.
-                        It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and
-                        more recently with desktop publishing software like
-                        Aldus PageMaker
-                      </p>
+                      <p>{expertData?.suggestions}</p>
                       <button className="customprofil-list-offer-info-desc-btn">
-                        <Link to={"/portal-category/volunteer/article/2"}>
+                        <Link
+                          to={
+                            "/portal-category/expert/offers/" + expertData?.id
+                          }>
                           {t("expert.detail")}
                         </Link>
                       </button>

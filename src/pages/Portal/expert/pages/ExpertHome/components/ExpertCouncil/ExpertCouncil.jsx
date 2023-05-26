@@ -82,11 +82,15 @@ function Expert({ expertData, loading }) {
                       className="expert-list-item-img"
                     />
                     <p>
-                      {evt?.user_profile?.international_location_id?.name}
+                      {evt?.user_profile?.international_location_id?.name} {"     "}
                       {evt?.user_profile?.international_address_id?.name}
                     </p>
-                    <h3>{evt?.user_profile?.second_name}</h3>
-                    <h4>{evt?.user_profile?.job_position}</h4>
+                    <h3>
+                      {evt?.user_profile?.last_name}{" "}
+                      {evt?.user_profile?.first_name}{" "}
+                      {evt?.user_profile?.second_name}
+                    </h3>
+                    <h4>{evt?.user_education[0]?.specialization_id?.title}</h4>
                   </div>
                   <Link
                     className="employe-link"

@@ -1,91 +1,42 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ChatDocs from "../chatDocs/ChatDocs";
+import ChatLinks from "../chatLinks/ChatLinks";
 
 import "./privateMessages.scss";
 
-import userImg from "../../../../../../../assets/images/cabinet/user.png";
-import ChatLinks from "../chatLinks/ChatLinks";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { MessagesContext } from "../../../../../../../App";
+import { sendMessage } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 const PrivateMessages = ({
-  userData,
   showMessages,
   activeUser,
   setShowDocs,
   showDocs,
   setShowLinks,
   showLinks,
+  privateChatRoomId,
 }) => {
+  const dispatch = useDispatch();
   const inputRef = useRef();
   const sendRef = useRef();
   const messagesRef = useRef();
   const [show, setShow] = useState(true);
+  const [sendMessageData, setSendMessageData] = useState({
+    user_id: null,
+    message: "",
+    type: null,
+  });
+  const { messages } = useContext(MessagesContext);
 
-  const messages = [
-    {
-      id: 1,
-      user_id: 1,
-      message_time: "20:00 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 2,
-      user_id: 6,
-      message_time: "20:03 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 3,
-      user_id: 1,
-      message_time: "20:06 PM",
-      message:
-        "Lorem1 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 4,
-      user_id: 3,
-      message_time: "20:10 PM",
-      message:
-        "Lorem3 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 5,
-      user_id: 6,
-      message_time: "20:12 PM",
-      message:
-        "Lorem6 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 6,
-      user_id: 2,
-      message_time: "21:00 PM",
-      message:
-        "Lorem2 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 7,
-      user_id: 5,
-      message_time: "21:10 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 8,
-      user_id: 5,
-      message_time: "21:20 PM",
-      message:
-        "Lorem5 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-    {
-      id: 9,
-      user_id: 4,
-      message_time: "21:21 PM",
-      message:
-        "Lorem4 ipsum dolor sit amet consectetur adipisicing elit. Id, veniam! Eos repellat excepturi repellendus quo.",
-    },
-  ];
+  const messagesLoading = useSelector(
+    (state) => state.chatSlice.messagesLoading
+  );
+  const messagesData = useSelector((state) => state.chatSlice.messagesData);
+  const user = useSelector((state) => state.authSlice.userData);
 
   const docs = [
     { id: 1, name: "Ekspertlar1 kengashi guruhi.pdf" },
@@ -119,10 +70,12 @@ const PrivateMessages = ({
   ];
 
   const handleChange = (input) => {
-    if (input.target.value !== "") {
+    if (input.target.value.length >= 2) {
       sendRef.current.style.pointerEvents = "all";
       sendRef.current.style.cursor = "pointer";
       sendRef.current.style.opacity = 1;
+
+      setSendMessageData({ ...sendMessageData, message: input.target.value });
     } else {
       sendRef.current.style.pointerEvents = "none";
       sendRef.current.style.opacity = 0.5;
@@ -137,6 +90,25 @@ const PrivateMessages = ({
       setShowLinks(!showLinks);
       setShowDocs(false);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const mess = {
+      ...sendMessageData,
+      chat_room_id: privateChatRoomId,
+      type: 1,
+    };
+
+    setSendMessageData(mess);
+
+    dispatch(sendMessage(mess));
+
+    inputRef.current.value = "";
+
+    sendRef.current.style.pointerEvents = "none";
+    sendRef.current.style.opacity = 0.5;
   };
 
   useEffect(() => {
@@ -155,20 +127,36 @@ const PrivateMessages = ({
 
   useEffect(() => {
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-  }, [showMessages, activeUser, showDocs, showLinks]);
+  }, [showMessages, activeUser, showDocs, showLinks, messages]);
+
+  const privateUser =
+    messagesData && messagesData?.users?.find((el) => el.id !== user.id);
 
   return (
     <div className="private-message">
-      {userData ? (
+      {messagesData ? (
         <div className="private-message__messages-header">
-          <div className="private-message__picture">{userData.profileImg}</div>
-          <div className="private-message__name-status">
-            <h4>{userData.user.name}</h4>
-            {userData.user.online ? (
-              <p>Online</p>
+          <div className="private-message__picture">
+            {privateUser.avatar ? (
+              <img
+                src={`${PORTAL_IMAGE_URL}${privateUser.avatar}`}
+                alt="user"
+              />
             ) : (
-              <p>Last seen {userData.user.last_online}</p>
+              privateUser.name[0] + privateUser.name[1]
             )}
+          </div>
+          <div className="private-message__name-status">
+            {privateUser ? (
+              <>
+                <h4>{privateUser.name}</h4>
+                {!privateUser.last_online_at ? (
+                  <p>Online</p>
+                ) : (
+                  <p>Last seen {privateUser.last_online_at}</p>
+                )}
+              </>
+            ) : null}
           </div>
           <div
             className="private-message__docs"
@@ -217,20 +205,38 @@ const PrivateMessages = ({
               show ? "show-messages" : ""
             }`}
           >
-            {messages.map((message) =>
-              message.user_id === activeUser ? (
+            {messages?.map((message) => {
+              const userId = user.user_id ? user.user_id.id : user.id;
+              return message.user.id !== userId ? (
                 <div
                   key={message.id}
                   className="private-message__received-container"
                 >
                   <div className="private-message__received-user">
-                    {userData && userData.profileImg}
+                    <img
+                      src={`${PORTAL_IMAGE_URL}${
+                        message.user.avatar
+                          ? message.user.avatar
+                          : message.user.name[0]
+                      }`}
+                      alt="user"
+                    />
                   </div>
                   <div className="private-message__received-details">
                     <p className="private-message__received-message">
                       {message.message}
                     </p>
-                    <span>{message.message_time}</span>
+                    <span>
+                      {message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
+                    </span>
                   </div>
                 </div>
               ) : (
@@ -242,54 +248,77 @@ const PrivateMessages = ({
                     <p className="private-message__sent-message">
                       {message.message}
                     </p>
-                    <span>{message.message_time}</span>
+                    <span>
+                      {message.created_at
+                        .split("T")[1]
+                        .split(".")[0]
+                        .split(":")[0] +
+                        ":" +
+                        message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[1]}
+                    </span>
                   </div>
                   <div className="private-message__sent-user">
-                    <img src={userImg} alt="user" />
+                    <img
+                      src={`${PORTAL_IMAGE_URL}${
+                        user.avatar_url ? user.avatar_url : user.avatar
+                      }`}
+                      alt="user"
+                    />
                   </div>
                 </div>
-              )
-            )}
+              );
+            })}
           </div>
         ) : (
           <p className="private-message__no-user">
             Select a chat to start messaging.
           </p>
         )}
+        {messagesLoading && (
+          <div className="private-message__loading">
+            <Spinner />
+          </div>
+        )}
       </div>
-      <div
-        className={`private-message__messages-bottom ${
-          showMessages && show ? "show-bottom" : ""
-        }`}
-      >
-        <svg
-          className="private-message__file"
-          width="11"
-          height="22"
-          viewBox="0 0 11 22"
-          fill="none"
+
+      <form onSubmit={handleSubmit}>
+        <div
+          className={`private-message__messages-bottom ${
+            showMessages && show ? "show-bottom" : ""
+          }`}
         >
-          <path
-            d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
-            fill="#065EA9"
-          />
-        </svg>
-        <div className="private-message__send" ref={sendRef}>
-          <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <svg
+            className="private-message__file"
+            width="11"
+            height="22"
+            viewBox="0 0 11 22"
+            fill="none"
+          >
             <path
-              d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
-              fill="white"
+              d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
+              fill="#065EA9"
             />
           </svg>
+          <button className="private-message__send" ref={sendRef}>
+            <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
+              <path
+                d="M0.674959 15.5L18.1666 8L0.674959 0.5L0.666626 6.33333L13.1666 8L0.666626 9.66667L0.674959 15.5Z"
+                fill="white"
+              />
+            </svg>
+          </button>
+          <input
+            ref={inputRef}
+            onChange={(e) => handleChange(e)}
+            type="text"
+            className="private-message__send-message"
+            placeholder="Type message..."
+          />
         </div>
-        <input
-          ref={inputRef}
-          onChange={(e) => handleChange(e)}
-          type="text"
-          className="private-message__send-message"
-          placeholder="Type message..."
-        />
-      </div>
+      </form>
     </div>
   );
 };

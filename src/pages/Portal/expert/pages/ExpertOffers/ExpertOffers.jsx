@@ -11,9 +11,10 @@ import { getExperts } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useState } from "react";
+import { getSuggestionMenuData } from "../../../../../reduxToolkit/expertSuggestion/Suggestion";
 
 export default function ExpertOffers() {
-  const [page, SetPage] = useState(1);
+  const [page, SetPage] = useState(4);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const url = [
@@ -22,10 +23,15 @@ export default function ExpertOffers() {
   ];
 
   const { expertData, loading } = useSelector((state) => state.expertSlice);
+  const getSuggestion = useSelector(
+    (state) => state.menuSuggestionSlice.menuSuggestionData
+  );
+
 
   useEffect(() => {
     dispatch(getExperts());
-  }, [dispatch]);
+    dispatch(getSuggestionMenuData(page));
+  }, [page, dispatch]);
 
   useEffect(() => {
     dispatch(getExperts(page));
@@ -37,16 +43,21 @@ export default function ExpertOffers() {
       <div className="container">
         <ExpertTitle title={t("expert.offers")} url={url} />
         <div className="expertoffer-list">
-          {expertData?.data?.length
-            ? expertData.data.map((el) => (
+          {getSuggestion?.data?.length
+            ? getSuggestion?.data?.map((el) => (
                 <div className="expertoffer-list-item" key={el.id}>
-                  <img src={DefaultProfilePic} alt="error" />
+                  <img src={`${PORTAL_IMAGE_URL}/${el?.image}`} alt="error" />
                   <div className="expertoffer-list-item-desc">
                     <ExpertProfileInfo
-                      profileImg={PORTAL_IMAGE_URL + el?.user_id?.avatar}
-                      name={el?.user_profile_id?.user_id?.name}
-                      address={el?.user_profile_id?.international_address}
-                      position={el?.user_profile_id?.job_position}
+                      profileImg={`${PORTAL_IMAGE_URL}/${el?.user_profile?.avatar_url}`}
+                      name={el?.user_profile?.last_name}
+                      nameOne={el?.user_profile?.first_name}
+                      nameTwo={el?.user_profile?.second_name}
+                      address={el?.user_profile?.international_address_id.name}
+                      addressOne={
+                        el?.user_profile?.international_location_id.name
+                      }
+                      position={el?.user_profile?.job_position}
                     />
                     <p>{el?.suggestions}</p>
                     <div className="expertoffer-list-item-desc-button">
@@ -61,12 +72,11 @@ export default function ExpertOffers() {
               ))
             : null}
           <div className="expertoffer-list-morebtn">
-            {expertData?.total - 12 * page > 0 ? (
+            {getSuggestion?.total - 12 * page > 0 ? (
               <button
                 onClick={() => {
                   SetPage((prev) => ++prev);
-                }}
-              >
+                }}>
                 <BsArrowDownCircleFill />
                 <span>{t("expert.alloffers")}</span>
               </button>

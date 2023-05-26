@@ -7,12 +7,13 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { poplarJournalData } from "../../../../data";
 import { JournalCard } from "../";
 
 import "./popularJournalSlider.scss";
 
-const PopularJournalSlider = () => {
+const PopularJournalSlider = ({ allMagazinePopular }) => {
+  const data = allMagazinePopular.data;
+
   return (
     <section className="popular-journal-slider">
       <div className="popular-journal-slider__container container">
@@ -87,7 +88,7 @@ const PopularJournalSlider = () => {
             }}
             className="mySwiper"
           >
-            {poplarJournalData?.map((item) => (
+            {data?.map((item) => (
               <SwiperSlide
                 key={item.id}
                 className="popular-journal-slider__slider_item"

@@ -10,7 +10,7 @@ import {
   signIn,
   verifyToken,
 } from "./extraReducer";
-import { getItem, setItem } from "../../helpers/persistanceStorage";
+import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
 
 const initialState = {
   emailLoading: false,
@@ -25,7 +25,7 @@ const initialState = {
   nationsLoading: true,
   countriesData: null,
   countriesLoading: false,
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
   message: "",
   tokenMessage: null,
   success: false,
@@ -37,8 +37,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     removeToken: (state) => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
+      removeItem("token");
+      removeItem("user");
       state.token = null;
     },
   },

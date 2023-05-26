@@ -12,8 +12,13 @@ import { useExportOfferDetail } from "./hooks/useExpertOffersDetail";
 
 export default function ExpertOffersDetail() {
   const { t } = useTranslation();
-  const { expertData, expertLoading, error, expertCountLoading, expertCount } =
-    useExportOfferDetail();
+  const {
+    expertData,
+    expertLoading,
+    error,
+    expertCountLoading,
+    expertCount,
+  } = useExportOfferDetail();
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
@@ -27,19 +32,30 @@ export default function ExpertOffersDetail() {
     return <p>{error}</p>;
   } else if (!expertData) return <NotFound />;
 
-  console.log(expertData);
+
   return (
     <main className="expertofferdetail">
       <div className="container">
         <ExpertTitle title={t("expert.offer")} url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
-            <img src={DefaultProfilePic} alt="error" />
+            <img
+              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
+              alt="error"
+              className="expertofferdetail-pic"
+            />
             <ExpertProfileInfo
-              profileImg={PORTAL_IMAGE_URL + expertData?.user_id?.avatar}
-              name={expertData?.user_profile_id?.user_id?.name}
-              address={expertData?.user_profile_id?.international_address}
-              position={expertData?.user_profile_id?.job_position}
+              profileImg={
+                PORTAL_IMAGE_URL + expertData?.user_profile?.avatar_url
+              }
+              name={expertData?.user_profile?.last_name}
+              nameOne={expertData?.user_profile?.first_name}
+              nameTwo={expertData?.user_profile?.second_name}
+              address={expertData?.user_profile?.international_address_id.name}
+              addressOne={
+                expertData.user_profile.international_location_id.name
+              }
+              position={expertData?.user_profile?.job_position}
             />
             <p>{expertData?.suggestions}</p>
             <p>{expertData?.additional_information}</p>

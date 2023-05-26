@@ -65,6 +65,7 @@ export const GET_COMMUNITY_EVENT_DETAIL = "/community/event/";
 export const GET_EXPERTS = `${portalBaseUrl}/expert/get-all/2`;
 export const GET_EXPERT = `${portalBaseUrl}/expert/get-single`;
 export const GET_EXPERT_SUGGESTIONS = `${portalBaseUrl}/suggestion/show-expert-suggestion`;
+export const GET_EXPERT_SUGGESTIONS_MENU = `/suggestion/all-or-one-expert-suggestion`;
 export const GET_EXPERT_REGISTER_MENU = `${portalBaseUrl}/menu/all`;
 export const GET_EXPERT_EDUCATION = `${portalBaseUrl}/education/show-user`;
 export const GET_EXPERT_EDUCATION_SPECIALIZATION = `${portalBaseUrl}/specialization/get-all`;
@@ -105,6 +106,15 @@ export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
 export const GET_WEBINAR_BODY = `/meeting`;
+export const GET_MAGAZINE_ABOUT = "/magazine/get-about";
+export const GET_MAGAZINE_ONE_ABOUT = "/magazine/get-one-about";
+export const GET_MAGAZINE_POPULAR = "/magazine/get-popular";
+export const GET_MAGAZINE_ALL = "/magazine/get-all";
+export const GET_MAGAZINE_ONE = "/magazine/get-one/";
+export const GET_MAGAZINE_MENU = "/magazine/get-menu";
+export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
+export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
+export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

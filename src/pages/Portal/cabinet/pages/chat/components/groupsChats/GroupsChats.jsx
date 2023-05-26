@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { getAllChats } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
-import Spinner from "../../../../../../../component/Spinner";
 
-import { groups } from "./groups";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { getMessages } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
@@ -18,20 +16,15 @@ const GroupsChats = ({
   setShowDocs,
   setShowLinks,
   setShowMembers,
+  activePage,
+  data,
 }) => {
   const dispatch = useDispatch();
-  const [activePage, setActivePage] = useState(1);
   const [chatRoomId, setChatRoomId] = useState(null);
-
-  const allChatLoading = useSelector((state) => state.chatSlice.allChatLoading);
-  const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
-  const sendMessageStatus = useSelector(
-    (state) => state.chatSlice.sendMessageStatus
-  );
 
   const handleClick = (group, groupImg) => {
     setActiveGroup(group.id);
-    setChatRoomId(group.chat_room_id);
+    setChatRoomId(group.id);
     setGroupData({ group, groupImg });
     setShowGroupMessages(true);
     setShowDocs(false);
@@ -40,8 +33,7 @@ const GroupsChats = ({
 
     dispatch(
       getMessages({
-        chat_id: group.chat_room_id,
-        per_page: 100,
+        chat_id: group.id,
         chat_type: 1,
         page: activePage,
       })
@@ -49,32 +41,27 @@ const GroupsChats = ({
   };
 
   useEffect(() => {
-    if (sendMessageStatus === "success") {
+    if (chatRoomId) {
       dispatch(
         getMessages({
           chat_id: chatRoomId,
-          per_page: 100,
           chat_type: 1,
           page: activePage,
         })
       );
     }
-  }, [sendMessageStatus, chatRoomId]);
+  }, [chatRoomId, activePage]);
 
   useEffect(() => {
     dispatch(getAllChats());
   }, []);
 
-  if (allChatLoading) {
-    return <Spinner position="full" />;
-  }
-
   return (
     <div className="groups">
-      {allChatsData?.chats.length === 0 ? (
+      {data?.length === 0 ? (
         <p className="groups__no-group">You have not joined any group yet.</p>
       ) : (
-        allChatsData?.chats.map((group) => {
+        data?.map((group) => {
           let groupImg;
           if (group.avatar_image) {
             groupImg = (
@@ -88,7 +75,7 @@ const GroupsChats = ({
             groupImg = names[0][0] + names[1][0];
           }
 
-          return (
+          return group.type === "group" ? (
             <div
               key={group.id}
               className={`groups__one-group ${
@@ -115,7 +102,7 @@ const GroupsChats = ({
                 </div>
               ) : null}
             </div>
-          );
+          ) : null;
         })
       )}
     </div>

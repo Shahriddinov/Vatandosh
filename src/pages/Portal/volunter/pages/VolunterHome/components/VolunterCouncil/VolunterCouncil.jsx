@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 function Volunter({ volunteers }) {
   const { t } = useTranslation();
+  console.log(volunteers)
   return (
     <div className="expert">
       <div className="container">
@@ -29,8 +30,9 @@ function Volunter({ volunteers }) {
                 alt={volunteer?.user_profile?.second_name}
               />
               <p>
-                {volunteer?.user_profile?.international_location_id?.name}
                 {volunteer?.user_profile?.international_address_id?.name}
+                {", "}
+                {volunteer?.user_profile?.international_location_id?.name}
               </p>
               <h3 style={{ color: "#065EA9" }}>
                 {volunteer?.user_profile?.second_name}

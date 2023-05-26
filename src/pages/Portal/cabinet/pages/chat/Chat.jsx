@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import "./chat.scss";
 
@@ -6,6 +7,8 @@ import PrivateChats from "./components/privateChats/PrivateChats";
 import PrivateMessages from "./components/privateMessages/PrivateMessages";
 import GroupsChats from "./components/groupsChats/GroupsChats";
 import GroupsMessages from "./components/groupsMessages/GroupsMessages";
+import { useContext } from "react";
+import { MessagesContext } from "../../../../../App";
 
 const Chat = () => {
   const [activeChat, setActiveChat] = useState("private");
@@ -18,6 +21,20 @@ const Chat = () => {
   const [showDocs, setShowDocs] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
+  const [activePage, setActivePage] = useState(1);
+  const [privateChatRoomId, setPrivateChatId] = useState(null);
+
+  const messagesData = useSelector((state) => state.chatSlice.messagesData);
+  const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
+  const { setMessages } = useContext(MessagesContext);
+
+  useEffect(() => {
+    if (messagesData) {
+      setMessages([...messagesData.messages.data]);
+    }
+  }, [messagesData]);
+
+  const data = allChatsData?.chats?.filter((el) => el.type === activeChat);
 
   return (
     <div className="chat">
@@ -49,6 +66,10 @@ const Chat = () => {
               activeUser={activeUser}
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
+              activePage={activePage}
+              activeChat={activeChat}
+              data={data}
+              setPrivateChatId={setPrivateChatId}
             />
           ) : (
             <GroupsChats
@@ -59,6 +80,9 @@ const Chat = () => {
               setShowDocs={setShowDocs}
               setShowLinks={setShowLinks}
               setShowMembers={setShowMembers}
+              activePage={activePage}
+              activeChat={activeChat}
+              data={data}
             />
           )}
         </div>
@@ -71,6 +95,8 @@ const Chat = () => {
             showDocs={showDocs}
             setShowLinks={setShowLinks}
             showLinks={showLinks}
+            data={data}
+            privateChatRoomId={privateChatRoomId}
           />
         ) : (
           <GroupsMessages
@@ -83,6 +109,8 @@ const Chat = () => {
             showLinks={showLinks}
             setShowMembers={setShowMembers}
             showMembers={showMembers}
+            setActivePage={setActivePage}
+            activePage={activePage}
           />
         )}
       </div>

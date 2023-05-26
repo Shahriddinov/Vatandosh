@@ -1,49 +1,33 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
-import { Header } from "./components";
+import { ElectronicJournalFooter, Header } from "./components";
 
-import "./electronikJournalLayout.scss";
+import "./electronicJournalLayout.scss";
+import { useElectronicJournalLayout } from "./hooks/useElectronicJournalLayout";
+import { Spinner } from "../../../component";
 
 const ElectronicJournalLayout = () => {
-  const navData = [
-    {
-      id: 1,
-      url: "/portal-category/electronic-journal",
-      label: "ГЛАВНАЯ СТРАНИЦА",
-    },
-    {
-      id: 2,
-      url: "/portal-category/electronic-journal/about",
-      label: "О ЖУРНАЛЕ",
-    },
-    {
-      id: 3,
-      url: "/portal-category/electronic-journal/new-number",
-      label: "НОВЫЙ НОМЕР",
-    },
-    {
-      id: 4,
-      url: "/portal-category/electronic-journal/archive",
-      label: "АРХИВ",
-    },
-    {
-      id: 5,
-      url: "/portal-category/electronic-journal/contact",
-      label: "КОНТАКТЫ",
-    },
-  ];
+  const {
+    menu,
+    menuLoading,
+    lastMagazineLoading,
+    error,
+    contactData,
+    contactLoading,
+    contactError,
+  } = useElectronicJournalLayout();
 
-  const navbarUrl = {
-    home: "/portal",
-    register: "/portal-category/electronic-journal",
-  };
+  if (menuLoading || lastMagazineLoading || contactLoading) {
+    return <Spinner position="full" />;
+  } else if (error || contactError) {
+    return <p>{error ? error : contactError}</p>;
+  }
 
   return (
     <div className="electronic-journal">
-      <Header navData={navData} navbarUrl={navbarUrl} />
-      <Outlet />
-      <OnlineTeachingFooter />
+      <Header navData={menu} />
+      <Outlet context={menu} />
+      <ElectronicJournalFooter contactData={contactData} />
     </div>
   );
 };

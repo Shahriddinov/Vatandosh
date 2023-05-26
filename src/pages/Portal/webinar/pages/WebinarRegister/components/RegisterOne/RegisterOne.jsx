@@ -9,10 +9,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { ExpertTitle } from "../../../../../expert/components";
-import { changeStatus } from "../../../../../../../reduxToolkit/projectsSlice/projectsSlice";
 import { meetingCreate } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
+import { changeStatus } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/meetingSlice";
 
-export default function RegisterOne() {
+export default function RegisterOne({ activeBarItem }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [uploadImg, setuploadImg] = useState(null);
@@ -21,6 +21,7 @@ export default function RegisterOne() {
   const navigate = useNavigate();
 
   const status = useSelector((store) => store.meetingSlice.status);
+  console.log(status);
 
   useEffect(() => {
     if (status === "succeeded") {
@@ -28,6 +29,7 @@ export default function RegisterOne() {
         position: toast.POSITION.TOP_RIGHT,
       });
       setTimeout(() => {
+        console.log("ishladi");
         navigate("/portal-category/webinar");
         dispatch(changeStatus());
       }, 5000);
@@ -69,10 +71,19 @@ export default function RegisterOne() {
   };
 
   return (
-    <main className="webinar-register">
-      <div className="container">
-        <ExpertTitle title={t("projects_page.participate_btn")} url={url} />
-        <form className="registeritem1" onSubmit={handleSubmit}>
+    <main
+      className={
+        activeBarItem !== 0
+          ? "webinar-register registeritem-scaleHidden"
+          : "webinar-register registeritem-scaleActive"
+      }
+    >
+      <div className="registeritem1-wrapper registeritem-borderLeft">
+        <h3 className="registeritem-title">Shahsiy malumotlaringiz</h3>
+        <form
+          className="webinar-register-item registeritem1"
+          onSubmit={handleSubmit}
+        >
           <div className="registeritem1-wrapper">
             <div className="registeritem1-form">
               <div className="registeritem1-form-uploadImg">
@@ -207,7 +218,6 @@ export default function RegisterOne() {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </main>
   );
 }
