@@ -21,7 +21,7 @@ export const useArchiveFetching = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(magazineGetAll({ paginate: 1, page: 1 }));
+    dispatch(magazineGetAll({ paginate: 5, page: 1 }));
   }, [dispatch, lan]);
 
   return {
