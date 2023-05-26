@@ -3,7 +3,6 @@ import "./newNumberCard.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 const NewNumberCard = (props) => {
-  console.log(props);
   const image = props?.images && JSON.parse(props?.images)[0];
   return (
     <li className="new-number__inner_list">

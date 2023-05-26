@@ -3,7 +3,6 @@ import React from "react";
 import "./journalAboutContent.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 const JournalAboutContent = ({ oneMagazine }) => {
-  console.log(oneMagazine);
   const time = oneMagazine?.start_data_edition
     .slice(0, 10)
     .split("-")
@@ -25,8 +24,9 @@ const JournalAboutContent = ({ oneMagazine }) => {
             </p>
 
             <div className="journal-about-content__content-images">
-              {images.slice(0, 2).map((el) => (
+              {images.slice(0, 2).map((el, index) => (
                 <img
+                  key={index}
                   src={`${PORTAL_IMAGE_URL}${el}`}
                   alt="img"
                   className="journal-about-content__content-image"
