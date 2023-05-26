@@ -1,12 +1,26 @@
 import React from "react";
 import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
 import CustomProfil from "../../../components/CustomProfil/CustomProfil";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 export default function VolunterProfile() {
+  const {t} = useTranslation()
+  const { expert: expertData } = useSelector((state) => state.expertSlice);
   const url = [
-    { title: "Asosiy", url: "#" },
-    { title: "Volontyorlar", url: "#" },
-    { title: "Xatamov Akbarjon O‘tkir o‘g‘li", url: "#" },
+    { title: t("expert.main"), titleOne: "", titleTwo: "", url: "/expert" },
+    {
+      title: t("expert.expertCouncil"),
+      titleOne: "",
+      titleTwo: "",
+      url: "/portal/expert-profil",
+    },
+    {
+      title: expertData?.user_profile?.last_name,
+      titleOne: expertData?.user_profile?.first_name,
+      titleTwo: expertData?.user_profile?.second_name,
+      url: "/portal/expert-profil",
+    },
   ];
   return (
     <main className="volunterprofile" style={{ padding: "30px 0 100px" }}>

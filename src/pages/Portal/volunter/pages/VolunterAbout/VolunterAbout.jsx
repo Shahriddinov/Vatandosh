@@ -106,6 +106,7 @@ function VolunterAbout() {
                       : volunteer?.user?.avatar
                   }`}
                   alt="error"
+                  className="employe-img"
                 />
                 <p>
                   {volunteer?.user_profile?.international_location_id?.name},{" "}
