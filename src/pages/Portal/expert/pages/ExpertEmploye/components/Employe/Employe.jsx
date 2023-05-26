@@ -130,7 +130,7 @@ function Employe() {
                     {evt?.user_profile?.first_name}{" "}
                     {evt?.user_profile?.second_name}
                   </h3>
-                  <h4>{evt?.user_profile?.job_position}</h4>
+                  <h4>{evt?.user_education[0]?.specialization_id?.title}</h4>
                   <Link
                     className="employe-link"
                     to={`/portal-category/expert/profile/${evt?.id}`}>
