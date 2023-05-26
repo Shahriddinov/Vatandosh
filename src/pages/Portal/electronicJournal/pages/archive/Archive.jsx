@@ -15,7 +15,7 @@ const Archive = () => {
 
   const paginationFetching = (count) => {
     setActivePage(count);
-    dispatch(magazineGetAll({ paginate: 1, page: activePage }));
+    dispatch(magazineGetAll({ paginate: 5, page: activePage }));
   };
 
   if (allMagazineLoading) {

@@ -5,6 +5,7 @@ import {
   magazineGetMenu,
 } from "../../../../reduxToolkit/portalSlices/electronicJournalSlice/electronicJournalExtraReducers";
 import { createSelector } from "@reduxjs/toolkit";
+import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
 const navData = [
   {
     id: 1,
@@ -61,6 +62,11 @@ export const useElectronicJournalLayout = () => {
     (state) => state.journal.lastMagazineLoading
   );
 
+  const contactData = useSelector((state) => state.contactSlice.contactData);
+  const contactLoading = useSelector((state) => state.contactSlice.loading);
+
+  const contactError = useSelector((state) => state.contactSlice.error);
+
   const error = useSelector((state) => state.journal.error);
 
   const dispatch = useDispatch();
@@ -68,7 +74,17 @@ export const useElectronicJournalLayout = () => {
   useEffect(() => {
     dispatch(magazineGetMenu());
     dispatch(lastMagazineGet({ paginate: 2 }));
+    dispatch(getContact());
   }, [dispatch, lan]);
 
-  return { menu, menuLoading, lastMagazineLoading, error };
+  return {
+    menu,
+    menuLoading,
+    lastMagazineLoading,
+    error,
+    lan,
+    contactData,
+    contactLoading,
+    contactError,
+  };
 };
