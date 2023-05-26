@@ -39,6 +39,8 @@ const Menun = () => {
 
   const [citizin, setCitizin] = React.useState(null);
   const openCitizin = Boolean(citizin);
+  const [events, setEvents] = React.useState(null);
+  const openEvents = Boolean(events);
 
   const [information, setInformation] = React.useState(null);
   const openInformation = Boolean(information);
@@ -65,6 +67,12 @@ const Menun = () => {
   };
   const handleCloseCitizin = () => {
     setCitizin(null);
+  };
+  const handleEvent = (event) => {
+    setEvents(event.currentTarget);
+  };
+  const handleCloseEvent = () => {
+    setEvents(null);
   };
 
   const handleClickProject = (event) => {
@@ -182,7 +190,10 @@ const Menun = () => {
               <MenuItem onClick={handleCloseProject} key={el?.id}>
                 <div className="navMenuInnerWrapper">
                   <img src={`${baseServerUrl + "/" + el?.logo}`} alt="icons" />
-                  <Link to={`/projects/columns?=${el?.id}`} className="menus_links">
+                  <Link
+                    to={`/projects/columns?=${el?.id}`}
+                    className="menus_links"
+                  >
                     {el[`menu_${lan}`]}
                   </Link>
                 </div>
@@ -191,10 +202,40 @@ const Menun = () => {
           </Menu>
         </li>
 
-        <li className="menu_item ">
-          <Link to="" className="menu_link">
-            {t("contects")}
-          </Link>
+        <li className="menus_item hov ">
+          <Button
+            id="basic-button"
+            aria-controls={openEvents ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={openEvents ? "true" : undefined}
+            onClick={handleEvent}
+            className="menus_link"
+          >
+            {navLinks[3].title}
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={events}
+            open={openEvents}
+            onClose={handleCloseEvent}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+              onMouseLeave: handleCloseEvent,
+            }}
+          >
+            {navLinks[3].links?.map((el, index) => {
+              return (
+                <MenuItem onClick={handleCloseEvent} key={index}>
+                  <div className="navMenuInnerWrapper">
+                    <img src={el.icon} alt="icons" />
+                    <Link to={el.url} className="menus_links">
+                      {el.title}
+                    </Link>
+                  </div>
+                </MenuItem>
+              );
+            })}
+          </Menu>
         </li>
         <li className="menu_item hov">
           <Button

@@ -1,10 +1,12 @@
 import "./PublicAssociations.scss";
 import { Link } from "react-router-dom";
-import arrowRight from "../../../assets/images/about/arrow-right.svg";
 
 import bodyIcon from "../../../assets/images/portal/cabinetVolunteer/bodyIcon.png";
 import flagIcon from "../../../assets/images/portal/cabinetVolunteer/flag.png";
+import btnArrowDown from "../../../assets/images/portal/privateInformation/btnArrowDown.svg";
+import badCrumbsImg from "../../../assets/images/portal/privateInformation/badCrumbs.svg";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const fakeData = [
   {
@@ -47,9 +49,51 @@ const fakeData = [
     channel: bodyIcon,
     count: 56,
   },
+  {
+    id: 6,
+    flag: flagIcon,
+    country: "Kirgizistan",
+    text: "Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi",
+    channel: bodyIcon,
+    count: 56,
+  },
+  {
+    id: 7,
+    flag: flagIcon,
+    country: "Kirgizistan",
+    text: "Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi",
+    channel: bodyIcon,
+    count: 56,
+  },
+  {
+    id: 8,
+    flag: flagIcon,
+    country: "Kirgizistan",
+    text: "Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi",
+    channel: bodyIcon,
+    count: 56,
+  },
+  {
+    id: 9,
+    flag: flagIcon,
+    country: "Kirgizistan",
+    text: "Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi",
+    channel: bodyIcon,
+    count: 56,
+  },
+  {
+    id: 10,
+    flag: flagIcon,
+    country: "Kirgizistan",
+    text: "Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi",
+    channel: bodyIcon,
+    count: 56,
+  },
 ];
 
 const PublicAssociations = () => {
+  const [fakeDatas, setFakeDatas] = useState(fakeData);
+  const [postsPerPage, setPostsPerpage] = useState(8);
   return (
     <div className="choicesPAContainer">
       <div className="choicesPAContainer-header">
@@ -57,13 +101,13 @@ const PublicAssociations = () => {
         <ul>
           <li>
             <Link to="/">mainPage</Link>
-            <img src={arrowRight} alt="breadcrumb line" />
+            <img src={badCrumbsImg} alt="breadcrumb line" />
           </li>
-          <li aria-current="page">quiz</li>
+          <li aria-current="page">PublicAssociation</li>
         </ul>
       </div>
       <div className="choicesPAContainer-body">
-        {fakeData.map((el, index) => (
+        {fakeDatas.slice(0, postsPerPage).map((el, index) => (
           <div key={index} className="choicesPAContainer-body-card">
             <div className="choicesPAContainer-body-card_cardTop">
               <img src={el.flag} alt="flag" />
@@ -82,10 +126,13 @@ const PublicAssociations = () => {
         ))}
       </div>
       <div className="choicesPAContainer-btnCont">
-        <button>
-          <img src="" alt="icon" />
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setPostsPerpage((prev) => prev + 6)}
+        >
+          <img src={btnArrowDown} alt="icon" />
           <span>Всё</span>
-        </button>
+        </motion.button>
       </div>
     </div>
   );

@@ -94,12 +94,12 @@ export const NavBarLinks = () => {
       links: [
         {
           title: "Viktorinalar",
-          url: "/choicesQuizzes",
+          url: "/choices/quiz",
           icon: botIcon,
         },
         {
           title: "Jamoat birlashmalar",
-          url: "/choicesPublicAssociations",
+          url: "/choices/public-associations",
           icon: paIcon,
         },
       ],

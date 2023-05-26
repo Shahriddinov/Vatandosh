@@ -29,6 +29,9 @@ const Menus = () => {
   const [information, setInformation] = React.useState(null);
   const openInformation = Boolean(information);
 
+  const [events, setEvents] = React.useState(null);
+  const openEvents = Boolean(events);
+
   const [project, setProject] = React.useState(null);
   const openProject = Boolean(project);
 
@@ -38,6 +41,12 @@ const Menus = () => {
 
   const handleCloseAbout = () => {
     setAbout(null);
+  };
+  const handleEvent = (event) => {
+    setEvents(event.currentTarget);
+  };
+  const handleCloseEvent = () => {
+    setEvents(null);
   };
 
   const handleClickInformation = (event) => {
@@ -195,11 +204,41 @@ const Menus = () => {
             ))}
           </Menu>
         </li>
-
-        <li className="menus_item ">
-          <Link to="" className="menus_link">
-            {t("contects")}
-          </Link>
+        {/*djkahdkjaflafgaljfglajfgajfgjafakfgkag  */}
+        <li className="menus_item hov ">
+          <Button
+            id="basic-button"
+            aria-controls={openEvents ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={openEvents ? "true" : undefined}
+            onClick={handleEvent}
+            className="menus_link"
+          >
+            {navLinks[3].title}
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={events}
+            open={openEvents}
+            onClose={handleCloseEvent}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+              onMouseLeave: handleCloseEvent,
+            }}
+          >
+            {navLinks[3].links?.map((el, index) => {
+              return (
+                <MenuItem onClick={handleCloseEvent} key={index}>
+                  <div className="navMenuInnerWrapper">
+                    <img src={el.icon} alt="icons" />
+                    <Link to={el.url} className="menus_links">
+                      {el.title}
+                    </Link>
+                  </div>
+                </MenuItem>
+              );
+            })}
+          </Menu>
         </li>
         <li className="menus_item hov">
           <Button

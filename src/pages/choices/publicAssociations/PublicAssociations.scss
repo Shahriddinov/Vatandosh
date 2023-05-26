@@ -25,8 +25,6 @@
         }
 
         & > img {
-          background-color: #5d6b8a;
-          border-radius: 0.718983px;
           width: 4px;
           height: 6px;
         }
@@ -101,5 +99,27 @@
 
   &-btnCont {
     margin-top: 30px;
+    display: grid;
+    justify-content: center;
+    & > button {
+      background: #e3f0ff;
+      border-radius: 5px;
+      padding: 12px 22px;
+      border: none;
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      column-gap: 11.67px;
+      &:hover {
+        cursor: pointer;
+      }
+      & > img {
+        width: 16.67px;
+        height: 16.67px;
+      }
+      & > span {
+        @include fontStyles(700, 14px, 17px, $colorTitle);
+      }
+    }
   }
 }
