@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import btnArrowDown from "../../../assets/images/portal/privateInformation/btnArrowDown.svg";
 import badCrumbsImg from "../../../assets/images/portal/privateInformation/badCrumbs.svg";
 import Card from "./cardComponent/card";
+import Header from "../../../component/Layout/Header/Header";
 
 const fakeData = [
   {
@@ -91,75 +92,78 @@ const Quizzes = () => {
   const [postsPerPage, setPostsPerpage] = useState(6);
   const [quizHasEnded, setQuizHasEnded] = useState(true);
   return (
-    <div className="choices-quiz-Container">
-      <div className="choices-quiz-Container-header">
-        <h1>Viktorina yakunlanganlar</h1>
-        <ul>
-          <li>
-            <Link to="/">mainPage</Link>
-            <img src={badCrumbsImg} alt="breadcrumb line" />
-          </li>
-          <li aria-current="page">
-            {activeBtn.id === 1 ? "Viktorinalar" : "Viktorina yakunlanganlar"}
-          </li>
-        </ul>
-      </div>
-      <div className="choices-quiz-Container-btnCont">
-        {btnArr.map((el, index) => (
-          <button
-            onClick={() => setActiveBtn(el)}
-            className={el.id === activeBtn.id && "active"}
-            key={index}
-          >
-            {el.name}
-          </button>
-        ))}
-      </div>
-      {activeBtn.id === 1 ? (
-        <div className="choices-quiz-Container-bodyCont">
-          <div className="choices-quiz-Container-bodyCont-cardCont">
-            <Card
-              fakeDatas={fakeDatas}
-              postsPerPage={postsPerPage}
-              quiz={quizHasEnded}
-            />
-          </div>
+    <>
+      <Header />
+      <div className="choices-quiz-Container">
+        <div className="choices-quiz-Container-header">
+          <h1>Viktorina yakunlanganlar</h1>
+          <ul>
+            <li>
+              <Link to="/">mainPage</Link>
+              <img src={badCrumbsImg} alt="breadcrumb line" />
+            </li>
+            <li aria-current="page">
+              {activeBtn.id === 1 ? "Viktorinalar" : "Viktorina yakunlanganlar"}
+            </li>
+          </ul>
+        </div>
+        <div className="choices-quiz-Container-btnCont">
+          {btnArr.map((el, index) => (
+            <button
+              onClick={() => setActiveBtn(el)}
+              className={el.id === activeBtn.id && "active"}
+              key={index}
+            >
+              {el.name}
+            </button>
+          ))}
+        </div>
+        {activeBtn.id === 1 ? (
+          <div className="choices-quiz-Container-bodyCont">
+            <div className="choices-quiz-Container-bodyCont-cardCont">
+              <Card
+                fakeDatas={fakeDatas}
+                postsPerPage={postsPerPage}
+                quiz={quizHasEnded}
+              />
+            </div>
 
-          <div className="choices-quiz-Container-bodyCont-bottomBtn">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setPostsPerpage((prev) => prev + 6)}
-            >
-              <img src={btnArrowDown} alt="icon" />
-              <span>
-                {activeBtn.id === 1
-                  ? "Barcha Viktorina yakunlanganlar"
-                  : "Barcha viktorinalar"}
-              </span>
-            </motion.button>
+            <div className="choices-quiz-Container-bodyCont-bottomBtn">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setPostsPerpage((prev) => prev + 6)}
+              >
+                <img src={btnArrowDown} alt="icon" />
+                <span>
+                  {activeBtn.id === 1
+                    ? "Barcha Viktorina yakunlanganlar"
+                    : "Barcha viktorinalar"}
+                </span>
+              </motion.button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="choices-quiz-Container-bodyCont">
-          <div className="choices-quiz-Container-bodyCont-cardCont">
-            <Card fakeDatas={fakeDatas} postsPerPage={postsPerPage} />
+        ) : (
+          <div className="choices-quiz-Container-bodyCont">
+            <div className="choices-quiz-Container-bodyCont-cardCont">
+              <Card fakeDatas={fakeDatas} postsPerPage={postsPerPage} />
+            </div>
+            <div className="choices-quiz-Container-bodyCont-bottomBtn">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setPostsPerpage((prev) => prev + 6)}
+              >
+                <img src={btnArrowDown} alt="icon" />
+                <span>
+                  {activeBtn.id === 1
+                    ? "Barcha Viktorina yakunlanganlar"
+                    : "Barcha viktorinalar"}
+                </span>
+              </motion.button>
+            </div>
           </div>
-          <div className="choices-quiz-Container-bodyCont-bottomBtn">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setPostsPerpage((prev) => prev + 6)}
-            >
-              <img src={btnArrowDown} alt="icon" />
-              <span>
-                {activeBtn.id === 1
-                  ? "Barcha Viktorina yakunlanganlar"
-                  : "Barcha viktorinalar"}
-              </span>
-            </motion.button>
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

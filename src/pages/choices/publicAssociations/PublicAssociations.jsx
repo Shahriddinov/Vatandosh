@@ -7,6 +7,7 @@ import btnArrowDown from "../../../assets/images/portal/privateInformation/btnAr
 import badCrumbsImg from "../../../assets/images/portal/privateInformation/badCrumbs.svg";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Header from "../../../component/Layout/Header/Header";
 
 const fakeData = [
   {
@@ -95,46 +96,50 @@ const PublicAssociations = () => {
   const [fakeDatas, setFakeDatas] = useState(fakeData);
   const [postsPerPage, setPostsPerpage] = useState(8);
   return (
-    <div className="choicesPAContainer">
-      <div className="choicesPAContainer-header">
-        <h1>Jamoat birlashmalari</h1>
-        <ul>
-          <li>
-            <Link to="/">mainPage</Link>
-            <img src={badCrumbsImg} alt="breadcrumb line" />
-          </li>
-          <li aria-current="page">PublicAssociation</li>
-        </ul>
-      </div>
-      <div className="choicesPAContainer-body">
-        {fakeDatas.slice(0, postsPerPage).map((el, index) => (
-          <div key={index} className="choicesPAContainer-body-card">
-            <div className="choicesPAContainer-body-card_cardTop">
-              <img src={el.flag} alt="flag" />
-              <span>{el.country}</span>
+    <>
+      <Header />
+      <div className="choicesPAContainer">
+        <div className="choicesPAContainer-header">
+          <h1>Jamoat birlashmalari</h1>
+          <ul>
+            <li>
+              <Link to="/">mainPage</Link>
+              <img src={badCrumbsImg} alt="breadcrumb line" />
+            </li>
+            <li aria-current="page">PublicAssociation</li>
+          </ul>
+        </div>
+        <div className="choicesPAContainer-body">
+          {fakeDatas.slice(0, postsPerPage).map((el, index) => (
+            <div key={index} className="choicesPAContainer-body-card">
+              <div className="choicesPAContainer-body-card_cardTop">
+                <img src={el.flag} alt="flag" />
+                <span>{el.country}</span>
+              </div>
+              <div className="choicesPAContainer-body-card_hl"></div>
+              <p className="choicesPAContainer-body-card_text">
+                Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat
+                markazi
+              </p>
+              <img src={el.channel} alt="channel" />
+              <p className="choicesPAContainer-body-card_bottomText">
+                Chop etilgan maqolalar: {el.count}
+              </p>
+              <motion.button whileTap={{ scale: 0.9 }}>Batafsil</motion.button>
             </div>
-            <div className="choicesPAContainer-body-card_hl"></div>
-            <p className="choicesPAContainer-body-card_text">
-              Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat markazi
-            </p>
-            <img src={el.channel} alt="channel" />
-            <p className="choicesPAContainer-body-card_bottomText">
-              Chop etilgan maqolalar: {el.count}
-            </p>
-            <motion.button whileTap={{ scale: 0.9 }}>Batafsil</motion.button>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="choicesPAContainer-btnCont">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setPostsPerpage((prev) => prev + 6)}
+          >
+            <img src={btnArrowDown} alt="icon" />
+            <span>Всё</span>
+          </motion.button>
+        </div>
       </div>
-      <div className="choicesPAContainer-btnCont">
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setPostsPerpage((prev) => prev + 6)}
-        >
-          <img src={btnArrowDown} alt="icon" />
-          <span>Всё</span>
-        </motion.button>
-      </div>
-    </div>
+    </>
   );
 };
 
