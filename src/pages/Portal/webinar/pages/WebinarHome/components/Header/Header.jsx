@@ -67,31 +67,29 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
   ];
 
   return (
-    <section className="webinar-slider">
-      <div className="webinar-slider__container">
-        {/* <Navbar navbarUrl={navbarUrl} />
-        <Nav navData={navData} /> */}
-        <div className="webinar-slider__slider">
+    <section className="webinarheader">
+      <div className="webinarheader__container">
+
+        <div className="webinarheader__slider">
           {sliderData?.meetings?.map((slider, index) => (
             <div
-              className={`webinar-slider__slider-box ${
+              className={`webinarheader__slider-box ${
                 slideIndex === index ? "active" : ""
               }`}
               key={index}
             >
               <div
-                className={`webinar-slider__slider-item`}
+                className={`webinarheader__slider-item`}
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imageUrl}/${slider.image})`,
-                }}
-              ></div>
-              <div className="container webinar-slider__content">
-                <div className="webinar-slider__slider-left-bottom">
-                  <div className="webinar-slider__slider-left-bottom-text">
+                }}></div>
+              <div className="container webinarheader__content">
+                <div className="webinarheader__slider-left-bottom">
+                  <div className="webinarheader__slider-left-bottom-text">
                     <h1 className="webinar-body-name">{slider.title}</h1>
                     <p className="webinar-body-text">{slider.description}</p>
                   </div>
-                  <div className="webinar-slider__slider-left-bottom-buttons">
+                  <div className="webinarheader__slider-left-bottom-buttons">
                     <button
                       onClick={() =>
                         navigate(
@@ -119,8 +117,8 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                     }`}
                   ></div>
                 </div>
-                <div className="webinar-slider__bottom">
-                  <div className="webinar-slider__bottom-right">
+                <div className="webinarheader__bottom">
+                  <div className="webinarheader__bottom-right">
                     <div className="arrow-btn" onClick={handleLeft}>
                       <FiChevronLeft />
                     </div>
@@ -130,12 +128,12 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                   </div>
                 </div>
               </div>
-              <div className="webinar-slider__bullets">
+              <div className="webinarheader__bullets">
                 {data?.map((slider, index) => (
                   <div
-                    className={`webinar-slider__bullets-bullet ${
+                    className={`webinarheader__bullets-bullet ${
                       slideIndex === index
-                        ? "webinar-slider__bullets-bullet-active"
+                        ? "webinarheader__bullets-bullet-active"
                         : ""
                     }`}
                     key={index}

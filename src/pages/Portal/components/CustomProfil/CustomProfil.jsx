@@ -48,8 +48,6 @@ export default function CustomProfil() {
 
   if (error) return <NotFound />;
 
-  console.log(expertData);
-
   return expertData ? (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
@@ -76,8 +74,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.education")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -127,8 +124,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -168,8 +164,7 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <Typography>{t("expert.activity")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -220,7 +215,10 @@ export default function CustomProfil() {
             <div className="customprofil-list-offer">
               <div className="customprofil-list-offer-info">
                 <div className="customprofil-list-offer-info-img">
-                  <img  src={`${PORTAL_IMAGE_URL}/${expertData?.image}`} alt="error" />
+                  <img
+                    src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
+                    alt="error"
+                  />
                 </div>
                 <div className="customprofil-list-offer-info-desc">
                   <span>{t("expert.offer")}</span>
@@ -245,8 +243,7 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
+              id="panel1a-header">
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -256,11 +253,10 @@ export default function CustomProfil() {
                     className="customprofil-list-offer-info"
                     style={
                       id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                    }
-                  >
+                    }>
                     <div className="customprofil-list-offer-info-img">
                       <img
-                        src={DefaultProfilePic}
+                        src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
                         alt="error"
                         className="valontery-desc-img"
                       />
@@ -269,21 +265,12 @@ export default function CustomProfil() {
                       <p className="customprofil-list-offer-info-desc-text">
                         {`${id}. “O‘zbekiston zamini” ilmiy-amaliy va innovatsion maqola`}
                       </p>
-                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged.
-                        It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and
-                        more recently with desktop publishing software like
-                        Aldus PageMaker
-                      </p>
+                      <p>{expertData?.suggestions}</p>
                       <button className="customprofil-list-offer-info-desc-btn">
-                        <Link to={"/portal-category/volunteer/article/2"}>
+                        <Link
+                          to={
+                            "/portal-category/expert/offers/" + expertData?.id
+                          }>
                           {t("expert.detail")}
                         </Link>
                       </button>

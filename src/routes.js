@@ -286,6 +286,12 @@ const ElectronArchive = lazy(() =>
   import("./pages/Portal/electronicJournal/pages/archive/Archive")
 );
 
+const ElectronicJournalContact = lazy(() =>
+  import(
+    "./pages/Portal/electronicJournal/pages/electronicJournalContact/ElectronicJournalContact"
+  )
+);
+
 const WebinarRegister = lazy(() =>
   import("./pages/Portal/webinar/pages/WebinarRegister/WebinarRegister")
 );
@@ -602,7 +608,7 @@ const RoutesContainer = () => {
               />
               <Route path="new-number" element={<NewNumber />} />
               <Route path="archive" element={<ElectronArchive />} />
-              <Route path="contact" element={<Contact />} />
+              <Route path="contact" element={<ElectronicJournalContact />} />
               <Route path="*" element={<NotFound />} />
             </Route>
 

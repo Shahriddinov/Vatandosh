@@ -6,7 +6,7 @@ import { Pagination } from "../../../../../../../component";
 import { paginationCount } from "../../../../../../../helpers/extraFunction";
 
 const ArchiveIntro = ({ allMagazine, activePage, paginationFetching }) => {
-  const totalPaginate = paginationCount(allMagazine?.total, 1);
+  const totalPaginate = paginationCount(allMagazine?.total, 5);
   return (
     <section className="archive-intro">
       <div className="archive-intro__container container">
