@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import i18next from "i18next";
 import { languageList } from "../../../../../component/Layout/data";
@@ -17,6 +17,7 @@ const MobileNavbar = ({ active, setActive }) => {
   const dispatch = useDispatch();
 
   const [activeLng, setActiveLng] = useState(activeLanguage);
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const changeLanguage = (lng) => {
     dispatch(languageChange(lng));
@@ -53,7 +54,7 @@ const MobileNavbar = ({ active, setActive }) => {
           <div className="header-sideBar">
             <div className="header-sideBar-wrapper">
               <MobileTop />
-              <MobileCenter />
+              <MobileCenter contactData={contactData} />
               <div className="header-sideBar-bottom">
                 <ul className="header-sideBar-bottom-lang">
                   {languageList.map((el, index) => (
@@ -71,19 +72,22 @@ const MobileNavbar = ({ active, setActive }) => {
 
                 <div className="header-sideBar-bottom-socialMedia">
                   <a
-                    href="https://ru-ru.facebook.com"
+                    href={contactData?.facebook}
+                    target="blank"
                     className="header-sideBar-bottom-socialMedia-item"
                   >
                     <FaFacebookF className="header-sideBar-bottom-socialMedia-item-icon" />
                   </a>
                   <a
-                    href="https://twitter.com/?lang=en"
+                    href={contactData?.twitter}
+                    target="blank"
                     className="header-sideBar-bottom-socialMedia-item"
                   >
                     <FaTwitter className="header-sideBar-bottom-socialMedia-item-icon" />
                   </a>
                   <a
-                    href="https://www.instagram.com/?hl=en"
+                    href={contactData?.instagram}
+                    target="blank"
                     className="header-sideBar-bottom-socialMedia-item"
                   >
                     <AiFillInstagram className="header-sideBar-bottom-socialMedia-item-icon" />

@@ -26,6 +26,7 @@ const NavbarList = () => {
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
   const [activeCabinet, setActiveCabinet] = useState(false);
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -44,16 +45,13 @@ const NavbarList = () => {
       <li className="community-navbar__item">
         <ul className="navbar-list">
           <li className="navbar-item">
-            <a href="tel:+998555022299" className={`navbar--link`}>
+            <a href={`tel:${contactData?.phone}`} className={`navbar--link`}>
               <PhoneIcon />
-              +998(55)502-22-99
+              {contactData?.phone}
             </a>
           </li>
           <li className="navbar-item">
-            <a
-              href="mailto:info@vatandoshlarfondi.uz"
-              className={`navbar--link`}
-            >
+            <a href={`mailto:${contactData?.email}`} className={`navbar--link`}>
               <EmailIcon />
               info@vatandoshlarfondi.uz
             </a>
