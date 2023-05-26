@@ -8,10 +8,10 @@ import { useElectronicJournalLayout } from "./hooks/useElectronicJournalLayout";
 import { Spinner } from "../../../component";
 
 const ElectronicJournalLayout = () => {
-  const { menu, menuLoading, allMagazineLoading, error } =
+  const { menu, menuLoading, lastMagazineLoading, error } =
     useElectronicJournalLayout();
 
-  if (menuLoading || allMagazineLoading) {
+  if (menuLoading || lastMagazineLoading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
