@@ -1,0 +1,79 @@
+@import "../../../assets//style/global.scss";
+
+.choices-quiz-Container {
+  max-width: 1270px;
+  margin-inline: auto;
+  padding: 0 50px 50px 50px;
+  margin-top: 48px;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    & > h1 {
+      @include fontStyles(600, 32px, 39px, #10131b);
+    }
+
+    & > ul {
+      display: flex;
+      gap: 8px;
+      & > li {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        @include fontStyles(700, 14px, 17px, #065ea9);
+        & > a {
+          @include fontStyles(700, 14px, 17px, #5d6b8a);
+        }
+
+        & > img {
+          background-color: #5d6b8a;
+          border-radius: 0.718983px;
+          width: 4px;
+          height: 6px;
+        }
+      }
+    }
+  }
+
+  &-btnCont {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    & > button {
+      @include fontStyles(700, 14px, 24px, #065ea9);
+      padding: 12px 22px;
+      background: #ffffff;
+
+      border: 2px solid #eaedf6;
+      border-radius: 16px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    & > button.active {
+      @include fontStyles(700, 14px, 24px, #ffffff);
+      background: #065ea9;
+    }
+  }
+
+  &-bodyCont {
+    margin-top: 20px;
+    &-bottomBtn {
+      display: flex;
+      justify-content: center;
+      margin-top: 45px;
+      & > button {
+        padding: 12px 22px;
+        background: #e3f0ff;
+        border-radius: 16px;
+        border: none;
+        display: flex;
+        gap: 11.66px;
+        & > img {
+        }
+        & > span {
+          @include fontStyles(700, 14px, 24px, #065ea9);
+        }
+      }
+    }
+  }
+}

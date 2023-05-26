@@ -90,8 +90,23 @@ export const NavBarLinks = () => {
       ],
     },
     {
-      title: t("contects"),
+      title: "TANLOVLAR",
+      links: [
+        {
+          title: "Viktorinalar",
+          url: "/choicesQuizzes",
+          icon: botIcon,
+        },
+        {
+          title: "Jamoat birlashmalar",
+          url: "/choicesPublicAssociations",
+          icon: paIcon,
+        },
+      ],
     },
+    // {
+    //   title: t("contects"),
+    // },
     // {
     //   title: t("faq"),
     // },

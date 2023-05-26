@@ -364,6 +364,41 @@ const Certificates = lazy(() =>
 
 const Chat = lazy(() => import("./pages/Portal/cabinet/pages/chat/Chat"));
 
+// Kabinet > private information > components for multistep form
+const CommonInformation = lazy(() =>
+  import(
+    "./pages/Portal/cabinet/pages/privateInformation/components/commonInformation/CommonInformation"
+  )
+);
+const Job = lazy(() =>
+  import("./pages/Portal/cabinet/pages/privateInformation/components/job/Job")
+);
+const Education = lazy(() =>
+  import(
+    "./pages/Portal/cabinet/pages/privateInformation/components/education/Education"
+  )
+);
+const ScientificActivity = lazy(() =>
+  import(
+    "./pages/Portal/cabinet/pages/privateInformation/components/scientificActivity/ScientificActivity"
+  )
+);
+const Offer = lazy(() =>
+  import(
+    "./pages/Portal/cabinet/pages/privateInformation/components/offer/Offer"
+  )
+);
+const VoluntaryActivity = lazy(() =>
+  import(
+    "./pages/Portal/cabinet/pages/privateInformation/components/voluntaryActivity/VoluntaryActivity"
+  )
+);
+
+const ChoicesPublicAssociations = lazy(() =>
+  import("./pages/choices/publicAssociations/PublicAssociations")
+);
+const ChoicesQuizzes = lazy(() => import("./pages/choices/quizzes/quizzes"));
+
 const routes = [
   { path: "", element: Home },
   { path: "/about", element: About },
@@ -398,6 +433,8 @@ const routes = [
   { path: "/search/:search", element: SearchResult },
   { path: "/registration/signup/api/verify/", element: EmailVerify },
   { path: "/registration/signup/api/reset/", element: ResetPassword },
+  { path: "/choices/quiz", element: ChoicesQuizzes },
+  { path: "/choices/public-associations", element: ChoicesPublicAssociations },
 ];
 
 const RoutesContainer = () => {
@@ -429,7 +466,20 @@ const RoutesContainer = () => {
                   <Route
                     path="private-information"
                     element={<PrivateInformation />}
-                  />
+                  >
+                    <Route index element={<CommonInformation />} />
+                    <Route path="job" element={<Job />} />
+                    <Route path="education" element={<Education />} />
+                    <Route
+                      path="scientificActivity"
+                      element={<ScientificActivity />}
+                    />
+                    <Route path="offer" element={<Offer />} />
+                    <Route
+                      path="voluntaryActivity"
+                      element={<VoluntaryActivity />}
+                    />
+                  </Route>
                   <Route path="volunteering" element={<Volunteering />} />
                   <Route path="expert-activity" element={<ExpertActivity />} />
                   <Route path="organizations" element={<Organizations />} />
