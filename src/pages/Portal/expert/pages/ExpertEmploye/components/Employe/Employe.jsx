@@ -122,7 +122,7 @@ function Employe() {
                     className="employee-img"
                   />
                   <p>
-                    {evt?.user_profile?.international_location_id?.name}
+                    {evt?.user_profile?.international_location_id?.name} {"   "}
                     {evt?.user_profile?.international_address_id?.name}
                   </p>
                   <h3>
