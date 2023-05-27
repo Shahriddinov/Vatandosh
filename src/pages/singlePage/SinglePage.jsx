@@ -7,6 +7,9 @@ import { SiteHero, Spinner } from "../../component";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSingleData } from "./hooks/useSingleData";
 import { useEffect } from "react";
+import { getAllProjects } from "../../reduxToolkit/AllProjectSlice/extraReducer";
+import { useDispatch, useSelector } from "react-redux";
+import FotoGallery from "../../component/FotoGallery/FotoGallery";
 
 export const SinglePage = () => {
   const { projectsMenuLoading, data, compatriotsMenuLoading } = useSingleData();
@@ -14,6 +17,10 @@ export const SinglePage = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const [pageErr, setPageErr] = useState(pageUrl);
+  const [searchId, setSearchId] = useState(null);
+  const { projects } = useSelector((state) => state.AllProjectSlice);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (
@@ -29,7 +36,17 @@ export const SinglePage = () => {
     ) {
       navigate("/not-found");
     }
-  }, []);
+  }, [data?.id, navigate, pageErr, search]);
+
+  useEffect(() => {
+    setSearchId(search?.slice(2));
+  }, [search]);
+
+  useEffect(() => {
+    if (searchId === "4" || searchId === "5") {
+      dispatch(getAllProjects());
+    }
+  }, [searchId, dispatch]);
 
   if (projectsMenuLoading || compatriotsMenuLoading) {
     return <Spinner position="full" />;
@@ -46,6 +63,17 @@ export const SinglePage = () => {
         <SiteHero data={data} />
       </div>
       <IntroSection data={data} />
+      {searchId === "4" || searchId === "5" ? (
+        <FotoGallery
+          images={
+            projects?.find((el) => el["menu_uz"] === searchId)?.fotogalareya
+              ? projects?.find((el) => el["menu_uz"] === searchId)?.fotogalareya
+              : null
+          }
+        />
+      ) : pageErr === "publicevents" ? (
+        <FotoGallery images={data?.photogallery} />
+      ) : null}
     </div>
   );
 };

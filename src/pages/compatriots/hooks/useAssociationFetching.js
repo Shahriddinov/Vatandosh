@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAssociations,
+  getAssociationsAbout,
   getAssociationsCategory,
 } from "../../../reduxToolkit/associationsSlice/associationsAsyncThunk";
 import { getEvents } from "../../../reduxToolkit/eventsSlice/extraReducer";
@@ -19,6 +20,9 @@ export const useAssociationFetching = () => {
   const associationCategoryLoading = useSelector(
     (store) => store.associationSlice.associationCategoryLoading
   );
+  const { aboutData, aboutLoading } = useSelector(
+    (store) => store.associationSlice
+  );
   const error = useSelector((store) => store.associationSlice.error);
   const eventsData = useSelector((state) => state.eventsSlice.eventsData);
   const eventsLoading = useSelector((state) => state.eventsSlice.loading);
@@ -28,7 +32,8 @@ export const useAssociationFetching = () => {
     dispatch(getAssociations());
     dispatch(getAssociationsCategory());
     dispatch(getEvents());
-  }, []);
+    dispatch(getAssociationsAbout());
+  }, [dispatch]);
 
   return {
     associationData,
@@ -38,5 +43,7 @@ export const useAssociationFetching = () => {
     associationCategoryLoading,
     eventsData,
     eventsLoading,
+    aboutData,
+    aboutLoading,
   };
 };

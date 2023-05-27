@@ -8,6 +8,8 @@ import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 import { useAssociationFetching } from "../hooks/useAssociationFetching";
 import { Spinner } from "../../../component";
 import { useTranslation } from "react-i18next";
+import { baseServerUrl } from "../../../services/api/utils";
+import "../../singlePage/singlePage.scss";
 
 const PublicAssociations = () => {
   const {
@@ -16,6 +18,8 @@ const PublicAssociations = () => {
     error,
     associationLoading,
     associationCategoryLoading,
+    aboutData,
+    aboutLoading,
   } = useAssociationFetching();
   const { t } = useTranslation();
   const heroData = {
@@ -30,7 +34,7 @@ const PublicAssociations = () => {
         <Spinner />
       </div>
     );
-  } else if (associationCategoryLoading) {
+  } else if (associationCategoryLoading || aboutLoading) {
     return (
       <div className="spinner_box">
         <Spinner />
@@ -55,9 +59,13 @@ const PublicAssociations = () => {
     };
   });
 
+  const styles = {
+    backgroundImage: `url(${baseServerUrl}/${aboutData[0].backgroundImg})`,
+  };
+
   return (
     <div className="public-associations">
-      <div className="page-about">
+      <div className="single-page__top" style={styles}>
         <WhriteHeader />
         <CouncilHero {...heroData} />
       </div>
