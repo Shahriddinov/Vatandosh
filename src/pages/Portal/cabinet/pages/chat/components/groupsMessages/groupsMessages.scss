@@ -182,11 +182,24 @@
   &__received-message {
     color: #065ea9;
     background: #ffffff;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
   }
 
   &__sent-message {
     color: #fff;
     background: #065ea9;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
   }
 
   &__received-details {
@@ -222,6 +235,11 @@
     top: 44px;
     left: 50px;
     cursor: pointer;
+  }
+
+  &__file-upload {
+    position: absolute;
+    visibility: hidden;
   }
 
   &__send {

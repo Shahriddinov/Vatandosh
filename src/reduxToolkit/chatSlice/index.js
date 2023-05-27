@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
   getAllChats,
+  getMediaUrl,
   getMessages,
   leaveGroup,
   sendMessage,
@@ -20,6 +21,9 @@ const initialState = {
 
   leaveLoading: false,
   leaveData: null,
+
+  mediaUrlLoading: false,
+  mediaUrl: null,
 
   errors: null,
 };
@@ -87,6 +91,20 @@ const chatSlice = createSlice({
       .addCase(leaveGroup.rejected, (state, action) => {
         state.leaveLoading = false;
         state.errors = action.error.message;
+      });
+
+    // Get media Url
+    build
+      .addCase(getMediaUrl.pending, (state) => {
+        state.mediaUrlLoading = true;
+      })
+      .addCase(getMediaUrl.fulfilled, (state, action) => {
+        state.mediaUrlLoading = false;
+        state.mediaUrl = action.payload;
+      })
+      .addCase(getMediaUrl.rejected, (state, action) => {
+        state.mediaUrlLoading = false;
+        state.mediaUrl = action.error.message;
       });
   },
 });

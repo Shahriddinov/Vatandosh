@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 import "./groupMembers.scss";
+import { ChooseMember } from "../../Chat";
 
 const GroupMembers = ({ members, showMembers }) => {
+  const { setChooseMember, setActiveChat } = useContext(ChooseMember);
+
+  const handleClick = (user) => {
+    setChooseMember(user);
+    setActiveChat("private");
+  };
+
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
       <div className="group-members__container">
@@ -21,7 +29,11 @@ const GroupMembers = ({ members, showMembers }) => {
             }
 
             return (
-              <div key={member.id} className="group-members__one-member">
+              <div
+                key={member.id}
+                className="group-members__one-member"
+                onClick={() => handleClick(member)}
+              >
                 <div className="group-members__picture">
                   {profileImg}
                   {member.last_online_at ? null : (
