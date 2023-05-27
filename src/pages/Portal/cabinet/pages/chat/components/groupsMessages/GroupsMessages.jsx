@@ -5,6 +5,7 @@ import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import {
+  getMediaUrl,
   leaveGroup,
   sendMessage,
 } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
@@ -25,12 +26,14 @@ const GroupsMessages = ({
   showLinks,
   setShowMembers,
   showMembers,
+  setChooseMember,
   setActivePage,
   activePage,
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
   const sendRef = useRef();
+  const uploadRef = useRef();
   const messagesRef = useRef();
   const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(true);
@@ -40,11 +43,14 @@ const GroupsMessages = ({
     type: null,
   });
   const [scrollTop, setScrollTop] = useState(0);
+  const [sendFile, setSendFile] = useState(null);
+  const [sendMessageText, setSendMessageText] = useState("");
 
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
+  const mediaUrl = useSelector((state) => state.chatSlice.mediaUrl);
 
   const user = useSelector((state) => state.authSlice.userData);
 
@@ -82,12 +88,28 @@ const GroupsMessages = ({
   const { messages } = useContext(MessagesContext);
 
   const handleChange = (input) => {
+    setSendFile(input.target.files);
+
     if (input.target.value.length >= 2) {
       sendRef.current.style.pointerEvents = "all";
       sendRef.current.style.cursor = "pointer";
       sendRef.current.style.opacity = 1;
 
-      setSendMessageData({ ...sendMessageData, message: input.target.value });
+      if (input.target.files) {
+        const formData = new FormData();
+
+        formData.append("image", input.target.files[0]);
+        formData.append("folder", "chat");
+
+        dispatch(getMediaUrl(formData));
+
+        inputRef.current.value = input.target.files[0].name;
+      } else {
+        setSendMessageData({
+          ...sendMessageData,
+          message: input.target.value,
+        });
+      }
     } else {
       sendRef.current.style.pointerEvents = "none";
       sendRef.current.style.opacity = 0.5;
@@ -115,11 +137,22 @@ const GroupsMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const mess = {
-      ...sendMessageData,
-      chat_room_id: groupData.group.id,
-      type: 1,
-    };
+    let mess;
+
+    if (sendFile) {
+      mess = {
+        message: mediaUrl.path,
+        chat_room_id: groupData.group.id,
+        type: 2,
+      };
+    } else {
+      mess = {
+        ...sendMessageData,
+        chat_room_id: groupData.group.id,
+        type: 1,
+      };
+    }
+
     setSendMessageData(mess);
 
     dispatch(sendMessage(mess));
@@ -285,9 +318,7 @@ const GroupsMessages = ({
                 className="group-message__logout"
                 onClick={() => {
                   setShowModal(!showModal);
-                  dispatch(
-                    leaveGroup({ chat_room_id: groupData?.group?.chat_room_id })
-                  );
+                  dispatch(leaveGroup({ chat_room_id: groupData?.group?.id }));
                 }}
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -307,7 +338,11 @@ const GroupsMessages = ({
       <div className="group-message__messages-body" ref={messagesRef}>
         <ChatDocs docsData={docs} showDocs={showDocs} />
         <ChatLinks linksData={links} showLinks={showLinks} />
-        <GroupMembers members={messagesData?.users} showMembers={showMembers} />
+        <GroupMembers
+          members={messagesData?.users}
+          showMembers={showMembers}
+          setChooseMember={setChooseMember}
+        />
         {activeGroup ? (
           <div
             className={`group-message__messages-container ${
@@ -316,67 +351,128 @@ const GroupsMessages = ({
           >
             {messages?.map((message) => {
               const userId = user.user_id ? user.user_id.id : user.id;
-              return message?.user_id !== userId ? (
-                <div
-                  key={message.id}
-                  className="group-message__received-container"
-                >
-                  <div className="group-message__received-user">
-                    {message?.user?.avatar ? (
+              return message ? (
+                message?.user_id !== userId ? (
+                  <div
+                    key={message.id}
+                    className="group-message__received-container"
+                  >
+                    <div className="group-message__received-user">
+                      {message?.user?.avatar ? (
+                        <img
+                          src={`${PORTAL_IMAGE_URL}${message?.user?.avatar}`}
+                          alt="user"
+                        />
+                      ) : (
+                        message?.user?.name.split(" ")[0][0] +
+                        message?.user?.name.split(" ")[1][0]
+                      )}
+                    </div>
+                    <div className="group-message__received-details">
+                      <p className="group-message__received-message">
+                        {message?.message.slice(0, 4) === "chat" ? (
+                          <a
+                            href={`${PORTAL_IMAGE_URL}${message?.message}`}
+                            target="_blank"
+                            download
+                          >
+                            <svg
+                              width="16"
+                              height="20"
+                              viewBox="0 0 16 20"
+                              fill="none"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M8 0.5C8 0.223858 7.77614 0 7.5 0H4C1.79086 0 0 1.79086 0 4V16C0 18.2091 1.79086 20 4 20H12C14.2091 20 16 18.2091 16 16V8.5C16 8.22386 15.7761 8 15.5 8H13C10.2386 8 8 5.76142 8 3V0.5ZM15.2195 6C15.552 6 15.7909 5.67893 15.6312 5.3873C15.4956 5.13969 15.3245 4.91032 15.1213 4.70711L11.2929 0.87868C11.0897 0.675463 10.8603 0.504412 10.6127 0.368804C10.3211 0.209086 10 0.448045 10 0.780548V3C10 4.65685 11.3431 6 13 6H15.2195ZM5 7C4.44772 7 4 7.44772 4 8C4 8.55228 4.44772 9 5 9H6C6.55228 9 7 8.55228 7 8C7 7.44772 6.55228 7 6 7H5ZM4 12C4 11.4477 4.44772 11 5 11H11C11.5523 11 12 11.4477 12 12C12 12.5523 11.5523 13 11 13H5C4.44772 13 4 12.5523 4 12ZM4 16C4 15.4477 4.44772 15 5 15H11C11.5523 15 12 15.4477 12 16C12 16.5523 11.5523 17 11 17H5C4.44772 17 4 16.5523 4 16Z"
+                                fill="#065EA9"
+                              />
+                            </svg>
+                            {message?.message
+                              .split("/")[1]
+                              .split(".")[0]
+                              .slice(0, 20) +
+                              "." +
+                              message?.message.split("/")[1].split(".")[1]}
+                          </a>
+                        ) : (
+                          message?.message
+                        )}
+                      </p>
+                      <span>
+                        {message?.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[0] +
+                          ":" +
+                          message?.created_at
+                            .split("T")[1]
+                            .split(".")[0]
+                            .split(":")[1]}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    key={message?.id}
+                    className="group-message__sent-container"
+                  >
+                    <div className="group-message__sent-details">
+                      <p className="group-message__sent-message">
+                        {message?.message.slice(0, 4) === "chat" ? (
+                          <a
+                            href={`${PORTAL_IMAGE_URL}${message?.message}`}
+                            target="_blank"
+                            download
+                          >
+                            <svg
+                              width="16"
+                              height="20"
+                              viewBox="0 0 16 20"
+                              fill="none"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M8 0.5C8 0.223858 7.77614 0 7.5 0H4C1.79086 0 0 1.79086 0 4V16C0 18.2091 1.79086 20 4 20H12C14.2091 20 16 18.2091 16 16V8.5C16 8.22386 15.7761 8 15.5 8H13C10.2386 8 8 5.76142 8 3V0.5ZM15.2195 6C15.552 6 15.7909 5.67893 15.6312 5.3873C15.4956 5.13969 15.3245 4.91032 15.1213 4.70711L11.2929 0.87868C11.0897 0.675463 10.8603 0.504412 10.6127 0.368804C10.3211 0.209086 10 0.448045 10 0.780548V3C10 4.65685 11.3431 6 13 6H15.2195ZM5 7C4.44772 7 4 7.44772 4 8C4 8.55228 4.44772 9 5 9H6C6.55228 9 7 8.55228 7 8C7 7.44772 6.55228 7 6 7H5ZM4 12C4 11.4477 4.44772 11 5 11H11C11.5523 11 12 11.4477 12 12C12 12.5523 11.5523 13 11 13H5C4.44772 13 4 12.5523 4 12ZM4 16C4 15.4477 4.44772 15 5 15H11C11.5523 15 12 15.4477 12 16C12 16.5523 11.5523 17 11 17H5C4.44772 17 4 16.5523 4 16Z"
+                                fill="#fff"
+                              />
+                            </svg>
+                            {message?.message
+                              .split("/")[1]
+                              .split(".")[0]
+                              .slice(0, 20) +
+                              "." +
+                              message?.message.split("/")[1].split(".")[1]}
+                          </a>
+                        ) : (
+                          message?.message
+                        )}
+                      </p>
+                      <span>
+                        {message.created_at
+                          .split("T")[1]
+                          .split(".")[0]
+                          .split(":")[0] +
+                          ":" +
+                          message.created_at
+                            .split("T")[1]
+                            .split(".")[0]
+                            .split(":")[1]}
+                      </span>
+                    </div>
+                    <div className="group-message__sent-user">
                       <img
-                        src={`${PORTAL_IMAGE_URL}${message?.user?.avatar}`}
+                        src={`${PORTAL_IMAGE_URL}${
+                          user.avatar_url ? user.avatar_url : user.avatar
+                        }`}
                         alt="user"
                       />
-                    ) : (
-                      message?.user?.name.split(" ")[0][0] +
-                      message?.user?.name.split(" ")[1][0]
-                    )}
+                    </div>
                   </div>
-                  <div className="group-message__received-details">
-                    <p className="group-message__received-message">
-                      {message?.message}
-                    </p>
-                    <span>
-                      {message.created_at
-                        .split("T")[1]
-                        .split(".")[0]
-                        .split(":")[0] +
-                        ":" +
-                        message.created_at
-                          .split("T")[1]
-                          .split(".")[0]
-                          .split(":")[1]}
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div key={message.id} className="group-message__sent-container">
-                  <div className="group-message__sent-details">
-                    <p className="group-message__sent-message">
-                      {message.message}
-                    </p>
-                    <span>
-                      {message.created_at
-                        .split("T")[1]
-                        .split(".")[0]
-                        .split(":")[0] +
-                        ":" +
-                        message.created_at
-                          .split("T")[1]
-                          .split(".")[0]
-                          .split(":")[1]}
-                    </span>
-                  </div>
-                  <div className="group-message__sent-user">
-                    <img
-                      src={`${PORTAL_IMAGE_URL}${
-                        user.avatar_url ? user.avatar_url : user.avatar
-                      }`}
-                      alt="user"
-                    />
-                  </div>
-                </div>
-              );
+                )
+              ) : null;
             })}
           </div>
         ) : (
@@ -402,12 +498,22 @@ const GroupsMessages = ({
             height="22"
             viewBox="0 0 11 22"
             fill="none"
+            onClick={() => uploadRef.current.click()}
           >
             <path
               d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
               fill="#065EA9"
             />
           </svg>
+          <input
+            ref={uploadRef}
+            onChange={(e) => handleChange(e)}
+            type="file"
+            name="file"
+            className="group-message__file-upload"
+            accept="application/pdf,application/msword,
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          />
           <button type="submit" className="group-message__send" ref={sendRef}>
             <svg width="19" height="16" viewBox="0 0 19 16" fill="none">
               <path

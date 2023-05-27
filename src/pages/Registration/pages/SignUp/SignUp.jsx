@@ -26,10 +26,6 @@ export default function SignUp() {
     return <Spinner position="full" />;
   }
 
-  if (error) {
-    alert(error);
-  }
-
   return (
     <div className="auth">
       <div className="container">

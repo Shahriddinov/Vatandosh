@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../services/api/axios";
 
-import { GET_CHAT_DATA } from "../../services/api/utils";
+import { GET_CHAT_DATA, POST_COMMUNITY_IMAGE } from "../../services/api/utils";
 
 // Get All Chats
 export const getAllChats = createAsyncThunk("get/allChats", async () => {
@@ -36,4 +36,19 @@ export const leaveGroup = createAsyncThunk("leave/group", async (payload) => {
   return await axios
     .post(`${GET_CHAT_DATA}/left`, payload)
     .then((res) => res.data);
+});
+
+// Create url for chat media
+
+export const getMediaUrl = createAsyncThunk("getMedia", async (data) => {
+  return await axios({
+    url: POST_COMMUNITY_IMAGE,
+    method: "POST",
+    data: data,
+    headers: {
+      "Content-Type":
+        "multipart/form-data; boundary=<calculated when request is sent>",
+      accept: "*/*",
+    },
+  }).then((res) => res.data);
 });

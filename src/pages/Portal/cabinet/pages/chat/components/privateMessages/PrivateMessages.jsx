@@ -10,6 +10,7 @@ import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { MessagesContext } from "../../../../../../../App";
 import { sendMessage } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
+import { ChooseMember } from "../../Chat";
 
 const PrivateMessages = ({
   showMessages,
@@ -19,6 +20,7 @@ const PrivateMessages = ({
   setShowLinks,
   showLinks,
   privateChatRoomId,
+  userData
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -31,6 +33,7 @@ const PrivateMessages = ({
     type: null,
   });
   const { messages } = useContext(MessagesContext);
+  const { chooseMember } = useContext(ChooseMember);
 
   const messagesLoading = useSelector(
     (state) => state.chatSlice.messagesLoading
@@ -95,9 +98,10 @@ const PrivateMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
     const mess = {
       ...sendMessageData,
-      chat_room_id: privateChatRoomId,
+      user_id: chooseMember ? chooseMember.id : userData.user ? userData.user.user_id : userData.id, 
       type: 1,
     };
 
@@ -129,8 +133,14 @@ const PrivateMessages = ({
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
   }, [showMessages, activeUser, showDocs, showLinks, messages]);
 
-  const privateUser =
+  let privateUser;
+
+  if (chooseMember) {
+    privateUser = chooseMember;
+  } else {
+    privateUser =
     messagesData && messagesData?.users?.find((el) => el.id !== user.id);
+  }
 
   return (
     <div className="private-message">
@@ -199,7 +209,7 @@ const PrivateMessages = ({
           setShowLinks={setShowLinks}
           showLinks={showLinks}
         />
-        {activeUser ? (
+        {activeUser || chooseMember ? (
           <div
             className={`private-message__messages-container ${
               show ? "show-messages" : ""
@@ -207,69 +217,71 @@ const PrivateMessages = ({
           >
             {messages?.map((message) => {
               const userId = user.user_id ? user.user_id.id : user.id;
-              return message.user.id !== userId ? (
-                <div
-                  key={message.id}
-                  className="private-message__received-container"
-                >
-                  <div className="private-message__received-user">
-                    <img
-                      src={`${PORTAL_IMAGE_URL}${
-                        message.user.avatar
-                          ? message.user.avatar
-                          : message.user.name[0]
-                      }`}
-                      alt="user"
-                    />
-                  </div>
-                  <div className="private-message__received-details">
-                    <p className="private-message__received-message">
-                      {message.message}
-                    </p>
-                    <span>
-                      {message.created_at
-                        .split("T")[1]
-                        .split(".")[0]
-                        .split(":")[0] +
-                        ":" +
-                        message.created_at
+              return message ? (
+                message.user.id !== userId ? (
+                  <div
+                    key={message.id}
+                    className="private-message__received-container"
+                  >
+                    <div className="private-message__received-user">
+                      <img
+                        src={`${PORTAL_IMAGE_URL}${
+                          message.user.avatar
+                            ? message.user.avatar
+                            : message.user.name[0]
+                        }`}
+                        alt="user"
+                      />
+                    </div>
+                    <div className="private-message__received-details">
+                      <p className="private-message__received-message">
+                        {message.message}
+                      </p>
+                      <span>
+                        {message.created_at
                           .split("T")[1]
                           .split(".")[0]
-                          .split(":")[1]}
-                    </span>
+                          .split(":")[0] +
+                          ":" +
+                          message.created_at
+                            .split("T")[1]
+                            .split(".")[0]
+                            .split(":")[1]}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div
-                  key={message.id}
-                  className="private-message__sent-container"
-                >
-                  <div className="private-message__sent-details">
-                    <p className="private-message__sent-message">
-                      {message.message}
-                    </p>
-                    <span>
-                      {message.created_at
-                        .split("T")[1]
-                        .split(".")[0]
-                        .split(":")[0] +
-                        ":" +
-                        message.created_at
+                ) : (
+                  <div
+                    key={message.id}
+                    className="private-message__sent-container"
+                  >
+                    <div className="private-message__sent-details">
+                      <p className="private-message__sent-message">
+                        {message.message}
+                      </p>
+                      <span>
+                        {message.created_at
                           .split("T")[1]
                           .split(".")[0]
-                          .split(":")[1]}
-                    </span>
+                          .split(":")[0] +
+                          ":" +
+                          message.created_at
+                            .split("T")[1]
+                            .split(".")[0]
+                            .split(":")[1]}
+                      </span>
+                    </div>
+                    <div className="private-message__sent-user">
+                      <img
+                        src={`${PORTAL_IMAGE_URL}${
+                          user.avatar_url ? user.avatar_url : user.avatar
+                        }`}
+                        alt="user"
+                      />
+                    </div>
                   </div>
-                  <div className="private-message__sent-user">
-                    <img
-                      src={`${PORTAL_IMAGE_URL}${
-                        user.avatar_url ? user.avatar_url : user.avatar
-                      }`}
-                      alt="user"
-                    />
-                  </div>
-                </div>
-              );
+                )
+              ) : null;
             })}
           </div>
         ) : (
@@ -287,7 +299,7 @@ const PrivateMessages = ({
       <form onSubmit={handleSubmit}>
         <div
           className={`private-message__messages-bottom ${
-            showMessages && show ? "show-bottom" : ""
+            showMessages && show || chooseMember ? "show-bottom" : ""
           }`}
         >
           <svg
