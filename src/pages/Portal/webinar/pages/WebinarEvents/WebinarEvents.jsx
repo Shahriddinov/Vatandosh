@@ -41,6 +41,36 @@ function WebinarEvents() {
     dispatch(getMeetingAll({ page, pageType: "events" }));
   }, []);
 
+  const remainingTime = (targetDate, type) => {
+    const now = new Date();
+    const target = new Date(targetDate);
+    const diffTime = target - now;
+
+    if (diffTime > 0) {
+      const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+
+      switch (type) {
+        case "days":
+          return days;
+          break;
+        case "hours":
+          return hours;
+          break;
+        case "minutes":
+          return minutes;
+          break;
+
+        default:
+          return null;
+          break;
+      }
+    }
+  };
+
   if (meetingsloading) {
     return <Spinner />;
   } else if (meetingError) {
@@ -67,6 +97,20 @@ function WebinarEvents() {
               </span>
               <h5 className="webinar-names">{webinar.title}</h5>
               <p className="webinar-text">{webinar.description}</p>
+              <div className="webinar-timer">
+                <div>
+                  <span>{remainingTime(webinar.start_date, "days")}</span>
+                  <span>Kun</span>
+                </div>
+                <div>
+                  <span>{remainingTime(webinar.start_date, "hours")}</span>
+                  <span>Soat</span>
+                </div>
+                <div>
+                  <span>{remainingTime(webinar.start_date, "minutes")}</span>
+                  <span>Daqiqa</span>
+                </div>
+              </div>
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}

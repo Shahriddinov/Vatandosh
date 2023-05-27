@@ -85,13 +85,10 @@ export default function OnlineWebinar() {
                 <img
                   src={`${PORTAL_IMAGE_URL}${meetingOnedata.image}`}
                   alt="error"
+                  className="online-webinar-hero-img"
                 />
-                {pathname.includes("finished-projects") ? (
-                  <button className="victorinaproject-main-btn">
-                    {t("victorina.endproject")}
-                  </button>
-                ) : (
-                  <>
+                <>
+                  {meetingOnedata.status == 1 && (
                     <div className="victorinaproject-main-timer">
                       <div>
                         <span>{timeRemaining.days}</span>
@@ -106,20 +103,21 @@ export default function OnlineWebinar() {
                         <span>Daqiqa</span>
                       </div>
                     </div>
-                    {meetingOnedata.status == 1 ? (
-                      <Link
-                        to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                        className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                      >
-                        {t("webinar.join-webinar")}
-                      </Link>
-                    ) : (
-                      <Link className="victorinaproject-main-btn">
-                        Vebinar yakunlangan
-                      </Link>
-                    )}
-                  </>
-                )}
+                  )}
+                  {meetingOnedata.status == 1 ? (
+                    <Link
+                      to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    >
+                      {t("webinar.join-webinar")}
+                    </Link>
+                  ) : (
+                    <Link className="victorinaproject-main-btn">
+                      VEBINAR YAKUNLANDI!
+                    </Link>
+                  )}
+                </>
+
                 {meetingOnedata.speakers?.map((speaker) => (
                   <ExpertProfileInfo
                     key={speaker.id}

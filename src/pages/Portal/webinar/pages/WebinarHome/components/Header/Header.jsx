@@ -69,14 +69,15 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
   return (
     <section className="webinarheader">
       <div className="webinarheader__container">
-  
+
         <div className="webinarheader__slider">
           {sliderData?.meetings?.map((slider, index) => (
             <div
               className={`webinarheader__slider-box ${
                 slideIndex === index ? "active" : ""
               }`}
-              key={index}>
+              key={index}
+            >
               <div
                 className={`webinarheader__slider-item`}
                 style={{
@@ -90,8 +91,13 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                   </div>
                   <div className="webinarheader__slider-left-bottom-buttons">
                     <button
-                      onClick={() => navigate(`/portal-category/webinar`)}
-                      className="webinarheader__slider-left-bottom-buttons-more-button">
+                      onClick={() =>
+                        navigate(
+                          `/portal-category/webinar/online-webinar/${slider.id}`
+                        )
+                      }
+                      className="webinar-slider__slider-left-bottom-buttons-more-button"
+                    >
                       {t("webinar.header2")}
                     </button>
                     <button
@@ -100,14 +106,16 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                           `/portal-category/webinar/webinar-register/${slider.id}`
                         )
                       }
-                      className=" webinarheader__slider-left-bottom-buttons-participate-button">
+                      className=" webinar-slider__slider-left-bottom-buttons-participate-button"
+                    >
                       {t("webinar.header1")}
                     </button>
                   </div>
                   <div
                     className={`navigation-line ${
                       slideIndex === index ? "active" : ""
-                    }`}></div>
+                    }`}
+                  ></div>
                 </div>
                 <div className="webinarheader__bottom">
                   <div className="webinarheader__bottom-right">
