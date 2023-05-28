@@ -163,14 +163,11 @@ const HomePage = () => {
                 <span>“VATANDOSHLAR”</span> <br /> Jamoat Fondining Yagona
                 Avtomatlashtirilgan Axborot Tizimi
               </h2>
-              <p>
-                Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                vulputate libero et velit interdum, ac aliquet odio mattis.{" "}
-              </p>
-
               <div className="portal-btns">
                 {token ? (
-                  <Link to="/portal-category/cabinet">Cabinet</Link>
+                  <Link to="/portal-category/cabinet">
+                    {t("portal.kabinet")}
+                  </Link>
                 ) : (
                   <>
                     <Link to="/registration/signup">Sign Up</Link>

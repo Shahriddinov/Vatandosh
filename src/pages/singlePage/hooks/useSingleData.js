@@ -25,7 +25,7 @@ export const useSingleData = () => {
     } else {
       dispatch(getCompatriotsMenu("publicevents"));
     }
-  }, [pageUrl]);
+  }, [pageUrl, dispatch, pathname]);
 
   const data = menuData.length
     ? pathname.split("/")[1] === "compatriots"

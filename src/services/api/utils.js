@@ -26,6 +26,7 @@ export const GET_CONTACT = `${baseUrl}/contacts`;
 export const GET_SLIDER = `${baseUrl}/sliders`;
 export const GET_ASSOCIATIONS = `${baseUrl}/assosiations`;
 export const GET_ASSOCIATIONS_CATEGORY = `${baseUrl}/assosiationcategory`;
+export const GET_ASSOCIATIONS_ABOUT = `${baseUrl}/aboutassosiations`;
 export const GET_MEDIA_VIDOES_MENUS = `${baseUrl}/mediateka-video-menus`;
 export const GET_MEDIA_IMAGES_MENUS = `${baseUrl}/mediateka-image-menus`;
 export const GET_SINGLE_PAGINATION = baseUrl + "/";

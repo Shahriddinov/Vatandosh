@@ -28,7 +28,7 @@
   "best": "Eng yaxshisi va durdona",
   "national": "`Xorijdagi milliy oshxona` loyihasi",
   "abroad": "`Xorijdagi vatandosh tashkilot` loyihasi",
-  "participation": "Lohiyada ishtirok etish",
+  "participation": "Loyihada ishtirok etish",
   "peacefulTitle": "Bizning ruknlar",
   "allPeacefulBtn": "Barchasi",
   "interactiveServicesTitle": "Interaktiv xizmatlar",
@@ -52,17 +52,17 @@
   "footerOverseaDish": "“Xorijdagi milliy oshxona” rukni",
   "footerOverseaOrganization": "“Xorijdagi vatandosh tashkilot” rukni",
   "footerOurContacts": "Bizning kontaktlarimiz",
-  "uzLearning": "O’zbek tilini onlayn o’rganish",
-  "applyUniversity": "O’zbek OTMlariga hujjat topshirish",
+  "uzLearning": "O‘zbek tilini onlayn o‘rganish",
+  "applyUniversity": "O‘zbekiston OTMlariga hujjat topshirish",
   "expertCouncil": "Vatandosh ekspertlar kengashi",
   "virtualTalking": "Virtual muloqot",
-  "eventBase": "Konferensiya va tadbirlar bazasi",
+  "eventBase": "Konferensiya va tadbirlar",
   "electronLibrary": "Elektron kutubxona",
   "electronBook": "Elektron jurnal",
-  "aboutUzbekistan": "O’zbekiston haqida vizual malumot",
-  "participationProject": "Viktorina va loyihalarga qatnashish",
-  "electronCommunity": "Jamoat birlashmalari elektron restri",
-  "compatriotsValunteer": "Vatandosh valantyorlar",
+  "aboutUzbekistan": "O‘zbekiston haqida vizual ma’lumot",
+  "participationProject": "Viktorina va loyihalarda ishtirok etish",
+  "electronCommunity": "Jamoat birlashmalari elektron reestri",
+  "compatriotsValunteer": "Vatandosh volontyorlar",
   "modalText1": "Ro'yxatga olingan vatandoshlar",
   "modalText2": "Yangiliklar",
   "modalText3": "Tadbirlar",
@@ -389,10 +389,10 @@
     "about-url-detail": "Batafsil",
     "voluntery": "Volontyorlar",
     "nav1": "Volontyorlar",
-    "nav2": "Volontyorlarni faoliyati",
+    "nav2": "Volontyorlar faoliyati",
     "nav3": "Bog‘lanish",
     "nav4":"Volonyorlik faoliyati",
-    "Signup":"Ro'xatdan otish"
+    "Signup":"Ro‘yxatdan o‘tish"
 
   },
   "webinar": {
@@ -455,5 +455,8 @@
     "coats" : "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
     "coatCenter" : "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
     "coatUzb" : " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
+  },
+  "portal": {
+    "kabinet": "Kabinet"
   }
 }

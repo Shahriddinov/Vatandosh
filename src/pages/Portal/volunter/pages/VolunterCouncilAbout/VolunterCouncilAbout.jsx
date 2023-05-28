@@ -1,13 +1,6 @@
-import {
-  CopyIcon,
-  FacebookIcon,
-  TwitterIcon,
-  TelegramIcon,
-  InstagramIcon,
-} from "../../../../../assets/images/expert";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterCouncilAbout.scss";
-import { Spinner } from "../../../../../component";
+import { ShareFriends, Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
@@ -57,34 +50,7 @@ function VolunterCouncilAbout() {
             <p className="about-text">
               {findExpertAboutPage[`text_${language}`]}
             </p>
-
-            <ul className="about-list">
-              <li className="about-item">
-                <a href="#" className="about-link">
-                  <img src={CopyIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="https://www.facebook.com/" className="about-link">
-                  <img src={FacebookIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="https://twitter.com/" className="about-link">
-                  <img src={TwitterIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="https://web.telegram.org/k/" className="about-link">
-                  <img src={TelegramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-              <li className="about-item">
-                <a href="https://www.instagram.com/" className="about-link">
-                  <img src={InstagramIcon} alt="" className="about-icon" />
-                </a>
-              </li>
-            </ul>
+            <ShareFriends />
           </div>
           <CouncilStatics
             count={volunteers.total}
