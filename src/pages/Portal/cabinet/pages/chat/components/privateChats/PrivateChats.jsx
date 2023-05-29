@@ -63,10 +63,6 @@ const PrivateChats = ({
     dispatch(getAllChats());
   }, []);
 
-  if (chooseMember) {
-    data.unshift(chooseMember);
-  }
-
   return (
     <div className="users">
       {data?.length === 0 ? (
@@ -102,7 +98,10 @@ const PrivateChats = ({
               className={`users__one-user ${
                 chat?.user?.user_id === activeUser ? "active" : ""
               }`}
-              onClick={() => {handleClick(chat?.user, profileImg, chat?.id); setIsActive(false)}}
+              onClick={() => {
+                handleClick(chat?.user, profileImg, chat?.id);
+                setIsActive(false);
+              }}
             >
               <div className="users__user-image">
                 {profileImg}
@@ -129,10 +128,11 @@ const PrivateChats = ({
           ) : (
             <div
               key={chat?.id}
-              className={`users__one-user ${
-                isActive ? "active" : ""
-              }`}
-              onClick={() => {handleClick(chat, profileImg, chat?.id); setIsActive(true)}}
+              className={`users__one-user ${isActive ? "active" : ""}`}
+              onClick={() => {
+                handleClick(chat, profileImg, chat?.id);
+                setIsActive(true);
+              }}
             >
               <div className="users__user-image">
                 {profileImg}

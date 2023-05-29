@@ -6,6 +6,7 @@ import ChatLinks from "../chatLinks/ChatLinks";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import {
   getMediaUrl,
+  getMessages,
   leaveGroup,
   sendMessage,
 } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
@@ -27,6 +28,8 @@ const GroupsMessages = ({
   setShowMembers,
   showMembers,
   setChooseMember,
+  data,
+  setData,
   setActivePage,
   activePage,
 }) => {
@@ -51,6 +54,8 @@ const GroupsMessages = ({
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const mediaUrl = useSelector((state) => state.chatSlice.mediaUrl);
+  const foundUser = useSelector((state) => state.chatSlice.checkUser);
+  const checkLoading = useSelector((state) => state.chatSlice.checkLoading);
 
   const user = useSelector((state) => state.authSlice.userData);
 
@@ -85,7 +90,7 @@ const GroupsMessages = ({
     { id: 15, url: "https://Group Ekspertlar15 kengashi guruhi.link" },
   ];
 
-  const { messages } = useContext(MessagesContext);
+  const { messages, setMessages } = useContext(MessagesContext);
 
   const handleChange = (input) => {
     setSendFile(input.target.files);
@@ -144,6 +149,7 @@ const GroupsMessages = ({
         message: mediaUrl.path,
         chat_room_id: groupData.group.id,
         type: 2,
+        file: sendFile[0].name,
       };
     } else {
       mess = {
@@ -184,6 +190,17 @@ const GroupsMessages = ({
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }
   }, [activeGroup, showDocs, showLinks, showMembers, messages]);
+
+  useEffect(() => {
+    if (foundUser) {
+      dispatch(
+        getMessages({
+          chat_id: foundUser.data.chat_room_id,
+          page: activePage,
+        })
+      );
+    }
+  }, [foundUser]);
 
   // useEffect(() => {
   //   const message = messagesRef.current;
@@ -339,6 +356,8 @@ const GroupsMessages = ({
         <ChatDocs docsData={docs} showDocs={showDocs} />
         <ChatLinks linksData={links} showLinks={showLinks} />
         <GroupMembers
+          data={data}
+          setData={setData}
           members={messagesData?.users}
           showMembers={showMembers}
           setChooseMember={setChooseMember}
@@ -350,6 +369,7 @@ const GroupsMessages = ({
             }`}
           >
             {messages?.map((message) => {
+              // console.log(message);
               const userId = user.user_id ? user.user_id.id : user.id;
               return message ? (
                 message?.user_id !== userId ? (
@@ -370,7 +390,7 @@ const GroupsMessages = ({
                     </div>
                     <div className="group-message__received-details">
                       <p className="group-message__received-message">
-                        {message?.message.slice(0, 4) === "chat" ? (
+                        {message?.type === 2 ? (
                           <a
                             href={`${PORTAL_IMAGE_URL}${message?.message}`}
                             target="_blank"
@@ -389,10 +409,7 @@ const GroupsMessages = ({
                                 fill="#065EA9"
                               />
                             </svg>
-                            {message?.message
-                              .split("/")[1]
-                              .split(".")[0]
-                              .slice(0, 20) +
+                            {message?.file.slice(0, 20) +
                               "." +
                               message?.message.split("/")[1].split(".")[1]}
                           </a>

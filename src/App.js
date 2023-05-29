@@ -18,7 +18,6 @@ function App({ children }) {
     };
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data).message;
-      console.log(message);
       setMessages((prev) => [
         ...prev,
         prev[prev.length - 2]?.chat_room_id === message.chat_room_id
