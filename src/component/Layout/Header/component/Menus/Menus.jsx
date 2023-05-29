@@ -18,7 +18,6 @@ const Menus = () => {
   const scrollRef = useRef(null);
   const [isFixed, setFixed] = useState(false);
   const { t } = useTranslation();
-  console.log(navLinks);
 
   const [about, setAbout] = React.useState(null);
   const openAbout = Boolean(about);
