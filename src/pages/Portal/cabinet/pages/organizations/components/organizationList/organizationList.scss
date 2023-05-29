@@ -1,0 +1,8 @@
+@import "../../../../../../../assets/style/global.scss";
+
+.organization-list {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, min-content));
+  gap: 30px;
+}
