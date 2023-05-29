@@ -7,6 +7,7 @@ import {
 import "./Victorina.scss";
 import { imageUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
+import VictorinaCard from "../victorinaCard/VictorinaCard";
 
 function Victorina({ quizData }) {
   return (
@@ -15,48 +16,7 @@ function Victorina({ quizData }) {
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
-            <div key={victorina.id} className="victorina-list">
-              <img
-                src={`${imageUrl}/${victorina?.image}`}
-                alt=""
-                className="victorina-img"
-              />
-              <div className="victorina-items">
-                <h4 className="victorina-subname">{victorina.title}</h4>
-                <div className="victorina-lists">
-                  <div className="victorina-item">
-                    <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.started_at}</p>
-                  </div>
-                  <div className="victorina-item">
-                    <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.count}</p>
-                  </div>
-                </div>
-                <p
-                  dangerouslySetInnerHTML={{ __html: victorina.description }}
-                />
-                <div className="victorina__list">
-                  <span className="victorina__item">
-                    <p>{victorina.finished_at.slice(9, 11)}</p>
-                    <p>Kun</p>
-                  </span>
-                  <span className="victorina__item">
-                    <p>{victorina.finished_at.slice(11, 13)}</p>
-                    <p>Soat</p>
-                  </span>
-                  <span className="victorina__item">
-                    <p>{victorina.finished_at.slice(14, 16)}</p>
-                    <p>Daqiqa</p>
-                  </span>
-                </div>
-                <Link
-                  to={`/portal-category/victorina/image-project/${victorina.id}`}
-                  className="victorina-link">
-                  Batafsil ma'lumot
-                </Link>
-              </div>
-            </div>
+            <VictorinaCard victorina={victorina} key={index} />
           ))}
         </div>
         <Link className="victorina_link" to="victorina-more">

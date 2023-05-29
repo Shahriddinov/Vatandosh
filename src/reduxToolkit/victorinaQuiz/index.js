@@ -3,7 +3,7 @@ import { getQuizz } from "./getquiz";
 
 const initialState = {
   loading: true,
-  quizData: [],
+  data: {},
   error: null,
 };
 
@@ -18,7 +18,8 @@ const quizSlice = createSlice({
       })
       .addCase(getQuizz.fulfilled, (state, action) => {
         state.loading = false;
-        state.quizData = action.payload;
+        state.data = action.payload;
+        console.log(action.payload);
       })
       .addCase(getQuizz.rejected, (state, action) => {
         state.loading = false;
