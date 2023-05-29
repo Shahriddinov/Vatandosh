@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import {
+  checkUser,
   getAllChats,
   getMediaUrl,
   getMessages,
@@ -24,6 +25,9 @@ const initialState = {
 
   mediaUrlLoading: false,
   mediaUrl: null,
+
+  checkLoading: false,
+  checkUser: null,
 
   errors: null,
 };
@@ -86,10 +90,23 @@ const chatSlice = createSlice({
       .addCase(leaveGroup.fulfilled, (state, action) => {
         state.leaveLoading = false;
         state.leaveData = action.payload;
-        console.log(action.payload);
       })
       .addCase(leaveGroup.rejected, (state, action) => {
         state.leaveLoading = false;
+        state.errors = action.error.message;
+      });
+
+    // Check User
+    build
+      .addCase(checkUser.pending, (state) => {
+        state.checkLoading = true;
+      })
+      .addCase(checkUser.fulfilled, (state, action) => {
+        state.checkLoading = false;
+        state.checkUser = action.payload;
+      })
+      .addCase(checkUser.rejected, (state, action) => {
+        state.checkLoading = false;
         state.errors = action.error.message;
       });
 

@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
 
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 import "./groupMembers.scss";
 import { ChooseMember } from "../../Chat";
+import { checkUser } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
-const GroupMembers = ({ members, showMembers }) => {
-  const { setChooseMember, setActiveChat } = useContext(ChooseMember);
+const GroupMembers = ({ members, showMembers, setData }) => {
+  const dispatch = useDispatch();
+  const { setActiveChat } = useContext(ChooseMember);
 
   const handleClick = (user) => {
-    setChooseMember(user);
+    setData((prev) => [user, ...prev]);
     setActiveChat("private");
+    dispatch(checkUser(user.id));
   };
 
   return (

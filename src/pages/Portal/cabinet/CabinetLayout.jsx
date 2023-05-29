@@ -56,77 +56,82 @@ const CabinetLayout = () => {
 
   return (
     <div className="cabinet-layout">
-      {btnOrgPageToggle ? (
-        <div
-          className="overlay-organizations"
-          onClick={toggleSwitchHandler}
-        ></div>
-      ) : null}
-      <AnimatePresence>
-        {btnOrgPageToggle && (
-          <div className="modal-orgPage">
-            <motion.div
-              initial={{ x: -2000 }}
-              animate={{ x: 0 }}
-              exit={{ x: -2000 }}
-              transition={{ type: "spring", stiffness: 250, damping: 18 }}
-              className="modal-orgPage-container"
-            >
-              <h1>Tadbir yuborish</h1>
-              <form
-                onSubmit={submitHandler}
-                className="modal-orgPage-container-form"
+      <div className="container">
+        {btnOrgPageToggle ? (
+          <div
+            className="overlay-organizations"
+            onClick={toggleSwitchHandler}
+          ></div>
+        ) : null}
+        <AnimatePresence>
+          {btnOrgPageToggle && (
+            <div className="modal-orgPage">
+              <motion.div
+                initial={{ x: -2000 }}
+                animate={{ x: 0 }}
+                exit={{ x: -2000 }}
+                transition={{ type: "spring", stiffness: 250, damping: 18 }}
+                className="modal-orgPage-container"
               >
-                <label
-                  htmlFor="title"
-                  className="modal-orgPage-container-form-title"
+                <h1>Tadbir yuborish</h1>
+                <form
+                  onSubmit={submitHandler}
+                  className="modal-orgPage-container-form"
                 >
-                  <span>Title</span> <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Kiriting"
-                  className="modal-orgPage-container-form-titleInput"
-                  onChange={titleHandler}
-                />
-                <label
-                  className="modal-orgPage-container-form-comment"
-                  htmlFor="Izoh"
-                >
-                  <span>Izoh</span> <span>*</span>
-                </label>
-                <textarea
-                  onChange={textHandler}
-                  className="modal-orgPage-container-form-commentTextArea"
-                  placeholder="Izoh"
-                ></textarea>
-                <div className="modal-orgPage-container-form-fileUploadContainer">
-                  <input type="file" id="file" onChange={uploadHandler} />
-                  <label htmlFor="file">Taklifingiz uchun rasm</label>
-                  {imgUpload.length !== 0 && (
-                    <img src={URL.createObjectURL(imgUpload)} alt="uploadImg" />
-                  )}
-                </div>
-                <div className="modal-orgPage-container-form-submitContainer">
-                  <motion.button
-                    animate={controls}
-                    whileTap={{ scale: 0.9 }}
-                    type="submit"
+                  <label
+                    htmlFor="title"
+                    className="modal-orgPage-container-form-title"
                   >
-                    Yuborish
-                  </motion.button>
-                </div>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-      <div className="cabinet-layout__left">
-        <CabinetLeftMenu />
-      </div>
-      <div className="cabinet-layout__right">
-        <CabinetHeader />
-        <Outlet />
+                    <span>Title</span> <span>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Kiriting"
+                    className="modal-orgPage-container-form-titleInput"
+                    onChange={titleHandler}
+                  />
+                  <label
+                    className="modal-orgPage-container-form-comment"
+                    htmlFor="Izoh"
+                  >
+                    <span>Izoh</span> <span>*</span>
+                  </label>
+                  <textarea
+                    onChange={textHandler}
+                    className="modal-orgPage-container-form-commentTextArea"
+                    placeholder="Izoh"
+                  ></textarea>
+                  <div className="modal-orgPage-container-form-fileUploadContainer">
+                    <input type="file" id="file" onChange={uploadHandler} />
+                    <label htmlFor="file">Taklifingiz uchun rasm</label>
+                    {imgUpload.length !== 0 && (
+                      <img
+                        src={URL.createObjectURL(imgUpload)}
+                        alt="uploadImg"
+                      />
+                    )}
+                  </div>
+                  <div className="modal-orgPage-container-form-submitContainer">
+                    <motion.button
+                      animate={controls}
+                      whileTap={{ scale: 0.9 }}
+                      type="submit"
+                    >
+                      Yuborish
+                    </motion.button>
+                  </div>
+                </form>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+        <div className="cabinet-layout__left">
+          <CabinetLeftMenu />
+        </div>
+        <div className="cabinet-layout__right">
+          <CabinetHeader />
+          <Outlet />
+        </div>
       </div>
     </div>
   );

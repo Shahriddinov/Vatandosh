@@ -2,7 +2,11 @@
 
 .cabinet-layout {
   height: calc(100vh - 26px);
-  display: flex;
+
+  .container {
+    display: flex;
+    padding: 0;
+  }
 
   &__right {
     width: 100%;
