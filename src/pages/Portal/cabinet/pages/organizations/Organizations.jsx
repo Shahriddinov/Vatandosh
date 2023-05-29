@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { btnHandler } from "../../../../../reduxToolkit/orgPageSlice";
 import { useOrganizationFetching } from "./hooks/useOrganizationFetching";
 import { Spinner } from "../../../../../component";
+import OrganizationList from "./components/organizationList/OrganizationList";
 
 const fakeData = [
   {
@@ -56,20 +57,22 @@ const Organizations = () => {
   const btnToggle = useSelector((state) => state.orgPageSlice.btnToggle);
   const dispatch = useDispatch();
 
-  const { allCommunityGet, allCommunityGetLoading, error } =
-    useOrganizationFetching();
+  const {
+    allCommunityGet,
+    allCommunityGetLoading,
+    error,
+    allRegionsGetLoading,
+  } = useOrganizationFetching();
 
   const toggleSwitchHandler = () => {
     dispatch(btnHandler());
   };
 
-  if (allCommunityGetLoading) {
+  if (allCommunityGetLoading || allRegionsGetLoading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
   }
-
-  console.log(allCommunityGet);
 
   return (
     <div className="container-organizations">
@@ -85,27 +88,7 @@ const Organizations = () => {
         </div>
 
         <div className="container-organizations-inner-bottom">
-          {fakeData.map((el, index) => (
-            <div
-              key={index}
-              className="container-organizations-inner-bottom-card"
-            >
-              <div className="container-organizations-inner-bottom-card_cardTop">
-                <img src={el.flag} alt="flag" />
-                <span>{el.country}</span>
-              </div>
-              <div className="container-organizations-inner-bottom-card_hl"></div>
-              <p className="container-organizations-inner-bottom-card_text">
-                Botken viloyati Leylek tumanidagi o‘zbek milliy madaniyat
-                markazi
-              </p>
-              <img src={el.channel} alt="channel" />
-              <p className="container-organizations-inner-bottom-card_bottomText">
-                Chop etilgan maqolalar: {el.count}
-              </p>
-              <motion.button whileTap={{ scale: 0.9 }}>Batafsil</motion.button>
-            </div>
-          ))}
+          <OrganizationList data={allCommunityGet?.data} />
         </div>
       </div>
     </div>
