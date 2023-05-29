@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
 import { btnHandler } from "../../../../../reduxToolkit/orgPageSlice";
+import { useOrganizationFetching } from "./hooks/useOrganizationFetching";
+import { Spinner } from "../../../../../component";
 
 const fakeData = [
   {
@@ -54,9 +56,20 @@ const Organizations = () => {
   const btnToggle = useSelector((state) => state.orgPageSlice.btnToggle);
   const dispatch = useDispatch();
 
+  const { allCommunityGet, allCommunityGetLoading, error } =
+    useOrganizationFetching();
+
   const toggleSwitchHandler = () => {
     dispatch(btnHandler());
   };
+
+  if (allCommunityGetLoading) {
+    return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
+  console.log(allCommunityGet);
 
   return (
     <div className="container-organizations">

@@ -34,11 +34,11 @@ export const useAssociationFetching = () => {
   const allRegionsGetLoading = useSelector(
     (store) => store.community.allRegionsGetLoading
   );
+  const communityData = useSelector(communityDataChange);
 
   const allCommunityGet = useSelector(
     (store) => store.community.allCommunityGet
   );
-  const communityData = useSelector(communityDataChange);
   const allCommunityGetLoading = useSelector(
     (store) => store.community.allCommunityGetLoading
   );
