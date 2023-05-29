@@ -1,6 +1,5 @@
 import {
   CalendarIcon,
-  NewsImage,
   ViewIcon,
   WhiteCalendar,
 } from "../../../../../../../assets/images/expert";
@@ -8,7 +7,6 @@ import { imageUrl } from "../../../../../../../services/api/utils";
 import "./News.scss";
 
 function VictorinaNews({ communityNews }) {
-  console.log(communityNews);
   return (
     <div className="expertnews">
       <div className="container">

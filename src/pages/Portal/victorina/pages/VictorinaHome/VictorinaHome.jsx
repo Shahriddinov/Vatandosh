@@ -15,24 +15,35 @@ function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
 
-  const { communityNews, quizData, pageData, quizDataWinner, error } =
-    useVictorinaFetching();
+  const {
+    communityNews,
+    quizData,
+    pageData,
+    quizDataLoading,
+    pageDataLoading,
+    error,
+  } = useVictorinaFetching();
   // if (communityNews || quizData || pageData || quizDataWinner) {
   //   return <Spinner position="full" />;
   // } else if (error) {
   //   return <p>{error}</p>;
   // }
 
+  if (quizDataLoading || pageDataLoading) {
+    return <Spinner position="full" />;
+  }
+
+  console.log(quizData);
   return (
     <div>
       <div className="victorina-home">
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
       </div>
-      <HeaderTime quizData={quizData} />
+      <HeaderTime quizData={quizData.quizzes} />
       <VictorinaCouncil pageData={pageData} />
-      <Victorina quizData={quizData} />
-      <ListWinners quizDataWinner={quizDataWinner} />
+      <Victorina quizData={quizData.quizzes} />
+      <ListWinners quizDataWinner={quizData.participants} />
       <VictorinaNews communityNews={communityNews} />
     </div>
   );

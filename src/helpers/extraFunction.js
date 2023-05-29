@@ -12,11 +12,8 @@ export const htmlElement = (html) => {
   return { imgSrc, imgAlt, filteredText };
 };
 
-export const timer = ({ time, setDays, setHours, setMinutes }) => {
-  const targetDate = new Date(time);
-  let day = null;
-  let hours = null;
-  let minutes = null;
+export const timer = ({ finishedTime, setTimeDate }) => {
+  const targetDate = new Date(finishedTime);
 
   const updateCountdown = () => {
     const currentTime = new Date().getTime();
@@ -30,10 +27,11 @@ export const timer = ({ time, setDays, setHours, setMinutes }) => {
       const remainingMinutes = Math.floor(
         (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
       );
-
-      setDays(formatTime(remainingDays));
-      setHours(formatTime(remainingHours));
-      setMinutes(formatTime(remainingMinutes));
+      setTimeDate({
+        days: formatTime(remainingDays),
+        hours: formatTime(remainingHours),
+        minutes: formatTime(remainingMinutes),
+      });
     }
   };
 
@@ -58,4 +56,8 @@ export const timer = ({ time, setDays, setHours, setMinutes }) => {
 
   updateCountdown();
   fadeOutIn();
+
+  const interval = setInterval(updateCountdown, 60000);
+
+  return { interval };
 };

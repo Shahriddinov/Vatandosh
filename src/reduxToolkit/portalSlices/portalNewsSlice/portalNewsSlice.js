@@ -8,7 +8,6 @@ import {
 const initialState = {
   news: [],
   loading: true,
-
   oneNews: {},
   oneNewsLoading: true,
   error: null,
