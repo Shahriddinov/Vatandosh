@@ -20,7 +20,7 @@ const PrivateMessages = ({
   setShowLinks,
   showLinks,
   privateChatRoomId,
-  userData
+  userData,
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -98,10 +98,13 @@ const PrivateMessages = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
     const mess = {
       ...sendMessageData,
-      user_id: chooseMember ? chooseMember.id : userData.user ? userData.user.user_id : userData.id, 
+      user_id: chooseMember
+        ? chooseMember.id
+        : userData.user
+        ? userData.user.user_id
+        : userData.id,
       type: 1,
     };
 
@@ -139,7 +142,7 @@ const PrivateMessages = ({
     privateUser = chooseMember;
   } else {
     privateUser =
-    messagesData && messagesData?.users?.find((el) => el.id !== user.id);
+      messagesData && messagesData?.users?.find((el) => el.id !== user.id);
   }
 
   return (
@@ -299,7 +302,7 @@ const PrivateMessages = ({
       <form onSubmit={handleSubmit}>
         <div
           className={`private-message__messages-bottom ${
-            showMessages && show || chooseMember ? "show-bottom" : ""
+            (showMessages && show) || chooseMember ? "show-bottom" : ""
           }`}
         >
           <svg

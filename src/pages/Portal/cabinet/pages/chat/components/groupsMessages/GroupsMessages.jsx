@@ -54,6 +54,9 @@ const GroupsMessages = ({
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const mediaUrl = useSelector((state) => state.chatSlice.mediaUrl);
+  const mediaUrlLoading = useSelector(
+    (state) => state.chatSlice.mediaUrlLoading
+  );
   const foundUser = useSelector((state) => state.chatSlice.checkUser);
   const checkLoading = useSelector((state) => state.chatSlice.checkLoading);
 
@@ -144,7 +147,7 @@ const GroupsMessages = ({
 
     let mess;
 
-    if (sendFile) {
+    if (sendFile && mediaUrl) {
       mess = {
         message: mediaUrl.path,
         chat_room_id: groupData.group.id,
@@ -216,6 +219,10 @@ const GroupsMessages = ({
   //   });
   //   setScrollTop(message.scrollTop);
   // }, [scrollTop]);
+
+  // if (mediaUrlLoading) {
+  //   return <Spinner position="full" />;
+  // }
 
   return (
     <div className="group-message">
@@ -369,7 +376,6 @@ const GroupsMessages = ({
             }`}
           >
             {messages?.map((message) => {
-              // console.log(message);
               const userId = user.user_id ? user.user_id.id : user.id;
               return message ? (
                 message?.user_id !== userId ? (
@@ -409,7 +415,7 @@ const GroupsMessages = ({
                                 fill="#065EA9"
                               />
                             </svg>
-                            {message?.file.slice(0, 20) +
+                            {message?.file.split(".")[0].slice(0, 20) +
                               "." +
                               message?.message.split("/")[1].split(".")[1]}
                           </a>
@@ -437,7 +443,7 @@ const GroupsMessages = ({
                   >
                     <div className="group-message__sent-details">
                       <p className="group-message__sent-message">
-                        {message?.message.slice(0, 4) === "chat" ? (
+                        {message?.type === 2 ? (
                           <a
                             href={`${PORTAL_IMAGE_URL}${message?.message}`}
                             target="_blank"
@@ -456,10 +462,7 @@ const GroupsMessages = ({
                                 fill="#fff"
                               />
                             </svg>
-                            {message?.message
-                              .split("/")[1]
-                              .split(".")[0]
-                              .slice(0, 20) +
+                            {message?.file.split(".")[0].slice(0, 20) +
                               "." +
                               message?.message.split("/")[1].split(".")[1]}
                           </a>
