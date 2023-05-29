@@ -20,6 +20,7 @@ const PrivateChats = ({
   activePage,
   data,
   setPrivateChatId,
+  activeChat,
 }) => {
   const dispatch = useDispatch();
 
@@ -79,16 +80,8 @@ const PrivateChats = ({
                 />
               );
             } else {
-              profileImg = chat?.user?.first_name[0] + chat?.user?.last_name[0];
-            }
-          } else {
-            if (chat?.avatar) {
-              profileImg = (
-                <img src={`${PORTAL_IMAGE_URL}${chat?.avatar}`} alt="user" />
-              );
-            } else {
               profileImg =
-                chat?.name?.split(" ")[0][0] + chat?.name?.split(" ")[1][0];
+                chat?.user?.first_name?.[0] + chat?.user?.last_name?.[0];
             }
           }
 

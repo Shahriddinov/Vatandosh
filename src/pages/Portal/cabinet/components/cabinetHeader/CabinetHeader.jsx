@@ -22,7 +22,7 @@ const CabinetHeader = () => {
   const { grayScale } = useContext(GrayContext);
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
-  const user = useSelector((state) => state.authSlice.userData);
+  const user = JSON.parse(localStorage.getItem("user"));
   const loading = useSelector((state) => state.authSlice.passwordLoading);
 
   const handleChangeLng = (lng) => {
@@ -39,19 +39,10 @@ const CabinetHeader = () => {
     <div className="cabinet-header">
       <div className="cabinet-header__user-information">
         <div className="cabinet-header__user-image">
-          <img
-            src={`${PORTAL_IMAGE_URL}${
-              user.avatar_url ? user.avatar_url : user.avatar
-            }`}
-            alt="user"
-          />
+          <img src={`${PORTAL_IMAGE_URL}${user.avatar_url}`} alt="user" />
         </div>
         <div className="cabinet-header__user-data">
-          <h4>
-            {user.first_name
-              ? user.first_name + " " + user.last_name
-              : user.name}
-          </h4>
+          <h4>{user.first_name + " " + user.last_name}</h4>
           <p>
             Umumiy ish staji: <span>4 yil</span>
           </p>

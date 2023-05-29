@@ -32,8 +32,6 @@ const Chat = () => {
   const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
   const { setMessages } = useContext(MessagesContext);
 
-  // console.log(messagesData);
-
   useEffect(() => {
     if (messagesData) {
       setMessages([...messagesData.messages.data]);
@@ -57,7 +55,9 @@ const Chat = () => {
                 className={`chat__chats ${
                   activeChat === "private" ? "active" : ""
                 }`}
-                onClick={() => setActiveChat("private")}
+                onClick={() => {
+                  setActiveChat("private");
+                }}
               >
                 Чаты
               </button>
