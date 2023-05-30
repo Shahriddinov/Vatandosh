@@ -128,3 +128,46 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 768px) {
+  .about {
+    .container {
+      padding: 0 40px !important;
+    }
+    &-page {
+      flex-direction: column;
+      gap: 30px;
+    }
+    &-left {
+      &-img,
+      h3,
+      p {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .about {
+    .container {
+      padding: 0 16px !important;
+    }
+    .page-top {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 22px;
+      &__title {
+        font-size: 24px;
+        line-height: 29px;
+        color: #065ea9;
+      }
+    }
+    &-left {
+      h3 {
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+  }
+}
