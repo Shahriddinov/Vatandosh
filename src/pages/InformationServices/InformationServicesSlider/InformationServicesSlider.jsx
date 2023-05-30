@@ -3,7 +3,7 @@ import "./InformationServicesSlider.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
 import { TbPointFilled } from "react-icons/tb";
-import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
+import { baseServerUrl } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
 export const InformationServicesSlider = ({ data }) => {
@@ -12,12 +12,12 @@ export const InformationServicesSlider = ({ data }) => {
   const lan = useSelector((state) => state.language.language);
 
   const handleRight = () => {
-    if (img === 2) setImg((prev) => (prev = 0));
+    if (img === 10) setImg((prev) => (prev = 0));
     else setImg((prev) => ++prev);
   };
 
   const handleLeft = () => {
-    if (img === 0) setImg((prev) => (prev = 2));
+    if (img === 0) setImg((prev) => (prev = 10));
     else setImg((prev) => --prev);
   };
 
@@ -26,6 +26,8 @@ export const InformationServicesSlider = ({ data }) => {
   const autoPlay = () => {
     slideInterval = setInterval(handleRight, 8000);
   };
+
+  console.log(data);
 
   useEffect(() => {
     autoPlay();
@@ -41,14 +43,15 @@ export const InformationServicesSlider = ({ data }) => {
             className={`main-hero-slider ${i === img ? "active" : ""}`}
             key={card.id}
             style={{
-              backgroundImage: `url(${PORTAL_IMAGE_URL}/${card?.image})`,
+              backgroundImage: `url(${baseServerUrl}/${card?.image})`,
               backgroundPosition: "center center",
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
+          >
             <div className="main-hero-slider-bottom-title">
-              <h2>{card.title}</h2>
+              <h2>{card[`title_${lan}`]}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />
             </div>
             <div className="main-hero-slider-bottom-calendar">

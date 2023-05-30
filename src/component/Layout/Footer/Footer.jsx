@@ -10,9 +10,11 @@ import logoImg from "../../../assets/images/icons/logo.png";
 
 import { FiPhone } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaTelegramPlane } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import ContactUs from "../../ContactUs/ContactUs";
+import { Link } from "react-router-dom";
+import { BsYoutube } from "react-icons/bs";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -22,7 +24,7 @@ const Footer = () => {
 
   useEffect(() => {
     dispatch(getContact());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -42,7 +44,9 @@ const Footer = () => {
                       <a href="/about">{t("footerAbout")}</a>
                     </li>
                     <li>
-                      <a href="/compatriots/public-associations">{t("footerCompatriots")}</a>
+                      <a href="/compatriots/public-associations">
+                        {t("footerCompatriots")}
+                      </a>
                     </li>
                     <li>
                       <a href="/projects">{t("footerProjects")}</a>
@@ -51,7 +55,9 @@ const Footer = () => {
                       <a href="/">{t("footerSelections")}</a>
                     </li>
                     <li>
-                      <a href="/information-service/mediateka">{t("footerService")}</a>
+                      <a href="/information-service/mediateka">
+                        {t("footerService")}
+                      </a>
                     </li>
                     <li>
                       <a href="/contact">{t("footerContact")}</a>
@@ -61,22 +67,28 @@ const Footer = () => {
                 <div className="footer-menu">
                   <ul>
                     <li>
-                      <a href="#">{t("footerFamily")}</a>
+                      <Link to="/projects/columns?=2">{t("footerFamily")}</Link>
                     </li>
                     <li>
-                      <a href="#">{t("footerSport")}</a>
+                      <Link to="/projects/columns?=4">{t("footerSport")}</Link>
                     </li>
                     <li>
-                      <a href="#">{t("footerYoung")}</a>
+                      <Link to="/projects/columns?=5">{t("footerYoung")}</Link>
                     </li>
                     <li>
-                      <a href="#">{t("footerPrecious")}</a>
+                      <Link to="/projects/columns?=6">
+                        {t("footerPrecious")}
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">{t("footerOverseaDish")}</a>
+                      <Link to="/projects/columns?=7">
+                        {t("footerOverseaDish")}
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">{t("footerOverseaOrganization")}</a>
+                      <Link to="/projects/columns?=10">
+                        {t("footerOverseaOrganization")}
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -98,11 +110,14 @@ const Footer = () => {
                     <a href={contactData?.facebook}>
                       <FaFacebookF />
                     </a>
-                    <a href={contactData?.twitter}>
-                      <FaTwitter />
-                    </a>
                     <a href={contactData?.instagram}>
                       <RiInstagramFill />
+                    </a>
+                    <a href={contactData?.telegram}>
+                      <FaTelegramPlane />
+                    </a>
+                    <a href={contactData?.youtube}>
+                      <BsYoutube />
                     </a>
                   </div>
                 </div>

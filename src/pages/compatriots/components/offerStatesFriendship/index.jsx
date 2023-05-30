@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { baseServerUrl, imageUrl } from "../../../../services/api/utils";
+import { baseServerUrl } from "../../../../services/api/utils";
 import { LazySpinner } from "../../../../component";
 import { useSelector } from "react-redux";
 import DOMPurify from "dompurify";
