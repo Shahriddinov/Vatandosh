@@ -64,6 +64,8 @@ const PrivateChats = ({
     dispatch(getAllChats());
   }, []);
 
+  console.log(data);
+
   return (
     <div className="users">
       {data?.length === 0 ? (

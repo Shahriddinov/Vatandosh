@@ -31,6 +31,7 @@ const GroupsMessages = ({
   data,
   setData,
   setActivePage,
+  setActiveUser,
   activePage,
 }) => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const GroupsMessages = ({
   const foundUser = useSelector((state) => state.chatSlice.checkUser);
   const checkLoading = useSelector((state) => state.chatSlice.checkLoading);
 
-  const user = useSelector((state) => state.authSlice.userData);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const docs = [
     { id: 1, name: "Group Ekspertlar1 kengashi guruhi.pdf" },
@@ -368,6 +369,7 @@ const GroupsMessages = ({
           members={messagesData?.users}
           showMembers={showMembers}
           setChooseMember={setChooseMember}
+          setActiveUser={setActiveUser}
         />
         {activeGroup ? (
           <div
@@ -376,9 +378,8 @@ const GroupsMessages = ({
             }`}
           >
             {messages?.map((message) => {
-              const userId = user.user_id ? user.user_id.id : user.id;
               return message ? (
-                message?.user_id !== userId ? (
+                message?.user_id !== user?.user_id?.id ? (
                   <div
                     key={message.id}
                     className="group-message__received-container"
@@ -484,9 +485,7 @@ const GroupsMessages = ({
                     </div>
                     <div className="group-message__sent-user">
                       <img
-                        src={`${PORTAL_IMAGE_URL}${
-                          user.avatar_url ? user.avatar_url : user.avatar
-                        }`}
+                        src={`${PORTAL_IMAGE_URL}${user.avatar_url}`}
                         alt="user"
                       />
                     </div>

@@ -17,9 +17,8 @@ function App({ children }) {
       console.log("Websocket connected!");
     };
     socket.onmessage = (event) => {
-      console.log(JSON.parse(event.data));
-      console.log(messages);
       const message = JSON.parse(event.data)?.message;
+      console.log(JSON.parse(event.data));
 
       setMessages((prev) => [
         ...prev,
@@ -40,8 +39,6 @@ function App({ children }) {
       console.log(error);
     };
   }, []);
-
-  console.log(messages);
 
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>
