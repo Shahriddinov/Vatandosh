@@ -1,3 +1,40 @@
 .expertprofil {
   padding: 30px 0 100px;
+  .customprofil-detail-desc > h4 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .customprofil-detail-img > img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 375px) {
+  .expertprofil {
+    padding: 20px 0 30px;
+    .container {
+      padding: 0 16px !important;
+    }
+    .experttitle-title {
+      gap: 24px;
+    }
+    .experttitle-title-url {
+      a:first-of-type {
+        display: none;
+      }
+    }
+    .customprofil-detail {
+      padding: 22px 20px;
+      width: 100%;
+    }
+    .customprofil-detail-desc > h4 {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    .customprofil-detail-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
 }

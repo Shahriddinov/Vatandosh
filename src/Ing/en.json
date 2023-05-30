@@ -463,5 +463,9 @@
     "hour": "Hour",
     "minute": "Minute",
     "selections": "CONTESTS"
-  }
+  },
+  "portal": {
+    "kabinet": "Cabinet"
+  },
+  "number": "Number:"
 }

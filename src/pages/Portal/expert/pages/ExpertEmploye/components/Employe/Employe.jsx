@@ -78,12 +78,12 @@ function Employe() {
   console.log(expertData);
 
   return (
-    <div className="employe">
+    <div className="employee">
       <div className="container">
-        <div className="employe-inner">
-          <div className="employe-list">
+        <div className="employee-inner">
+          <div className="employee-list">
             <h3>{t("expert.expertCouncil")}</h3>
-            <div className="employe-item">
+            <div className="employee-item">
               <FormControl sx={{ m: 3, minWidth: 270 }}>
                 <Autocomplete
                   disablePortal
@@ -108,7 +108,7 @@ function Employe() {
               </FormControl>
             </div>
           </div>
-          <div className="employe-page">
+          <div className="employee-page">
             {expertData?.data?.length ? (
               expertData?.data?.map((evt) => (
                 <div key={evt.id}>
@@ -132,8 +132,9 @@ function Employe() {
                   </h3>
                   <h4>{evt?.user_education[0]?.specialization_id?.title}</h4>
                   <Link
-                    className="employe-link"
-                    to={`/portal-category/expert/profile/${evt?.id}`}>
+                    className="employee-link"
+                    to={`/portal-category/expert/profile/${evt?.id}`}
+                  >
                     <span>{t("expert.detail")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
                   </Link>

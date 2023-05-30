@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./menun.scss";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -32,7 +31,7 @@ const Menun = () => {
         setFixeds(false);
       }
     });
-  }, [scrollRef.current]);
+  }, [scrollRef]);
 
   const [about, setAbout] = React.useState(null);
   const openAbout = Boolean(about);

@@ -9,8 +9,12 @@
     border-radius: 10px;
     object-fit: cover;
   }
+  .experttitle-title {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 
-  &-actions{
+  &-actions {
     width: 370px;
     height: 266px;
   }
@@ -34,6 +38,58 @@
       text-align: justify;
       letter-spacing: 0.5px;
       @include fontStyles(500, 16px, 19px, #434b54);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .expertofferdetail {
+    padding: 20px 0 60px;
+    .container {
+      padding: 0 40px !important;
+    }
+    &-wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+    .expertofferdetail-actions {
+      height: max-content;
+      width: 100%;
+    }
+    .expertofferdetail-main {
+      width: 100%;
+      .expertofferdetail-pic {
+        width: 100%;
+        height: 368px;
+      }
+    }
+    .experttitle-title {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+}
+@media (max-width: 375px) {
+  .expertofferdetail {
+    .container {
+      padding: 0 16px !important;
+    }
+    .experttitle-title {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 20px;
+      &-text {
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+    .expertofferdetail-pic {
+      width: 100%;
+      height: 230px;
+    }
+    .expertprofile-info-main-desc > h4 {
+      font-size: 18px;
+      line-height: 22px;
     }
   }
 }

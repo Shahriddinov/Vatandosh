@@ -98,7 +98,9 @@ const Projects = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1000,
@@ -195,7 +197,9 @@ const Projects = () => {
                                   )[`menu_${lng}`]
                                 : null}
                             </h4>
-                            <p>{element.count} ta malumot mavjud</p>
+                            <p>
+                              {t("number")} {element.count}
+                            </p>
                           </div>
                         </div>
                       </div>
