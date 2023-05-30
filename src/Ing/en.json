@@ -446,5 +446,22 @@
     "coats" : " At the top of the coat of arms, an eight-pointed star is depicted as a symbol of the Republican Jeeps: a crescent moon and a star, located within eight edges, are symbols of the salvation of Muslims.",
     "coatCenter" : "In the center of the coat of arms is inscribed the wings of the legendary Humo Bird, a symbol of himmat, nobility and self-sacrifice. These symbols and symbols represent the aspirations of our people on the path to peace, good, happiness, prosperity.",
     "coatUzb" : "At the bottom of the coat of arms is inscribed \"Uzbekistan” on the band of the chambar ribbon representing the state flag of the Republic."
+  },
+  "choices":{
+    "mainPage": "Main page",
+    "quizzes": "Quizzes",
+    "endedQuizzes": "The quiz is over",
+    "moreDetail": "More detailed",
+    "allQuizzes": "All quizzes",
+    "allQuizFinished": "All quizzes are completed",
+    "quizIsOver": "THE QUIZ IS OVER!",
+    "more": "More detailed",
+    "publicAss": "Public associations",
+    "all": "All",
+    "publishedArticles": "Published articles",
+    "day": "Day",
+    "hour": "Hour",
+    "minute": "Minute",
+    "selections": "CONTESTS"
   }
 }

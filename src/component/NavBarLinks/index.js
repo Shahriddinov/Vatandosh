@@ -90,15 +90,15 @@ export const NavBarLinks = () => {
       ],
     },
     {
-      title: "TANLOVLAR",
+      title: t("choices.selections"),
       links: [
         {
-          title: "Viktorinalar",
+          title: t("choices.quizzes"),
           url: "/choices/quiz",
           icon: botIcon,
         },
         {
-          title: "Jamoat birlashmalar",
+          title: t("choices.publicAss"),
           url: "/choices/public-associations",
           icon: paIcon,
         },

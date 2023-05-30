@@ -8,15 +8,25 @@ import eyeSvg from "../../../../assets/images/portal/cabinetVolunteer/eye.svg";
 import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 import { useState } from "react";
 import { useEffect } from "react";
+import { timer } from "../../../../helpers/extraFunction";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ data, quiz }) => {
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  console.log(data.finished_at);
-  console.log(new Date().getTime());
-
-  useEffect(() => {}, []);
+  const [timeData, setTimeDate] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+  });
+  const { t } = useTranslation();
+  useEffect(() => {
+    const { interval } = timer({
+      finishedTime: data?.finished_at,
+      setTimeDate: setTimeDate,
+    });
+    return () => {
+      clearInterval(interval);
+    };
+  }, [data?.finished_at]);
   return (
     <div className="card">
       <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
@@ -25,23 +35,23 @@ const Card = ({ data, quiz }) => {
         <p>{data.description.replace(/(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi, "")}</p>
         {quiz ? (
           <div className="card-bottomBox-quizEnded">
-            <p>VIKTORINA YAKUNLANDI!</p>
+            <p>{t("choices.quizIsOver")}</p>
           </div>
         ) : (
           <div className="card-bottomBox-timerBox">
             <div className="card-bottomBox-timerBox-box">
-              <span>{days}</span>
-              <span>Kun</span>
+              <span>{timeData.days}</span>
+              <span>{t("choices.day")}</span>
             </div>
             <div className="card-bottomBox-timerBox-vl"></div>
             <div className="card-bottomBox-timerBox-box">
-              <span>{hours}</span>
-              <span>Soat</span>
+              <span>{timeData.hours}</span>
+              <span>{t("choices.hour")}</span>
             </div>
             <div className="card-bottomBox-timerBox-vl"></div>
             <div className="card-bottomBox-timerBox-box">
-              <span>{minutes}</span>
-              <span>Daqiqa</span>
+              <span>{timeData.minutes}</span>
+              <span>{t("choices.minute")}</span>
             </div>
           </div>
         )}
@@ -59,7 +69,7 @@ const Card = ({ data, quiz }) => {
 
         <div className="card-bottomBox-btnBox">
           <motion.button whileTap={{ scale: 0.9 }}>
-            Batafsil ma’lumot
+            {t("choices.moreDetail")}
           </motion.button>
         </div>
       </div>

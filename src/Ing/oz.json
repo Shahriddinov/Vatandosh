@@ -450,5 +450,22 @@
   },
   "portal": {
     "kabinet": "Кабинет"
+  },
+  "choices":{
+    "mainPage": "Асосий саҳифа",
+    "quizzes": "Викториналар",
+    "endedQuizzes": "Викторина тугади",
+    "moreDetail": "Батафсил",
+    "allQuizzes": "Барча викториналар",
+    "allQuizFinished": "Барча викториналар якунланди",
+    "quizIsOver": "ВИКТОРИНА ТУГАДИ!",
+    "more": "Батафсил",
+    "publicAss": "Жамоат бирлашмалари",
+    "all": "Ҳаммаси",
+    "publishedArticles": "Чоп етилган мақолалар сони",
+    "day": "Кун",
+    "hour": "соат",
+    "minute": "Минут",
+    "selections": "Танловлар"
   }
 }
