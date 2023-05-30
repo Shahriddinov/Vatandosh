@@ -7,15 +7,23 @@ import "./groupMembers.scss";
 import { ChooseMember } from "../../Chat";
 import { checkUser } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
-const GroupMembers = ({ members, showMembers, setData }) => {
+const GroupMembers = ({
+  members,
+  showMembers,
+  setData,
+  setActiveUser,
+  data,
+}) => {
   const dispatch = useDispatch();
   const { setActiveChat } = useContext(ChooseMember);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = (user) => {
-    setData((prev) => [user, ...prev]);
     setActiveChat("private");
+    setActiveUser(user.id);
     dispatch(checkUser(user.id));
   };
+  console.log(data);
 
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
@@ -35,7 +43,9 @@ const GroupMembers = ({ members, showMembers, setData }) => {
             return (
               <div
                 key={member.id}
-                className="group-members__one-member"
+                className={`group-members__one-member ${
+                  user?.user_id?.id === member.id ? "yourself" : ""
+                }`}
                 onClick={() => handleClick(member)}
               >
                 <div className="group-members__picture">

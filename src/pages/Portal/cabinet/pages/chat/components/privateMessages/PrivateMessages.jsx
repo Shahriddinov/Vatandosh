@@ -39,7 +39,7 @@ const PrivateMessages = ({
     (state) => state.chatSlice.messagesLoading
   );
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
-  const user = useSelector((state) => state.authSlice.userData);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const docs = [
     { id: 1, name: "Ekspertlar1 kengashi guruhi.pdf" },
@@ -142,7 +142,8 @@ const PrivateMessages = ({
     privateUser = chooseMember;
   } else {
     privateUser =
-      messagesData && messagesData?.users?.find((el) => el.id !== user.id);
+      messagesData &&
+      messagesData?.users?.find((el) => el.id !== user.user_id.id);
   }
 
   return (

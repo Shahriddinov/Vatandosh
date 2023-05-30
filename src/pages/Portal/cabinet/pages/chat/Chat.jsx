@@ -41,6 +41,7 @@ const Chat = () => {
   useEffect(() => {
     const newData = allChatsData?.chats?.filter((el) => el.type === activeChat);
     setData(newData);
+    console.log(newData);
   }, [allChatsData]);
 
   return (
@@ -126,6 +127,7 @@ const Chat = () => {
               activePage={activePage}
               data={data}
               setData={setData}
+              setActiveUser={setActiveUser}
             />
           )}
         </div>
