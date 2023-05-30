@@ -33,7 +33,7 @@
   "allPeacefulBtn": "Barchasi",
   "interactiveServicesTitle": "Interaktiv xizmatlar",
   "partnersTitle": "Bizning hamkorlar",
-  "mapTitle": "Yurtdoshlarimiz sonini dunyo xaritasidan ko’ring",
+  "mapTitle": "Xorijiy mamlakatlarda o‘tkazilgan tadbirlar, yangiliklar va jamoat birlashmalari ro‘yxatidan dunyo xaritasi orqali xabardor bo‘ling",
   "mapErrorText": "{{countryName.name}} davlati bilan hamkorlik mavjud emas.",
   "footerContactUs": "Biz bilan bog‘lanish",
   "footerName": "Ismingiz",
@@ -79,7 +79,7 @@
   "founding_date": "Tashkilot tashkil topgan sana",
   "election_leader": "Rahbar saylangan sana",
   "mediaVideo": "Video lavhalar",
-  "mediaImg": "Foto sur'atlar",
+  "mediaImg": "Fotosuratlar",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -164,7 +164,7 @@
       "cardbb": "Bosh buhgalter"
     },
     "section5": {
-      "htext1": "Xorijdagi vatandoshlarni yagona Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir!"
+      "htext1": "Xorijdagi vatandoshlarni yagona Vatani atrofida yanada jipslashtirish oliy maqsadimizdir!"
     }
   },
   "contactPage": {
@@ -173,7 +173,7 @@
     "send": "Yuborish",
     "yourName": "Sizning ismingiz",
     "yourNumber": "Telefon raqamini kiriting",
-    "addInfo": "Qoshimcha ma’lumot",
+    "addInfo": "Qo'shimcha ma’lumot",
     "address": "Manzil",
     "workingHours": "Ish vaqti",
     "contactInfo": "Aloqa ma'lumotlari",
@@ -189,20 +189,20 @@
     "see-more": "Ko'proq ko'rsatish",
     "see-less": "Kamroq ko'rsatish",
     "participate": "Loyihada ishtirok eting",
-    "participate_title": "Bizning loyihalarda ishtirok etish istagingiz bo‘lsa ariza to‘ldiriring va loyiha ishtirokchisiga aylaning!",
+    "participate_title": "Bizning loyihalarda ishtirok etish istagingiz bo'lsa, arizani to'ldiring va loyiha ishtirokchisiga aylaning!",
     "participate_btn": "Ishtirok etish",
     "gallery": "Fotogalereya",
     "form_title": "Loyihalarda ishtirok etish",
     "form_name": "F.I.SH.",
-    "form_email": "Elektron pochta mazilingiz",
+    "form_email": "Elektron pochta manzilingiz",
     "form_phone": "Telefon raqamingiz",
     "form_category": "Ruknni tanlang",
-    "item2": "“Kun oilasi” rukni",
-    "item3": "“Sportchi vatandsohlar” rukni",
-    "item4": "“Yosh vatandoshlar” rukni",
+    "item2": "Kun oilasi",
+    "item3": "Sportchi vatandosh",
+    "item4": "Yosh vatandoshlar",
     "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona” loyihasi",
-    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
+    "item6": "Xorijdagi milliy oshxona",
+    "item7": "Xorijdagi vatandosh tashkilot",
     "form_about": "Siz va oilangiz haqida",
     "form_image": "Rasmlaringizni yuklang",
     "form_image_delete": "O'chirish",
@@ -459,5 +459,8 @@
   "portal": {
     "kabinet": "Kabinet"
   },
-  "number": "Soni:"
+  "number": "Soni:",
+  "FAQ": {
+    "desc": "Sizni qiziqtirgan va eng ko‘p so‘ralgan savollarga javob oling!"
+  }
 }

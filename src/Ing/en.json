@@ -82,7 +82,7 @@
   "mediaImg": "Pictures",
   "about_items": {
     "item1": "About us",
-    "item2": "Board of trustees",
+    "item2": "The board of trustees",
     "item3": "Managment",
     "item4": "The main directions of the foundation"
   },
@@ -110,7 +110,7 @@
   "aboutPage": {
     "section1": {
       "htext": "About us",
-      "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
+      "ptext": "The board of trustees is supreme part of Vatandoshlar public foundation.  The board of trustees consists of 17 people.",
       "foottext1": "Main page",
       "foottext2": "About us"
     },
@@ -163,7 +163,7 @@
       "cardbb": "Chief accountant"
     },
     "section5": {
-      "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
+      "htext1": "It is our highest goal to unite compatriots abroad around their Motherland!"
     }
   },
   "contactPage": {
@@ -196,12 +196,12 @@
     "form_email": "Email address",
     "form_phone": "Phone number",
     "form_category": "Choose column",
-    "item2": "“Family of the day” ruckney",
-    "item3": "“Athlete compatriots” ruckney",
-    "item4": "“Young compatriots” ruckney",
+    "item2": "Family of the day",
+    "item3": "Athlete compatriot",
+    "item4": "Young compatriots",
     "item5": "Sara is a masterpiece",
-    "item6": "“National cuisine abroad” project",
-    "item7": "“Overseas compatriot organization” project",
+    "item6": "National cuisine abroad",
+    "item7": "Overseas compatriot organization",
     "form_about": "About you and your family",
     "form_image": "Upload your photos",
     "form_image_delete": "Delete",
@@ -450,5 +450,8 @@
   "portal": {
     "kabinet": "Cabinet"
   },
-  "number": "Number:"
+  "number": "Number:",
+  "FAQ": {
+    "desc": "You could get answers to the most frequently asked questions you are interested in!"
+  }
 }

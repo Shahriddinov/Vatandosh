@@ -118,6 +118,8 @@ export const GET_MAGAZINE_MENU = "/magazine/get-menu";
 export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
 export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
 export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
+export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news?per_page=6&page=1`;
+export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event/?per_page=6&page=1`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

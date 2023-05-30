@@ -67,27 +67,33 @@ const Footer = () => {
                 <div className="footer-menu">
                   <ul>
                     <li>
-                      <Link to="/projects/columns?=2">{t("footerFamily")}</Link>
+                      <Link to="/projects/columns?=2">
+                        {t("projects_page.item2")}
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/projects/columns?=4">{t("footerSport")}</Link>
+                      <Link to="/projects/columns?=4">
+                        {t("projects_page.item3")}
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/projects/columns?=5">{t("footerYoung")}</Link>
+                      <Link to="/projects/columns?=5">
+                        {t("projects_page.item4")}
+                      </Link>
                     </li>
                     <li>
                       <Link to="/projects/columns?=6">
-                        {t("footerPrecious")}
+                        {t("projects_page.item5")}
                       </Link>
                     </li>
                     <li>
                       <Link to="/projects/columns?=7">
-                        {t("footerOverseaDish")}
+                        {t("projects_page.item6")}
                       </Link>
                     </li>
                     <li>
                       <Link to="/projects/columns?=10">
-                        {t("footerOverseaOrganization")}
+                        {t("projects_page.item7")}
                       </Link>
                     </li>
                   </ul>
