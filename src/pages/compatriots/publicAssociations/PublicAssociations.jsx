@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import CouncilHero from "../../boardTrustees/components/council-hero/CouncilHero";
 import Associations from "../components/associations/Associations";
 
