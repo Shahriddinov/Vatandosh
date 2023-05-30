@@ -450,5 +450,22 @@
   "portal": {
     "kabinet": "Cabinet"
   },
-  "number": "Number:"
+  "number": "Number:",
+  "choices":{
+    "mainPage": "Main page",
+    "quizzes": "Quizzes",
+    "endedQuizzes": "The quiz is over",
+    "moreDetail": "More detailed",
+    "allQuizzes": "All quizzes",
+    "allQuizFinished": "All quizzes are completed",
+    "quizIsOver": "THE QUIZ IS OVER!",
+    "more": "More detailed",
+    "publicAss": "Public associations",
+    "all": "All",
+    "publishedArticles": "Published articles",
+    "day": "Day",
+    "hour": "Hour",
+    "minute": "Minute",
+    "selections": "CONTESTS"
+  }
 }

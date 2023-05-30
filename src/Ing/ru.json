@@ -449,5 +449,22 @@
   "portal": {
     "kabinet": "Кабинет"
   },
-  "number": "Количество:"
+  "number": "Количество:",
+  "choices":{
+    "mainPage": "Главная страница",
+    "quizzes": "Викторины",
+    "endedQuizzes": "Викторина завершена",
+    "moreDetail": "Подробнее",
+    "allQuizzes": "Все викторины",
+    "allQuizFinished": "Все викторины завершены",
+    "quizIsOver": "ВИКТОРИНА ЗАВЕРШЕНА!",
+    "more": "Подробнее",
+    "publicAss": "Общественные объединения",
+    "all": "Все",
+    "publishedArticles": "Количество опубликованных статей",
+    "day": "День",
+    "hour": "Часы",
+    "minute": "Минут",
+    "selections": "КОНКУРСЫ"
+  }
 }

@@ -459,5 +459,23 @@
   "portal": {
     "kabinet": "Kabinet"
   },
-  "number": "Soni:"
+  "number": "Soni:",
+  "choices":{
+    "mainPage": "Asosiy sahifa",
+    "quizzes": "Viktorinalar",
+    "endedQuizzes": "Viktorina yakunlanganlar",
+    "moreDetail": "Batafsil ma’lumot",
+    "allQuizzes": "Barcha viktorinalar",
+    "allQuizFinished": "Barcha Viktorina yakunlanganlar",
+    "quizIsOver": "VIKTORINA YAKUNLANDI!",
+    "more": "Batafsil",
+    "publicAss": "Jamoat birlashmalar",
+    "all": "Hammasi",
+    "publishedArticles": "Chop etilgan maqolalar soni",
+    "day": "Kun",
+    "hour": "Soat",
+    "minute": "Daqiqa",
+    "selections": "TANLOVLAR"
+
+  }
 }
