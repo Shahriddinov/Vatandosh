@@ -11,11 +11,9 @@ export const getAllChats = createAsyncThunk("get/allChats", async () => {
 // Get Messages
 export const getMessages = createAsyncThunk(
   "get/messages",
-  async ({ chat_id, chat_type, page }) => {
+  async ({ chat_id, page }) => {
     return await axios
-      .get(
-        `${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=${chat_type}&page=${page}`
-      )
+      .get(`${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=$&page=${page}`)
       .then((res) => res.data);
   }
 );
@@ -35,6 +33,13 @@ export const sendMessage = createAsyncThunk("send/message", async (payload) => {
 export const leaveGroup = createAsyncThunk("leave/group", async (payload) => {
   return await axios
     .post(`${GET_CHAT_DATA}/left`, payload)
+    .then((res) => res.data);
+});
+
+// Check user
+export const checkUser = createAsyncThunk("check/user", async (userId) => {
+  return await axios
+    .get(`${GET_CHAT_DATA}/check?user_id=${userId}`)
     .then((res) => res.data);
 });
 

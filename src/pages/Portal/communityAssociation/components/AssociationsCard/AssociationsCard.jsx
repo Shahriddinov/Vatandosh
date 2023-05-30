@@ -15,7 +15,7 @@ const AssociationsCard = ({ allRegions, region_id, logo, name, news, id }) => {
           src={
             countryInfo?.flag ? `${PORTAL_IMAGE_URL}${countryInfo?.flag}` : Flag
           }
-          alt=""
+          alt={countryInfo?.name}
         />
         {countryInfo?.name}
       </div>

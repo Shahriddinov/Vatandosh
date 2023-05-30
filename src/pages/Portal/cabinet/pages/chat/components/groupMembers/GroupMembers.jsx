@@ -1,17 +1,29 @@
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
 
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 import "./groupMembers.scss";
 import { ChooseMember } from "../../Chat";
+import { checkUser } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
-const GroupMembers = ({ members, showMembers }) => {
-  const { setChooseMember, setActiveChat } = useContext(ChooseMember);
+const GroupMembers = ({
+  members,
+  showMembers,
+  setData,
+  setActiveUser,
+  data,
+}) => {
+  const dispatch = useDispatch();
+  const { setActiveChat } = useContext(ChooseMember);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = (user) => {
-    setChooseMember(user);
     setActiveChat("private");
+    setActiveUser(user.id);
+    dispatch(checkUser(user.id));
   };
+  console.log(data);
 
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
@@ -31,7 +43,9 @@ const GroupMembers = ({ members, showMembers }) => {
             return (
               <div
                 key={member.id}
-                className="group-members__one-member"
+                className={`group-members__one-member ${
+                  user?.user_id?.id === member.id ? "yourself" : ""
+                }`}
                 onClick={() => handleClick(member)}
               >
                 <div className="group-members__picture">

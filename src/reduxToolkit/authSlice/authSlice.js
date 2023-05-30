@@ -106,7 +106,7 @@ const authSlice = createSlice({
         } else {
           state.userData = action.payload.user;
           setItem("token", action.payload.token);
-          setItem("user", JSON.stringify(action.payload.user));
+          setItem("user", JSON.stringify(action.payload.profile));
         }
       })
       .addCase(signIn.rejected, (state, action) => {

@@ -47,6 +47,7 @@ import notification from "./notificationSlice/notificationSlice";
 import webinarBodySlice from "./webinar";
 import journal from "./portalSlices/electronicJournalSlice/electronicJournalSlice";
 import menuSuggestionSlice from "./expertSuggestion";
+import choiceQuizSlice from "./choicesPageSlice/index";
 
 const store = configureStore({
   reducer: {
@@ -97,6 +98,7 @@ const store = configureStore({
     webinarBodySlice,
     journal,
     menuSuggestionSlice,
+    choiceQuizSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

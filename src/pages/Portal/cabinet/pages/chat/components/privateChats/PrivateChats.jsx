@@ -20,6 +20,7 @@ const PrivateChats = ({
   activePage,
   data,
   setPrivateChatId,
+  activeChat,
 }) => {
   const dispatch = useDispatch();
 
@@ -63,9 +64,7 @@ const PrivateChats = ({
     dispatch(getAllChats());
   }, []);
 
-  if (chooseMember) {
-    data.unshift(chooseMember);
-  }
+  console.log(data);
 
   return (
     <div className="users">
@@ -83,16 +82,8 @@ const PrivateChats = ({
                 />
               );
             } else {
-              profileImg = chat?.user?.first_name[0] + chat?.user?.last_name[0];
-            }
-          } else {
-            if (chat?.avatar) {
-              profileImg = (
-                <img src={`${PORTAL_IMAGE_URL}${chat?.avatar}`} alt="user" />
-              );
-            } else {
               profileImg =
-                chat?.name?.split(" ")[0][0] + chat?.name?.split(" ")[1][0];
+                chat?.user?.first_name?.[0] + chat?.user?.last_name?.[0];
             }
           }
 
@@ -102,7 +93,10 @@ const PrivateChats = ({
               className={`users__one-user ${
                 chat?.user?.user_id === activeUser ? "active" : ""
               }`}
-              onClick={() => {handleClick(chat?.user, profileImg, chat?.id); setIsActive(false)}}
+              onClick={() => {
+                handleClick(chat?.user, profileImg, chat?.id);
+                setIsActive(false);
+              }}
             >
               <div className="users__user-image">
                 {profileImg}
@@ -129,10 +123,11 @@ const PrivateChats = ({
           ) : (
             <div
               key={chat?.id}
-              className={`users__one-user ${
-                isActive ? "active" : ""
-              }`}
-              onClick={() => {handleClick(chat, profileImg, chat?.id); setIsActive(true)}}
+              className={`users__one-user ${isActive ? "active" : ""}`}
+              onClick={() => {
+                handleClick(chat, profileImg, chat?.id);
+                setIsActive(true);
+              }}
             >
               <div className="users__user-image">
                 {profileImg}

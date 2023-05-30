@@ -26,6 +26,7 @@ const Chat = () => {
   const [activePage, setActivePage] = useState(1);
   const [privateChatRoomId, setPrivateChatId] = useState(null);
   const [chooseMember, setChooseMember] = useState(null);
+  const [data, setData] = useState(null);
 
   const messagesData = useSelector((state) => state.chatSlice.messagesData);
   const allChatsData = useSelector((state) => state.chatSlice.allChatsData);
@@ -37,7 +38,11 @@ const Chat = () => {
     }
   }, [messagesData]);
 
-  const data = allChatsData?.chats?.filter((el) => el.type === activeChat);
+  useEffect(() => {
+    const newData = allChatsData?.chats?.filter((el) => el.type === activeChat);
+    setData(newData);
+    console.log(newData);
+  }, [allChatsData]);
 
   return (
     <ChooseMember.Provider
@@ -51,7 +56,9 @@ const Chat = () => {
                 className={`chat__chats ${
                   activeChat === "private" ? "active" : ""
                 }`}
-                onClick={() => setActiveChat("private")}
+                onClick={() => {
+                  setActiveChat("private");
+                }}
               >
                 Чаты
               </button>
@@ -89,6 +96,7 @@ const Chat = () => {
                 activePage={activePage}
                 activeChat={activeChat}
                 data={data}
+                setData={setData}
               />
             )}
           </div>
@@ -117,6 +125,9 @@ const Chat = () => {
               showMembers={showMembers}
               setActivePage={setActivePage}
               activePage={activePage}
+              data={data}
+              setData={setData}
+              setActiveUser={setActiveUser}
             />
           )}
         </div>

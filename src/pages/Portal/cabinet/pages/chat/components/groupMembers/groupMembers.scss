@@ -37,6 +37,12 @@
     &:hover {
       background: #eaedf6;
     }
+
+    &.yourself {
+      pointer-events: none;
+      opacity: 0.5;
+      user-select: none;
+    }
   }
 
   &__picture {
@@ -71,23 +77,13 @@
     border: 2px solid #fff;
   }
 
-  &__member-name {
-    max-width: 520px;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 700;
-    color: #065ea9;
-  }
-
   &__member-information {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     h4 {
-      width: 150px;
+      width: 400px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

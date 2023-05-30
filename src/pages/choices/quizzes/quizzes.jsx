@@ -7,6 +7,13 @@ import btnArrowDown from "../../../assets/images/portal/privateInformation/btnAr
 import badCrumbsImg from "../../../assets/images/portal/privateInformation/badCrumbs.svg";
 import Card from "./cardComponent/card";
 import Header from "../../../component/Layout/Header/Header";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllQuizData,
+  getQuizDataById,
+} from "../../../reduxToolkit/choicesPageSlice/extraReducer";
+import { useEffect } from "react";
+import { Spinner } from "../../../component";
 
 const fakeData = [
   {
@@ -79,18 +86,39 @@ const btnArr = [
   {
     id: 1,
     name: "Viktorinalar",
+    status: 1,
   },
   {
     id: 2,
     name: "Viktorina yakunlanganlar",
+    status: 0,
   },
 ];
 
 const Quizzes = () => {
-  const [activeBtn, setActiveBtn] = useState(btnArr[0]);
-  const [fakeDatas, setFakeDatas] = useState(fakeData);
+  const [activeBtn, setActiveBtn] = useState(1);
+  // const [fakeDatas, setFakeDatas] = useState(fakeData);
   const [postsPerPage, setPostsPerpage] = useState(6);
-  const [quizHasEnded, setQuizHasEnded] = useState(true);
+  // const [quizHasEnded, setQuizHasEnded] = useState(true);
+  const dispatch = useDispatch();
+  const quizTotalData = useSelector((state) => state.choiceQuizSlice);
+  const lan = useSelector((state) => state.language.language);
+
+  useEffect(() => {
+    dispatch(getAllQuizData({ status: 1, paginate: postsPerPage }));
+  }, [dispatch, lan]);
+
+  if (quizTotalData?.allDataLoading) {
+    return <Spinner position="full" />;
+  } else if (quizTotalData?.allDataError) {
+    return <p>{quizTotalData?.allDataError}</p>;
+  }
+
+  const changeBtn = (el) => {
+    setActiveBtn(el.id);
+    dispatch(getAllQuizData({ status: el.status, paginate: postsPerPage }));
+  };
+
   return (
     <>
       <Header />
@@ -103,29 +131,27 @@ const Quizzes = () => {
               <img src={badCrumbsImg} alt="breadcrumb line" />
             </li>
             <li aria-current="page">
-              {activeBtn.id === 1 ? "Viktorinalar" : "Viktorina yakunlanganlar"}
+              {activeBtn === 1 ? "Viktorinalar" : "Viktorina yakunlanganlar"}
             </li>
           </ul>
         </div>
         <div className="choices-quiz-Container-btnCont">
           {btnArr.map((el, index) => (
             <button
-              onClick={() => setActiveBtn(el)}
-              className={el.id === activeBtn.id && "active"}
+              onClick={() => changeBtn(el)}
+              className={el.id === activeBtn && "active"}
               key={index}
             >
               {el.name}
             </button>
           ))}
         </div>
-        {activeBtn.id === 1 ? (
+        {activeBtn === 1 ? (
           <div className="choices-quiz-Container-bodyCont">
             <div className="choices-quiz-Container-bodyCont-cardCont">
-              <Card
-                fakeDatas={fakeDatas}
-                postsPerPage={postsPerPage}
-                quiz={quizHasEnded}
-              />
+              {quizTotalData.allData.data.map((el, index) => (
+                <Card key={index} data={el} quiz={false} />
+              ))}
             </div>
 
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
@@ -135,7 +161,7 @@ const Quizzes = () => {
               >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
-                  {activeBtn.id === 1
+                  {activeBtn === 1
                     ? "Barcha Viktorina yakunlanganlar"
                     : "Barcha viktorinalar"}
                 </span>
@@ -145,7 +171,9 @@ const Quizzes = () => {
         ) : (
           <div className="choices-quiz-Container-bodyCont">
             <div className="choices-quiz-Container-bodyCont-cardCont">
-              <Card fakeDatas={fakeDatas} postsPerPage={postsPerPage} />
+              {quizTotalData.allData.data.map((el, index) => (
+                <Card key={index} data={el} quiz={true} />
+              ))}
             </div>
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
@@ -154,7 +182,7 @@ const Quizzes = () => {
               >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
-                  {activeBtn.id === 1
+                  {activeBtn === 1
                     ? "Barcha Viktorina yakunlanganlar"
                     : "Barcha viktorinalar"}
                 </span>

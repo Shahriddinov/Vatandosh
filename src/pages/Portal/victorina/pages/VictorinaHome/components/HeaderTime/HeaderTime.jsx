@@ -91,12 +91,14 @@ function HeaderTime({ quizData }) {
               className={`hero__slider-box ${
                 slideIndex === slider?.id ? "active" : ""
               }`}
-              key={slider.id}>
+              key={slider.id}
+            >
               <div
                 className={`hero__slider-item`}
                 style={{
                   backgroundImage: `url(${imageUrl}/${slider?.image})`,
-                }}></div>
+                }}
+              ></div>
               <div className="hero__slider-left-bottom">
                 <h3
                   dangerouslySetInnerHTML={{
@@ -120,7 +122,8 @@ function HeaderTime({ quizData }) {
                 <Link
                   to={`/portal-category/victorina/image-project/${slider.id}`}
                   style={{ width: "163px" }}
-                  className="headertime-button">
+                  className="headertime-button"
+                >
                   Batafsil ma’lumot
                 </Link>
               </div>
