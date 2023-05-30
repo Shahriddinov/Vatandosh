@@ -14,95 +14,28 @@ import {
 } from "../../../reduxToolkit/choicesPageSlice/extraReducer";
 import { useEffect } from "react";
 import { Spinner } from "../../../component";
-
-const fakeData = [
-  {
-    id: 1,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-  {
-    id: 2,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [5, 10, 12],
-  },
-  {
-    id: 3,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [12, 7, 58],
-  },
-  {
-    id: 4,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-  {
-    id: 5,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-  {
-    id: 6,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-  {
-    id: 7,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-  {
-    id: 8,
-    img: eventImg,
-    data: "12.02.2023",
-    header: "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
-    body: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    timer: [8, 12, 45],
-  },
-];
-
-const btnArr = [
-  {
-    id: 1,
-    name: "Viktorinalar",
-    status: 1,
-  },
-  {
-    id: 2,
-    name: "Viktorina yakunlanganlar",
-    status: 0,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Quizzes = () => {
   const [activeBtn, setActiveBtn] = useState(1);
-  // const [fakeDatas, setFakeDatas] = useState(fakeData);
   const [postsPerPage, setPostsPerpage] = useState(6);
-  // const [quizHasEnded, setQuizHasEnded] = useState(true);
   const dispatch = useDispatch();
   const quizTotalData = useSelector((state) => state.choiceQuizSlice);
   const lan = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
+
+  const btnArr = [
+    {
+      id: 1,
+      name: `${t("choices.quizzes")}`,
+      status: 1,
+    },
+    {
+      id: 2,
+      name: `${t("choices.endedQuizzes")}`,
+      status: 0,
+    },
+  ];
 
   useEffect(() => {
     dispatch(getAllQuizData({ status: 1, paginate: postsPerPage }));
@@ -124,14 +57,20 @@ const Quizzes = () => {
       <Header />
       <div className="choices-quiz-Container">
         <div className="choices-quiz-Container-header">
-          <h1>Viktorina yakunlanganlar</h1>
+          <h1>
+            {activeBtn === 1
+              ? `${t("choices.quizzes")}`
+              : `${t("choices.endedQuizzes")}`}
+          </h1>
           <ul>
             <li>
-              <Link to="/">mainPage</Link>
+              <Link to="/">{t("choices.mainPage")}</Link>
               <img src={badCrumbsImg} alt="breadcrumb line" />
             </li>
             <li aria-current="page">
-              {activeBtn === 1 ? "Viktorinalar" : "Viktorina yakunlanganlar"}
+              {activeBtn === 1
+                ? `${t("choices.quizzes")}`
+                : `${t("choices.endedQuizzes")}`}
             </li>
           </ul>
         </div>
@@ -162,8 +101,8 @@ const Quizzes = () => {
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1
-                    ? "Barcha Viktorina yakunlanganlar"
-                    : "Barcha viktorinalar"}
+                    ? `${t("choices.allQuizzes")}`
+                    : `${t("choices.allQuizFinished")}`}
                 </span>
               </motion.button>
             </div>
@@ -183,8 +122,8 @@ const Quizzes = () => {
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1
-                    ? "Barcha Viktorina yakunlanganlar"
-                    : "Barcha viktorinalar"}
+                    ? `${t("choices.allQuizzes")}`
+                    : `${t("choices.allQuizFinished")}`}
                 </span>
               </motion.button>
             </div>

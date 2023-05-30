@@ -201,7 +201,7 @@ const Menun = () => {
           </Menu>
         </li>
 
-        <li className="menus_item hov ">
+        <li className="menu_item hov ">
           <Button
             id="basic-button"
             aria-controls={openEvents ? "basic-menu" : undefined}
