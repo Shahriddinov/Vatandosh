@@ -1,13 +1,14 @@
 import React from "react";
 
 import "./chatDocs.scss";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 const ChatDocs = ({ showDocs, docsData }) => {
   return (
     <div className={`chat-docs ${showDocs ? "show" : ""}`}>
       <div className="chat-docs__container">
-        {docsData ? (
-          docsData.map((data) => (
+        {docsData?.messages?.data?.length > 0 ? (
+          docsData?.messages?.data?.map((data) => (
             <div key={data.id} className="chat-docs__one-doc">
               <div className="chat-docs__icon">
                 <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
@@ -20,8 +21,15 @@ const ChatDocs = ({ showDocs, docsData }) => {
                 </svg>
               </div>
               <div className="chat-docs__file">
-                <a href="#" className="chat-docs__file-name">
-                  {data.name}
+                <a
+                  href={`${PORTAL_IMAGE_URL}${data.message}`}
+                  className="chat-docs__file-name"
+                  target="_blank"
+                  download
+                >
+                  {data?.file.split(".")[0].slice(0, 50) +
+                    "." +
+                    data?.message.split("/")[1].split(".")[1]}
                 </a>
               </div>
             </div>

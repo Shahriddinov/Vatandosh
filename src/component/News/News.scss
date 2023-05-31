@@ -93,15 +93,17 @@
     }
 
     .latest-news {
+      width: 75%;
+
       .news-cards {
         display: none;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(250px, 400px));
         gap: 30px;
       }
 
       .events-cards {
         display: none;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(250px, 400px));
         gap: 30px;
       }
 
@@ -111,6 +113,8 @@
     }
 
     .our-activities {
+      width: 25%;
+
       ul {
         list-style: none;
       }
@@ -226,6 +230,26 @@
   }
 }
 
+@media (max-width: 1120px) {
+  .news {
+    &__body {
+      .latest-news {
+        width: 70%;
+
+        .news-cards,
+        .events-cards {
+          grid-template-columns: repeat(2, minmax(250px, 400px));
+          gap: 20px;
+        }
+      }
+
+      .our-activities {
+        width: 30%;
+      }
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   .news {
     padding-top: 60px;
@@ -234,7 +258,7 @@
       .latest-news {
         .news-cards,
         .events-cards {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(250px, 400px));
           gap: 20px;
         }
       }
@@ -242,15 +266,35 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .news {
     &__body {
       flex-direction: column;
 
       .latest-news {
+        width: 100%;
+
         .news-cards,
         .events-cards {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, minmax(250px, 400px));
+          gap: 20px;
+        }
+      }
+
+      .our-activities {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 832px) {
+  .news {
+    &__body {
+      .latest-news {
+        .news-cards,
+        .events-cards {
+          grid-template-columns: repeat(2, minmax(250px, 400px));
           gap: 20px;
         }
       }
@@ -258,7 +302,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 562px) {
   .news {
     padding-top: 40px;
 
@@ -276,7 +320,8 @@
       .latest-news {
         .news-cards,
         .events-cards {
-          grid-template-columns: repeat(1, 1fr);
+          justify-content: center;
+          grid-template-columns: repeat(1, minmax(250px, 400px));
           gap: 20px;
         }
       }

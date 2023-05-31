@@ -73,7 +73,7 @@ const CabinetLeftMenu = () => {
     <div className="cabinet-navbar">
       <div className="container">
         <section className="cabinet-navbar__body">
-          <Link to="/" className="cabinet-navbar__logo">
+          <Link to="/portal" className="cabinet-navbar__logo">
             <img src={logo} alt="logo" />
             <p>“VATANDOSHLAR” JAMOAT FONDI</p>
           </Link>

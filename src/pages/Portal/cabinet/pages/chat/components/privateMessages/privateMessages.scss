@@ -45,7 +45,6 @@
     height: calc(100% - 190px);
     position: relative;
     margin: 5px 5px 0 0;
-    background: #fdfdff;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -128,11 +127,24 @@
   &__received-message {
     color: #065ea9;
     background: #ffffff;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
   }
 
   &__sent-message {
     color: #fff;
     background: #065ea9;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
   }
 
   &__received-details {

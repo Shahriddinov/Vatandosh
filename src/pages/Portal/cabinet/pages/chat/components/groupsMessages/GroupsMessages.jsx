@@ -5,6 +5,8 @@ import ChatDocs from "../chatDocs/ChatDocs";
 import ChatLinks from "../chatLinks/ChatLinks";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import {
+  getFiles,
+  getLinks,
   getMediaUrl,
   getMessages,
   leaveGroup,
@@ -45,6 +47,7 @@ const GroupsMessages = ({
     chat_room_id: null,
     message: "",
     type: null,
+    file: null,
   });
   const [scrollTop, setScrollTop] = useState(0);
   const [sendFile, setSendFile] = useState(null);
@@ -61,38 +64,10 @@ const GroupsMessages = ({
   const foundUser = useSelector((state) => state.chatSlice.checkUser);
   const checkLoading = useSelector((state) => state.chatSlice.checkLoading);
 
+  const filesData = useSelector((state) => state.chatSlice.filesData);
+  const linksData = useSelector((state) => state.chatSlice.linksData);
+
   const user = JSON.parse(localStorage.getItem("user"));
-
-  const docs = [
-    { id: 1, name: "Group Ekspertlar1 kengashi guruhi.pdf" },
-    { id: 2, name: "Group Ekspertlar2 kengashi guruhi.pdf" },
-    { id: 3, name: "Group Ekspertlar3 kengashi guruhi.pdf" },
-    { id: 4, name: "Group Ekspertlar4 kengashi guruhi.pdf" },
-    { id: 5, name: "Group Ekspertlar5 kengashi guruhi.pdf" },
-    { id: 6, name: "Group Ekspertlar6 kengashi guruhi.pdf" },
-    { id: 7, name: "Group Ekspertlar7 kengashi guruhi.pdf" },
-    { id: 8, name: "Group Ekspertlar8 kengashi guruhi.pdf" },
-    { id: 9, name: "Group Ekspertlar9 kengashi guruhi.pdf" },
-    { id: 10, name: "Group Ekspertlar10 kengashi guruhi.pdf" },
-  ];
-
-  const links = [
-    { id: 1, url: "https://Group Ekspertlar1 kengashi guruhi.link" },
-    { id: 2, url: "https://Group Ekspertlar2 kengashi guruhi.link" },
-    { id: 3, url: "https://Group Ekspertlar3 kengashi guruhi.link" },
-    { id: 4, url: "https://Group Ekspertlar4 kengashi guruhi.link" },
-    { id: 5, url: "https://Group Ekspertlar5 kengashi guruhi.link" },
-    { id: 6, url: "https://Group Ekspertlar6 kengashi guruhi.link" },
-    { id: 7, url: "https://Group Ekspertlar7 kengashi guruhi.link" },
-    { id: 8, url: "https://Group Ekspertlar8 kengashi guruhi.link" },
-    { id: 9, url: "https://Group Ekspertlar9 kengashi guruhi.link" },
-    { id: 10, url: "https://Group Ekspertlar10 kengashi guruhi.link" },
-    { id: 11, url: "https://Group Ekspertlar11 kengashi guruhi.link" },
-    { id: 12, url: "https://Group Ekspertlar12 kengashi guruhi.link" },
-    { id: 13, url: "https://Group Ekspertlar13 kengashi guruhi.link" },
-    { id: 14, url: "https://Group Ekspertlar14 kengashi guruhi.link" },
-    { id: 15, url: "https://Group Ekspertlar15 kengashi guruhi.link" },
-  ];
 
   const { messages, setMessages } = useContext(MessagesContext);
 
@@ -155,6 +130,12 @@ const GroupsMessages = ({
         type: 2,
         file: sendFile[0].name,
       };
+    } else if (sendMessageData.message.slice(0, 4) === "http") {
+      mess = {
+        ...sendMessageData,
+        chat_room_id: groupData.group.id,
+        type: 3,
+      };
     } else {
       mess = {
         ...sendMessageData,
@@ -205,6 +186,24 @@ const GroupsMessages = ({
       );
     }
   }, [foundUser]);
+
+  useEffect(() => {
+    if (groupData) {
+      dispatch(
+        getFiles({
+          chat_id: groupData.group.id,
+          page: activePage,
+        })
+      );
+
+      dispatch(
+        getLinks({
+          chat_id: groupData.group.id,
+          page: activePage,
+        })
+      );
+    }
+  }, [sendMessageData, activeGroup]);
 
   // useEffect(() => {
   //   const message = messagesRef.current;
@@ -361,8 +360,8 @@ const GroupsMessages = ({
         </div>
       ) : null}
       <div className="group-message__messages-body" ref={messagesRef}>
-        <ChatDocs docsData={docs} showDocs={showDocs} />
-        <ChatLinks linksData={links} showLinks={showLinks} />
+        <ChatDocs docsData={filesData} showDocs={showDocs} />
+        <ChatLinks linksData={linksData} showLinks={showLinks} />
         <GroupMembers
           data={data}
           setData={setData}
@@ -370,6 +369,7 @@ const GroupsMessages = ({
           showMembers={showMembers}
           setChooseMember={setChooseMember}
           setActiveUser={setActiveUser}
+          setShowMembers={setShowMembers}
         />
         {activeGroup ? (
           <div
@@ -420,6 +420,29 @@ const GroupsMessages = ({
                               "." +
                               message?.message.split("/")[1].split(".")[1]}
                           </a>
+                        ) : message?.type === 3 ? (
+                          <a
+                            href={`${message?.message}`}
+                            style={{ textDecoration: "underline" }}
+                            target="_black"
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                            >
+                              <path
+                                d="M14.4763 0.0586605C14.0974 0.132879 13.5544 0.308661 13.2458 0.468817C12.6364 0.773504 12.4216 0.964911 10.4021 2.98054C8.44895 4.92975 8.43723 4.94147 8.43723 5.10163C8.43723 5.37897 8.51926 5.41804 9.16379 5.46491C9.81223 5.51179 10.1872 5.5821 10.738 5.76569C11.0036 5.85554 11.1833 5.8946 11.2458 5.87897C11.3083 5.86335 11.8904 5.31257 12.7341 4.47663C13.531 3.68366 14.1989 3.05085 14.3005 2.99225C14.9529 2.61725 15.7693 2.62897 16.3747 3.01569C16.6247 3.17194 16.9607 3.54304 17.0857 3.79694C17.3005 4.23444 17.3474 4.78132 17.2068 5.24616C17.0661 5.71491 17.0466 5.73835 14.6404 8.1485C13.0896 9.70319 12.2693 10.4962 12.1247 10.586C11.7849 10.7891 11.5114 10.8673 11.113 10.8751C10.5466 10.8829 10.2263 10.7618 9.69114 10.336C9.32395 10.043 9.1091 9.961 8.70676 9.961C7.68332 9.961 7.07395 11.0157 7.55442 11.9454C7.58957 12.0118 7.71067 12.1563 7.82004 12.2696C8.5427 12.9766 9.47629 13.4258 10.5036 13.5587C11.0739 13.629 11.9997 13.5391 12.5779 13.3516C12.9529 13.2344 13.5661 12.9063 13.9021 12.6524C14.0661 12.5274 15.281 11.3399 16.6052 10.0118C18.613 7.99616 19.0505 7.54304 19.238 7.25397C19.5154 6.8321 19.738 6.3321 19.8708 5.8321C19.9685 5.47663 19.9763 5.39069 19.9763 4.66804C19.9763 3.94538 19.9685 3.85944 19.8708 3.50397C19.4216 1.8321 18.156 0.566473 16.4958 0.128973C16.1755 0.0469418 16.0075 0.0274105 15.4489 0.0156918C14.9724 0.00787926 14.6989 0.019598 14.4763 0.0586605Z"
+                                fill="#fff"
+                              />
+                              <path
+                                d="M8.30102 6.44929C7.56273 6.54695 6.69945 6.89461 6.10961 7.33601C5.92602 7.47664 4.82836 8.54695 3.39477 9.98445C0.781485 12.6094 0.715078 12.6876 0.386953 13.4454C0.125235 14.043 0.0353909 14.4571 0.0119534 15.1563C-0.0114841 15.8555 0.0471096 16.2891 0.242422 16.8555C0.39086 17.2969 0.500235 17.5118 0.773672 17.9298C1.46117 18.9688 2.50414 19.6641 3.75805 19.9259C4.1018 19.9962 4.25023 20.004 4.80492 19.9884C5.53148 19.9688 5.96117 19.879 6.52758 19.6329C7.28148 19.3087 7.3557 19.2462 9.5432 17.0704C11.5549 15.0665 11.5627 15.0587 11.5627 14.9024C11.5627 14.6251 11.4807 14.5821 10.8362 14.5352C10.1916 14.4884 9.82445 14.418 9.24633 14.2344C8.98461 14.1485 8.7932 14.1055 8.73852 14.1212C8.69164 14.1368 8.01977 14.7774 7.24633 15.543C6.44555 16.3399 5.76586 16.9844 5.6643 17.0391C4.29711 17.8165 2.61742 16.7891 2.70727 15.2384C2.7268 14.8399 2.83227 14.5235 3.02367 14.2462C3.09789 14.1329 4.19555 13.0118 5.45727 11.754C7.8557 9.35945 7.87914 9.33992 8.34789 9.19929C8.66039 9.10554 8.9807 9.08992 9.29711 9.15632C9.6682 9.23445 9.91039 9.35554 10.2737 9.64851C10.637 9.94148 10.8948 10.043 11.2698 10.043C11.8166 10.043 12.2659 9.7657 12.4846 9.28914C12.6409 8.94539 12.6448 8.51961 12.4924 8.19539C12.2893 7.75789 11.6955 7.25398 10.9573 6.8907C10.1213 6.48445 9.21898 6.33601 8.30102 6.44929Z"
+                                fill="#fff"
+                              />
+                            </svg>
+                            {message?.message.slice(0, 40)}
+                          </a>
                         ) : (
                           message?.message
                         )}
@@ -466,6 +489,29 @@ const GroupsMessages = ({
                             {message?.file.split(".")[0].slice(0, 20) +
                               "." +
                               message?.message.split("/")[1].split(".")[1]}
+                          </a>
+                        ) : message?.type === 3 ? (
+                          <a
+                            href={`${message?.message}`}
+                            style={{ textDecoration: "underline" }}
+                            target="_black"
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                            >
+                              <path
+                                d="M14.4763 0.0586605C14.0974 0.132879 13.5544 0.308661 13.2458 0.468817C12.6364 0.773504 12.4216 0.964911 10.4021 2.98054C8.44895 4.92975 8.43723 4.94147 8.43723 5.10163C8.43723 5.37897 8.51926 5.41804 9.16379 5.46491C9.81223 5.51179 10.1872 5.5821 10.738 5.76569C11.0036 5.85554 11.1833 5.8946 11.2458 5.87897C11.3083 5.86335 11.8904 5.31257 12.7341 4.47663C13.531 3.68366 14.1989 3.05085 14.3005 2.99225C14.9529 2.61725 15.7693 2.62897 16.3747 3.01569C16.6247 3.17194 16.9607 3.54304 17.0857 3.79694C17.3005 4.23444 17.3474 4.78132 17.2068 5.24616C17.0661 5.71491 17.0466 5.73835 14.6404 8.1485C13.0896 9.70319 12.2693 10.4962 12.1247 10.586C11.7849 10.7891 11.5114 10.8673 11.113 10.8751C10.5466 10.8829 10.2263 10.7618 9.69114 10.336C9.32395 10.043 9.1091 9.961 8.70676 9.961C7.68332 9.961 7.07395 11.0157 7.55442 11.9454C7.58957 12.0118 7.71067 12.1563 7.82004 12.2696C8.5427 12.9766 9.47629 13.4258 10.5036 13.5587C11.0739 13.629 11.9997 13.5391 12.5779 13.3516C12.9529 13.2344 13.5661 12.9063 13.9021 12.6524C14.0661 12.5274 15.281 11.3399 16.6052 10.0118C18.613 7.99616 19.0505 7.54304 19.238 7.25397C19.5154 6.8321 19.738 6.3321 19.8708 5.8321C19.9685 5.47663 19.9763 5.39069 19.9763 4.66804C19.9763 3.94538 19.9685 3.85944 19.8708 3.50397C19.4216 1.8321 18.156 0.566473 16.4958 0.128973C16.1755 0.0469418 16.0075 0.0274105 15.4489 0.0156918C14.9724 0.00787926 14.6989 0.019598 14.4763 0.0586605Z"
+                                fill="#fff"
+                              />
+                              <path
+                                d="M8.30102 6.44929C7.56273 6.54695 6.69945 6.89461 6.10961 7.33601C5.92602 7.47664 4.82836 8.54695 3.39477 9.98445C0.781485 12.6094 0.715078 12.6876 0.386953 13.4454C0.125235 14.043 0.0353909 14.4571 0.0119534 15.1563C-0.0114841 15.8555 0.0471096 16.2891 0.242422 16.8555C0.39086 17.2969 0.500235 17.5118 0.773672 17.9298C1.46117 18.9688 2.50414 19.6641 3.75805 19.9259C4.1018 19.9962 4.25023 20.004 4.80492 19.9884C5.53148 19.9688 5.96117 19.879 6.52758 19.6329C7.28148 19.3087 7.3557 19.2462 9.5432 17.0704C11.5549 15.0665 11.5627 15.0587 11.5627 14.9024C11.5627 14.6251 11.4807 14.5821 10.8362 14.5352C10.1916 14.4884 9.82445 14.418 9.24633 14.2344C8.98461 14.1485 8.7932 14.1055 8.73852 14.1212C8.69164 14.1368 8.01977 14.7774 7.24633 15.543C6.44555 16.3399 5.76586 16.9844 5.6643 17.0391C4.29711 17.8165 2.61742 16.7891 2.70727 15.2384C2.7268 14.8399 2.83227 14.5235 3.02367 14.2462C3.09789 14.1329 4.19555 13.0118 5.45727 11.754C7.8557 9.35945 7.87914 9.33992 8.34789 9.19929C8.66039 9.10554 8.9807 9.08992 9.29711 9.15632C9.6682 9.23445 9.91039 9.35554 10.2737 9.64851C10.637 9.94148 10.8948 10.043 11.2698 10.043C11.8166 10.043 12.2659 9.7657 12.4846 9.28914C12.6409 8.94539 12.6448 8.51961 12.4924 8.19539C12.2893 7.75789 11.6955 7.25398 10.9573 6.8907C10.1213 6.48445 9.21898 6.33601 8.30102 6.44929Z"
+                                fill="#fff"
+                              />
+                            </svg>
+                            {message?.message.slice(0, 40)}
                           </a>
                         ) : (
                           message?.message

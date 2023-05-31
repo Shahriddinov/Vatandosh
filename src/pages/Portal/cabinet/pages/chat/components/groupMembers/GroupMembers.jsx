@@ -10,6 +10,7 @@ import { checkUser } from "../../../../../../../reduxToolkit/chatSlice/extraRedu
 const GroupMembers = ({
   members,
   showMembers,
+  setShowMembers,
   setData,
   setActiveUser,
   data,
@@ -21,9 +22,9 @@ const GroupMembers = ({
   const handleClick = (user) => {
     setActiveChat("private");
     setActiveUser(user.id);
+    setShowMembers(false);
     dispatch(checkUser(user.id));
   };
-  console.log(data);
 
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
