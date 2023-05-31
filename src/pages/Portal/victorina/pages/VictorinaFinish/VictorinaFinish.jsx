@@ -5,17 +5,11 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import "./VictorinaFinish.scss";
-import {
-  CalendarIcon,
-  ExcludeIcon,
-  ViewIcon,
-} from "../../../../../assets/images/expert";
-import { victorine } from "../victorina";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { imageUrl } from "../../../../../services/api/utils";
-import { Link } from "react-router-dom";
 import { getQuizzFinish } from "../../../../../reduxToolkit/victorinaQuiz/victorinafinish/finish";
+import VictorinaCard from "../VictorinaHome/components/victorinaCard/VictorinaCard";
+import { Spinner } from "../../../../../component";
 
 function VictorinaFinish() {
   const [year, setYear] = useState("2022");
@@ -24,13 +18,20 @@ function VictorinaFinish() {
     setYear(event.target.value);
   };
   const dispatch = useDispatch();
-  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
-  
+  const quizData = useSelector(
+    (state) => state.quizFinishSlice.quizData.quizzes
+  );
+  const quizDataLoading = useSelector((state) => state.quizFinishSlice.loading);
+
+  const lan = useSelector((state) => state.language.language);
 
   useEffect(() => {
     dispatch(getQuizzFinish({ status: "0", year: year }));
-    
-  }, []);
+  }, [year, dispatch, lan]);
+
+  if (quizDataLoading) {
+    return <Spinner position="full" />;
+  }
 
   return (
     <div className="victorinafinish">
@@ -44,7 +45,8 @@ function VictorinaFinish() {
               id="demo-simple-select-helper"
               value={year}
               label="Age"
-              onChange={handleChange}>
+              onChange={handleChange}
+            >
               <MenuItem value="2022">2022</MenuItem>
               <MenuItem value="2023">2023</MenuItem>
             </Select>
@@ -52,37 +54,11 @@ function VictorinaFinish() {
         </div>
         <div className="victorina-page">
           {quizData?.map((victorina) => (
-            <div key={victorina.id} className="victorina-list">
-              <img
-                src={`${imageUrl}/${victorina?.image}`}
-                alt=""
-                className="victorina-img"
-              />
-              <div className="victorina-items">
-                <h4 className="victorina-subname">{victorina.title}</h4>
-                <p
-                  dangerouslySetInnerHTML={{ __html: victorina.description }}
-                />
-                <button className="victorina-button">
-                  VIKTORINA YAKUNLANDI!
-                </button>
-                <div className="victorina-lists">
-                  <div className="victorina-item">
-                    <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.started_at.slice(0, 10)}</p>
-                  </div>
-                  <div className="victorina-item">
-                    <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.count}</p>
-                  </div>
-                </div>
-                <Link
-                  to={`/portal-category/victorina/finished-projects/image-project/${victorina.id}`}
-                  className="victorina-link">
-                  Batafsil ma'lumot
-                </Link>
-              </div>
-            </div>
+            <VictorinaCard
+              victorina={victorina}
+              key={victorina}
+              url={"finished-projects"}
+            />
           ))}
         </div>
         {/* <Link className="victorina_link" to="victorina-more">

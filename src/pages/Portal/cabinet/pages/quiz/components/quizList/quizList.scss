@@ -1,6 +1,5 @@
-.cabinet-events-list {
-  margin-top: 30px;
+.cabinet-quiz-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 350px));
-  gap: 30px;
+  gap: 20px;
 }
