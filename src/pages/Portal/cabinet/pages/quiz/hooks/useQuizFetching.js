@@ -19,5 +19,6 @@ export const useQuizFetching = () => {
     quizData,
     quizDataLoading,
     error,
+    dispatch,
   };
 };

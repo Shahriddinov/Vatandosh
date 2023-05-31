@@ -3,7 +3,7 @@ import axios from "../../../services/api/axios";
 import { GET_VICTORINA_FINISH } from "../../../services/api/utils";
 
 export const getQuizzFinish = createAsyncThunk(
-  "get/portalNews",
+  "get/getQuizzFinish",
   async ({ status, year }) => {
     return await axios({
       url: GET_VICTORINA_FINISH,

@@ -1,14 +1,14 @@
 import "./BtnComp.scss";
 import { motion } from "framer-motion";
 
-const BtnComp = ({ el, index, activeBtn, handleBtn }) => {
+const BtnComp = ({ el, activeBtn, handleBtn }) => {
   return (
     <motion.button
       whileTap={{ scale: 0.9 }}
-      className={el === activeBtn ? "btnComp active" : "btnComp"}
-      onClick={() => handleBtn(el, index)}
+      className={el.id === activeBtn ? "btnComp active" : "btnComp"}
+      onClick={() => handleBtn({ id: el?.id, status: el?.status })}
     >
-      {el}
+      {el.label}
     </motion.button>
   );
 };

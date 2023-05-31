@@ -3,7 +3,11 @@ import img2 from "../../../../../assets/images/portal/cabinetVolunteer/img1.png"
 import img3 from "../../../../../assets/images/portal/cabinetVolunteer/img2.png";
 import img4 from "../../../../../assets/images/portal/cabinetVolunteer/img2.png";
 
-export const dataBtn = ["Barchasi", "Boshqasi", "Anunisi", "Bunisi"];
+export const dataBtn = [
+  { id: 1, label: "Aktiv yani qatnashgan", status: 1 },
+  { id: 2, label: "Registratsiya qigan", status: 1 },
+  { id: 3, label: "Arxiv", status: 0 },
+];
 export const fakeBodyData = [
   {
     img: img1,

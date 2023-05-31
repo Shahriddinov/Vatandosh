@@ -43,6 +43,8 @@ export default function PortalNews() {
     return <Spinner position="full" />;
   }
 
+  console.log(oneNewsDetail);
+
   return (
     <div className="portal-newsdetail">
       <div className="container">

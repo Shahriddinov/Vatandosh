@@ -1,71 +1,25 @@
 import React from "react";
-import {
-  CalendarIcon,
-  ExcludeIcon,
-  ViewIcon,
-} from "../../../../../assets/images/expert";
 import "./MoreVictorina.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { useEffect } from "react";
-import { imageUrl } from "../../../../../services/api/utils";
-import { Link } from "react-router-dom";
+import VictorinaCard from "../VictorinaHome/components/victorinaCard/VictorinaCard";
 
 function MoreVictorina() {
   const dispatch = useDispatch();
-  const quizData = useSelector((state) => state.quizSlice.quizData.quizzes);
+  const quizData = useSelector((state) => state.quizSlice.data.quizzes);
+  const lan = useSelector((state) => state.language.language);
 
   useEffect(() => {
     dispatch(getQuizz({ status: 1 }));
-  }, []);
+  }, [lan, dispatch]);
   return (
     <div className="morevictorina">
       <div className="container">
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
-          {quizData?.map((victorina) => (
-            <div key={victorina?.id} className="victorina-list">
-              <img
-                src={`${imageUrl}/${victorina?.image}`}
-                alt=""
-                className="victorina-img"
-              />
-              <div className="victorina-items">
-                <h4 className="victorina-subname">{victorina.title}</h4>
-                <div className="victorina-lists">
-                  <div className="victorina-item">
-                    <img src={CalendarIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.started_at}</p>
-                  </div>
-                  <div className="victorina-item">
-                    <img src={ViewIcon} alt="" className="victorina-icon" />
-                    <p>{victorina.count}</p>
-                  </div>
-                </div>
-                <p
-                  dangerouslySetInnerHTML={{ __html: victorina.description }}
-                />
-                <div className="victorina__list">
-                  <span className="victorina__item">
-                    <p>{victorina.started_at?.slice(9, 11)}</p>
-                    <p>Kun</p>
-                  </span>
-                  <span className="victorina__item">
-                    <p>{victorina.started_at?.slice(11, 13)}</p>
-                    <p>Soat</p>
-                  </span>
-                  <span className="victorina__item">
-                    <p>{victorina.started_at?.slice(14, 16)}</p>
-                    <p>Daqiqa</p>
-                  </span>
-                </div>
-                <Link
-                  to={`/portal-category/victorina/image-project/${victorina?.id}`}
-                  className="victorina-link">
-                  Batafsil ma'lumot
-                </Link>
-              </div>
-            </div>
+          {quizData?.map((victorina, index) => (
+            <VictorinaCard victorina={victorina} key={index} url="" />
           ))}
         </div>
         {/* <a href="#" className="morevictorina-finish">
