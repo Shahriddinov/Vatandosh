@@ -405,6 +405,9 @@ const ChoicesPublicAssociations = lazy(() =>
   import("./pages/choices/publicAssociations/PublicAssociations")
 );
 const ChoicesQuizzes = lazy(() => import("./pages/choices/quizzes/quizzes"));
+const MoreDetail = lazy(() =>
+  import("./pages/choices/quizzes/moreDetail/MoreDetail")
+);
 
 const routes = [
   { path: "", element: Home },
@@ -441,6 +444,7 @@ const routes = [
   { path: "/registration/signup/api/verify/", element: EmailVerify },
   { path: "/registration/signup/api/reset/", element: ResetPassword },
   { path: "/choices/quiz", element: ChoicesQuizzes },
+  { path: "/choices/quiz/more-detail/:id/:status", element: MoreDetail },
   { path: "/choices/public-associations", element: ChoicesPublicAssociations },
 ];
 

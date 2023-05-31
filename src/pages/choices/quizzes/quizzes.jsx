@@ -18,11 +18,14 @@ import { useTranslation } from "react-i18next";
 
 const Quizzes = () => {
   const [activeBtn, setActiveBtn] = useState(1);
-  const [postsPerPage, setPostsPerpage] = useState(6);
+  const [postsPerPageActive, setPostsPerpageActive] = useState(6);
+  const [postsPerPageEnded, setPostsPerpageEnded] = useState(6);
   const dispatch = useDispatch();
   const quizTotalData = useSelector((state) => state.choiceQuizSlice);
   const lan = useSelector((state) => state.language.language);
   const { t } = useTranslation();
+
+  console.log(quizTotalData.allData);
 
   const btnArr = [
     {
@@ -38,7 +41,7 @@ const Quizzes = () => {
   ];
 
   useEffect(() => {
-    dispatch(getAllQuizData({ status: 1, paginate: postsPerPage }));
+    dispatch(getAllQuizData({ status: 1, paginate: postsPerPageActive }));
   }, [dispatch, lan]);
 
   if (quizTotalData?.allDataLoading) {
@@ -49,9 +52,24 @@ const Quizzes = () => {
 
   const changeBtn = (el) => {
     setActiveBtn(el.id);
-    dispatch(getAllQuizData({ status: el.status, paginate: postsPerPage }));
+    dispatch(
+      getAllQuizData({
+        status: el.status,
+        paginate: el.id === 1 ? postsPerPageActive : postsPerPageEnded,
+      })
+    );
   };
 
+  const showMoreActive = (e) => {
+    e.preventDefault();
+    setPostsPerpageActive((prev) => prev + 6);
+    dispatch(getAllQuizData({ status: 1, paginate: postsPerPageActive }));
+  };
+  const showMoreEnded = (e) => {
+    e.preventDefault();
+    setPostsPerpageEnded((prev) => prev + 6);
+    dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded }));
+  };
   return (
     <>
       <Header />
@@ -96,7 +114,7 @@ const Quizzes = () => {
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setPostsPerpage((prev) => prev + 6)}
+                onClick={(e) => showMoreActive(e)}
               >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
@@ -117,7 +135,7 @@ const Quizzes = () => {
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setPostsPerpage((prev) => prev + 6)}
+                onClick={(e) => showMoreEnded(e)}
               >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
