@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { timer } from "../../../../../../../helpers/extraFunction";
 
 import "./victorinaCard.scss";
-const VictorinaCard = ({ victorina }) => {
+const VictorinaCard = ({ victorina, url }) => {
   const [timeData, setTimeDate] = useState({
     days: "00",
     hours: "00",
@@ -52,22 +52,30 @@ const VictorinaCard = ({ victorina }) => {
           </div>
         </div>
         <p dangerouslySetInnerHTML={{ __html: victorina.description }} />
-        <div className="victorina-item__list">
-          <span className="victorina-item__item">
-            <p>{timeData.days}</p>
-            <p>Kun</p>
-          </span>
-          <span className="victorina-item__item">
-            <p>{timeData.hours}</p>
-            <p>Soat</p>
-          </span>
-          <span className="victorina-item__item">
-            <p>{timeData.minutes}</p>
-            <p>Daqiqa</p>
-          </span>
-        </div>
+        {victorina.status === 1 ? (
+          <div className="victorina-item__list">
+            <span className="victorina-item__item">
+              <p>{timeData.days}</p>
+              <p>Kun</p>
+            </span>
+            <span className="victorina-item__item">
+              <p>{timeData.hours}</p>
+              <p>Soat</p>
+            </span>
+            <span className="victorina-item__item">
+              <p>{timeData.minutes}</p>
+              <p>Daqiqa</p>
+            </span>
+          </div>
+        ) : (
+          <button className="victorina-item-button">
+            VIKTORINA YAKUNLANDI!
+          </button>
+        )}
         <Link
-          to={`/portal-category/victorina/image-project/${victorina.id}`}
+          to={`/portal-category/victorina${
+            url ? `/${url}` : ""
+          }/image-project/${victorina.id}`}
           className="victorina-item-link"
         >
           Batafsil ma'lumot

@@ -1,26 +1,15 @@
 import { useState } from "react";
-import { fakeBodyData, dataBtn } from "../components/fakedata";
-import calendarSvg from "../../../../../assets/images/portal/cabinetVolunteer/calendar.svg";
-import eyeSvg from "../../../../../assets/images/portal/cabinetVolunteer/eye.svg";
+import { dataBtn } from "../components/fakedata";
 import BtnComp from "../components/btn/BtnComp";
-import CardComp from "../components/card/CardComp";
 
 import "./quiz.scss";
 import { useQuizFetching } from "./hooks/useQuizFetching";
+import { QuizList } from "./components";
+import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 
 const Quiz = () => {
-  const { quizData, quizDataLoading, error } = useQuizFetching();
-  const [activeBtn, setActiveBtn] = useState("Barchasi");
-  const [data, setData] = useState(fakeBodyData);
-  const [filteredData, setFilteredData] = useState(fakeBodyData);
-  const handleBtn = (name, index) => {
-    setActiveBtn(dataBtn[index]);
-    if (name === "Barchasi") {
-      setFilteredData(data);
-      return;
-    }
-    setFilteredData(data.filter((el) => el.status === name));
-  };
+  const { quizData, quizDataLoading, error, dispatch } = useQuizFetching();
+  const [activeBtn, setActiveBtn] = useState(1);
 
   if (quizDataLoading) {
     return null;
@@ -28,32 +17,26 @@ const Quiz = () => {
     return <p>{error}</p>;
   }
 
-  console.log(quizData);
+  const handleChangeBtn = ({ id, status }) => {
+    setActiveBtn(id);
+    dispatch(getQuizz({ status: status }));
+  };
+
   return (
     <div className="container-quiz">
       <div className="container-quiz-inner">
         <div className="container-quiz-inner_btnContainer">
-          {dataBtn.map((el, index) => (
+          {dataBtn.map((el) => (
             <BtnComp
-              key={index}
+              key={el.id}
               el={el}
-              index={index}
               activeBtn={activeBtn}
-              handleBtn={handleBtn}
+              handleBtn={handleChangeBtn}
             />
           ))}
         </div>
         <div className="container-quiz-inner_cardContainer">
-          {filteredData.map((el, index) => (
-            <CardComp
-              key={index}
-              el={el}
-              index={index}
-              fakeBodyData={fakeBodyData}
-              calendarSvg={calendarSvg}
-              eyeSvg={eyeSvg}
-            />
-          ))}
+          <QuizList data={quizData?.quizzes} />
         </div>
       </div>
     </div>

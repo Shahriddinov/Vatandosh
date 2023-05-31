@@ -1,8 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NotebookImage } from "../../../../../assets/images/victorina";
-import { CouncilImage } from "../../../../../assets/images/volunter";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
-import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics";
 import "./VictorinaAbout.scss";
 import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
 import { useEffect } from "react";
@@ -13,9 +10,11 @@ function VictorinaAbout() {
   const dispatch = useDispatch();
   const pageData = useSelector((state) => state.pageSlice.pageData);
 
+  const lan = useSelector((state) => state.language.language);
+
   useEffect(() => {
     dispatch(getQuizPage());
-  }, []);
+  }, [dispatch, lan]);
 
   return (
     <div className="about">

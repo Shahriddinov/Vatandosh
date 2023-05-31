@@ -16,7 +16,7 @@ function Victorina({ quizData }) {
         <h2 className="victorina-name">Viktorinalar</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
-            <VictorinaCard victorina={victorina} key={index} />
+            <VictorinaCard victorina={victorina} key={index} url="" />
           ))}
         </div>
         <Link className="victorina_link" to="victorina-more">

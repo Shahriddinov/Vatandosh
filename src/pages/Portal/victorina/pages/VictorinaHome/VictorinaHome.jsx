@@ -1,6 +1,5 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import Navbar from "../../components/Navbar/Navbar";
 import Nav from "../../components/Nav/Nav";
 import HeaderTime from "./components/HeaderTime/HeaderTime";
@@ -13,7 +12,6 @@ import { Spinner } from "../../../../../component";
 
 function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
-  const { t } = useTranslation();
 
   const {
     communityNews,
@@ -23,17 +21,13 @@ function VictorinaHome() {
     pageDataLoading,
     error,
   } = useVictorinaFetching();
-  // if (communityNews || quizData || pageData || quizDataWinner) {
-  //   return <Spinner position="full" />;
-  // } else if (error) {
-  //   return <p>{error}</p>;
-  // }
 
   if (quizDataLoading || pageDataLoading) {
     return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
   }
 
-  console.log(quizData);
   return (
     <div>
       <div className="victorina-home">
