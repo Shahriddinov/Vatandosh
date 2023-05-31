@@ -7,11 +7,14 @@ export const getNews = createAsyncThunk("news/getNews", async () => {
   return await axios.get(GET_NEWS_URL).then((res) => res.data);
 });
 
-export const getHomeNews = createAsyncThunk("news/getHomeNews", async () => {
-  return await axios
-    .get(`${GET_NEWS_URL}/page/6?page=1`)
-    .then((res) => res.data);
-});
+export const getHomeNews = createAsyncThunk(
+  "news/getHomeNews",
+  async ({ page }) => {
+    return await axios
+      .get(`${GET_NEWS_URL}/page/6?page=${page}`)
+      .then((res) => res.data);
+  }
+);
 
 export const getDetailData = createAsyncThunk(
   "news/getOne",

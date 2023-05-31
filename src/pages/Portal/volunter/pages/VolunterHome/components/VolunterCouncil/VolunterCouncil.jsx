@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function Volunter({ volunteers }) {
   const { t } = useTranslation();
-  console.log(volunteers)
+  console.log(volunteers);
   return (
     <div className="expert">
       <div className="container">
@@ -40,7 +40,7 @@ function Volunter({ volunteers }) {
               <p style={{ color: "#656B70", fontWeight: 700 }}>
                 Chop etilgan maqolalar soni:{" "}
                 <b style={{ color: "#065EA9" }}>
-                  {volunteer?.user_volunteer_activity?.length}
+                  {volunteer?.user_volunteer_activities?.length}
                 </b>
               </p>
               <Link className="employe-link" to={`profile/${volunteer.id}`}>
