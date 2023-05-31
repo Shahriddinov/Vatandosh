@@ -1,39 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Globe, UserIcon } from "../../../../../../../assets/images/expert";
 
-const data = [
-  {
-    id: 1,
-    country: "Rossiya",
-    number: 24,
-  },
-  {
-    id: 2,
-    country: "Turkiya",
-    number: 18,
-  },
-  {
-    id: 3,
-    country: "Germaniya",
-    number: 16,
-  },
-  {
-    id: 4,
-    country: "Rossiya",
-    number: 8,
-  },
-  {
-    id: 5,
-    country: "Malayziya",
-    number: 4,
-  },
-  {
-    id: 6,
-    country: "Rossiya",
-    number: 2,
-  },
-];
-
 function VictorinaStatics({ pageData }) {
   const { t } = useTranslation();
   return (
