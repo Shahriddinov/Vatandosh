@@ -51,7 +51,7 @@ function CouncilStatics({ count,VolunteerCount }) {
           <h5>{t("expert.country")}</h5>
           <img src={Globe} />
         </span>
-        {VolunteerCount.sort((a, b) => b.users.length - a.users.length)
+        {VolunteerCount?.sort((a, b) => b.users.length - a.users.length)
           .slice(0, 5)
           .map((data) => (
             <span className="council-span" key={data.id}>

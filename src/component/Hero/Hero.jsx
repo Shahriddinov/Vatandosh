@@ -50,6 +50,8 @@ const Hero = ({ sliderData, error, loading }) => {
     return <p className="">{error}</p>;
   }
 
+  console.log(sliderData);
+
   return (
     <section className="hero">
       <div className="hero__container container">

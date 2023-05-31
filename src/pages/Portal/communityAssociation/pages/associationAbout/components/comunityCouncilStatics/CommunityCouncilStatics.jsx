@@ -7,9 +7,9 @@ const CommunityCouncilStatics = ({ allCommunityGet, allRegions }) => {
   const { t } = useTranslation();
 
   const data = allRegions
-    .filter((el) => el.count > 0)
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
+    ?.filter((el) => el.count > 0)
+    ?.sort((a, b) => b.count - a.count)
+    ?.slice(0, 5);
 
   return (
     <div className="about-right">
