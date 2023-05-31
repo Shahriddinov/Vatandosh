@@ -1,0 +1,6 @@
+.cabinet-events-list {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, min-content));
+  gap: 30px;
+}

@@ -6,8 +6,10 @@ import BtnComp from "../components/btn/BtnComp";
 import CardComp from "../components/card/CardComp";
 
 import "./quiz.scss";
+import { useQuizFetching } from "./hooks/useQuizFetching";
 
 const Quiz = () => {
+  const { quizData, quizDataLoading, error } = useQuizFetching();
   const [activeBtn, setActiveBtn] = useState("Barchasi");
   const [data, setData] = useState(fakeBodyData);
   const [filteredData, setFilteredData] = useState(fakeBodyData);
@@ -19,6 +21,14 @@ const Quiz = () => {
     }
     setFilteredData(data.filter((el) => el.status === name));
   };
+
+  if (quizDataLoading) {
+    return null;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
+  console.log(quizData);
   return (
     <div className="container-quiz">
       <div className="container-quiz-inner">

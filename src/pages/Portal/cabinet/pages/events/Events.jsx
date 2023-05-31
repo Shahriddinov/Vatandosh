@@ -2,6 +2,9 @@ import "./events.scss";
 import eventImg from "../../../../../assets/images/portal/cabinetVolunteer/event.png";
 import calImg from "../../../../../assets/images/portal/cabinetVolunteer/calendar.svg";
 import { motion } from "framer-motion";
+import { useEventsFetching } from "./hooks/useEventsFetching";
+import { Spinner } from "../../../../../component";
+import { EventsList } from "./components";
 
 const fakeData = [
   {
@@ -39,50 +42,19 @@ const fakeData = [
 ];
 
 const Events = () => {
+  const { meetingsLoading, meetingError, meetingsData } = useEventsFetching();
+
+  if (meetingsLoading) {
+    return <Spinner />;
+  } else if (meetingError) {
+    return <p>{meetingError}</p>;
+  }
+
   return (
     <div className="container-events">
       <div className="container-events-inner">
         <h1>Мероприятия</h1>
-        <div className="container-events-inner-box">
-          {fakeData.map((el, index) => (
-            <div key={index} className="container-events-inner-box-each">
-              <img src={el.img} alt="img" />
-              <div className="container-events-inner-box-each_bottomBox">
-                <div className="container-events-inner-box-each_bottomBox-dateBox">
-                  <img src={calImg} alt="calIcon" />
-                  <span>{el.data}</span>
-                </div>
-                <h1>{el.header}</h1>
-                <p>{el.body}</p>
-                <div className="container-events-inner-box-each_bottomBox-timerBox">
-                  <div className="container-events-inner-box-each_bottomBox-timerBox-box">
-                    <span>{el.timer[0]}</span>
-                    <span>Kun</span>
-                  </div>
-                  <div className="container-events-inner-box-each_bottomBox-timerBox-vl"></div>
-                  <div className="container-events-inner-box-each_bottomBox-timerBox-box">
-                    <span>{el.timer[1]}</span>
-                    <span>Soat</span>
-                  </div>
-                  <div className="container-events-inner-box-each_bottomBox-timerBox-vl"></div>
-                  <div className="container-events-inner-box-each_bottomBox-timerBox-box">
-                    <span>{el.timer[2]}</span>
-                    <span>Daqiqa</span>
-                  </div>
-                </div>
-
-                <div className="container-events-inner-box-each_bottomBox-btnBox">
-                  <motion.button whileTap={{ scale: 0.9 }}>
-                    Batafsil
-                  </motion.button>
-                  <motion.button whileTap={{ scale: 0.9 }}>
-                    Ishritok etish
-                  </motion.button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <EventsList meetingsData={meetingsData} />
       </div>
     </div>
   );
