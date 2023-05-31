@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ const Hero = ({ sliderData, error, loading }) => {
   const handleRight = () => {
     if (slideIndex === sliderData.length) {
       setSlideIndex(1);
-    } else {
+    } else if (slideIndex < sliderData.length) {
       setSlideIndex(slideIndex + 1);
     }
   };
@@ -54,10 +54,10 @@ const Hero = ({ sliderData, error, loading }) => {
     <section className="hero">
       <div className="hero__container container">
         <div className="hero__slider">
-          {sliderData?.map((slider) => (
+          {sliderData?.map((slider, index) => (
             <div
               className={`hero__slider-box ${
-                slideIndex === slider?.id ? "active" : ""
+                slideIndex === ++index ? "active" : ""
               }`}
               key={slider.id}
             >

@@ -1,6 +1,6 @@
 import React from "react";
 import StatesFriendshipInfo from "../components/statesFriendshipInfo";
-import { MiniSlider, SiteHero, Spinner } from "../../../component";
+import { MiniSlider, Spinner } from "../../../component";
 
 import WhriteHeader from "../../../component/Layout/WhriteHeader/WhriteHeader";
 import { useTranslation } from "react-i18next";
@@ -8,15 +8,12 @@ import { useTranslation } from "react-i18next";
 import { useAssociationFetching } from "../hooks/useAssociationFetching";
 
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import OfferStatesFriendship from "../components/offerStatesFriendship";
 import { baseServerUrl } from "../../../services/api/utils";
 
 import "./statesFriendshipSociety.scss";
 
 const StatesFriendshipSociety = () => {
-  const lan = useSelector((state) => state.language.language);
-
   const {
     associationData,
     associationCategoryData,
@@ -26,7 +23,6 @@ const StatesFriendshipSociety = () => {
     eventsData,
     eventsLoading,
   } = useAssociationFetching();
-  const lng = useSelector((state) => state.language.language);
   const { categoryId } = useParams();
   const { t } = useTranslation();
 
@@ -43,11 +39,6 @@ const StatesFriendshipSociety = () => {
     (country) => country.id === categoryData.country_uz * 1
   );
 
-  const dataHero = {
-    [`menu_${lan}`]: categoryData[`title_${lng}`],
-    [`info_${lan}`]: countryData[`info_${lng}`],
-  };
-
   return (
     <>
       <div className="state-friendship-society">
@@ -58,7 +49,6 @@ const StatesFriendshipSociety = () => {
           }}
         >
           <WhriteHeader />
-          <SiteHero data={dataHero} />
         </div>
 
         <main className="main">

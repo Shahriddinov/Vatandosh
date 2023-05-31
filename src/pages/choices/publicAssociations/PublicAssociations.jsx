@@ -123,7 +123,7 @@ const PublicAssociations = () => {
               </p>
               <img src={el.channel} alt="channel" />
               <p className="choicesPAContainer-body-card_bottomText">
-                Chop etilgan maqolalar: {el.count}
+                Tadbirlar: {el.count}
               </p>
               <motion.button whileTap={{ scale: 0.9 }}>Batafsil</motion.button>
             </div>

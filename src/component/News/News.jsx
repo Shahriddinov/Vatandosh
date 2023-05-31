@@ -3,10 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
-import { getHomeNews } from "../../reduxToolkit/newsSlice/extraReducer";
 import "./News.scss";
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import { getEventsHome } from "../../reduxToolkit/eventsSlice/extraReducer";
 import { baseServerUrl } from "../../services/api/utils";
 import Spinner from "../Spinner/Spinner";
 import {
@@ -31,8 +29,6 @@ const News = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getHomeNews());
-    dispatch(getEventsHome());
     dispatch(portalNews());
     dispatch(getProjectsMenu());
     dispatch(portalEvents());
@@ -76,7 +72,7 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {news?.data?.map((news) => (
+              {news?.map((news) => (
                 <PortalCard key={news.id} {...news} pathUrl="news" />
               ))}
               <div className="all-btn-mobile">

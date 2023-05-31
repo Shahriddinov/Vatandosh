@@ -17,7 +17,7 @@ const PortalCard = (props) => {
 
   return (
     <div
-      className="single-card"
+      className="single-card portalCard"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000"
