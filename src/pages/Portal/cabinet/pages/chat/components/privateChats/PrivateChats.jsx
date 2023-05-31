@@ -42,7 +42,6 @@ const PrivateChats = ({
     dispatch(
       getMessages({
         chat_id: chat_room_id,
-        chat_type: 1,
         page: activePage,
       })
     );
@@ -53,7 +52,6 @@ const PrivateChats = ({
       dispatch(
         getMessages({
           chat_id: chatRoomId,
-          chat_type: 1,
           page: activePage,
         })
       );
@@ -63,8 +61,6 @@ const PrivateChats = ({
   useEffect(() => {
     dispatch(getAllChats());
   }, []);
-
-  console.log(data);
 
   return (
     <div className="users">

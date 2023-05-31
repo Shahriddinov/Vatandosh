@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getAllChats } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
@@ -21,6 +21,7 @@ const GroupsChats = ({
 }) => {
   const dispatch = useDispatch();
   const [chatRoomId, setChatRoomId] = useState(null);
+  const leaveGroup = useSelector((state) => state.chatSlice.leaveData);
 
   const handleClick = (group, groupImg) => {
     setActiveGroup(group.id);
@@ -34,7 +35,6 @@ const GroupsChats = ({
     dispatch(
       getMessages({
         chat_id: group.id,
-        chat_type: 1,
         page: activePage,
       })
     );
@@ -45,7 +45,6 @@ const GroupsChats = ({
       dispatch(
         getMessages({
           chat_id: chatRoomId,
-          chat_type: 1,
           page: activePage,
         })
       );
@@ -55,6 +54,12 @@ const GroupsChats = ({
   useEffect(() => {
     dispatch(getAllChats());
   }, []);
+
+  useEffect(() => {
+    if (leaveGroup === "success") {
+      dispatch(getAllChats());
+    }
+  }, [leaveGroup]);
 
   return (
     <div className="groups">

@@ -13,7 +13,27 @@ export const getMessages = createAsyncThunk(
   "get/messages",
   async ({ chat_id, page }) => {
     return await axios
-      .get(`${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=$&page=${page}`)
+      .get(`${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&page=${page}`)
+      .then((res) => res.data);
+  }
+);
+
+// Get Files
+export const getFiles = createAsyncThunk(
+  "get/files",
+  async ({ chat_id, page }) => {
+    return await axios
+      .get(`${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=2&page=${page}`)
+      .then((res) => res.data);
+  }
+);
+
+// Get Links
+export const getLinks = createAsyncThunk(
+  "get/links",
+  async ({ chat_id, page }) => {
+    return await axios
+      .get(`${GET_CHAT_DATA}/chat/${chat_id}?per_page=1000&type=3&page=${page}`)
       .then((res) => res.data);
   }
 );

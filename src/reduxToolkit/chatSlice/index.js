@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   checkUser,
   getAllChats,
+  getFiles,
+  getLinks,
   getMediaUrl,
   getMessages,
   leaveGroup,
@@ -15,6 +17,12 @@ const initialState = {
 
   messagesLoading: false,
   messagesData: null,
+
+  filesLoading: false,
+  filesData: null,
+
+  linksLoading: false,
+  linksData: null,
 
   sendLoading: false,
   sendMessage: null,
@@ -62,6 +70,34 @@ const chatSlice = createSlice({
       })
       .addCase(getMessages.rejected, (state, action) => {
         state.messagesLoading = false;
+        state.errors = action.error.message;
+      });
+
+    // Get Files
+    build
+      .addCase(getFiles.pending, (state) => {
+        state.filesLoading = true;
+      })
+      .addCase(getFiles.fulfilled, (state, action) => {
+        state.filesLoading = false;
+        state.filesData = action.payload;
+      })
+      .addCase(getFiles.rejected, (state, action) => {
+        state.filesLoading = false;
+        state.errors = action.error.message;
+      });
+
+    // Get Links
+    build
+      .addCase(getLinks.pending, (state) => {
+        state.linksLoading = true;
+      })
+      .addCase(getLinks.fulfilled, (state, action) => {
+        state.linksLoading = false;
+        state.linksData = action.payload;
+      })
+      .addCase(getLinks.rejected, (state, action) => {
+        state.linksLoading = false;
         state.errors = action.error.message;
       });
 
