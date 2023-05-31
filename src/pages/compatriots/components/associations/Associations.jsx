@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { dataCoun } from "./data";
 import "./associations.scss";
 
 import Accordion from "@mui/material/Accordion";
@@ -15,10 +14,19 @@ const Associations = ({ data }) => {
   const [expanded, setExpanded] = React.useState("");
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
+  const [associations, setassociations] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  useEffect(() => {
+    setassociations(() =>
+      data?.sort((a, b) =>
+        a[`country_${lng}`].localeCompare(b[`country_${lng}`])
+      )
+    );
+  }, [data, lng]);
 
   return (
     <section className="associations">
@@ -26,7 +34,7 @@ const Associations = ({ data }) => {
         <div className="associations__inner">
           <h2 className="associations__title">{t("Associations")}</h2>
           <ul className="associations__accordions">
-            {data?.map((el) => (
+            {associations?.map((el) => (
               <Accordion
                 variant="li"
                 component="li"
@@ -63,17 +71,17 @@ const Associations = ({ data }) => {
 
                 <AccordionDetails>
                   <ul className="associations__accordion_body">
-                    {el?.categories.map((category, index) => (
+                    {el?.categories?.map((category, index) => (
                       <li
                         className="associations__accordion_item"
                         key={category.id}
                       >
                         {index + 1}.{" "}
                         {category[`title_${lng}`]
-                          .split(" ")
-                          .slice(
+                          ?.split(" ")
+                          ?.slice(
                             0,
-                            category[`title_${lng}`].split(" ").length - 1
+                            category[`title_${lng}`]?.split(" ").length - 1
                           )
                           .join(" ")}
                         <Link
@@ -82,8 +90,8 @@ const Associations = ({ data }) => {
                         >
                           {" "}
                           {
-                            category[`title_${lng}`].split(" ")[
-                              category[`title_${lng}`].split(" ").length - 1
+                            category[`title_${lng}`]?.split(" ")[
+                              category[`title_${lng}`]?.split(" ").length - 1
                             ]
                           }
                         </Link>

@@ -20,6 +20,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ArrowDown from "../../assets/images/icons/arrowDown.svg";
 
 import Participate from "../../assets/images/projects/participate.png";
+import hand from "../../assets/images/projects/hand.png";
 import Pattern1 from "../../assets/images/projects/patternLeft.svg";
 import Pattern2 from "../../assets/images/projects/patternCenter.svg";
 import Pattern3 from "../../assets/images/projects/patternRight.svg";
@@ -229,7 +230,7 @@ const Projects = () => {
                   {t("projects_page.participate_btn")}
                 </button>
               </div>
-              <img src={Participate} alt="" className="participate__img" />
+              <img src={hand} alt="" className="participate__img" />
             </div>
           </div>
         </div>
