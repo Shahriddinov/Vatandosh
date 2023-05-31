@@ -5,13 +5,32 @@ import "./VolunterActivityDetail.scss";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
+import { useEffect } from "react";
+import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
 
 export default function VolunterActivityDetail() {
+  const dispatch = useDispatch();
+  const lan = useSelector((state) => state.language.language);
   const url = [
     { title: "Asosiy", url: "/portal-category/volunteer" },
     { title: "Volontyorlar ishlari", url: "#" },
   ];
 
+  const { id } = useParams();
+  const { t } = useTranslation();
+  const newsData = useSelector((state) =>
+    state.newsSlice?.newsData?.find((evt) => evt?.id === Number(id))
+  );
+
+  useEffect(() => {
+    dispatch(getNews());
+  }, [dispatch]);
+  const { VolunteerCount } = useVolunteerHomeFetching();
+  const dataCount = VolunteerCount.map((el) => el.users).flat();
   return (
     <main className="volunteractivitydetail">
       <div className="container">
@@ -25,11 +44,11 @@ export default function VolunterActivityDetail() {
               <div className="volunteractivitydetail-main-detail-desc-action-date-viewers">
                 <div className="volunteractivitydetail-main-detail-desc-action-date">
                   <BsFillCalendar2EventFill />
-                  <span>{"12.02.2023"}</span>
+                  <span>{newsData?.data}</span>
                 </div>
                 <div className="volunteractivitydetail-main-detail-desc-action-viewers">
                   <AiFillEye />
-                  <span>{"100 K"}</span>
+                  <span>{newsData?.viewers}</span>
                 </div>
               </div>
               <div className="volunteractivitydetail-main-detail-desc-action-tags">
@@ -43,26 +62,21 @@ export default function VolunterActivityDetail() {
               </div>
             </div>
             <h3 className="volunteractivitydetail-main-detail-title">
-              “FOOD SUPPLIES” Haftaligida qatnashish uchun Volontyorlarni
-              yig‘moqda
+              {newsData[`title_${lan}`]}
             </h3>
             <div className="volunteractivitydetail-main-detail-text">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: newsData[`text_${lan}`],
+                }}
+              />
             </div>
             <ShareFriends />
           </div>
-          <CouncilStatics />
+          <CouncilStatics
+            count={dataCount.length}
+            VolunteerCount={VolunteerCount}
+          />
         </div>
       </div>
     </main>

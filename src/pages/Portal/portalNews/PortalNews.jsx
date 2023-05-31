@@ -43,6 +43,8 @@ export default function PortalNews() {
     return <Spinner position="full" />;
   }
 
+  console.log(oneNewsDetail);
+
   return (
     <div className="portal-newsdetail">
       <div className="container">
@@ -98,8 +100,7 @@ export default function PortalNews() {
                 className="portal-newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: oneNewsDetail.body,
-                }}
-              ></div>
+                }}></div>
               {/* {data?.images
             ? JSON.parse(data?.images).length >= 1 && (
                 <div className="portal-newsdetail-main-desc-gallery">
