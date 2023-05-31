@@ -156,8 +156,8 @@ export default function VictorinaProject() {
                   {quizData?.participants?.map((el) => (
                     <WinnerCardVictorina
                       title={quizData?.title}
-                      key={el.id}
                       el={el}
+                      volunterById={id}
                     />
                   ))}
                 </div>

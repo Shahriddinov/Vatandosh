@@ -467,11 +467,13 @@ const RoutesContainer = () => {
                 <Route path="/registration/register" element={<Register />} />
                 <Route
                   path="/portal-category/cabinet"
-                  element={<CabinetLayout />}>
+                  element={<CabinetLayout />}
+                >
                   <Route index element={<CabinetHome />} />
                   <Route
                     path="private-information"
-                    element={<PrivateInformation />}>
+                    element={<PrivateInformation />}
+                  >
                     <Route index element={<CommonInformation />} />
                     <Route path="job" element={<Job />} />
                     <Route path="education" element={<Education />} />
@@ -552,7 +554,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}>
+              element={<CommunityAssociationLayout />}
+            >
               <Route index element={<CommunityAssociationHome />} />
               <Route path="about" element={<CommunityAssociationAbout />} />
               <Route
@@ -578,7 +581,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/volunteer"
-              element={<VolunterLayout />}>
+              element={<VolunterLayout />}
+            >
               <Route index element={<VolunterHome />} />
               <Route path="profile/:id" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
@@ -608,7 +612,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}>
+              element={<OnlineTeachingLayout />}
+            >
               <Route index element={<OnlineTeachingHome />} />
               <Route path="about" element={<AboutTeaching />} />
               <Route path="take-test" element={<PassTheTest />} />
@@ -622,11 +627,15 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/victorina"
-              element={<VictorinaLayout />}>
+              element={<VictorinaLayout />}
+            >
               <Route index element={<VictorinaHome />}></Route>
               <Route path="contact" element={<Contact />} />
               <Route path="listwinners" element={<ListOfWinners />} />
-              <Route path="winner/:id" element={<VictorinaWinner />} />
+              <Route
+                path="winner/:victorinaById/:id"
+                element={<VictorinaWinner />}
+              />
               <Route path="image-project/:id" element={<VictorinaProject />} />
               <Route path="victorina-finish" element={<VictorinaFinish />} />
               <Route path="victorina-more" element={<MoreVictorina />} />
@@ -645,7 +654,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}>
+              element={<ElectronicJournalLayout />}
+            >
               <Route index element={<ElectronicJournalHome />} />
               <Route
                 path="about/:journalId"
@@ -659,7 +669,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/about-uzbekistan"
-              element={<AboutUzbekistanLayout />}>
+              element={<AboutUzbekistanLayout />}
+            >
               <Route index element={<AboutUzbekistanHome />} />
               <Route
                 path="visual-information"
