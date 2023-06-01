@@ -19,14 +19,14 @@ export default function VolunteerOffers() {
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
-    { title: t("expert.offers"), url: "/portal-category/expert/offers" },
-    { title: t("expert.offer"), url: "" },
+    { title: "Volonyorlik faoliyat", url: "/portal-category/expert/offers" },
+    { title: "Maqola", url: "" },
   ];
 
   return (
     <main className="expertofferdetail">
       <div className="container">
-        <ExpertTitle title={t("expert.offer")} url={url} />
+        <ExpertTitle title="Maqola" url={url} />
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
@@ -41,9 +41,9 @@ export default function VolunteerOffers() {
               name={expertData?.user_profile?.last_name}
               nameOne={expertData?.user_profile?.first_name}
               nameTwo={expertData?.user_profile?.second_name}
-              address={expertData?.user_profile?.international_address_id.name}
+              address={expertData?.user_profile?.international_address_id?.name}
               addressOne={
-                expertData.user_profile.international_location_id.name
+                expertData.user_profile?.international_location_id?.name
               }
               position={expertData?.user_profile?.job_position}
             />
