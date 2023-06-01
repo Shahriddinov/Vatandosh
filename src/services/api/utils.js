@@ -1,5 +1,5 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
-export const authUrl = "https://api.vatandoshlarfondi.uz/auth";
+export const authUrl = "https://api.vatandoshlarfondi.uz/api/auth";
 export const portalBaseUrl = "https://api.vatandoshlarfondi.uz/api";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
