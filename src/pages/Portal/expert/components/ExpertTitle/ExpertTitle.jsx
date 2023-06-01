@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 export default function ExpertTitle({ title, url }) {
   const { t } = useTranslation();
-  console.log(url);
   return (
     <div className="experttitle-title">
       <h1 className="experttitle-title-text">{title}</h1>

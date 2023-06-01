@@ -48,6 +48,8 @@ export default function CustomProfil() {
 
   if (error) return <NotFound />;
 
+  console.log(expertData);
+
   return expertData ? (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
@@ -63,10 +65,20 @@ export default function CustomProfil() {
             {expertData?.user_profile?.first_name}{" "}
             {expertData?.user_profile?.second_name}
           </h4>
-          <div className="customprofil-detail-desc-workexp">
-            <span>{t("expert.workexp")}</span>
-            <span>{expertData?.user_profile?.work_experience}</span>
-          </div>
+          {pathname.includes("expert") ? (
+            <div className="customprofil-detail-desc-workexp">
+              <span>{t("expert.workexp")}</span>
+              <span>{expertData?.user_profile?.work_experience}</span>
+            </div>
+          ) : (
+            ""
+          )}
+          {pathname.includes("expert") ? null : (
+            <div className="customprofil-detail-desc-workexp">
+              <span>Chop etilgan maqolalar soni:</span>
+              <span>{expertData?.user_volunteer_activities?.length}</span>
+            </div>
+          )}
         </div>
       </div>
       <div className="customprofil-list">
@@ -249,7 +261,7 @@ export default function CustomProfil() {
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {[1, 2, 3, 4].map((id) => (
+              {/* {[1, 2, 3, 4].map((id) => ( */}
                 <div key={id} className="customprofil-list-offer">
                   <div
                     className="customprofil-list-offer-info"
@@ -280,7 +292,7 @@ export default function CustomProfil() {
                     </div>
                   </div>
                 </div>
-              ))}
+              {/* ))} */}
             </AccordionDetails>
           </Accordion>
         )}
