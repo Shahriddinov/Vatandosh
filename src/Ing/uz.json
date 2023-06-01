@@ -471,7 +471,10 @@
     "day": "Kun",
     "hour": "Soat",
     "minute": "Daqiqa",
-    "selections": "TANLOVLAR"
+    "selections": "TANLOVLAR",
+    "shareFriends": "Do'stlaringizga ulashing",
+    "participatee": "Loyihada ishtirok etish",
+    "projectEnded": "Loyiha tugallangan"
   },
   "portal": {
     "kabinet": "Kabinet"

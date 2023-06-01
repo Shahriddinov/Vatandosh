@@ -461,7 +461,10 @@
     "day": "День",
     "hour": "Часы",
     "minute": "Минут",
-    "selections": "КОНКУРСЫ"
+    "selections": "КОНКУРСЫ",
+    "shareFriends": "Поделиться с друзьями",
+    "participatee": "Участие в проекте",
+    "projectEnded": "Проект завершен"
   },
   "portal": {
     "kabinet": "Кабинет"

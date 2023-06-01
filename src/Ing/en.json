@@ -462,7 +462,10 @@
     "day": "Day",
     "hour": "Hour",
     "minute": "Minute",
-    "selections": "CONTESTS"
+    "selections": "CONTESTS",
+    "shareFriends": "Share with friends",
+    "participatee": "Participate in the project",
+    "projectEnded": "Project completed"
   },
   "portal": {
     "kabinet": "Cabinet"

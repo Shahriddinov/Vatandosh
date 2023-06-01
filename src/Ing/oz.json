@@ -466,7 +466,10 @@
     "day": "Кун",
     "hour": "соат",
     "minute": "Минут",
-    "selections": "Танловлар"
+    "selections": "Танловлар",
+    "shareFriends": "Дўстларингиз билан баҳам кўринг",
+    "participatee": "Лойиҳада иштирок етиш",
+    "projectEnded": "Лойиҳа якунланди"
   },
   "number": "Сони:"
 }

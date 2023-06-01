@@ -443,7 +443,7 @@ const routes = [
   { path: "/registration/signup/api/verify/", element: EmailVerify },
   { path: "/registration/signup/api/reset/", element: ResetPassword },
   { path: "/choices/quiz", element: ChoicesQuizzes },
-  { path: "/choices/quiz/more-detail/:id/:status", element: MoreDetail },
+  { path: "/choices/quiz/more-detail/:id", element: MoreDetail },
   { path: "/choices/public-associations", element: ChoicesPublicAssociations },
 ];
 

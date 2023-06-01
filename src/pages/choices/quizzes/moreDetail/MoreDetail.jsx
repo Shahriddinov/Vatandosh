@@ -3,7 +3,7 @@ import Header from "../../../../component/Layout/Header/Header";
 import calendarSvg from "../../../../assets/images/portal/cabinetVolunteer/calendar.svg";
 import eyeSvg from "../../../../assets/images/portal/cabinetVolunteer/eye.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getQuizDataById } from "../../../../reduxToolkit/choicesPageSlice/extraReducer";
 import { useTranslation } from "react-i18next";
@@ -21,13 +21,14 @@ const MoreDetail = () => {
     minutes: "00",
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const lan = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const { byIdData } = useSelector((state) => state.choiceQuizSlice);
-  const params = useParams();
+  const { id } = useParams();
   useEffect(() => {
-    dispatch(getQuizDataById(params.id));
-  }, [dispatch, lan, params.id]);
+    dispatch(getQuizDataById(id));
+  }, [dispatch, lan, id]);
 
   useEffect(() => {
     const { interval } = timer({
@@ -45,7 +46,7 @@ const MoreDetail = () => {
       <div className="singleCardContainer">
         <h1>{byIdData.title}</h1>
         <img src={`${PORTAL_IMAGE_URL}${byIdData.image}`} alt="rasm" />
-        {params.status === 0 ? (
+        {byIdData?.status === 0 ? (
           <div className="singleCardContainer-timeOver">
             <p>{t("choices.quizIsOver")}</p>
           </div>
@@ -68,12 +69,15 @@ const MoreDetail = () => {
           </div>
         )}
         {byIdData?.status === 1 ? (
-          <button className="singleCardContainer-active">
-            Loyihada ishtirok etish
+          <button
+            className="singleCardContainer-active"
+            onClick={() => navigate("/registration/signin")}
+          >
+            {t("choices.participatee")}
           </button>
         ) : (
           <button className="singleCardContainer-ended">
-            Loyiha tugallangan
+            {t("choices.projectEnded")}
           </button>
         )}
         <div className="singleCardContainer-calEye">
@@ -95,19 +99,19 @@ const MoreDetail = () => {
           )}
         </p>
         <div className="singleCardContainer-socialsCont">
-          <div>
+          <a>
             <img src={square} alt="square" />
-          </div>
-          <div>
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
             <img src={facebook} alt="facebook" />
-          </div>
-          <div>
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
             <img src={twitter} alt="twiitter" />
-          </div>
-          <div>
+          </a>
+          <a>
             <img src={telegram} alt="telegram" />
-          </div>
-          <p>Do'stlaringizga ulashing</p>
+          </a>
+          <p> {t("choices.shareFriends")}</p>
         </div>
       </div>
     </>
