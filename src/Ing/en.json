@@ -80,6 +80,11 @@
   "election_leader": "Date of election of leader",
   "mediaVideo": "Video footage",
   "mediaImg": "Pictures",
+  "teams": "“VATANDOSHLAR” Community Foundation Single Automated Information System",
+  "signs": "Sign Up",
+  "signn": "Sign In",
+  "personals": "Personal cabinet access",
+
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
@@ -100,12 +105,12 @@
   },
   "projects_items": {
     "item1": "All projects",
-    "item2": "“Family of the day” ruckney",
-    "item3": "“Athlete compatriots” ruckney",
-    "item4": "“Young compatriots” ruckney",
-    "item5": "Sara is a masterpiece",
-    "item6": "“National cuisine abroad” project",
-    "item7": "“Overseas compatriot organization” project"
+    "item2": "\"My family\"",
+    "item3": "Uzbek athlete compatriot",
+    "item4": "Young Compatriots",
+    "item5": "A masterpiece",
+    "item6": "National cuisine in abroad",
+    "item7": "\"Vatandoshlar\" series of tele podcasts"
   },
   "aboutPage": {
     "section1": {
@@ -199,12 +204,12 @@
     "form_email": "Email address",
     "form_phone": "Phone number",
     "form_category": "Choose column",
-    "item2": "“Family of the day” ruckney",
-    "item3": "“Athlete compatriots” ruckney",
-    "item4": "“Young compatriots” ruckney",
-    "item5": "Sara is a masterpiece",
-    "item6": "“National cuisine abroad” project",
-    "item7": "“Overseas compatriot organization” project",
+    "item2": "\"My family\"",
+    "item3": "Uzbek athlete compatriot",
+    "item4": "Young Compatriots",
+    "item5": "A masterpiece",
+    "item6": "National cuisine in abroad",
+    "item7": "\"Vatandoshlar\" series of tele podcasts",
     "form_about": "About you and your family",
     "form_image": "Upload your photos",
     "form_image_delete": "Delete",

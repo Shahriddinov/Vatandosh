@@ -14,8 +14,11 @@ import oneid from "../../../../assets/images/register/oneid-icon.svg";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 import "./SignIn.scss";
+import {useTranslation} from "react-i18next";
 
 export default function SignIn() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [userData, setUserData] = useState({
@@ -75,7 +78,7 @@ export default function SignIn() {
           </div>
           <div className="auth-form">
             <div className="auth-form-title">
-              <h3>Shaxsiy kabinetga kirish</h3>
+              <h3>{t("personals")}</h3>
               <p>Iltimos ma’lumotlaringizni kirting</p>
             </div>
             <form

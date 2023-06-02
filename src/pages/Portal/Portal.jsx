@@ -160,8 +160,7 @@ const HomePage = () => {
             </div>
             <div className="register-field">
               <h2>
-                <span>“VATANDOSHLAR”</span> <br /> Jamoat Fondining Yagona
-                Avtomatlashtirilgan Axborot Tizimi
+                 {t("teams")}
               </h2>
               <div className="portal-btns">
                 {token ? (
@@ -170,8 +169,8 @@ const HomePage = () => {
                   </Link>
                 ) : (
                   <>
-                    <Link to="/registration/signup">Sign Up</Link>
-                    <Link to="/registration/signin">Log In</Link>
+                    <Link to="/registration/signup">{t("signs")}</Link>
+                    <Link to="/registration/signin">{t("signn")}</Link>
                   </>
                 )}
               </div>
