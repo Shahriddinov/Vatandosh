@@ -475,5 +475,20 @@
     "hour": "Hour",
     "minute": "Minute",
     "selections": "CONTESTS"
+  },
+  "about_uzbekistan": {
+    "galleria": "Photo gallery",
+    "contact": "Our contacts",
+    "navbar": {
+      "nav1": "Online courses",      
+      "nav2": "Electronic Library",
+      "nav3": "Вебинары",
+      "nav4": "Announcements",
+      "nav5": "Personal cabinet"
+    },
+    "tourist_sites": "Tourist sites",
+    "tourist_sites_error": "There are currently no tourist facilities in this city",
+    "see_more": "See more",
+    "video_clips": "Video clips"
   }
 }

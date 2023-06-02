@@ -483,5 +483,20 @@
     "minute": "Daqiqa",
     "selections": "TANLOVLAR"
 
+  },
+  "about_uzbekistan": {
+    "galleria": "Fotogalereya",
+    "contact": "Bizning kontaktlarimiz",
+    "navbar": {
+      "nav1": "Onlayn kurslar",
+      "nav2": "Elektron kutubxona",
+      "nav3": "Vebinarlar",
+      "nav4": "E’lonlar",
+      "nav5": "Shaxsiy kabinet"
+    },
+    "tourist_sites": "Turistik ob'ektlar",
+    "tourist_sites_error": "Hozirda bu shaharda turistik ob'ektlar mvjud emas",
+    "see_more": "Кўпроқ кўриш",
+    "video_clips": "Video kliplar"
   }
 }
