@@ -110,7 +110,10 @@
   "aboutPage": {
     "section1": {
       "htext": "About us",
-      "ptext": "One of the main goals of the Foundation is to further embed compatriots living abroad around their historical homeland, raise their sense of pride in the country in their hearts and minds, preserve national identity, support compatriots and public associations formed by them, and effectively direct the potential of our compatriots operating in various fields to the development of our country.",
+      "ptext": "The board of trustees is supreme part of \"Vatandoshlar\" public foundation.  The board of trustees consists of 17 people.",
+      "ptextes" : "Main directions of foundation",
+      "pdirections" : "Directions",
+      "ptext1" : "One of the main activities of the foundation is the establishment and development of cooperation with compatriots living abroad and the public associations created by them. Therefore, to encourage the activities of public associations created by compatriots, to provide them with practical assistance in creating Uzbek national cultural centers abroad, to support and develop the Uzbek language, culture and traditions abroad in cooperation with associations of compatriots. to support and popularize the rich scientific, cultural and spiritual heritage of our country abroad, to help compatriots in organizing cultural and educational events.",
       "foottext1": "Main page",
       "foottext2": "About us"
     },
@@ -163,7 +166,7 @@
       "cardbb": "Chief accountant"
     },
     "section5": {
-      "htext1": "It is our supreme goal to further chip around their homeland, to exalt in their heart and mind a sense of pride in the land, to maintain a national identity"
+      "htext1": "Our supreme goal is to unite compatriots abroad around their Motherland, to raise the feeling of pride in the country in their hearts and minds, and to preserve the national identity!"
     }
   },
   "contactPage": {
