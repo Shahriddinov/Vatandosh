@@ -8,13 +8,17 @@ import AboutUzbekistanNavbarTransparent from "./components/aboutUzbekistanNavbar
 import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
 import { Spinner } from "../../../component";
 import { useLayoutFetching } from "./hooks/useLayoutFetching";
+import { ElectronicJournalFooter } from "../electronicJournal/components";
 
 const AboutUzbekistan = () => {
   const location = useLocation();
   let transparentIsTrue = location.pathname.split("/")[3];
-  const { menu, menuLoading } = useLayoutFetching();
-  if (menuLoading) {
+  const { menu, menuLoading, contactData, contactLoading, contactError } =
+    useLayoutFetching();
+  if (menuLoading | contactLoading) {
     return <Spinner position="full" />;
+  } else if (contactError) {
+    return <p>{contactError}</p>;
   }
 
   return (
@@ -32,7 +36,9 @@ const AboutUzbekistan = () => {
         <AboutUzbekistanNavbar menu={menu} />
       )}
       <Outlet context={{ menu }} />
-      {transparentIsTrue !== "virtual-tour" && <OnlineTeachingFooter />}
+      {transparentIsTrue !== "virtual-tour" && (
+        <ElectronicJournalFooter contactData={contactData} />
+      )}
     </div>
   );
 };

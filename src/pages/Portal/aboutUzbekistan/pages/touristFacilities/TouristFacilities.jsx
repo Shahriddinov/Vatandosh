@@ -9,6 +9,7 @@ import View3D from "../../components/view3D/View3D";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { getAllSightseeing } from "../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 import { paginationCount } from "../../../../../helpers/extraFunction";
+import { useTranslation } from "react-i18next";
 
 const TouristFacilities = () => {
   const {
@@ -20,6 +21,7 @@ const TouristFacilities = () => {
     allCity,
     dispatch,
   } = useTouristFacilities();
+  const { t } = useTranslation();
   const [activeCity, setActiveCity] = useState(1);
   const [activePage, setActivePage] = useState(1);
 
@@ -66,7 +68,7 @@ const TouristFacilities = () => {
             </div>
           ) : null}
           <div className="facilities_grid">
-            <h1>Туристические объекты</h1>
+            <h1>{t("about_uzbekistan.tourist_sites")}</h1>
             <ul>
               {allCity?.map((item) => (
                 <li
@@ -84,13 +86,15 @@ const TouristFacilities = () => {
                 ))}
               </div>
             ) : (
-              <p>Hozirda bu shaharda turistik ob'ektlar mvjud emas </p>
+              <p>{t("about_uzbekistan.tourist_sites_error")}</p>
             )}
             {allCitySightseeingLoading ? <Spinner /> : null}
           </div>
           {countPagination > 1 && activePage < countPagination ? (
             <div className="facilities_intro_btn">
-              <MyButton onClick={moreData}>Ko'proq ko'rish</MyButton>
+              <MyButton onClick={moreData}>
+                {t("about_uzbekistan.see_more")}
+              </MyButton>
             </div>
           ) : null}
           <View3D />

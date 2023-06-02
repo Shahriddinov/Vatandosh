@@ -9,6 +9,7 @@ import {
   aboutUzbSlideMove,
 } from "../aboutUzbekistanGallery/extra";
 import { MyButton } from "../../../../../component";
+import { useTranslation } from "react-i18next";
 
 const AboutUzbekistanVideos = ({
   mediaData,
@@ -18,6 +19,7 @@ const AboutUzbekistanVideos = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
+  const { t } = useTranslation();
 
   const moveSlide = (value) => {
     aboutUzbSlideMove({
@@ -51,7 +53,9 @@ const AboutUzbekistanVideos = ({
           className="facilities_intro_btn"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <MyButton onClick={moreData}>Ko'proq ko'rish</MyButton>
+          <MyButton onClick={moreData}>
+            {t("about_uzbekistan.see_more")}
+          </MyButton>
         </div>
       ) : null}
     </div>

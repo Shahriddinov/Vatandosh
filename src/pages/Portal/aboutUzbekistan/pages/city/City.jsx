@@ -9,10 +9,12 @@ import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutU
 
 import { useCityFetching } from "./hooks/useCityFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 const City = () => {
   const { error, singleCitySightseeing, singleCitySightseeingLoading } =
     useCityFetching();
+  const { t } = useTranslation();
   if (singleCitySightseeingLoading) {
     return <Spinner position="full" />;
   } else if (error) {
@@ -48,7 +50,7 @@ const City = () => {
             </div>
           ) : null}
           <div className="city_videos">
-            <h1>Видеоклипы</h1>
+            <h1>{t("about_uzbekistan.video_clips")}</h1>
             <AboutUzbekistanVideos mediaData={videoData} />
           </div>
           {city_content_infos[1] ? (

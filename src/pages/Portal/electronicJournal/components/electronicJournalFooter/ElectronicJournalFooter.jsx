@@ -8,8 +8,10 @@ import Instagram from "../../../../../assets/images/online-teaching/intagram.svg
 import Napa from "../../../../../assets/images/online-teaching/Napa.png";
 import "./electronicJournalFooter.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 function ElectronicJournalFooter({ contactData }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <div className="electronic-journal-footer">
       <div className="container">
@@ -28,42 +30,42 @@ function ElectronicJournalFooter({ contactData }) {
                   className="electronic-journal-footer_boxes_ended_step_division"
                 >
                   {" "}
-                  Online kurslar
+                  {t("about_uzbekistan.navbar.nav1")}
                 </Link>
                 <Link
                   to="/portal-category/online-teaching"
                   className="electronic-journal-footer_boxes_ended_step_division"
                 >
                   {" "}
-                  Elektron kutubxona
+                  {t("about_uzbekistan.navbar.nav2")}
                 </Link>
                 <Link
                   to="/portal-category/webinar"
                   className="electronic-journal-footer_boxes_ended_step_division"
                 >
                   {" "}
-                  Vebinarlar
+                  {t("about_uzbekistan.navbar.nav3")}
                 </Link>
                 <Link
                   to="/portal-category/electronic-journal"
                   className="electronic-journal-footer_boxes_ended_step_division"
                 >
                   {" "}
-                  E’lonlar
+                  {t("about_uzbekistan.navbar.nav4")}
                 </Link>
                 <Link
                   to="/portal-category/cabinet"
                   className="electronic-journal-footer_boxes_ended_step_division"
                 >
                   {" "}
-                  Shaxsiy kabinet
+                  {t("about_uzbekistan.navbar.nav5")}
                 </Link>
               </div>
 
               <div className="electronic-journal-footer_boxes_end">
                 <div className="flexes">
                   <div className="electronic-journal-footer_boxes_end_contacts">
-                    Bizning kontaktlarimiz
+                    {t("about_uzbekistan.contact")}
                   </div>
                   <div className="electronic-journal-footer_boxes_end_phones">
                     <img src={Phones} alt="" />

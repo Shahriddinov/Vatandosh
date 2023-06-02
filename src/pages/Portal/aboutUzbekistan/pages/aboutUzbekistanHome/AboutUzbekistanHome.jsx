@@ -9,10 +9,12 @@ import "./aboutUzbekistanHome.scss";
 import { useLocation, useOutletContext } from "react-router-dom";
 import { useAboutHomeFetching } from "./hooks/useAboutHomeFetching";
 import { Spinner } from "../../../../../component";
+import { useTranslation } from "react-i18next";
 
 const AboutUzbekistanHome = () => {
   const { menu } = useOutletContext();
   const { pathname } = useLocation();
+  const { t } = useTranslation();
   const heroData = menu.find((el) => el.url === pathname);
   const {
     allCitySightseeingLoading,
@@ -37,7 +39,10 @@ const AboutUzbekistanHome = () => {
             <p>{heroData.page_menu_contents[0].text}</p>
           </div>
         ) : null}
-        <Slider title="Туристические объекты" data={allCitySightseeing?.data} />
+        <Slider
+          title={t("about_uzbekistan.tourist_sites")}
+          data={allCitySightseeing?.data}
+        />
         <View3D />
         <AboutUzbekistanGallery allGallery={allGallery?.data} />
         {heroData.page_menu_contents[1] ? (
