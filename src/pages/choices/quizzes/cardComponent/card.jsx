@@ -74,9 +74,7 @@ const Card = ({ data, quiz }) => {
         <div className="card-bottomBox-btnBox">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() =>
-              navigate(`/choices/quiz/more-detail/${data.id}/${data.status}`)
-            }
+            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}
           >
             {t("choices.moreDetail")}
           </motion.button>

@@ -40,7 +40,11 @@ const QuizCard = (props) => {
       key={props?.id}
       className="cabinet-quiz-card"
       onClick={() =>
-        navigate(`/portal-category/victorina/image-project/${props?.id}`)
+        navigate(
+          `/portal-category/victorina${
+            props.status === 0 ? "/finished-projects" : ""
+          }/image-project/${props?.id}`
+        )
       }
     >
       <img
