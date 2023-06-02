@@ -3,8 +3,7 @@ export const authUrl = "https://api.vatandoshlarfondi.uz/api/auth";
 export const portalBaseUrl = "https://api.vatandoshlarfondi.uz/api";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
-export const PORTAL_IMAGE_URL =
-  "https://api.vatandoshlarfondi.uz/storage/";
+export const PORTAL_IMAGE_URL = "https://api.vatandoshlarfondi.uz/storage/";
 
 export const imageUrl = "https://api.vatandoshlarfondi.uz/storage";
 
