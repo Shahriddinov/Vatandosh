@@ -3,8 +3,7 @@ export const authUrl = "https://api.vatandoshlarfondi.uz/api/auth";
 export const portalBaseUrl = "https://api.vatandoshlarfondi.uz/api";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
-export const PORTAL_IMAGE_URL =
-  "https://api.vatandoshlarfondi.uz/storage/";
+export const PORTAL_IMAGE_URL = "https://api.vatandoshlarfondi.uz/storage/";
 
 export const imageUrl = "https://api.vatandoshlarfondi.uz/storage";
 
@@ -132,7 +131,7 @@ export const SEND_PROJECT = `${baseUrl}/sendProject`;
 export const REGISTER = `${authUrl}/register`;
 export const VOLUNTEER_CREATE = "/volunteer/create";
 export const SEND_EXPERT_REGISTER = `${portalBaseUrl}/auth/register`;
-export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/meeting-offer/create`;
+export const SEND_EXPERT_SUGGESTION = `${portalBaseUrl}/suggestion/create`;
 export const SEND_EXPERT_EDUCATION = `${portalBaseUrl}/education/create`;
 export const SEND_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/create`;
 export const SEND_EXPERT_SCIENTIFIC = `${portalBaseUrl}/scientificDegree/create`;
