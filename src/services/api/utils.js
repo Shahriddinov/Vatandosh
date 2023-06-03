@@ -13,6 +13,7 @@ export const GET_ABOUT_ALL_PROJECTS = `${baseUrl}/aboutcolumns`;
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
 export const GET_PARTNERS_URL = `${baseUrl}/sponsrs`;
+export const GET_FAQ_URL = `${baseUrl}/faqs`;
 export const GET_PEACEFUL_URL = `${baseUrl}/columns`;
 export const GET_PROJECTS_MENU = `${baseUrl}/column-menus`;
 export const GET_INTERACTIVE_SERVICES_URL = `${baseUrl}/interactive-services`;

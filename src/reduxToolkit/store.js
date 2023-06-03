@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 
 import newsSlice from "./newsSlice/newsSlice";
 import partnersSlice from "./partnersSlice/partnersSlice";
@@ -16,12 +16,13 @@ import singleSlice from "./singleSlice";
 import tagSearchSlice from "./tagSearchSlice/tagSearchSlice";
 import directionSlice from "./Direction";
 import aboutSlice from "./About";
+import faqSlice from "./Faq";
 import managementSlice from "./ManagementSlice";
 import searchSlice from "./searchSlice/searchSlice";
 import tagsSlice from "./tagsSlice/tagsSlice";
 import authSlice from "./authSlice/authSlice";
 import formDataSlice from "./projectsSlice/projectsSlice";
-import { community } from "./portalSlices";
+import {community} from "./portalSlices";
 import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
 import education from "./ExpertSlice/ExpertEducation/index";
@@ -51,61 +52,62 @@ import choiceQuizSlice from "./choicesPageSlice/index";
 import portalAllNewsSlice from "./portalSlices/news-events/index";
 
 const store = configureStore({
-  reducer: {
-    newsSlice,
-    eventsSlice,
-    partnersSlice,
-    employment,
-    directionSlice,
-    education,
-    peaceful,
-    language,
-    mapSlice,
-    trustees,
-    contactSlice,
-    sliderSlice,
-    singleSlice,
-    associationSlice,
-    mediatekaSlice,
-    informationServicesSlice,
-    tagSearchSlice,
-    aboutSlice,
-    managementSlice,
-    searchSlice,
-    tagsSlice,
-    authSlice,
-    formDataSlice,
-    community,
-    expertSlice,
-    AllProjectSlice,
-    // expertMenu,
-    quizSlice,
-    pageSlice,
-    suggestionSlice,
-    expertRegisterSlice,
-    librarySlice,
-    volunteerSlice,
-    meetingSlice,
-    aboutUzbekistan,
-    portalNews,
-    webinarSlidesSlice,
-    quizTestSlice,
-    mediaFileSlice,
-    quizByIdSlice,
-    quizFinishSlice,
-    chatSlice,
-    orgPageSlice,
-    notification,
-    webinarBodySlice,
-    journal,
-    menuSuggestionSlice,
-    choiceQuizSlice,
-    portalAllNewsSlice,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+    reducer: {
+        newsSlice,
+        eventsSlice,
+        partnersSlice,
+        employment,
+        directionSlice,
+        education,
+        peaceful,
+        language,
+        mapSlice,
+        trustees,
+        contactSlice,
+        sliderSlice,
+        singleSlice,
+        associationSlice,
+        mediatekaSlice,
+        informationServicesSlice,
+        tagSearchSlice,
+        aboutSlice,
+        faqSlice,
+        managementSlice,
+        searchSlice,
+        tagsSlice,
+        authSlice,
+        formDataSlice,
+        community,
+        expertSlice,
+        AllProjectSlice,
+        // expertMenu,
+        quizSlice,
+        pageSlice,
+        suggestionSlice,
+        expertRegisterSlice,
+        librarySlice,
+        volunteerSlice,
+        meetingSlice,
+        aboutUzbekistan,
+        portalNews,
+        webinarSlidesSlice,
+        quizTestSlice,
+        mediaFileSlice,
+        quizByIdSlice,
+        quizFinishSlice,
+        chatSlice,
+        orgPageSlice,
+        notification,
+        webinarBodySlice,
+        journal,
+        menuSuggestionSlice,
+        choiceQuizSlice,
+        portalAllNewsSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 export default store;

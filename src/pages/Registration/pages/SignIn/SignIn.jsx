@@ -79,14 +79,14 @@ export default function SignIn() {
           <div className="auth-form">
             <div className="auth-form-title">
               <h3>{t("personals")}</h3>
-              <p>Iltimos ma’lumotlaringizni kirting</p>
+              <p>{t("create")}</p>
             </div>
             <form
               className="auth-form-inputs"
               onSubmit={(e) => handleSubmit(e)}
             >
               <label className="auth-form-inputs-emailInput">
-                <span>Email pochtangizni kiriting</span>
+                <span>{t("createEmail")}</span>
                 <input
                   type="email"
                   autoComplete="off"
@@ -125,16 +125,16 @@ export default function SignIn() {
               <div className="auth-form-inputs-checkbox">
                 <div className="auth-form-inputs-checkbox-input">
                   <input type="checkbox" name="" id="" />
-                  <span>Qurilmani eslab qolish</span>
+                  <span>{t("remember")}</span>
                 </div>
                 <div className="auth-form-inputs-checkbox-forgetPassword">
                   <Link to="/registration/recovery-password">
-                    Parolni unutdingizmi?
+                    {t("forgot")}
                   </Link>
                 </div>
               </div>
               <button type="submit" className="auth-form-inputs-submitBtn">
-                Profilga kirish
+                {t("introduction")}
               </button>
             </form>
             <div className="auth-links">
@@ -159,8 +159,8 @@ export default function SignIn() {
                 </a>
               </div>
               <div className="auth-links-tosignup">
-                <span>Hali ro’yxatdan o’tmaganmisiz?</span>
-                <Link to="/registration/signup">Ro’yxatdan o’ting</Link>
+                <span>{t("registerYet")}</span>
+                <Link to="/registration/signup">{t("registeri")}</Link>
               </div>
             </div>
           </div>
