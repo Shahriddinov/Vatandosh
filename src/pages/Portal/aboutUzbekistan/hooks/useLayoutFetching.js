@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllAboutUzbMenu } from "../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 import { useEffect } from "react";
+import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
 
 const navbarItems = [
   { id: 1, name: "BOSH SAHIFA", url: "/portal-category/about-uzbekistan" },
@@ -56,9 +57,22 @@ export const useLayoutFetching = () => {
     (store) => store.aboutUzbekistan.allAboutUzbMenuLoading
   );
 
+  const contactData = useSelector((state) => state.contactSlice.contactData);
+  const contactLoading = useSelector((state) => state.contactSlice.loading);
+
+  const contactError = useSelector((state) => state.contactSlice.error);
+
   useEffect(() => {
     dispatch(getAllAboutUzbMenu());
+    dispatch(getContact());
   }, [dispatch]);
 
-  return { dispatch, menu, menuLoading };
+  return {
+    dispatch,
+    menu,
+    menuLoading,
+    contactData,
+    contactLoading,
+    contactError,
+  };
 };

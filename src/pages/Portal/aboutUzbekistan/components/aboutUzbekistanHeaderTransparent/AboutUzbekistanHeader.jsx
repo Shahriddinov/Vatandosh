@@ -30,7 +30,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [activeSidebar, setactiveSidebar] = useState(false);
-  const { pathname } = useLocation();
   const [activeLang, setactiveLang] = useState(false);
   const { grayScale } = useContext(GrayContext);
   const language = useSelector((state) => state.language.language);
@@ -42,9 +41,6 @@ const Header = () => {
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
   };
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
 
   const handleSearch = () => {
     const search = searchRef.current.value;
@@ -59,6 +55,8 @@ const Header = () => {
     else document.body.style.overflow = "inherit";
   }, [activeSidebar]);
 
+  const contactData = useSelector((state) => state.contactSlice.contactData);
+
   return (
     <header className="about-uzbekistan-header">
       <div className="header_transparent">
@@ -71,7 +69,9 @@ const Header = () => {
             className="header_transparent_navbar_phone"
           >
             <img src={Phone} alt="phone" />
-            <div className="header_transparent_navbar_phone_number">+998(55)502-22-99</div>
+            <div className="header_transparent_navbar_phone_number">
+              {contactData?.phone}
+            </div>
           </a>
           <a
             href={`mailto: ${contactData?.email}`}
@@ -79,7 +79,7 @@ const Header = () => {
           >
             <img src={Message} alt="message" />
             <div className="header_transparent_navbar_phone_number">
-              info@vatandoshlarfondi.uz
+              {contactData?.email}
             </div>
           </a>
           <a href="/flag">
@@ -120,7 +120,10 @@ const Header = () => {
               alt="search"
             />
           </label>
-          <button className="header_transparent_navbar_eye" onClick={() => grayScale()}>
+          <button
+            className="header_transparent_navbar_eye"
+            onClick={() => grayScale()}
+          >
             <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
           </button>
 

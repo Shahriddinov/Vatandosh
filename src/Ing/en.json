@@ -8,7 +8,6 @@
   "projects": "PROJECTS",
   "contects": "CONTESTS",
   "faq" : "FAQ",
-  "faqDesc" : "Frequently asked questions (FAQs ) lists are frequently found in articles, websites, email lists, and online forums, where frequent questions are repeated. The purpose of Frequently Asked Questions is to provide information about questions or concerns that are usually frequent; however, the format is a useful means of organizing information, and a text consisting of questions and their answers can be called a FAQ regardless of whether questions are frequently asked in reality.",
   "information": "INFORMATION SERVICE\n",
   "link": "CONTACT",
   "lates": "Latest news",
@@ -85,13 +84,6 @@
   "signs": "Sign Up",
   "signn": "Sign In",
   "personals": "Personal cabinet access",
-  "create" : "Please enter your data",
-  "createEmail" : "Enter your Email",
-  "remember" : "Device recall",
-  "forgot" : "Forgot your password?",
-  "introduction" : "Profile access",
-  "registerYet" : "Haven't registered yet?",
-  "registeri" : "Register",
 
   "about_items": {
     "item1": "About us",
@@ -482,9 +474,21 @@
     "day": "Day",
     "hour": "Hour",
     "minute": "Minute",
-    "selections": "CONTESTS",
-    "shareFriends": "Share with friends",
-    "participatee": "Participate in the project",
-    "projectEnded": "Project completed"
+    "selections": "CONTESTS"
+  },
+  "about_uzbekistan": {
+    "galleria": "Photo gallery",
+    "contact": "Our contacts",
+    "navbar": {
+      "nav1": "Online courses",      
+      "nav2": "Electronic Library",
+      "nav3": "Вебинары",
+      "nav4": "Announcements",
+      "nav5": "Personal cabinet"
+    },
+    "tourist_sites": "Tourist sites",
+    "tourist_sites_error": "There are currently no tourist facilities in this city",
+    "see_more": "See more",
+    "video_clips": "Video clips"
   }
 }

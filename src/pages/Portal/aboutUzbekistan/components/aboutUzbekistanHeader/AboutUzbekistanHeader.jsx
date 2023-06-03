@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
@@ -30,7 +30,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [activeSidebar, setactiveSidebar] = useState(false);
-  const { pathname } = useLocation();
   const [activeLang, setactiveLang] = useState(false);
   const { grayScale } = useContext(GrayContext);
   const language = useSelector((state) => state.language.language);
@@ -42,9 +41,7 @@ const Header = () => {
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
   };
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const handleSearch = () => {
     const search = searchRef.current.value;
@@ -71,7 +68,9 @@ const Header = () => {
             className="header_navbar_phone"
           >
             <img src={Phone} alt="phone" />
-            <div className="header_navbar_phone_number">+998(55)502-22-99</div>
+            <div className="header_navbar_phone_number">
+              {contactData?.phone}
+            </div>
           </a>
           <a
             href={`mailto: ${contactData?.email}`}
@@ -79,7 +78,7 @@ const Header = () => {
           >
             <img src={Message} alt="message" />
             <div className="header_navbar_phone_number">
-              info@vatandoshlarfondi.uz
+              {contactData?.email}
             </div>
           </a>
           <a href="/flag">
