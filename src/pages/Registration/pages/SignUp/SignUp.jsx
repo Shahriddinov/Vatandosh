@@ -1,77 +1,75 @@
-import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React, {useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
-import { sendEmail } from "../../../../reduxToolkit/authSlice/extraReducer";
+import {sendEmail} from "../../../../reduxToolkit/authSlice/extraReducer";
 import Spinner from "../../../../component/Spinner/Spinner";
 
 import "../SignIn/SignIn.scss";
+import {useTranslation} from "react-i18next";
 
 export default function SignUp() {
-  const dispatch = useDispatch();
-  const emailRef = useRef();
-  const [isValid, setIsValid] = useState(false);
-  const loading = useSelector((store) => store.authSlice.emailLoading);
-  const message = useSelector((store) => store.authSlice.message);
-  const error = useSelector((store) => store.authSlice.error);
+    const {t} = useTranslation();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const dispatch = useDispatch();
+    const emailRef = useRef();
+    const [isValid, setIsValid] = useState(false);
+    const loading = useSelector((store) => store.authSlice.emailLoading);
+    const message = useSelector((store) => store.authSlice.message);
+    const error = useSelector((store) => store.authSlice.error);
 
-    dispatch(sendEmail({ email: emailRef.current.value }));
-    setIsValid(true);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  if (loading) {
-    return <Spinner position="full" />;
-  }
+        dispatch(sendEmail({email: emailRef.current.value}));
+        setIsValid(true);
+    };
 
-  return (
-    <div className="auth">
-      <div className="container">
-        <div className="auth-wrapper">
-          <div className="auth-desc">
-            <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
-            </h2>
-            <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
-            </p>
-          </div>
-          <div className="auth-form auth-signup">
-            <div className="auth-form-title">
-              <h3>Ro’yxatdan o’tish</h3>
-              <p>
-                Hisob ochish uchun email pochtangizni kiriting va biz sizga
-                tashdiqlash kodini yuboramiz
-              </p>
+    if (loading) {
+        return <Spinner position="full"/>;
+    }
+
+    return (
+        <div className="auth">
+            <div className="container">
+                <div className="auth-wrapper">
+                    <div className="auth-desc">
+                        <h2 className="auth-desc-title">
+                            {t("registerTitle")}
+                        </h2>
+                        <p className="auth-desc-text">
+                            {t("registerText")}
+
+                        </p>
+                    </div>
+                    <div className="auth-form auth-signup">
+                        <div className="auth-form-title">
+                            <h3>{t("registeri")}</h3>
+                            <p>
+                                {t("sendEmail")}
+                            </p>
+                        </div>
+                        <form
+                            className="auth-form-inputs"
+                            onSubmit={(e) => handleSubmit(e)}
+                        >
+                            <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
+                                <span>{t("createEmail")}</span>
+                                <input type="email" ref={emailRef} required/>
+                            </label>
+                            <p
+                                className="auth-form-inputs-sendMail"
+                                style={isValid ? {display: "block"} : {display: "none"}}
+                            >
+                                {message ? message : "Loading..."}
+                            </p>
+                            <button type="submit" className="auth-form-inputs-submitBtn">
+                                {t("keep")}
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form
-              className="auth-form-inputs"
-              onSubmit={(e) => handleSubmit(e)}
-            >
-              <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
-                <span>Email pochtangizni kiriting</span>
-                <input type="email" ref={emailRef} required />
-              </label>
-              <p
-                className="auth-form-inputs-sendMail"
-                style={isValid ? { display: "block" } : { display: "none" }}
-              >
-                {message ? message : "Loading..."}
-              </p>
-              <button type="submit" className="auth-form-inputs-submitBtn">
-                Davom etish
-              </button>
-            </form>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

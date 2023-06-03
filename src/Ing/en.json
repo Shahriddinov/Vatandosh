@@ -7,7 +7,8 @@
   "citizin": "ASSOCIATIONS",
   "projects": "PROJECTS",
   "contects": "CONTESTS",
-  "faq" : "FAQ",
+  "faq": "FAQ",
+  "faqDesc": "Frequently asked questions (FAQs ) lists are frequently found in articles, websites, email lists, and online forums, where frequent questions are repeated. The purpose of Frequently Asked Questions is to provide information about questions or concerns that are usually frequent; however, the format is a useful means of organizing information, and a text consisting of questions and their answers can be called a FAQ regardless of whether questions are frequently asked in reality.",
   "information": "INFORMATION SERVICE\n",
   "link": "CONTACT",
   "lates": "Latest news",
@@ -75,7 +76,7 @@
   "Associations": "Associations",
   "staffCount": "The number of employees",
   "leader": "Leader",
-  "thereIsNotFound":"There are currently no public associations in this state",
+  "thereIsNotFound": "There are currently no public associations in this state",
   "founding_date": "Founding date",
   "election_leader": "Date of election of leader",
   "mediaVideo": "Video footage",
@@ -84,7 +85,17 @@
   "signs": "Sign Up",
   "signn": "Sign In",
   "personals": "Personal cabinet access",
-
+  "create": "Please enter your data",
+  "createEmail": "Enter your Email",
+  "remember": "Device recall",
+  "forgot": "Forgot your password?",
+  "introduction": "Profile access",
+  "registerYet": "Haven't registered yet?",
+  "registeri": "Register",
+  "sendEmail": "Enter your email mail to open an account and we will send you the transfer code",
+  "keep": "Continue",
+  "registerTitle" : "Sign up to be aware of all projects and news",
+  "registerText" : "By registering, you will have the opportunity to become more aware of the news about our activities, participate in online webinars and classes, read books of different genres.",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
@@ -116,9 +127,9 @@
     "section1": {
       "htext": "About us",
       "ptext": "The board of trustees is supreme part of \"Vatandoshlar\" public foundation.  The board of trustees consists of 17 people.",
-      "ptextes" : "Main directions of foundation",
-      "pdirections" : "Directions",
-      "ptext1" : "One of the main activities of the foundation is the establishment and development of cooperation with compatriots living abroad and the public associations created by them. Therefore, to encourage the activities of public associations created by compatriots, to provide them with practical assistance in creating Uzbek national cultural centers abroad, to support and develop the Uzbek language, culture and traditions abroad in cooperation with associations of compatriots. to support and popularize the rich scientific, cultural and spiritual heritage of our country abroad, to help compatriots in organizing cultural and educational events.",
+      "ptextes": "Main directions of foundation",
+      "pdirections": "Directions",
+      "ptext1": "One of the main activities of the foundation is the establishment and development of cooperation with compatriots living abroad and the public associations created by them. Therefore, to encourage the activities of public associations created by compatriots, to provide them with practical assistance in creating Uzbek national cultural centers abroad, to support and develop the Uzbek language, culture and traditions abroad in cooperation with associations of compatriots. to support and popularize the rich scientific, cultural and spiritual heritage of our country abroad, to help compatriots in organizing cultural and educational events.",
       "foottext1": "Main page",
       "foottext2": "About us"
     },
@@ -217,11 +228,11 @@
     "form_cancel": "Cancel",
     "form_submit": "Send"
   },
-  "countrys":{
-    "russia":"Russia",
-    "turkey":"Turkey",
-    "germany":"Germany",
-    "malaziy":"Malayziya"
+  "countrys": {
+    "russia": "Russia",
+    "turkey": "Turkey",
+    "germany": "Germany",
+    "malaziy": "Malayziya"
   },
   "expert": {
     "register": "Register",
@@ -234,7 +245,7 @@
     "headertitle": "“EXPERT COUNCIL” COMPATRIOTS",
     "headersubtitle": "Electronic platform of the compatriot expert council",
     "counciltitle": "“International expert council under the foundation” compatriots",
-    "more":"More",
+    "more": "More",
     "main": "Main",
     "expertCouncil": "Expert council",
     "offers": "Suggestions",
@@ -311,7 +322,7 @@
     "allwinner": "All winners"
   },
   "communityAssociation": {
-    "navbar":{
+    "navbar": {
       "navbar_link1": "Home",
       "navbar_link2": "Public associations",
       "navbar_link3": "Events",
@@ -323,9 +334,9 @@
     "home_title": "Compatriots Public Associations",
     "home_desc": "Electronic platform of compatriot public associations",
     "application": "Submit an application",
-    "detail": "Detail",  
-    "total_public_organizations": "Total public organizations",  
-    "view_all": "Show more",  
+    "detail": "Detail",
+    "total_public_organizations": "Total public organizations",
+    "view_all": "Show more",
     "community_association_about_title": "About public associations",
     "all_states": "All states",
     "add_news": "Add news",
@@ -391,15 +402,15 @@
     "nav1": "Volunteers",
     "nav2": "Volunteer activities",
     "nav3": "Connect",
-    "nav4":"Volunteer activities",
-    "Signup":"Sign up"
+    "nav4": "Volunteer activities",
+    "Signup": "Sign up"
   },
   "webinar": {
     "tel": "Phone",
     "email": "Enter your email address",
     "online-webinar": "Online webinar on scientific literacy",
     "webinars": "Webinars",
-    "conferences":"Conferences",
+    "conferences": "Conferences",
     "join-webinar": "Join the webinar",
     "date": "Webinar date:",
     "nav2": "Events",
@@ -409,9 +420,9 @@
     "header2": "To learn more",
     "headerName": "“Compatriots” Webinar",
     "council": "What is a webinar platform?",
-    "countofEvents":"Number of events held",
-    "totalOfEventsattendance":"Total event attendance",
-    "participants":"Participants"
+    "countofEvents": "Number of events held",
+    "totalOfEventsattendance": "Total event attendance",
+    "participants": "Participants"
   },
   "library": {
     "library": "Library",
@@ -439,27 +450,26 @@
     "read_online": "Read online"
   },
   "symbols": {
-    "anthem" : "State anthem of the Republic of Uzbekistan",
-    "text" : "Law\"on the state anthem of the Republic of Uzbekistan\" dated December 10, 1992. The Supreme Council of the Republic ofiningo was adopted at its first session",
-    "author" : "Mutal Burhonov music-Abdulla Oripov may refer to",
+    "anthem": "State anthem of the Republic of Uzbekistan",
+    "text": "Law\"on the state anthem of the Republic of Uzbekistan\" dated December 10, 1992. The Supreme Council of the Republic ofiningo was adopted at its first session",
+    "author": "Mutal Burhonov music-Abdulla Oripov may refer to",
     "textsOne": "My country, sunny and free, salvation to your people,\nYou are a warmhearted companion to the friends!",
     "textsTwo": "Belief of generous Uzbek does not die out,\nFree, young children are a strong wing for you! ",
     "textsThree": "These golden valleys – dear Uzbekistan,\nManly spirit of ancestors is companion to you!",
     "textsFour": "When the great power of people became exuberant\nYou are the country that amazes the world!",
     "textsFive": "Belief of generous Uzbek does not die out,\nFree, young children are a strong wing for you!",
     "textsSix": "The torch of independence, guardian of peace,\nJust motherland be eternally prosperous!",
-
-    "coat" : "Coat of arms of the Republic of Uzbekistan",
-    "coatAbout" : "The law \"on the state coat of arms of the Republic of Uzbekistan\" was adopted on July 2, 1992 at The X session of the Supreme Council of the Republic of Uzbekistan. The state emblem of the Republic of Uzbekistan from the image of the sun shining over the valley in which it blooms\nalso on the left side are wheat cobs, and on the right side open cotton swabs consist of an interroom with water drop.",
-    "coats" : " At the top of the coat of arms, an eight-pointed star is depicted as a symbol of the Republican Jeeps: a crescent moon and a star, located within eight edges, are symbols of the salvation of Muslims.",
-    "coatCenter" : "In the center of the coat of arms is inscribed the wings of the legendary Humo Bird, a symbol of himmat, nobility and self-sacrifice. These symbols and symbols represent the aspirations of our people on the path to peace, good, happiness, prosperity.",
-    "coatUzb" : "At the bottom of the coat of arms is inscribed \"Uzbekistan” on the band of the chambar ribbon representing the state flag of the Republic."
+    "coat": "Coat of arms of the Republic of Uzbekistan",
+    "coatAbout": "The law \"on the state coat of arms of the Republic of Uzbekistan\" was adopted on July 2, 1992 at The X session of the Supreme Council of the Republic of Uzbekistan. The state emblem of the Republic of Uzbekistan from the image of the sun shining over the valley in which it blooms\nalso on the left side are wheat cobs, and on the right side open cotton swabs consist of an interroom with water drop.",
+    "coats": " At the top of the coat of arms, an eight-pointed star is depicted as a symbol of the Republican Jeeps: a crescent moon and a star, located within eight edges, are symbols of the salvation of Muslims.",
+    "coatCenter": "In the center of the coat of arms is inscribed the wings of the legendary Humo Bird, a symbol of himmat, nobility and self-sacrifice. These symbols and symbols represent the aspirations of our people on the path to peace, good, happiness, prosperity.",
+    "coatUzb": "At the bottom of the coat of arms is inscribed \"Uzbekistan” on the band of the chambar ribbon representing the state flag of the Republic."
   },
   "portal": {
     "kabinet": "Cabinet"
   },
   "number": "Number:",
-  "choices":{
+  "choices": {
     "mainPage": "Main page",
     "quizzes": "Quizzes",
     "endedQuizzes": "The quiz is over",
@@ -474,13 +484,31 @@
     "day": "Day",
     "hour": "Hour",
     "minute": "Minute",
-    "selections": "CONTESTS"
+    "selections": "CONTESTS",
+    "shareFriends": "Share with friends",
+    "participatee": "Participate in the project",
+    "projectEnded": "Project completed"
   },
   "about_uzbekistan": {
     "galleria": "Photo gallery",
     "contact": "Our contacts",
     "navbar": {
-      "nav1": "Online courses",      
+      "nav1": "Online courses",
+      "nav2": "Electronic Library",
+      "nav3": "Вебинары",
+      "nav4": "Announcements",
+      "nav5": "Personal cabinet"
+    },
+    "tourist_sites": "Tourist sites",
+    "tourist_sites_error": "There are currently no tourist facilities in this city",
+    "see_more": "See more",
+    "video_clips": "Video clips"
+  },
+  "about_uzbekistan": {
+    "galleria": "Photo gallery",
+    "contact": "Our contacts",
+    "navbar": {
+      "nav1": "Online courses",
       "nav2": "Electronic Library",
       "nav3": "Вебинары",
       "nav4": "Announcements",

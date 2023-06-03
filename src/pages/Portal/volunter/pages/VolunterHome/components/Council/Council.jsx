@@ -10,7 +10,7 @@ function Council({ councilData, VolunteerCount }) {
     <div className="council">
       <div className="container">
         <div className="council-left">
-          <img src={councilData?.image} alt="img" />
+          <img style={{width: "100%"}} src={councilData?.image} alt="img" />
           <h3>{councilData?.title}</h3>
           <p>{councilData?.desc}</p>
           <div>

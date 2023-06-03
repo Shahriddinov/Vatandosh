@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -65,15 +65,10 @@ export default function SignIn() {
               theme="light"
             />
             <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
+              {t("registerTitle")}
             </h2>
             <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
+              {t("registerText")}
             </p>
           </div>
           <div className="auth-form">

@@ -92,6 +92,10 @@
   "introduction" : "Profilga kirish",
   "registerYet" : "Hali ro’yxatdan o’tmaganmisiz?",
   "registeri" : "Ro’yxatdan o’ting",
+  "sendEmail" : "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
+  "keep" : "Davom etish",
+  "registerTitle" : "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
+  "registerText" : "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
