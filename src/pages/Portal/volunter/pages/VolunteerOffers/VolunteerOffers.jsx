@@ -9,10 +9,12 @@ import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunteerOffers.scss";
 import { useExportOfferDetail } from "../../../expert/pages/ExpertOffersDetail/hooks/useExpertOffersDetail";
 import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
+import { useParams } from "react-router-dom";
 
 export default function VolunteerOffers() {
   const { t } = useTranslation();
   const { expertData } = useExportOfferDetail();
+  const { id } = useParams();
 
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
@@ -23,6 +25,10 @@ export default function VolunteerOffers() {
     { title: "Maqola", url: "" },
   ];
 
+  const volunteerUser = expertData?.user_volunteer_activities?.find(
+    (evt) => evt?.id === Number(id)
+  );
+
   return (
     <main className="expertofferdetail">
       <div className="container">
@@ -30,7 +36,7 @@ export default function VolunteerOffers() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
+              src={`${PORTAL_IMAGE_URL}${volunteerUser?.images[0]}`}
               alt="error"
               className="expertofferdetail-pic"
             />
@@ -47,8 +53,8 @@ export default function VolunteerOffers() {
               }
               position={expertData?.user_profile?.job_position}
             />
-            <p>{expertData?.suggestions}</p>
-            <p>{expertData?.additional_information}</p>
+            <p>{volunteerUser?.title}</p>
+            <p>{volunteerUser?.description}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">
