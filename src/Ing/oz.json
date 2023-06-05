@@ -504,5 +504,13 @@
     "tourist_sites_error": "Ҳозирда бу шаҳарда туристик объектлар мавжуд емас",
     "see_more": "Кўпроқ кўриш",
     "video_clips": "Видео клиплар"
+  },
+  "electron_journal": {
+    "release": "Чиқариш",
+    "about_magazine": "Журнал ҳақида",
+    "more_detailed":"Батафсил",
+    "popular_journal": "Журналнинг енг машҳур сонлари",
+    "new_issue": "ЯНГИ СОННИНГ МАЗМУНИ",
+    "total_journal": "Архивда {{total}} та журнал бор"
   }
 }

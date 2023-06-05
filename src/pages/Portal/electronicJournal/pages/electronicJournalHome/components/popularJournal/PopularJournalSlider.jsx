@@ -10,8 +10,10 @@ import "swiper/css/pagination";
 import { JournalCard } from "../";
 
 import "./popularJournalSlider.scss";
+import { useTranslation } from "react-i18next";
 
 const PopularJournalSlider = ({ allMagazinePopular }) => {
+  const { t } = useTranslation();
   const data = allMagazinePopular.data;
 
   return (
@@ -20,7 +22,7 @@ const PopularJournalSlider = ({ allMagazinePopular }) => {
         <div className="popular-journal-slider__inner">
           <div className="popular-journal-slider__header">
             <h3 className="popular-journal-slider__title">
-              Самые популярные выпуски журнала
+              {t("electron_journal.popular_journal")}
             </h3>
 
             <div className="popular-journal-slider__slider--controls slider_controls">

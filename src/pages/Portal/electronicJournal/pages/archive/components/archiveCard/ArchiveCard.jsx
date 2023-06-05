@@ -1,9 +1,9 @@
 import React from "react";
 
 import "./archiveCard.scss";
-import { Link } from "react-router-dom";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 const ArchiveCard = (props) => {
+  const { t } = props;
   const time = props?.start_data_edition
     .slice(0, 10)
     .split("-")
@@ -25,7 +25,9 @@ const ArchiveCard = (props) => {
         <div className="archive-card__body">
           <b className="archive-card__date">{time}</b>
           <h4 className="archive-card__title">{props?.title}</h4>
-          <b className="archive-card__sub_title">О журнале</b>
+          <b className="archive-card__sub_title">
+            {t("electron_journal.about_magazine")}
+          </b>
           <p className="archive-card__desc">
             {props?.short_content?.length > 254
               ? props?.short_content?.slice(0, 254) + "..."
@@ -37,7 +39,7 @@ const ArchiveCard = (props) => {
             target="blank"
             className="archive-card__btn"
           >
-            Подробнее
+            {t("electron_journal.more_detailed")}
           </a>
         </div>
       </div>

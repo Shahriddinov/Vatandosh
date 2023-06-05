@@ -504,19 +504,12 @@
     "see_more": "See more",
     "video_clips": "Video clips"
   },
-  "about_uzbekistan": {
-    "galleria": "Photo gallery",
-    "contact": "Our contacts",
-    "navbar": {
-      "nav1": "Online courses",
-      "nav2": "Electronic Library",
-      "nav3": "Вебинары",
-      "nav4": "Announcements",
-      "nav5": "Personal cabinet"
-    },
-    "tourist_sites": "Tourist sites",
-    "tourist_sites_error": "There are currently no tourist facilities in this city",
-    "see_more": "See more",
-    "video_clips": "Video clips"
+  "electron_journal": {
+    "release": "Release",
+    "about_magazine": "About the magazine",
+    "more_detailed":"More detailed",
+    "popular_journal": "The most popular issues of the magazine",
+    "new_issue": "CONTENTS OF THE NEW ISSUE",
+    "total_journal": "There is a magazine in the archive {{total}}"
   }
 }
