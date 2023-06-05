@@ -299,9 +299,9 @@ const Register = () => {
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
-                  {nationsData.map((nation) => (
-                    <MenuItem key={nation.id} value={nation.id}>
-                      {nation.name}
+                  {nationsData?.map((nation) => (
+                    <MenuItem key={nation?.id} value={nation?.id}>
+                      {nation?.name}
                     </MenuItem>
                   ))}
                 </Select>

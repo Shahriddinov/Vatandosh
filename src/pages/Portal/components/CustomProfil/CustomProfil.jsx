@@ -261,7 +261,7 @@ export default function CustomProfil() {
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {/* {[1, 2, 3, 4].map((id) => ( */}
+              {expertData?.user_volunteer_activities?.map((evt) => (
                 <div key={id} className="customprofil-list-offer">
                   <div
                     className="customprofil-list-offer-info"
@@ -270,29 +270,26 @@ export default function CustomProfil() {
                     }>
                     <div className="customprofil-list-offer-info-img">
                       <img
-                        src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
+                        src={`${PORTAL_IMAGE_URL}/${evt.images}`}
                         alt="error"
                         className="valontery-desc-img"
                       />
                     </div>
                     <div className="customprofil-list-offer-info-desc valontery-desc-text">
                       <p className="customprofil-list-offer-info-desc-text">
-                        {`${id}. “O‘zbekiston zamini” ilmiy-amaliy va innovatsion maqola`}
+                        {evt.title}
                       </p>
-                      <p>{expertData?.suggestions}</p>
+                      <p>{evt?.description}</p>
                       <button className="customprofil-list-offer-info-desc-btn">
                         <Link
-                          to={
-                            "/portal-category/volunteer/offers/" +
-                            expertData?.id
-                          }>
+                          to={"/portal-category/volunteer/offers/" + evt?.id}>
                           {t("expert.detail")}
                         </Link>
                       </button>
                     </div>
                   </div>
                 </div>
-              {/* ))} */}
+              ))}
             </AccordionDetails>
           </Accordion>
         )}

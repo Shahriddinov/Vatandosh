@@ -38,3 +38,15 @@
     width: 1140px;
   }
 }
+
+@media (max-width: 1160px) {
+  .container {
+    width: 1020px;
+  }
+
+  .headeres {
+    &--text {
+      width: 90%;
+    }
+  }
+}

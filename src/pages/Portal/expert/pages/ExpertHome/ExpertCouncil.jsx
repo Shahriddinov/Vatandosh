@@ -58,7 +58,6 @@ function ExpertCouncil() {
   };
 
 
-  console.log(expertData);
 
   return (
     <>
