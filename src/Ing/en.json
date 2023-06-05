@@ -506,9 +506,10 @@
   },
   "electron_journal": {
     "release": "Release",
-    "about_magazine": "Jurnal haqida",
+    "about_magazine": "About the magazine",
     "more_detailed":"More detailed",
     "popular_journal": "The most popular issues of the magazine",
-    "new_issue": "CONTENTS OF THE NEW ISSUE"
+    "new_issue": "CONTENTS OF THE NEW ISSUE",
+    "total_journal": "There is a magazine in the archive {{total}}"
   }
 }

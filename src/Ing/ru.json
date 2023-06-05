@@ -505,9 +505,10 @@
   },
   "electron_journal": {
     "release": "Выпуск",
-    "about_magazine": "Jurnal haqida",
+    "about_magazine": "О журнале",
     "more_detailed":"Подробнее",
     "popular_journal": "Самые популярные выпуски журнала",
-    "new_issue": "СОДЕРЖАНИЕ НОВОГО НОМЕРА"
+    "new_issue": "СОДЕРЖАНИЕ НОВОГО НОМЕРА",
+    "total_journal": "В архиве {{total}} журнал есть"
   }
 }

@@ -516,9 +516,10 @@
   },
   "electron_journal": {
     "release": "Chiqarish",
-    "about_magazine": "About the magazine",
+    "about_magazine": "Jurnal haqida",
     "more_detailed":"Batafsil",
     "popular_journal":"Jurnalning eng mashhur sonlari",
-    "new_issue": "YANGI SONNNING MAZMUNI"
+    "new_issue": "YANGI SONNNING MAZMUNI",
+    "total_journal": " Arxivda {{total}} ta jurnal bor"
   }
 }
