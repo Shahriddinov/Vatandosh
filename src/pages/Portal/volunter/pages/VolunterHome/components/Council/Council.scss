@@ -32,6 +32,10 @@
       color: #fff;
     }
 
+    img {
+      width: 100%;
+    }
+
     div {
       display: flex;
       justify-content: flex-end;
@@ -107,5 +111,46 @@
       line-height: 22px;
       color: #5d6b8a;
     }
+  }
+}
+
+@media (max-width: 1440px) {
+  .container {
+    width: 1240px;
+  }
+}
+
+@media (max-width: 1260px) {
+  .container {
+    width: 1140px;
+  }
+
+  .council {
+    &-left {
+      img {
+        width: 90%;
+      }
+
+      p {
+        width: 700px;
+      }
+    }
+
+    &-right {
+      margin: 0 10px;
+
+      div {
+        width: 330px;
+      }
+    }
+  }
+  body .council .council-bottom {
+    width: 330px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .container {
+    width: 1020px;
   }
 }
