@@ -513,5 +513,12 @@
     "tourist_sites_error": "Hozirda bu shaharda turistik ob'ektlar mvjud emas",
     "see_more": "Кўпроқ кўриш",
     "video_clips": "Video kliplar"
+  },
+  "electron_journal": {
+    "release": "Chiqarish",
+    "about_magazine": "About the magazine",
+    "more_detailed":"Batafsil",
+    "popular_journal":"Jurnalning eng mashhur sonlari",
+    "new_issue": "YANGI SONNNING MAZMUNI"
   }
 }

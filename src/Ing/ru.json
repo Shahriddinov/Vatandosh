@@ -502,5 +502,12 @@
     "tourist_sites_error": "В настоящее время в этом городе нет туристических достопримечательностей",
     "see_more": "Узнать больше",
     "video_clips": "Видеоклипы"
+  },
+  "electron_journal": {
+    "release": "Выпуск",
+    "about_magazine": "Jurnal haqida",
+    "more_detailed":"Подробнее",
+    "popular_journal": "Самые популярные выпуски журнала",
+    "new_issue": "СОДЕРЖАНИЕ НОВОГО НОМЕРА"
   }
 }
