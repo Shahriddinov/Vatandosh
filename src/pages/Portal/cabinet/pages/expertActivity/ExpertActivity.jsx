@@ -1,48 +1,54 @@
 import "./expertActivity.scss";
 import { useState } from "react";
-import { fakeBodyData, dataBtn } from "../components/fakedata";
 import calendarSvg from "../../../../../assets/images/portal/cabinetVolunteer/calendar.svg";
 import eyeSvg from "../../../../../assets/images/portal/cabinetVolunteer/eye.svg";
 import BtnComp from "../components/btn/BtnComp";
 import CardComp from "../components/card/CardComp";
+import { useCabinetVolunteerFetching } from "../volunteering/hooks/useCabinetVoluneerFetching";
+import { Spinner } from "../../../../../component";
+import { filteredArrFun } from "../volunteering/extra";
+
+const btnGroup = [
+  { id: 1, label: "Barchasi", type: "all" },
+  { id: 2, label: "принят", type: "success" },
+  { id: 3, label: "Отклонен", type: "danger" },
+];
 
 const ExpertActivity = () => {
-  const [activeBtn, setActiveBtn] = useState("Barchasi");
-  const [data, setData] = useState(fakeBodyData);
-  const [filteredData, setFilteredData] = useState(fakeBodyData);
-  const handleBtn = (name, index) => {
-    setActiveBtn(dataBtn[index]);
-    if (name === "Barchasi") {
-      setFilteredData(data);
-      return;
-    }
-    setFilteredData(data.filter((el) => el.status === name));
+  const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
+  const { error, volunteerOneData, volunteerOneLoading } =
+    useCabinetVolunteerFetching();
+
+  if (volunteerOneLoading) {
+    return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
+  const handleBtn = (el) => {
+    setActiveBtn({ id: el.id, type: el.type });
   };
+  const filteredArr = filteredArrFun(
+    volunteerOneData.user_volunteer_activities,
+    activeBtn.type
+  );
 
   return (
     <div className="container-expert">
       <div className="container-expert-inner">
         <div className="container-expert-inner_btnContainer">
-          {dataBtn.map((el, index) => (
+          {btnGroup.map((el) => (
             <BtnComp
-              key={index}
               el={el}
-              index={index}
               activeBtn={activeBtn}
               handleBtn={handleBtn}
+              key={el.id}
             />
           ))}
         </div>
         <div className="container-expert-inner_cardContainer">
-          {filteredData.map((el, index) => (
-            <CardComp
-              key={index}
-              el={el}
-              index={index}
-              fakeBodyData={fakeBodyData}
-              calendarSvg={calendarSvg}
-              eyeSvg={eyeSvg}
-            />
+          {filteredArr.map((el, index) => (
+            <CardComp el={el} calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
           ))}
         </div>
       </div>
