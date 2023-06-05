@@ -3,46 +3,42 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Aos from "aos";
-
-import { getHomeNews } from "../../reduxToolkit/newsSlice/extraReducer";
-import Card from "../card/Card";
-
 import "./News.scss";
-
 import { getProjectsMenu } from "../../reduxToolkit/peacefulSlice/peacefulExtraReducer";
-import { getEventsHome } from "../../reduxToolkit/eventsSlice/extraReducer";
 import { baseServerUrl } from "../../services/api/utils";
 import Spinner from "../Spinner/Spinner";
+import {
+  portalEvents,
+  portalNews,
+} from "../../reduxToolkit/portalSlices/news-events/extraReducer";
+import PortalCard from "../portalCard/portalCard";
 
 const News = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const newsData = useSelector((state) => state.newsSlice.newsHomeData);
-  const loadingNews = useSelector((state) => state.newsSlice.loadingNews);
-  const error = useSelector((state) => state.newsSlice.error);
-  const eventsData = useSelector((state) => state.eventsSlice.homeEventData);
-  const eventsLoading = useSelector((state) => state.eventsSlice.eventLoading);
-  const errorEvents = useSelector((state) => state.eventsSlice.error);
   const projectMenu = useSelector((state) => state.peaceful.menuData);
   const lan = useSelector((state) => state.language.language);
   const [activeCard, setActiveCard] = useState(true);
+
+  const { news, newsLoading, newsError, events, eventsLoading, eventsError } =
+    useSelector((state) => state.portalAllNewsSlice);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
 
   useEffect(() => {
-    dispatch(getHomeNews());
-    dispatch(getEventsHome());
+    dispatch(portalNews());
     dispatch(getProjectsMenu());
-  }, []);
+    dispatch(portalEvents());
+  }, [dispatch, lan]);
 
-  if (error || errorEvents) {
-    return <p>{error}</p>;
+  if (newsError || eventsError) {
+    return <p>{newsError || eventsError}</p>;
   }
 
-  if (loadingNews || eventsLoading) {
+  if (newsLoading || eventsLoading) {
     return <Spinner position="full" />;
   }
 
@@ -76,16 +72,16 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {newsData.map((news) => (
-                <Card key={news.id} {...news} pathUrl="news" />
+              {news?.map((news) => (
+                <PortalCard key={news.id} {...news} pathUrl="news" />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>
               </div>
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
-              {eventsData[0].data.map((event) => (
-                <Card key={event.id} {...event} />
+              {events?.data?.map((event) => (
+                <PortalCard key={event.id} {...event} />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>

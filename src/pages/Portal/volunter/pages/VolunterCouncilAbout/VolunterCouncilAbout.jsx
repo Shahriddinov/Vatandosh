@@ -41,6 +41,7 @@ function VolunterCouncilAbout() {
         <div className="about-page">
           <div className="about-left">
             <img
+                style={{width:"100%"}}
               src={`${PORTAL_IMAGE_URL}${findExpertAboutPage.image}`}
               alt={findExpertAboutPage[`title_${language}`]}
             />

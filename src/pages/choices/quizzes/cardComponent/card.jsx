@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { timer } from "../../../../helpers/extraFunction";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, quiz }) => {
   const [timeData, setTimeDate] = useState({
@@ -18,6 +19,7 @@ const Card = ({ data, quiz }) => {
     minutes: "00",
   });
   const { t } = useTranslation();
+  const navigate = useNavigate();
   useEffect(() => {
     const { interval } = timer({
       finishedTime: data?.finished_at,
@@ -31,8 +33,10 @@ const Card = ({ data, quiz }) => {
     <div className="card">
       <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
       <div className="card-bottomBox">
-        <h1>{data.title}</h1>
-        <p>{data.description.replace(/(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi, "")}</p>
+        <h1>{data?.title}</h1>
+        <p>
+          {data?.description?.replace(/(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi, "")}
+        </p>
         {quiz ? (
           <div className="card-bottomBox-quizEnded">
             <p>{t("choices.quizIsOver")}</p>
@@ -68,7 +72,10 @@ const Card = ({ data, quiz }) => {
         </div>
 
         <div className="card-bottomBox-btnBox">
-          <motion.button whileTap={{ scale: 0.9 }}>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}
+          >
             {t("choices.moreDetail")}
           </motion.button>
         </div>

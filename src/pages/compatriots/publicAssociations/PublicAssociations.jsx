@@ -50,7 +50,6 @@ const PublicAssociations = () => {
         categories.push(associationCategoryData[i]);
       }
     }
-
     return {
       ...el,
       panel: `panel${index}`,

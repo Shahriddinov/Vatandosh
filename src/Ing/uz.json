@@ -9,6 +9,7 @@
   "share": "Do'stlaringizga ulashing",
   "contects": "TANLOVLAR",
   "faq" : "FAQ",
+  "faqDesc": "Tez -tez so'raladigan savollar ( FAQ ) ro'yxati tez-tez maqolalar, veb-saytlar, elektron pochta ro'yxatlari va onlayn forumlarda tez-tez uchraydi, bu erda tez-tez uchraydigan savollar takrorlanadi. Tez-tez so'raladigan savollarning maqsadi odatda tez-tez uchraydigan savollar yoki tashvishlar haqida ma'lumot berishdir; ammo format ma'lumotni tashkil qilishning foydali vositasi bo'lib, savollar va ularning javoblaridan iborat matnni savollar haqiqatda tez-tez so'ralishidan qat'i nazar, FAQ deb atash mumkin.",
   "information": "AXBOROT XIZMATI",
   "link": "BOG‘LANISH",
   "lates": "So`ngi yangiliklar",
@@ -80,6 +81,21 @@
   "election_leader": "Rahbar saylangan sana",
   "mediaVideo": "Video lavhalar",
   "mediaImg": "Foto sur'atlar",
+  "teams" : "“VATANDOSHLAR” Jamoat Fondining Yagona Avtomatlashtirilgan Axborot Tizimi",
+  "signs": "Ro'yxatdan o'tish",
+  "signn": "Kirish",
+  "personals": "Shaxsiy kabinetga kirish",
+  "create" : "Iltimos ma’lumotlaringizni kirting",
+  "createEmail" : "Email pochtangizni kiriting",
+  "remember" : "Qurilmani eslab qolish",
+  "forgot" : " Parolni unutdingizmi?",
+  "introduction" : "Profilga kirish",
+  "registerYet" : "Hali ro’yxatdan o’tmaganmisiz?",
+  "registeri" : "Ro’yxatdan o’ting",
+  "sendEmail" : "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
+  "keep" : "Davom etish",
+  "registerTitle" : "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
+  "registerText" : "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -100,9 +116,9 @@
   },
   "projects_items": {
     "item1": "Barcha loyihalar",
-    "item2": "“Kun oilasi” rukni",
-    "item3": "“Sportchi vatandsohlar” rukni",
-    "item4": "“Yosh vatandoshlar” rukni",
+    "item2": "“Kun oilasi”",
+    "item3": "“Sportchi vatandsohlar”",
+    "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
     "item6": "“Xorijdagi milliy oshxona” loyihasi",
     "item7": "“Xorijdagi vatandosh tashkilot” loyihasi"
@@ -111,6 +127,8 @@
     "section1": {
       "htext": "Biz haqimizda",
       "ptext": "“Vatandoshlar” jamoat fondining oliy organi hisoblanadi. Vasiylik kengashi 17 kishidan iborat.",
+      "ptextes" : "Fond faoliyatining asosiy yo‘nalishlari",
+      "pdirections" : "Yo`nalishlar",
       "ptext1": "Fond faoliyatining asosiy yo‘nalishlaridan bu xorijda istiqomat qilayotgan vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalari bilan hamkorlik aloqalarini yo‘lga qo‘yish va rivojlantirish. Shu bois vatandoshlar tomonidan tashkil etilgan jamoat birlashmalari faoliyatini rag‘batlantirish, ularga xorijda o‘zbek milliy madaniy markazlarini tashkil etishda amaliy yordam ko‘rsatish, vatandosh birlashmalari bilan hamkorlikda xorijda o‘zbek tili, madaniyati va an’analarini saqlab qolish va rivojlantirishga qaratilgan faoliyatni qo‘llab-quvvatlash va xorijda yurtimizning boy ilmiy, madaniy va ma’naviy merosini keng targ‘ib qilish va ommalashtirish, vatandoshlarga madaniy-ma’rifiy tadbirlarni tashkil etishda ko‘maklashish.",
       "foottext1": "Asosiy sahifa",
       "foottext2": "Biz haqimizda"
@@ -164,7 +182,7 @@
       "cardbb": "Bosh buhgalter"
     },
     "section5": {
-      "htext1": "Xorijdagi vatandoshlarni yagona Vatani atrofida yanada jipslashtirish, ularning qalbi va ongida yurt bilan faxrlanish tuyg‘usini yuksaltirish, milliy o‘zlikni saqlab qolish bizning oliy maqsadimizdir!"
+      "htext1": "Oliy maqsadimiz-xorijdagi vatandoshlarni Vatan atrofida birlashtirish, ularning qalbi va ongida yurtdan faxrlanish tuyg'usini yuksaltirish, milliy o'zlikni asrashdir!"
     }
   },
   "contactPage": {
@@ -197,9 +215,9 @@
     "form_email": "Elektron pochta mazilingiz",
     "form_phone": "Telefon raqamingiz",
     "form_category": "Ruknni tanlang",
-    "item2": "“Kun oilasi” rukni",
-    "item3": "“Sportchi vatandsohlar” rukni",
-    "item4": "“Yosh vatandoshlar” rukni",
+    "item2": "“Kun oilasi”",
+    "item3": "“Sportchi vatandsohlar”",
+    "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
     "item6": "“Xorijdagi milliy oshxona” loyihasi",
     "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
@@ -255,7 +273,7 @@
     "workstart": "Ish boshlagan yili",
     "workend": "Tamomlagan yili",
     "activity": "Ilmiy faoliyati",
-    "article": "Maqolasi",
+    "article": "Maqolas",
     "articletitle": "Ilmiy maqola mavzusi",
     "articlename": "Chop etilgan jurnal nomi",
     "articledate": "Chop etilgan sana",
@@ -475,7 +493,25 @@
     "day": "Kun",
     "hour": "Soat",
     "minute": "Daqiqa",
-    "selections": "TANLOVLAR"
+    "selections": "TANLOVLAR",
+    "shareFriends": "Do'stlaringizga ulashing",
+    "participatee": "Loyihada ishtirok etish",
+    "projectEnded": "Loyiha tugallangan"
 
+  },
+  "about_uzbekistan": {
+    "galleria": "Fotogalereya",
+    "contact": "Bizning kontaktlarimiz",
+    "navbar": {
+      "nav1": "Onlayn kurslar",
+      "nav2": "Elektron kutubxona",
+      "nav3": "Vebinarlar",
+      "nav4": "E’lonlar",
+      "nav5": "Shaxsiy kabinet"
+    },
+    "tourist_sites": "Turistik ob'ektlar",
+    "tourist_sites_error": "Hozirda bu shaharda turistik ob'ektlar mvjud emas",
+    "see_more": "Кўпроқ кўриш",
+    "video_clips": "Video kliplar"
   }
 }

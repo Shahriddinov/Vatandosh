@@ -13,6 +13,7 @@ import CalendarIcon from "../../../../../assets/images/cabinet/CalendarIcon";
 import Certificate from "../../../../../assets/images/cabinet/Certificate";
 
 const CabinetLeftMenu = () => {
+  const { pathname } = useLocation();
   const menuItems = [
     {
       id: 1,
@@ -58,16 +59,7 @@ const CabinetLeftMenu = () => {
     },
   ];
 
-  const { pathname } = useLocation();
-  const [activePage, setActivePage] = useState("");
-
-  useEffect(() => {
-    setActivePage(pathname);
-  }, []);
-
-  useEffect(() => {
-    setActivePage(pathname);
-  }, [pathname]);
+  const [activePage, setActivePage] = useState(pathname.split("/")[3]);
 
   return (
     <div className="cabinet-navbar">
@@ -82,8 +74,10 @@ const CabinetLeftMenu = () => {
               <li key={menu.id}>
                 <Link
                   to={menu.url}
-                  className={`${menu.url === activePage ? "active" : ""}`}
-                  onClick={() => setActivePage(menu.url)}
+                  className={`${
+                    menu.url.split("/")[3] === activePage ? "active" : ""
+                  }`}
+                  onClick={() => setActivePage(menu.url.split("/")[3])}
                 >
                   {<menu.logo />}
                   <span>{menu.name}</span>

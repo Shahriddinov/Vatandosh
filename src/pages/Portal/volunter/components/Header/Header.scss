@@ -26,3 +26,15 @@
     color: #065ea9;
   }
 }
+
+@media (max-width: 1440px) {
+  .container {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 1220px) {
+  .container {
+    width: 1140px;
+  }
+}

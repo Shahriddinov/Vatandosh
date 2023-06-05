@@ -17,8 +17,8 @@ function BasicDirection(props) {
   const error = useSelector((state) => state.directionSlice.error);
   const errorDirection = useSelector((state) => state.directionSlice.error);
   const heroData = {
-    title: `Fond faoliyatining asosiy yo‘nalishlari`,
-    pagePath: `Yo'nalishlar`,
+    title:`${t("aboutPage.section1.ptextes")}`,
+    pagePath: `${t("aboutPage.section1.pdirections")}`,
   };
 
   useEffect(() => {

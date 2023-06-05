@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -14,8 +14,11 @@ import oneid from "../../../../assets/images/register/oneid-icon.svg";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 import "./SignIn.scss";
+import {useTranslation} from "react-i18next";
 
 export default function SignIn() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [userData, setUserData] = useState({
@@ -62,28 +65,23 @@ export default function SignIn() {
               theme="light"
             />
             <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
+              {t("registerTitle")}
             </h2>
             <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
+              {t("registerText")}
             </p>
           </div>
           <div className="auth-form">
             <div className="auth-form-title">
-              <h3>Shaxsiy kabinetga kirish</h3>
-              <p>Iltimos ma’lumotlaringizni kirting</p>
+              <h3>{t("personals")}</h3>
+              <p>{t("create")}</p>
             </div>
             <form
               className="auth-form-inputs"
               onSubmit={(e) => handleSubmit(e)}
             >
               <label className="auth-form-inputs-emailInput">
-                <span>Email pochtangizni kiriting</span>
+                <span>{t("createEmail")}</span>
                 <input
                   type="email"
                   autoComplete="off"
@@ -122,16 +120,16 @@ export default function SignIn() {
               <div className="auth-form-inputs-checkbox">
                 <div className="auth-form-inputs-checkbox-input">
                   <input type="checkbox" name="" id="" />
-                  <span>Qurilmani eslab qolish</span>
+                  <span>{t("remember")}</span>
                 </div>
                 <div className="auth-form-inputs-checkbox-forgetPassword">
                   <Link to="/registration/recovery-password">
-                    Parolni unutdingizmi?
+                    {t("forgot")}
                   </Link>
                 </div>
               </div>
               <button type="submit" className="auth-form-inputs-submitBtn">
-                Profilga kirish
+                {t("introduction")}
               </button>
             </form>
             <div className="auth-links">
@@ -156,8 +154,8 @@ export default function SignIn() {
                 </a>
               </div>
               <div className="auth-links-tosignup">
-                <span>Hali ro’yxatdan o’tmaganmisiz?</span>
-                <Link to="/registration/signup">Ro’yxatdan o’ting</Link>
+                <span>{t("registerYet")}</span>
+                <Link to="/registration/signup">{t("registeri")}</Link>
               </div>
             </div>
           </div>

@@ -1,12 +1,11 @@
 export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
-export const authUrl = "https://vatandoshlar.napaautomotive.uz/api/auth";
-export const portalBaseUrl = "https://vatandoshlar.napaautomotive.uz/api";
+export const authUrl = "https://api.vatandoshlarfondi.uz/api/auth";
+export const portalBaseUrl = "https://api.vatandoshlarfondi.uz/api";
 export const baseServerUrl =
   "https://vatanparvarbackend.napaautomotive.uz/storage";
-export const PORTAL_IMAGE_URL =
-  "https://vatandoshlar.napaautomotive.uz/storage/";
+export const PORTAL_IMAGE_URL = "https://api.vatandoshlarfondi.uz/storage/";
 
-export const imageUrl = "https://vatandoshlar.napaautomotive.uz/storage";
+export const imageUrl = "https://api.vatandoshlarfondi.uz/storage";
 
 // Get requests
 export const GET_ALL_PROJECTS = `${baseUrl}/headcolumns`;
@@ -14,6 +13,7 @@ export const GET_ABOUT_ALL_PROJECTS = `${baseUrl}/aboutcolumns`;
 export const GET_NEWS_URL = `${baseUrl}/news`;
 export const GET_EVENTS_URL = `${baseUrl}/events`;
 export const GET_PARTNERS_URL = `${baseUrl}/sponsrs`;
+export const GET_FAQ_URL = `${baseUrl}/faqs`;
 export const GET_PEACEFUL_URL = `${baseUrl}/columns`;
 export const GET_PROJECTS_MENU = `${baseUrl}/column-menus`;
 export const GET_INTERACTIVE_SERVICES_URL = `${baseUrl}/interactive-services`;
@@ -118,6 +118,8 @@ export const GET_MAGAZINE_MENU = "/magazine/get-menu";
 export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
 export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
 export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
+export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news?per_page=6&page=1`;
+export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event/?per_page=6&page=1`;
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

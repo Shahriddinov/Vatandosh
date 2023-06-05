@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { aboutUzbShowMediaModal, aboutUzbSlideMove } from "./extra";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
-import { showMediaModal } from "../../../../Mediateka/extraFunc";
 import ImageModal from "../../../../Mediateka/components/imageModal/ImageModal";
 
 import "./aboutUzbekistanGallery.scss";
-import { aboutUzbShowMediaModal, aboutUzbSlideMove } from "./extra";
-import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const images = [
   { id: 1, size: "small" },
@@ -20,6 +20,7 @@ const images = [
 const AboutUzbekistanGallery = ({ allGallery }) => {
   const [showImageModal, setShowImageModal] = useState(false);
   const [activeImage, setActiveImage] = useState("");
+  const { t } = useTranslation();
   const imageData = allGallery
     .slice(0, 8)
     .map((el, index) => ({ ...el, size: images[index].size }));
@@ -41,7 +42,9 @@ const AboutUzbekistanGallery = ({ allGallery }) => {
 
   return (
     <div className="about-uzbekistan-gallery">
-      <h2 className="about-uzbekistan-title">Фотогалерея</h2>
+      <h2 className="about-uzbekistan-title">
+        {t("about_uzbekistan.galleria")}
+      </h2>
       <div className="about-uzbekistan-gallery__images">
         {imageData.map((image) => (
           <img
