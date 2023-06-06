@@ -138,11 +138,11 @@
   "projects_items": {
     "item1": "Barcha loyihalar",
     "item2": "“Kun oilasi”",
-    "item3": "“Sportchi vatandsohlar”",
+    "item3": "“Sportchi vatandoshlar”",
     "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona” loyihasi",
-    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi"
+    "item6": "“Xorijdagi milliy oshxona”",
+    "item7": "“Xorijdagi vatandosh tashkilot”"
   },
   "aboutPage": {
     "section1": {
@@ -237,11 +237,11 @@
     "form_phone": "Telefon raqamingiz",
     "form_category": "Ruknni tanlang",
     "item2": "“Kun oilasi”",
-    "item3": "“Sportchi vatandsohlar”",
+    "item3": "“Sportchi vatandoshlar”",
     "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona” loyihasi",
-    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
+    "item6": "“Xorijdagi milliy oshxona” ",
+    "item7": "“Xorijdagi vatandosh tashkilot”",
     "form_about": "Siz va oilangiz haqida",
     "form_image": "Rasmlaringizni yuklang",
     "form_image_delete": "O'chirish",
