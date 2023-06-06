@@ -4,7 +4,9 @@ import { GET_VOLUNTEER_USER } from "../../services/api/utils";
 
 export const getVolunteerShowUser = createAsyncThunk(
   "getVolunteerShowUser",
-  async () => {
-    return await axios.get(`${GET_VOLUNTEER_USER}`).then((res) => res.data);
+  async ({ id }) => {
+    return await axios
+      .get(`${GET_VOLUNTEER_USER}/${id}`)
+      .then((res) => res.data);
   }
 );

@@ -1,4 +1,4 @@
-  import React, { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
@@ -51,8 +51,7 @@ const Navbar = ({ activeSidebar }) => {
     <div
       className={
         activeSidebar ? "header-sideBar activeSideBar" : "header-sideBar"
-      }
-    >
+      }>
       <div className="header-sideBar-wrapper">
         <form className="header-sideBar-form">
           <input ref={searchRef} type="text" placeholder="Qidirish" />
@@ -68,14 +67,12 @@ const Navbar = ({ activeSidebar }) => {
                 <li
                   key={index}
                   className="header-sideBar-navlist-item"
-                  style={activeLinkBar === index ? { height: "auto" } : null}
-                >
+                  style={activeLinkBar === index ? { height: "auto" } : null}>
                   <p
                     className="header-sideBar-navlist-item-title"
                     onClick={() =>
                       setactiveLinkBar((el) => (el === index ? -1 : index))
-                    }
-                  >
+                    }>
                     {el.title}{" "}
                     <IoIosArrowDown
                       className="header-sideBar-navlist-item-arrowIcon"
@@ -92,8 +89,7 @@ const Navbar = ({ activeSidebar }) => {
                         <NavLink
                           key={index}
                           className="header-sideBar-navlist-item-link"
-                          to={link.url}
-                        >
+                          to={link.url}>
                           {link.title}
                         </NavLink>
                       );
@@ -104,8 +100,7 @@ const Navbar = ({ activeSidebar }) => {
                 <li className="header-sideBar-navlist-item" key={index}>
                   <Link
                     className="header-sideBar-navlist-item-title"
-                    to={el?.url}
-                  >
+                    to={el?.url}>
                     {el.title}
                   </Link>
                 </li>
@@ -115,15 +110,13 @@ const Navbar = ({ activeSidebar }) => {
           <div className="header-sideBar-connection">
             <a
               href={`tel: ${contactData?.phone}`}
-              className="header-sideBar-connection-item"
-            >
+              className="header-sideBar-connection-item">
               <img src={phone} alt="phone" />
               <span>0800-120-55 55</span>
             </a>
             <a
               href={`mailto: ${contactData?.email}`}
-              className="header-sideBar-connection-item"
-            >
+              className="header-sideBar-connection-item">
               <HiOutlineMail className="header-sideBar-connection-item-icon" />
               <span>info@Vatandoshlar</span>
             </a>
@@ -163,8 +156,7 @@ const Navbar = ({ activeSidebar }) => {
                   activeLng === el.type ? "langActive" : ""
                 }`}
                 key={index}
-                onClick={() => changeLanguage(el.type)}
-              >
+                onClick={() => changeLanguage(el.type)}>
                 {el.label}
               </li>
             ))}
@@ -173,20 +165,17 @@ const Navbar = ({ activeSidebar }) => {
           <div className="header-sideBar-bottom-socialMedia">
             <a
               href="https://ru-ru.facebook.com"
-              className="header-sideBar-bottom-socialMedia-item"
-            >
+              className="header-sideBar-bottom-socialMedia-item">
               <FaFacebookF className="header-sideBar-bottom-socialMedia-item-icon" />
             </a>
             <a
               href="https://twitter.com/?lang=en"
-              className="header-sideBar-bottom-socialMedia-item"
-            >
+              className="header-sideBar-bottom-socialMedia-item">
               <FaTwitter className="header-sideBar-bottom-socialMedia-item-icon" />
             </a>
             <a
               href="https://www.instagram.com/?hl=en"
-              className="header-sideBar-bottom-socialMedia-item"
-            >
+              className="header-sideBar-bottom-socialMedia-item">
               <AiFillInstagram className="header-sideBar-bottom-socialMedia-item-icon" />
             </a>
           </div>

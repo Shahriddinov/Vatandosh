@@ -30,11 +30,11 @@
   "national": "`Xorijdagi milliy oshxona` loyihasi",
   "abroad": "`Xorijdagi vatandosh tashkilot` loyihasi",
   "participation": "Loyihada ishtirok etish",
-  "peacefulTitle": "Bizning loyihalar",
+  "peacefulTitle": "Bizning ruknlar",
   "allPeacefulBtn": "Barchasi",
   "interactiveServicesTitle": "Interaktiv xizmatlar",
   "partnersTitle": "Bizning hamkorlar",
-  "mapTitle": "Xorijiy mamlakatlarda o‘tkazilgan tadbirlar, yangiliklar va jamoat birlashmalari ro‘yxatini dunyo xaritasi orqali ko‘ring",
+  "mapTitle": "Yurtdoshlarimiz sonini dunyo xaritasidan ko’ring",
   "mapErrorText": "{{countryName.name}} davlati bilan hamkorlik mavjud emas.",
   "footerContactUs": "Biz bilan bog‘lanish",
   "footerName": "Ismingiz",
@@ -94,29 +94,8 @@
   "registeri": "Ro’yxatdan o’ting",
   "sendEmail": "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
   "keep": "Davom etish",
-  "againPassword": "Qaytadan parol",
   "registerTitle": "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
   "registerText": "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
-  "surname": "Familiyasi",
-  "name": "Ismi",
-  "foreignCountry": "Xorijiy davlat",
-  "foreignAddress": "Xorijdagi manzil",
-  "typeOfActivity": "Faoliyat turi",
-  "phoneNumber": "Telefon raqamingiz",
-  "passportCopy": "Pasport nusxasi (ixtiyoriy)",
-  "during": "Ro'yxatdan otish davomida",
-  "terms": "Foydalanish shartlari  ",
-  "acquainted ": "bilan  tanishib chiqdim va shaxsiy ma’lumotlarimdan foydalanilishiga  roziman",
-  "patronymic": "Otasining ismi",
-  "dataOfBirth": "Tug'ilgan sana",
-  "nation": "Millati",
-  "gender": "Jinsi",
-  "man": "Erkak",
-  "woman": "Ayol",
-  "uzbLocation": "O'zbekistondagi manzilingiz",
-  "newPassword": "Yangi parolingizni kiriting",
-  "linked": " Hisobingiz bilan bog'langan email pochtangizni kiriting va parolingizni tiklash uchun tasdiqlash kodini yuboramiz.",
-  "change": " O’zgartirish",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -138,11 +117,11 @@
   "projects_items": {
     "item1": "Barcha loyihalar",
     "item2": "“Kun oilasi”",
-    "item3": "“Sportchi vatandoshlar”",
+    "item3": "“Sportchi vatandsohlar”",
     "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona”",
-    "item7": "“Xorijdagi vatandosh tashkilot”"
+    "item6": "“Xorijdagi milliy oshxona” loyihasi",
+    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi"
   },
   "aboutPage": {
     "section1": {
@@ -203,7 +182,7 @@
       "cardbb": "Bosh buhgalter"
     },
     "section5": {
-      "htext1": "Maqsadimiz-xorijdagi vatandoshlarni Vatan atrofida birlashtirish, ularning qalbi va ongida yurtdan faxrlanish tuyg'usini yuksaltirish, milliy o'zlikni asrashdir!"
+      "htext1": "Oliy maqsadimiz-xorijdagi vatandoshlarni Vatan atrofida birlashtirish, ularning qalbi va ongida yurtdan faxrlanish tuyg'usini yuksaltirish, milliy o'zlikni asrashdir!"
     }
   },
   "contactPage": {
@@ -237,11 +216,11 @@
     "form_phone": "Telefon raqamingiz",
     "form_category": "Ruknni tanlang",
     "item2": "“Kun oilasi”",
-    "item3": "“Sportchi vatandoshlar”",
+    "item3": "“Sportchi vatandsohlar”",
     "item4": "“Yosh vatandoshlar”",
     "item5": "Sara durdona",
-    "item6": "“Xorijdagi milliy oshxona” ",
-    "item7": "“Xorijdagi vatandosh tashkilot”",
+    "item6": "“Xorijdagi milliy oshxona” loyihasi",
+    "item7": "“Xorijdagi vatandosh tashkilot” loyihasi",
     "form_about": "Siz va oilangiz haqida",
     "form_image": "Rasmlaringizni yuklang",
     "form_image_delete": "O'chirish",
@@ -487,8 +466,9 @@
     "textsFour": "Ulugʻ xalq qudrati joʻsh urgan zamon,\nOlamni mahliyo aylagan diyor!",
     "textsFive": "Bagʻri keng oʻzbekning oʻchmas iymoni,\nErkin, yosh avlodlar senga zoʻr qanot, zoʻr qanot!",
     "textsSix": "Istiqlol mashʼali, tinchlik posboni,\nHaqsevar, ona yurt, mangu boʻl obod!",
-    "coat": "O‘zbekiston Respublikasi Davlat gerbi ",
-    "coatAbout": " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
+
+    "coat": "O'zbekiston Respublikasi Davlat gerbi",
+    "coatAbout": " \" O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
     "coats": "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
     "coatCenter": "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
     "coatUzb": " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
@@ -531,13 +511,5 @@
     "tourist_sites_error": "Hozirda bu shaharda turistik ob'ektlar mvjud emas",
     "see_more": "Кўпроқ кўриш",
     "video_clips": "Video kliplar"
-  },
-  "electron_journal": {
-    "release": "Chiqarish",
-    "about_magazine": "Jurnal haqida",
-    "more_detailed":"Batafsil",
-    "popular_journal":"Jurnalning eng mashhur sonlari",
-    "new_issue": "YANGI SONNNING MAZMUNI",
-    "total_journal": " Arxivda {{total}} ta jurnal bor"
   }
 }

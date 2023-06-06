@@ -10,11 +10,18 @@ import "./VolunteerOffers.scss";
 import { useExportOfferDetail } from "../../../expert/pages/ExpertOffersDetail/hooks/useExpertOffersDetail";
 import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getVolunteerShowUser } from "../../../../../reduxToolkit/volunteer-user/volunteer-user";
 
 export default function VolunteerOffers() {
   const { t } = useTranslation();
   const { expertData } = useExportOfferDetail();
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const getOneVolunteer = useSelector(
+    (state) => state.volunteerShowUserSlice.volunteerShowOneData
+  );
 
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
@@ -29,6 +36,11 @@ export default function VolunteerOffers() {
     (evt) => evt?.id === Number(id)
   );
 
+  useEffect(() => {
+    getVolunteerShowUser({ id });
+  }, [dispatch]);
+
+  console.log(getOneVolunteer);
   return (
     <main className="expertofferdetail">
       <div className="container">
