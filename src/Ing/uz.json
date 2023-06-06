@@ -1,4 +1,5 @@
 {
+  "version": "ОЛДИНГИ ВEРСИЯ",
   "Council_composition": "Kengash tarkibi",
   "seeMore": "Ko’proq ko’rish",
   "leadership_structure": "Rahbariyat tarkibi",
@@ -85,17 +86,17 @@
   "signs": "Ro'yxatdan o'tish",
   "signn": "Kirish",
   "personals": "Shaxsiy kabinetga kirish",
-  "create" : "Iltimos ma’lumotlaringizni kirting",
-  "createEmail" : "Email pochtangizni kiriting",
-  "remember" : "Qurilmani eslab qolish",
-  "forgot" : " Parolni unutdingizmi?",
-  "introduction" : "Profilga kirish",
-  "registerYet" : "Hali ro’yxatdan o’tmaganmisiz?",
-  "registeri" : "Ro’yxatdan o’ting",
-  "sendEmail" : "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
-  "keep" : "Davom etish",
-  "registerTitle" : "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
-  "registerText" : "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
+  "create": "Iltimos ma’lumotlaringizni kirting",
+  "createEmail": "Email pochtangizni kiriting",
+  "remember": "Qurilmani eslab qolish",
+  "forgot": " Parolni unutdingizmi?",
+  "introduction": "Profilga kirish",
+  "registerYet": "Hali ro’yxatdan o’tmaganmisiz?",
+  "registeri": "Ro’yxatdan o’ting",
+  "sendEmail": "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
+  "keep": "Davom etish",
+  "registerTitle": "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
+  "registerText": "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -467,11 +468,11 @@
     "textsFive": "Bagʻri keng oʻzbekning oʻchmas iymoni,\nErkin, yosh avlodlar senga zoʻr qanot, zoʻr qanot!",
     "textsSix": "Istiqlol mashʼali, tinchlik posboni,\nHaqsevar, ona yurt, mangu boʻl obod!",
 
-    "coat" : "O‘zbekiston Respublikasi Davlat gerbi ",
-    "coatAbout" : " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
-    "coats" : "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
-    "coatCenter" : "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
-    "coatUzb" : " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
+    "coat": "O‘zbekiston Respublikasi Davlat gerbi ",
+    "coatAbout": " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
+    "coats": "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
+    "coatCenter": "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
+    "coatUzb": " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
   },
   "portal": {
     "kabinet": "Kabinet"
@@ -515,8 +516,8 @@
   "electron_journal": {
     "release": "Chiqarish",
     "about_magazine": "Jurnal haqida",
-    "more_detailed":"Batafsil",
-    "popular_journal":"Jurnalning eng mashhur sonlari",
+    "more_detailed": "Batafsil",
+    "popular_journal": "Jurnalning eng mashhur sonlari",
     "new_issue": "YANGI SONNNING MAZMUNI",
     "total_journal": " Arxivda {{total}} ta jurnal bor"
   }

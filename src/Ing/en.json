@@ -1,4 +1,5 @@
 {
+  "version": "OLD VERSION",
   "Council_composition": "Council composition",
   "seeMore": "see more",
   "leadership_structure": "leadership structure",
@@ -94,12 +95,12 @@
   "registeri": "Register",
   "sendEmail": "Enter your email mail to open an account and we will send you the transfer code",
   "keep": "Continue",
-  "againPassword" : "Reverse password",
-  "registerTitle" : "Sign up to be aware of all projects and news",
-  "registerText" : "By registering, you will have the opportunity to become more aware of the news about our activities, participate in online webinars and classes, read books of different genres.",
- "surname" : "Surname",
+  "againPassword": "Reverse password",
+  "registerTitle": "Sign up to be aware of all projects and news",
+  "registerText": "By registering, you will have the opportunity to become more aware of the news about our activities, participate in online webinars and classes, read books of different genres.",
+  "surname": "Surname",
   "name": "Name",
-  "patronymic" : "Patronymic",
+  "patronymic": "Patronymic",
   "dataOfBirth": "Data of Birth",
   "foreignCountry": "Foreign Country",
   "foreignAddress": "Foreign Address",
@@ -528,7 +529,7 @@
   "electron_journal": {
     "release": "Release",
     "about_magazine": "About the magazine",
-    "more_detailed":"More detailed",
+    "more_detailed": "More detailed",
     "popular_journal": "The most popular issues of the magazine",
     "new_issue": "CONTENTS OF THE NEW ISSUE",
     "total_journal": "There is a magazine in the archive {{total}}"
