@@ -122,11 +122,6 @@ const Header = () => {
           <button className="header_navbar_eye" onClick={() => grayScale()}>
             <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
           </button>
-          <a
-            href="https://old.vatandoshlarfondi.uz/"
-            className="header_navbar_version">
-            Old Version
-          </a>
 
           <div className="header_navbar_language">
             <div
