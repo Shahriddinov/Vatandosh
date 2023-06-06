@@ -25,6 +25,7 @@ const Volunteering = () => {
   const { error, volunteerOneData, volunteerOneLoading } =
     useCabinetVolunteerFetching();
 
+  console.log(volunteerOneData);
   if (volunteerOneLoading) {
     return <Spinner position="full" />;
   } else if (error) {
@@ -40,7 +41,7 @@ const Volunteering = () => {
   };
 
   const { someData, totalPagination } = someDataFun({
-    arr: volunteerOneData.user_volunteer_activities,
+    arr: volunteerOneData[0].user_volunteer_activities,
     type: activeBtn.type,
     count: 3,
     activePage: activePage,

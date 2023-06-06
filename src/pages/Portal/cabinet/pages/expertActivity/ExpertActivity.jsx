@@ -29,7 +29,7 @@ const ExpertActivity = () => {
     setActiveBtn({ id: el.id, type: el.type });
   };
   const filteredArr = filteredArrFun(
-    volunteerOneData.user_volunteer_activities,
+    volunteerOneData[0].user_volunteer_activities,
     activeBtn.type
   );
 
