@@ -30,11 +30,11 @@
   "national": "`Xorijdagi milliy oshxona` loyihasi",
   "abroad": "`Xorijdagi vatandosh tashkilot` loyihasi",
   "participation": "Loyihada ishtirok etish",
-  "peacefulTitle": "Bizning ruknlar",
+  "peacefulTitle": "Bizning loyihalar",
   "allPeacefulBtn": "Barchasi",
   "interactiveServicesTitle": "Interaktiv xizmatlar",
   "partnersTitle": "Bizning hamkorlar",
-  "mapTitle": "Yurtdoshlarimiz sonini dunyo xaritasidan ko’ring",
+  "mapTitle": "Xorijiy mamlakatlarda o‘tkazilgan tadbirlar, yangiliklar va jamoat birlashmalari ro‘yxatini dunyo xaritasi orqali ko‘ring",
   "mapErrorText": "{{countryName.name}} davlati bilan hamkorlik mavjud emas.",
   "footerContactUs": "Biz bilan bog‘lanish",
   "footerName": "Ismingiz",
@@ -203,7 +203,7 @@
       "cardbb": "Bosh buhgalter"
     },
     "section5": {
-      "htext1": "Oliy maqsadimiz-xorijdagi vatandoshlarni Vatan atrofida birlashtirish, ularning qalbi va ongida yurtdan faxrlanish tuyg'usini yuksaltirish, milliy o'zlikni asrashdir!"
+      "htext1": "Maqsadimiz-xorijdagi vatandoshlarni Vatan atrofida birlashtirish, ularning qalbi va ongida yurtdan faxrlanish tuyg'usini yuksaltirish, milliy o'zlikni asrashdir!"
     }
   },
   "contactPage": {
