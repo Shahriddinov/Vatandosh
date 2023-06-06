@@ -106,6 +106,13 @@ const Navbar = ({ activeSidebar }) => {
                 </li>
               );
             })}
+            <li className="header-sideBar-navlist-item">
+              <a
+                className="header-sideBar-navlist-item-title"
+                href="https://old.vatandoshlarfondi.uz/">
+                OLD VERSION
+              </a>
+            </li>
           </ul>
           <div className="header-sideBar-connection">
             <a
