@@ -15,8 +15,6 @@ const PortalCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  console.log(props);
-
   return (
     <div
       className="single-card portalCard"
@@ -27,7 +25,7 @@ const PortalCard = (props) => {
         <img src={`${PORTAL_IMAGE_URL}/${props?.image}`} alt={props?.title} />
       </div>
       <div className="news-information">
-        <Link to={`/${props.id}`}>
+        <Link to={`/news/${props.id}`}>
           <h5 className="news__card-title">{props?.title}</h5>
           <p
             className="news__card-text"

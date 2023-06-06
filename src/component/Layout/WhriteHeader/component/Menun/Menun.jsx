@@ -269,6 +269,11 @@ const Menun = () => {
             {t("link")}
           </Link>
         </li>
+        <li className="menu_item">
+          <a className="menu_link" href="https://old.vatandoshlarfondi.uz/">
+            OLD VERSION
+          </a>
+        </li>
       </ul>
     </div>
   );
