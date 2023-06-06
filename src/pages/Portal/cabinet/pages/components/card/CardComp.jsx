@@ -1,38 +1,30 @@
+import { PORTAL_IMAGE_URL } from "../../../../../../services/api/utils";
 import "./CardComp.scss";
-import { motion } from "framer-motion";
 
-const CardComp = ({ el, index, fakeBodyData, calendarSvg, eyeSvg }) => {
+const CardComp = ({ el, calendarSvg, eyeSvg, activeBtn }) => {
   return (
-    <div key={index} className="singleCard">
+    <div key={el?.id} className="singleCard">
       <div className="singleCard-imgCont">
-        <img src={el.img} alt="img" />
-        {/* <span>{el.status}</span> */}
+        <img src={`${PORTAL_IMAGE_URL}${el?.images[0]}`} alt="img" />
+        <span className={el.verified ? "succuss" : "danger"}>
+          {el?.verified ? "принят" : "Отклонен"}
+        </span>
       </div>
       <div className="singleCard-bodyCont">
-        <h1>{el.headText}</h1>
-        <p>{el.bodyText}</p>
-        <div className="singleCard-bodyCont-btnCont">
-          {fakeBodyData[index].selectType.map((text, index) => (
-            <motion.button
-              animate={{ x: [250, -250] }}
-              transition={{ duration: 30, repeat: Infinity }}
-              whileHover={{ cursor: "pointer" }}
-              key={index}
-            >
-              {text}
-            </motion.button>
-          ))}
-        </div>
+        <h1>{el?.title}</h1>
+        <p>{el?.description}</p>
       </div>
       <div className="singleCard-hrl"></div>
       <div className="singleCard-dateAndViewCont">
         <div>
           <img src={calendarSvg} alt="cal" />
-          <span>{el.date}</span>
+          <span>
+            {el?.created_at.slice(0, 10).split("-").reverse().join(".")}
+          </span>
         </div>
         <div>
           <img src={eyeSvg} alt="eye" />
-          <span>{el.views}</span>
+          <span>{el?.views ? el.views : 0}</span>
         </div>
       </div>
     </div>

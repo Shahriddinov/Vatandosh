@@ -17,7 +17,7 @@
       margin-top: 30px;
       border-radius: 15px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, max-content));
+      grid-template-columns: repeat(3, minmax(200px, 400px));
       column-gap: 32px;
       row-gap: 32px;
     }

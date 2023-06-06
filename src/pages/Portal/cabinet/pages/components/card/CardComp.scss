@@ -1,7 +1,6 @@
 @import "../../../../../../assets//style//global.scss";
 
 .singleCard {
-  height: 441px;
   max-width: 330px;
   border: 2px solid #eaedf6;
   border-radius: 15px;
@@ -21,6 +20,17 @@
       position: absolute;
       bottom: 15px;
       left: 15px;
+      padding: 4px 8px;
+      gap: 10px;
+      border-radius: 5px;
+    }
+
+    .succuss {
+      background-color: #e9ffe3;
+      color: rgb(29, 219, 61);
+    }
+    .danger {
+      background-color: #ffe3e3;
       color: red;
     }
   }
