@@ -73,7 +73,7 @@ const MapsModal = ({ changeActive, countryCode }) => {
                 <ul className="maps_modal__body_list">
                   <li className="maps_modal__body_text">
                     <span className="maps_modal__body_text--span">
-                      {t("modalText1")}
+                      {t("communityAssociation.navbar.navbar_link2")}
                     </span>
                     <span style={{ whiteSpace: "nowrap" }}>: 221</span>
                   </li>
