@@ -431,7 +431,7 @@ const routes = [
     path: "/compatriots/public-association-events",
   },
   { path: "/information-service/:pageName", element: InformationServices },
-  { path: "/:id", element: NewsDetail },
+  { path: "/news/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
   { path: "/faq", element: FAQ },

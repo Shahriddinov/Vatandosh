@@ -94,8 +94,29 @@
   "registeri": "Register",
   "sendEmail": "Enter your email mail to open an account and we will send you the transfer code",
   "keep": "Continue",
+  "againPassword" : "Reverse password",
   "registerTitle" : "Sign up to be aware of all projects and news",
   "registerText" : "By registering, you will have the opportunity to become more aware of the news about our activities, participate in online webinars and classes, read books of different genres.",
+ "surname" : "Surname",
+  "name": "Name",
+  "patronymic" : "Patronymic",
+  "dataOfBirth": "Data of Birth",
+  "foreignCountry": "Foreign Country",
+  "foreignAddress": "Foreign Address",
+  "typeOfActivity": "Type of activity",
+  "phoneNumber": "Your phone number",
+  "passportCopy": "Passport copy (optional)",
+  "during": "During the shooting from the list\n",
+  "terms": "Terms of use",
+  "acquainted ": "I got acquainted with and agree that my personal data will be used",
+  "nation": "Nationality",
+  "gernder": "Gender",
+  "man": "Male",
+  "woman": "Woman",
+  "newPassword": "Enter your new password",
+  "linked": "Enter your email mail linked to your account and\nwe will send the verification code to recover your password.",
+  "change": "Change",
+  "uzbLocation": "Your address in Uzbekistan",
   "about_items": {
     "item1": "About us",
     "item2": "Board of trustees",
@@ -504,19 +525,12 @@
     "see_more": "See more",
     "video_clips": "Video clips"
   },
-  "about_uzbekistan": {
-    "galleria": "Photo gallery",
-    "contact": "Our contacts",
-    "navbar": {
-      "nav1": "Online courses",
-      "nav2": "Electronic Library",
-      "nav3": "Вебинары",
-      "nav4": "Announcements",
-      "nav5": "Personal cabinet"
-    },
-    "tourist_sites": "Tourist sites",
-    "tourist_sites_error": "There are currently no tourist facilities in this city",
-    "see_more": "See more",
-    "video_clips": "Video clips"
+  "electron_journal": {
+    "release": "Release",
+    "about_magazine": "About the magazine",
+    "more_detailed":"More detailed",
+    "popular_journal": "The most popular issues of the magazine",
+    "new_issue": "CONTENTS OF THE NEW ISSUE",
+    "total_journal": "There is a magazine in the archive {{total}}"
   }
 }

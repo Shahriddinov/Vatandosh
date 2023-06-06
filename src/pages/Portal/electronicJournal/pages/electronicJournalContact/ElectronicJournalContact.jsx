@@ -138,7 +138,7 @@ export default function ElectronicJournalContact() {
                 onClick={() => setactiveMapNavigationBar(false)}
               />
               <div className="contact-map-navigation-title">
-                <h3>Muqimiy koʻchasi, 166</h3>
+                <h3>${contactData[`address_${lan}`]}</h3>
                 <p>Toshkent</p>
               </div>
               <div className="contact-map-navigation-marsh">

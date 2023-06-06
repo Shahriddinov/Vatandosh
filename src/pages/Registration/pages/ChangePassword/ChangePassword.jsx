@@ -6,8 +6,11 @@ import { recoverPassword } from "../../../../reduxToolkit/authSlice/extraReducer
 
 import "../SignIn/SignIn.scss";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import {useTranslation} from "react-i18next";
 
 export default function ChangePassword() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
@@ -42,23 +45,17 @@ export default function ChangePassword() {
         <div className="auth-wrapper">
           <div className="auth-desc">
             <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
+              {t("registerTitle")}
             </h2>
             <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
+              {t("registerText")}
             </p>
           </div>
           <div className="auth-form auth-signup">
             <div className="auth-form-title">
-              <h3>Yangi parolingizni kiriting</h3>
+              <h3>{t("newPassword")}</h3>
               <p>
-                Hisobingiz bilan bog'langan email pochtangizni kiriting va
-                parolingizni tiklash uchun tasdiqlash kodini yuboramiz.
+                {t("linked")}
               </p>
             </div>
             <form
@@ -92,7 +89,7 @@ export default function ChangePassword() {
                 )}
               </label>
               <label className="auth-form-inputs-passwordInput">
-                <span>Qaytadan parol</span>
+                <span>{t("againPassword")}</span>
                 <input
                   onChange={(e) =>
                     setPasswords((prev) => ({
@@ -121,7 +118,7 @@ export default function ChangePassword() {
                 type="submit"
                 className="auth-form-inputs-submitBtn auth-form-inputs-submitBtn-changePassword"
               >
-                O’zgartirish
+                {t("change")}
               </button>
             </form>
           </div>
