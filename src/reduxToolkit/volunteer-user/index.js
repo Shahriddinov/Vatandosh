@@ -1,33 +1,27 @@
-import { getVolunteerShowUser } from "./volunteer-user";
 import { createSlice } from "@reduxjs/toolkit";
+import { getVolunteerShowUser } from "./volunteer-user";
 
 const initialState = {
-  volunteerShowOneLoading: true,
+  loading: true,
   volunteerShowOneData: [],
-  status: "idle",
   error: null,
 };
 
 const volunteerShowUserSlice = createSlice({
-  name: "show-user",
+  name: "getVolunteerShowUser",
   initialState,
-  reducers: {
-    changeStatus: (state, action) => {
-      state.status = "idle";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    // Get one volunteer
     builder
       .addCase(getVolunteerShowUser.pending, (state) => {
-        state.volunteerShowOneLoading = true;
+        state.loading = true;
       })
       .addCase(getVolunteerShowUser.fulfilled, (state, action) => {
-        state.volunteerShowOneLoading = false;
+        state.loading = false;
         state.volunteerShowOneData = action.payload;
       })
       .addCase(getVolunteerShowUser.rejected, (state, action) => {
-        state.volunteerShowOneLoading = false;
+        state.loading = false;
         state.error = action.error.message;
       });
   },

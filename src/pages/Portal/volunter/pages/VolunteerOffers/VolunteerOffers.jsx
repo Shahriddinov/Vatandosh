@@ -22,7 +22,6 @@ export default function VolunteerOffers() {
   const getOneVolunteer = useSelector(
     (state) => state.volunteerShowUserSlice.volunteerShowOneData
   );
-
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
 
@@ -32,15 +31,10 @@ export default function VolunteerOffers() {
     { title: "Maqola", url: "" },
   ];
 
-  const volunteerUser = expertData?.user_volunteer_activities?.find(
-    (evt) => evt?.id === Number(id)
-  );
-
   useEffect(() => {
-    getVolunteerShowUser({ id });
-  }, [dispatch]);
+    dispatch(getVolunteerShowUser({ id }));
+  }, [id, dispatch]);
 
-  console.log(getOneVolunteer);
   return (
     <main className="expertofferdetail">
       <div className="container">
@@ -48,7 +42,7 @@ export default function VolunteerOffers() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}${volunteerUser?.images[0]}`}
+              src={`${PORTAL_IMAGE_URL}${getOneVolunteer?.images[0]}`}
               alt="error"
               className="expertofferdetail-pic"
             />
@@ -65,8 +59,8 @@ export default function VolunteerOffers() {
               }
               position={expertData?.user_profile?.job_position}
             />
-            <p>{volunteerUser?.title}</p>
-            <p>{volunteerUser?.description}</p>
+            <p>{getOneVolunteer?.title}</p>
+            <p>{getOneVolunteer?.description}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">
