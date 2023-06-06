@@ -27,7 +27,7 @@ export default function VolunteerOffers() {
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
-    { title: "Volonyorlik faoliyat", url: "/portal-category/expert/offers" },
+    { title: t('voluntery.nav4'), url: "/portal-category/expert/offers" },
     { title: "Maqola", url: "" },
   ];
 
