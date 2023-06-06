@@ -15,18 +15,19 @@ const PortalCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
+  console.log(props);
+
   return (
     <div
       className="single-card portalCard"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000"
-    >
+      data-aos-duration="1000">
       <div className="img-container">
         <img src={`${PORTAL_IMAGE_URL}/${props?.image}`} alt={props?.title} />
       </div>
       <div className="news-information">
-        <Link to={`/${props.path}/${props.id}`}>
+        <Link to={`/${props.id}`}>
           <h5 className="news__card-title">{props?.title}</h5>
           <p
             className="news__card-text"
@@ -49,8 +50,7 @@ const PortalCard = (props) => {
                   <div
                     className="tag-item"
                     onClick={(e) => handleClick(e)}
-                    key={id}
-                  >
+                    key={id}>
                     {tag}
                   </div>
                 );
