@@ -18,7 +18,7 @@ const websiteEventSlice = createSlice({
       })
       .addCase(getWebSiteEvent.fulfilled, (state, action) => {
         state.loading = false;
-        state.siteNewsOneData = action.payload;
+        state.siteEventOneData = action.payload;
       })
       .addCase(getWebSiteEvent.rejected, (state, action) => {
         state.loading = false;
