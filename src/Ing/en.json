@@ -126,15 +126,15 @@
   },
   "citizin_items": {
     "item1": "Public associations",
-    "item2": "Public organization of compatriots",
-    "item3": "Community associations events"
+    "item2": "The Project of public organization",
+    "item3": "Public associations events"
   },
   "information_items": {
     "item1": "News",
     "item2": "Events",
-    "item3": "Mediatheca",
+    "item3": "Multimedia library",
     "item4": "Infographics",
-    "item5": "Countryman magazine"
+    "item5": "\"Vatandoshlar\" magazine"
   },
   "projects_items": {
     "item1": "All projects",
