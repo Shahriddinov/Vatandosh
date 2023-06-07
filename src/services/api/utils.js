@@ -20,6 +20,9 @@ export const GET_INTERACTIVE_SERVICES_URL = `${baseUrl}/interactive-services`;
 export const GET_ALL_TRUSTEES_URL = `${baseUrl}/trusts`;
 export const GET_TRUSTEES_URL = `${baseUrl}/trusts/page/`;
 export const GET_MAP_DATA_URL = `${baseUrl}/country_relationship/`;
+export const GET_MAP_DATA_NEWS_COUNT = `/all-news/all-location-new`;
+export const GET_MAP_DATA_ASSOCIATION_COUNT = `${baseUrl}/location-assosiations`;
+export const GET_COUNTRY_DATA_NEWS = `/all-news/location-new/`;
 export const GET_COUNTRIES = `${baseUrl}/countries`;
 export const GET_ALL_COUNTRIES = `${portalBaseUrl}/community/all-region`;
 export const GET_CONTACT = `${baseUrl}/contacts`;
@@ -54,7 +57,7 @@ export const GET_QUIZZES = `/quiz-list/quizzes`;
 export const GET_QUIZ_BYID = `/quiz-list/quiz`;
 
 //===============================PORTAL================================
-export const GET_PORTAL_NEWS_DETAIL = "/new/";
+export const GET_PORTAL_NEWS_DETAIL = "/all-news/new/";
 export const GET_PORTAL_NEWS = "/news";
 export const GET_LOCATION = "/location/get-all";
 export const GET_LOCATION_ONE = "/location/get-one-with-cities/";

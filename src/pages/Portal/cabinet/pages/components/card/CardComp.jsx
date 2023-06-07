@@ -1,7 +1,7 @@
 import { PORTAL_IMAGE_URL } from "../../../../../../services/api/utils";
 import "./CardComp.scss";
 
-const CardComp = ({ el, calendarSvg, eyeSvg, activeBtn }) => {
+const CardComp = ({ el, calendarSvg, eyeSvg }) => {
   return (
     <div key={el?.id} className="singleCard">
       <div className="singleCard-imgCont">
