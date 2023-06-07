@@ -40,6 +40,8 @@ const MoreDetail = () => {
     };
   }, [byIdData?.finished_at]);
 
+  console.log(JSON.parse(byIdData.video));
+
   return (
     <>
       <Header />
@@ -71,8 +73,7 @@ const MoreDetail = () => {
         {byIdData?.status === 1 ? (
           <button
             className="singleCardContainer-active"
-            onClick={() => navigate("/registration/signin")}
-          >
+            onClick={() => navigate("/registration/signin")}>
             {t("choices.participatee")}
           </button>
         ) : (
@@ -98,6 +99,16 @@ const MoreDetail = () => {
             ""
           )}
         </p>
+
+        <video autoPlay muted loop>
+          <source
+            src={`${PORTAL_IMAGE_URL}/${
+              JSON.parse(byIdData?.video)[
+                JSON.parse(byIdData?.video).length - 1
+              ]?.download_link
+            }`}
+          />
+        </video>
         <div className="singleCardContainer-socialsCont">
           <a>
             <img src={square} alt="square" />

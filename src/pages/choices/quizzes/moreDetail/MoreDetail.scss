@@ -8,6 +8,14 @@
     @include fontStyles(600, 32px, 39px, #10131b);
   }
 
+  & > video {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
   & > img {
     width: 100%;
     height: 400px;

@@ -30,7 +30,7 @@ const PortalCard = (props) => {
             dangerouslySetInnerHTML={{
               __html: props.body
                 ? props.body
-                : props.content
+                : props.content 
                 ? props.content
                 : null,
             }}
