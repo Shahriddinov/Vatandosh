@@ -12,9 +12,7 @@ import { getDate } from "../../../../config/constants";
 const PortalCard = (props) => {
   const navigate = useNavigate();
 
-  const tags = props?.tags
-    ? props?.tags?.split(",")
-    : ["Kun fotosi", "Yosh oila"];
+  const tags = props?.tags ? props?.tags?.split(",") : null;
 
   const handleClick = (e) => {
     navigate(`/hashtag/${e.target.innerText}`);

@@ -14,6 +14,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
   const lng = useSelector((state) => state.language.language);
 
   const countryNews = useSelector((store) => store.mapSlice.countryNews);
+  const countryAssociationData = useSelector(
+    (store) => store.mapSlice.countryAssociationData
+  );
 
   const { t } = useTranslation();
   const countryName = {
@@ -23,6 +26,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
   };
 
   const countryPosts = countryNews.find((el) => el.code === countryCode);
+  const countryAssociation = countryAssociationData.find(
+    (el) => el.code === countryCode
+  );
 
   const handleClick = (e) => {
     if (e.target.matches(".maps_modal")) {
@@ -80,7 +86,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
                     <span className="maps_modal__body_text--span">
                       {t("communityAssociation.navbar.navbar_link2")}
                     </span>
-                    <span style={{ whiteSpace: "nowrap" }}>: 221</span>
+                    <span style={{ whiteSpace: "nowrap" }}>
+                      : {countryAssociation?.assosiation_categories_count}
+                    </span>
                   </li>
                   <li className="maps_modal__body_text">
                     <span
@@ -107,7 +115,7 @@ const MapsModal = ({ changeActive, countryCode }) => {
                 </ul>
 
                 <Link
-                  to="/information-service/news"
+                  to={`/country-news/${countryPosts.id}`}
                   className="maps_modal__body_link"
                 >
                   Barchasini ko‘rish
