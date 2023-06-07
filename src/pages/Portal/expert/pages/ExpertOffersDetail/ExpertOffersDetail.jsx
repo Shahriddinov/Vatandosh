@@ -12,13 +12,8 @@ import { useExportOfferDetail } from "./hooks/useExpertOffersDetail";
 
 export default function ExpertOffersDetail() {
   const { t } = useTranslation();
-  const {
-    expertData,
-    expertLoading,
-    error,
-    expertCountLoading,
-    expertCount,
-  } = useExportOfferDetail();
+  const { expertData, expertLoading, error, expertCountLoading, expertCount } =
+    useExportOfferDetail();
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
@@ -32,6 +27,7 @@ export default function ExpertOffersDetail() {
     return <p>{error}</p>;
   } else if (!expertData) return <NotFound />;
 
+  console.log(expertData);
 
   return (
     <main className="expertofferdetail">

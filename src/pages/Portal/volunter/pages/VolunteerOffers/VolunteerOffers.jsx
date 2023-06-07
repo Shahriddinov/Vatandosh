@@ -9,19 +9,31 @@ import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunteerOffers.scss";
 import { useExportOfferDetail } from "../../../expert/pages/ExpertOffersDetail/hooks/useExpertOffersDetail";
 import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getVolunteerShowUser } from "../../../../../reduxToolkit/volunteer-user/volunteer-user";
 
 export default function VolunteerOffers() {
   const { t } = useTranslation();
   const { expertData } = useExportOfferDetail();
-
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const getOneVolunteer = useSelector(
+    (state) => state.volunteerShowUserSlice.volunteerShowOneData
+  );
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
-    { title: "Volonyorlik faoliyat", url: "/portal-category/expert/offers" },
+    { title: t('voluntery.nav4'), url: "/portal-category/expert/offers" },
     { title: "Maqola", url: "" },
   ];
+
+  useEffect(() => {
+    dispatch(getVolunteerShowUser({ id }));
+  }, [id, dispatch]);
 
   return (
     <main className="expertofferdetail">
@@ -30,7 +42,7 @@ export default function VolunteerOffers() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
+              src={`${PORTAL_IMAGE_URL}${getOneVolunteer?.images[0]}`}
               alt="error"
               className="expertofferdetail-pic"
             />
@@ -47,8 +59,8 @@ export default function VolunteerOffers() {
               }
               position={expertData?.user_profile?.job_position}
             />
-            <p>{expertData?.suggestions}</p>
-            <p>{expertData?.additional_information}</p>
+            <p>{getOneVolunteer?.title}</p>
+            <p>{getOneVolunteer?.description}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">

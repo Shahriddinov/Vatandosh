@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../SignIn/SignIn.scss";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { setPassword } from "../../../../reduxToolkit/authSlice/extraReducer";
+import {useTranslation} from "react-i18next";
 
 export default function SetPassword() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const [isActivePasswordEye, setisActivePasswordEye] = useState(false);
   const [isActiveCurrentPasswordEye, setisActiveCurrentPasswordEye] =
@@ -41,23 +44,17 @@ export default function SetPassword() {
         <div className="auth-wrapper">
           <div className="auth-desc">
             <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
+              {t("registerTitle")}
             </h2>
             <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
+              {t("registerText")}
             </p>
           </div>
           <div className="auth-form auth-signup">
             <div className="auth-form-title">
-              <h3>Parolingizni kiriting</h3>
+              <h3>{t("forgot")}</h3>
               <p>
-                Hisobingiz bilan bog'langan email pochtangizni kiriting va
-                parolingizni tiklash uchun tasdiqlash kodini yuboramiz.
+                {t("sendEmail")}
               </p>
             </div>
             <form
@@ -91,7 +88,7 @@ export default function SetPassword() {
                 )}
               </label>
               <label className="auth-form-inputs-passwordInput">
-                <span>Qaytadan parol</span>
+                <span>{t("againPassword")}</span>
                 <input
                   onChange={(e) =>
                     setPasswords((prev) => ({

@@ -3,7 +3,7 @@ import "./InformationServicesSlider.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
 import { TbPointFilled } from "react-icons/tb";
-import { baseServerUrl } from "../../../services/api/utils";
+import { PORTAL_IMAGE_URL, baseServerUrl } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
 export const InformationServicesSlider = ({ data }) => {
@@ -43,7 +43,7 @@ export const InformationServicesSlider = ({ data }) => {
             className={`main-hero-slider ${i === img ? "active" : ""}`}
             key={card.id}
             style={{
-              backgroundImage: `url(${baseServerUrl}/${card?.image})`,
+              backgroundImage: `url(${PORTAL_IMAGE_URL}/${card?.image})`,
               backgroundPosition: "center center",
             }}
           />

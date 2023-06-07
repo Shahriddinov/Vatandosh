@@ -93,8 +93,7 @@ const Menus = () => {
             aria-haspopup="true"
             aria-expanded={openAbout ? "true" : undefined}
             onClick={handleClickAbout}
-            className="menus_link"
-          >
+            className="menus_link">
             {navLinks[0].title}
           </Button>
           <Menu
@@ -105,8 +104,7 @@ const Menus = () => {
             MenuListProps={{
               "aria-labelledby": "basic-button",
               onMouseLeave: handleCloseAbout,
-            }}
-          >
+            }}>
             {navLinks[0].links?.map((el, index) => {
               return (
                 <MenuItem key={index} onClick={handleCloseAbout}>
@@ -129,8 +127,7 @@ const Menus = () => {
             aria-haspopup="true"
             aria-expanded={openCitizin ? "true" : undefined}
             onClick={handleClickCitizin}
-            className="menus_link"
-          >
+            className="menus_link">
             {navLinks[1].title}
           </Button>
           <Menu
@@ -141,8 +138,7 @@ const Menus = () => {
             MenuListProps={{
               "aria-labelledby": "basic-button",
               onMouseLeave: handleCloseCitizin,
-            }}
-          >
+            }}>
             {navLinks[1].links?.map((el, index) => {
               return (
                 <MenuItem onClick={handleCloseAbout} key={index}>
@@ -165,8 +161,7 @@ const Menus = () => {
             aria-haspopup="true"
             aria-expanded={openProject ? "true" : undefined}
             onClick={handleClickProject}
-            className="menus_link"
-          >
+            className="menus_link">
             {navLinks[2].title}
           </Button>
           <Menu
@@ -177,8 +172,7 @@ const Menus = () => {
             MenuListProps={{
               "aria-labelledby": "basic-button",
               onMouseLeave: handleCloseProject,
-            }}
-          >
+            }}>
             <MenuItem onClick={handleCloseAbout}>
               <div className="navMenuInnerWrapper">
                 <img src={navLinks[2].links[0].icon} alt="icons" />
@@ -194,8 +188,7 @@ const Menus = () => {
                   <img src={`${baseServerUrl + "/" + el?.logo}`} alt="icons" />
                   <Link
                     to={`/projects/columns?=${el?.id}`}
-                    className="menus_links"
-                  >
+                    className="menus_links">
                     {el[`menu_${lan}`]}
                   </Link>
                 </div>
@@ -211,8 +204,7 @@ const Menus = () => {
             aria-haspopup="true"
             aria-expanded={openEvents ? "true" : undefined}
             onClick={handleEvent}
-            className="menus_link"
-          >
+            className="menus_link">
             {navLinks[3].title}
           </Button>
           <Menu
@@ -223,8 +215,7 @@ const Menus = () => {
             MenuListProps={{
               "aria-labelledby": "basic-button",
               onMouseLeave: handleCloseEvent,
-            }}
-          >
+            }}>
             {navLinks[3].links?.map((el, index) => {
               return (
                 <MenuItem onClick={handleCloseEvent} key={index}>
@@ -246,8 +237,7 @@ const Menus = () => {
             aria-haspopup="true"
             aria-expanded={openInformation ? "true" : undefined}
             onClick={handleClickInformation}
-            className="menus_link"
-          >
+            className="menus_link">
             <Link to="" className="menus_link">
               {navLinks[4].title}
             </Link>
@@ -260,8 +250,7 @@ const Menus = () => {
             MenuListProps={{
               "aria-labelledby": "basic-button",
               onMouseLeave: handleCloseInformation,
-            }}
-          >
+            }}>
             {" "}
             {navLinks[4].links?.map((el, index) => {
               return (
@@ -287,6 +276,11 @@ const Menus = () => {
           <Link to="/contact" className="menus_link">
             {t("link")}
           </Link>
+        </li>
+        <li className="menus_item">
+          <a className="menus_link" href="https://old.vatandoshlarfondi.uz/">
+            OLD VERSION
+          </a>
         </li>
       </ul>
     </div>

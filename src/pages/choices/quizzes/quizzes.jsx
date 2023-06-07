@@ -25,7 +25,6 @@ const Quizzes = () => {
   const lan = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
-  console.log(quizTotalData.allData);
 
   const btnArr = [
     {
@@ -70,6 +69,7 @@ const Quizzes = () => {
     setPostsPerpageEnded((prev) => prev + 6);
     dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded }));
   };
+
   return (
     <>
       <Header />

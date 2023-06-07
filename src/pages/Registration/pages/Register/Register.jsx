@@ -35,8 +35,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
+import {useTranslation} from "react-i18next";
 
 const Register = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const createCountries = createSelector(
     (state) => state.authSlice.countriesData,
@@ -200,20 +202,15 @@ const Register = () => {
   return (
     <div className="container position__relative register__wrapper">
       <div className="left__side__text">
-        <h1>Lorem ipsum dolor sit amet consectetur. Mauris sit mauris</h1>
+        <h1>{t("registerTitle")}</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel orci
-          mollis felis ultrices leo. Erat vestibulum amet nibh luctus vitae
-          velit vitae vulputate blandit. Malesuada commodo magna sed sem justo
-          non convallis. Vestibulum id nunc et morbi lobortis non bibendum arcu
-          netus. Eget nisi tincidunt aliquam rutrum nunc feugiat fermentum in
-          nisi
+          {t("registerText")}
         </p>
       </div>
       <div className="registration__form">
         <div className="form__title">
-          <h2>Ro'yxatdan O'ting</h2>
-          <p>Iltimos ma'lumotlaringizni kiriting</p>
+          <h2>{t("registeri")}</h2>
+          <p>{t("create")}</p>
         </div>
         <form
           autoComplete="off"
@@ -254,7 +251,7 @@ const Register = () => {
                 required
                 id="outlined-basic"
                 name="last_name"
-                label="Familiyasi"
+                label={t("surname")}
                 variant="outlined"
                 value={formData.last_name}
                 onChange={handleInputChange}
@@ -263,7 +260,7 @@ const Register = () => {
                 required
                 id="outlined-basic"
                 name="first_name"
-                label="Ismi"
+                label={t("name")}
                 variant="outlined"
                 value={formData.first_name}
                 onChange={handleInputChange}
@@ -272,14 +269,14 @@ const Register = () => {
                 required
                 id="outlined-basic"
                 name="second_name"
-                label="Otasining ismi"
+                label={t("patronymic")}
                 variant="outlined"
                 value={formData.second_name}
                 onChange={handleInputChange}
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="Tug'ilgan sana"
+                  label={t("dataOfBirth")}
                   id="dateBorn"
                   value={formData.birth_date}
                   onChange={(date) => {
@@ -291,10 +288,10 @@ const Register = () => {
                 />
               </LocalizationProvider>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">Millati</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t("nation")}</InputLabel>
                 <Select
                   required
-                  label="Millati"
+                  label={t("nation")}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   name="national_id"
@@ -302,18 +299,18 @@ const Register = () => {
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
-                  {nationsData.map((nation) => (
-                    <MenuItem key={nation.id} value={nation.id}>
-                      {nation.name}
+                  {nationsData?.map((nation) => (
+                    <MenuItem key={nation?.id} value={nation?.id}>
+                      {nation?.name}
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">Jinsi</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t("gender")}</InputLabel>
                 <Select
                   required
-                  label="Jinsi"
+                  label={t("gender")}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   name="gender"
@@ -321,14 +318,14 @@ const Register = () => {
                   onChange={handleInputChange}
                   IconComponent={ExpandMoreIcon}
                 >
-                  <MenuItem value="1">Erkak</MenuItem>
-                  <MenuItem value="2">Ayol</MenuItem>
+                  <MenuItem value="1">{t("man")}</MenuItem>
+                  <MenuItem value="2">{t("woman")}</MenuItem>
                 </Select>
               </FormControl>
               <TextField
                 required
                 id="outlined-basic"
-                label="O'zbekistondagi manzilingiz"
+                label={t("uzbLocation")}
                 variant="outlined"
                 name="national_address"
                 value={formData.national_address}
@@ -349,7 +346,7 @@ const Register = () => {
                   }
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} label="Xorijiy davlat" />
+                  <TextField {...params} label={t("foreignCountry")} />
                 )}
               />
               <Autocomplete
@@ -367,13 +364,13 @@ const Register = () => {
                   }
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} label="Xorijdagi manzil" />
+                  <TextField {...params} label={t("foreignAddress")} />
                 )}
               />
               <TextField
                 required
                 id="outlined-basic"
-                label="Faoliyat turi"
+                label={t("typeOfActivity")}
                 variant="outlined"
                 name="job_position"
                 value={formData.job_position}
@@ -382,7 +379,7 @@ const Register = () => {
               <TextField
                 required
                 id="outlined-basic"
-                label="Telefon raqamingiz"
+                label={t("phoneNumber")}
                 variant="outlined"
                 name="phone_number"
                 value={formData.phone_number}
@@ -402,7 +399,7 @@ const Register = () => {
                 autoComplete="off"
               />
               <TextField
-                label="Pasport nusxasi (ixtiyoriy)"
+                label={t("passportCopy")}
                 value={
                   formData.passport_file ? formData.passport_file.name : ""
                 }
@@ -446,14 +443,14 @@ const Register = () => {
                 )}
               </div>
               <p>
-                Ro'yxatdan otish davomida{" "}
-                <span onClick={toggleModal}>Foydalanish shartlari</span> bilan
-                tanishib chiqdim va shaxsiy ma’lumotlarimdan foydalanilishiga
-                roziman
+                {t("during")}{" "}
+                <span onClick={toggleModal}>
+                  {t("terms")}</span>
+                {t("acquainted ")}
               </p>
             </div>
             <button className={`submit ${agree ? "active" : ""}`} type="submit">
-              Saqlash
+              {t("expert.save")}
             </button>
           </div>
         </form>

@@ -2,8 +2,10 @@ import React from "react";
 
 import "./journalCard.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 const JournalCard = (props) => {
+  const { t } = useTranslation();
   const time = props?.start_data_edition
     .slice(0, 10)
     .split("-")
@@ -20,7 +22,9 @@ const JournalCard = (props) => {
         />
       </div>
       <div className="journal-card__body">
-        <p className="journal-card__date">Выпуск: {time}</p>
+        <p className="journal-card__date">
+          {t("electron_journal.release")}: {time}
+        </p>
 
         <h4 className="journal-card__title">
           {props?.title.length > 42

@@ -1,8 +1,8 @@
-export const baseUrl = "https://vatanparvarbackend.napaautomotive.uz/api";
+export const baseUrl = "https://site.vatandoshlarfondi.uz/api";
 export const authUrl = "https://api.vatandoshlarfondi.uz/api/auth";
 export const portalBaseUrl = "https://api.vatandoshlarfondi.uz/api";
-export const baseServerUrl =
-  "https://vatanparvarbackend.napaautomotive.uz/storage";
+
+export const baseServerUrl = "https://site.vatandoshlarfondi.uz/storage";
 export const PORTAL_IMAGE_URL = "https://api.vatandoshlarfondi.uz/storage/";
 
 export const imageUrl = "https://api.vatandoshlarfondi.uz/storage";
@@ -120,6 +120,7 @@ export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
 export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
 export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news?per_page=6&page=1`;
 export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event/?per_page=6&page=1`;
+export const GET_VOLUNTEER_USER = "/volunteer/get-one";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

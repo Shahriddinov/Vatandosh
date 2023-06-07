@@ -99,6 +99,10 @@
       align-items: center;
       gap: 18px;
 
+      &_version {
+        height: 45px;
+      }
+
       & > a {
         display: flex;
         align-items: center;
@@ -581,4 +585,18 @@
   .mobile-phone-and-email {
     display: none;
   }
+}
+
+.header_navbar_version {
+  height: 35px;
+  border-radius: 8px;
+  background: #065ea9;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

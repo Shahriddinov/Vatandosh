@@ -1,4 +1,5 @@
 {
+  "version": "OLDINGI VERSIYA",
   "Council_composition": "Kengash tarkibi",
   "seeMore": "Ko’proq ko’rish",
   "leadership_structure": "Rahbariyat tarkibi",
@@ -8,7 +9,7 @@
   "projects": "LOYIHALAR",
   "share": "Do'stlaringizga ulashing",
   "contects": "TANLOVLAR",
-  "faq" : "FAQ",
+  "faq": "FAQ",
   "faqDesc": "Tez -tez so'raladigan savollar ( FAQ ) ro'yxati tez-tez maqolalar, veb-saytlar, elektron pochta ro'yxatlari va onlayn forumlarda tez-tez uchraydi, bu erda tez-tez uchraydigan savollar takrorlanadi. Tez-tez so'raladigan savollarning maqsadi odatda tez-tez uchraydigan savollar yoki tashvishlar haqida ma'lumot berishdir; ammo format ma'lumotni tashkil qilishning foydali vositasi bo'lib, savollar va ularning javoblaridan iborat matnni savollar haqiqatda tez-tez so'ralishidan qat'i nazar, FAQ deb atash mumkin.",
   "information": "AXBOROT XIZMATI",
   "link": "BOG‘LANISH",
@@ -76,22 +77,26 @@
   "Associations": "Birlashmalar",
   "staffCount": "Xodimlar soni",
   "leader": "Rahbar",
-  "thereIsNotFound":"Hozirda bu davlatda jamoat birlashmalari mavjud emas",
+  "thereIsNotFound": "Hozirda bu davlatda jamoat birlashmalari mavjud emas",
   "founding_date": "Tashkilot tashkil topgan sana",
   "election_leader": "Rahbar saylangan sana",
   "mediaVideo": "Video lavhalar",
   "mediaImg": "Foto sur'atlar",
-  "teams" : "“VATANDOSHLAR” Jamoat Fondining Yagona Avtomatlashtirilgan Axborot Tizimi",
+  "teams": "“VATANDOSHLAR” Jamoat Fondining Yagona Avtomatlashtirilgan Axborot Tizimi",
   "signs": "Ro'yxatdan o'tish",
   "signn": "Kirish",
   "personals": "Shaxsiy kabinetga kirish",
-  "create" : "Iltimos ma’lumotlaringizni kirting",
-  "createEmail" : "Email pochtangizni kiriting",
-  "remember" : "Qurilmani eslab qolish",
-  "forgot" : " Parolni unutdingizmi?",
-  "introduction" : "Profilga kirish",
-  "registerYet" : "Hali ro’yxatdan o’tmaganmisiz?",
-  "registeri" : "Ro’yxatdan o’ting",
+  "create": "Iltimos ma’lumotlaringizni kirting",
+  "createEmail": "Email pochtangizni kiriting",
+  "remember": "Qurilmani eslab qolish",
+  "forgot": " Parolni unutdingizmi?",
+  "introduction": "Profilga kirish",
+  "registerYet": "Hali ro’yxatdan o’tmaganmisiz?",
+  "registeri": "Ro’yxatdan o’ting",
+  "sendEmail": "Hisob ochish uchun email pochtangizni kiriting va biz sizga tashdiqlash kodini yuboramiz",
+  "keep": "Davom etish",
+  "registerTitle": "Barcha loyiha va yangiliklardan xabardor bo'lish uchun ro'yxatdan o'ting",
+  "registerText": "Ro'yxatdan o'tish orqali sizda bizning faoliyatimizga doir yangiliklardan batafsil xabardor bo'lish, onlayn vebinar va darslarda ishtirok etish, turli janrlardagi kitoblarni mutolaa qilish imkoniyati mavjud bo'ladi.\n",
   "about_items": {
     "item1": "Biz haqimizda",
     "item2": "Vasiylik kengashi",
@@ -123,8 +128,8 @@
     "section1": {
       "htext": "Biz haqimizda",
       "ptext": "“Vatandoshlar” jamoat fondining oliy organi hisoblanadi. Vasiylik kengashi 17 kishidan iborat.",
-      "ptextes" : "Fond faoliyatining asosiy yo‘nalishlari",
-      "pdirections" : "Yo`nalishlar",
+      "ptextes": "Fond faoliyatining asosiy yo‘nalishlari",
+      "pdirections": "Yo`nalishlar",
       "ptext1": "Fond faoliyatining asosiy yo‘nalishlaridan bu xorijda istiqomat qilayotgan vatandoshlar va ular tomonidan tuzilgan jamoat birlashmalari bilan hamkorlik aloqalarini yo‘lga qo‘yish va rivojlantirish. Shu bois vatandoshlar tomonidan tashkil etilgan jamoat birlashmalari faoliyatini rag‘batlantirish, ularga xorijda o‘zbek milliy madaniy markazlarini tashkil etishda amaliy yordam ko‘rsatish, vatandosh birlashmalari bilan hamkorlikda xorijda o‘zbek tili, madaniyati va an’analarini saqlab qolish va rivojlantirishga qaratilgan faoliyatni qo‘llab-quvvatlash va xorijda yurtimizning boy ilmiy, madaniy va ma’naviy merosini keng targ‘ib qilish va ommalashtirish, vatandoshlarga madaniy-ma’rifiy tadbirlarni tashkil etishda ko‘maklashish.",
       "foottext1": "Asosiy sahifa",
       "foottext2": "Biz haqimizda"
@@ -224,11 +229,11 @@
     "form_cancel": "Bekor qilish",
     "form_submit": "Yuborish"
   },
-  "countrys":{
-    "russia":"Rossiya",
-    "turkey":"Turkiya",
-    "germany":"Germaniya",
-    "malaziy":"malaziya"
+  "countrys": {
+    "russia": "Rossiya",
+    "turkey": "Turkiya",
+    "germany": "Germaniya",
+    "malaziy": "malaziya"
   },
   "expert": {
     "register": "Ro‘yxatdan o‘tish",
@@ -242,7 +247,7 @@
     "headersubtitle": "Vatandosh ekspertlar kengashining elektron platformasi",
     "counciltitle": "“VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi",
     "main": "Asosiy",
-    "more":"batafsil",
+    "more": "batafsil",
     "expertCouncil": "Ekspertlar kengashi",
     "offers": "Takliflar",
     "offer": "Taklif",
@@ -405,16 +410,15 @@
     "nav1": "Volontyorlar",
     "nav2": "Volontyorlar faoliyati",
     "nav3": "Bog‘lanish",
-    "nav4":"Volonyorlik faoliyati",
-    "Signup":"Ro‘yxatdan o‘tish"
-
+    "nav4": "Volonyorlik faoliyati",
+    "Signup": "Ro‘yxatdan o‘tish"
   },
   "webinar": {
     "tel": "Telefon",
     "email": "Email pochtangizni kiriting",
     "online-webinar": "Tabiiy-ilmiy savodxonlik yo'nalishi bo'yicha onlayn vebinar",
     "webinars": "Vebinarlar",
-    "conferences":"Konferensiyalar",
+    "conferences": "Konferensiyalar",
     "join-webinar": "Vebinarga ishtirok etish",
     "date": "Webinar sanasi:",
     "nav2": "Tadbirlar",
@@ -424,9 +428,9 @@
     "header2": "Batafsil ma’lumot",
     "headerName": "“Vatandoshlar” Vebinari",
     "council": "Vebinar platformasi nima?",
-    "countofEvents":"O'tkazilgan tadbirlar soni",
-    "totalOfEventsattendance":"Jami tadbirlar qatnashganlar",
-    "participants":"Ishtirokchilari"
+    "countofEvents": "O'tkazilgan tadbirlar soni",
+    "totalOfEventsattendance": "Jami tadbirlar qatnashganlar",
+    "participants": "Ishtirokchilari"
   },
   "library": {
     "library": "Kutubxona",
@@ -464,17 +468,17 @@
     "textsFive": "Bagʻri keng oʻzbekning oʻchmas iymoni,\nErkin, yosh avlodlar senga zoʻr qanot, zoʻr qanot!",
     "textsSix": "Istiqlol mashʼali, tinchlik posboni,\nHaqsevar, ona yurt, mangu boʻl obod!",
 
-    "coat" : "O‘zbekiston Respublikasi Davlat gerbi ",
-    "coatAbout" : " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
-    "coats" : "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
-    "coatCenter" : "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
-    "coatUzb" : " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
+    "coat": "O‘zbekiston Respublikasi Davlat gerbi ",
+    "coatAbout": " \"O‘zbekiston Respublikasi Davlat gerbi to‘g‘risida\"gi Qonun 1992 yil 2 iyulda O‘zbekiston  Respublikasi Oliy Kengashining X sessiyasida qabul qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy uzra charaqlab turgan quyosh tasviridan  hamda so‘l tomonida bug‘doy boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati tushirilgan chambardan iborat.",
+    "coats": "Gerbning yuqori qismida respublika jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘ ramzidir.",
+    "coatCenter": "Gerbning markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi orzu-umidlarini ifodalaydi.",
+    "coatUzb": " Gerbning pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar lentasining bandiga \"O‘zbekiston” deb yozib qo‘yilgan."
   },
   "portal": {
     "kabinet": "Kabinet"
   },
   "number": "Soni:",
-  "choices":{
+  "choices": {
     "mainPage": "Asosiy sahifa",
     "quizzes": "Viktorinalar",
     "endedQuizzes": "Viktorina yakunlanganlar",
@@ -493,7 +497,6 @@
     "shareFriends": "Do'stlaringizga ulashing",
     "participatee": "Loyihada ishtirok etish",
     "projectEnded": "Loyiha tugallangan"
-
   },
   "about_uzbekistan": {
     "galleria": "Fotogalereya",
@@ -509,5 +512,13 @@
     "tourist_sites_error": "Hozirda bu shaharda turistik ob'ektlar mvjud emas",
     "see_more": "Кўпроқ кўриш",
     "video_clips": "Video kliplar"
+  },
+  "electron_journal": {
+    "release": "Chiqarish",
+    "about_magazine": "Jurnal haqida",
+    "more_detailed": "Batafsil",
+    "popular_journal": "Jurnalning eng mashhur sonlari",
+    "new_issue": "YANGI SONNNING MAZMUNI",
+    "total_journal": " Arxivda {{total}} ta jurnal bor"
   }
 }
