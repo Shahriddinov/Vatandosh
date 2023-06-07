@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from "../../component/Layout/Header/Header";
-import "./Detail.scss";
 import { MdArrowRight } from "react-icons/md";
 import { LatestNews, PopularTags } from "../../component";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
@@ -9,15 +8,15 @@ import { AiFillEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
 import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
+import "./DetailEvent.scss";
 
-export default function Detail(siteNews) {
+export default function DetailEvent(siteNews) {
   const lan = useSelector((state) => state.language.language);
   const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   useEffect(() => {
     if (siteNews?.images) setgalleryMainImg(JSON.parse(siteNews?.images)[0]);
   }, [siteNews]);
-
 
   return siteNews ? (
     <div className="newsdetail">
