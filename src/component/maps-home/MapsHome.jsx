@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./maps-home.scss";
 import MapsModal from "../maps-modal/MapsModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCountries,
   mapGetData,
@@ -11,8 +11,8 @@ import { CommunityAssociationMapModal } from "../../pages/Portal/communityAssoci
 
 const MapsHome = ({ title }) => {
   const [active, setActive] = useState(false);
-  const svgRef = useRef(null);
   const [countryCode, setCountryCode] = useState("");
+  const svgRef = useRef(null);
   const zoomValue = useRef(1);
   const data = [
     "EN",
