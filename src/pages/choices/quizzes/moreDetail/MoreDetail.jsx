@@ -199,7 +199,7 @@ const MoreDetail = () => {
               src={`${PORTAL_IMAGE_URL}/${
                 JSON.parse(byIdData.video)[0].download_link
               }`}
-              type="video/ogg"
+              type="video/mp4"
             />
           ) : (
             <source type="video/mp4" src="fallback-video.mp4" />
