@@ -18,6 +18,8 @@ export default function DetailEvent(siteNews) {
     if (siteNews?.images) setgalleryMainImg(JSON.parse(siteNews?.images)[0]);
   }, [siteNews]);
 
+  console.log(siteNews);
+
   return siteNews ? (
     <div className="newsdetail">
       <Header />
