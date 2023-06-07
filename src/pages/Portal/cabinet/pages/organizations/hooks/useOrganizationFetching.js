@@ -28,12 +28,8 @@ export const useOrganizationFetching = () => {
         region_id: 0,
         page: 1,
         per_page: 8,
-<<<<<<< HEAD
-        // typePage: "association",
-=======
         typePage: "association",
         user_id: user?.user_id.id,
->>>>>>> 37a066b32ac66c027d3f98301b4d44ab65b1f1b8
       })
     );
     dispatch(getAllRegions());
