@@ -12,6 +12,7 @@ import {
   portalNews,
 } from "../../reduxToolkit/portalSlices/news-events/extraReducer";
 import PortalCard from "../portalCard/portalCard";
+import PortalEvent from "../portalEvent/portalEvent";
 
 const News = () => {
   const navigate = useNavigate();
@@ -50,16 +51,14 @@ const News = () => {
           <div className="news-btn">
             <button
               className={activeCard ? "active-btn" : ""}
-              onClick={() => setActiveCard(true)}
-            >
+              onClick={() => setActiveCard(true)}>
               {t("news")}
             </button>
           </div>
           <div className="events-btn">
             <button
               className={!activeCard ? "active-btn" : ""}
-              onClick={() => setActiveCard(false)}
-            >
+              onClick={() => setActiveCard(false)}>
               {t("information_items.item2")}
             </button>
           </div>

@@ -13,18 +13,27 @@ import facebook from "../../../../assets/images/choose/Facebook.svg";
 import telegram from "../../../../assets/images/choose/telegramsvg.svg";
 import twitter from "../../../../assets/images/choose/Twitter.svg";
 import { timer } from "../../../../helpers/extraFunction";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-
-import { FreeMode, Navigation, Thumbs } from "swiper";
+// const settings = {
+//   customPaging: function (i) {
+//     return (
+//       <a>
+//         <img src={`${baseUrl}/abstract0${i + 1}.jpg`} />
+//       </a>
+//     );
+//   },
+//   dots: true,
+//   dotsClass: "slick-dots slick-thumb",
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+// };
 
 const MoreDetail = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [timeData, setTimeDate] = useState({
     days: "00",
     hours: "00",
@@ -57,89 +66,22 @@ const MoreDetail = () => {
       <Header />
       <div className="singleCardContainer">
         <h1>{byIdData.title}</h1>
-        {/* <Swiper
-          style={{
-            "--swiper-navigation-color": "#fff",
-            "--swiper-pagination-color": "#fff",
-          }}
-          loop={true}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper2">
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-          </SwiperSlide>
-        </Swiper>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          loop={true}
-          spaceBetween={10}
-          slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper">
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-          </SwiperSlide>
-        </Swiper> */}
+
         <img src={`${PORTAL_IMAGE_URL}${byIdData.image}`} alt="rasm" />
+        {/* <Slider {...settings}>
+          <div>
+            <img src={baseUrl + "/abstract01.jpg"} />
+          </div>
+          <div>
+            <img src={baseUrl + "/abstract02.jpg"} />
+          </div>
+          <div>
+            <img src={baseUrl + "/abstract03.jpg"} />
+          </div>
+          <div>
+            <img src={baseUrl + "/abstract04.jpg"} />
+          </div>
+        </Slider> */}
         {byIdData?.status === 0 ? (
           <div className="singleCardContainer-timeOver">
             <p>{t("choices.quizIsOver")}</p>
@@ -199,7 +141,7 @@ const MoreDetail = () => {
               src={`${PORTAL_IMAGE_URL}/${
                 JSON.parse(byIdData.video)[0].download_link
               }`}
-              type="video/ogg"
+              type="video/mp4"
             />
           ) : (
             <source type="video/mp4" src="fallback-video.mp4" />

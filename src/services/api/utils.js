@@ -52,6 +52,8 @@ export const GET_VICTORINA_FINISH = `/quiz/quizzes`;
 export const GET_VICTORINA_BYID = `/quiz/quiz`;
 export const GET_QUIZZES = `/quiz-list/quizzes`;
 export const GET_QUIZ_BYID = `/quiz-list/quiz`;
+export const GET_SITE_NEWSONE = "/all-news/new";
+export const GET_SITE_EVENTONE = "/community/event/";
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/new/";
