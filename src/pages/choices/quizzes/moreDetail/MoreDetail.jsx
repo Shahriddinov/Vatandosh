@@ -40,8 +40,6 @@ const MoreDetail = () => {
     };
   }, [byIdData?.finished_at]);
 
-  console.log(JSON.parse(byIdData.video));
-
   return (
     <>
       <Header />
@@ -55,17 +53,17 @@ const MoreDetail = () => {
         ) : (
           <div className="singleCardContainer-timeCont">
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.days}</span>
+              <span>{timeData?.days}</span>
               <span>{t("choices.day")}</span>
             </div>
             <div className="singleCardContainer-timeCont-vl"></div>
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.hours}</span>
+              <span>{timeData?.hours}</span>
               <span>{t("choices.hour")}</span>
             </div>
             <div className="singleCardContainer-timeCont-vl"></div>
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.minutes}</span>
+              <span>{timeData?.minutes}</span>
               <span>{t("choices.minute")}</span>
             </div>
           </div>
@@ -103,8 +101,8 @@ const MoreDetail = () => {
         <video autoPlay muted loop>
           <source
             src={`${PORTAL_IMAGE_URL}/${
-              JSON.parse(byIdData?.video)[
-                JSON.parse(byIdData?.video).length - 1
+              JSON?.parse(byIdData?.video)[
+                JSON?.parse(byIdData?.video).length - 1
               ]?.download_link
             }`}
           />
