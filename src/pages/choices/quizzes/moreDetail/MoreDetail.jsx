@@ -53,17 +53,17 @@ const MoreDetail = () => {
         ) : (
           <div className="singleCardContainer-timeCont">
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.days}</span>
+              <span>{timeData?.days}</span>
               <span>{t("choices.day")}</span>
             </div>
             <div className="singleCardContainer-timeCont-vl"></div>
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.hours}</span>
+              <span>{timeData?.hours}</span>
               <span>{t("choices.hour")}</span>
             </div>
             <div className="singleCardContainer-timeCont-vl"></div>
             <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData.minutes}</span>
+              <span>{timeData?.minutes}</span>
               <span>{t("choices.minute")}</span>
             </div>
           </div>
@@ -71,8 +71,7 @@ const MoreDetail = () => {
         {byIdData?.status === 1 ? (
           <button
             className="singleCardContainer-active"
-            onClick={() => navigate("/registration/signin")}
-          >
+            onClick={() => navigate("/registration/signin")}>
             {t("choices.participatee")}
           </button>
         ) : (
@@ -98,6 +97,16 @@ const MoreDetail = () => {
             ""
           )}
         </p>
+
+        <video autoPlay muted loop>
+          <source
+            src={`${PORTAL_IMAGE_URL}/${
+              JSON?.parse(byIdData?.video)[
+                JSON?.parse(byIdData?.video).length - 1
+              ]?.download_link
+            }`}
+          />
+        </video>
         <div className="singleCardContainer-socialsCont">
           <a>
             <img src={square} alt="square" />
