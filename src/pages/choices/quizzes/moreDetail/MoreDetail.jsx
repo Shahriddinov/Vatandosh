@@ -17,22 +17,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// const settings = {
-//   customPaging: function (i) {
-//     return (
-//       <a>
-//         <img src={`${baseUrl}/abstract0${i + 1}.jpg`} />
-//       </a>
-//     );
-//   },
-//   dots: true,
-//   dotsClass: "slick-dots slick-thumb",
-//   infinite: true,
-//   speed: 500,
-//   slidesToShow: 1,
-//   slidesToScroll: 1,
-// };
-
 const MoreDetail = () => {
   const [timeData, setTimeDate] = useState({
     days: "00",
@@ -59,7 +43,29 @@ const MoreDetail = () => {
     };
   }, [byIdData?.finished_at]);
 
-  console.log(byIdData);
+  const settings = {
+    customPaging: function (i) {
+      return (
+        <div>
+          <img
+            style={{
+              width: "150px",
+              height: "70px",
+              borderRadius: "10px",
+              objectFit: "contain",
+            }}
+            src={`${PORTAL_IMAGE_URL}/${byIdData.image[i + 1]}`}
+          />
+        </div>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
@@ -67,21 +73,16 @@ const MoreDetail = () => {
       <div className="singleCardContainer">
         <h1>{byIdData.title}</h1>
 
-        <img src={`${PORTAL_IMAGE_URL}${byIdData.image}`} alt="rasm" />
-        {/* <Slider {...settings}>
-          <div>
-            <img src={baseUrl + "/abstract01.jpg"} />
-          </div>
-          <div>
-            <img src={baseUrl + "/abstract02.jpg"} />
-          </div>
-          <div>
-            <img src={baseUrl + "/abstract03.jpg"} />
-          </div>
-          <div>
-            <img src={baseUrl + "/abstract04.jpg"} />
-          </div>
-        </Slider> */}
+        <Slider {...settings}>
+          {byIdData?.image?.map((evt) => (
+            <div>
+              <img
+                className="singleCardContainer__image"
+                src={`${PORTAL_IMAGE_URL}/${evt}`}
+              />
+            </div>
+          ))}
+        </Slider>
         {byIdData?.status === 0 ? (
           <div className="singleCardContainer-timeOver">
             <p>{t("choices.quizIsOver")}</p>

@@ -29,9 +29,13 @@ const Card = ({ data, quiz }) => {
       clearInterval(interval);
     };
   }, [data?.finished_at]);
+
   return (
     <div className="card">
-      <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
+      <img
+        src={`${PORTAL_IMAGE_URL}${data.image && data?.image[0]}`}
+        alt="img"
+      />
       <div className="card-bottomBox">
         <h1>{data?.title}</h1>
         <p>
@@ -74,8 +78,7 @@ const Card = ({ data, quiz }) => {
         <div className="card-bottomBox-btnBox">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}
-          >
+            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}>
             {t("choices.moreDetail")}
           </motion.button>
         </div>
