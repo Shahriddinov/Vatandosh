@@ -99,14 +99,17 @@ const MoreDetail = () => {
         </p>
 
         <video autoPlay muted loop>
-          <source
-            src={`${PORTAL_IMAGE_URL}/${
-              JSON?.parse(byIdData?.video)[
-                JSON?.parse(byIdData?.video).length - 1
-              ]?.download_link
-            }`}
-          />
+          {byIdData?.video && JSON.parse(byIdData.video)[0]?.download_link ? (
+            <source
+              src={`${PORTAL_IMAGE_URL}/${
+                JSON.parse(byIdData.video)[0].download_link
+              }`}
+            />
+          ) : (
+            <source src="fallback-video.mp4" /> 
+          )}
         </video>
+
         <div className="singleCardContainer-socialsCont">
           <a>
             <img src={square} alt="square" />
