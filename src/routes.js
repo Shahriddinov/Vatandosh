@@ -22,9 +22,9 @@ import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEve
 import FAQ from "./pages/Faq/Faq";
 import VictorinaWinnerWin from "./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner";
 import VolunteerOffers from "./pages/Portal/volunter/pages/VolunteerOffers/VolunteerOffers";
-import { getEventsDetail } from "./reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import EventDetail from "./pages/EventDetail/EventDetail";
+
 const Home = lazy(() => import("./pages/Home"));
+const MapNews = lazy(() => import("./pages/mapNews/MapNews"));
 const About = lazy(() =>
   import(
     /*webpackChunkName: Home*/
@@ -432,9 +432,9 @@ const routes = [
   {
     path: "/compatriots/public-association-events",
   },
+  { path: "/country-news/:countryId", element: MapNews },
   { path: "/information-service/:pageName", element: InformationServices },
   { path: "/:page/:id", element: NewsDetail },
-  { path: "/event/:id", element: EventDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
   { path: "/faq", element: FAQ },
@@ -474,11 +474,13 @@ const RoutesContainer = () => {
                 <Route path="/registration/register" element={<Register />} />
                 <Route
                   path="/portal-category/cabinet"
-                  element={<CabinetLayout />}>
+                  element={<CabinetLayout />}
+                >
                   <Route index element={<CabinetHome />} />
                   <Route
                     path="private-information"
-                    element={<PrivateInformation />}>
+                    element={<PrivateInformation />}
+                  >
                     <Route index element={<CommonInformation />} />
                     <Route path="job" element={<Job />} />
                     <Route path="education" element={<Education />} />
@@ -559,7 +561,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}>
+              element={<CommunityAssociationLayout />}
+            >
               <Route index element={<CommunityAssociationHome />} />
               <Route path="about" element={<CommunityAssociationAbout />} />
               <Route
@@ -585,7 +588,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/volunteer"
-              element={<VolunterLayout />}>
+              element={<VolunterLayout />}
+            >
               <Route index element={<VolunterHome />} />
               <Route path="profile/:id" element={<VolunterProfile />} />
               <Route path="register" element={<VolunterRegister />} />
@@ -615,7 +619,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}>
+              element={<OnlineTeachingLayout />}
+            >
               <Route index element={<OnlineTeachingHome />} />
               <Route path="about" element={<AboutTeaching />} />
               <Route path="take-test" element={<PassTheTest />} />
@@ -629,7 +634,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/victorina"
-              element={<VictorinaLayout />}>
+              element={<VictorinaLayout />}
+            >
               <Route index element={<VictorinaHome />}></Route>
               <Route path="contact" element={<Contact />} />
               <Route path="listwinners" element={<ListOfWinners />} />
@@ -655,7 +661,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}>
+              element={<ElectronicJournalLayout />}
+            >
               <Route index element={<ElectronicJournalHome />} />
               <Route
                 path="about/:journalId"
@@ -669,7 +676,8 @@ const RoutesContainer = () => {
 
             <Route
               path="/portal-category/about-uzbekistan"
-              element={<AboutUzbekistanLayout />}>
+              element={<AboutUzbekistanLayout />}
+            >
               <Route index element={<AboutUzbekistanHome />} />
               <Route
                 path="visual-information"

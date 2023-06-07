@@ -34,12 +34,12 @@ const Organizations = () => {
       <div className="container-organizations-inner">
         <div className="container-organizations-inner-top">
           <span>Участие в общественных организациях</span>
-          <motion.button
+          {/* <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={toggleSwitchHandler}
           >
             <img src={plusIcon} alt="icon" /> <span>Tadbir</span>
-          </motion.button>
+          </motion.button> */}
         </div>
 
         <div className="container-organizations-inner-bottom">

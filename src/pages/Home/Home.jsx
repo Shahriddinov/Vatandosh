@@ -13,6 +13,9 @@ import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import HomeWebinarSlider from "../../component/homeWebinarSlider/HomeWebinarSlider";
 import { getWebinarSlider } from "../../reduxToolkit/webinarSlider/extraReducer";
 import { useTranslation } from "react-i18next";
+import { getLocation } from "../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
+import { Spinner } from "../../component";
+import { getCountriesNews } from "../../reduxToolkit/mapSlice/mapAsyncThunk";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,11 +30,17 @@ const Home = () => {
   );
   const webinarError = useSelector((state) => state.webinarSlidesSlice.error);
 
+  const countryNewsError = useSelector((store) => store.mapSlice.error);
+
   useEffect(() => {
     dispatch(getPeaceful());
     dispatch(getSlider());
     dispatch(getWebinarSlider());
   }, [dispatch]);
+
+  if (countryNewsError) {
+    return <p>{countryNewsError}</p>;
+  }
 
   return (
     <div className="home">
