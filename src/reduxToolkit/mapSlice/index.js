@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getCountries,
+  getCountriesAssociationData,
   getCountriesNews,
   getCountriesNewsData,
   mapGetData,
@@ -18,6 +19,9 @@ const initialState = {
 
   countryNewsData: [],
   countryNewsDataLoading: true,
+
+  countryAssociationData: [],
+  countryAssociationDataLoading: true,
 
   error: "",
 };
@@ -76,6 +80,19 @@ const mapSlice = createSlice({
       .addCase(getCountriesNewsData.rejected, (state, action) => {
         state.error = action.error.message;
         state.countryNewsDataLoading = false;
+      });
+
+    build
+      .addCase(getCountriesAssociationData.pending, (state) => {
+        state.countryAssociationDataLoading = true;
+      })
+      .addCase(getCountriesAssociationData.fulfilled, (state, { payload }) => {
+        state.countryAssociationData = payload;
+        state.countryAssociationDataLoading = false;
+      })
+      .addCase(getCountriesAssociationData.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.countryAssociationDataLoading = false;
       });
   },
 });

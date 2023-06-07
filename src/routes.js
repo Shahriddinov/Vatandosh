@@ -22,7 +22,9 @@ import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEve
 import FAQ from "./pages/Faq/Faq";
 import VictorinaWinnerWin from "./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner";
 import VolunteerOffers from "./pages/Portal/volunter/pages/VolunteerOffers/VolunteerOffers";
+
 const Home = lazy(() => import("./pages/Home"));
+const MapNews = lazy(() => import("./pages/mapNews/MapNews"));
 const About = lazy(() =>
   import(
     /*webpackChunkName: Home*/
@@ -430,6 +432,7 @@ const routes = [
   {
     path: "/compatriots/public-association-events",
   },
+  { path: "/country-news/:countryId", element: MapNews },
   { path: "/information-service/:pageName", element: InformationServices },
   { path: "/news/:id", element: NewsDetail },
   { path: "/projects", element: Projects },

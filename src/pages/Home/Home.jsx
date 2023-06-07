@@ -30,21 +30,15 @@ const Home = () => {
   );
   const webinarError = useSelector((state) => state.webinarSlidesSlice.error);
 
-  const countryNewsLoading = useSelector(
-    (store) => store.mapSlice.countryNewsLoading
-  );
   const countryNewsError = useSelector((store) => store.mapSlice.error);
 
   useEffect(() => {
     dispatch(getPeaceful());
     dispatch(getSlider());
     dispatch(getWebinarSlider());
-    dispatch(getCountriesNews());
   }, [dispatch]);
 
-  if (countryNewsLoading) {
-    return <Spinner position="full" />;
-  } else if (countryNewsError) {
+  if (countryNewsError) {
     return <p>{countryNewsError}</p>;
   }
 
