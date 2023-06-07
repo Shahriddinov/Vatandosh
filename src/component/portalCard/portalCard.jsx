@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import "../card/card.scss";
-
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
 import { PORTAL_IMAGE_URL } from "../../services/api/utils";
@@ -32,7 +30,7 @@ const PortalCard = (props) => {
             dangerouslySetInnerHTML={{
               __html: props.body
                 ? props.body
-                : props.content
+                : props.content 
                 ? props.content
                 : null,
             }}

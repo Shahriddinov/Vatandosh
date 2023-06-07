@@ -30,8 +30,8 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
       },
     ],
 
-    title: data.findCountry.name,
-    desc: data.findCountry.description,
+    title: data.findCommunity.name,
+    desc: data.findCommunity.description,
   };
   return (
     <section className="community-association-hero">
@@ -70,12 +70,12 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
               </ul>
             </nav>
             <h2 className="community-association-hero__title">
-              {data.findCountry.b_title}
+              {data.findCommunity.b_title}
             </h2>
             <p className="community-association-hero__desc">
-              {data.findCountry.b_description}
+              {data.findCommunity.b_description}
             </p>
-            {user.id === data.findCountry.user_id && (
+            {user?.user_id.id === data.findCommunity.user_id && (
               <button
                 onClick={handleOpen}
                 type="button"

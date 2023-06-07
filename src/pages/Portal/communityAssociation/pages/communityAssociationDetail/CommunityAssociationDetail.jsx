@@ -43,7 +43,7 @@ const CommunityAssociationDetail = () => {
     (el) => el.id === communityCountry * 1
   );
 
-  const findCountry = allCommunityGet?.data?.find(
+  const findCommunity = allCommunityGet?.data?.find(
     (el) => el.id === communityCountryId * 1
   );
 
@@ -65,20 +65,20 @@ const CommunityAssociationDetail = () => {
         <div
           className="community-association-detail__top"
           style={{
-            backgroundImage: `url(${PORTAL_IMAGE_URL}${findCountry?.b_image})`,
+            backgroundImage: `url(${PORTAL_IMAGE_URL}${findCommunity?.b_image})`,
           }}
         >
           <Navbar navbarUrl={navbarUrl} />
           <Nav navData={navData} />
 
           <CommunityAssociationHero
-            data={{ findCountry, findCountryCategoryData }}
+            data={{ findCommunity, findCountryCategoryData }}
             handleOpen={changeOpen}
           />
         </div>
 
-        <CommunityFriendshipInfo {...findCountry} />
-        <CommunityAssociationCompanyOffer {...findCountry} />
+        <CommunityFriendshipInfo {...findCommunity} />
+        <CommunityAssociationCompanyOffer {...findCommunity} />
         <PortalMiniSlider
           title={`${t("events")}`}
           data={eventsData?.data}
@@ -89,7 +89,7 @@ const CommunityAssociationDetail = () => {
           open={open}
           handleClose={changeOpen}
           toast={toast}
-          id={findCountry?.id}
+          id={findCommunity?.id}
         />
       </div>
     </>
