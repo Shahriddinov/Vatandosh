@@ -1,12 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCountries, mapGetData } from "./mapAsyncThunk";
+import {
+  getCountries,
+  getCountriesNews,
+  getCountriesNewsData,
+  mapGetData,
+} from "./mapAsyncThunk";
 
 const initialState = {
-  mapDataLoading: false,
-  countriesLoading: false,
-  error: "",
   mapData: [],
+  mapDataLoading: false,
+
   countries: [],
+  countriesLoading: false,
+
+  countryNews: [],
+  countryNewsLoading: true,
+
+  countryNewsData: [],
+  countryNewsDataLoading: true,
+
+  error: "",
 };
 
 const mapSlice = createSlice({
@@ -37,6 +50,32 @@ const mapSlice = createSlice({
       .addCase(getCountries.rejected, (state, action) => {
         state.error = action.error.message;
         state.countriesLoading = false;
+      });
+
+    build
+      .addCase(getCountriesNews.pending, (state) => {
+        state.countryNewsLoading = true;
+      })
+      .addCase(getCountriesNews.fulfilled, (state, { payload }) => {
+        state.countryNews = payload;
+        state.countryNewsLoading = false;
+      })
+      .addCase(getCountriesNews.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.countryNewsLoading = false;
+      });
+
+    build
+      .addCase(getCountriesNewsData.pending, (state) => {
+        state.countryNewsDataLoading = true;
+      })
+      .addCase(getCountriesNewsData.fulfilled, (state, { payload }) => {
+        state.countryNewsData = payload;
+        state.countryNewsDataLoading = false;
+      })
+      .addCase(getCountriesNewsData.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.countryNewsDataLoading = false;
       });
   },
 });

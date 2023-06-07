@@ -12,12 +12,17 @@ const MapsModal = ({ changeActive, countryCode }) => {
   const mapLoading = useSelector((state) => state.mapSlice.mapDataLoading);
   const countries = useSelector((state) => state.mapSlice.countries);
   const lng = useSelector((state) => state.language.language);
+
+  const countryNews = useSelector((store) => store.mapSlice.countryNews);
+
   const { t } = useTranslation();
   const countryName = {
     name: countries?.find((el) => el.country_flag_code === countryCode)[
       `country_name_${lng}`
     ],
   };
+
+  const countryPosts = countryNews.find((el) => el.code === countryCode);
 
   const handleClick = (e) => {
     if (e.target.matches(".maps_modal")) {
@@ -84,7 +89,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
                     >
                       {t("modalText2")}
                     </span>
-                    <span style={{ whiteSpace: "nowrap" }}>: 1</span>
+                    <span style={{ whiteSpace: "nowrap" }}>
+                      : {countryPosts?.posts_count}
+                    </span>
                   </li>
                   <li className="maps_modal__body_text">
                     <span
@@ -93,7 +100,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
                     >
                       {t("modalText3")}
                     </span>
-                    <span style={{ whiteSpace: "nowrap" }}>: 2</span>
+                    <span style={{ whiteSpace: "nowrap" }}>
+                      : {countryPosts?.community_events_count}
+                    </span>
                   </li>
                 </ul>
 
