@@ -80,7 +80,7 @@ const News = () => {
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
               {events?.data?.map((event) => (
-                <PortalEvent key={event.id} {...event} />
+                <PortalCard key={event.id} {...event} />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>

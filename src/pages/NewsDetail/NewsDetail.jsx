@@ -7,12 +7,25 @@ import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
 import Detail from "../../component/Detail/Detail";
 
 export default function NewsDetail() {
-  const { siteNews } = useNewsDataFetching();
+  const { loading, error, data } = useNewsDataFetching();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getContact());
   }, []);
 
-  return <Detail {...siteNews} />;
+  if (loading) {
+    return (
+      <div className="spinner_box">
+        <Spinner />
+      </div>
+    );
+  }
+
+  // if (error) {
+  //   return <NotFound />;
+  // }
+
+
+  return <Detail {...data} />;
 }
