@@ -8,18 +8,17 @@ import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
-import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
+import { baseServerUrl } from "../../services/api/utils";
 
-export default function Detail(siteNews) {
+export default function Detail(data) {
   const lan = useSelector((state) => state.language.language);
   const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   useEffect(() => {
-    if (siteNews?.images) setgalleryMainImg(JSON.parse(siteNews?.images)[0]);
-  }, [siteNews]);
+    if (data?.images) setgalleryMainImg(JSON.parse(data?.images)[0]);
+  }, [data]);
 
-
-  return siteNews ? (
+  return data ? (
     <div className="newsdetail">
       <Header />
       <div className="container">
@@ -28,9 +27,7 @@ export default function Detail(siteNews) {
             <PopularTags />
           </div>
           <div className="newsdetail-title">
-            <h1 className="newsdetail-title-text">
-              {siteNews[`title_${lan}`]}
-            </h1>
+            <h1 className="newsdetail-title-text">{data[`title_${lan}`]}</h1>
             <div className="newsdetail-title-url">
               <Link to="/">Asosiy sahifa</Link>
               <MdArrowRight />
@@ -43,21 +40,21 @@ export default function Detail(siteNews) {
           <div className="newsdetail-main">
             <div className="newsdetail-main-desc">
               <div className="newsdetail-main-desc-img">
-                <img src={`${PORTAL_IMAGE_URL}/${siteNews?.image}`} alt="" />
+                <img src={`${baseServerUrl}/${data?.image}`} alt="" />
               </div>
               <div className="newsdetail-main-desc-action">
                 <div className="newsdetail-main-desc-action-date-viewers">
                   <div className="newsdetail-main-desc-action-date">
                     <BsFillCalendar2EventFill />
-                    <span>{siteNews?.created_at?.slice(0, 10)}</span>
+                    <span>{data.data}</span>
                   </div>
                   <div className="newsdetail-main-desc-action-viewers">
                     <AiFillEye />
-                    <span>{siteNews.view}</span>
+                    <span>{data.viewers}</span>
                   </div>
                 </div>
                 <div className="newsdetail-main-desc-action-tags">
-                  {siteNews?.[`tag_${lan}`]?.split(",").map((el, index) => {
+                  {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
                     return (
                       <Link
                         to={`/hashtag/${el.trim()}`}
@@ -69,32 +66,26 @@ export default function Detail(siteNews) {
                   })}
                 </div>
               </div>
-              <div className="newsdetail-main-desc-texts">
-                {siteNews?.title}
-              </div>
               <div
                 className="newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
-                  __html: siteNews.body,
+                  __html: data[`text_${lan}`],
                 }}></div>
-              <div className="newsdetail-main-desc-texts">
-                {siteNews.excerpt}
-              </div>
-              {siteNews?.images
-                ? JSON.parse(siteNews?.images).length >= 1 && (
+              {data?.images
+                ? JSON.parse(data?.images).length >= 1 && (
                     <div className="newsdetail-main-desc-gallery">
                       <img
                         src={`${baseServerUrl}/${
                           galleryMainImg
                             ? galleryMainImg
-                            : JSON.parse(siteNews?.images)[0]
+                            : JSON.parse(data?.images)[0]
                         }`}
                         alt="error"
                         className="newsdetail-main-desc-gallery-mainImg"
                       />
                       <div className="newsdetail-main-desc-gallery-list-wrapper">
                         <ul className="newsdetail-main-desc-gallery-list">
-                          {JSON.parse(siteNews?.images).map((el, index) => {
+                          {JSON.parse(data?.images).map((el, index) => {
                             return (
                               <li key={index}>
                                 <img

@@ -25,7 +25,6 @@ const Quizzes = () => {
   const lan = useSelector((state) => state.language.language);
   const { t } = useTranslation();
 
-
   const btnArr = [
     {
       id: 1,
@@ -70,6 +69,8 @@ const Quizzes = () => {
     dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded }));
   };
 
+  console.log(quizTotalData);
+
   return (
     <>
       <Header />
@@ -97,8 +98,7 @@ const Quizzes = () => {
             <button
               onClick={() => changeBtn(el)}
               className={el.id === activeBtn && "active"}
-              key={index}
-            >
+              key={index}>
               {el.name}
             </button>
           ))}
@@ -114,8 +114,7 @@ const Quizzes = () => {
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={(e) => showMoreActive(e)}
-              >
+                onClick={(e) => showMoreActive(e)}>
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1
@@ -135,8 +134,7 @@ const Quizzes = () => {
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={(e) => showMoreEnded(e)}
-              >
+                onClick={(e) => showMoreEnded(e)}>
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1

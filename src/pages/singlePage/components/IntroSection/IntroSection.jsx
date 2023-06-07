@@ -21,6 +21,8 @@ const IntroSection = ({ data }) => {
     return null;
   }
 
+  console.log(paginationData[0].data);
+
   return (
     <div className="single-intro-section">
       <div className="single-intro-section__container container">
@@ -40,8 +42,7 @@ const IntroSection = ({ data }) => {
                   type === "projects"
                     ? "single-intro-section__project_list"
                     : "single-intro-section__compatriots_list"
-                } `}
-              >
+                } `}>
                 {paginationData["0"].data?.map((el) => (
                   <li className="single-intro-section__item" key={el.id}>
                     <Card {...el} pathUrl={pageUrl} />
