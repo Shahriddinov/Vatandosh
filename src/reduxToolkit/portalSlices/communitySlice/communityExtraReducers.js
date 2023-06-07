@@ -62,13 +62,14 @@ export const getCountryCities = createAsyncThunk(
 export const getAllCommunity = createAsyncThunk(
   "getAllCommunity",
   async (payload) => {
-    const { page, region_id, per_page } = payload;
+    const { region_id, page, per_page } = payload;
+    console.log(region_id);
     return await axios({
       url: GET_COMMUNITY_ALL_PAGINATION,
       method: "GET",
       params: {
-        page,
         region_id,
+        page,
         per_page,
       },
     }).then((res) => res.data);

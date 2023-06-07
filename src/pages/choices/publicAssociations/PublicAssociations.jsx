@@ -13,7 +13,7 @@ import PublicAssCard from "./components/PublicAssCard";
 import { useTranslation } from "react-i18next";
 
 const PublicAssociations = () => {
-  const [postsPerPage, setPostsPerpage] = useState(8);
+  const [postsPerPage, setPostsPerpage] = useState(6);
   const allRegions = useSelector((store) => store.community.allRegionsGet);
   const { t } = useTranslation();
 
@@ -30,6 +30,7 @@ const PublicAssociations = () => {
     return <p>{error}</p>;
   }
 
+  console.log(allCommunityGet);
   return (
     <>
       <Header />
@@ -45,7 +46,7 @@ const PublicAssociations = () => {
           </ul>
         </div>
         <div className="choicesPAContainer-body">
-          {allCommunityGet.data.map((el, index) => (
+          {allCommunityGet?.data.map((el, index) => (
             <PublicAssCard key={index} data={el} allRegions={allRegions} />
           ))}
         </div>

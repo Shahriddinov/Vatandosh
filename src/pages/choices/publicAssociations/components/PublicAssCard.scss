@@ -1,8 +1,8 @@
 @import "../../../../assets/style/global.scss";
 
 .country-card {
-  max-width: 268px;
-  min-height: 291px;
+  width: 268px;
+  height: 310px;
   background: #f6f7fb;
   border: 1px solid #eaedf6;
   border-radius: 10px;
@@ -16,6 +16,8 @@
 
     & > img {
       border-radius: 50%;
+      width: 24px;
+      height: 24px;
     }
     & > span {
       @include fontStyles(700, 14px, 22px, $colorTitle);
@@ -32,11 +34,15 @@
     @include fontStyles(400, 14px, 18px, #4b5157);
     margin-top: 15px;
     text-align: center;
+    height: 50px;
+    overflow: hidden;
   }
   & > img {
     margin-top: 8px;
     display: block;
     margin-inline: auto;
+    width: 83px;
+    height: 83px;
   }
 
   &_bottomText {
