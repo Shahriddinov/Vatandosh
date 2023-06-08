@@ -267,11 +267,11 @@ const EmailVerify = lazy(() =>
 );
 
 const SignInWithGoogle = lazy(() =>
-  import("./pages/Registration/SignInWithGoogle/SignInWithGoogle")
+  import("./pages/Registration/pages/SignInWithGoogle/SignInWithGoogle")
 );
 
 const SignInWithFacebook = lazy(() =>
-  import("./pages/Registration/SignInWithFacebook/SignInWithFacebook")
+  import("./pages/Registration/pages/SignInWithFacebook/SignInWithFacebook")
 );
 
 const ResetPassword = lazy(() =>
