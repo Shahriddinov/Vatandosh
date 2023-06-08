@@ -266,6 +266,14 @@ const EmailVerify = lazy(() =>
   import("./pages/Registration/emailVerify/EmailVerify")
 );
 
+const SignInWithGoogle = lazy(() =>
+  import("./pages/Registration/SignInWithGoogle/SignInWithGoogle")
+);
+
+const SignInWithFacebook = lazy(() =>
+  import("./pages/Registration/SignInWithFacebook/SignInWithFacebook")
+);
+
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
@@ -450,6 +458,14 @@ const routes = [
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
   { path: "/registration/signup/api/verify/", element: EmailVerify },
+  {
+    path: "/registration/signup/api/redirect/google",
+    element: SignInWithGoogle,
+  },
+  {
+    path: "/registration/signup/api/redirect/facebook",
+    element: SignInWithFacebook,
+  },
   { path: "/registration/signup/api/reset/", element: ResetPassword },
   { path: "/choices/quiz", element: ChoicesQuizzes },
   { path: "/choices/quiz/more-detail/:id", element: MoreDetail },
