@@ -42,6 +42,7 @@ const MoreDetail = () => {
       clearInterval(interval);
     };
   }, [byIdData?.finished_at]);
+  console.log(byIdData)
 
   const settings = {
     customPaging: function (i) {
@@ -133,20 +134,15 @@ const MoreDetail = () => {
             ""
           )}
         </p>
-
-        <video controls>
-          {byIdData?.video &&
-          JSON.parse(byIdData.video || "[]")[0]?.download_link ? (
-            <source
-              src={`${PORTAL_IMAGE_URL}/${
-                JSON.parse(byIdData.video)[0].download_link
-              }`}
-              type="video/mp4"
-            />
-          ) : (
-            <source type="video/mp4" src="fallback-video.mp4" />
-          )}
-        </video>
+        <iframe
+            className="videosss"
+            width="100%"
+            height="500px"
+            src={`https://www.youtube.com/embed/${byIdData?.video}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
 
         <div className="singleCardContainer-socialsCont">
           <a>
