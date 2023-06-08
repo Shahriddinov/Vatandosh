@@ -19,9 +19,10 @@ const SignInWithFacebook = () => {
           )
           .then((res) => res.data);
 
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user.user));
+        localStorage.setItem("token", JSON.stringify(user.token));
         if (user.token) {
-          navigate("/");
+          navigate("/portal-category/cabinet");
         }
       } catch (e) {
         console.log(e);
