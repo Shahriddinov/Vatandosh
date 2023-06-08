@@ -9,9 +9,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const FormCard = ({ el, data, setData }) => {
-  console.log(el);
-  console.log(data);
   const [openCard, setOpenCard] = useState(true);
+  console.log(el.id);
   const inputHandler = (e, id) => {
     const name = e.name;
     const changeData = data.map((item) => {
@@ -69,13 +68,13 @@ const FormCard = ({ el, data, setData }) => {
       </div>
 
       <div className="formCard-form-part2">
-        <label htmlFor={el.id}>
+        <label htmlFor={`${el.id}a`}>
           Maqola mavzusi <span>*</span>
         </label>
         <div>
           <input
             type="text"
-            id={el.id}
+            id={`${el.id}a`}
             name="articleTopic"
             value={el.articleTopic}
             onChange={(e) => inputHandler(e.target, el.id)}

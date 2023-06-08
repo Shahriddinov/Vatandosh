@@ -6,31 +6,36 @@ import badCrumbsImg from "../../../assets/images/portal/privateInformation/badCr
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Header from "../../../component/Layout/Header/Header";
-import { useSelector } from "react-redux";
-import { useOrganizationFetching } from "../../Portal/cabinet/pages/organizations/hooks/useOrganizationFetching";
 import { Spinner } from "../../../component";
 import PublicAssCard from "./components/PublicAssCard";
 import { useTranslation } from "react-i18next";
+import { usePublicAssData } from "./hooks/usePublicAssData";
 
 const PublicAssociations = () => {
   const [postsPerPage, setPostsPerpage] = useState(6);
-  const allRegions = useSelector((store) => store.community.allRegionsGet);
+  // const allRegions = useSelector((store) => store.community.allRegionsGet);
   const { t } = useTranslation();
 
   const {
-    allCommunityGet,
-    allCommunityGetLoading,
-    error,
-    allRegionsGetLoading,
-  } = useOrganizationFetching();
+    publicAssloading,
+    publicAssdata,
+    publicAsserror,
+    countriesLoading,
+    countriesData,
+    countriesError,
+  } = usePublicAssData();
 
-  if (allCommunityGetLoading || allRegionsGetLoading) {
+  if (publicAssloading || countriesLoading) {
     return <Spinner position="full" />;
-  } else if (error) {
-    return <p>{error}</p>;
+  } else if (publicAsserror || countriesError) {
+    return (
+      <p>
+        {publicAsserror}
+        {countriesError}
+      </p>
+    );
   }
 
-  console.log(allCommunityGet);
   return (
     <>
       <Header />
@@ -46,8 +51,8 @@ const PublicAssociations = () => {
           </ul>
         </div>
         <div className="choicesPAContainer-body">
-          {allCommunityGet?.data.map((el, index) => (
-            <PublicAssCard key={index} data={el} allRegions={allRegions} />
+          {publicAssdata?.data.map((el, index) => (
+            <PublicAssCard key={index} data={el} allRegions={countriesData} />
           ))}
         </div>
         <div className="choicesPAContainer-btnCont">

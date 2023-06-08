@@ -31,7 +31,9 @@ const Card = ({ data, quiz }) => {
   }, [data?.finished_at]);
   return (
     <div className="card">
-      <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
+      <div className="card-imgCont">
+        <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
+      </div>
       <div className="card-bottomBox">
         <h1>{data?.title}</h1>
         <p>

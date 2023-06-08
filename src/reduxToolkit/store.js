@@ -51,6 +51,7 @@ import menuSuggestionSlice from "./expertSuggestion";
 import choiceQuizSlice from "./choicesPageSlice/index";
 import portalAllNewsSlice from "./portalSlices/news-events/index";
 import volunteerShowUserSlice from "./volunteer-user";
+import publicAssSlice from "./publicAssociations/index";
 
 const store = configureStore({
   reducer: {
@@ -105,6 +106,7 @@ const store = configureStore({
     choiceQuizSlice,
     portalAllNewsSlice,
     volunteerShowUserSlice,
+    publicAssSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

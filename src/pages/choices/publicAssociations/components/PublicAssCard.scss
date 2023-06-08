@@ -2,7 +2,7 @@
 
 .country-card {
   width: 268px;
-  height: 310px;
+  height: 315px;
   background: #f6f7fb;
   border: 1px solid #eaedf6;
   border-radius: 10px;
@@ -42,6 +42,9 @@
     display: block;
     margin-inline: auto;
     width: 100%;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
   }
 
   &_bottomText {
