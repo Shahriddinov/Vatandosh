@@ -74,6 +74,8 @@ export default function OnlineWebinar() {
     return <p>Error</p>;
   }
 
+  console.log(meetingOnedata);
+
   return (
     <>
       <main className="online-webinar">
@@ -107,8 +109,7 @@ export default function OnlineWebinar() {
                   {meetingOnedata.status == 1 ? (
                     <Link
                       to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                    >
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive">
                       {t("webinar.join-webinar")}
                     </Link>
                   ) : (
@@ -146,6 +147,17 @@ export default function OnlineWebinar() {
                     </div>
                   </div>
                   <p>{meetingOnedata.description}</p>
+                </div>
+                <div style={{ margin: "15px 0" }}>
+                  <iframe
+                    className="online-webinar-hero-img"
+                    width="770px"
+                    height="400px"
+                    src={`https://www.youtube.com/embed/${meetingOnedata?.video}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
                 </div>
               </div>
               <ShareFriends />

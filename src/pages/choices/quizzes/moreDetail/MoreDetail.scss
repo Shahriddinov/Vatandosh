@@ -1,9 +1,29 @@
 @import "../../../../assets//style/global.scss";
 
+body .singleCardContainer .slick-dots li {
+  margin: 0 20px;
+  width: 90px;
+  height: 70px;
+  margin-top: 50px;
+}
+
+body .singleCardContainer .slick-dots {
+  bottom: -85px;
+  overflow-x: auto;
+}
+
 .singleCardContainer {
   max-width: 1270px;
   margin-inline: auto;
   padding: 50px;
+
+  &__image {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
   & > h1 {
     @include fontStyles(600, 32px, 39px, #10131b);
   }
@@ -24,13 +44,13 @@
     border-radius: 10px;
   }
   &-timeOver {
-    margin-top: 31px;
+    margin-top: 90px;
     & > p {
     }
   }
 
   &-timeCont {
-    margin-top: 31px;
+    margin-top: 90px;
     display: flex;
     justify-content: space-around;
     &-inner {

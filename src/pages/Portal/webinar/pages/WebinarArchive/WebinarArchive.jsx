@@ -48,6 +48,7 @@ function WebinarArchive() {
     return <p>Error</p>;
   }
 
+
   return (
     <div className="webinar">
       <div className="container">
@@ -70,7 +71,7 @@ function WebinarArchive() {
             {t("webinar.conferences")}
           </button>
         </div>
-        
+
         <div className="webinar-page">
           {meetingsData.map((webinar) => (
             <div className="webinar-box" key={webinar.id}>
