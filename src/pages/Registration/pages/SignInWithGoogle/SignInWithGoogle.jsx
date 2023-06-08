@@ -19,7 +19,7 @@ const SignInWithGoogle = () => {
           )
           .then((res) => res.data);
 
-        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
         if (user.token) {
           navigate("/");
         }
