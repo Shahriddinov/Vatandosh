@@ -42,7 +42,7 @@ const MoreDetail = () => {
       clearInterval(interval);
     };
   }, [byIdData?.finished_at]);
-  console.log(byIdData)
+  console.log(byIdData);
 
   const settings = {
     customPaging: function (i) {
@@ -67,6 +67,8 @@ const MoreDetail = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  console.log(byIdData);
 
   return (
     <>
@@ -128,21 +130,25 @@ const MoreDetail = () => {
         </div>
 
         <div className="singleCardContainer-hl"></div>
-        <p>
-          {byIdData?.description?.replace(
+        <p
+          dangerouslySetInnerHTML={{
+            __html: byIdData.description,
+          }}
+        />
+        {/* {byIdData?.description?.replace(
             /(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi,
             ""
           )}
-        </p>
+        </p> */}
         <iframe
-            className="videosss"
-            width="100%"
-            height="500px"
-            src={`https://www.youtube.com/embed/${byIdData?.video}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen></iframe>
+          className="videosss"
+          width="100%"
+          height="500px"
+          src={`https://www.youtube.com/embed/${byIdData?.video}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen></iframe>
 
         <div className="singleCardContainer-socialsCont">
           <a>
