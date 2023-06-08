@@ -29,43 +29,43 @@ const PublicAssociations = () => {
     return <Spinner position="full" />;
   } else if (publicAsserror || countriesError) {
     return (
-      <p>
-        {publicAsserror}
-        {countriesError}
-      </p>
+        <p>
+          {publicAsserror}
+          {countriesError}
+        </p>
     );
   }
 
   return (
-    <>
-      <Header />
-      <div className="choicesPAContainer">
-        <div className="choicesPAContainer-header">
-          <h1>{t("choices.publicAss")}</h1>
-          <ul>
-            <li>
-              <Link to="/">{t("choices.mainPage")}</Link>
-              <img src={badCrumbsImg} alt="breadcrumb line" />
-            </li>
-            <li aria-current="page">{t("choices.publicAss")}</li>
-          </ul>
+      <>
+        <Header />
+        <div className="choicesPAContainer">
+          <div className="choicesPAContainer-header">
+            <h1>{t("choices.publicAss")}</h1>
+            <ul>
+              <li>
+                <Link to="/">{t("choices.mainPage")}</Link>
+                <img src={badCrumbsImg} alt="breadcrumb line" />
+              </li>
+              <li aria-current="page">{t("choices.publicAss")}</li>
+            </ul>
+          </div>
+          <div className="choicesPAContainer-body">
+            {publicAssdata?.data.map((el, index) => (
+                <PublicAssCard key={index} data={el} allRegions={countriesData} />
+            ))}
+          </div>
+          <div className="choicesPAContainer-btnCont">
+            <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setPostsPerpage((prev) => prev + 6)}
+            >
+              <img src={btnArrowDown} alt="icon" />
+              <span>{t("choices.all")}</span>
+            </motion.button>
+          </div>
         </div>
-        <div className="choicesPAContainer-body">
-          {publicAssdata?.data.map((el, index) => (
-            <PublicAssCard key={index} data={el} allRegions={countriesData} />
-          ))}
-        </div>
-        <div className="choicesPAContainer-btnCont">
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setPostsPerpage((prev) => prev + 6)}
-          >
-            <img src={btnArrowDown} alt="icon" />
-            <span>{t("choices.all")}</span>
-          </motion.button>
-        </div>
-      </div>
-    </>
+      </>
   );
 };
 
