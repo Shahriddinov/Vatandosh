@@ -9,7 +9,7 @@ function App({ children }) {
   const token = useSelector((state) => state.authSlice.token);
 
   const socket = new WebSocket(
-    `wss://vatandoshlar.napaautomotive.uz/ws/messages/?token=${token}`
+    `wss://api.vatandoshfondi.uz/ws/messages/?token=${token}`
   );
 
   useEffect(() => {
