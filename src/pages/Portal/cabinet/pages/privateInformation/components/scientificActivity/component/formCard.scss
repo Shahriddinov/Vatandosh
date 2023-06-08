@@ -1,0 +1,118 @@
+@import "../../../../../../../../assets/style/global.scss";
+
+label {
+  @include fontStyles(400, 14px, 17px, #000000);
+  & > span {
+    color: #ff5656;
+  }
+}
+input {
+  width: 100%;
+  border: none;
+  @include fontStyles(400, 16px, 19px, #10131b);
+  outline: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.articleLink {
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.formCard-cont {
+  &-form {
+    &-row1 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+      & > div {
+        & > div {
+          border: 1px solid #eaedf6;
+          border-radius: 6px;
+          padding: 14.5px 12px;
+          display: flex;
+        }
+      }
+    }
+    &-row2 {
+      margin-top: 30px;
+      & > div {
+        border: 1px solid #eaedf6;
+        border-radius: 6px;
+        padding: 14.5px 12px;
+        display: flex;
+      }
+    }
+    &-row3 {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      & > div {
+        & > div {
+          border: 1px solid #eaedf6;
+          border-radius: 6px;
+          padding: 14.5px 12px;
+          display: flex;
+        }
+      }
+      &-inner2 {
+        & > div {
+          & > input {
+          }
+        }
+      }
+
+      &-inner3 {
+        & > div {
+          & > label {
+            width: 100%;
+          }
+          & > input {
+            display: none;
+          }
+        }
+      }
+    }
+    &-row4 {
+      margin-top: 30px;
+      & > div {
+        display: flex;
+        border: 1px solid #eaedf6;
+        border-radius: 6px;
+        padding: 14.5px 12px;
+      }
+    }
+
+    &-row5 {
+      display: flex;
+      flex-wrap: wrap;
+      border: none !important;
+      gap: 8px;
+      padding: 0 !important;
+      margin-top: 5px;
+      & > div {
+        display: flex;
+        gap: 7px;
+        background: #e3f0ff;
+        border-radius: 5px;
+        padding: 8px 8px;
+        align-items: center;
+
+        & > p {
+          @include fontStyles(400, 12px, 16px, #065ea9);
+        }
+        & > img {
+          &:hover {
+            cursor: pointer;
+            scale: 1.1;
+          }
+        }
+      }
+    }
+  }
+}

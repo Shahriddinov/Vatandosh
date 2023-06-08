@@ -1,1 +1,18 @@
 @import "../../../../../../../assets/style/global.scss";
+.jobCont {
+  & > button {
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #eaedf6;
+    border-radius: 6px;
+
+    & > img {
+      padding: 14px 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

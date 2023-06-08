@@ -1,1 +1,30 @@
 @import "../../../../../../../assets/style/global.scss";
+
+.VoluntaryActivity {
+  & > button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px 0;
+    background: #ffffff;
+    border: 1px solid #eaedf6;
+    border-radius: 6px;
+    &:hover {
+      cursor: pointer;
+    }
+    & > img {
+    }
+  }
+
+  &-checkBoxCont {
+    margin-top: 22px;
+    display: flex;
+    gap: 7px;
+
+    & > input {
+      width: min-content;
+    }
+    & > label {
+      @include fontStyles(400, 14px, 17px, #9d9d9d);
+    }
+  }
+}

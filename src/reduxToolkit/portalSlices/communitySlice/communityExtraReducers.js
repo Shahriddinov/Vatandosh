@@ -67,8 +67,8 @@ export const getAllCommunity = createAsyncThunk(
       url: GET_COMMUNITY_ALL_PAGINATION,
       method: "GET",
       params: {
-        page,
         region_id,
+        page,
         per_page,
         user_id,
       },

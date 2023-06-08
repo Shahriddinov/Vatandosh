@@ -10,7 +10,6 @@ const PublicAssCard = ({ data, allRegions }) => {
   const countryInfo = allRegions.find(
     (country) => country.id === data.region_id
   );
-
   const { t } = useTranslation();
   return (
     <>

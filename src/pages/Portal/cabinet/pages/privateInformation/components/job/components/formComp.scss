@@ -1,0 +1,106 @@
+@import "../../../../../../../../assets/style/global.scss";
+.jobCont-hl {
+  height: 5px;
+  width: 100%;
+  background-color: #eaedf6;
+  margin-top: 25px;
+}
+
+.form-cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  margin-top: 30px;
+  &-left {
+    &-fieldCont:first-child {
+      margin-top: 0;
+    }
+    &-fieldCont {
+      margin-top: 30px;
+      & > label {
+        @include fontStyles(400, 14px, 18px, #000000);
+        & > span {
+          color: #ff5656;
+        }
+      }
+
+      & > div {
+        border: 1px solid #eaedf6;
+        border-radius: 6px;
+        display: flex;
+        padding: 14.5px 12px;
+        & > select {
+          width: 100%;
+          border: none;
+          outline: none;
+          @include fontStyles(400, 16px, 24px, #10131b);
+          & > option {
+          }
+        }
+
+        & > input {
+          width: 100%;
+          border: none;
+          @include fontStyles(400, 16px, 19px, #10131b);
+          outline: none;
+        }
+
+        & > input[type="date"]::-webkit-calendar-picker-indicator {
+          opacity: 0;
+        }
+
+        & > img {
+        }
+      }
+    }
+    &-checkBox {
+      margin-top: 32px;
+      display: flex;
+      gap: 11px;
+      & > input {
+        width: 18px;
+        height: 18px;
+      }
+      & > span {
+        @include fontStyles(400, 14px, 18px, #000000);
+      }
+    }
+  }
+  &-right {
+    &-fieldCont:first-child {
+      margin-top: 0;
+    }
+    &-fieldCont {
+      margin-top: 30px;
+      & > label {
+        @include fontStyles(400, 14px, 18px, #000000);
+        & > span {
+          color: #ff5656;
+        }
+      }
+
+      & > div {
+        border: 1px solid #eaedf6;
+        border-radius: 6px;
+        display: flex;
+        padding: 14.5px 12px;
+        & > input {
+          width: 100%;
+          border: none;
+          @include fontStyles(400, 16px, 19px, #10131b);
+          outline: none;
+        }
+        & > input[type="date"]::-webkit-calendar-picker-indicator {
+          opacity: 0;
+        }
+
+        & > img {
+        }
+      }
+    }
+
+    &-fieldCont:last-child {
+      margin-top: 78px;
+    }
+  }
+}

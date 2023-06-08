@@ -53,6 +53,7 @@ import portalAllNewsSlice from "./portalSlices/news-events/index";
 import volunteerShowUserSlice from "./volunteer-user";
 import websiteNewsSlice from "./siteNews";
 import websiteEventSlice from "./SiteEvent";
+import publicAssSlice from "./publicAssociations/index";
 
 const store = configureStore({
   reducer: {
@@ -109,6 +110,7 @@ const store = configureStore({
     volunteerShowUserSlice,
     websiteNewsSlice,
     websiteEventSlice,
+    publicAssSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -25,6 +25,7 @@ export const useOrganizationFetching = () => {
   useEffect(() => {
     dispatch(
       getAllCommunity({
+        region_id: 0,
         page: 1,
         per_page: 8,
         typePage: "association",
