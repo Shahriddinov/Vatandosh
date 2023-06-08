@@ -69,8 +69,6 @@ const Quizzes = () => {
     dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded }));
   };
 
-  console.log(quizTotalData.allData.data[0].image[0]);
-
   return (
     <>
       <Header />

@@ -9,7 +9,24 @@ body .singleCardContainer .slick-dots li {
 
 body .singleCardContainer .slick-dots {
   bottom: -85px;
-  overflow-x: auto;
+  overflow-x: scroll;
+  display: flex !important;
+  overflow-y: hidden;
+  
+}
+
+body .singleCardContainer .slick-dots::-webkit-scrollbar {
+  width: 0px;
+  height: 7px;
+}
+
+body .singleCardContainer .slick-dots::-webkit-scrollbar-thumb {
+  background: rgba($color: #000000, $alpha: 0.3);
+  border-radius: 4px;
+}
+
+body .singleCardContainer .slick-dots::-webkit-scrollbar-thumb:hover {
+  background: rgba($color: #000000, $alpha: 0.3);
 }
 
 .singleCardContainer {
