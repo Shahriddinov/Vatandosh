@@ -19,6 +19,8 @@ import Hero from "./Hero/Hero";
 import LazySpinner from "./lazySpinner/LazySpinner";
 import MyButton from "./MyButton/MyButton";
 import Notification from "./notification/Notification";
+import SiteNewsDetail from "./newsDetail/NewsDetail";
+
 export {
   Spinner,
   Layout,
@@ -41,4 +43,5 @@ export {
   LazySpinner,
   MyButton,
   Notification,
+  SiteNewsDetail,
 };

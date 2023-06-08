@@ -28,11 +28,11 @@ export const useOrganizationFetching = () => {
         page: 1,
         per_page: 8,
         typePage: "association",
-        user_id: user?.user_id.id,
+        user_id: null,
       })
     );
     dispatch(getAllRegions());
-  }, [dispatch, lan, user?.user_id.id]);
+  }, [dispatch, lan]);
   return {
     allCommunityGet,
     allCommunityGetLoading,

@@ -25,6 +25,9 @@ import VolunteerOffers from "./pages/Portal/volunter/pages/VolunteerOffers/Volun
 
 const Home = lazy(() => import("./pages/Home"));
 const MapNews = lazy(() => import("./pages/mapNews/MapNews"));
+const MapNewsDetail = lazy(() => import("./pages/mapNews/MapNews"));
+const OneNewsDetail = lazy(() => import("./pages/oneNewsDetail/OneNewsDetail"));
+//
 const About = lazy(() =>
   import(
     /*webpackChunkName: Home*/
@@ -413,6 +416,8 @@ const MoreDetail = lazy(() =>
 
 const routes = [
   { path: "", element: Home },
+  { path: "/detail/:category/:type/:id", element: OneNewsDetail },
+  { path: "/about", element: OneNewsDetail },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -434,7 +439,7 @@ const routes = [
   },
   { path: "/country-news/:countryId", element: MapNews },
   { path: "/information-service/:pageName", element: InformationServices },
-  { path: "/news/:id", element: NewsDetail },
+  { path: "/:page/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
   { path: "/faq", element: FAQ },

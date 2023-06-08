@@ -73,7 +73,11 @@ const News = () => {
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
               {news?.map((news) => (
-                <PortalCard key={news.id} {...news} pathUrl="news" />
+                <PortalCard
+                  key={news.id}
+                  {...news}
+                  urlLink={{ category: "all-news", type: "new", id: news?.id }}
+                />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>
@@ -81,7 +85,15 @@ const News = () => {
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
               {events?.data?.map((event) => (
-                <PortalCard key={event.id} {...event} />
+                <PortalCard
+                  key={event?.id}
+                  {...event}
+                  urlLink={{
+                    category: "community",
+                    type: "event",
+                    id: event?.id,
+                  }}
+                />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>
