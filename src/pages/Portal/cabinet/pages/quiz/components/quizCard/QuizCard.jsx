@@ -10,6 +10,11 @@ import {
 
 import "./quizCard.scss";
 import { getDate } from "../../../../../../../config/constants";
+import {
+  FirstImg,
+  SecondImg,
+  Third,
+} from "../../../../../../../assets/images/cabinet";
 
 const QuizCard = (props) => {
   const [timeData, setTimeDate] = useState({
@@ -21,45 +26,63 @@ const QuizCard = (props) => {
 
   useEffect(() => {
     const { interval } = timer({
-      finishedTime: props?.finished_at,
+      finishedTime: props?.started_at,
       setTimeDate: setTimeDate,
     });
     return () => {
       clearInterval(interval);
     };
-  }, [props?.finished_at]);
-
-  console.log(props);
+  }, [props?.started_at]);
+  console.log(timeData);
 
   const { filteredText } = htmlElement(props?.description);
   const text = filteredText[0].replace(/&nbsp;/g, "").split(" ");
   const date = getDate(props?.started_at);
-  console.log(text.length);
+
+  const image = props?.image ? JSON.parse(props?.image) : [];
   return (
     <li
       key={props?.id}
       className="cabinet-quiz-card"
-      onClick={() =>
+      onClick={() => {
         navigate(
           `/portal-category/victorina${
             props.status === 0 ? "/finished-projects" : ""
           }/image-project/${props?.id}`
-        )
-      }
+        );
+      }}
     >
-      <img
-        src={`${PORTAL_IMAGE_URL}/${props?.image}`}
-        alt=""
-        className="cabinet-quiz-card-img"
-      />
+      <div className="cabinet-quiz-card-img">
+        <img
+          src={`${PORTAL_IMAGE_URL}/${image[0]}`}
+          alt=""
+          className="cabinet-quiz-card-img"
+        />
+        {props.cardType === "finish" && props.position !== null && (
+          <span className="cabinet-quiz-card-img_span">
+            <img
+              src={
+                props.position === 1
+                  ? FirstImg
+                  : props.position === 2
+                  ? SecondImg
+                  : props.position === 3 && Third
+              }
+              alt="img"
+            />
+          </span>
+        )}
+      </div>
       <div className="cabinet-quiz-card-items-body">
         <h4 className="cabinet-quiz-card-subname">{props?.title}</h4>
-        <p>
+        <p className="cabinet-quiz-card-desc">
           {text.length > 5
             ? text.slice(0, 10).join(" ") + "..."
             : text.join(" ")}
         </p>
-        {props?.status > 0 ? (
+        {props.cardType === "active" ? (
+          <p className="cabinet-quiz-card-active">Active</p>
+        ) : props?.status > 0 ? (
           <div className="cabinet-quiz-card__list">
             <span className="cabinet-quiz-card__item">
               <p>{timeData.days}</p>

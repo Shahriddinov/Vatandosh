@@ -2,11 +2,11 @@ import { QuizCard } from "../";
 
 import "./quizList.scss";
 
-const QuizList = ({ data }) => {
+const QuizList = ({ data, cardType }) => {
   return (
     <ul className="cabinet-quiz-list">
       {data.map((el) => (
-        <QuizCard key={el.id} {...el} />
+        <QuizCard key={el.id} {...el} cardType={cardType} />
       ))}
     </ul>
   );
