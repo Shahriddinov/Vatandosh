@@ -49,12 +49,12 @@ const MoreDetail = () => {
         <div>
           <img
             style={{
-              width: "150px",
-              height: "70px",
+              width: "110px",
+              height: "90px",
               borderRadius: "10px",
-              objectFit: "contain",
+              objectFit: "cover",
             }}
-            src={`${PORTAL_IMAGE_URL}/${byIdData.image[i + 1]}`}
+            src={`${PORTAL_IMAGE_URL}/${byIdData.image[i]}`}
           />
         </div>
       );
@@ -72,7 +72,6 @@ const MoreDetail = () => {
       <Header />
       <div className="singleCardContainer">
         <h1>{byIdData.title}</h1>
-
         <Slider {...settings}>
           {byIdData?.image?.map((evt) => (
             <div>
