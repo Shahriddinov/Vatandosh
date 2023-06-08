@@ -32,7 +32,7 @@ const Card = ({ data, quiz }) => {
   return (
       <div className="card">
         <div className="card-imgCont">
-          <img src={`${PORTAL_IMAGE_URL}${data.image}`} alt="img" />
+          <img src={`${PORTAL_IMAGE_URL}${data.image?.[0]}`} alt="img" />
         </div>
         <div className="card-bottomBox">
           <h1>{data?.title}</h1>
