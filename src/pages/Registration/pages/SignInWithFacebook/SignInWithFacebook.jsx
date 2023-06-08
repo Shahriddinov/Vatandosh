@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { loginUser } from "../../../../reduxToolkit/authSlice/authSlice";
+import { useDispatch } from "react-redux";
+
 const SignInWithFacebook = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  console.log(location.search.slice(6));
+  const dispatch = useDispatch();
 
   const url = location.search.slice(6);
 
@@ -19,8 +21,7 @@ const SignInWithFacebook = () => {
           )
           .then((res) => res.data);
 
-        localStorage.setItem("user", JSON.stringify(user.user));
-        localStorage.setItem("token", JSON.stringify(user.token));
+        dispatch(loginUser(user));
         if (user.token) {
           navigate("/portal-category/cabinet");
         }
