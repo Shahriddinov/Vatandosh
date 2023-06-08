@@ -135,11 +135,7 @@ const MoreDetail = () => {
             __html: byIdData.description,
           }}
         />
-        {/* {byIdData?.description?.replace(
-            /(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi,
-            ""
-          )}
-        </p> */}
+
         <iframe
           className="videosss"
           width="100%"
