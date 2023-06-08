@@ -13,7 +13,6 @@ import { usePublicAssData } from "./hooks/usePublicAssData";
 
 const PublicAssociations = () => {
   const [postsPerPage, setPostsPerpage] = useState(6);
-  // const allRegions = useSelector((store) => store.community.allRegionsGet);
   const { t } = useTranslation();
 
   const {
@@ -51,7 +50,7 @@ const PublicAssociations = () => {
           </ul>
         </div>
         <div className="choicesPAContainer-body">
-          {publicAssdata?.data.map((el, index) => (
+          {publicAssdata?.data?.map((el, index) => (
             <PublicAssCard key={index} data={el} allRegions={countriesData} />
           ))}
         </div>
