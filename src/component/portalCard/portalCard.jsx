@@ -13,7 +13,6 @@ const PortalCard = (props) => {
   const handleClick = (e) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
-  console.log(props.urlLink);
 
   return (
     <div
