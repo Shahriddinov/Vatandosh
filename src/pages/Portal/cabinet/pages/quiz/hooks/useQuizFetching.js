@@ -12,7 +12,7 @@ export const useQuizFetching = () => {
   const error = useSelector((state) => state.quizSlice.error);
 
   useEffect(() => {
-    dispatch(getQuizz({ status: "1" }));
+    dispatch(getQuizz({ status: "1", is_me: 1 }));
   }, [dispatch, lan]);
 
   return {

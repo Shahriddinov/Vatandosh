@@ -14,7 +14,7 @@ import oneid from "../../../../assets/images/register/oneid-icon.svg";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 import "./SignIn.scss";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -30,6 +30,14 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signIn(userData));
+  };
+
+  const handleGoogle = () => {
+    window.open("https://api.vatandoshlarfondi.uz/api/oauth/google", "_self");
+  };
+
+  const handleFacebook = () => {
+    window.open("https://api.vatandoshlarfondi.uz/api/oauth/facebook", "_self");
   };
 
   useEffect(() => {
@@ -64,12 +72,8 @@ export default function SignIn() {
               pauseOnHover
               theme="light"
             />
-            <h2 className="auth-desc-title">
-              {t("registerTitle")}
-            </h2>
-            <p className="auth-desc-text">
-              {t("registerText")}
-            </p>
+            <h2 className="auth-desc-title">{t("registerTitle")}</h2>
+            <p className="auth-desc-text">{t("registerText")}</p>
           </div>
           <div className="auth-form">
             <div className="auth-form-title">
@@ -134,24 +138,15 @@ export default function SignIn() {
             </form>
             <div className="auth-links">
               <div className="auth-links-list">
-                <div className="auth-links-list-item">
+                <div className="auth-links-list-item" onClick={handleGoogle}>
                   <img src={google} alt="icon" />
                 </div>
-                <a href="http://www.apple.com" className="auth-links-list-item">
-                  <img src={apple} alt="icon" />
-                </a>
-                <a
-                  href="http://www.facebook.com"
+                <div
                   className="auth-links-list-item auth-links-list-item-facebook"
+                  onClick={handleFacebook}
                 >
                   <img src={facebook} alt="icon" />
-                </a>
-                <a
-                  href="https://id.egov.uz/"
-                  className="auth-links-list-item auth-links-list-item-oneid"
-                >
-                  <img src={oneid} alt="icon" />
-                </a>
+                </div>
               </div>
               <div className="auth-links-tosignup">
                 <span>{t("registerYet")}</span>

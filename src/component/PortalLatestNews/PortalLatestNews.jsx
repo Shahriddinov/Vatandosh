@@ -26,8 +26,6 @@ export default function PortalLatestNews({ category, latestNews }) {
     return <Spinner position="full" />;
   }
 
-  console.log();
-
   return (
     <div className="latest_news">
       <h4 className="latest_news-title">So‘ngi yangiliklar</h4>

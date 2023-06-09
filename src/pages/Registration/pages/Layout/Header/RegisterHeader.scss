@@ -16,7 +16,7 @@
     align-items: center;
     gap: 15px;
 
-    &>p {
+    & > p {
       width: 116px;
       @include fontStyles(600, 14px, 17px, $colorLight);
     }
@@ -39,20 +39,19 @@
       display: flex;
       gap: 20px;
 
-
       &-item {
         display: flex;
         align-items: center;
         gap: 8px;
         text-decoration: none;
 
-        &>img {
+        & > img {
           width: 20px;
           height: 20px;
           object-fit: cover;
         }
 
-        &>span {
+        & > span {
           @include fontStyles(400, 14px, 17px, $colorLight);
         }
       }
@@ -60,6 +59,7 @@
 
     &-lang {
       position: relative;
+      z-index: 999;
 
       &-wrapper {
         padding: 10px 8px;
@@ -69,25 +69,24 @@
         border-radius: 12px;
         background-color: $colorLight;
         cursor: pointer;
-
       }
 
       &-icon {
         width: 20px;
         height: 20px;
-        color: #062A49;
+        color: #062a49;
       }
 
       &-iconArrow {
         width: 16px;
         height: 16px;
-        color: #062A49;
+        color: #062a49;
       }
 
-      &>span {
+      & > span {
         display: flex;
         align-items: center;
-        @include fontStyles(400, 14px, 17px, #062A49);
+        @include fontStyles(400, 14px, 17px, #062a49);
       }
 
       &-bar {
@@ -102,17 +101,16 @@
         background-color: $colorLight;
         z-index: 10;
         overflow: hidden;
-        box-shadow: 1px 1px 10px 1px,
-          -1px -1px 10px 1px rgb(255, 251, 251);
+        box-shadow: 1px 1px 10px 1px, -1px -1px 10px 1px rgb(255, 251, 251);
 
-        &>p {
+        & > p {
           width: 100%;
           text-align: center;
           padding: 5px;
           cursor: pointer;
         }
 
-        &>p:hover {
+        & > p:hover {
           background-color: grey;
           color: $colorLight;
         }
