@@ -3,6 +3,6 @@
 .organization-list {
   margin-top: 42px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, min-content));
+  grid-template-columns: repeat(4, minmax(200px, 400px));
   gap: 30px;
 }

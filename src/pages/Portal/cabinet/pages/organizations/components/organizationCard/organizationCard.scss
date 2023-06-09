@@ -13,6 +13,8 @@
     justify-content: flex-start;
 
     & > img {
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
     }
     & > span {
@@ -27,15 +29,21 @@
     margin-top: 15px;
   }
   &_text {
+    height: 54px;
+    overflow: hidden;
     @include fontStyles(400, 14px, 18px, #4b5157);
     margin-top: 15px;
     text-align: center;
   }
   & > img {
-    margin-top: 8px;
     display: block;
-    margin-inline: auto;
-    width: 100%;
+    margin: 0 auto;
+    margin-top: 8px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid red;
   }
 
   &_bottomText {
