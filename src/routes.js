@@ -502,7 +502,11 @@ const RoutesContainer = () => {
                     path="private-information"
                     element={<PrivateInformation />}
                   >
-                    <Route index element={<CommonInformation />} />
+                    <Route
+                      index
+                      path="personal-information"
+                      element={<CommonInformation />}
+                    />
                     <Route path="job" element={<Job />} />
                     <Route path="education" element={<Education />} />
                     <Route

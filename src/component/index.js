@@ -20,6 +20,7 @@ import LazySpinner from "./lazySpinner/LazySpinner";
 import MyButton from "./MyButton/MyButton";
 import Notification from "./notification/Notification";
 import SiteNewsDetail from "./newsDetail/NewsDetail";
+import SiteLatestNews from "./siteLatestNews/SiteLatestNews";
 
 export {
   Spinner,
@@ -44,4 +45,5 @@ export {
   MyButton,
   Notification,
   SiteNewsDetail,
+  SiteLatestNews,
 };
