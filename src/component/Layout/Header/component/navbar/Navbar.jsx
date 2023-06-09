@@ -16,6 +16,7 @@ import i18next from "i18next";
 import { NavBarLinks } from "../../../../NavBarLinks";
 import { languageList } from "../../../data.js";
 import { getSearchResults } from "../../../../../reduxToolkit/searchSlice/extraReducer";
+import { useTranslation } from "react-i18next";
 
 const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
@@ -24,7 +25,7 @@ const activeLanguage = localStorage.getItem("language")
 const Navbar = ({ activeSidebar }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   const [activeLinkBar, setactiveLinkBar] = useState(-1);
   const [activeLng, setActiveLng] = useState(activeLanguage);
   const searchRef = useRef("");
@@ -110,7 +111,7 @@ const Navbar = ({ activeSidebar }) => {
               <a
                 className="header-sideBar-navlist-item-title"
                 href="https://old.vatandoshlarfondi.uz/">
-                OLD VERSION
+                {t("version")}
               </a>
             </li>
           </ul>
