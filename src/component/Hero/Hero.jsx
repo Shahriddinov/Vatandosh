@@ -23,7 +23,7 @@ const Hero = ({ sliderData, error, loading }) => {
     }
   };
 
-  const handleRight = () => {
+  const handleRight = (sliderData) => {
     if (slideIndex === sliderData.length) {
       setSlideIndex(1);
     } else if (slideIndex < sliderData.length) {
@@ -33,14 +33,16 @@ const Hero = ({ sliderData, error, loading }) => {
 
   let slideInterval;
 
-  const autoPlay = () => {
-    slideInterval = setInterval(handleRight, 8000);
+  const autoPlay = (sliderData) => {
+    slideInterval = setInterval(() => {
+      handleRight(sliderData);
+    }, 8000);
   };
 
   useEffect(() => {
-    autoPlay();
+    autoPlay(sliderData);
     return () => clearInterval(slideInterval);
-  }, [slideIndex]);
+  }, [slideIndex, sliderData]);
 
   if (loading) {
     return <Spinner position="full" />;
@@ -110,7 +112,7 @@ const Hero = ({ sliderData, error, loading }) => {
             <div className="arrow-btn" onClick={handleLeft}>
               <FiChevronLeft />
             </div>
-            <div className="arrow-btn" onClick={handleRight}>
+            <div className="arrow-btn" onClick={() => handleRight(sliderData)}>
               <FiChevronRight />
             </div>
           </div>

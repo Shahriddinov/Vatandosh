@@ -41,9 +41,7 @@ const Header = () => {
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
   };
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const handleSearch = () => {
     const search = searchRef.current.value;
