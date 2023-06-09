@@ -13,11 +13,8 @@ const SignInWithGoogle = () => {
   const url = location.search.slice(6);
 
   useEffect(() => {
-    console.log("Outer function");
-
     const getGoogleUser = async () => {
       try {
-        console.log("Inner function");
         const user = await axios
           .get(
             `https://api.vatandoshlarfondi.uz/api/oauth/call-back/google?code=${url}`

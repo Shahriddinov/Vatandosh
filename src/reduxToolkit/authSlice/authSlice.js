@@ -40,7 +40,22 @@ const authSlice = createSlice({
       console.log(payload);
       state.userData = payload.user;
       state.token = payload.token;
-      localStorage.setItem("user", JSON.stringify(payload.user));
+
+      if (payload.userProfile) {
+        localStorage.setItem("user", JSON.stringify(payload.userProfile));
+      } else {
+        const newUser = {
+          user_id: { id: payload.user.id },
+          avatar_url: payload.user.avatar,
+          first_name: payload.user.name.split(" ")[0],
+          last_name: payload.user.name.split(" ")[1]
+            ? payload.user.name.split(" ")[1]
+            : "",
+        };
+
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
+
       localStorage.setItem("token", payload.token);
     },
     removeToken: (state) => {

@@ -51,14 +51,16 @@ const News = () => {
           <div className="news-btn">
             <button
               className={activeCard ? "active-btn" : ""}
-              onClick={() => setActiveCard(true)}>
+              onClick={() => setActiveCard(true)}
+            >
               {t("news")}
             </button>
           </div>
           <div className="events-btn">
             <button
               className={!activeCard ? "active-btn" : ""}
-              onClick={() => setActiveCard(false)}>
+              onClick={() => setActiveCard(false)}
+            >
               {t("information_items.item2")}
             </button>
           </div>
@@ -71,7 +73,7 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {news?.map((news) => (
+              {news?.slice(0, 6).map((news) => (
                 <PortalCard
                   key={news.id}
                   {...news}
@@ -83,7 +85,7 @@ const News = () => {
               </div>
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
-              {events?.data?.map((event) => (
+              {events?.data?.slice(0, 6).map((event) => (
                 <PortalCard
                   key={event?.id}
                   {...event}
