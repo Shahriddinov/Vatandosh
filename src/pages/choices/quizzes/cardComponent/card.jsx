@@ -29,10 +29,12 @@ const Card = ({ data, quiz }) => {
       clearInterval(interval);
     };
   }, [data?.finished_at]);
+
+
   return (
       <div className="card">
         <div className="card-imgCont">
-          <img src={`${PORTAL_IMAGE_URL}${data.image?.[0]}`} alt="img" />
+          <img src={`${PORTAL_IMAGE_URL}${data?.image?.[0]}`} alt="img" />
         </div>
         <div className="card-bottomBox">
           <h1>{data?.title}</h1>
