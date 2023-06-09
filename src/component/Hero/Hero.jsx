@@ -49,7 +49,6 @@ const Hero = ({ sliderData, error, loading }) => {
   if (error) {
     return <p className="">{error}</p>;
   }
-
   return (
     <section className="hero">
       <div className="hero__container container">

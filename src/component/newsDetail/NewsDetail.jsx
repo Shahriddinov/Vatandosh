@@ -43,19 +43,7 @@ const SiteNewsDetail = ({ latestNews, detailData }) => {
                     <span>{detailData?.view}</span>
                   </div>
                 </div>
-                {/* <div className="news-detail-main-desc-action-tags">
-          {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
-            return (
-              <Link
-                to={`/hashtag/${el.trim()}`}
-                key={index}
-                className="populartags-tag"
-              >
-                {el}
-              </Link>
-            );
-          })}
-        </div> */}
+              
               </div>
               <div
                 className="news-detail-main-desc-texts"
