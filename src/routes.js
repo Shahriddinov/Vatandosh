@@ -458,14 +458,6 @@ const routes = [
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
   { path: "/registration/signup/api/verify/", element: EmailVerify },
-  {
-    path: "/registration/signup/api/redirect/google",
-    element: SignInWithGoogle,
-  },
-  {
-    path: "/registration/signup/api/redirect/facebook",
-    element: SignInWithFacebook,
-  },
   { path: "/registration/signup/api/reset/", element: ResetPassword },
   { path: "/choices/quiz", element: ChoicesQuizzes },
   { path: "/choices/quiz/more-detail/:id", element: MoreDetail },
@@ -559,6 +551,14 @@ const RoutesContainer = () => {
                 <Route
                   path="/registration/signup/api/verify/"
                   element={<EmailVerify />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/google"
+                  element={<SignInWithGoogle />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/facebook"
+                  element={<SignInWithFacebook />}
                 />
                 <Route
                   path="/portal-category/*"

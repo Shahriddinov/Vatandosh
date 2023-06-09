@@ -8,37 +8,43 @@ function App({ children }) {
 
   const token = useSelector((state) => state.authSlice.token);
 
-  const socket = new WebSocket(
-    `wss://api.vatandoshfondi.uz/ws/messages/?token=${token}`
-  );
+  let socket;
 
   useEffect(() => {
-    socket.onopen = (event) => {
-      console.log("Websocket connected!");
-    };
-    socket.onmessage = (event) => {
-      const message = JSON.parse(event.data)?.message;
-      console.log(JSON.parse(event.data));
+    if (token) {
+      socket.onopen = (event) => {
+        console.log("Websocket connected!");
+      };
+      socket.onmessage = (event) => {
+        const message = JSON.parse(event.data)?.message;
+        console.log(JSON.parse(event.data));
 
-      setMessages((prev) => [
-        ...prev,
-        prev[prev.length - 1]?.chat_room_id === message.chat_room_id
-          ? message
-          : prev.length === 0
-          ? message
-          : null,
-      ]);
-    };
-    socket.onclose = function (event) {
-      console.log(event);
-      setTimeout(function () {
-        App();
-      }, 1000);
-    };
-    socket.onerror = function (error) {
-      console.log(error);
-    };
+        setMessages((prev) => [
+          ...prev,
+          prev[prev.length - 1]?.chat_room_id === message.chat_room_id
+            ? message
+            : prev.length === 0
+            ? message
+            : null,
+        ]);
+      };
+      socket.onclose = function (event) {
+        console.log(event);
+        setTimeout(function () {
+          App();
+        }, 1000);
+      };
+      socket.onerror = function (error) {
+        console.log(error);
+      };
+    }
   }, []);
+
+  if (token) {
+    socket = new WebSocket(
+      `wss://api.vatandoshfondi.uz/ws/messages/?token=${token}`
+    );
+  }
 
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>
