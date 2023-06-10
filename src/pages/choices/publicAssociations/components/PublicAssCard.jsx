@@ -17,8 +17,8 @@ const PublicAssCard = ({ data, allRegions }) => {
         <div className="country-card_cardTop">
           <img
             src={
-              countryInfo?.image
-                ? `${PORTAL_IMAGE_URL}${countryInfo?.image}`
+              countryInfo?.flag
+                ? `${PORTAL_IMAGE_URL}${countryInfo?.flag}`
                 : flagIcon
             }
             alt="flag"

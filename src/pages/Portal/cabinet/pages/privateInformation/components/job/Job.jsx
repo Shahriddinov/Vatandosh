@@ -5,26 +5,40 @@ import btnPlusIcon from "../../../../../../../assets/images/choose/btnPlusIcon.s
 import { useState } from "react";
 
 const initialData = {
-  company: "",
-  position: "",
-  location_id: "",
-  status: false,
-  city: "",
-  start_date: "",
-  finish_date: "",
+  jobLocatedCountry: "",
+  jobLocatedCity: "",
   specialization: "",
+  workPlace: "",
+  currentlyWorking: false,
+  startDate: "",
+  finishDate: "",
   id: Date.now(),
 };
 const Job = () => {
-  const [data, setData] = useState([initialData]);
+  const [data, setData] = useState([{ ...initialData }]);
   console.log(data);
+  const inputHandler = (e, formId) => {
+    const name = e.target.name;
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    setData((prev) => {
+      const updatedData = prev.map((each) => {
+        if (each.id === formId) {
+          return { ...each, [name]: value };
+        }
+        return each;
+      });
+
+      return updatedData;
+    });
+  };
   return (
     <div className="jobCont">
       {data.map((el, index) => (
-        <FormComp key={index} el={el} />
+        <FormComp key={index} el={el} data={data} inputHandler={inputHandler} />
       ))}
 
-      {}
       <motion.button
         whileTap={{ scale: 0.9 }}
         onClick={() =>

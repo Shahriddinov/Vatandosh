@@ -2,7 +2,7 @@ import "./formComp.scss";
 import penSvg from "../../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import calendarSvg from "../../../../../../../../assets/images/portal/privateInformation/calendar.svg";
 
-const FormComp = () => {
+const FormComp = ({ el, inputHandler }) => {
   const countrys = [
     {
       id: 1,
@@ -35,7 +35,12 @@ const FormComp = () => {
               Ish joyi joylashgan davlat <span>*</span>
             </label>
             <div>
-              <select id="country">
+              <select
+                id="country"
+                value={el.jobLocatedCountry}
+                onChange={(e) => inputHandler(e, el.id)}
+                name="jobLocatedCountry"
+              >
                 {countrys.map((el, index) => (
                   <option key={index} value={el.value}>
                     {el.name}
@@ -49,12 +54,22 @@ const FormComp = () => {
               Lavozimi <span>*</span>
             </label>
             <div>
-              <input type="text" />
+              <input
+                type="text"
+                name="specialization"
+                value={el.specialization}
+                onChange={(e) => inputHandler(e, el.id)}
+              />
               <img src={penSvg} alt="icon" />
             </div>
           </div>
           <div className="form-cont-left-checkBox">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="currentlyWorking"
+              onChange={(e) => inputHandler(e, el.id)}
+              value={el.currentlyWorking}
+            />
             <span>Hozirda shu sohada ishlayapti</span>
           </div>
 
@@ -63,7 +78,13 @@ const FormComp = () => {
               Ish boshlagan yili <span>*</span>
             </label>
             <div>
-              <input type="date" id="yearOfStart" />
+              <input
+                type="date"
+                id="yearOfStart"
+                name="startDate"
+                value={el.startDate}
+                onChange={(e) => inputHandler(e, el.id)}
+              />
               <img src={calendarSvg} alt="cal" />
             </div>
           </div>
@@ -74,7 +95,13 @@ const FormComp = () => {
               Ish joyi joylashgan davlatni mintaqasi yoki shahar <span>*</span>
             </label>
             <div>
-              <input type="text" id="jobcity" />
+              <input
+                type="text"
+                id="jobcity"
+                name="jobLocatedCity"
+                value={el.jobLocatedCity}
+                onChange={(e) => inputHandler(e, el.id)}
+              />
               <img src={penSvg} alt="cal" />
             </div>
           </div>
@@ -83,7 +110,13 @@ const FormComp = () => {
               Ish joyi <span>*</span>
             </label>
             <div>
-              <input type="text" id="jobplace" />
+              <input
+                type="text"
+                id="jobplace"
+                name="workPlace"
+                value={el.workPlace}
+                onChange={(e) => inputHandler(e, el.id)}
+              />
               <img src={penSvg} alt="cal" />
             </div>
           </div>
@@ -93,7 +126,13 @@ const FormComp = () => {
               Tamomlagan yil <span>*</span>
             </label>
             <div>
-              <input type="date" id="yearOfEnd" />
+              <input
+                type="date"
+                id="yearOfEnd"
+                name="finishDate"
+                value={el.finishDate}
+                onChange={(e) => inputHandler(e, el.id)}
+              />
               <img src={calendarSvg} alt="cal" />
             </div>
           </div>

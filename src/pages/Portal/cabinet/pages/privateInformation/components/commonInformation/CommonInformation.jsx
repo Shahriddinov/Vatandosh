@@ -3,18 +3,97 @@ import fakeImg from "../../../../../../../assets/images/portal/cabinetVolunteer/
 import penSvg from "../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import calendarSvg from "../../../../../../../assets/images/portal/privateInformation/calendar.svg";
 import skrepkaSvg from "../../../../../../../assets/images/portal/privateInformation/skrepka.svg";
+import { useState } from "react";
 
 const CommonInformation = () => {
+  const [commonInfo, setCommonInfo] = useState({
+    profilePhoto: null,
+    firstName: "",
+    lastName: "",
+    middleName: "",
+    DOB: "",
+    sex: "",
+    nationality: "",
+    uzbAddress: "",
+    abroadCountry: "",
+    abroadAddress: "",
+    phoneNumber: "",
+    phoneNumberToBackend: "",
+    activityType: "",
+    passport: null,
+  });
+  console.log(commonInfo);
+
+  const profilePhotoHandler = (e) => {
+    setCommonInfo((prev) => {
+      return { ...prev, [e.target.name]: e.target.files[0] };
+    });
+  };
+  const deleteProfileImageHandler = () => {
+    setCommonInfo((prev) => {
+      return { ...prev, profilePhoto: null };
+    });
+  };
+
+  const inputHandler = (e) => {
+    const name = e.target.name;
+    const value = name === "passport" ? e.target.files[0] : e.target.value;
+    if (name === "phoneNumber") {
+      const formattedPhoneNumber = formatPhoneNumber(value);
+      const nonFormattedPhoneNumber = formattedPhoneNumber.replace(/[\D]/g, "");
+      setCommonInfo((prev) => {
+        return {
+          ...prev,
+          [name]: formattedPhoneNumber,
+          phoneNumberToBackend: nonFormattedPhoneNumber,
+        };
+      });
+      return;
+    }
+    setCommonInfo((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[\D]/g, "");
+
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 3) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(2)}`;
+    }
+    return `(${phoneNumber.slice(0, 2)}) ${phoneNumber.slice(
+      2,
+      5
+    )}-${phoneNumber.slice(5, 9)}`;
+  };
   return (
     <div className="commonInformation-cont">
       <div className="commonInformation-cont-inner">
         <div className="commonInformation-cont-inner-imgbtns">
-          <img src={fakeImg} alt="userImg" />
+          <img
+            src={
+              commonInfo?.profilePhoto
+                ? URL.createObjectURL(commonInfo.profilePhoto)
+                : fakeImg
+            }
+            alt="userImg"
+          />
           <div>
-            <label htmlFor="uploadImg">Yangi rasm yuklang </label>
-            <input type="file" id="uploadImg" />
+            <label htmlFor="profilePhoto">Yangi rasm yuklang </label>
+            <input
+              type="file"
+              id="profilePhoto"
+              name="profilePhoto"
+              onChange={profilePhotoHandler}
+            />
           </div>
-          <button className="commonInformation-cont-inner-imgbtns-btn2">
+          <button
+            onClick={deleteProfileImageHandler}
+            className="commonInformation-cont-inner-imgbtns-btn2"
+          >
             O‘chirish
           </button>
         </div>
@@ -29,7 +108,13 @@ const CommonInformation = () => {
                 Familiyasi <span>*</span>
               </label>
               <div>
-                <input type="text" id="lastname" />
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastName"
+                  value={commonInfo.lastName}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -39,7 +124,13 @@ const CommonInformation = () => {
                 Sharifi <span>*</span>
               </label>
               <div>
-                <input type="text" id="middleName" />
+                <input
+                  type="text"
+                  id="middleName"
+                  name="middleName"
+                  value={commonInfo.middleName}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -49,7 +140,13 @@ const CommonInformation = () => {
                 Jinsi <span>*</span>
               </label>
               <div>
-                <input type="text" id="sex" />
+                <input
+                  type="text"
+                  id="sex"
+                  name="sex"
+                  value={commonInfo.sex}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -59,7 +156,13 @@ const CommonInformation = () => {
                 O'zbekistondagi manzil <span>*</span>
               </label>
               <div>
-                <input type="text" id="uzbAddress" />
+                <input
+                  type="text"
+                  id="uzbAddress"
+                  name="uzbAddress"
+                  value={commonInfo.uzbAddress}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -69,7 +172,13 @@ const CommonInformation = () => {
                 Xorijdagi manzil <span>*</span>
               </label>
               <div>
-                <input type="text" id="abroadAddress" />
+                <input
+                  type="text"
+                  id="abroadAddress"
+                  name="abroadAddress"
+                  value={commonInfo.abroadAddress}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -79,7 +188,13 @@ const CommonInformation = () => {
                 Faoliyat turi <span>*</span>
               </label>
               <div>
-                <input type="text" id="activityType" />
+                <input
+                  type="text"
+                  id="activityType"
+                  name="activityType"
+                  value={commonInfo.activityType}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -90,7 +205,13 @@ const CommonInformation = () => {
                 Ismi <span>*</span>
               </label>
               <div>
-                <input type="text" id="firstName" />
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  value={commonInfo.firstName}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -100,7 +221,13 @@ const CommonInformation = () => {
                 Tugilgan sana <span>*</span>
               </label>
               <div>
-                <input type="date" id="DOB" />
+                <input
+                  type="date"
+                  id="DOB"
+                  name="DOB"
+                  value={commonInfo.DOB}
+                  onChange={inputHandler}
+                />
                 <img src={calendarSvg} alt="icon" />
               </div>
             </div>
@@ -110,7 +237,13 @@ const CommonInformation = () => {
                 Millati <span>*</span>
               </label>
               <div>
-                <input type="text" id="nationality" />
+                <input
+                  type="text"
+                  id="nationality"
+                  name="nationality"
+                  value={commonInfo.nationality}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -120,7 +253,13 @@ const CommonInformation = () => {
                 Xorijiy davlat <span>*</span>
               </label>
               <div>
-                <input type="text" id="abroadCountry" />
+                <input
+                  type="text"
+                  id="abroadCountry"
+                  name="abroadCountry"
+                  value={commonInfo.abroadCountry}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -130,7 +269,13 @@ const CommonInformation = () => {
                 Telefon raqam <span>*</span>
               </label>
               <div>
-                <input type="number" id="phoneNumber" />
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={commonInfo.phoneNumber}
+                  onChange={inputHandler}
+                />
                 <img src={penSvg} alt="icon" />
               </div>
             </div>
@@ -140,11 +285,17 @@ const CommonInformation = () => {
                 Passport yuklash (pdf, doc) <span>*</span>
               </label>
               <div>
-                <label htmlFor="uploadFile">Yuklang</label>
+                <label htmlFor="uploadFile">
+                  {commonInfo.passport === null
+                    ? "Yuklang"
+                    : " passport muvaffaqiyatli yuklandi ✅"}
+                </label>
                 <input
                   className="passportPdforDocUpload"
                   type="file"
                   id="uploadFile"
+                  name="passport"
+                  onChange={inputHandler}
                 />
                 <img src={skrepkaSvg} alt="icon" style={{ color: "blue" }} />
               </div>
