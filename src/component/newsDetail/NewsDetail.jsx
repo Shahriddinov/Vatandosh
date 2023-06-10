@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./newsDetail.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MdArrowRight } from "react-icons/md";
 import PopularTags from "../PopularTags/PopularTags";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { AiFillEye } from "react-icons/ai";
 import ShareFriends from "../ShareFriends/ShareFriends";
 import PortalLatestNews from "../PortalLatestNews/PortalLatestNews";
 import { PORTAL_IMAGE_URL } from "../../services/api/utils";
+import SiteLatestNews from "../siteLatestNews/SiteLatestNews";
 
 const SiteNewsDetail = ({ latestNews, detailData }) => {
   return (
@@ -88,7 +89,7 @@ const SiteNewsDetail = ({ latestNews, detailData }) => {
             </div>
             <div className="news-detail-main-news-tags">
               <div className="news-detail-main-news">
-                <PortalLatestNews category="" latestNews={latestNews} />
+                <SiteLatestNews latestNews={latestNews} />
               </div>
               <div className="news-detail-desktop-tags">
                 <PopularTags />

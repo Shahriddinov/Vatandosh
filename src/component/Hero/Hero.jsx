@@ -56,7 +56,7 @@ const Hero = ({ sliderData, error, loading }) => {
           {sliderData?.map((slider, index) => (
             <div
               className={`hero__slider-box ${
-                slideIndex === index ? "active" : ""
+                slideIndex === index + 1 ? "active" : ""
               }`}
               key={slider.id}
             >
@@ -97,7 +97,7 @@ const Hero = ({ sliderData, error, loading }) => {
                 </button>
                 <div
                   className={`navigation-line ${
-                    slideIndex === index ? "active" : ""
+                    slideIndex === index + 1 ? "active" : ""
                   }`}
                 ></div>
               </div>

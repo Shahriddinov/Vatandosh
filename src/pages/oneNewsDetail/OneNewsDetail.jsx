@@ -3,6 +3,7 @@ import React from "react";
 import "./oneNewsDetail.scss";
 import { SiteNewsDetail, Spinner } from "../../component";
 import { useOneNewsDetailFetching } from "./hooks/useOneNewsDetailFetching";
+import Header from "../../component/Layout/Header/Header";
 
 const OneNewsDetail = () => {
   const {
@@ -17,13 +18,12 @@ const OneNewsDetail = () => {
   } else if (error) {
     return <p>{error}</p>;
   }
+
+  console.log(latestNews);
   return (
     <div className="one-news-detail">
-      <SiteNewsDetail
-        latestNews={latestNews}
-        detailData={detailData}
-        category={null}
-      />
+      <Header />
+      <SiteNewsDetail latestNews={latestNews} detailData={detailData} />
     </div>
   );
 };

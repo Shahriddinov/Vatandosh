@@ -31,8 +31,8 @@ export const useOneNewsDetailFetching = () => {
       getLatestNews({
         url:
           type === "event"
-            ? "community/all-event?per_page=3"
-            : "all-news/news?paginate=3",
+            ? "community/all-event?per_page=5"
+            : "all-news/news?paginate=5",
       })
     );
   }, [dispatch, category, id, type, lan]);
@@ -43,5 +43,7 @@ export const useOneNewsDetailFetching = () => {
     detailData,
     siteNewsDetailLoading,
     error,
+    type,
+    category,
   };
 };
