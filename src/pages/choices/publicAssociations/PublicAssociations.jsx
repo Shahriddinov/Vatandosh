@@ -22,7 +22,7 @@ const PublicAssociations = () => {
     countriesLoading,
     countriesData,
     countriesError,
-  } = usePublicAssData();
+  } = usePublicAssData(postsPerPage);
 
   if (publicAssloading || countriesLoading) {
     return <Spinner position="full" />;

@@ -78,7 +78,7 @@ const useApplicationFetching = () => {
       email: communityCreateData.email,
       address: communityCreateData.address,
     });
-  }, []);
+  }, [language]);
 
   return {
     data,

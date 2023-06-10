@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPublicAssociationData } from "../../../../reduxToolkit/publicAssociations/extraReducer";
 import { getAllCountriesData } from "../../../../reduxToolkit/publicAssociations/extraReducer";
 
-export const usePublicAssData = () => {
+export const usePublicAssData = (postsPerPage) => {
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
   const publicAssloading = useSelector(
@@ -30,11 +30,11 @@ export const usePublicAssData = () => {
       getPublicAssociationData({
         regionId: 0,
         page: 1,
-        perPage: 8,
+        perPage: postsPerPage,
       })
     );
     dispatch(getAllCountriesData());
-  }, [dispatch, lan]);
+  }, [dispatch, lan, postsPerPage]);
 
   return {
     publicAssloading,

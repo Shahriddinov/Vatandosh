@@ -29,33 +29,31 @@ const Navbar = ({ activeSidebar }) => {
 
   const navbarList = [
     { id: 1, label: t("uzLearning"), url: "/portal-category/online-teaching" },
-    { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
-    { id: 4, label: t("virtualTalking"), url: "/portal-category/webinar" },
-    { id: 5, label: t("eventBase"), url: "/" },
-    { id: 6, label: t("electronLibrary"), url: "/portal-category/library" },
+    { id: 2, label: t("expertCouncil"), url: "/portal-category/expert" },
+    { id: 3, label: t("eventBase"), url: "/portal-category/webinar" },
+    { id: 4, label: t("electronLibrary"), url: "/portal-category/library" },
     {
-      id: 7,
+      id: 5,
       label: t("electronBook"),
       url: "/portal-category/electronic-journal",
     },
     {
-      id: 8,
+      id: 6,
       label: t("aboutUzbekistan"),
       url: "/portal-category/about-uzbekistan",
     },
     {
-      id: 9,
+      id: 7,
       label: t("participationProject"),
       url: "/portal-category/victorina",
     },
     {
-      id: 10,
+      id: 8,
       label: t("electronCommunity"),
       url: "/portal-category/community-association",
     },
     {
-      id: 11,
+      id: 9,
       label: t("compatriotsValunteer"),
       url: "/portal-category/volunteer",
     },

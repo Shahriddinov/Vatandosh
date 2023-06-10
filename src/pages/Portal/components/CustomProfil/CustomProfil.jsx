@@ -40,15 +40,19 @@ export default function CustomProfil() {
   }, [dispatch, pathname, id]);
 
   useEffect(() => {
-    if (expertData) {
-      dispatch(getExpertOneEducation(expertData?.id));
-      dispatch(getExpertOneEmployment(expertData?.id));
+    if (Object.keys(expertData).length !== 0) {
+      dispatch(getExpertOneEducation(expertData.user_id));
+      dispatch(getExpertOneEmployment(expertData.user_id));
     }
   }, [expertData, dispatch]);
 
   if (error) return <NotFound />;
 
-  console.log(expertData);
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
+  console.log(employment);
 
   return expertData ? (
     <div className="customprofil-wrapper">
@@ -86,7 +90,8 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.education")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -136,12 +141,13 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {expertData.user_employment_info?.length
-              ? expertData.user_employment_info?.map((el) => (
+            {expertData?.user_employment_info?.length
+              ? expertData?.user_employment_info?.map((el) => (
                   <div key={el.id} className="customprofil-list-workexp">
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workspace")}</span>
@@ -176,7 +182,8 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.activity")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -206,10 +213,10 @@ export default function CustomProfil() {
               <div className="customprofil-list-scientific-tags">
                 <span>{t("expert.degreelist")}</span>
                 <div className="customprofil-list-scientific-tags-list">
-                  {expertData?.main_science_directions?.length
-                    ? expertData?.main_science_directions?.map((el, index) => (
-                        <span key={index}>{el}</span>
-                      ))
+                  {JSON.parse(expertData?.main_science_directions).length
+                    ? JSON.parse(expertData?.main_science_directions).map(
+                        (el, index) => <span key={index}>{el}</span>
+                      )
                     : null}
                 </div>
               </div>
@@ -221,7 +228,8 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography>{t("expert.ownoffers")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -238,7 +246,8 @@ export default function CustomProfil() {
                     <p>{expertData?.suggestions}</p>
                     <button className="customprofil-list-offer-info-desc-btn">
                       <Link
-                        to={"/portal-category/expert/offers/" + expertData?.id}>
+                        to={"/portal-category/expert/offers/" + expertData?.id}
+                      >
                         {t("expert.detail")}
                       </Link>
                     </button>
@@ -257,7 +266,8 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -267,7 +277,8 @@ export default function CustomProfil() {
                     className="customprofil-list-offer-info"
                     style={
                       id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                    }>
+                    }
+                  >
                     <div className="customprofil-list-offer-info-img">
                       <img
                         src={`${PORTAL_IMAGE_URL}/${evt.images}`}
@@ -282,7 +293,8 @@ export default function CustomProfil() {
                       <p>{evt?.description}</p>
                       <button className="customprofil-list-offer-info-desc-btn">
                         <Link
-                          to={"/portal-category/volunteer/offers/" + evt?.id}>
+                          to={"/portal-category/volunteer/offers/" + evt?.id}
+                        >
                           {t("expert.detail")}
                         </Link>
                       </button>

@@ -1,164 +1,120 @@
 import "./commonInfomation.scss";
-import fakeImg from "../../../../../../../assets/images/portal/cabinetVolunteer/flag.png";
-import penSvg from "../../../../../../../assets/images/portal/privateInformation/pen.svg";
-import calendarSvg from "../../../../../../../assets/images/portal/privateInformation/calendar.svg";
-import skrepkaSvg from "../../../../../../../assets/images/portal/privateInformation/skrepka.svg";
+import UserIcon from "../../../../../../../assets/images/cabinet/default.png";
+import { useCommonInformationFetching } from "./hooks/useCommonInformationFetching";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
+import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import {
+  commonInformationDataChange,
+  commonInformationDataSubmit,
+} from "./extra";
+import { FormList } from "./components";
+import { ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 const CommonInformation = () => {
+  const {
+    locationData,
+    locationLoading,
+    allCitiesGetLoading,
+    allCitiesGet,
+    userLoading,
+    nationsData,
+    data,
+    setData,
+    dispatch,
+  } = useCommonInformationFetching();
+
+  if (locationLoading || userLoading || allCitiesGetLoading) {
+    return <Spinner />;
+  }
+
+  const handleChange = ({ key, value }) =>
+    commonInformationDataChange({ setData, dispatch, key, value });
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    commonInformationDataSubmit({ evt, dispatch, data, setData });
+  };
+
   return (
-    <div className="commonInformation-cont">
-      <div className="commonInformation-cont-inner">
-        <div className="commonInformation-cont-inner-imgbtns">
-          <img src={fakeImg} alt="userImg" />
-          <div>
-            <label htmlFor="uploadImg">Yangi rasm yuklang </label>
-            <input type="file" id="uploadImg" />
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="commonInformation-cont">
+        <div className="commonInformation-cont-inner">
+          <div className="commonInformation-cont-inner-imgbtns">
+            <img
+              src={
+                typeof data.avatar_url === "string"
+                  ? `${PORTAL_IMAGE_URL}${data.avatar_url}`
+                  : data.avatar_url !== null
+                  ? URL.createObjectURL(data.avatar_url)
+                  : UserIcon
+              }
+              alt="userImg"
+            />
+            <div>
+              <label htmlFor="uploadImg">Yangi rasm yuklang </label>
+              <input
+                type="file"
+                id="uploadImg"
+                onChange={(evt) =>
+                  handleChange({
+                    key: "avatar_url",
+                    value: evt.target.files[0],
+                  })
+                }
+              />
+            </div>
+            <button
+              className="commonInformation-cont-inner-imgbtns-btn2"
+              onClick={(evt) =>
+                handleChange({
+                  key: "avatar_url",
+                  value: null,
+                })
+              }
+            >
+              O‘chirish
+            </button>
           </div>
-          <button className="commonInformation-cont-inner-imgbtns-btn2">
-            O‘chirish
-          </button>
+          <p>JPG, GIF yoki PNG. Maksimal hajmi 800K</p>
         </div>
-        <p>JPG, GIF yoki PNG. Maksimal hajmi 800K</p>
+
+        <div className="commonInformation-cont-formCont">
+          <form
+            className="commonInformation-cont-formCont-form"
+            onSubmit={(evt) => handleSubmit(evt)}
+          >
+            <FormList
+              data={data}
+              handleChange={handleChange}
+              locationData={locationData}
+              allCitiesGet={allCitiesGet}
+              nationsData={nationsData}
+            />
+
+            <button
+              className="commonInformation-cont-formCont-form-btn"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-
-      <div className="commonInformation-cont-formCont">
-        <form className="commonInformation-cont-formCont-form">
-          <div className="commonInformation-cont-formCont-form-box">
-            <div className="commonInformation-cont-formCont-form-box-divCon">
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="lastName">
-                  Familiyasi <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="lastname" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="middleName">
-                  Sharifi <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="middleName" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="sex">
-                  Jinsi <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="sex" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="uzbAddress">
-                  O'zbekistondagi manzil <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="uzbAddress" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="abroadAddress">
-                  Xorijdagi manzil <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="abroadAddress" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="activityType">
-                  Faoliyat turi <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="activityType" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-            </div>
-            <div className="commonInformation-cont-formCont-form-box-divCon">
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="firstName">
-                  Ismi <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="firstName" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="DOB">
-                  Tugilgan sana <span>*</span>
-                </label>
-                <div>
-                  <input type="date" id="DOB" />
-                  <img src={calendarSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="nationality">
-                  Millati <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="nationality" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="abroadCountry">
-                  Xorijiy davlat <span>*</span>
-                </label>
-                <div>
-                  <input type="text" id="abroadCountry" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="phoneNumber">
-                  Telefon raqam <span>*</span>
-                </label>
-                <div>
-                  <input type="number" id="phoneNumber" />
-                  <img src={penSvg} alt="icon" />
-                </div>
-              </div>
-
-              <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-                <label htmlFor="uploadFile">
-                  Passport yuklash (pdf, doc) <span>*</span>
-                </label>
-                <div>
-                  <label htmlFor="uploadFile">Yuklang</label>
-                  <input
-                    className="passportPdforDocUpload"
-                    type="file"
-                    id="uploadFile"
-                  />
-                  <img src={skrepkaSvg} alt="icon" style={{ color: "blue" }} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button className="commonInformation-cont-formCont-form-btn">
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
+    </>
   );
 };
 

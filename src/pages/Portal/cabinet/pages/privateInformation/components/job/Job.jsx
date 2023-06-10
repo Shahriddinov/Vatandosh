@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import FormComp from "./components/formComp";
 import btnPlusIcon from "../../../../../../../assets/images/choose/btnPlusIcon.svg";
 import { useState } from "react";
+import { useJobFetching } from "./hooks/useJobFetching";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
 
 const initialData = {
   company: "",
@@ -16,7 +18,12 @@ const initialData = {
   id: Date.now(),
 };
 const Job = () => {
-  const [data, setData] = useState([initialData]);
+  // const [data, setData] = useState([initialData]);
+  const { data, setData, locationData, employment, employmentLoading } =
+    useJobFetching();
+  if (employmentLoading) {
+    return <Spinner />;
+  }
   console.log(data);
   return (
     <div className="jobCont">
