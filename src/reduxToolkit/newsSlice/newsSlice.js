@@ -1,13 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getNews, getDetailData, getHomeNews } from "./extraReducer";
+import {
+  getNews,
+  getDetailData,
+  getHomeNews,
+  getSiteNewsDetail,
+  getLatestNews,
+} from "./extraReducer";
 
 const initialState = {
   loadingNews: true,
-  loadingDetail: true,
   newsData: [],
   newsHomeData: [],
   detailData: {},
+  loadingDetail: true,
+
+  siteNewsDetail: {},
+  siteNewsDetailLoading: true,
+
+  latestNews: [],
+  latestNewsLoading: true,
+
   error: null,
 };
 
@@ -56,6 +69,32 @@ const newsSlice = createSlice({
       })
       .addCase(getHomeNews.rejected, (state, action) => {
         state.loadingNews = false;
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(getLatestNews.pending, (state) => {
+        state.latestNewsLoading = true;
+      })
+      .addCase(getLatestNews.fulfilled, (state, action) => {
+        state.latestNewsLoading = false;
+        state.latestNews = action.payload.data;
+      })
+      .addCase(getLatestNews.rejected, (state, action) => {
+        state.latestNewsLoading = false;
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(getSiteNewsDetail.pending, (state) => {
+        state.siteNewsDetailLoading = true;
+      })
+      .addCase(getSiteNewsDetail.fulfilled, (state, action) => {
+        state.siteNewsDetailLoading = false;
+        state.siteNewsDetail = action.payload;
+      })
+      .addCase(getSiteNewsDetail.rejected, (state, action) => {
+        state.siteNewsDetailLoading = false;
         state.error = action.error.message;
       });
   },

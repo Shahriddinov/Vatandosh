@@ -324,6 +324,10 @@
           grid-template-columns: repeat(1, minmax(250px, 400px));
           gap: 20px;
         }
+
+        .single-card {
+          width: 100%;
+        }
       }
     }
   }

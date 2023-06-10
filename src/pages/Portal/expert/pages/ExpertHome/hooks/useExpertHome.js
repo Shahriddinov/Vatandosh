@@ -66,8 +66,6 @@ export const useExpertHome = () => {
 
   const dispatch = useDispatch();
 
-  console.log(expertCount);
-
   useEffect(() => {
     dispatch(getExpertCount());
     dispatch(getExpertPage());

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import "./privateInformation.scss";
 import { motion } from "framer-motion";
 
@@ -7,7 +7,7 @@ const menuButtons = [
   {
     id: 1,
     name: "Общая информация",
-    url: "",
+    url: "personal-information",
   },
   {
     id: 2,
@@ -37,7 +37,8 @@ const menuButtons = [
 ];
 
 const PrivateInformation = () => {
-  const [activeObj, setActiveObj] = useState(menuButtons[0]);
+  const { pathname } = useLocation();
+  const [active, setActive] = useState(pathname.split("/")[4]);
   return (
     <div className="piMainCont">
       <div className="piMainCont-secondaryCont">
@@ -46,8 +47,8 @@ const PrivateInformation = () => {
             {menuButtons.map((el, index) => (
               <motion.li whileTap={{ scale: 0.9 }} key={index}>
                 <Link
-                  className={el.id === activeObj.id && "active"}
-                  onClick={() => setActiveObj(el)}
+                  className={el.url === active && "active"}
+                  onClick={() => setActive(el.url)}
                   to={el.url}
                 >
                   {el.name}

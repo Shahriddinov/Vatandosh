@@ -55,6 +55,8 @@ export const GET_VICTORINA_FINISH = `/quiz/quizzes`;
 export const GET_VICTORINA_BYID = `/quiz/quiz`;
 export const GET_QUIZZES = `/quiz-list/quizzes`;
 export const GET_QUIZ_BYID = `/quiz-list/quiz`;
+export const GET_SITE_NEWSONE = "/all-news/new";
+export const GET_SITE_EVENTONE = "/community/event";
 
 //===============================PORTAL================================
 export const GET_PORTAL_NEWS_DETAIL = "/all-news/new/";
@@ -82,7 +84,7 @@ export const GET_EXPERT_PAGE = "/volunteer/get-volunteer-banners";
 export const GET_EXPERT_FILTER = "/expert/filter-expert/";
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
-export const POST_COMMUNITY_NEWS_CREATE = "/community/news";
+export const POST_COMMUNITY_NEWS_CREATE = "/community/event";
 export const GET_LIBRARY_ALL = "/ebook/filter-all-books/";
 export const GET_LIBRARY_ONE = "/ebook/get-one/";
 export const GET_LIBRARY_SLIDER = "/ebook/all-slider-images";

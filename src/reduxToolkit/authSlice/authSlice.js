@@ -19,7 +19,8 @@ const initialState = {
   loginLoading: true,
   resetLoading: false,
   registerLoading: false,
-  registerData: null,
+  registerData: getItem("user") ? JSON.parse(getItem("user")) : null,
+  registerSuccess: null,
   userData: getItem("user") ? JSON.parse(getItem("user")) : null,
   nationsData: null,
   nationsLoading: true,
@@ -36,6 +37,28 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    loginUser: (state, { payload }) => {
+      console.log(payload);
+      state.userData = payload.user;
+      state.token = payload.token;
+
+      if (payload.userProfile) {
+        localStorage.setItem("user", JSON.stringify(payload.userProfile));
+      } else {
+        const newUser = {
+          user_id: { id: payload.user.id },
+          avatar_url: payload.user.avatar,
+          first_name: payload.user.name.split(" ")[0],
+          last_name: payload.user.name.split(" ")[1]
+            ? payload.user.name.split(" ")[1]
+            : "",
+        };
+
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
+
+      localStorage.setItem("token", payload.token);
+    },
     removeToken: (state) => {
       removeItem("token");
       removeItem("user");
@@ -157,21 +180,24 @@ const authSlice = createSlice({
     build
       .addCase(registerUser.pending, (state) => {
         state.registerLoading = true;
+        state.registerSuccess = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerLoading = false;
         state.registerData = action.payload;
         setItem("user", JSON.stringify(action.payload));
+        state.registerSuccess = "success";
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;
         state.error = action.error.message;
+        state.registerSuccess = "error";
       });
 
     // Get all nations
     build
       .addCase(getAllNations.pending, (state) => {
-        state.nationsData = true;
+        state.nationsLoading = true;
       })
       .addCase(getAllNations.fulfilled, (state, action) => {
         state.nationsLoading = false;
@@ -198,5 +224,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { removeToken } = authSlice.actions;
+export const { removeToken, loginUser } = authSlice.actions;
 export default authSlice.reducer;

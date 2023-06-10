@@ -118,12 +118,12 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={30}
-                  value={formData?.second_name ? formData.second_name : ""}
+                  value={formData?.last_name ? formData.last_name : ""}
                   onChange={(e) => {
-                    e.target.value = e.target.value.trim();
+                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
-                      second_name: e.target.value,
+                      last_name: e.target.value,
                     }));
                   }}
                   placeholder={t("expert.inputplaceholder")}
@@ -144,7 +144,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   value={formData?.first_name ? formData.first_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
-                    e.target.value = e.target.value.trim();
+                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
                       first_name: e.target.value,
@@ -164,13 +164,13 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={30}
-                  value={formData?.last_name ? formData.last_name : ""}
+                  value={formData?.second_name ? formData.second_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
-                    e.target.value = e.target.value.trim();
+                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
-                      last_name: e.target.value,
+                      second_name: e.target.value,
                     }));
                   }}
                 />

@@ -18,13 +18,13 @@ const Card = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
+
   return (
     <div
       className="single-card"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000"
-    >
+      data-aos-duration="1000">
       <div className="img-container">
         <img
           src={`${baseServerUrl}/${props.image}`}
@@ -51,8 +51,7 @@ const Card = (props) => {
                   <div
                     className="tag-item"
                     onClick={(e) => handleClick(e)}
-                    key={id}
-                  >
+                    key={id}>
                     {tag}
                   </div>
                 );

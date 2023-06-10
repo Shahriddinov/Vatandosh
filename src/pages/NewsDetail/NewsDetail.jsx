@@ -22,9 +22,10 @@ export default function NewsDetail() {
     );
   }
 
-  if (error) {
-    return <NotFound />;
-  }
+  // if (error) {
+  //   return <NotFound />;
+  // }
+
 
   return <Detail {...data} />;
 }

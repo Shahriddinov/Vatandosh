@@ -155,93 +155,91 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
         <h3 className="registeritem-title">{t("expert.reg2")}</h3>
         <div className="registeritem-form registeritem-gapNon">
           {/*<h3>{t("expert.uzbotm")}</h3>*/}
-          {data1.length ? (
-            data1.map((el, index) => (
-              <div key={index} className="registeritem2-form-otm">
-                <label htmlFor="" className="registeritem-label">
-                  <p className="registeritem-label-delete">
-                    <span>{t("expert.uzbotm")}</span>
-                    <AiOutlineDelete
-                      style={data1.length === 1 ? { display: "none" } : null}
-                      onClick={() => {
-                        deleteEducation(el.id);
-                        setData1(
-                          (prev) =>
-                            (prev = prev.filter((item) => item.id !== el.id))
-                        );
-                      }}
-                    />
-                  </p>
-                  <div>
-                    <input
-                      required
-                      type="text"
-                      value={el.institution}
-                      minLength={3}
-                      maxLength={100}
-                      placeholder={t("expert.inputplaceholder")}
-                      onChange={(e) =>
-                        handleChange({
-                          ...el,
-                          institution: e.target.value.trim(),
-                        })
-                      }
-                    />
-                    <img src={pencil} alt="" />
-                  </div>
-                </label>
-                <div className="registeritem-flexbox">
+          {data1.length
+            ? data1.map((el, index) => (
+                <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
-                    <p>{t("expert.faculty")}</p>
+                    <p className="registeritem-label-delete">
+                      <span>{t("expert.uzbotm")}</span>
+                      <AiOutlineDelete
+                        style={data1.length === 1 ? { display: "none" } : null}
+                        onClick={() => {
+                          deleteEducation(el.id);
+                          setData1(
+                            (prev) =>
+                              (prev = prev.filter((item) => item.id !== el.id))
+                          );
+                        }}
+                      />
+                    </p>
                     <div>
                       <input
                         required
                         type="text"
+                        value={el.institution}
                         minLength={3}
-                        value={el.faculty}
                         maxLength={100}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
-                          handleChange({ ...el, faculty: e.target.value })
+                          handleChange({
+                            ...el,
+                            institution: e.target.value,
+                          })
                         }
                       />
                       <img src={pencil} alt="" />
                     </div>
                   </label>
-                  <label htmlFor="" className="registeritem-label">
-                    <p>{t("expert.profession")}</p>
-                    <FormControl style={{ padding: 0 }}>
-                      <Select
-                        className="registeritem-select"
-                        value={el.specialization_id}
-                        required
-                        onChange={(e) =>
-                          handleChange({
-                            ...el,
-                            specialization_id: e.target.value,
-                          })
-                        }
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        {specialization ? (
-                          specialization?.map(({ id, title }) => (
-                            <MenuItem key={id} value={id}>
-                              {title}
-                            </MenuItem>
-                          ))
-                        ) : (
-                          <MenuItem value={1}>Yurist</MenuItem>
-                        )}
-                      </Select>
-                    </FormControl>
-                  </label>
+                  <div className="registeritem-flexbox">
+                    <label htmlFor="" className="registeritem-label">
+                      <p>{t("expert.faculty")}</p>
+                      <div>
+                        <input
+                          required
+                          type="text"
+                          minLength={3}
+                          value={el.faculty}
+                          maxLength={100}
+                          placeholder={t("expert.inputplaceholder")}
+                          onChange={(e) =>
+                            handleChange({ ...el, faculty: e.target.value })
+                          }
+                        />
+                        <img src={pencil} alt="" />
+                      </div>
+                    </label>
+                    <label htmlFor="" className="registeritem-label">
+                      <p>{t("expert.profession")}</p>
+                      <FormControl style={{ padding: 0 }}>
+                        <Select
+                          className="registeritem-select"
+                          value={el.specialization_id}
+                          required
+                          onChange={(e) =>
+                            handleChange({
+                              ...el,
+                              specialization_id: e.target.value,
+                            })
+                          }
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                        >
+                          {specialization ? (
+                            specialization?.map(({ id, title }) => (
+                              <MenuItem key={id} value={id}>
+                                {title}
+                              </MenuItem>
+                            ))
+                          ) : (
+                            <MenuItem value={1}>Yurist</MenuItem>
+                          )}
+                        </Select>
+                      </FormControl>
+                    </label>
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-            ""
-          )}
+              ))
+            : ""}
           <button
             type="button"
             className="registeritem-addForm"
@@ -263,93 +261,91 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
             <BsPlusCircleFill />
           </button>
           {/*<h3>{t("expert.xorotm")}</h3>*/}
-          {data2.length ? (
-            data2.map((el, index) => (
-              <div key={index} className="registeritem2-form-otm">
-                <label htmlFor="" className="registeritem-label">
-                  <p className="registeritem-label-delete">
-                    <span>{t("expert.xorotm")}</span>
-                    <AiOutlineDelete
-                      style={data2.length === 1 ? { display: "none" } : null}
-                      onClick={() => {
-                        deleteEducation(el.id);
-                        setData2(
-                          (prev) =>
-                            (prev = prev.filter((item) => item.id !== el.id))
-                        );
-                      }}
-                    />
-                  </p>
-                  <div>
-                    <input
-                      required
-                      type="text"
-                      value={el.institution}
-                      minLength={3}
-                      maxLength={100}
-                      placeholder={t("expert.inputplaceholder")}
-                      onChange={(e) =>
-                        handleChangeX({
-                          ...el,
-                          institution: e.target.value,
-                        })
-                      }
-                    />
-                    <img src={pencil} alt="" />
-                  </div>
-                </label>
-                <div className="registeritem-flexbox">
+          {data2.length
+            ? data2.map((el, index) => (
+                <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
-                    <p>{t("expert.xorfaculty")}</p>
+                    <p className="registeritem-label-delete">
+                      <span>{t("expert.xorotm")}</span>
+                      <AiOutlineDelete
+                        style={data2.length === 1 ? { display: "none" } : null}
+                        onClick={() => {
+                          deleteEducation(el.id);
+                          setData2(
+                            (prev) =>
+                              (prev = prev.filter((item) => item.id !== el.id))
+                          );
+                        }}
+                      />
+                    </p>
                     <div>
                       <input
                         required
                         type="text"
+                        value={el.institution}
                         minLength={3}
-                        value={el.faculty}
                         maxLength={100}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
-                          handleChangeX({ ...el, faculty: e.target.value })
+                          handleChangeX({
+                            ...el,
+                            institution: e.target.value,
+                          })
                         }
                       />
                       <img src={pencil} alt="" />
                     </div>
                   </label>
-                  <label htmlFor="" className="registeritem-label">
-                    <p>{t("expert.xorprofession")}</p>
-                    <FormControl style={{ padding: 0 }}>
-                      <Select
-                        className="registeritem-select"
-                        value={el.specialization_id}
-                        required
-                        onChange={(e) =>
-                          handleChangeX({
-                            ...el,
-                            specialization_id: e.target.value,
-                          })
-                        }
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        {specialization ? (
-                          specialization?.map(({ id, title }) => (
-                            <MenuItem key={id} value={id}>
-                              {title}
-                            </MenuItem>
-                          ))
-                        ) : (
-                          <MenuItem value={1}>Yurist</MenuItem>
-                        )}
-                      </Select>
-                    </FormControl>
-                  </label>
+                  <div className="registeritem-flexbox">
+                    <label htmlFor="" className="registeritem-label">
+                      <p>{t("expert.xorfaculty")}</p>
+                      <div>
+                        <input
+                          required
+                          type="text"
+                          minLength={3}
+                          value={el.faculty}
+                          maxLength={100}
+                          placeholder={t("expert.inputplaceholder")}
+                          onChange={(e) =>
+                            handleChangeX({ ...el, faculty: e.target.value })
+                          }
+                        />
+                        <img src={pencil} alt="" />
+                      </div>
+                    </label>
+                    <label htmlFor="" className="registeritem-label">
+                      <p>{t("expert.xorprofession")}</p>
+                      <FormControl style={{ padding: 0 }}>
+                        <Select
+                          className="registeritem-select"
+                          value={el.specialization_id}
+                          required
+                          onChange={(e) =>
+                            handleChangeX({
+                              ...el,
+                              specialization_id: e.target.value,
+                            })
+                          }
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                        >
+                          {specialization ? (
+                            specialization?.map(({ id, title }) => (
+                              <MenuItem key={id} value={id}>
+                                {title}
+                              </MenuItem>
+                            ))
+                          ) : (
+                            <MenuItem value={1}>Yurist</MenuItem>
+                          )}
+                        </Select>
+                      </FormControl>
+                    </label>
+                  </div>
                 </div>
-              </div>
-            ))
-          ) : (
-           ""
-          )}
+              ))
+            : ""}
           <button
             type="button"
             className="registeritem-addForm"

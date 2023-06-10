@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailData } from "../../../reduxToolkit/newsSlice/extraReducer";
-import { getPortalOneNews } from "../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 export const useNewsDataFetching = () => {
   const { id, page } = useParams();

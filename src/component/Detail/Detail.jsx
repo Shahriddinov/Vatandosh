@@ -59,8 +59,7 @@ export default function Detail(data) {
                       <Link
                         to={`/hashtag/${el.trim()}`}
                         key={index}
-                        className="populartags-tag"
-                      >
+                        className="populartags-tag">
                         {el}
                       </Link>
                     );
@@ -71,8 +70,7 @@ export default function Detail(data) {
                 className="newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: data[`text_${lan}`],
-                }}
-              ></div>
+                }}></div>
               {data?.images
                 ? JSON.parse(data?.images).length >= 1 && (
                     <div className="newsdetail-main-desc-gallery">

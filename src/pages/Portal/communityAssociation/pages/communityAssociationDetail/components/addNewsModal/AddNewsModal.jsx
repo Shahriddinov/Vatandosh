@@ -59,7 +59,7 @@ const AddNewsModal = ({ open, handleClose, id, toast }) => {
               handleChange={handleChangeApplication1}
               type="text"
               inputType="input"
-              valueKey="videoLink"
+              valueKey="video"
             />
 
             <div className="my-img-upload__img_list">

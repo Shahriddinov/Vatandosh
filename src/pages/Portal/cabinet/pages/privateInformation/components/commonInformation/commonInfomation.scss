@@ -55,47 +55,75 @@
       border-radius: 20px;
     }
     &-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      &-divCon {
-        &-inputLabelWrapper {
-          margin-top: 30px;
-          & > label {
-            @include fontStyles(400, 14px, 18px, #000000);
-            & > span {
-              color: #ff5656;
+      &-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+
+        &-divCon {
+          &-inputLabelWrapper {
+            margin-top: 30px;
+
+            &-span {
+              margin-bottom: 5px;
+              @include fontStyles(400, 14px, 18px, #000000);
+            }
+            & > label {
+              @include fontStyles(400, 14px, 18px, #000000);
+              & > span {
+                color: #ff5656;
+              }
+            }
+            & > div {
+              border: 1px solid #eaedf6;
+              border-radius: 6px;
+              display: flex;
+              padding: 14.5px 12px;
+              & > label {
+                width: 100%;
+                @include fontStyles(400, 16px, 19px, #9d9d9d);
+              }
+              .passportPdforDocUpload {
+                display: none;
+              }
+              & > input {
+                width: 100%;
+                border: none;
+                @include fontStyles(400, 16px, 19px, #10131b);
+                outline: none;
+              }
+              & > input[type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0;
+              }
+              & > img {
+                width: 20px;
+                height: 20px;
+                border: none;
+              }
             }
           }
-          & > div {
-            border: 1px solid #eaedf6;
-            border-radius: 6px;
-            display: flex;
-            padding: 14.5px 12px;
-            & > label {
-              width: 100%;
-              @include fontStyles(400, 16px, 19px, #9d9d9d);
-            }
-            .passportPdforDocUpload {
-              display: none;
-            }
-            & > input {
-              width: 100%;
-              border: none;
-              @include fontStyles(400, 16px, 19px, #10131b);
-              outline: none;
-            }
-            & > input[type="date"]::-webkit-calendar-picker-indicator {
-              opacity: 0;
-            }
-            & > img {
-              width: 20px;
-              height: 20px;
-              border: none;
-            }
+          &-select {
+            margin-top: 30px;
           }
         }
       }
+      &-btn {
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: auto;
+        padding: 8px 15px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #ffffff;
+        border-radius: 10px;
+        background-color: #065ea9;
+        border: 0;
+      }
     }
+  }
+
+  .passportPdforDocUpload {
+    display: none;
   }
 }

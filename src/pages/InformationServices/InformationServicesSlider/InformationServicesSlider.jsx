@@ -3,7 +3,7 @@ import "./InformationServicesSlider.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsFillCalendarMinusFill } from "react-icons/bs";
 import { TbPointFilled } from "react-icons/tb";
-import { PORTAL_IMAGE_URL, baseServerUrl } from "../../../services/api/utils";
+import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
 export const InformationServicesSlider = ({ data }) => {
@@ -12,12 +12,12 @@ export const InformationServicesSlider = ({ data }) => {
   const lan = useSelector((state) => state.language.language);
 
   const handleRight = () => {
-    if (img === 10) setImg((prev) => (prev = 0));
+    if (img === data.length - 1) setImg((prev) => (prev = 0));
     else setImg((prev) => ++prev);
   };
 
   const handleLeft = () => {
-    if (img === 0) setImg((prev) => (prev = 10));
+    if (img === 0) setImg((prev) => (prev = data.length - 1));
     else setImg((prev) => --prev);
   };
 
@@ -27,12 +27,9 @@ export const InformationServicesSlider = ({ data }) => {
     slideInterval = setInterval(handleRight, 8000);
   };
 
-  console.log(data);
-
   useEffect(() => {
     autoPlay();
     return () => clearInterval(slideInterval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [img]);
 
   return (
@@ -48,7 +45,8 @@ export const InformationServicesSlider = ({ data }) => {
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
+          >
             <div className="main-hero-slider-bottom-title">
               <h2>{card.title}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />

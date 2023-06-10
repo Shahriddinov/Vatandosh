@@ -13,6 +13,9 @@ import facebook from "../../../../assets/images/choose/Facebook.svg";
 import telegram from "../../../../assets/images/choose/telegramsvg.svg";
 import twitter from "../../../../assets/images/choose/Twitter.svg";
 import { timer } from "../../../../helpers/extraFunction";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MoreDetail = () => {
   const [timeData, setTimeDate] = useState({
@@ -39,13 +42,49 @@ const MoreDetail = () => {
       clearInterval(interval);
     };
   }, [byIdData?.finished_at]);
+  console.log(byIdData);
+
+  const settings = {
+    customPaging: function (i) {
+      return (
+        <div>
+          <img
+            style={{
+              width: "110px",
+              height: "90px",
+              borderRadius: "10px",
+              objectFit: "cover",
+            }}
+            src={`${PORTAL_IMAGE_URL}/${byIdData.image[i]}`}
+          />
+        </div>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  console.log(byIdData);
 
   return (
     <>
       <Header />
       <div className="singleCardContainer">
         <h1>{byIdData.title}</h1>
-        <img src={`${PORTAL_IMAGE_URL}${byIdData.image}`} alt="rasm" />
+        <Slider {...settings}>
+          {byIdData?.image?.map((evt) => (
+            <div>
+              <img
+                className="singleCardContainer__image"
+                src={`${PORTAL_IMAGE_URL}/${evt}`}
+              />
+            </div>
+          ))}
+        </Slider>
         {byIdData?.status === 0 ? (
           <div className="singleCardContainer-timeOver">
             <p>{t("choices.quizIsOver")}</p>
@@ -91,22 +130,22 @@ const MoreDetail = () => {
         </div>
 
         <div className="singleCardContainer-hl"></div>
-        <p>
-          {byIdData?.description?.replace(
-            /(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi,
-            ""
-          )}
-        </p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: byIdData.description,
+          }}
+        />
 
-        <video autoPlay muted loop>
-          <source
-            src={`${PORTAL_IMAGE_URL}/${
-              JSON?.parse(byIdData?.video)[
-                JSON?.parse(byIdData?.video).length - 1
-              ]?.download_link
-            }`}
-          />
-        </video>
+        <iframe
+          className="videosss"
+          width="100%"
+          height="500px"
+          src={`https://www.youtube.com/embed/${byIdData?.video}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen></iframe>
+
         <div className="singleCardContainer-socialsCont">
           <a>
             <img src={square} alt="square" />

@@ -12,6 +12,7 @@ import {
   portalNews,
 } from "../../reduxToolkit/portalSlices/news-events/extraReducer";
 import PortalCard from "../portalCard/portalCard";
+import PortalEvent from "../portalEvent/portalEvent";
 
 const News = () => {
   const navigate = useNavigate();
@@ -72,16 +73,28 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {news?.map((news) => (
-                <PortalCard key={news.id} {...news} pathUrl="news" />
+              {news?.slice(0, 6).map((news) => (
+                <PortalCard
+                  key={news.id}
+                  {...news}
+                  urlLink={{ category: "all-news", type: "new", id: news?.id }}
+                />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>
               </div>
             </div>
             <div className={`events-cards ${!activeCard ? "active-card" : ""}`}>
-              {events?.data?.map((event) => (
-                <PortalCard key={event.id} {...event} />
+              {events?.data?.slice(0, 6).map((event) => (
+                <PortalCard
+                  key={event?.id}
+                  {...event}
+                  urlLink={{
+                    category: "community",
+                    type: "event",
+                    id: event?.id,
+                  }}
+                />
               ))}
               <div className="all-btn-mobile">
                 <button>{t("all")}</button>

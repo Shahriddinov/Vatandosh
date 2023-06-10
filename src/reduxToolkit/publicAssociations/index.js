@@ -20,11 +20,11 @@ const publicAssSlice = createSlice({
       state.publicAssloading = true;
     });
     builder.addCase(
-      getPublicAssociationData.fulfilled,
-      (state, { payload }) => {
-        state.publicAssloading = false;
-        state.publicAssdata = payload;
-      }
+        getPublicAssociationData.fulfilled,
+        (state, { payload }) => {
+          state.publicAssloading = false;
+          state.publicAssdata = payload;
+        }
     );
     builder.addCase(getPublicAssociationData.rejected, (state, action) => {
       state.publicAssloading = false;

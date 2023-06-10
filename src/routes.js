@@ -25,6 +25,9 @@ import VolunteerOffers from "./pages/Portal/volunter/pages/VolunteerOffers/Volun
 
 const Home = lazy(() => import("./pages/Home"));
 const MapNews = lazy(() => import("./pages/mapNews/MapNews"));
+const MapNewsDetail = lazy(() => import("./pages/mapNews/MapNews"));
+const OneNewsDetail = lazy(() => import("./pages/oneNewsDetail/OneNewsDetail"));
+//
 const About = lazy(() =>
   import(
     /*webpackChunkName: Home*/
@@ -263,6 +266,14 @@ const EmailVerify = lazy(() =>
   import("./pages/Registration/emailVerify/EmailVerify")
 );
 
+const SignInWithGoogle = lazy(() =>
+  import("./pages/Registration/pages/SignInWithGoogle/SignInWithGoogle")
+);
+
+const SignInWithFacebook = lazy(() =>
+  import("./pages/Registration/pages/SignInWithFacebook/SignInWithFacebook")
+);
+
 const ResetPassword = lazy(() =>
   import("./pages/Registration/resetPassword/ResetPassword")
 );
@@ -413,6 +424,8 @@ const MoreDetail = lazy(() =>
 
 const routes = [
   { path: "", element: Home },
+  { path: "/detail/:category/:type/:id", element: OneNewsDetail },
+  { path: "/about", element: OneNewsDetail },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -434,7 +447,7 @@ const routes = [
   },
   { path: "/country-news/:countryId", element: MapNews },
   { path: "/information-service/:pageName", element: InformationServices },
-  { path: "/news/:id", element: NewsDetail },
+  { path: "/:page/:id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
   { path: "/faq", element: FAQ },
@@ -481,7 +494,11 @@ const RoutesContainer = () => {
                     path="private-information"
                     element={<PrivateInformation />}
                   >
-                    <Route index element={<CommonInformation />} />
+                    <Route
+                      index
+                      path="personal-information"
+                      element={<CommonInformation />}
+                    />
                     <Route path="job" element={<Job />} />
                     <Route path="education" element={<Education />} />
                     <Route
@@ -508,7 +525,7 @@ const RoutesContainer = () => {
                 />
                 <Route
                   path="/registration/signin"
-                  element={<Navigate to="/portal" />}
+                  element={<Navigate to="/portal-category/cabinet" />}
                 />
                 <Route
                   path="/registration/register"
@@ -538,6 +555,14 @@ const RoutesContainer = () => {
                 <Route
                   path="/registration/signup/api/verify/"
                   element={<EmailVerify />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/google"
+                  element={<SignInWithGoogle />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/facebook"
+                  element={<SignInWithFacebook />}
                 />
                 <Route
                   path="/portal-category/*"

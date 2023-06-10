@@ -27,6 +27,7 @@ import suggestionSlice from "./ExpertSlice/Suggestions/index";
 import expertSlice from "./ExpertSlice/ExpertsSlice";
 import education from "./ExpertSlice/ExpertEducation/index";
 import employment from "./ExpertSlice/ExpertEmployment/index";
+
 // import expertMenu from "./ExpertMenu";
 import quizSlice from "./victorinaQuiz";
 import pageSlice from "./victorinapage";
@@ -51,6 +52,8 @@ import menuSuggestionSlice from "./expertSuggestion";
 import choiceQuizSlice from "./choicesPageSlice/index";
 import portalAllNewsSlice from "./portalSlices/news-events/index";
 import volunteerShowUserSlice from "./volunteer-user";
+import websiteNewsSlice from "./siteNews";
+import websiteEventSlice from "./SiteEvent";
 import publicAssSlice from "./publicAssociations/index";
 
 const store = configureStore({
@@ -106,6 +109,8 @@ const store = configureStore({
     choiceQuizSlice,
     portalAllNewsSlice,
     volunteerShowUserSlice,
+    websiteNewsSlice,
+    websiteEventSlice,
     publicAssSlice,
   },
   middleware: (getDefaultMiddleware) =>

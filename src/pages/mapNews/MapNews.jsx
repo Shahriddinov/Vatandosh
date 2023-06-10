@@ -4,9 +4,9 @@ import "./mapNews.scss";
 import { Pagination, Spinner } from "../../component";
 import Header from "../../component/Layout/Header/Header";
 import { useMapsNewsFetching } from "./hooks/useMapsNewsFetching";
-import PortalCard from "../Portal/components/portalCard/PortalCard";
 import { paginationNews } from "./extra";
 import { useTranslation } from "react-i18next";
+import PortalCard from "../../component/portalCard/portalCard";
 
 const MapNews = () => {
   const [activePage, setActivePage] = useState(1);
@@ -44,7 +44,7 @@ const MapNews = () => {
                 <PortalCard
                   key={index}
                   {...item}
-                  pathUrl="portal-category/community-association"
+                  urlLink={{ category: "all-news", type: "new", id: item?.id }}
                 />
               ))
             ) : (

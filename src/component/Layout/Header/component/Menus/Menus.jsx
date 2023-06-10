@@ -279,7 +279,7 @@ const Menus = () => {
         </li>
         <li className="menus_item">
           <a className="menus_link" href="https://old.vatandoshlarfondi.uz/">
-            OLD VERSION
+              {t("version")}
           </a>
         </li>
       </ul>

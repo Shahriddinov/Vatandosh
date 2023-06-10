@@ -8,11 +8,15 @@ function App({ children }) {
 
   const token = useSelector((state) => state.authSlice.token);
 
-  const socket = new WebSocket(
-    `wss://vatandoshlar.napaautomotive.uz/ws/messages/?token=${token}`
-  );
+  let socket;
 
-  useEffect(() => {
+  if (token) {
+    socket = new WebSocket(
+      `wss://api.vatandoshlarfondi.uz/ws/messages/?token=${token}`
+    );
+  }
+
+  if (token) {
     socket.onopen = (event) => {
       console.log("Websocket connected!");
     };
@@ -38,7 +42,7 @@ function App({ children }) {
     socket.onerror = function (error) {
       console.log(error);
     };
-  }, []);
+  }
 
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>

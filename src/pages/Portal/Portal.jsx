@@ -13,6 +13,12 @@ import { FaLinkedinIn, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 
 import "./portal.scss";
 
+import bg1 from "../../assets/images/portal/1.png";
+import bg2 from "../../assets/images/portal/2.png";
+import bg3 from "../../assets/images/portal/3.png";
+import bg4 from "../../assets/images/portal/4.png";
+import bg5 from "../../assets/images/portal/5.png";
+
 const HomePage = () => {
   const token = useSelector((state) => state.authSlice.token);
   const navigate = useNavigate();
@@ -22,34 +28,57 @@ const HomePage = () => {
   const [horizontal, setHorizontal] = useState(false);
 
   const navbarList = [
-    { id: 1, label: t("uzLearning"), url: "/portal-category/online-teaching" },
-    { id: 2, label: t("applyUniversity"), url: "/" },
-    { id: 3, label: t("expertCouncil"), url: "/portal-category/expert" },
-    { id: 4, label: t("virtualTalking"), url: "/portal-category/webinar" },
-    { id: 5, label: t("eventBase"), url: "/" },
-    { id: 6, label: t("electronLibrary"), url: "/portal-category/library" },
     {
-      id: 7,
+      id: 1,
+      bgImage: bg1,
+      label: t("uzLearning"),
+      url: "/portal-category/online-teaching",
+    },
+    {
+      id: 2,
+      bgImage: bg2,
+      label: t("expertCouncil"),
+      url: "/portal-category/expert",
+    },
+    {
+      id: 3,
+      bgImage: bg3,
+      label: t("eventBase"),
+      url: "/portal-category/webinar",
+    },
+    {
+      id: 4,
+      bgImage: bg4,
+      label: t("electronLibrary"),
+      url: "/portal-category/library",
+    },
+    {
+      id: 5,
+      bgImage: bg5,
       label: t("electronBook"),
       url: "/portal-category/electronic-journal",
     },
     {
-      id: 8,
+      id: 6,
+      bgImage: bg1,
       label: t("aboutUzbekistan"),
       url: "/portal-category/about-uzbekistan",
     },
     {
-      id: 9,
+      id: 7,
+      bgImage: bg2,
       label: t("participationProject"),
       url: "/portal-category/victorina",
     },
     {
-      id: 10,
+      id: 8,
+      bgImage: bg3,
       label: t("electronCommunity"),
       url: "/portal-category/community-association",
     },
     {
-      id: 11,
+      id: 9,
+      bgImage: bg4,
       label: t("compatriotsValunteer"),
       url: "/portal-category/volunteer",
     },
@@ -159,9 +188,7 @@ const HomePage = () => {
               </svg>
             </div>
             <div className="register-field">
-              <h2>
-                 {t("teams")}
-              </h2>
+              <h2>{t("teams")}</h2>
               <div className="portal-btns">
                 {token ? (
                   <Link to="/portal-category/cabinet">
@@ -193,7 +220,12 @@ const HomePage = () => {
               >
                 {navbarList.map((navbar) => {
                   return (
-                    <SwiperSlide key={navbar.id}>
+                    <SwiperSlide
+                      key={navbar.id}
+                      style={{
+                        backgroundImage: `linear-gradient(90deg, #00000e 20%, rgba(0, 0, 0, 0) 100%),url(${navbar.bgImage})`,
+                      }}
+                    >
                       <Link to={token ? navbar.url : "/registration/signin"}>
                         {navbar.label}
                       </Link>

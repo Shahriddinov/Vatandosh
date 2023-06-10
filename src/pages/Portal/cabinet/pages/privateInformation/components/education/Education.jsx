@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 // icons
 import btnPlusIcon from "../../../../../../../assets/images/choose/btnPlusIcon.svg";
 import { useState } from "react";
+import { useEducationFetching } from "./hooks/useEducationFetching";
+import Spinner from "../../../../../../../component/Spinner/Spinner";
 
 const initialData = {
   univercity: "",
@@ -18,25 +20,33 @@ const initialData = {
 
 const Education = () => {
   const [inputData, setInputData] = useState([{ ...initialData }]);
+  const {
+    data,
+    setData,
+    education,
+    specialization,
+    educationLoading,
+    initialValue,
+  } = useEducationFetching();
+
+  if (educationLoading) {
+    return <Spinner />;
+  }
+  console.log(specialization);
 
   return (
     <div className="education-container">
-      {inputData.map((el, index) => (
-        <Card
-          key={index}
-          el={el}
-          inputData={inputData}
-          setInputData={setInputData}
-        />
+      {data.map((el, index) => (
+        <Card key={index} el={el} inputData={data} setInputData={setData} />
       ))}
 
       <motion.button
         whileTap={{ scale: 0.9 }}
         className="education-container-btn"
         onClick={() =>
-          setInputData((prev) => [
+          setData((prev) => [
             ...prev,
-            { ...initialData, id: new Date().getTime() },
+            { ...initialValue, id: new Date().getTime() },
           ])
         }
       >
