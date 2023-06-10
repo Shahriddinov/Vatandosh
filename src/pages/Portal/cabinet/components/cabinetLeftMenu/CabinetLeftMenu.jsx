@@ -17,7 +17,7 @@ const CabinetLeftMenu = () => {
   const menuItems = [
     {
       id: 1,
-      url: "/portal-category/cabinet/private-information",
+      url: "/portal-category/cabinet/private-information/personal-information",
       name: "Личная информация",
       logo: UserIcon,
     },
