@@ -1,55 +1,44 @@
 import "./formComp.scss";
 import penSvg from "../../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import calendarSvg from "../../../../../../../../assets/images/portal/privateInformation/calendar.svg";
+import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
+import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+const locationDataChange = createSelector(
+  (store) => store.community.locationGet,
+  (location) => {
+    return location.map((el) => ({
+      ...el,
+      label: el.name ? el.name : "Uzbekistan",
+    }));
+  }
+);
+const FormComp = ({ handleChange, data, el }) => {
+  const locationData = useSelector(locationDataChange);
+  const findCountry = locationData.find(
+    (country) => country.id === el?.location_id
+  );
 
-const FormComp = () => {
-  const countrys = [
-    {
-      id: 1,
-      name: "USA",
-      value: "usa",
-    },
-    {
-      id: 1,
-      name: "UK",
-      value: "uk",
-    },
-    {
-      id: 1,
-      name: "Australia",
-      value: "australia",
-    },
-    {
-      id: 1,
-      name: "France",
-      value: "france",
-    },
-  ];
   return (
     <>
       <div className="jobCont-hl"></div>
       <form className="form-cont">
         <div className="form-cont-left">
-          <div className="form-cont-left-fieldCont">
-            <label htmlFor="country">
-              Ish joyi joylashgan davlat <span>*</span>
-            </label>
-            <div>
-              <select id="country">
-                {countrys.map((el, index) => (
-                  <option key={index} value={el.value}>
-                    {el.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="form-cont-left-select">
+            <MySelect
+              value={findCountry ? findCountry?.label : ""}
+              handleChange={handleChange}
+              data={locationData}
+              text="Ish joyi joylashgan davlat"
+              valueKey={"international_location_id"}
+            />
           </div>
           <div className="form-cont-left-fieldCont">
             <label htmlFor="position">
               Lavozimi <span>*</span>
             </label>
             <div>
-              <input type="text" />
+              <input type="text" value={el.specialization} />
               <img src={penSvg} alt="icon" />
             </div>
           </div>
@@ -63,7 +52,7 @@ const FormComp = () => {
               Ish boshlagan yili <span>*</span>
             </label>
             <div>
-              <input type="date" id="yearOfStart" />
+              <input type="date" id="yearOfStart" value={el.start_date} />
               <img src={calendarSvg} alt="cal" />
             </div>
           </div>
@@ -74,7 +63,7 @@ const FormComp = () => {
               Ish joyi joylashgan davlatni mintaqasi yoki shahar <span>*</span>
             </label>
             <div>
-              <input type="text" id="jobcity" />
+              <input type="text" id="jobcity" value={el.location_name} />
               <img src={penSvg} alt="cal" />
             </div>
           </div>
@@ -83,7 +72,7 @@ const FormComp = () => {
               Ish joyi <span>*</span>
             </label>
             <div>
-              <input type="text" id="jobplace" />
+              <input type="text" id="jobplace" value={el.position} />
               <img src={penSvg} alt="cal" />
             </div>
           </div>
@@ -93,7 +82,7 @@ const FormComp = () => {
               Tamomlagan yil <span>*</span>
             </label>
             <div>
-              <input type="date" id="yearOfEnd" />
+              <input type="date" id="yearOfEnd" value={el.finish_date} />
               <img src={calendarSvg} alt="cal" />
             </div>
           </div>

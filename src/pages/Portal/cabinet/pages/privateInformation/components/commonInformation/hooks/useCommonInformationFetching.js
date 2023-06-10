@@ -28,6 +28,7 @@ const locationDataChange = createSelector(
     }));
   }
 );
+
 const cityDataChange = createSelector(
   (store) => store.community.allCitiesGet,
   (cities) => {
