@@ -39,7 +39,6 @@ const menuButtons = [
 const PrivateInformation = () => {
   const { pathname } = useLocation();
   const [active, setActive] = useState(pathname.split("/")[4]);
-  console.log(pathname.split("/"));
   return (
     <div className="piMainCont">
       <div className="piMainCont-secondaryCont">

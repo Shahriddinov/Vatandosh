@@ -22,7 +22,7 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
     content: "",
     community_id: id,
     attachments: [],
-    videoLink: "",
+    video: "",
   });
   const { t } = useTranslation();
   const [imageFetchData, setImageFetchData] = useState({
@@ -89,6 +89,7 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
       content: data.content,
       community_id: id,
       attachments: data.attachments.map((el) => el.path),
+      video: data.video,
     };
 
     setImageFetchData((prev) => ({ ...prev, loadingNews: true }));
@@ -104,9 +105,8 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
         toast.success("success sending !", options);
       })
       .catch((e) => {
-        console.log(e.message);
         setImageFetchData((prev) => ({ ...prev, error: e.message }));
-        toast.success("error sending !", options);
+        toast.error("error sending !", options);
       })
       .finally(() => {
         setImageFetchData((prev) => ({ ...prev, loadingNews: false }));
@@ -117,7 +117,7 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
       content: "",
       community_id: "",
       attachments: [],
-      videoLink: "",
+      video: "",
     });
   };
 

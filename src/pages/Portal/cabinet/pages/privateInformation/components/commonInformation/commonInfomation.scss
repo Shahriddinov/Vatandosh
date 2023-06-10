@@ -63,6 +63,11 @@
         &-divCon {
           &-inputLabelWrapper {
             margin-top: 30px;
+
+            &-span {
+              margin-bottom: 5px;
+              @include fontStyles(400, 14px, 18px, #000000);
+            }
             & > label {
               @include fontStyles(400, 14px, 18px, #000000);
               & > span {
@@ -97,6 +102,9 @@
               }
             }
           }
+          &-select {
+            margin-top: 30px;
+          }
         }
       }
       &-btn {
@@ -113,5 +121,9 @@
         border: 0;
       }
     }
+  }
+
+  .passportPdforDocUpload {
+    display: none;
   }
 }

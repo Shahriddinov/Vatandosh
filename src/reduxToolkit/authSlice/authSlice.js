@@ -19,7 +19,8 @@ const initialState = {
   loginLoading: true,
   resetLoading: false,
   registerLoading: false,
-  registerData: null,
+  registerData: getItem("user") ? JSON.parse(getItem("user")) : null,
+  registerSuccess: null,
   userData: getItem("user") ? JSON.parse(getItem("user")) : null,
   nationsData: null,
   nationsLoading: true,
@@ -164,21 +165,24 @@ const authSlice = createSlice({
     build
       .addCase(registerUser.pending, (state) => {
         state.registerLoading = true;
+        state.registerSuccess = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerLoading = false;
         state.registerData = action.payload;
         setItem("user", JSON.stringify(action.payload));
+        state.registerSuccess = "success";
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;
         state.error = action.error.message;
+        state.registerSuccess = "error";
       });
 
     // Get all nations
     build
       .addCase(getAllNations.pending, (state) => {
-        state.nationsData = true;
+        state.nationsLoading = true;
       })
       .addCase(getAllNations.fulfilled, (state, action) => {
         state.nationsLoading = false;
