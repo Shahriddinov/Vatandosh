@@ -23,7 +23,7 @@ const SignInWithFacebook = () => {
 
         dispatch(loginUser(user));
         if (user.token) {
-          navigate("/portal-category/cabinet");
+          navigate("/registration/register");
         }
       } catch (e) {
         console.log(e);
