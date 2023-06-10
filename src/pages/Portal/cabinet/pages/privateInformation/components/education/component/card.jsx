@@ -8,8 +8,11 @@ import { motion } from "framer-motion";
 import minusIcon from "../../../../../../../../assets/images/choose/minusIcon.svg";
 import trashIcon from "../../../../../../../../assets/images/choose/trashIcon.svg";
 import plusIcon from "../../../../../../../../assets/images/choose/plusIcon.svg";
+import { useSelector } from "react-redux";
+import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
 
 const Card = ({ el, inputData, setInputData }) => {
+  const { specialization } = useSelector((state) => state.expertRegisterSlice);
   const [btnToggle, setBtnToggle] = useState(false);
   const obj = inputData.find((each) => each.id === el.id);
   const deleteHandler = () => {
@@ -27,6 +30,10 @@ const Card = ({ el, inputData, setInputData }) => {
     });
     setInputData(newState);
   };
+  const handleChange = () => {};
+
+  console.log(specialization);
+  const findSpecialization = specialization?.find((el) => el.id === 1);
 
   return (
     <motion.div
@@ -81,8 +88,15 @@ const Card = ({ el, inputData, setInputData }) => {
             />
           </div>
         </div>
-        <div className="card-container-inputWrapper2-wrapper">
-          <label htmlFor="specialty">Xorijdagi mutaxassisligi</label>
+        <div className="card-container-inputWrapper2-select">
+          <MySelect
+            value={findSpecialization ? findSpecialization?.label : ""}
+            handleChange={handleChange}
+            data={specialization}
+            text="Mutaxassisligi"
+            valueKey={"international_location_id"}
+          />
+          {/* <label htmlFor="specialty">Xorijdagi mutaxassisligi</label>
           <div>
             <select name="specialty" id="specialty" onChange={changeHandler}>
               {obj.specialties.map((each, id) => (
@@ -91,7 +105,7 @@ const Card = ({ el, inputData, setInputData }) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
     </motion.div>

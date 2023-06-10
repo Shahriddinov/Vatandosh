@@ -221,7 +221,7 @@ const FormList = ({
             <label htmlFor="passport">
               {typeof data?.passport_file === "string"
                 ? "passport"
-                : data?.passport_file.name}
+                : data?.passport_file}
             </label>
             <input
               className="passportPdforDocUpload"

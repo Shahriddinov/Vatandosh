@@ -17,7 +17,10 @@ export const commonInformationDataSubmit = ({ data, dispatch }) => {
   formData.append("job_position", data.job_position);
   if (typeof data.avatar_url === "object" && data.avatar_url !== null) {
     formData.append("avatar_url", data.avatar_url);
-  } else if (typeof data.passport_file === "object")
+  } else if (
+    typeof data.passport_file === "object" &&
+    data.passport_file !== null
+  )
     formData.append("passport_file", data.passport_file);
 
   dispatch(registerUser(formData));
