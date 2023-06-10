@@ -32,12 +32,14 @@ function Expert({ expertData, loading }) {
         <div className="expert-list">
           <button
             className="listwinners-list-leftbtn slider_controls__left"
-            style={isHiddenLeftBtn ? { display: "none" } : null}>
+            style={isHiddenLeftBtn ? { display: "none" } : null}
+          >
             <MdKeyboardArrowLeft />
           </button>
           <button
             className="listwinners-list-rightbtn slider_controls__right"
-            style={isHiddenRightBtn ? { display: "none" } : null}>
+            style={isHiddenRightBtn ? { display: "none" } : null}
+          >
             <MdKeyboardArrowRight />
           </button>
           <Swiper
@@ -67,41 +69,49 @@ function Expert({ expertData, loading }) {
                 spaceBetween: 30,
               },
             }}
-            className="listwinners-list">
-            {expertData?.data?.map((evt) => (
-              <SwiperSlide key={evt.id}>
-                <div className="expert-list-item">
-                  <div className="expert-list-item-desc">
-                    <img
-                      alt="error"
-                      src={`${PORTAL_IMAGE_URL}${
-                        evt?.user_profile?.avatar_url
-                          ? evt?.user_profile?.avatar_url
-                          : evt?.user?.avatar
-                      }`}
-                      className="expert-list-item-img"
-                    />
-                    <p>
-                      {evt?.user_profile?.international_location_id?.name}{" "}
-                      {"   "}
-                      {evt?.user_profile?.international_address_id?.name}
-                    </p>
-                    <h3>
-                      {evt?.user_profile?.last_name}{" "}
-                      {evt?.user_profile?.first_name}{" "}
-                      {evt?.user_profile?.second_name}
-                    </h3>
-                    <h4>{evt?.user_education[0]?.specialization_id?.title}</h4>
+            className="listwinners-list"
+          >
+            {expertData?.data?.map((evt) => {
+              console.log(evt);
+
+              return (
+                <SwiperSlide key={evt.id}>
+                  <div className="expert-list-item">
+                    <div className="expert-list-item-desc">
+                      <img
+                        alt="error"
+                        src={`${PORTAL_IMAGE_URL}${
+                          evt?.user_profile?.avatar_url
+                            ? evt?.user_profile?.avatar_url
+                            : evt?.user?.avatar
+                        }`}
+                        className="expert-list-item-img"
+                      />
+                      <p>
+                        {evt?.user_profile?.international_location_id?.name}{" "}
+                        {"   "}
+                        {evt?.user_profile?.international_address_id?.name}
+                      </p>
+                      <h3>
+                        {evt?.user_profile?.last_name}{" "}
+                        {evt?.user_profile?.first_name}{" "}
+                        {evt?.user_profile?.second_name}
+                      </h3>
+                      <h4>
+                        {evt?.user_education[0]?.specialization_id?.title}
+                      </h4>
+                    </div>
+                    <Link
+                      className="employe-link"
+                      to={`/portal-category/expert/profile/${evt.id}`}
+                    >
+                      <span>{t("expert.detail")}</span>
+                      <img src={ArrowIcon} alt="Arrow Icon" />
+                    </Link>
                   </div>
-                  <Link
-                    className="employe-link"
-                    to={`/portal-category/expert/profile/${evt.id}`}>
-                    <span>{t("expert.detail")}</span>
-                    <img src={ArrowIcon} alt="Arrow Icon" />
-                  </Link>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </div>
