@@ -101,13 +101,13 @@ function Expert({
                         {evt?.user_profile?.second_name}
                       </h3>
                       <h4>
-                        {
-                          specialization.find(
-                            (spe) =>
-                              spe.id ===
-                              evt?.user_education[0]?.specialization_id
-                          ).title
-                        }
+                        {evt?.user_education?.length > 0
+                          ? specialization.find(
+                              (spe) =>
+                                spe.id ===
+                                evt?.user_education[0]?.specialization_id
+                            ).title
+                          : null}
                       </h4>
                     </div>
                     <div className="link-div">
