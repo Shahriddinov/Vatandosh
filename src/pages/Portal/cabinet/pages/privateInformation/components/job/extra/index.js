@@ -55,7 +55,6 @@ export const cabinetJobDataSubmit = ({
   if (createJob.length > 0) {
     dispatch(createExpertEmployment({ expert: createJob }));
   }
-  console.log(createJob);
 };
 
 export const cabinetJobDataDelete = (id, dispatch) => {

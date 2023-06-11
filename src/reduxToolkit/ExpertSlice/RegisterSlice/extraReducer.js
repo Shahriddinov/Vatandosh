@@ -157,7 +157,6 @@ export const deleteExpertEmployment = createAsyncThunk(
 export const postExpertScientific = createAsyncThunk(
   "expert/scientific/post",
   async (payload) => {
-    console.log(payload);
     return await axios
       .post(SEND_EXPERT_SCIENTIFIC, payload, {
         headers: {
