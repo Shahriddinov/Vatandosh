@@ -72,6 +72,7 @@ const TouristFacilities = () => {
             <ul>
               {allCity?.map((item) => (
                 <li
+                  key={item.id}
                   className={`${item.id === activeCity ? "active_li" : ""}`}
                   onClick={() => handleClick(item.id)}
                 >

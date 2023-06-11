@@ -15,7 +15,8 @@ const AboutUzbekistan = () => {
   let transparentIsTrue = location.pathname.split("/")[3];
   const { menu, menuLoading, contactData, contactLoading, contactError } =
     useLayoutFetching();
-  if (menuLoading | contactLoading) {
+
+  if (menuLoading || contactLoading) {
     return <Spinner position="full" />;
   } else if (contactError) {
     return <p>{contactError}</p>;
