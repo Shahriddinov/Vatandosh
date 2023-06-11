@@ -11,14 +11,24 @@ import {
 const initialState = {
   meetingsLoading: true,
   meetingsData: [],
+  meetingsError: null,
+
   meetingsCountLoading: true,
   meetingsCount: 0,
+  meetingsCountError: null,
+
   meetingOneLoading: true,
   meetingOnedata: [],
+  meetingsOneDataError: null,
+
   pageLoading: true,
   pageData: [],
+  meetingsPageDataError: null,
+
   createMeetingLoading: true,
   createMeetingData: [],
+  meetingsCreateMeetingDataError: null,
+
   status: "idle",
   error: null,
 };
@@ -39,6 +49,7 @@ const meetingSlice = createSlice({
           state.meetingsData = [];
         }
         state.meetingsLoading = true;
+        state.meetingsError = null;
       })
       .addCase(getMeetingAll.fulfilled, (state, { payload }) => {
         state.meetingsLoading = false;
@@ -46,13 +57,14 @@ const meetingSlice = createSlice({
       })
       .addCase(getMeetingAll.rejected, (state, action) => {
         state.meetingsLoading = false;
-        state.error = action.error.message;
+        state.meetingsError = action.error.message;
       });
 
     // Get meetings count
     builder
       .addCase(getMeetingCount.pending, (state) => {
         state.meetingsCountLoading = true;
+        state.meetingsCountError = null;
       })
       .addCase(getMeetingCount.fulfilled, (state, { payload }) => {
         state.meetingsCountLoading = false;
@@ -60,13 +72,14 @@ const meetingSlice = createSlice({
       })
       .addCase(getMeetingCount.rejected, (state, action) => {
         state.meetingsCountLoading = false;
-        state.error = action.error.message;
+        state.meetingsCountError = action.error.message;
       });
 
     // Get one meeting
     builder
       .addCase(getMeetingOne.pending, (state) => {
         state.meetingOneLoading = true;
+        state.meetingsOneDataError = null;
       })
       .addCase(getMeetingOne.fulfilled, (state, action) => {
         state.meetingOneLoading = false;
@@ -74,13 +87,14 @@ const meetingSlice = createSlice({
       })
       .addCase(getMeetingOne.rejected, (state, action) => {
         state.meetingOneLoading = false;
-        state.error = action.error.message;
+        state.meetingsOneDataError = action.error.message;
       });
 
     // Get meeting page
     builder
       .addCase(getMeetingPage.pending, (state) => {
         state.pageLoading = true;
+        state.meetingsPageDataError = null;
       })
       .addCase(getMeetingPage.fulfilled, (state, action) => {
         state.pageLoading = false;
@@ -88,7 +102,7 @@ const meetingSlice = createSlice({
       })
       .addCase(getMeetingPage.rejected, (state, action) => {
         state.pageLoading = false;
-        state.error = action.error.message;
+        state.meetingsPageDataError = action.error.message;
       });
 
     // Create meeting
@@ -96,6 +110,7 @@ const meetingSlice = createSlice({
       .addCase(meetingCreate.pending, (state) => {
         state.createMeetingLoading = true;
         state.status = "idle";
+        state.meetingsCreateMeetingDataError = null;
       })
       .addCase(meetingCreate.fulfilled, (state, action) => {
         state.createMeetingLoading = false;
@@ -104,7 +119,7 @@ const meetingSlice = createSlice({
       })
       .addCase(meetingCreate.rejected, (state, action) => {
         state.createMeetingLoading = false;
-        state.error = action.error.message;
+        state.meetingsCreateMeetingDataError = action.error.message;
       });
   },
 });

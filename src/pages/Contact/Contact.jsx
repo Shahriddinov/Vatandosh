@@ -25,7 +25,9 @@ export default function Contact() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getContact());
+    if (pathname.split("/")[2] !== "about-uzbekistan") {
+      dispatch(getContact());
+    }
   }, [dispatch]);
 
   const handleSumbit = (e) => {

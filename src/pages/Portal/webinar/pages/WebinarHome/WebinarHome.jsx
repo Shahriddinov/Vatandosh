@@ -26,8 +26,12 @@ function WebinarHome() {
   const meetingNews = useSelector((store) => store.portalNews.news);
   const meetingNewsLoading = useSelector((store) => store.portalNews.loading);
   const meetingPage = useSelector((store) => store.meetingSlice.pageData);
+  const { meetingsPageDataError } = useSelector((store) => store.meetingSlice);
   const sliderData = useSelector(
     (state) => state.webinarBodySlice.webinarDataBody
+  );
+  const { webinarDataBodyError } = useSelector(
+    (state) => state.webinarBodySlice
   );
   const meetingPageLoading = useSelector(
     (store) => store.meetingSlice.pageLoading
@@ -56,6 +60,8 @@ function WebinarHome() {
 
   if (meetingPageLoading || meetingNewsLoading) {
     return <Spinner />;
+  } else if (webinarDataBodyError) {
+    return <p>{webinarDataBodyError}</p>;
   }
 
   return (
@@ -72,7 +78,11 @@ function WebinarHome() {
           sliderData={sliderData}
         />
       </div>
-      <WebinarCouncil councilData={councilData} meetingPage={meetingPage} />
+      <WebinarCouncil
+        councilData={councilData}
+        meetingPage={meetingPage}
+        meetingsPageDataError={meetingsPageDataError}
+      />
       <WebinarEvents />
       <News
         communityNews={meetingNews?.data}

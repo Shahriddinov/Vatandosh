@@ -20,7 +20,9 @@ export default function OnlineWebinar() {
   const meetingOneLoading = useSelector(
     (store) => store.meetingSlice.meetingOneLoading
   );
-  const meetingError = useSelector((store) => store.meetingSlice.error);
+  const meetingError = useSelector(
+    (store) => store.meetingSlice.meetingsOneDataError
+  );
 
   const dispatch = useDispatch();
 
@@ -28,7 +30,6 @@ export default function OnlineWebinar() {
     dispatch(getMeetingOne(id));
   }, []);
 
-  const { pathname } = useLocation();
   const { t } = useTranslation();
   const url = [
     { title: t("expert.main"), url: "" },
@@ -71,10 +72,8 @@ export default function OnlineWebinar() {
   if (meetingOneLoading) {
     return <Spinner />;
   } else if (meetingError) {
-    return <p>Error</p>;
+    return <p>{meetingError}</p>;
   }
-
-  console.log(meetingOnedata);
 
   return (
     <>
@@ -109,7 +108,8 @@ export default function OnlineWebinar() {
                   {meetingOnedata.status == 1 ? (
                     <Link
                       to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                      className="victorinaproject-main-btn victorinaproject-main-btnActive">
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    >
                       {t("webinar.join-webinar")}
                     </Link>
                   ) : (
@@ -157,7 +157,8 @@ export default function OnlineWebinar() {
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen></iframe>
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </div>
               <ShareFriends />
