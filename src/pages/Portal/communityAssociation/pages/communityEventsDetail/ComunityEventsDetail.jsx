@@ -33,16 +33,16 @@ export default function CommunityEventsDetail() {
     return <p>{error}</p>;
   }
 
+  const image = oneEventsDetail?.image
+    ? JSON.parse(oneEventsDetail?.image)
+    : "";
   return (
     <main className="volunteractivitydetail">
       <div className="container">
         <div className="volunteractivitydetail-main">
           <div className="volunteractivitydetail-main-detail">
             <div className="volunteractivitydetail-main-detail-desc-img">
-              <img
-                src={`${PORTAL_IMAGE_URL}${oneEventsDetail?.image}`}
-                alt=""
-              />
+              <img src={`${PORTAL_IMAGE_URL}${image[0]}`} alt="" />
             </div>
             <div className="volunteractivitydetail-main-detail-desc-action">
               <div className="volunteractivitydetail-main-detail-desc-action-date-viewers">
