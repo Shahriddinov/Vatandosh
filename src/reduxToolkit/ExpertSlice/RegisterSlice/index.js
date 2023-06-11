@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  createExpertEmployment,
+  deleteExpertEmployment,
   getExpertEducation,
   getExpertEmployment,
   getExpertRegister,
@@ -27,6 +29,12 @@ const initialState = {
   employment: [],
   employmentLoading: true,
   employmentError: null,
+
+  employmentCreateSuccess: null,
+  employmentCreateData: null,
+  employmentCreateLoading: null,
+
+  employmentDeleteStatus: null,
 };
 
 const expertRegisterSlice = createSlice({
@@ -113,6 +121,37 @@ const expertRegisterSlice = createSlice({
         state.employmentLoading = false;
         state.employmentError = action.error.message;
       });
+
+    builder
+      .addCase(createExpertEmployment.pending, (state) => {
+        state.employmentCreateLoading = true;
+        state.employmentCreateSuccess = null;
+        state.employmentDeleteStatus = null;
+      })
+      .addCase(createExpertEmployment.fulfilled, (state, action) => {
+        state.employmentCreateLoading = false;
+        state.employmentCreateData = action.payload;
+        state.employmentCreateSuccess = "success";
+      })
+      .addCase(createExpertEmployment.rejected, (state, action) => {
+        state.employmentCreateLoading = false;
+        state.employmentError = action.error.message;
+        state.employmentCreateSuccess = "error";
+      });
+
+    builder
+      .addCase(deleteExpertEmployment.pending, (state) => {
+        state.employmentDeleteStatus = null;
+        state.employmentCreateSuccess = null;
+      })
+      .addCase(deleteExpertEmployment.fulfilled, (state, action) => {
+        state.employmentDeleteStatus = "success";
+      })
+      .addCase(deleteExpertEmployment.rejected, (state, action) => {
+        state.employmentDeleteStatus = "error";
+      });
+
+    // /
   },
 });
 
