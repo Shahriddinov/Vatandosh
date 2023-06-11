@@ -6,6 +6,8 @@ import { TbPointFilled } from "react-icons/tb";
 import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
+import { getDate } from "../../../config/constants";
+
 export const InformationServicesSlider = ({ data }) => {
   const [img, setImg] = useState(0);
 
@@ -56,7 +58,20 @@ export const InformationServicesSlider = ({ data }) => {
                 <span>
                   <BsFillCalendarMinusFill />
                 </span>
-                <p>{card.data}</p>
+                <p>
+                  <span>
+                    {getDate(card.created_at).getDay().length > 2
+                      ? getDate(card.created_at).getDay()
+                      : `0${getDate(card.created_at).getDay()}`}
+                  </span>
+                  .
+                  <span>
+                    {getDate(card.created_at).getMonth().length > 2
+                      ? getDate(card.created_at).getMonth()
+                      : `0${getDate(card.created_at).getMonth()}`}
+                  </span>
+                  .<span>{getDate(card.created_at).getFullYear()}</span>
+                </p>
               </div>
               <div className="main-hero-slider-bottom-calendarRight">
                 <button aria-label="prev" onClick={handleLeft}>

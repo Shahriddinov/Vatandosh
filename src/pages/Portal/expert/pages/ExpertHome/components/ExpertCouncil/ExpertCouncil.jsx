@@ -10,7 +10,12 @@ import { Navigation } from "swiper";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
-function Expert({ expertData, loading }) {
+function Expert({
+  expertData,
+  loading,
+  specialization,
+  specializationLoading,
+}) {
   const { t } = useTranslation();
 
   const [isHiddenLeftBtn, setisHiddenLeftBtn] = useState(true);
@@ -21,7 +26,7 @@ function Expert({ expertData, loading }) {
     setisHiddenRightBtn(swiper.isEnd);
   };
 
-  if (loading) {
+  if (loading || specializationLoading) {
     return <Spinner position="full" />;
   }
 
@@ -72,8 +77,6 @@ function Expert({ expertData, loading }) {
             className="listwinners-list"
           >
             {expertData?.data?.map((evt) => {
-              console.log(evt);
-
               return (
                 <SwiperSlide key={evt.id}>
                   <div className="expert-list-item">
@@ -98,16 +101,24 @@ function Expert({ expertData, loading }) {
                         {evt?.user_profile?.second_name}
                       </h3>
                       <h4>
-                        {evt?.user_education[0]?.specialization_id?.title}
+                        {
+                          specialization.find(
+                            (spe) =>
+                              spe.id ===
+                              evt?.user_education[0]?.specialization_id
+                          ).title
+                        }
                       </h4>
                     </div>
-                    <Link
-                      className="employe-link"
-                      to={`/portal-category/expert/profile/${evt.id}`}
-                    >
-                      <span>{t("expert.detail")}</span>
-                      <img src={ArrowIcon} alt="Arrow Icon" />
-                    </Link>
+                    <div className="link-div">
+                      <Link
+                        className="employe-link"
+                        to={`/portal-category/expert/profile/${evt.id}`}
+                      >
+                        <span>{t("expert.detail")}</span>
+                        <img src={ArrowIcon} alt="Arrow Icon" />
+                      </Link>
+                    </div>
                   </div>
                 </SwiperSlide>
               );

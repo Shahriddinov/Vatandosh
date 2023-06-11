@@ -9,14 +9,14 @@ import {
 } from "./ExpertSliceExtraReducer";
 
 const initialState = {
-  loading: false,
+  loading: true,
   expertData: [],
   expertCount: [],
   expertCountLoading: true,
   expertPage: [],
   expertPageLoading: true,
   expert: {},
-  expertLoading: {},
+  expertLoading: true,
   error: null,
 };
 

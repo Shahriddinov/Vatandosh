@@ -8,6 +8,7 @@ import {
 import { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
+import { getExpertSpecialization } from "../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
 export const useExpertHome = () => {
   const lan = useSelector((state) => state.language.language);
@@ -64,6 +65,13 @@ export const useExpertHome = () => {
   const expertData = useSelector((state) => state.expertSlice.expertData);
   const loading = useSelector((state) => state.expertSlice.loading);
 
+  const specialization = useSelector(
+    (state) => state.expertRegisterSlice.specialization
+  );
+  const specializationLoading = useSelector(
+    (state) => state.expertRegisterSlice.specializationLoading
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -71,6 +79,7 @@ export const useExpertHome = () => {
     dispatch(getExpertPage());
     dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
     dispatch(getExpertFilter({ perPage: 12 }));
+    dispatch(getExpertSpecialization());
   }, [dispatch, lan]);
 
   return {
@@ -84,5 +93,7 @@ export const useExpertHome = () => {
     communityNews,
     expertData,
     loading,
+    specialization,
+    specializationLoading,
   };
 };
