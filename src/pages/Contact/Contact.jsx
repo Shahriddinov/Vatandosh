@@ -21,7 +21,7 @@ export default function Contact() {
   const formRef = useRef();
   const [dataContact, setDataContact] = useState({ name: "", phone: "" });
   const [activeMapNavigationBar, setactiveMapNavigationBar] = useState(true);
-  const contactData = useSelector((state) => state.contactSlice?.contactData);
+  const contactData = useSelector((state) => state.contactSlice.contactData);
   const { t } = useTranslation();
 
   useEffect(() => {
