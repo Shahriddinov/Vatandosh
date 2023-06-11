@@ -150,8 +150,6 @@ const expertRegisterSlice = createSlice({
       .addCase(deleteExpertEmployment.rejected, (state, action) => {
         state.employmentDeleteStatus = "error";
       });
-
-    // /
   },
 });
 

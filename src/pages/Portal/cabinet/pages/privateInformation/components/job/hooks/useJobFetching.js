@@ -53,11 +53,11 @@ export const useJobFetching = () => {
   }, [employment]);
 
   useEffect(() => {
-    if (
-      employmentCreateSuccess === "success" ||
-      employmentDeleteStatus === "success"
-    ) {
-      toast.success("success sending !", options);
+    if (employmentDeleteStatus === "success") {
+      toast.success("Delete successfully!", options);
+      setTimeout(() => dispatch(getExpertEmployment()), 1500);
+    } else if (employmentCreateSuccess === "success") {
+      toast.success("sending successfully!", options);
       setTimeout(() => dispatch(getExpertEmployment()), 1500);
     } else if (
       employmentCreateSuccess === "error" ||

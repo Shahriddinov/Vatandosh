@@ -29,7 +29,6 @@ const Job = () => {
 
   const deleteFunction = (id) => cabinetJobDataDelete(id, dispatch);
 
-  console.log(data);
   return (
     <>
       <ToastContainer
