@@ -27,6 +27,8 @@ function ExpertCouncil() {
     communityNews,
     expertData,
     loading,
+    specialization,
+    specializationLoading,
   } = useExpertHome();
 
   if (
@@ -57,8 +59,6 @@ function ExpertCouncil() {
     pathUrl: "/portal-category/expert/council-about",
   };
 
-
-
   return (
     <>
       <div
@@ -76,7 +76,12 @@ function ExpertCouncil() {
         councilData={councilData}
         expertCount={expertCount.slice(0, 5)}
       />
-      <Expert expertData={expertData} loading={loading} />
+      <Expert
+        expertData={expertData}
+        loading={loading}
+        specializationLoading={specializationLoading}
+        specialization={specialization}
+      />
       <News
         communityNews={communityNews?.data}
         url={"/portal-category/expert"}

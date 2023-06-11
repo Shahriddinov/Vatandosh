@@ -53,7 +53,6 @@ function Employe() {
   };
 
   const handleChangeCountry = (event, { id, name }) => {
-    console.log(id);
     dispatch(
       getExpertFilter({
         country: id,
@@ -74,7 +73,6 @@ function Employe() {
   };
 
   const countPagination = paginationCount(expertData?.total, 12);
-
 
   return (
     <div className="employee">
@@ -129,7 +127,14 @@ function Employe() {
                     {evt?.user_profile?.first_name}{" "}
                     {evt?.user_profile?.second_name}
                   </h3>
-                  <h4>{evt?.user_education[0]?.specialization_id?.title}</h4>
+                  <h4>
+                    {
+                      specialization.find(
+                        (spe) =>
+                          spe.id === evt?.user_education[0]?.specialization_id
+                      ).title
+                    }
+                  </h4>
                   <Link
                     className="employee-link"
                     to={`/portal-category/expert/profile/${evt?.id}`}
