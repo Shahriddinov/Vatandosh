@@ -10,30 +10,20 @@ import trashIcon from "../../../../../../../../assets/images/choose/trashIcon.sv
 import plusIcon from "../../../../../../../../assets/images/choose/plusIcon.svg";
 import { useSelector } from "react-redux";
 import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
+import { cabinetEducationDataChange, deleteCabinetEducation } from "../extra";
 
-const Card = ({ el, inputData, setInputData }) => {
+const Card = ({ el, data, setData, dispatch }) => {
   const { specialization } = useSelector((state) => state.expertRegisterSlice);
   const [btnToggle, setBtnToggle] = useState(false);
-  const obj = inputData.find((each) => each.id === el.id);
-  const deleteHandler = () => {
-    setInputData((prev) => prev.filter((each) => each.id !== el.id));
-  };
 
-  const changeHandler = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-    const newState = inputData.map((obj) => {
-      if (obj.id === el.id) {
-        return { ...obj, [name]: value };
-      }
-      return obj;
-    });
-    setInputData(newState);
-  };
-  const handleChange = () => {};
+  const deleteHandler = () => deleteCabinetEducation(el.id, dispatch);
 
-  console.log(specialization);
-  const findSpecialization = specialization?.find((el) => el.id === 1);
+  const handleChange = ({ key, value }) =>
+    cabinetEducationDataChange({ key, value, data, el, setData });
+
+  const findSpecialization = specialization?.find(
+    (item) => item.id === el?.specialization_id
+  );
 
   return (
     <motion.div
@@ -42,10 +32,7 @@ const Card = ({ el, inputData, setInputData }) => {
     >
       <div className="card-container-hl"></div>
       <div className="card-container-header-cont">
-        <h1>
-          Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari
-          universiteti
-        </h1>
+        <h1>{el.institution}</h1>
         <div>
           <motion.img
             onClick={() => setBtnToggle((prev) => !prev)}
@@ -54,7 +41,7 @@ const Card = ({ el, inputData, setInputData }) => {
             alt="plusMinusIcons"
           />
           <motion.img
-            onClick={() => deleteHandler()}
+            onClick={deleteHandler}
             whileTap={{ scale: 0.9 }}
             src={trashIcon}
             alt="trashIcon"
@@ -69,8 +56,11 @@ const Card = ({ el, inputData, setInputData }) => {
             type="text"
             id="univercity"
             name="univercity"
-            onChange={changeHandler}
-            value={obj.univercity}
+            onChange={(evt) =>
+              handleChange({ key: "institution", value: evt.target.value })
+            }
+            value={el?.institution}
+            placeholder="Kiriting"
           />
         </div>
       </div>
@@ -83,8 +73,11 @@ const Card = ({ el, inputData, setInputData }) => {
               type="text"
               id="faculty"
               name="faculty"
-              onChange={changeHandler}
-              value={obj.faculty}
+              onChange={(evt) =>
+                handleChange({ key: "faculty", value: evt.target.value })
+              }
+              value={el?.faculty}
+              placeholder="Kiriting"
             />
           </div>
         </div>
@@ -94,7 +87,7 @@ const Card = ({ el, inputData, setInputData }) => {
             handleChange={handleChange}
             data={specialization}
             text="Mutaxassisligi"
-            valueKey={"international_location_id"}
+            valueKey={"specialization_id"}
           />
           {/* <label htmlFor="specialty">Xorijdagi mutaxassisligi</label>
           <div>

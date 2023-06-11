@@ -25,11 +25,12 @@ const Volunteering = () => {
   const { error, volunteerOneData, volunteerOneLoading } =
     useCabinetVolunteerFetching();
 
-  console.log(volunteerOneData);
   if (volunteerOneLoading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
+  } else if (volunteerOneData.length === 0) {
+    return <p>Hozirda ma'lumot mavjud emas</p>;
   }
 
   const handleBtn = (el) => {
@@ -41,13 +42,11 @@ const Volunteering = () => {
   };
 
   const { someData, totalPagination } = someDataFun({
-    arr: volunteerOneData[0].user_volunteer_activities,
+    arr: volunteerOneData[0]?.user_volunteer_activities,
     type: activeBtn.type,
     count: 3,
     activePage: activePage,
   });
-
-  console.log(someData);
 
   return (
     <div className="container-volunteering">
@@ -62,8 +61,9 @@ const Volunteering = () => {
             />
           ))}
         </div>
+
         <div className="container-volunteering-inner_cardContainer">
-          {someData.map((el) => (
+          {someData?.map((el) => (
             <CardComp
               el={el}
               calendarSvg={calendarSvg}

@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   createExpertEmployment,
+  deleteExpertEducation,
   deleteExpertEmployment,
   getExpertEducation,
   getExpertEmployment,
   getExpertRegister,
   getExpertRegisterMenu,
   getExpertSpecialization,
+  postExpertEducation,
+  updateExpertEducation,
 } from "./extraReducer";
 
 const initialState = {
@@ -34,7 +37,11 @@ const initialState = {
   employmentCreateData: null,
   employmentCreateLoading: null,
 
-  employmentDeleteStatus: null,
+  educationDeleteStatus: null,
+
+  educationCreateStatus: null,
+
+  educationUpdateStatus: null,
 };
 
 const expertRegisterSlice = createSlice({
@@ -149,6 +156,45 @@ const expertRegisterSlice = createSlice({
       })
       .addCase(deleteExpertEmployment.rejected, (state, action) => {
         state.employmentDeleteStatus = "error";
+      });
+
+    builder
+      .addCase(deleteExpertEducation.pending, (state) => {
+        state.educationDeleteStatus = null;
+        state.educationCreateStatus = null;
+        state.educationUpdateStatus = null;
+      })
+      .addCase(deleteExpertEducation.fulfilled, (state, action) => {
+        state.educationDeleteStatus = "success";
+      })
+      .addCase(deleteExpertEducation.rejected, (state, action) => {
+        state.educationDeleteStatus = "error";
+      });
+
+    builder
+      .addCase(updateExpertEducation.pending, (state) => {
+        state.educationDeleteStatus = null;
+        state.educationCreateStatus = null;
+        state.educationUpdateStatus = null;
+      })
+      .addCase(updateExpertEducation.fulfilled, (state, action) => {
+        state.educationUpdateStatus = "success";
+      })
+      .addCase(updateExpertEducation.rejected, (state, action) => {
+        state.educationUpdateStatus = "error";
+      });
+
+    builder
+      .addCase(postExpertEducation.pending, (state) => {
+        state.educationDeleteStatus = null;
+        state.educationCreateStatus = null;
+        state.educationUpdateStatus = null;
+      })
+      .addCase(postExpertEducation.fulfilled, (state, action) => {
+        state.educationCreateStatus = "success";
+      })
+      .addCase(postExpertEducation.rejected, (state, action) => {
+        state.educationCreateStatus = "error";
       });
   },
 });

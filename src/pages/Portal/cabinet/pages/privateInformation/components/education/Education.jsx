@@ -7,8 +7,13 @@ import { motion } from "framer-motion";
 // icons
 import btnPlusIcon from "../../../../../../../assets/images/choose/btnPlusIcon.svg";
 import { useState } from "react";
-import { useEducationFetching } from "./hooks/useEducationFetching";
+import {
+  initialCabinetEducationData,
+  useEducationFetching,
+} from "./hooks/useEducationFetching";
 import Spinner from "../../../../../../../component/Spinner/Spinner";
+import { cabinetEducationDataSubmit } from "./extra";
+import { ToastContainer } from "react-toastify";
 
 const initialData = {
   univercity: "",
@@ -26,33 +31,64 @@ const Education = () => {
     education,
     specialization,
     educationLoading,
-    initialValue,
+    dispatch,
   } = useEducationFetching();
 
   if (educationLoading) {
     return <Spinner />;
   }
-  console.log(specialization);
+
+  const handleSubmit = () =>
+    cabinetEducationDataSubmit({
+      dispatch,
+      data,
+      setData,
+      education,
+    });
 
   return (
-    <div className="education-container">
-      {data.map((el, index) => (
-        <Card key={index} el={el} inputData={data} setInputData={setData} />
-      ))}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="education-container">
+        {data.map((el, index) => (
+          <Card
+            key={index}
+            el={el}
+            data={data}
+            setData={setData}
+            dispatch={dispatch}
+          />
+        ))}
 
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        className="education-container-btn"
-        onClick={() =>
-          setData((prev) => [
-            ...prev,
-            { ...initialValue, id: new Date().getTime() },
-          ])
-        }
-      >
-        <img src={btnPlusIcon} alt="plusIcon" />
-      </motion.button>
-    </div>
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          className="education-container-btn"
+          onClick={() =>
+            setData((prev) => [
+              ...prev,
+              { ...initialCabinetEducationData, id: Date.now() },
+            ])
+          }
+        >
+          <img src={btnPlusIcon} alt="plusIcon" />
+        </motion.button>
+      </div>
+
+      <button className="commonInformation-form-btn" onClick={handleSubmit}>
+        Submit
+      </button>
+    </>
   );
 };
 

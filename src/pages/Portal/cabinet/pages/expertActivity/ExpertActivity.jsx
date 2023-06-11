@@ -23,6 +23,8 @@ const ExpertActivity = () => {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
+  } else if (volunteerOneData.length === 0) {
+    return <p>Hozirda ma'lumot mavjud emas</p>;
   }
 
   const handleBtn = (el) => {
