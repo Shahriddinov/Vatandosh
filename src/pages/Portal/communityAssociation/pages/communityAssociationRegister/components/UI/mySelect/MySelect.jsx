@@ -6,14 +6,14 @@ import "./mySelect.scss";
 import { useTranslation } from "react-i18next";
 import { Autocomplete, TextField } from "@mui/material";
 
-const MySelect = ({ data, text, value, handleChange, valueKey }) => {
+const MySelect = ({ data, text, value, handleChange, valueKey, comId }) => {
   const { t } = useTranslation();
 
   const handleChangeSelect = (event, { id }) => {
     const {
       target: { value },
     } = event;
-    handleChange({ key: valueKey, value: id });
+    handleChange({ key: valueKey, value: id, comId: comId ? comId : "" });
   };
   return (
     <div className="my-select">

@@ -10,7 +10,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
-  margin-top: 30px;
   &-left {
     &-fieldCont:first-child {
       margin-top: 0;
@@ -102,5 +101,21 @@
     &-fieldCont:last-child {
       margin-top: 78px;
     }
+  }
+}
+
+.jobCont-cabinet {
+  padding-top: 30px;
+
+  &-btn {
+    background-color: transparent;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
   }
 }
