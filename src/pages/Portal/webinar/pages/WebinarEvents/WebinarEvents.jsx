@@ -13,7 +13,6 @@ import { createSelector } from "@reduxjs/toolkit";
 
 function WebinarEvents() {
   const { t } = useTranslation();
-  const { event } = useParams();
   const [page, setPage] = useState(1);
   const сhangeMeetingsData = createSelector(
     (store) => store.meetingSlice.meetingsData,
@@ -33,7 +32,7 @@ function WebinarEvents() {
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
   );
-  const meetingError = useSelector((store) => store.meetingSlice.error);
+  const meetingError = useSelector((store) => store.meetingSlice.meetingsError);
 
   const dispatch = useDispatch();
 
@@ -74,7 +73,7 @@ function WebinarEvents() {
   if (meetingsloading) {
     return <Spinner />;
   } else if (meetingError) {
-    return <p>Error</p>;
+    return <p>{meetingError}</p>;
   }
 
   return (

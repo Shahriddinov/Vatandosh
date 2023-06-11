@@ -4,7 +4,7 @@ import { getWebinarBody } from "./getwebinarbody";
 const initialState = {
   loading: true,
   webinarDataBody: [],
-  error: null,
+  webinarDataBodyError: null,
 };
 
 const webinarBodySlice = createSlice({
