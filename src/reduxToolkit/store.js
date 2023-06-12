@@ -55,6 +55,7 @@ import volunteerShowUserSlice from "./volunteer-user";
 import websiteNewsSlice from "./siteNews";
 import websiteEventSlice from "./SiteEvent";
 import publicAssSlice from "./publicAssociations/index";
+import expertActivitySlice from "./ExpertSlice/ExpertActivity/index";
 
 const store = configureStore({
   reducer: {
@@ -89,6 +90,7 @@ const store = configureStore({
     quizSlice,
     pageSlice,
     suggestionSlice,
+    expertActivitySlice,
     expertRegisterSlice,
     librarySlice,
     volunteerSlice,
