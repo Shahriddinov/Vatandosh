@@ -67,11 +67,14 @@ function VolunterHome() {
     count: volunteers.total,
   };
 
+  console.log(volunteers);
+
   return (
     <>
       <div
         className="volunter-home"
-        style={{ backgroundImage: `url(${backImg})` }}>
+        style={{ backgroundImage: `url(${backImg})` }}
+      >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
         <Header headerData={headerData} />
