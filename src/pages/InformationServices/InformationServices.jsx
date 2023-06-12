@@ -7,7 +7,6 @@ import LatestNews from "../../component/LatestNews/LatestNews";
 import Card from "../../component/card/Card";
 import PopularTags from "../../component/PopularTags/PopularTags";
 import InformationServicesComponent from "./InformationServicesComponent/InformationServicesComponent";
-
 import newsIcon from "../../assets/images/navMenuIcons/informationService/newsIcon.svg";
 import eventsIcon from "../../assets/images/navMenuIcons/informationService/eventsIcon.svg";
 import mediaIcon from "../../assets/images/navMenuIcons/informationService/mediaIcon.svg";
@@ -78,6 +77,8 @@ const InformationServices = () => {
     return <Spinner position="full" />;
   }
 
+  console.log(data.news)
+
   return (
     <div className="news-page ">
       <Header />
@@ -93,7 +94,7 @@ const InformationServices = () => {
             <PopularTags />
           </div>
           <div className="main-content-cards">
-            {paginationData["0"]?.data?.map((card) => (
+            {data?.news?.map((card) => (
               <div className="main-content-card" key={card.id}>
                 <Card {...card} pathUrl={pageName} />
               </div>
