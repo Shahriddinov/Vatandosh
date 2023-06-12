@@ -51,6 +51,7 @@ import menuSuggestionSlice from "./expertSuggestion";
 import choiceQuizSlice from "./choicesPageSlice/index";
 import portalAllNewsSlice from "./portalSlices/news-events/index";
 import volunteerShowUserSlice from "./volunteer-user";
+import expertActivitySlice from "./ExpertSlice/ExpertActivity/index";
 
 const store = configureStore({
   reducer: {
@@ -85,6 +86,7 @@ const store = configureStore({
     quizSlice,
     pageSlice,
     suggestionSlice,
+    expertActivitySlice,
     expertRegisterSlice,
     librarySlice,
     volunteerSlice,
