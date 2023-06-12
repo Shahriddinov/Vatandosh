@@ -211,7 +211,8 @@ export default function CustomProfil() {
               <div className="customprofil-list-scientific-tags">
                 <span>{t("expert.degreelist")}</span>
                 <div className="customprofil-list-scientific-tags-list">
-                  {JSON.parse(expertData?.main_science_directions).length > 0
+                  {expertData?.main_science_directions &&
+                  JSON.parse(expertData?.main_science_directions).length > 0
                     ? JSON.parse(expertData?.main_science_directions).map(
                         (el, index) => <span key={index}>{el}</span>
                       )
@@ -276,15 +277,18 @@ export default function CustomProfil() {
                     }
                   >
                     <div className="customprofil-list-offer-info-img">
-                      <img
-                        src={`${PORTAL_IMAGE_URL}/${evt.images}`}
-                        alt="error"
-                        className="valontery-desc-img"
-                      />
+                      {evt.images &&
+                        JSON.parse(evt.images).map((image) => (
+                          <img
+                            src={`${PORTAL_IMAGE_URL}/${image}`}
+                            alt="error"
+                            className="valontery-desc-img"
+                          />
+                        ))}
                     </div>
                     <div className="customprofil-list-offer-info-desc valontery-desc-text">
                       <p className="customprofil-list-offer-info-desc-text">
-                        {evt.title}
+                        {evt?.title}
                       </p>
                       <p>{evt?.description}</p>
                       <button className="customprofil-list-offer-info-desc-btn">

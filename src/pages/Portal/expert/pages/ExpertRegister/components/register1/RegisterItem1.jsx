@@ -49,6 +49,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
   useEffect(() => {
     setFormData(user);
   }, [user]);
+
   return (
     <form
       className={

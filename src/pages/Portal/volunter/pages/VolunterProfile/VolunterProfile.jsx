@@ -5,15 +5,20 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 export default function VolunterProfile() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const { expert: expertData } = useSelector((state) => state.expertSlice);
   const url = [
-    { title: t("expert.main"), titleOne: "", titleTwo: "", url: "#" },
+    {
+      title: t("expert.main"),
+      titleOne: "",
+      titleTwo: "",
+      url: "/portal-category/volunteer",
+    },
     {
       title: "Volontyorlar",
       titleOne: "",
       titleTwo: "",
-      url: "#",
+      url: "/portal-category/volunteer/volunter-employe",
     },
     {
       title: expertData?.user_profile?.last_name,
