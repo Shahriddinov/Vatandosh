@@ -6,7 +6,7 @@ import "./card.scss";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
-import { baseServerUrl } from "../../services/api/utils";
+import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
 
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
@@ -18,7 +18,6 @@ const Card = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-
   return (
     <div
       className="single-card"
@@ -26,18 +25,15 @@ const Card = (props) => {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000">
       <div className="img-container">
-        <img
-          src={`${baseServerUrl}/${props.image}`}
-          alt={props[`title_${lan}`]}
-        />
+        <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
       </div>
       <div className="news-information">
         <Link to={`/${props.pathUrl}/${props.id}`}>
-          <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
+          <h5 className="news__card-title">{props.title}</h5>
           <p
             className="news__card-text"
             dangerouslySetInnerHTML={{
-              __html: props[`text_${lan}`],
+              __html: props.body,
             }}
           />
         </Link>
@@ -63,11 +59,11 @@ const Card = (props) => {
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props.data}</span>
+          <span>{props.created_at.slice(0, 10)}</span>
         </div>
         <div className="news-views">
           <IoEye />
-          <span>{props.viewers === null ? 0 : props.viewers}</span>
+          <span>{props.view === null ? 0 : props.view}</span>
         </div>
       </div>
     </div>

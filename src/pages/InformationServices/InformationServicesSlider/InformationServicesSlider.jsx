@@ -38,23 +38,23 @@ export const InformationServicesSlider = ({ data }) => {
 
   const imageType = pathname.split("/")[2] === "community-association";
 
+
   return (
     <div className="main-hero">
-      {data?.map((card, i) => (
+      {data?.news?.map((card, i) => (
         <React.Fragment key={card.id}>
           <div
             className={`main-hero-slider ${i === img ? "active" : ""}`}
             key={card.id}
             style={{
               backgroundImage: `url(${PORTAL_IMAGE_URL}/${
-                imageType ? JSON.parse(card?.image)[0] : card?.image
+                imageType ? JSON.parse(card?.images)[0] : card?.image
               })`,
               backgroundPosition: "center center",
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
-          >
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
             <div className="main-hero-slider-bottom-title">
               <h2>{card.title}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />
