@@ -15,19 +15,18 @@ export const useInformationServicesPagination = () => {
   const { pageName } = useParams();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const paginationData = useSelector((state) => state.portalAllNewsSlice);
+  const paginationData = useSelector(
+    (state) => state.informationServicesSlice.paginationData
+  );
 
   const paginationLoading = useSelector(
-    (state) => state.portalAllNewsSlice.newsLoading
+    (state) => state.informationServicesSlice.paginationLoading
   );
-  const loading = useSelector(
-    (state) => state.informationServicesSlice.loading
-  );
+  const loading = useSelector((state) => state.portalAllNewsSlice.newsLoading);
   const data = useSelector((state) => state.portalAllNewsSlice);
 
-  console.log(data);
 
-  const paginationCount = Math.ceil(data?.news?.length / 6);
+  const paginationCount = Math.ceil(paginationData?.total / 6);
 
   const paginationFetching = (count) => {
     setPage(count);

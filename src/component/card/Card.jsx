@@ -6,7 +6,7 @@ import "./card.scss";
 
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
-import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
+import { baseServerUrl, PORTAL_IMAGE_URL } from "../../services/api/utils";
 
 const Card = (props) => {
   const lan = useSelector((state) => state.language.language);
@@ -18,6 +18,8 @@ const Card = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
+  console.log(props);
+
   return (
     <div
       className="single-card"
@@ -25,17 +27,48 @@ const Card = (props) => {
       data-aos-easing="ease-out-cubic"
       data-aos-duration="1000">
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+        {props.pathUrl === "news" ? (
+          <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+        ) : props.pathUrl === "events" ? (
+          <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+        ) : (
+          <img
+            src={`${baseServerUrl}/${props.image}`}
+            alt={props[`title_${lan}`]}
+          />
+        )}
       </div>
       <div className="news-information">
         <Link to={`/${props.pathUrl}/${props.id}`}>
-          <h5 className="news__card-title">{props.title}</h5>
-          <p
-            className="news__card-text"
-            dangerouslySetInnerHTML={{
-              __html: props.body,
-            }}
-          />
+          {props.pathUrl === "news" ? (
+            <h5 className="news__card-title">{props.title}</h5>
+          ) : props.pathUrl === "events" ? (
+            <h5 className="news__card-title">{props.title}</h5>
+          ) : (
+            <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
+          )}
+          {props.pathUrl === "news" ? (
+            <p
+              className="news__card-text"
+              dangerouslySetInnerHTML={{
+                __html: props.body,
+              }}
+            />
+          ) : props.pathUrl === "events" ? (
+            <p
+              className="news__card-text"
+              dangerouslySetInnerHTML={{
+                __html: props.body,
+              }}
+            />
+          ) : (
+            <p
+              className="news__card-text"
+              dangerouslySetInnerHTML={{
+                __html: props[`text_${lan}`],
+              }}
+            />
+          )}
         </Link>
       </div>
       {tags?.length ? (
@@ -59,11 +92,23 @@ const Card = (props) => {
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props.created_at.slice(0, 10)}</span>
+          {props.pathUrl === "news" ? (
+            <span>{props.created_at.slice(0, 10)}</span>
+          ) : props.pathUrl === "events" ? (
+            <span>{props.created_at.slice(0, 10)}</span>
+          ) : (
+            <span>{props.data}</span>
+          )}
         </div>
         <div className="news-views">
           <IoEye />
-          <span>{props.view === null ? 0 : props.view}</span>
+          {props.pathUrl === "news" ? (
+            <span>{props.view === null ? 0 : props.view}</span>
+          ) : props.pathUrl === "events" ? (
+            <span>{props.view === null ? 0 : props.view}</span>
+          ) : (
+            <span>{props.viewers === null ? 0 : props.viewers}</span>
+          )}
         </div>
       </div>
     </div>
