@@ -14,7 +14,6 @@ const PortalCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  console.log(props)
 
   return (
     <div
