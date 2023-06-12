@@ -25,6 +25,8 @@ const Job = () => {
     return <Spinner />;
   }
   console.log(data);
+  console.log(locationData);
+  console.log(employment);
   return (
     <div className="jobCont">
       {data.map((el, index) => (
