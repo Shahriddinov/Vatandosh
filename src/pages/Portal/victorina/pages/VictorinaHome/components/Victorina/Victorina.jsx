@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import VictorinaCard from "../victorinaCard/VictorinaCard";
 
 function Victorina({ quizData }) {
+  console.log(quizData);
   return (
     <div className="victorina">
       <div className="container">
