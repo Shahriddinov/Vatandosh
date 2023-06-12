@@ -31,6 +31,7 @@ const Associations = ({ data }) => {
   return (
     <section className="associations">
       <div className="associations__container container">
+        <p style={{ color: "#065ea9" }}>{t("aboutPage.section1.ptext1")}</p>
         <div className="associations__inner">
           <h2 className="associations__title">{t("Associations")}</h2>
           <ul className="associations__accordions">
@@ -46,8 +47,7 @@ const Associations = ({ data }) => {
                   padding: "0",
                 }}
                 onChange={handleChange(el.panel)}
-                key={el.id}
-              >
+                key={el.id}>
                 <AccordionSummary
                   expandIcon={
                     <ExpandMoreIcon
@@ -56,15 +56,13 @@ const Associations = ({ data }) => {
                   }
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
-                  className="associations__accordion_header"
-                >
+                  className="associations__accordion_header">
                   <Typography
                     variant="span"
                     component="span"
                     className="associations__accordion_header--span"
                     sx={{ flexShrink: 0 }}
-                    style={{ color: el.panel === expanded ? "#065EA9" : "" }}
-                  >
+                    style={{ color: el.panel === expanded ? "#065EA9" : "" }}>
                     {el[`country_${lng}`]}
                   </Typography>
                 </AccordionSummary>
@@ -74,8 +72,7 @@ const Associations = ({ data }) => {
                     {el?.categories?.map((category, index) => (
                       <li
                         className="associations__accordion_item"
-                        key={category.id}
-                      >
+                        key={category.id}>
                         {index + 1}.{" "}
                         {category[`title_${lng}`]
                           ?.split(" ")
@@ -86,8 +83,7 @@ const Associations = ({ data }) => {
                           .join(" ")}
                         <Link
                           className="associations__accordion_item--link"
-                          to={`/compatriots/public-associations/${category?.id}`}
-                        >
+                          to={`/compatriots/public-associations/${category?.id}`}>
                           {" "}
                           {
                             category[`title_${lng}`]?.split(" ")[
