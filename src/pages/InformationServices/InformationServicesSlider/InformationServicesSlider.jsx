@@ -38,7 +38,6 @@ export const InformationServicesSlider = ({ data }) => {
 
   const imageType = pathname.split("/")[2] === "community-association";
 
-
   return (
     <div className="main-hero">
       {data?.news?.map((card, i) => (
