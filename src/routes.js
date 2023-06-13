@@ -425,7 +425,7 @@ const MoreDetail = lazy(() =>
 const routes = [
   { path: "", element: Home },
   { path: "/detail/:category/:type/:id", element: OneNewsDetail },
-  { path: "/about", element: OneNewsDetail },
+  { path: "/:page/id", element: NewsDetail },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
