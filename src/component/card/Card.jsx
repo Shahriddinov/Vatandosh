@@ -30,7 +30,10 @@ const Card = (props) => {
         {props.pathUrl === "news" ? (
           <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
         ) : props.pathUrl === "events" ? (
-          <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+          <img
+            src={`${PORTAL_IMAGE_URL}/${JSON.parse(props.image)[0]}`}
+            alt={props.title}
+          />
         ) : (
           <img
             src={`${baseServerUrl}/${props.image}`}
@@ -65,7 +68,7 @@ const Card = (props) => {
             <p
               className="news__card-text"
               dangerouslySetInnerHTML={{
-                __html: props.body,
+                __html: props.content,
               }}
             />
           ) : (
@@ -104,7 +107,7 @@ const Card = (props) => {
           ) : props.pathUrl === "events" ? (
             <span>{props.created_at.slice(0, 10)}</span>
           ) : (
-            <span>{props.data}</span>
+            <span>{props.data}</span> 
           )}
         </div>
         <div className="news-views">
