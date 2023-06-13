@@ -19,11 +19,12 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
     main_science_directions: [],
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await dispatch(postExpertScientific(data));
-    if (res.payload) setactiveBarItem(4);
+    const res = dispatch(postExpertScientific(data));
+    if (res.arg) setactiveBarItem(4);
   };
+
   return (
     <form
       className={
@@ -207,7 +208,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 }}
               />
             </div>
-            {data.main_science_directions.length ? (
+            {data.main_science_directions.length > 0 ? (
               <ul className="registeritem-interest-list">
                 {data.main_science_directions.map((el, index) => {
                   if (el.trim().length) return <li key={index}>{el}</li>;

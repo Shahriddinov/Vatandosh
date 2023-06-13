@@ -10,7 +10,6 @@ import {
   VOLUNTEER_SHOW_USER_BY_ID,
   VOLUNTEER_DELETE,
   GET_VOLUNTEER_ACTIVITY,
-  POST_VOLUNTEER_ACTIVITY,
   UPDATE_VOLUNTEER_ACTIVITY,
   DELETE_VOLUNTEER_ACTIVITY,
   VOLUNTEER_CITY,
@@ -104,20 +103,6 @@ export const getVolunteerActivity = createAsyncThunk(
   "getVolunteerActivity",
   async () => {
     return await axios.get(GET_VOLUNTEER_ACTIVITY).then((res) => res.data);
-  }
-);
-
-export const postVolunteerActivity = createAsyncThunk(
-  "postVolunteerActivity",
-  async (payload) => {
-    return await axios
-      .post(POST_VOLUNTEER_ACTIVITY, payload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => res.data);
   }
 );
 

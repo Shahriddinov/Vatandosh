@@ -148,7 +148,6 @@ export const DELETE_EXPERT_SCIENTIFIC = `/scientificDegree/delete/`;
 export const SEND_EXPERT_ACTIVITY = `${portalBaseUrl}/expert/activity/create`;
 export const GET_EDUCATION = `${portalBaseUrl}/education/show-one-user`;
 export const GET_EMPLOYMENT = `${portalBaseUrl}/employment/show-one-user`;
-export const POST_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/create`;
 export const CREATE_MEETING = "/meeting/create/";
 export const VICTORINA_MEDIA_CREATE = "/media/create";
 // Update requests
