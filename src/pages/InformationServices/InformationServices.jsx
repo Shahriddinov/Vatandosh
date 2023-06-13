@@ -78,6 +78,8 @@ const InformationServices = () => {
     return <Spinner position="full" />;
   }
 
+  console.log(data)
+
   return (
     <div className="news-page ">
       <Header />
