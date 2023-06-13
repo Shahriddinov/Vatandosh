@@ -24,11 +24,23 @@ export const cabinetJobDataSubmit = ({
   setData,
   employment,
 }) => {
+  console.log(data);
   const oldEmploymentId = employment.map((el) => el.id);
   const createJob = [];
   data.forEach((el) => {
+    const postItem = {
+      company: el.company,
+      position: el.position,
+      location_id: el.location_id,
+      status: el.status,
+      city: el.city,
+      start_date: el.start_date,
+      finish_date: el.finish_date ? el.finish_date : "",
+      specialization: el.specialization,
+    };
+
     if (oldEmploymentId.includes(el.id)) {
-      dispatch(updateExpertEmployment(el));
+      dispatch(updateExpertEmployment({ ...postItem, id: el.id }));
     } else if (!oldEmploymentId.includes(el.id)) {
       const elMatch =
         el.company &&
@@ -36,19 +48,9 @@ export const cabinetJobDataSubmit = ({
         el.location_id &&
         el.city &&
         el.start_date &&
-        el.finish_date &&
         el.specialization;
       if (elMatch) {
-        createJob.push({
-          company: el.company,
-          position: el.position,
-          location_id: el.location_id,
-          status: el.status,
-          city: el.city,
-          start_date: el.start_date,
-          finish_date: el.finish_date,
-          specialization: el.specialization,
-        });
+        createJob.push(postItem);
       }
     }
   });
