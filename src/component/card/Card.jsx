@@ -39,7 +39,14 @@ const Card = (props) => {
         )}
       </div>
       <div className="news-information">
-        <Link to={`/${props.pathUrl}/${props.id}`}>
+        <Link
+          to={
+            props.pathUrl === "news"
+              ? `/detail/all-news/new/${props.id}`
+              : props.pathUrl === "events"
+              ? `/detail/community/event/${props.id}`
+              : `/${props.pathUrl}/${props.id}`
+          }>
           {props.pathUrl === "news" ? (
             <h5 className="news__card-title">{props.title}</h5>
           ) : props.pathUrl === "events" ? (

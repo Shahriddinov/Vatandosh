@@ -93,13 +93,6 @@ const InformationServices = () => {
             <PopularTags />
           </div>
           <div className="main-content-cards">
-            {/* {pageName === "news"
-              ? data?.news.map((card) => (
-                  <div className="main-content-card" key={card.id}>
-                    <Card {...card} pathUrl={pageName} />
-                  </div>
-                ))
-              : ""} */} 
             {pageName === "news"
               ? data?.news?.map((card) => (
                   <div className="main-content-card" key={card.id}>
