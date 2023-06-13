@@ -19,7 +19,6 @@ import CouncilHero from "../boardTrustees/components/council-hero/CouncilHero";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ArrowDown from "../../assets/images/icons/arrowDown.svg";
 
-import Participate from "../../assets/images/projects/participate.png";
 import hand from "../../assets/images/projects/hand.png";
 import Pattern1 from "../../assets/images/projects/patternLeft.svg";
 import Pattern2 from "../../assets/images/projects/patternCenter.svg";

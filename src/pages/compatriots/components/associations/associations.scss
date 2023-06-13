@@ -1,145 +1,143 @@
-
 .associations {
-    padding: 60px 0;
+  padding: 60px 0;
+  background-image: url("../../../../assets/images/body-bg.png");
+  background-color: #fff;
+
+  &__title {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #065ea9;
+    margin-top: 20px;
+  }
+
+  &__accordions {
+    padding: 0px 20px 0px 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+    border-radius: 16px;
+  }
+
+  &__accordion {
+    border-bottom: 1px solid #eaedf6;
+    border-radius: 7px;
+  }
+
+  &__accordion:last-child {
+    border-bottom: 0;
+  }
+
+  &__accordion::before {
+    display: none !important;
+  }
+
+  .css-1g6xv4p-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+    margin-top: 0 !important;
+  }
+
+  &__accordion_header {
+    display: flex;
+    padding: 0 !important;
+    min-height: 69px !important;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+
+  &__accordion_item {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+    color: #656b70;
+  }
+
+  &__accordion_item + &__accordion_item {
+    margin-top: 20px;
+  }
+
+  &__accordion_item--link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.2px;
+    color: #065ea9;
+    border-bottom: 1.5px solid #065ea9;
+    text-decoration: none;
+  }
+
+  &__accordion_header--span {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #656b70;
+  }
+
+  &__accordion_header--button {
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+  }
+
+  &__accordion_body {
+    height: 100%;
+  }
+
+  .css-15v22id-MuiAccordionDetails-root {
+    padding: 0 !important;
+    padding-bottom: 22.5px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .associations {
+    padding: 30px 0;
     background-image: url("../../../../assets/images/body-bg.png");
     background-color: #fff;
 
+    .container {
+      padding: 0;
+    }
     &__title {
-        margin-bottom: 30px;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #065EA9;
+      margin-bottom: 16px;
+      font-size: 24px;
+      line-height: 29px;
+      padding: 0 20px;
     }
 
     &__accordions {
-        padding: 0px 20px 0px 20px;
-        background-color: #FFFFFF;
-        box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
-        border-radius: 16px;
-    }
-
-    &__accordion {
-        border-bottom: 1px solid #EAEDF6;
-        border-radius: 7px;
-    }
-
-    &__accordion:last-child {
-        border-bottom: 0;
-    }
-
-    &__accordion::before {
-        display: none !important;
-    }
-
-    .css-1g6xv4p-MuiPaper-root-MuiAccordion-root.Mui-expanded  {
-        margin-top: 0 !important;
+      padding: 0px 20px 0px 20px;
+      background-color: #ffffff;
+      box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
+      border-radius: 16px;
     }
 
     &__accordion_header {
-        display: flex; 
-        padding: 0 !important;
-        min-height: 69px !important;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0 ;
-        cursor: pointer;
+      min-height: 57px !important;
     }
 
     &__accordion_item {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0.2px;
-        color: #656B70;
+      font-size: 14px;
+      line-height: 17px;
     }
 
     &__accordion_item + &__accordion_item {
-        margin-top: 20px;
+      margin-top: 20px;
     }
 
     &__accordion_item--link {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0.2px;
-        color: #065EA9;
-        border-bottom: 1.5px solid #065EA9;
-        text-decoration: none;
+      font-size: 14px;
+      line-height: 17px;
     }
 
     &__accordion_header--span {
-        font-size: 16px;
-        line-height: 19px;
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        text-transform: uppercase;
-        color: #656B70;
+      font-size: 14px;
+      line-height: 17px;
     }
-
-    &__accordion_header--button {
-        display: inline-block;
-        border: 0;
-        outline: 0;
-        background-color: transparent;
-    }
-
-    &__accordion_body{
-        height: 100%;
-    }
-
-    .css-15v22id-MuiAccordionDetails-root {
-        padding: 0 !important;
-        padding-bottom: 22.5px !important;
-    }
-}
-
-@media (max-width:576px) {
-    
-    .associations {
-        padding: 30px 0;
-        background-image: url("../../../../assets/images/body-bg.png");
-        background-color: #fff;
-
-        .container {
-            padding: 0;
-        }
-        &__title {
-            margin-bottom: 16px;
-            font-size: 24px;
-            line-height: 29px;
-            padding:0 20px;
-        }
-
-        &__accordions {
-            padding: 0px 20px 0px 20px;
-            background-color: #FFFFFF;
-            box-shadow: 0px 2px 40px rgba(69, 69, 69, 0.05);
-            border-radius: 16px;
-
-        }
-
-        &__accordion_header {
-            min-height: 57px !important;
-        }
-
-        &__accordion_item {
-            font-size: 14px;
-            line-height: 17px;
-        }
-
-        &__accordion_item + &__accordion_item {
-            margin-top: 20px;
-        }
-
-        &__accordion_item--link {
-            font-size: 14px;
-            line-height: 17px;
-        }
-
-        &__accordion_header--span {
-            font-size: 14px;
-            line-height: 17px;
-        }
-    }
+  }
 }

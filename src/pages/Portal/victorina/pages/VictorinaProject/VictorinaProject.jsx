@@ -37,27 +37,6 @@ export default function VictorinaProject() {
     if (PopUp) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   }, [PopUp]);
-  //   if (pathname.includes("image-project")) {
-  //     setProjectData((prev) => {
-  //       return {
-  //         title: t("victorina.bestimgproject"),
-  //         url: [
-  //           { title: t("expert.main"), url: "/portal-category/victorina" },
-  //           pathname.includes("finished-project")
-  //             ? {
-  //                 title: t("victorina.endvictorina"),
-  //                 url: "/portal-category/victorina/finished-projects",
-  //               }
-  //             : {
-  //                 title: t("victorina.victorinas"),
-  //                 url: "/portal-category/victorina/projects",
-  //               },
-  //           { title: t("victorina.bestimgproject"), url: "" },
-  //         ],
-  //       };
-  //     });
-  //   }
-  // }, [pathname, t]);
 
   useEffect(() => {
     dispatch(getByIdQuizz({ id }));
@@ -86,13 +65,15 @@ export default function VictorinaProject() {
         <div className="container">
           <h1
             style={{ marginBottom: "25px" }}
-            className="experttitle-title-text"
-          >
+            className="experttitle-title-text">
             {quizData?.title}
           </h1>
           <div className="victorinaproject-wrapper">
             <div className="victorinaproject-main">
-              <img src={`${imageUrl}/${quizData?.image}`} alt="error" />
+              <img
+                src={`${imageUrl}/${JSON.parse(quizData?.image)[0]}`}
+                alt="error"
+              />
               {pathname.includes("finished-projects") ? (
                 <button className="victorinaproject-main-btn">
                   {t("victorina.endproject")}
@@ -120,8 +101,7 @@ export default function VictorinaProject() {
                         quizData.type === "test" ? "verify_popup" : true
                       );
                       setPopUpVerify("verify");
-                    }}
-                  >
+                    }}>
                     {t("victorina.joinproject")}
                   </button>
                 </>
@@ -149,8 +129,7 @@ export default function VictorinaProject() {
             {pathname.includes("finished-projects") ? (
               <div
                 style={{ marginBottom: "50px" }}
-                className="victorinaproject-winners"
-              >
+                className="victorinaproject-winners">
                 <h3>{t("victorina.winnerlist")}</h3>
                 <div className="victorinaproject-winners-list">
                   {quizData?.participants?.map((el) => (

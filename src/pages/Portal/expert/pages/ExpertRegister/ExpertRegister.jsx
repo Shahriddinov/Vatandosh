@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getExpertRegisterMenu } from "../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 import Spinner from "../../../../../component/Spinner/Spinner";
+import Register6 from "./components/register6/register6";
 
 export default function ExpertRegister() {
   let [activeBarItem, setactiveBarItem] = useState(0);
@@ -32,7 +33,6 @@ export default function ExpertRegister() {
   useEffect(() => {
     dispatch(getExpertRegisterMenu());
   }, [dispatch]);
-
   return (
     <>
       <main className="expertregister">
@@ -66,6 +66,19 @@ export default function ExpertRegister() {
                     );
                   })
                 : null}
+              <li
+                className="expertregister-main-bar-item"
+                onClick={() => setactiveBarItem(6)}
+              >
+                <div
+                  className={
+                    activeBarItem === 6
+                      ? "expertregister-main-bar-item-border activeBarItem"
+                      : "expertregister-main-bar-item-border"
+                  }
+                ></div>
+                <span>{"Expert faoliyati"}</span>
+              </li>
             </ul>
             <div className="expertregister-main-list">
               <RegisterItem1
@@ -84,7 +97,11 @@ export default function ExpertRegister() {
                 activeBarItem={activeBarItem}
                 setactiveBarItem={setactiveBarItem}
               />
-              <RegisterItem5 activeBarItem={activeBarItem} />
+              <RegisterItem5
+                activeBarItem={activeBarItem}
+                setactiveBarItem={setactiveBarItem}
+              />
+              <Register6 activeBarItem={activeBarItem} />
             </div>
           </div>
         </div>

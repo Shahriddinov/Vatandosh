@@ -5,12 +5,11 @@ import { useTranslation } from "react-i18next";
 import { BsImage } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { postSuggestions } from "../../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export default function RegisterItem5({ activeBarItem }) {
+export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
-  const history = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [formData, setFormData] = useState({
@@ -36,8 +35,7 @@ export default function RegisterItem5({ activeBarItem }) {
     if (formData.suggestions.trim() && formData.suggestions.trim()) {
       const res = await dispatch(postSuggestions(formData));
       if (!res.error) {
-        alert("Suggestion succesfull create!");
-        history("/portal-category/expert");
+        setactiveBarItem(6);
       }
     }
   };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./offer.scss";
 import addPic from "../../../../../../../assets/images/choose/addPic.svg";
 import trashSvg from "../../../../../../../assets/images/choose/trash.svg";
+import { useCabinetOfferFetching } from "./hooks/useCabinetOfferFetching";
 
 const Offer = () => {
   const [offerData, setOfferData] = useState({
@@ -9,6 +10,8 @@ const Offer = () => {
     cooperationOffer: "",
     addInfo: "",
   });
+
+  const { data, setData, loading, error } = useCabinetOfferFetching();
 
   const textAreaHandler = (e) => {
     const name = e.target.name;

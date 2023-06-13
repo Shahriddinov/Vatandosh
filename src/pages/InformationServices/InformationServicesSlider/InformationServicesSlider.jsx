@@ -7,9 +7,11 @@ import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
 import { getDate } from "../../../config/constants";
+import { useLocation } from "react-router-dom";
 
 export const InformationServicesSlider = ({ data }) => {
   const [img, setImg] = useState(0);
+  const { pathname } = useLocation();
 
   const lan = useSelector((state) => state.language.language);
 
@@ -34,21 +36,24 @@ export const InformationServicesSlider = ({ data }) => {
     return () => clearInterval(slideInterval);
   }, [img]);
 
+  const imageType = pathname.split("/")[2] === "community-association";
+
   return (
     <div className="main-hero">
-      {data?.map((card, i) => (
+      {data?.news?.map((card, i) => (
         <React.Fragment key={card.id}>
           <div
             className={`main-hero-slider ${i === img ? "active" : ""}`}
             key={card.id}
             style={{
-              backgroundImage: `url(${PORTAL_IMAGE_URL}/${card?.image})`,
+              backgroundImage: `url(${PORTAL_IMAGE_URL}/${
+                imageType ? JSON.parse(card?.images)[0] : card?.image
+              })`,
               backgroundPosition: "center center",
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
-          >
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
             <div className="main-hero-slider-bottom-title">
               <h2>{card.title}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />

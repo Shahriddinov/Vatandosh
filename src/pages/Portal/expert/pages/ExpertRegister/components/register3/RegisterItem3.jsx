@@ -281,10 +281,12 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   </p>
                   <div>
                     <input
+                      disabled={el?.status}
                       required
                       type="date"
                       minLength={3}
                       maxLength={30}
+                      style={el?.status ? { opacity: 0.3 } : null}
                       placeholder={t("expert.inputplaceholder")}
                       value={el.finish_date}
                       onChange={(e) =>
