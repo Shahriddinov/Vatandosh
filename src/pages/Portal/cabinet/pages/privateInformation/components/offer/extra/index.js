@@ -28,7 +28,6 @@ export const cabinetOfferSubmit = ({ dispatch, data }) => {
     suggestions: data.suggestions,
     additional_information: data.additional_information,
   };
-  console.log(data);
   if (
     data.suggestions &&
     data.additional_information &&

@@ -23,7 +23,6 @@ const ScientificActivity = () => {
 
   const handleSubmit = () => cabinetScientificSubmit({ data, dispatch });
 
-  console.log(data);
   return (
     <>
       <ToastContainer
