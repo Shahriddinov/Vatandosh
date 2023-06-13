@@ -46,7 +46,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
   return (
     <div className="formCard-cont">
-      {/* <button className="formCard-cont-trash-btn">
+      <button className="formCard-cont-trash-btn">
         {" "}
         <motion.img
           onClick={() => deleteHandler(scientificData[0]?.id)}
@@ -54,7 +54,7 @@ const FormCard = ({ scientificData, data, setData }) => {
           src={trashIcon}
           alt="trashIcon"
         />
-      </button> */}
+      </button>
       <form
         className="formCard-cont-form"
         onSubmit={(e) => {

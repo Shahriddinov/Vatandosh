@@ -60,6 +60,7 @@ export const cabinetScientificDeleteArticleLinkHandler = ({
 };
 
 export const cabinetScientificSubmit = ({ dispatch, data }) => {
+  console.log(data);
   const obj = {
     academic_degree: data.academic_degree,
     scientific_title: data.scientific_title,

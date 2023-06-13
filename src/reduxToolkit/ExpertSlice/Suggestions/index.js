@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  deleteSuggestions,
   getSuggestionMenu,
   getSuggestions,
   postSuggestions,
@@ -11,6 +12,8 @@ const initialState = {
   error: null,
 
   expertSuggestionCreateAndUpdateStatus: null,
+
+  expertSuggestionDelete: null,
 };
 
 const suggestionSlice = createSlice({
@@ -34,7 +37,7 @@ const suggestionSlice = createSlice({
     builder
       .addCase(postSuggestions.pending, (state) => {
         state.expertSuggestionCreateAndUpdateStatus = null;
-        state.loading = true;
+        state.expertSuggestionDelete = null;
       })
       .addCase(postSuggestions.fulfilled, (state, action) => {
         state.expertSuggestionCreateAndUpdateStatus = "success";
@@ -42,6 +45,19 @@ const suggestionSlice = createSlice({
       .addCase(postSuggestions.rejected, (state, action) => {
         state.expertSuggestionCreateAndUpdateStatus = "error";
       });
+
+    builder
+      .addCase(deleteSuggestions.pending, (state) => {
+        state.expertSuggestionDelete = null;
+        state.expertSuggestionCreateAndUpdateStatus = null;
+      })
+      .addCase(deleteSuggestions.fulfilled, (state, action) => {
+        state.expertSuggestionDelete = "success";
+      })
+      .addCase(deleteSuggestions.rejected, (state, action) => {
+        state.expertSuggestionDelete = "error";
+      });
+    //
   },
 });
 

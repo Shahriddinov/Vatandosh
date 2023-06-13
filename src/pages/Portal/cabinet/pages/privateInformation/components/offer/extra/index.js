@@ -1,10 +1,15 @@
+import {
+  deleteSuggestions,
+  postSuggestions,
+} from "../../../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
+
 export const cabinetOfferInputHandler = ({ e, setData }) => {
   const name = e.target.name;
   const evt = e.target;
   setData((prev) => {
     return {
       ...prev,
-      [name]: name === "image" ? [...prev.image, evt.files[0]] : evt.value,
+      [name]: name === "images" ? [...prev.images, evt.files[0]] : evt.value,
     };
   });
 };
@@ -13,36 +18,28 @@ export const cabinetOfferDeleteImageHandler = ({ el, setData }) => {
   setData((prev) => {
     return {
       ...prev,
-      image: prev.image.filter((each) => each !== el),
+      images: prev.images.filter((each) => each !== el),
     };
   });
 };
 
 export const cabinetOfferSubmit = ({ dispatch, data }) => {
-  const obj = {
-    academic_degree: data.academic_degree,
-    scientific_title: data.scientific_title,
-    topic_of_scientific_article: data.topic_of_scientific_article,
-    article_published_journal_name: data.article_published_journal_name,
-    scientific_article_created_at: data.scientific_article_created_at,
-    article_url: data.article_url,
-    main_science_directions: data.main_science_directions,
+  const postData = {
+    suggestions: data.suggestions,
+    additional_information: data.additional_information,
   };
+  console.log(data);
   if (
-    typeof data.article_file === "object" &&
-    data.article_file !== null &&
-    data.article_file !== ""
+    data.suggestions &&
+    data.additional_information &&
+    typeof data.images[0] === "string"
   ) {
-    // dispatch(postExpertScientific({ ...obj, article_file: data.article_file }));
-  } else if (
-    data.academic_degree &&
-    data.scientific_title &&
-    data.topic_of_scientific_article &&
-    data.article_published_journal_name &&
-    data.scientific_article_created_at &&
-    data.article_url &&
-    data.main_science_directions.length > 0
-  ) {
-    // dispatch(postExpertScientific(obj));
+    dispatch(postSuggestions(postData));
+  } else {
+    dispatch(postSuggestions({ ...postData, images: data.images }));
   }
+};
+
+export const cabinetOfferDelete = ({ dispatch, id }) => {
+  dispatch(deleteSuggestions(id));
 };

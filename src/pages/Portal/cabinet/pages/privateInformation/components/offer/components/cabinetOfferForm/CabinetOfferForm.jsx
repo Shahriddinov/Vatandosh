@@ -10,6 +10,8 @@ import addPic from "../../../../../../../../../assets/images/choose/addPic.svg";
 import trashSvg from "../../../../../../../../../assets/images/choose/trash.svg";
 import { useDispatch } from "react-redux";
 
+import "./cabinetOfferForm.scss";
+
 const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
   const dispatch = useDispatch();
 
@@ -18,16 +20,18 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
   const deleteImgHandler = (el) =>
     cabinetOfferDeleteImageHandler({ el, setData });
 
-  const handleSubmit = () =>
-    cabinetOfferSubmit({ dispatch, data, expertSuggestionsData });
-
-  console.log(data);
-
   return (
-    <form className="offerCont" onSubmit={handleSubmit} id="cabinetOfferSubmit">
+    <form
+      className="offerCont"
+      onSubmit={(e) => {
+        e.preventDefault();
+        cabinetOfferSubmit({ dispatch, data, expertSuggestionsData });
+      }}
+      id="cabinetOfferSubmit"
+    >
       <p>Taklifingiz uchun rasm</p>
-      {/* <div className="offerCont-imgCont">
-        {(data.image ? data.image : []).map((el, index) => (
+      <div className="offerCont-imgCont">
+        {(data.images ? data.images : []).map((el, index) => (
           <div className="offerCont-imgCont-pics" key={index}>
             <img
               src={`${
@@ -54,7 +58,7 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
           <input
             type="file"
             id="addPic"
-            name="image"
+            name="images"
             onChange={textAreaHandler}
           />
         </div>
@@ -83,7 +87,7 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
           value={data.additional_information}
           onChange={textAreaHandler}
         ></textarea>
-      </div> */}
+      </div>
     </form>
   );
 };

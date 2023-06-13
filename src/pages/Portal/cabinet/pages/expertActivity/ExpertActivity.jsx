@@ -7,6 +7,7 @@ import CardComp from "../components/card/CardComp";
 import { useCabinetVolunteerFetching } from "../volunteering/hooks/useCabinetVoluneerFetching";
 import { Spinner } from "../../../../../component";
 import { filteredArrFun } from "../volunteering/extra";
+import { useCabinetExpertActivity } from "./hooks/useCabinetExpertActivity";
 
 const btnGroup = [
   { id: 1, label: "Barchasi", type: "all" },
@@ -16,24 +17,20 @@ const btnGroup = [
 
 const ExpertActivity = () => {
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
-  const { error, volunteerOneData, volunteerOneLoading } =
-    useCabinetVolunteerFetching();
+  const { error, loading, data } = useCabinetExpertActivity();
 
-  if (volunteerOneLoading) {
+  if (loading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
-  } else if (volunteerOneData.length === 0) {
+  } else if (data.length === 0) {
     return <p>Hozirda ma'lumot mavjud emas</p>;
   }
 
   const handleBtn = (el) => {
     setActiveBtn({ id: el.id, type: el.type });
   };
-  const filteredArr = filteredArrFun(
-    volunteerOneData[0].user_volunteer_activities,
-    activeBtn.type
-  );
+  const filteredArr = filteredArrFun(data, activeBtn.type);
 
   return (
     <div className="container-expert">

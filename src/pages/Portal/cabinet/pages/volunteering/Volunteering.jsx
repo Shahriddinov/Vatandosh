@@ -22,14 +22,14 @@ const btns = [
 const Volunteering = () => {
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
   const [activePage, setActivePage] = useState(1);
-  const { error, volunteerOneData, volunteerOneLoading } =
+  const { error, volunteerActivity, volunteerActivityLoading } =
     useCabinetVolunteerFetching();
 
-  if (volunteerOneLoading) {
+  if (volunteerActivityLoading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
-  } else if (volunteerOneData.length === 0) {
+  } else if (volunteerActivity.length === 0) {
     return <p>Hozirda ma'lumot mavjud emas</p>;
   }
 
@@ -42,7 +42,7 @@ const Volunteering = () => {
   };
 
   const { someData, totalPagination } = someDataFun({
-    arr: volunteerOneData[0]?.user_volunteer_activities,
+    arr: volunteerActivity,
     type: activeBtn.type,
     count: 3,
     activePage: activePage,
