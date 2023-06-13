@@ -45,7 +45,7 @@ export default function Volunteer({ activeBarItem }) {
     const update = [];
     const create = [];
     volunteerProfile.forEach((vol) => {
-      if (typeof vol.id === "string") create.push(vol);
+      if (typeof vol.id === "number") create.push(vol);
       else update.push(vol);
     });
 
@@ -61,6 +61,7 @@ export default function Volunteer({ activeBarItem }) {
         );
       });
     }
+
     if (create.length) {
       create.forEach(({ title, description, images }) => {
         dispatch(
