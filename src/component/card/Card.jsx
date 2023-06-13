@@ -18,7 +18,6 @@ const Card = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-
   return (
     <div
       className="single-card"
@@ -106,7 +105,7 @@ const Card = (props) => {
           ) : props.pathUrl === "events" ? (
             <span>{props.created_at.slice(0, 10)}</span>
           ) : (
-            <span>{props.data}</span> 
+            <span>{props.data}</span>
           )}
         </div>
         <div className="news-views">

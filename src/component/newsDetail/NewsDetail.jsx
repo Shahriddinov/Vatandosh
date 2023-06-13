@@ -12,7 +12,6 @@ import { PORTAL_IMAGE_URL } from "../../services/api/utils";
 import SiteLatestNews from "../siteLatestNews/SiteLatestNews";
 
 const SiteNewsDetail = ({ latestNews, detailData, type }) => {
-  console.log(type);
   return (
     <div className="news-detail">
       <div className="container">

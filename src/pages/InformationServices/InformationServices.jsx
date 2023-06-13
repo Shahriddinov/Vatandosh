@@ -78,7 +78,7 @@ const InformationServices = () => {
     return <Spinner position="full" />;
   }
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div className="news-page ">
@@ -87,12 +87,24 @@ const InformationServices = () => {
         <InformationServicesHero pagePath={pagePath} />
         <div className="main-content">
           <div className="main-content-slider">
-            <InformationServicesSlider data={data} />
+            {pageName === "news" ? (
+              <InformationServicesSlider pageName={pageName} data={data.news} />
+            ) : pageName === "events" ? (
+              <InformationServicesSlider
+                pageName={pageName}
+                data={data.events}
+              />
+            ) : (
+              <InformationServicesSlider
+                pageName={pageName}
+                data={paginationData["0"].data}
+              />
+            )}
           </div>
           <div className="main-content-right">
             <InformationServicesComponent pathPages={pathPages} />
             <LatestNews />
-            <PopularTags />
+            {/* <PopularTags /> */}
           </div>
           <div className="main-content-cards">
             {pageName === "news"
