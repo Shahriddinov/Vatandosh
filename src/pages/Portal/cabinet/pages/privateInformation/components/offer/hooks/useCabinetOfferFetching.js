@@ -8,6 +8,7 @@ const initialState = {
   additional_information: "",
   image: "",
 };
+
 export const useCabinetOfferFetching = () => {
   const [data, setData] = useState(initialState);
   const lan = useSelector((state) => state.language.language);
@@ -30,8 +31,16 @@ export const useCabinetOfferFetching = () => {
 
   useEffect(() => {
     if (expertSuggestionsData.length > 0) {
+      console.log(expertSuggestionsData);
+      setData({
+        suggestions: expertSuggestionsData[0].suggestions,
+        additional_information: expertSuggestionsData[0].additional_information,
+        image: [expertSuggestionsData[0].image],
+      });
+    } else {
+      setData(initialState);
     }
   }, [expertSuggestionsData]);
 
-  return { data, setData, loading, error };
+  return { data, setData, loading, error,expertSuggestionsData };
 };
