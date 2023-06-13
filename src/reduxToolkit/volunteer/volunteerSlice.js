@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import {
-  getVolunteerAll,
-  getVolunteerByCountry,
-  getVolunteerByCity,
   getVolunteerOne,
   volunteerCreate,
   volunteerUpdate,
@@ -16,18 +13,25 @@ import {
 const initialState = {
   volunteerLoading: true,
   volunteerData: [],
+
   volunteerCityLoading: true,
   volunteerCity: [],
+
   volunteerOneLoading: true,
   volunteerOneData: [],
+
   deleteLoading: true,
+
   volunteerCreateLoading: true,
   volunteerCreateData: [],
+
   volunteerUpdateLoading: true,
   volunteerUpdateData: [],
+
   volunteerActivity: [],
   volunteerActivityLoading: true,
   volunteerActivityError: null,
+
   status: "idle",
   error: null,
 };
@@ -106,6 +110,7 @@ const volunteerSlice = createSlice({
       .addCase(volunteerCreate.fulfilled, (state, action) => {
         state.volunteerCreateLoading = false;
         state.volunteerCreateData = action.payload;
+        console.log(action.payload);
         state.status = "succeeded";
       })
       .addCase(volunteerCreate.rejected, (state, action) => {
