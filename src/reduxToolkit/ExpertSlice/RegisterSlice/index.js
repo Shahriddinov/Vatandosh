@@ -3,12 +3,15 @@ import {
   createExpertEmployment,
   deleteExpertEducation,
   deleteExpertEmployment,
+  deleteExpertScientific,
   getExpertEducation,
   getExpertEmployment,
   getExpertRegister,
   getExpertRegisterMenu,
+  getExpertScientific,
   getExpertSpecialization,
   postExpertEducation,
+  postExpertScientific,
   updateExpertEducation,
 } from "./extraReducer";
 
@@ -42,6 +45,16 @@ const initialState = {
   educationCreateStatus: null,
 
   educationUpdateStatus: null,
+
+  scientificData: [],
+  scientificDataLoading: true,
+  scientificDataError: null,
+
+  scientificDataCreateAndUpdateStatus: null,
+  scientificDataCreateAndUpdateError: null,
+
+  scientificDeleteStatus: null,
+  scientificDeleteLoading: true,
 };
 
 const expertRegisterSlice = createSlice({
@@ -195,6 +208,48 @@ const expertRegisterSlice = createSlice({
       })
       .addCase(postExpertEducation.rejected, (state, action) => {
         state.educationCreateStatus = "error";
+      });
+
+    builder
+      .addCase(getExpertScientific.pending, (state) => {
+        state.scientificDataLoading = true;
+        state.scientificDataError = null;
+        state.scientificDataCreateAndUpdateStatus = null;
+      })
+      .addCase(getExpertScientific.fulfilled, (state, { payload }) => {
+        state.scientificDataLoading = false;
+        state.scientificData = payload;
+      })
+      .addCase(getExpertScientific.rejected, (state, { error }) => {
+        state.scientificDataLoading = false;
+        state.scientificDataError = error.message;
+      });
+
+    builder
+      .addCase(postExpertScientific.pending, (state) => {
+        state.scientificDataCreateAndUpdateStatus = null;
+        state.scientificDeleteStatus = null;
+        state.scientificDataError = null;
+      })
+      .addCase(postExpertScientific.fulfilled, (state, { payload }) => {
+        state.scientificDataCreateAndUpdateStatus = "success";
+      })
+      .addCase(postExpertScientific.rejected, (state, { error }) => {
+        state.scientificDataCreateAndUpdateStatus = "error";
+        state.scientificDataCreateAndUpdateError = error.message;
+      });
+
+    builder
+      .addCase(deleteExpertScientific.pending, (state) => {
+        state.scientificDeleteLoading = true;
+        state.scientificDeleteStatus = null;
+        state.scientificDataCreateAndUpdateStatus = null;
+      })
+      .addCase(deleteExpertScientific.fulfilled, (state, { payload }) => {
+        state.scientificDeleteStatus = "success";
+      })
+      .addCase(deleteExpertScientific.rejected, (state, { error }) => {
+        state.scientificDeleteStatus = "error";
       });
   },
 });
