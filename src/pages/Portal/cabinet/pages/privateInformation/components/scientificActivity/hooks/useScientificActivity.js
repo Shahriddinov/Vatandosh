@@ -56,24 +56,36 @@ export const useScientificActivity = () => {
   }, [dispatch, lan]);
 
   useEffect(() => {
-    if (scientificData.length > 0) {
+    if (scientificData.length) {
+      const {
+        academic_degree,
+        scientific_title,
+        topic_of_scientific_article,
+        article_published_journal_name,
+        scientific_article_created_at,
+        article_url,
+        article_file,
+        main_science_directions,
+      } = scientificData[0];
+
       setData({
-        academic_degree: scientificData[0]?.academic_degree,
-        scientific_title: scientificData[0]?.academic_degree,
-        topic_of_scientific_article:
-          scientificData[0]?.topic_of_scientific_article,
-        article_published_journal_name:
-          scientificData[0]?.article_published_journal_name,
-        scientific_article_created_at:
-          scientificData[0]?.scientific_article_created_at,
-        article_url: scientificData[0]?.article_url,
-        article_file: scientificData[0]?.article_file,
-        main_science_directions: scientificData[0]?.main_science_directions
-          ? JSON.parse(scientificData[0]?.main_science_directions)
+        academic_degree: academic_degree ? academic_degree : "",
+        scientific_title: scientific_title ? scientific_title : "",
+        topic_of_scientific_article: topic_of_scientific_article
+          ? topic_of_scientific_article
+          : "",
+        article_published_journal_name: article_published_journal_name
+          ? article_published_journal_name
+          : "",
+        scientific_article_created_at: scientific_article_created_at
+          ? scientific_article_created_at
+          : "",
+        article_url: article_url ? article_url : "",
+        article_file: article_file ? article_file : "",
+        main_science_directions: main_science_directions
+          ? JSON.parse(main_science_directions)
           : [],
       });
-    } else {
-      setData(initialState);
     }
   }, [scientificData]);
 

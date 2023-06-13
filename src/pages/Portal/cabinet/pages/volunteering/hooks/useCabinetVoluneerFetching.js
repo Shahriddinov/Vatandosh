@@ -1,31 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVolunteerOne } from "../../../../../../reduxToolkit/volunteer/extraReducer";
-import { getItem } from "../../../../../../helpers/persistanceStorage";
+import { getVolunteerActivity } from "../../../../../../reduxToolkit/volunteer/extraReducer";
 
 export const useCabinetVolunteerFetching = () => {
   const lan = useSelector((state) => state.language.language);
 
-  const volunteerOneLoading = useSelector(
-    (state) => state.volunteerSlice.volunteerOneLoading
+  const volunteerActivityLoading = useSelector(
+    (state) => state.volunteerSlice.volunteerActivityLoading
   );
-  const volunteerOneData = useSelector(
-    (state) => state.volunteerSlice.volunteerOneData
+  const volunteerActivity = useSelector(
+    (state) => state.volunteerSlice.volunteerActivity
   );
 
   const error = useSelector((state) => state.volunteerSlice.error);
 
-  const user = getItem("user") ? JSON.parse(getItem("user")) : 1;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVolunteerOne(user?.user_id?.id));
-  }, [lan, dispatch, user?.user_id?.id]);
+    dispatch(getVolunteerActivity());
+  }, [lan, dispatch]);
 
   return {
     error,
-    volunteerOneData,
-    volunteerOneLoading,
+    volunteerActivity,
+    volunteerActivityLoading,
   };
 };
