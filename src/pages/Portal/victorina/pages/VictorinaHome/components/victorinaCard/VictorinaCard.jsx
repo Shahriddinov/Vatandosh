@@ -30,12 +30,10 @@ const VictorinaCard = ({ victorina, url }) => {
     };
   }, [victorina?.finished_at]);
 
-  //   console.log(victorina);
-
   return (
     <div key={victorina.id} className="victorina-item">
       <img
-        src={`${imageUrl}/${victorina?.image}`}
+        src={`${imageUrl}/${JSON?.parse(victorina?.image)[0]}`}
         alt=""
         className="victorina-item-img"
       />
@@ -51,7 +49,10 @@ const VictorinaCard = ({ victorina, url }) => {
             <p>{victorina.count}</p>
           </div>
         </div>
-        <p dangerouslySetInnerHTML={{ __html: victorina.description }} />
+        <p
+          className="victorina-item-texts"
+          dangerouslySetInnerHTML={{ __html: victorina.description }}
+        />
         {victorina.status === 1 ? (
           <div className="victorina-item__list">
             <span className="victorina-item__item">
@@ -76,8 +77,7 @@ const VictorinaCard = ({ victorina, url }) => {
           to={`/portal-category/victorina${
             url ? `/${url}` : ""
           }/image-project/${victorina.id}`}
-          className="victorina-item-link"
-        >
+          className="victorina-item-link">
           Batafsil ma'lumot
         </Link>
       </div>

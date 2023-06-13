@@ -19,10 +19,14 @@ const PortalCard = (props) => {
       className="single-card portalCard"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000"
-    >
+      data-aos-duration="1000">
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}/${props?.image}`} alt={props?.title} />
+        <img
+          src={`${PORTAL_IMAGE_URL}/${
+            type === "event" ? JSON.parse(props?.image)[0] : props?.image
+          }`}
+          alt={props?.title}
+        />
       </div>
       <div className="news-information">
         <Link to={`/detail/${category}/${type}/${id}`}>
@@ -48,8 +52,7 @@ const PortalCard = (props) => {
                   <div
                     className="tag-item"
                     onClick={(e) => handleClick(e)}
-                    key={id}
-                  >
+                    key={id}>
                     {tag}
                   </div>
                 );

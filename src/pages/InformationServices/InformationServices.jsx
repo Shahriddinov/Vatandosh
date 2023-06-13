@@ -93,11 +93,30 @@ const InformationServices = () => {
             <PopularTags />
           </div>
           <div className="main-content-cards">
-            {paginationData["0"]?.data?.map((card) => (
-              <div className="main-content-card" key={card.id}>
-                <Card {...card} pathUrl={pageName} />
-              </div>
-            ))}
+            {/* {pageName === "news"
+              ? data?.news.map((card) => (
+                  <div className="main-content-card" key={card.id}>
+                    <Card {...card} pathUrl={pageName} />
+                  </div>
+                ))
+              : ""} */} 
+            {pageName === "news"
+              ? data?.news?.map((card) => (
+                  <div className="main-content-card" key={card.id}>
+                    <Card {...card} pathUrl={pageName} />
+                  </div>
+                ))
+              : pageName === "events"
+              ? data?.events?.data?.map((card) => (
+                  <div className="main-content-card" key={card.id}>
+                    <Card {...card} pathUrl={pageName} />
+                  </div>
+                ))
+              : paginationData["0"]?.data?.map((card) => (
+                  <div className="main-content-card" key={card.id}>
+                    <Card {...card} pathUrl={pageName} />
+                  </div>
+                ))}
           </div>
         </div>
         {paginationCount >= 2 ? (

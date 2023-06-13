@@ -23,7 +23,7 @@ const PublicAssociations = () => {
   const { t } = useTranslation();
   const heroData = {
     title: `${t("citizin_items.item1")}`,
-    description: `${t("aboutPage.section1.ptext1")}`,
+    // description: `${t("aboutPage.section1.ptext1")}`,
     pagePath: `${t("citizin_items.item1")}`,
   };
 
@@ -67,7 +67,6 @@ const PublicAssociations = () => {
         <WhriteHeader />
         <CouncilHero {...heroData} />
       </div>
-
       <Associations data={data} />
     </div>
   );
