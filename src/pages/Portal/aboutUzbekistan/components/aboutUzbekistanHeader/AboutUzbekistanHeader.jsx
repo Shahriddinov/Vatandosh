@@ -60,7 +60,7 @@ const Header = () => {
     <header className="about-uzbekistan-header">
       <div className="header">
         <div className="header_navbar">
-          <Link to="/" className="header_navbar_left">
+          <Link to="/portal" className="header_navbar_left">
             <img src={Logo} alt="logo" />
           </Link>
           <a

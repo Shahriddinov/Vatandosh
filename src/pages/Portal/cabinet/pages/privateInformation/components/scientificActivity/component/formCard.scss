@@ -24,6 +24,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .formCard-cont {
+  &-trash-btn {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
   &-form {
     &-row1 {
       display: grid;

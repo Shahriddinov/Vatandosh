@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteVolunteerActivity,
   getVolunteerActivity,
-  postVolunteerActivity,
   updateVolunteerActivity,
+  volunteerCreate,
 } from "../../../../../../../reduxToolkit/volunteer/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { useNavigate } from "react-router-dom";
@@ -42,12 +42,12 @@ export default function Volunteer({ activeBarItem }) {
   };
   const dispatch = useDispatch();
 
-  const handleSumbit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const update = [];
     const create = [];
     volunteerProfile.forEach((vol) => {
-      if (typeof vol.id === "string") create.push(vol);
+      if (typeof vol.id === "number") create.push(vol);
       else update.push(vol);
     });
 
@@ -63,10 +63,11 @@ export default function Volunteer({ activeBarItem }) {
         );
       });
     }
+
     if (create.length) {
       create.forEach(({ title, description, images }) => {
         dispatch(
-          postVolunteerActivity({
+          volunteerCreate({
             title,
             description,
             images: images.length ? images : null,
@@ -110,7 +111,7 @@ export default function Volunteer({ activeBarItem }) {
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSumbit}
+      onSubmit={handleSubmit}
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">

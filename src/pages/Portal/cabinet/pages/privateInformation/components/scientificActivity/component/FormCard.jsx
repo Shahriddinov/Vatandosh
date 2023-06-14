@@ -1,65 +1,67 @@
+import { useState } from "react";
 import "./formCard.scss";
 
 import penSvg from "../../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import calendarSvg from "../../../../../../../../assets/images/portal/privateInformation/calendar.svg";
 import skrepkaSvg from "../../../../../../../../assets/images/portal/privateInformation/skrepka.svg";
+import trashIcon from "../../../../../../../../assets/images/choose/trashIcon.svg";
 import xBtn from "../../../../../../../../assets/images/choose/xBtn.svg";
-import { useState } from "react";
+// libarary
+import { motion } from "framer-motion";
+import {
+  cabinetScientificDelete,
+  cabinetScientificDeleteArticleLinkHandler,
+  cabinetScientificDeleteHobbyHandler,
+  cabinetScientificHobbyHandler,
+  cabinetScientificInputHandler,
+  cabinetScientificSubmit,
+} from "../extra";
+import { useDispatch } from "react-redux";
 
-const FormCard = () => {
-  const [data, setData] = useState({
-    degree: "",
-    title: "",
-    article: "",
-    journal: "",
-    release: "",
-    articleLink: "",
-    articleFile: "",
-    hobby: "",
-    hobbies: ["matematika"],
-  });
-  const inputHandler = (e) => {
-    const name = e.target.name;
-    const value = name === "articleFile" ? e.target.files[0] : e.target.value;
-    setData((prev) => {
-      return { ...prev, [name]: value };
+const FormCard = ({ scientificData, data, setData }) => {
+  const [hobby, setHobby] = useState("");
+  const dispatch = useDispatch();
+
+  const inputHandler = (e) =>
+    cabinetScientificInputHandler({ e, setData, setHobby });
+
+  const hobbiesHandler = (e) =>
+    cabinetScientificHobbyHandler({
+      e,
+      data,
+      setHobby,
+      setData,
     });
-  };
-  const hobbiesHandler = (e) => {
-    if (e.key === "Enter" && data.hobby !== "") {
-      setData((prev) => {
-        return {
-          ...prev,
-          hobby: "",
-          hobbies: [...prev.hobbies, e.target.value],
-        };
-      });
-    }
-    return;
-  };
 
-  const deleteHobbyHandler = (el) => {
-    setData((prev) => {
-      return {
-        ...prev,
-        hobbies: [...prev.hobbies].filter((each) => each !== el),
-      };
+  const deleteHobbyHandler = (el) =>
+    cabinetScientificDeleteHobbyHandler({ el, setData });
+
+  const deleteArticleLinkHandler = () =>
+    cabinetScientificDeleteArticleLinkHandler({
+      data,
+      setData,
     });
-  };
 
-  const deleteArticleLinkHandler = () => {
-    if (data.articleLink !== "") {
-      setData((prev) => {
-        return { ...prev, articleLink: "" };
-      });
-      return;
-    }
-    return;
-  };
+  const deleteHandler = (id) => cabinetScientificDelete({ id, dispatch });
 
   return (
     <div className="formCard-cont">
-      <form className="formCard-cont-form">
+      <button className="formCard-cont-trash-btn">
+        {" "}
+        <motion.img
+          onClick={() => deleteHandler(scientificData[0]?.id)}
+          whileTap={{ scale: 0.9 }}
+          src={trashIcon}
+          alt="trashIcon"
+        />
+      </button>
+      <form
+        className="formCard-cont-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(cabinetScientificSubmit({ dispatch, data }));
+        }}
+      >
         <div className="formCard-cont-form-row1">
           <div>
             <label htmlFor="degree">
@@ -69,8 +71,10 @@ const FormCard = () => {
               <input
                 type="text"
                 id="degree"
-                name="degree"
+                name="academic_degree"
+                value={data?.academic_degree}
                 onChange={inputHandler}
+                required
               />
               <img src={penSvg} alt="degree" />
             </div>
@@ -84,8 +88,10 @@ const FormCard = () => {
               <input
                 type="text"
                 id="title"
-                name="title"
+                name="scientific_title"
+                value={data?.scientific_title}
                 onChange={inputHandler}
+                required
               />
               <img src={penSvg} alt="title" />
             </div>
@@ -100,8 +106,10 @@ const FormCard = () => {
             <input
               type="text"
               id="article"
-              name="article"
+              name="topic_of_scientific_article"
+              value={data?.topic_of_scientific_article}
               onChange={inputHandler}
+              required
             />
             <img src={penSvg} alt="article" />
           </div>
@@ -116,8 +124,10 @@ const FormCard = () => {
               <input
                 type="text"
                 id="journal"
-                name="journal"
+                name="article_published_journal_name"
+                value={data?.article_published_journal_name}
                 onChange={inputHandler}
+                required
               />
               <img src={penSvg} alt="journal" />
             </div>
@@ -131,8 +141,10 @@ const FormCard = () => {
               <input
                 type="date"
                 id="release"
-                name="release"
+                name="scientific_article_created_at"
+                value={data?.scientific_article_created_at}
                 onChange={inputHandler}
+                required
               />
               <img src={calendarSvg} alt="release" />
             </div>
@@ -146,9 +158,10 @@ const FormCard = () => {
               <input
                 type="text"
                 id="articleLink"
-                name="articleLink"
+                name="article_url"
+                value={data?.article_url}
                 onChange={inputHandler}
-                value={data.articleLink}
+                required
               />
               <img
                 onClick={deleteArticleLinkHandler}
@@ -164,11 +177,16 @@ const FormCard = () => {
               Maqola fayli <span>*</span>
             </label>
             <div>
-              <label htmlFor="articleFile">maqola.doc</label>
+              <label htmlFor="articleFile">
+                {typeof data?.article_file === "object"
+                  ? data?.article_file?.name
+                  : ""}
+              </label>
               <input
                 type="file"
                 id="articleFile"
-                name="articleFile"
+                name="article_file"
+                value={""}
                 onChange={inputHandler}
               />
               <img src={skrepkaSvg} alt="articleFile" />
@@ -185,14 +203,15 @@ const FormCard = () => {
               type="text"
               id="hobby"
               name="hobby"
-              value={data.hobby}
+              value={hobby}
               onKeyDown={hobbiesHandler}
               onChange={inputHandler}
+              required
             />
             <img src={penSvg} alt="hobby" />
           </div>
           <div className="formCard-cont-form-row5">
-            {data.hobbies.map((el, index) => (
+            {data?.main_science_directions?.map((el, index) => (
               <div key={index}>
                 <p>{el}</p>
                 <img

@@ -11,7 +11,7 @@ import PortalLatestNews from "../PortalLatestNews/PortalLatestNews";
 import { PORTAL_IMAGE_URL } from "../../services/api/utils";
 import SiteLatestNews from "../siteLatestNews/SiteLatestNews";
 
-const SiteNewsDetail = ({ latestNews, detailData }) => {
+const SiteNewsDetail = ({ latestNews, detailData, type }) => {
   return (
     <div className="news-detail">
       <div className="container">
@@ -31,7 +31,14 @@ const SiteNewsDetail = ({ latestNews, detailData }) => {
           <div className="news-detail-main">
             <div className="news-detail-main-desc">
               <div className="news-detail-main-desc-img">
-                <img src={`${PORTAL_IMAGE_URL}/${detailData?.image}`} alt="" />
+                <img
+                  src={`${PORTAL_IMAGE_URL}/${
+                    type === "event"
+                      ? JSON.parse(detailData?.image)[0]
+                      : detailData?.image
+                  }`}
+                  alt=""
+                />
               </div>
               <div className="news-detail-main-desc-action">
                 <div className="news-detail-main-desc-action-date-viewers">
@@ -44,14 +51,12 @@ const SiteNewsDetail = ({ latestNews, detailData }) => {
                     <span>{detailData?.view}</span>
                   </div>
                 </div>
-              
               </div>
               <div
                 className="news-detail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: detailData.body,
-                }}
-              ></div>
+                }}></div>
               {/* {data?.images
         ? JSON.parse(data?.images).length >= 1 && (
             <div className="news-detail-main-desc-gallery">

@@ -113,7 +113,9 @@ function VolunterAbout() {
                   {volunteer?.user_profile?.international_address_id?.name}
                 </p>
                 <h3 style={{ color: "#065EA9" }}>
-                  {volunteer?.user_profile?.second_name}
+                  {volunteer?.user_profile?.first_name +
+                    " " +
+                    volunteer?.user_profile?.last_name}
                 </h3>
                 <p style={{ color: "#656B70", fontWeight: 700 }}>
                   Chop etilgan maqolalar soni:{" "}

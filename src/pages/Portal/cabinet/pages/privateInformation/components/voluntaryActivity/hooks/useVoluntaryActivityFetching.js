@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVolunteerActivity } from "../../../../../../../../reduxToolkit/volunteer/extraReducer";
+
 import {
+  getVolunteerActivity,
   deleteVolunteerActivity,
   updateVolunteerActivity,
-  postVolunteerActivity,
+  volunteerCreate,
 } from "../../../../../../../../reduxToolkit/volunteer/extraReducer";
 
 const useVoluntaryActivityFetching = (setData, initialState) => {
@@ -16,25 +17,23 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
 
   const deleteCompHandler = (id) => {
     dispatch(deleteVolunteerActivity(id));
-    dispatch(getVolunteerActivity());
   };
 
-  const updateCompHandler = (payload) => {
+  const submitCompHandler = (payload) => {
     payload.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
         formData.append("id", el.id);
-        formData.append("images", el.imagesBrowser);
+        formData.append("images", [...el.images, `${el.imagesBrowser}`]);
         formData.append("title", el.title);
         formData.append("description", el.description);
-
         dispatch(updateVolunteerActivity(formData));
       } else if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);
         formData.append("description", el.description);
-        formData.append("images", el.imagesBrowser);
-        dispatch(postVolunteerActivity(formData));
+        formData.append("images", [...el.imagesBrowser]);
+        dispatch(volunteerCreate(formData));
       }
     });
   };
@@ -62,7 +61,7 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   }, [volounteerActivityData]);
   return {
     deleteCompHandler,
-    updateCompHandler,
+    submitCompHandler,
   };
 };
 
