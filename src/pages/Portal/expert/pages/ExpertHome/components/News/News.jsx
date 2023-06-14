@@ -18,6 +18,7 @@ function News({ communityNews, url }) {
   });
   const { t } = useTranslation();
 
+  console.log(communityNews);
   return (
     <div className="expertnews">
       <div className="container expertnews-container" ref={ref}>
