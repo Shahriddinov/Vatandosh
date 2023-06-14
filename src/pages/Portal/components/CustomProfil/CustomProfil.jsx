@@ -26,6 +26,7 @@ export default function CustomProfil() {
     expertLoading,
     error,
   } = useSelector((state) => state.expertSlice);
+  const expertEducation = useSelector((state) => state.education);
 
   useEffect(() => {
     if (pathname.includes("expert") || pathname.includes("volunteer")) {
@@ -51,6 +52,8 @@ export default function CustomProfil() {
   expertData.user_employment_info.map((data) => {
     experience += +data.experience;
   });
+
+  console.log(expertData);
 
   return expertData ? (
     <div className="customprofil-wrapper">
@@ -94,8 +97,8 @@ export default function CustomProfil() {
           </AccordionSummary>
           <AccordionDetails>
             <div className="customprofil-list-otm">
-              {expertData.user_education?.length
-                ? expertData.user_education?.map((el) => {
+              {expertEducation?.education?.length > 0
+                ? expertEducation?.education?.map((el) => {
                     if (el?.type === 1)
                       return (
                         <div key={el.id} className="customprofil-list-otm-item">

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 function Council({ councilData, VolunteerCount }) {
   const { t } = useTranslation();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
+
   return (
     <div className="council">
       <div className="container">

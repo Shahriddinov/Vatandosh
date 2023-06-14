@@ -128,6 +128,7 @@ const authSlice = createSlice({
           state.error = action.payload.message;
         } else {
           state.userData = action.payload.profile;
+          console.log(action.payload);
           setItem("token", action.payload.token);
           setItem("user", JSON.stringify(action.payload.profile));
         }
