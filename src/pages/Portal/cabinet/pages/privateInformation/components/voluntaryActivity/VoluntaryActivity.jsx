@@ -17,7 +17,7 @@ const initialState = {
 const VoluntaryActivity = () => {
   const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(true);
-  const { deleteCompHandler, updateCompHandler } = useVoluntaryActivityFetching(
+  const { deleteCompHandler, submitCompHandler } = useVoluntaryActivityFetching(
     setData,
     initialState,
     data
@@ -57,7 +57,7 @@ const VoluntaryActivity = () => {
       <button
         type="button"
         disabled={toggle}
-        onClick={() => updateCompHandler(data)}
+        onClick={() => submitCompHandler(data)}
       >
         Saqlash
       </button>
