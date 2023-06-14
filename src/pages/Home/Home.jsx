@@ -32,10 +32,17 @@ const Home = () => {
 
   const countryNewsError = useSelector((store) => store.mapSlice.error);
 
+  const peacefulData = useSelector((state) => state.peaceful.peacefulData);
   useEffect(() => {
-    dispatch(getPeaceful());
-    dispatch(getSlider());
-    dispatch(getWebinarSlider());
+    if (!peacefulData?.length) {
+      dispatch(getPeaceful());
+    }
+    if (!sliderData?.length) {
+      dispatch(getSlider());
+    }
+    if (!webinarData?.length) {
+      dispatch(getWebinarSlider());
+    }
   }, [dispatch]);
 
   if (countryNewsError) {

@@ -97,19 +97,13 @@ export const NavBarLinks = () => {
           url: "/choices/quiz",
           icon: botIcon,
         },
-        {
-          title: t("choices.publicAss"),
-          url: "/choices/public-associations",
-          icon: paIcon,
-        },
+        // {
+        //   title: t("choices.publicAss"),
+        //   url: "/choices/public-associations",
+        //   icon: paIcon,
+        // },
       ],
     },
-    // {
-    //   title: t("contects"),
-    // },
-    // {
-    //   title: t("faq"),
-    // },
     {
       title: t("information"),
       links: [

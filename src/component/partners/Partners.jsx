@@ -84,7 +84,9 @@ const Partners = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getPartners());
+    if (!partnersData?.length) {
+      dispatch(getPartners());
+    }
     setActiveSlader((prev) => ({
       nav1: sliderRef.current,
       nav2: sliderRef2.current,

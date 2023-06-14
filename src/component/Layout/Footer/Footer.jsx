@@ -23,7 +23,9 @@ const Footer = () => {
   const contactData = useSelector((state) => state.contactSlice.contactData);
 
   useEffect(() => {
-    dispatch(getContact());
+    if (!Object.keys(contactData)?.length) {
+      dispatch(getContact());
+    }
   }, [dispatch]);
 
   return (
