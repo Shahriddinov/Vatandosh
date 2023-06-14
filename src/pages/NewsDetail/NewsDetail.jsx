@@ -26,6 +26,5 @@ export default function NewsDetail() {
   //   return <NotFound />;
   // }
 
-
   return <Detail {...data} />;
 }

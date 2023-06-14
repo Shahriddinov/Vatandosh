@@ -24,9 +24,11 @@ const InformationServices = () => {
     paginationData,
     paginationCount,
     paginationLoading,
-    loading,
-    data,
+    newsLoading,
+    newsData,
     pageName,
+    eventsData,
+    eventsLoading,
     t,
   } = useInformationServicesPagination();
 
@@ -46,39 +48,33 @@ const InformationServices = () => {
       id: 1,
       path: `${t("events")}`,
       icon: eventsIcon,
-      link: "events",
+      link: "/information-service/events",
     },
     {
       id: 2,
       path: `${t("mediateka")}`,
       icon: mediaIcon,
-      link: "mediateka",
+      link: "/information-service/mediateka",
     },
     {
       id: 3,
       path: `${t("infographics")}`,
       icon: graphIcon,
-      link: "infographics",
+      link: "/information-service/infographics",
     },
     {
       id: 4,
       path: `${t("compatriotMagazine")}`,
       icon: coountryManIcon,
-      link: "compatriotMagazine",
+      link: "/portal-category/electronic-journal",
     },
     {
       id: 5,
       path: `${t("news")}`,
       icon: newsIcon,
-      link: "news",
+      link: "/information-service/news",
     },
   ];
-
-  if (paginationLoading || loading) {
-    return <Spinner position="full" />;
-  }
-
-  console.log(data);
 
   return (
     <div className="news-page ">
@@ -87,19 +83,24 @@ const InformationServices = () => {
         <InformationServicesHero pagePath={pagePath} />
         <div className="main-content">
           <div className="main-content-slider">
-            {pageName === "news" ? (
-              <InformationServicesSlider pageName={pageName} data={data.news} />
-            ) : pageName === "events" ? (
+            {pageName === "news" && !newsLoading ? (
               <InformationServicesSlider
                 pageName={pageName}
-                data={data.events}
+                data={newsData?.data}
               />
-            ) : (
+            ) : null}
+            {pageName === "events" && !eventsLoading ? (
               <InformationServicesSlider
                 pageName={pageName}
-                data={paginationData["0"].data}
+                data={eventsData?.data}
               />
-            )}
+            ) : null}
+            {pageName === "infographics" && !paginationLoading ? (
+              <InformationServicesSlider
+                pageName={pageName}
+                data={paginationData[0].data}
+              />
+            ) : null}
           </div>
           <div className="main-content-right">
             <InformationServicesComponent pathPages={pathPages} />
@@ -107,23 +108,27 @@ const InformationServices = () => {
             {/* <PopularTags /> */}
           </div>
           <div className="main-content-cards">
-            {pageName === "news"
-              ? data?.news?.map((card) => (
+            {pageName === "news" && !newsLoading
+              ? newsData?.data?.map((card) => (
                   <div className="main-content-card" key={card.id}>
                     <Card {...card} pathUrl={pageName} />
                   </div>
                 ))
-              : pageName === "events"
-              ? data?.events?.data?.map((card) => (
+              : null}
+            {pageName === "events" && !eventsLoading
+              ? eventsData?.data?.map((card) => (
                   <div className="main-content-card" key={card.id}>
                     <Card {...card} pathUrl={pageName} />
                   </div>
                 ))
-              : paginationData["0"]?.data?.map((card) => (
+              : null}
+            {pageName === "infographics" && !paginationLoading
+              ? paginationData[0]?.data?.map((card) => (
                   <div className="main-content-card" key={card.id}>
                     <Card {...card} pathUrl={pageName} />
                   </div>
-                ))}
+                ))
+              : null}
           </div>
         </div>
         {paginationCount >= 2 ? (
