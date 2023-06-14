@@ -15,6 +15,9 @@ function WebinarAbout() {
   const meetingPageLoading = useSelector(
     (store) => store.meetingSlice.pageLoading
   );
+  const meetingsPageDataError = useSelector(
+    (store) => store.meetingSlice.meetingsPageDataError
+  );
 
   const dispatch = useDispatch();
 
@@ -40,10 +43,10 @@ function WebinarAbout() {
     ],
   };
 
-  console.log(aboutData);
-
   if (meetingPageLoading) {
     return <Spinner />;
+  } else if (meetingsPageDataError) {
+    return <p>{meetingsPageDataError}</p>;
   }
   return (
     <div className="about">

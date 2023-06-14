@@ -96,7 +96,7 @@ function HeaderTime({ quizData }) {
               <div
                 className={`hero__slider-item`}
                 style={{
-                  backgroundImage: `url(${imageUrl}/${slider?.image})`,
+                  backgroundImage: `url(${imageUrl}/${JSON?.parse(slider?.image)[0]})`,
                 }}
               ></div>
               <div className="hero__slider-left-bottom">

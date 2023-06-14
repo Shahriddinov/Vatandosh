@@ -6,8 +6,12 @@ import { TbPointFilled } from "react-icons/tb";
 import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import { useSelector } from "react-redux";
 
+import { getDate } from "../../../config/constants";
+import { useLocation } from "react-router-dom";
+
 export const InformationServicesSlider = ({ data }) => {
   const [img, setImg] = useState(0);
+  const { pathname } = useLocation();
 
   const lan = useSelector((state) => state.language.language);
 
@@ -32,6 +36,8 @@ export const InformationServicesSlider = ({ data }) => {
     return () => clearInterval(slideInterval);
   }, [img]);
 
+  const imageType = pathname.split("/")[2] === "community-association";
+
   return (
     <div className="main-hero">
       {data?.map((card, i) => (
@@ -40,7 +46,9 @@ export const InformationServicesSlider = ({ data }) => {
             className={`main-hero-slider ${i === img ? "active" : ""}`}
             key={card.id}
             style={{
-              backgroundImage: `url(${PORTAL_IMAGE_URL}/${card?.image})`,
+              backgroundImage: `url(${PORTAL_IMAGE_URL}/${
+                imageType ? JSON.parse(card?.image)[0] : card?.image
+              })`,
               backgroundPosition: "center center",
             }}
           />
@@ -56,7 +64,20 @@ export const InformationServicesSlider = ({ data }) => {
                 <span>
                   <BsFillCalendarMinusFill />
                 </span>
-                <p>{card.data}</p>
+                <p>
+                  <span>
+                    {getDate(card.created_at).getDay().length > 2
+                      ? getDate(card.created_at).getDay()
+                      : `0${getDate(card.created_at).getDay()}`}
+                  </span>
+                  .
+                  <span>
+                    {getDate(card.created_at).getMonth().length > 2
+                      ? getDate(card.created_at).getMonth()
+                      : `0${getDate(card.created_at).getMonth()}`}
+                  </span>
+                  .<span>{getDate(card.created_at).getFullYear()}</span>
+                </p>
               </div>
               <div className="main-hero-slider-bottom-calendarRight">
                 <button aria-label="prev" onClick={handleLeft}>

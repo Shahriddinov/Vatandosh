@@ -20,6 +20,8 @@ const CommunityCard = (props) => {
     : ["Italiya", "Yosh oila", "Kun fotosi", "Yosh oila"];
   const text = props?.content?.replace(/<[^>]+>/g, "");
 
+  const image = props?.image ? JSON.parse(props?.image) : "";
+
   return (
     <div
       className="single-card"
@@ -28,7 +30,7 @@ const CommunityCard = (props) => {
       data-aos-duration="1000"
     >
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}/${props?.image}`} alt={props?.title} />
+        <img src={`${PORTAL_IMAGE_URL}/${image[0]}`} alt={props?.title} />
       </div>
       <div className="news-information">
         <Link to={`/${props?.pathUrl}/${props?.id}`}>

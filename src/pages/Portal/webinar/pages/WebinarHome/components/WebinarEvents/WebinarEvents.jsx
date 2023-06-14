@@ -76,6 +76,7 @@ function WebinarEvents() {
     return <p>Error</p>;
   }
 
+  console.log(meetingsData);
   return (
     <div className="webinar">
       <div className="container">

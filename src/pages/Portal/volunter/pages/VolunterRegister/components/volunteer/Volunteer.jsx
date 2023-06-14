@@ -26,6 +26,8 @@ export default function Volunteer({ activeBarItem }) {
       images: [],
     },
   ]);
+
+  console.log(volunteerProfile);
   const [checked, setChecked] = useState(false);
 
   const handleChange = (obj) => {

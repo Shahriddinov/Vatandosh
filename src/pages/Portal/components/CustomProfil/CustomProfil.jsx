@@ -23,15 +23,9 @@ export default function CustomProfil() {
   const dispatch = useDispatch();
   const {
     expert: expertData,
-    loading,
+    expertLoading,
     error,
   } = useSelector((state) => state.expertSlice);
-  const { education, educationLoading } = useSelector(
-    (state) => state.education
-  );
-  const { employment, employmentLoading } = useSelector(
-    (state) => state.employment
-  );
 
   useEffect(() => {
     if (pathname.includes("expert") || pathname.includes("volunteer")) {
@@ -48,11 +42,15 @@ export default function CustomProfil() {
 
   if (error) return <NotFound />;
 
-  if (loading) {
+  if (expertLoading) {
     return <Spinner position="full" />;
   }
 
-  console.log(employment);
+  let experience = 0;
+
+  expertData.user_employment_info.map((data) => {
+    experience += +data.experience;
+  });
 
   return expertData ? (
     <div className="customprofil-wrapper">
@@ -72,7 +70,7 @@ export default function CustomProfil() {
           {pathname.includes("expert") ? (
             <div className="customprofil-detail-desc-workexp">
               <span>{t("expert.workexp")}</span>
-              <span>{expertData?.user_profile?.work_experience}</span>
+              <span>{experience} yil</span>
             </div>
           ) : (
             ""
@@ -213,7 +211,7 @@ export default function CustomProfil() {
               <div className="customprofil-list-scientific-tags">
                 <span>{t("expert.degreelist")}</span>
                 <div className="customprofil-list-scientific-tags-list">
-                  {JSON.parse(expertData?.main_science_directions).length
+                  {JSON.parse(expertData?.main_science_directions).length > 0
                     ? JSON.parse(expertData?.main_science_directions).map(
                         (el, index) => <span key={index}>{el}</span>
                       )
@@ -245,9 +243,7 @@ export default function CustomProfil() {
                     <span>{t("expert.offer")}</span>
                     <p>{expertData?.suggestions}</p>
                     <button className="customprofil-list-offer-info-desc-btn">
-                      <Link
-                        to={"/portal-category/expert/offers/" + expertData?.id}
-                      >
+                      <Link to={"/portal-category/expert/offers/" + id}>
                         {t("expert.detail")}
                       </Link>
                     </button>

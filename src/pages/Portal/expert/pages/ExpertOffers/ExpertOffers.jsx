@@ -22,19 +22,13 @@ export default function ExpertOffers() {
     { title: t("expert.offers"), url: "/portal-category/expert/offers" },
   ];
 
-  const { expertData, loading } = useSelector((state) => state.expertSlice);
   const getSuggestion = useSelector(
     (state) => state.menuSuggestionSlice.menuSuggestionData
   );
-
+  const loading = useSelector((state) => state.menuSuggestionSlice.loading);
 
   useEffect(() => {
-    dispatch(getExperts());
     dispatch(getSuggestionMenuData(page));
-  }, [page, dispatch]);
-
-  useEffect(() => {
-    dispatch(getExperts(page));
   }, [page, dispatch]);
 
   return (
@@ -76,7 +70,8 @@ export default function ExpertOffers() {
               <button
                 onClick={() => {
                   SetPage((prev) => ++prev);
-                }}>
+                }}
+              >
                 <BsArrowDownCircleFill />
                 <span>{t("expert.alloffers")}</span>
               </button>

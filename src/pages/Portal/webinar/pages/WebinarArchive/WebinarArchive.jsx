@@ -34,7 +34,7 @@ function WebinarArchive() {
   const meetingsloading = useSelector(
     (store) => store.meetingSlice.meetingsloading
   );
-  const meetingError = useSelector((store) => store.meetingSlice.error);
+  const meetingError = useSelector((store) => store.meetingSlice.meetingsError);
 
   const dispatch = useDispatch();
 
@@ -45,9 +45,8 @@ function WebinarArchive() {
   if (meetingsloading) {
     return <Spinner />;
   } else if (meetingError) {
-    return <p>Error</p>;
+    return <p>{meetingError}</p>;
   }
-
 
   return (
     <div className="webinar">
@@ -60,14 +59,16 @@ function WebinarArchive() {
         <div className="webinar-lists">
           <button
             onClick={() => setEventType("webinar")}
-            className={eventType == "webinar" ? "webinar-top" : "webinar-tops"}>
+            className={eventType == "webinar" ? "webinar-top" : "webinar-tops"}
+          >
             {t("webinar.webinars")}
           </button>
           <button
             onClick={() => setEventType("conference")}
             className={
               eventType == "conference" ? "webinar-top" : "webinar-tops"
-            }>
+            }
+          >
             {t("webinar.conferences")}
           </button>
         </div>
@@ -89,7 +90,8 @@ function WebinarArchive() {
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
-                  className="webinar-more">
+                  className="webinar-more"
+                >
                   {t("more")}
                 </Link>
               </div>
@@ -101,7 +103,8 @@ function WebinarArchive() {
             onClick={() => {
               setPage(page + 1);
               dispatch(getMeetingAll({ page: page + 1 }));
-            }}>
+            }}
+          >
             <img src={ArrowDown} alt="" />
             {t("projects_page.see-more")}
           </button>

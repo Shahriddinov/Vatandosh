@@ -3,8 +3,9 @@ import { getLocation } from "../../../../../../../../reduxToolkit/portalSlices/c
 import { getExpertEmployment } from "../../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
-const initialData = {
+export const initialJobData = {
   company: "",
   position: "",
   location_id: "",
@@ -16,21 +17,25 @@ const initialData = {
   id: Date.now(),
 };
 
-const locationDataChange = createSelector(
-  (store) => store.community.locationGet,
-  (location) => {
-    return location.map((el) => ({
-      ...el,
-      label: el.name ? el.name : "Uzbekistan",
-    }));
-  }
-);
+const options = {
+  position: "top-right",
+  autoClose: 1500,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+};
+
 export const useJobFetching = () => {
-  const [data, setData] = useState([initialData]);
-  const locationData = useSelector(locationDataChange);
-  const { employment, employmentLoading } = useSelector(
-    (state) => state.expertRegisterSlice
-  );
+  const [data, setData] = useState([initialJobData]);
+  const {
+    employment,
+    employmentLoading,
+    employmentCreateSuccess,
+    employmentDeleteStatus,
+  } = useSelector((state) => state.expertRegisterSlice);
 
   const dispatch = useDispatch();
 
@@ -41,18 +46,32 @@ export const useJobFetching = () => {
 
   useEffect(() => {
     if (employment.length) {
-      setData(() => []);
-      employment.forEach((el) => {
-        setData((prev) => [...prev, el]);
-      });
+      setData(employment);
+    } else if (employment.length === 0) {
+      setData([initialJobData]);
     }
   }, [employment]);
+
+  useEffect(() => {
+    if (employmentDeleteStatus === "success") {
+      toast.success("Delete successfully!", options);
+      setTimeout(() => dispatch(getExpertEmployment()), 1500);
+    } else if (employmentCreateSuccess === "success") {
+      toast.success("sending successfully!", options);
+      setTimeout(() => dispatch(getExpertEmployment()), 1500);
+    } else if (
+      employmentCreateSuccess === "error" ||
+      employmentDeleteStatus === "error"
+    ) {
+      toast.error("error sending !", options);
+    }
+  }, [employmentCreateSuccess, employmentDeleteStatus, dispatch]);
 
   return {
     data,
     setData,
-    locationData,
     employment,
     employmentLoading,
+    dispatch,
   };
 };
