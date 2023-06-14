@@ -6,6 +6,7 @@ import {
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
+import { getSuggestions } from "../../../../../../reduxToolkit/ExpertSlice/Suggestions/extraReducer";
 
 export const useExportOfferDetail = () => {
   const { pathname } = useLocation();
@@ -57,10 +58,16 @@ export const useExportOfferDetail = () => {
   const expertLoading = useSelector((state) => state.expertSlice.expertLoading);
   const error = useSelector((state) => state.expertSlice.error);
 
+  const expertSuggestionsData = useSelector(
+    (state) => state.suggestionSlice.expertSuggestionsData
+  );
+  const loading = useSelector((state) => state.suggestionSlice.loading);
+
   useEffect(() => {
     if (pathname.includes("expert")) {
       dispatch(getExpert(id));
       dispatch(getExpertCount());
+      dispatch(getSuggestions());
     }
   }, [dispatch, pathname, id, lan]);
 
@@ -68,6 +75,8 @@ export const useExportOfferDetail = () => {
     expertData,
     expertLoading,
     error,
+    expertSuggestionsData,
+    loading,
     expertCountLoading,
     expertCount,
   };

@@ -15,7 +15,7 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
   const [formData, setFormData] = useState({
     suggestions: "",
     additional_information: "",
-    image: null,
+    images: [],
     type: pathname.includes("expert") ? 1 : 2,
   });
 
@@ -23,17 +23,17 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
     setChecked(event.target.checked);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.image) return alert(t("expert.offerforimg"));
+    if (!formData.images[0]) return alert(t("expert.offerforimg"));
     setFormData((args) => ({
       ...args,
-      suggestions: formData.suggestions.trim(),
-      additional_information: formData.additional_information.trim(),
+      suggestions: formData.suggestions,
+      additional_information: formData.additional_information,
     }));
 
-    if (formData.suggestions.trim() && formData.suggestions.trim()) {
-      const res = await dispatch(postSuggestions(formData));
+    if (formData.suggestions && formData.suggestions) {
+      const res = dispatch(postSuggestions(formData));
       if (!res.error) {
         setactiveBarItem(6);
       }
@@ -64,14 +64,14 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
               onChange={(e) =>
                 setFormData((args) => ({
                   ...args,
-                  image: e.target.files[0],
+                  images: [e.target.files[0]],
                 }))
               }
             />
             <BsImage />
             <p>
-              {formData.image?.name
-                ? formData.image?.name
+              {formData.images?.length
+                ? formData.images[0]?.name
                 : t("expert.offerforimg")}
             </p>
           </label>

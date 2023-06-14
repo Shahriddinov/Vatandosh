@@ -46,10 +46,12 @@ export default function Volunteer({ activeBarItem }) {
     e.preventDefault();
     const update = [];
     const create = [];
+    const oldActivityId = volunteerActivity.map((el) => el.id);
     volunteerProfile.forEach((vol) => {
-      if (typeof vol.id === "number") create.push(vol);
-      else update.push(vol);
+      if (oldActivityId.includes(vol.id)) update.push(vol);
+      else create.push(vol);
     });
+    console.log(create, update);
 
     if (update.length) {
       update.forEach(({ id, title, description, images }) => {
