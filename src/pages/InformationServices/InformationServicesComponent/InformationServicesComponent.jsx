@@ -15,11 +15,11 @@ const InformationServicesComponent = ({ pathPages }) => {
       </h2>
       <ul className="informationServicesComponent-list">
         {pathPages
-          .filter((link) => link.link !== pageName)
+          .filter((link) => link.link.split("/")[2] !== pageName)
           .map((link) => (
             <li key={link.id}>
               <img src={link.icon} alt="" />
-              <Link to={`/information-service/${link.link}`}>{link.path}</Link>
+              <Link to={`${link.link}`}>{link.path}</Link>
             </li>
           ))}
       </ul>

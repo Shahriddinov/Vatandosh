@@ -30,9 +30,9 @@ const News = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(portalNews());
+    dispatch(portalNews({ paginate: 6, page: 1 }));
     dispatch(getProjectsMenu());
-    dispatch(portalEvents());
+    dispatch(portalEvents({ per_page: 6, page: 1 }));
   }, [dispatch, lan]);
 
   if (newsError || eventsError) {
@@ -73,7 +73,7 @@ const News = () => {
         <div className="news__body">
           <div className="latest-news">
             <div className={`news-cards ${activeCard ? "active-card" : ""}`}>
-              {news?.slice(0, 6).map((news) => (
+              {news?.data?.slice(0, 6).map((news) => (
                 <PortalCard
                   key={news.id}
                   {...news}

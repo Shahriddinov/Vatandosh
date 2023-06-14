@@ -8,7 +8,10 @@ import {
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { portalNews } from "../../../reduxToolkit/portalSlices/news-events/extraReducer";
+import {
+  portalEvents,
+  portalNews,
+} from "../../../reduxToolkit/portalSlices/news-events/extraReducer";
 
 export const useInformationServicesPagination = () => {
   const [page, setPage] = useState(1);
@@ -22,14 +25,31 @@ export const useInformationServicesPagination = () => {
   const paginationLoading = useSelector(
     (state) => state.informationServicesSlice.paginationLoading
   );
-  const loading = useSelector((state) => state.portalAllNewsSlice.newsLoading);
-  const data = useSelector((state) => state.portalAllNewsSlice);
+  const newsLoading = useSelector(
+    (state) => state.portalAllNewsSlice.newsLoading
+  );
+  const newsData = useSelector((state) => state.portalAllNewsSlice.news);
 
+  const eventsData = useSelector((state) => state.portalAllNewsSlice.events);
+  const eventsLoading = useSelector(
+    (state) => state.portalAllNewsSlice.eventsLoading
+  );
 
-  const paginationCount = Math.ceil(paginationData?.total / 6);
+  const paginationCount =
+    pageName === "infographics"
+      ? Math.ceil(paginationData?.total / 6)
+      : pageName === "events"
+      ? Math.ceil(eventsData?.total / 6)
+      : pageName === "news"
+      ? Math.ceil(newsData?.total / 6)
+      : "";
 
   const paginationFetching = (count) => {
     setPage(count);
+    if (pageName === "news" || pageName === "events") {
+      dispatch(portalNews({ paginate: 6, page: count }));
+      dispatch(portalEvents({ per_page: 6, page: count }));
+    }
     dispatch(
       getPagination({
         reqUrlName: pageName,
@@ -39,11 +59,17 @@ export const useInformationServicesPagination = () => {
   };
 
   useEffect(() => {
-    dispatch(getPagination({ reqUrlName: pageName, page: 1 }));
-    dispatch(getInf(pageName));
-    dispatch(portalNews());
+    if (pageName !== "news" && pageName !== "events") {
+      dispatch(getPagination({ reqUrlName: pageName, page: 1 }));
+      dispatch(getInf(pageName));
+      dispatch(portalNews({ paginate: 6, page: 1 }));
+    }
+    if (pageName === "news" || pageName === "events") {
+      dispatch(portalNews({ paginate: 6, page: 1 }));
+      dispatch(portalEvents({ per_page: 6, page: 1 }));
+    }
     setPage(1);
-  }, [dispatch, pageName]);
+  }, [pageName]);
 
   return {
     paginationFetching,
@@ -51,9 +77,11 @@ export const useInformationServicesPagination = () => {
     paginationData,
     paginationCount,
     paginationLoading,
-    loading,
-    data,
+    newsLoading,
+    newsData,
     pageName,
+    eventsData,
+    eventsLoading,
     t,
   };
 };

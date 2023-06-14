@@ -36,7 +36,10 @@ export const InformationServicesSlider = ({ data, pageName }) => {
     return () => clearInterval(slideInterval);
   }, [img]);
 
-  const imageType = pathname.split("/")[1] === "portal-category";
+  const imageType =
+    pathname.split("/")[1] === "portal-category" ||
+    pathname.split("/")[2] === "news" ||
+    pathname.split("/")[2] === "events";
 
   return (
     <div className="main-hero">
@@ -49,9 +52,11 @@ export const InformationServicesSlider = ({ data, pageName }) => {
               backgroundImage: `url(${
                 imageType ? PORTAL_IMAGE_URL : baseServerUrl
               }/${
-                card.image.split("/")[0] === "posts"
-                  ? card?.image
-                  : JSON.parse(card?.image)[0]
+                card?.attachments
+                  ? card?.attachments[0]?.split("/")[0] === "community-events"
+                    ? JSON.parse(card?.image)[0]
+                    : ""
+                  : card?.image
               })`,
               backgroundPosition: "center center",
             }}
