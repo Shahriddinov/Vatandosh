@@ -71,7 +71,9 @@ const Header = () => {
             className="header_navbar_phone"
           >
             <img src={Phone} alt="phone" />
-            <div className="header_navbar_phone_number">+998(55)502-22-99</div>
+            <div className="header_navbar_phone_number">
+              {contactData?.phone}
+            </div>
           </a>
           <a
             href={`mailto: ${contactData?.email}`}
@@ -79,7 +81,7 @@ const Header = () => {
           >
             <img src={Message} alt="message" />
             <div className="header_navbar_phone_number">
-              info@vatandoshlarfondi.uz
+              {contactData?.email}
             </div>
           </a>
           <a href="/flag">

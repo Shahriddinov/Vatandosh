@@ -20,16 +20,17 @@ const StatesFriendshipSociety = () => {
     error,
     associationLoading,
     associationCategoryLoading,
-    eventsData,
+    events,
     eventsLoading,
+    eventsError,
   } = useAssociationFetching();
   const { categoryId } = useParams();
   const { t } = useTranslation();
 
   if (associationLoading || eventsLoading || associationCategoryLoading) {
     return <Spinner position={"full"} />;
-  } else if (error) {
-    return <p>{error}</p>;
+  } else if (error || eventsError) {
+    return <p>{error ? error : eventsError}</p>;
   }
 
   const categoryData = associationCategoryData.find(
@@ -56,7 +57,7 @@ const StatesFriendshipSociety = () => {
           <OfferStatesFriendship {...categoryData} />
           <MiniSlider
             title={`${t("events")}`}
-            data={eventsData}
+            data={events?.data}
             fetchUrl="events"
           />
         </main>

@@ -14,7 +14,6 @@ const OneNewsDetail = () => {
     error,
     type,
   } = useOneNewsDetailFetching();
-  console.log(detailData);
   if (siteNewsDetailLoading || latestNewsLoading) {
     return <Spinner />;
   } else if (type === "event" && detailData.image.split("/")[0] === "posts") {

@@ -6,6 +6,7 @@ import {
   getAssociationsCategory,
 } from "../../../reduxToolkit/associationsSlice/associationsAsyncThunk";
 import { getEvents } from "../../../reduxToolkit/eventsSlice/extraReducer";
+import { portalEvents } from "../../../reduxToolkit/portalSlices/news-events/extraReducer";
 
 export const useAssociationFetching = () => {
   const associationData = useSelector(
@@ -24,14 +25,16 @@ export const useAssociationFetching = () => {
     (store) => store.associationSlice
   );
   const error = useSelector((store) => store.associationSlice.error);
-  const eventsData = useSelector((state) => state.eventsSlice.eventsData);
-  const eventsLoading = useSelector((state) => state.eventsSlice.loading);
+
+  const { events, eventsLoading, eventsError } = useSelector(
+    (state) => state.portalAllNewsSlice
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAssociations());
     dispatch(getAssociationsCategory());
-    dispatch(getEvents());
+    dispatch(portalEvents({ per_page: 15, page: 1 }));
     dispatch(getAssociationsAbout());
   }, [dispatch]);
 
@@ -41,9 +44,10 @@ export const useAssociationFetching = () => {
     error,
     associationLoading,
     associationCategoryLoading,
-    eventsData,
+    events,
     eventsLoading,
     aboutData,
     aboutLoading,
+    eventsError,
   };
 };

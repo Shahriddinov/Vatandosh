@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./maps-home.scss";
 import MapsModal from "../maps-modal/MapsModal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getCountries,
   getCountriesAssociationData,
@@ -11,6 +11,11 @@ import {
 import { useLocation } from "react-router-dom";
 
 const MapsHome = ({ title }) => {
+  const countries = useSelector((state) => state.mapSlice.countries);
+  const countryNews = useSelector((store) => store.mapSlice.countryNews);
+  const countryAssociationData = useSelector(
+    (store) => store.mapSlice.countryAssociationData
+  );
   const [active, setActive] = useState(false);
   const [countryCode, setCountryCode] = useState("");
   const svgRef = useRef(null);
@@ -53,10 +58,16 @@ const MapsHome = ({ title }) => {
       }
     });
 
-    dispatch(getCountries());
-    dispatch(getCountriesAssociationData());
-    dispatch(getCountriesNews());
-  }, [dispatch, data]);
+    if (!countryNews?.length) {
+      dispatch(getCountries());
+    }
+    if (!countryAssociationData?.length) {
+      dispatch(getCountriesAssociationData());
+    }
+    if (!countries?.length) {
+      dispatch(getCountriesNews());
+    }
+  }, [dispatch]);
 
   const changeActive = (val) => {
     if (svgRef.current) {

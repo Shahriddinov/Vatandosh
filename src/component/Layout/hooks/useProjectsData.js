@@ -9,6 +9,7 @@ export const useProjectsData = () => {
   const error = useSelector((store) => store.singleSlice.error);
   const dispatch = useDispatch();
   const pathStatus = pathname.split("/")[1];
+  const data = useSelector((store) => store.singleSlice.projectsData);
 
   useEffect(() => {
     if (
@@ -17,7 +18,9 @@ export const useProjectsData = () => {
       pathStatus !== "expert" &&
       pathStatus !== "portal-category"
     ) {
-      dispatch(getColumnMenu());
+      if (!data?.length) {
+        dispatch(getColumnMenu());
+      }
     }
   }, []);
 
