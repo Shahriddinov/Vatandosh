@@ -13,7 +13,6 @@ import { removeToken } from "../../../../../reduxToolkit/authSlice/authSlice";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 
-import Spinner from "../../../../../component/Spinner/Spinner";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const CabinetHeader = () => {
@@ -22,18 +21,13 @@ const CabinetHeader = () => {
   const { grayScale } = useContext(GrayContext);
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
-  const user = useSelector((state) => state.authSlice.registerData);
-  const loading = useSelector((state) => state.authSlice.passwordLoading);
+  const user = useSelector((state) => state.authSlice.userData);
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
     setActiveLang((el) => !el);
   };
-
-  if (loading) {
-    return <Spinner position="full" />;
-  }
 
   return (
     <div className="cabinet-header">

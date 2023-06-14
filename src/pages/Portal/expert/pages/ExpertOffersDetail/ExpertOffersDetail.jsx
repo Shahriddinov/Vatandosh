@@ -12,8 +12,15 @@ import { useExportOfferDetail } from "./hooks/useExpertOffersDetail";
 
 export default function ExpertOffersDetail() {
   const { t } = useTranslation();
-  const { expertData, expertLoading, error, expertCountLoading, expertCount } =
-    useExportOfferDetail();
+  const {
+    expertData,
+    expertLoading,
+    error,
+    expertSuggestionsData,
+    loading,
+    expertCountLoading,
+    expertCount,
+  } = useExportOfferDetail();
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
@@ -21,7 +28,7 @@ export default function ExpertOffersDetail() {
     { title: t("expert.offer"), url: "" },
   ];
 
-  if (expertLoading || expertCountLoading) {
+  if (expertLoading || expertCountLoading || loading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
@@ -36,7 +43,11 @@ export default function ExpertOffersDetail() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}${expertData?.image}`}
+              src={`${PORTAL_IMAGE_URL}${
+                expertSuggestionsData[0]?.images
+                  ? expertSuggestionsData[0]?.images[0]
+                  : null
+              }`}
               alt="error"
               className="expertofferdetail-pic"
             />
@@ -53,8 +64,8 @@ export default function ExpertOffersDetail() {
               }
               position={expertData?.user_profile?.job_position}
             />
-            <p>{expertData?.suggestions}</p>
-            <p>{expertData?.additional_information}</p>
+            <p>{expertSuggestionsData[0]?.suggestions}</p>
+            <p>{expertSuggestionsData[0]?.additional_information}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">
