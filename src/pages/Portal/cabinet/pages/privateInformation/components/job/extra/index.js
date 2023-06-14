@@ -27,6 +27,7 @@ export const cabinetJobDataSubmit = ({
   console.log(data);
   const oldEmploymentId = employment.map((el) => el.id);
   const createJob = [];
+
   data.forEach((el) => {
     const postItem = {
       company: el.company,
