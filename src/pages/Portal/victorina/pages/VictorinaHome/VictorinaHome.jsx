@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Nav from "../../components/Nav/Nav";
@@ -9,18 +9,20 @@ import ListWinners from "../../components/ListWinners/ListWinners";
 import { useVictorinaFetching } from "../hooks/useVictorinaFetching";
 import VictorinaNews from "./components/News/News";
 import { Spinner } from "../../../../../component";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 
 function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
+  const dispatch = useDispatch();
+  const victorinaNews = useSelector((store) => store.portalNews.news);
 
-  const {
-    communityNews,
-    quizData,
-    pageData,
-    quizDataLoading,
-    pageDataLoading,
-    error,
-  } = useVictorinaFetching();
+  const { quizData, pageData, quizDataLoading, pageDataLoading, error } =
+    useVictorinaFetching();
+
+  useEffect(() => {
+    dispatch(getPortalNews({ type: "victorina", per_page: "10", page: 1 }));
+  }, [dispatch]);
 
   if (quizDataLoading || pageDataLoading) {
     return <Spinner position="full" />;
@@ -38,7 +40,10 @@ function VictorinaHome() {
       <VictorinaCouncil pageData={pageData} />
       <Victorina quizData={quizData.quizzes} />
       <ListWinners quizDataWinner={quizData.participants} />
-      <VictorinaNews communityNews={communityNews} />
+      <VictorinaNews
+        url="/portal-category/victorina"
+        communityNews={victorinaNews.data}
+      />
     </div>
   );
 }
