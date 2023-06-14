@@ -12,6 +12,7 @@ const OneNewsDetail = () => {
     detailData,
     siteNewsDetailLoading,
     error,
+    type,
   } = useOneNewsDetailFetching();
   if (siteNewsDetailLoading || latestNewsLoading) {
     return <Spinner />;
@@ -19,11 +20,14 @@ const OneNewsDetail = () => {
     return <p>{error}</p>;
   }
 
-  console.log(latestNews);
   return (
     <div className="one-news-detail">
       <Header />
-      <SiteNewsDetail latestNews={latestNews} detailData={detailData} />
+      <SiteNewsDetail
+        type={type}
+        latestNews={latestNews}
+        detailData={detailData}
+      />
     </div>
   );
 };

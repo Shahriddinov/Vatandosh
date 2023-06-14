@@ -18,8 +18,6 @@ const Card = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  console.log(props);
-
   return (
     <div
       className="single-card"
@@ -30,7 +28,10 @@ const Card = (props) => {
         {props.pathUrl === "news" ? (
           <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
         ) : props.pathUrl === "events" ? (
-          <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
+          <img
+            src={`${PORTAL_IMAGE_URL}/${JSON.parse(props.image)[0]}`}
+            alt={props.title}
+          />
         ) : (
           <img
             src={`${baseServerUrl}/${props.image}`}
@@ -39,7 +40,14 @@ const Card = (props) => {
         )}
       </div>
       <div className="news-information">
-        <Link to={`/${props.pathUrl}/${props.id}`}>
+        <Link
+          to={
+            props.pathUrl === "news"
+              ? `/detail/all-news/new/${props.id}`
+              : props.pathUrl === "events"
+              ? `/detail/community/event/${props.id}`
+              : `/${props.pathUrl}/${props.id}`
+          }>
           {props.pathUrl === "news" ? (
             <h5 className="news__card-title">{props.title}</h5>
           ) : props.pathUrl === "events" ? (
@@ -58,7 +66,7 @@ const Card = (props) => {
             <p
               className="news__card-text"
               dangerouslySetInnerHTML={{
-                __html: props.body,
+                __html: props.content,
               }}
             />
           ) : (

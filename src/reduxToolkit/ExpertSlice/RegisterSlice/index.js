@@ -13,6 +13,7 @@ import {
   postExpertEducation,
   postExpertScientific,
   updateExpertEducation,
+  updateExpertEmployment,
 } from "./extraReducer";
 
 const initialState = {
@@ -37,6 +38,7 @@ const initialState = {
   employmentError: null,
 
   employmentCreateSuccess: null,
+  employmentUpdateSuccess: null,
   employmentCreateData: null,
   employmentCreateLoading: null,
 
@@ -147,6 +149,7 @@ const expertRegisterSlice = createSlice({
         state.employmentCreateLoading = true;
         state.employmentCreateSuccess = null;
         state.employmentDeleteStatus = null;
+        state.employmentUpdateSuccess = null;
       })
       .addCase(createExpertEmployment.fulfilled, (state, action) => {
         state.employmentCreateLoading = false;
@@ -163,6 +166,7 @@ const expertRegisterSlice = createSlice({
       .addCase(deleteExpertEmployment.pending, (state) => {
         state.employmentDeleteStatus = null;
         state.employmentCreateSuccess = null;
+        state.employmentUpdateSuccess = null;
       })
       .addCase(deleteExpertEmployment.fulfilled, (state, action) => {
         state.employmentDeleteStatus = "success";
@@ -250,6 +254,19 @@ const expertRegisterSlice = createSlice({
       })
       .addCase(deleteExpertScientific.rejected, (state, { error }) => {
         state.scientificDeleteStatus = "error";
+      });
+
+    builder
+      .addCase(updateExpertEmployment.pending, (state) => {
+        state.employmentUpdateSuccess = null;
+        state.employmentCreateSuccess = null;
+        state.employmentDeleteStatus = null;
+      })
+      .addCase(updateExpertEmployment.fulfilled, (state, { payload }) => {
+        state.employmentUpdateSuccess = "success";
+      })
+      .addCase(updateExpertEmployment.rejected, (state, { error }) => {
+        state.employmentUpdateSuccess = "error";
       });
   },
 });

@@ -15,10 +15,14 @@ const SiteLatestNews = ({ latestNews }) => {
             <li key={el.id} className="latest_news-list-item">
               <Link
                 to={`/detail/${category}/${type}/${el.id}`}
-                className="latest_news-list-item-link"
-              >
+                className="latest_news-list-item-link">
                 <div className="latest_news-list-item-img">
-                  <img src={`${PORTAL_IMAGE_URL}/${el.image}`} alt="" />
+                  <img
+                    src={`${PORTAL_IMAGE_URL}/${
+                      type === "event" ? JSON.parse(el.image)[0] : el.image
+                    }`}
+                    alt=""
+                  />
                 </div>
                 <div className="latest_news-list-item-desc">
                   <p className="latest_news-list-item-desc-text">{el.title}</p>

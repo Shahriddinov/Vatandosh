@@ -21,7 +21,6 @@ const IntroSection = ({ data }) => {
     return null;
   }
 
-  console.log(paginationData[0].data);
 
   return (
     <div className="single-intro-section">
