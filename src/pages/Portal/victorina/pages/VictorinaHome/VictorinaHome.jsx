@@ -16,7 +16,7 @@ function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
   const dispatch = useDispatch();
   const victorinaNews = useSelector((store) => store.portalNews.news);
-
+  const communityNewsLoading = useSelector((store) => store.portalNews.loading);
   const { quizData, pageData, quizDataLoading, pageDataLoading, error } =
     useVictorinaFetching();
 
@@ -24,7 +24,7 @@ function VictorinaHome() {
     dispatch(getPortalNews({ type: "victorina", per_page: "10", page: 1 }));
   }, [dispatch]);
 
-  if (quizDataLoading || pageDataLoading) {
+  if (quizDataLoading || pageDataLoading || communityNewsLoading) {
     return <Spinner position="full" />;
   } else if (error) {
     return <p>{error}</p>;
