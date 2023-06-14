@@ -37,34 +37,36 @@ export default function ExpertOffers() {
       <div className="container">
         <ExpertTitle title={t("expert.offers")} url={url} />
         <div className="expertoffer-list">
-          {getSuggestion?.data?.length
-            ? getSuggestion?.data?.map((el) => (
-                <div className="expertoffer-list-item" key={el.id}>
-                  <img src={`${PORTAL_IMAGE_URL}/${el?.image}`} alt="error" />
-                  <div className="expertoffer-list-item-desc">
-                    <ExpertProfileInfo
-                      profileImg={`${PORTAL_IMAGE_URL}/${el?.user_profile?.avatar_url}`}
-                      name={el?.user_profile?.last_name}
-                      nameOne={el?.user_profile?.first_name}
-                      nameTwo={el?.user_profile?.second_name}
-                      address={el?.user_profile?.international_address_id.name}
-                      addressOne={
-                        el?.user_profile?.international_location_id.name
-                      }
-                      position={el?.user_profile?.job_position}
-                    />
-                    <p>{el?.suggestions}</p>
-                    <div className="expertoffer-list-item-desc-button">
-                      <button>
-                        <Link to={"/portal-category/expert/offers/" + el?.id}>
-                          {t("expert.detail")}
-                        </Link>
-                      </button>
-                    </div>
+          {getSuggestion?.data?.length > 0 ? (
+            getSuggestion?.data?.map((el) => (
+              <div className="expertoffer-list-item" key={el.id}>
+                <img src={`${PORTAL_IMAGE_URL}/${el?.image}`} alt="error" />
+                <div className="expertoffer-list-item-desc">
+                  <ExpertProfileInfo
+                    profileImg={`${PORTAL_IMAGE_URL}/${el?.user_profile?.avatar_url}`}
+                    name={el?.user_profile?.last_name}
+                    nameOne={el?.user_profile?.first_name}
+                    nameTwo={el?.user_profile?.second_name}
+                    address={el?.user_profile?.international_address_id.name}
+                    addressOne={
+                      el?.user_profile?.international_location_id.name
+                    }
+                    position={el?.user_profile?.job_position}
+                  />
+                  <p>{el?.suggestions}</p>
+                  <div className="expertoffer-list-item-desc-button">
+                    <button>
+                      <Link to={"/portal-category/expert/offers/" + el?.id}>
+                        {t("expert.detail")}
+                      </Link>
+                    </button>
                   </div>
                 </div>
-              ))
-            : null}
+              </div>
+            ))
+          ) : (
+            <p>Tasdiqlangan takliflar mavjud emas.</p>
+          )}
           <div className="expertoffer-list-morebtn">
             {getSuggestion?.total - 12 * page > 0 ? (
               <button

@@ -67,8 +67,6 @@ function VolunterHome() {
     count: volunteers.total,
   };
 
-  console.log(volunteers);
-
   return (
     <>
       <div

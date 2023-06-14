@@ -30,7 +30,6 @@ function VolunterAbout() {
       dispatch(getCountryCities({ location_id: id }));
     } else if (type === "city") {
       dispatch(getVolunteerFilter({ country: data.country, city: id }));
-      console.log(id);
     }
   };
 
