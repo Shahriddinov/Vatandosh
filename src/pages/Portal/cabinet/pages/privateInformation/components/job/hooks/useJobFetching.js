@@ -35,6 +35,7 @@ export const useJobFetching = () => {
     employmentLoading,
     employmentCreateSuccess,
     employmentDeleteStatus,
+    employmentUpdateSuccess,
   } = useSelector((state) => state.expertRegisterSlice);
 
   const dispatch = useDispatch();
@@ -59,13 +60,21 @@ export const useJobFetching = () => {
     } else if (employmentCreateSuccess === "success") {
       toast.success("sending successfully!", options);
       setTimeout(() => dispatch(getExpertEmployment()), 1500);
+    } else if (employmentUpdateSuccess === "success") {
+      toast.success("update successfully!", options);
+      setTimeout(() => dispatch(getExpertEmployment()), 1500);
     } else if (
       employmentCreateSuccess === "error" ||
       employmentDeleteStatus === "error"
     ) {
       toast.error("error sending !", options);
     }
-  }, [employmentCreateSuccess, employmentDeleteStatus, dispatch]);
+  }, [
+    employmentCreateSuccess,
+    employmentDeleteStatus,
+    employmentUpdateSuccess,
+    dispatch,
+  ]);
 
   return {
     data,

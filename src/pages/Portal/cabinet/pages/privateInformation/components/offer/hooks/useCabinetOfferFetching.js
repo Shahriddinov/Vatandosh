@@ -46,7 +46,7 @@ export const useCabinetOfferFetching = () => {
 
   useEffect(() => {
     if (expertSuggestionsData.length) {
-      const { suggestions, additional_information, image } =
+      const { suggestions, additional_information, images } =
         expertSuggestionsData[0];
 
       setData({
@@ -54,7 +54,7 @@ export const useCabinetOfferFetching = () => {
         additional_information: additional_information
           ? additional_information
           : "",
-        images: image ? [image] : [],
+        images: images? [...images] : [],
       });
     }
   }, [expertSuggestionsData]);
