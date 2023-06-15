@@ -24,15 +24,26 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
       if (el.from === "server") {
         const formData = new FormData();
         formData.append("id", el.id);
-        formData.append("images", [...el.images, `${el.imagesBrowser}`]);
+        el.imagesBrowser.forEach((file) => {
+          formData.append("images[]", file);
+        });
         formData.append("title", el.title);
         formData.append("description", el.description);
+        const data = Object.fromEntries(formData);
+        console.log("hello its server");
+        console.log(data);
         dispatch(updateVolunteerActivity(formData));
       } else if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);
         formData.append("description", el.description);
-        formData.append("images", [...el.imagesBrowser]);
+        el.imagesBrowser.forEach((file) => {
+          formData.append("images[]", file);
+        });
+        // formData.append("images[]", [...el.imagesBrowser]);
+        const data = Object.fromEntries(formData);
+        console.log("hello its client");
+        console.log(data);
         dispatch(volunteerCreate(formData));
       }
     });
@@ -40,7 +51,7 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
 
   useEffect(() => {
     dispatch(getVolunteerActivity());
-  }, [dispatch, lan]);
+  }, [dispatch, lan, volounteerActivityData.length]);
 
   useEffect(() => {
     if (volounteerActivityData.length === 0) {

@@ -92,13 +92,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
       <div className="formCard-form-part3">
         {el?.images?.map((each, index) => (
           <div key={index}>
-            <img
-              src={
-                `${PORTAL_IMAGE_URL}/${each}`
-                //  URL.createObjectURL(each)
-              }
-              alt="imgloaded"
-            />
+            <img src={`${PORTAL_IMAGE_URL}/${each}`} alt="imgloaded" />
             <div
               className="formCard-form-part3-deleteIcon"
               onClick={() => deleteImgHandler(el.id, each)}

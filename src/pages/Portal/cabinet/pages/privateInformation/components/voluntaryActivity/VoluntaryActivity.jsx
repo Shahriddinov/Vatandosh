@@ -28,8 +28,6 @@ const VoluntaryActivity = () => {
     });
   };
 
-  console.log(data);
-
   return (
     <div className="VoluntaryActivity">
       {data.map((el, index) => (
