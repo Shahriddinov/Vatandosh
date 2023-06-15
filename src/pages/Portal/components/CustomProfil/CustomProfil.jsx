@@ -172,7 +172,7 @@ export default function CustomProfil() {
                     </div>
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workend")}</span>
-                      <p>{el?.finish_date}</p>
+                      <p>{el?.finish_date ? el?.finish_date : "Present"}</p>
                     </div>
                   </div>
                 ))
