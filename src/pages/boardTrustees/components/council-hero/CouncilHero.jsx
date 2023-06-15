@@ -13,8 +13,7 @@ const CouncilHero = ({ title, description, pagePath }) => {
         <div className="council-hero__inner">
           <nav
             className="council-hero__breadcrumb_nav council-hero__breadcrumb_md"
-            aria-label="breadcrumb"
-          >
+            aria-label="breadcrumb">
             <ul className="council-hero__breadcrumb">
               <li className="council-hero__breadcrumb_item">
                 <Link className="council-hero__breadcrumb_link" to="/">
@@ -25,16 +24,14 @@ const CouncilHero = ({ title, description, pagePath }) => {
 
               <li
                 className="council-hero__breadcrumb_item breadcrumb_item_active"
-                aria-current="page"
-              >
+                aria-current="page">
                 {pagePath}
               </li>
             </ul>
           </nav>
           <nav
             className="council-hero__breadcrumb_nav council-hero__breadcrumb_sm"
-            aria-label="breadcrumb"
-          >
+            aria-label="breadcrumb">
             <ul className="council-hero__breadcrumb">
               <li className="council-hero__breadcrumb_item">
                 <Link className="council-hero__breadcrumb_link" to="/">
@@ -45,8 +42,7 @@ const CouncilHero = ({ title, description, pagePath }) => {
 
               <li
                 className="council-hero__breadcrumb_item breadcrumb_item_active"
-                aria-current="page"
-              >
+                aria-current="page">
                 {pagePath}
               </li>
             </ul>
