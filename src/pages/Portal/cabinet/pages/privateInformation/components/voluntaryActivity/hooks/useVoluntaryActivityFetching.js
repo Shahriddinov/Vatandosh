@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getVolunteerActivity,
   deleteVolunteerActivity,
-  updateVolunteerActivity,
+  updateVolunteerActivity2,
   volunteerCreate,
 } from "../../../../../../../../reduxToolkit/volunteer/extraReducer";
 
@@ -23,17 +23,15 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
     payload.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
-        formData.append("id", el.id);
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
         formData.append("title", el.title);
         formData.append("description", el.description);
-        const data = Object.fromEntries(formData);
-        console.log("hello its server");
-        console.log(data);
-        dispatch(updateVolunteerActivity(formData));
-      } else if (el.from === "client") {
+
+        dispatch(updateVolunteerActivity2(el.id, formData));
+      }
+      if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);
         formData.append("description", el.description);
