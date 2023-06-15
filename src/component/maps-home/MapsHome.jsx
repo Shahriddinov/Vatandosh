@@ -20,24 +20,8 @@ const MapsHome = ({ title }) => {
   const [countryCode, setCountryCode] = useState("");
   const svgRef = useRef(null);
   const zoomValue = useRef(1);
-  const data = [
-    "EN",
-    "UZ",
-    "RU",
-    "BH",
-    "AD",
-    "BB",
-    "BL",
-    "AR",
-    "CA",
-    "MX",
-    "CN",
-    "KZ",
-    "SA",
-    "FR",
-    "CD",
-  ];
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const mapsData =
@@ -53,9 +37,6 @@ const MapsHome = ({ title }) => {
       });
 
       el.classList.add("active");
-      if (data.includes(el.id)) {
-        el.style.fill = "#93C5FD";
-      }
     });
 
     if (!countryNews?.length) {
@@ -68,6 +49,30 @@ const MapsHome = ({ title }) => {
       dispatch(getCountriesNews());
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (countryAssociationData.length) {
+      countryAssociationData?.slice(0, 243).forEach((item) => {
+        if (item.assosiation_categories_count * 1 > 0) {
+          setData((prev) => [...prev, item.code]);
+        }
+      });
+    }
+  }, [countryAssociationData]);
+
+  useEffect(() => {
+    const mapsData =
+      svgRef.current["childNodes"][0]["childNodes"][0]["childNodes"][0][
+        "childNodes"
+      ];
+    if (data.length) {
+      mapsData.forEach((el) => {
+        if (data.includes(el.id)) {
+          el.style.fill = "#93C5FD";
+        }
+      });
+    }
+  }, [data]);
 
   const changeActive = (val) => {
     if (svgRef.current) {

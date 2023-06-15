@@ -26,9 +26,9 @@ const MapsModal = ({ changeActive, countryCode }) => {
   };
 
   const countryPosts = countryNews.find((el) => el.code === countryCode);
-  const countryAssociation = countryAssociationData.find(
-    (el) => el.code === countryCode
-  );
+  const countryAssociation = countryAssociationData
+    ?.slice(0, 244)
+    .find((el) => el.code === countryCode);
 
   const handleClick = (e) => {
     if (e.target.matches(".maps_modal")) {
