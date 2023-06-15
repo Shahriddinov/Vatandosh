@@ -673,6 +673,7 @@ const RoutesContainer = () => {
                 path="finished-projects/image-project/:id"
                 element={<VictorinaProject />}
               />
+               <Route path=":newsId" element={<PortalNews />} />
             </Route>
 
             <Route

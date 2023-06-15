@@ -14,12 +14,11 @@ import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid
 
 export default function VictorinaWinner() {
   const { t } = useTranslation();
-  const { id, victorinaById } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quizByIdSlice.quizByIdData);
   const quizDataLoading = useSelector((state) => state.quizByIdSlice.loading);
   const quizDataError = useSelector((state) => state.quizSlice.error);
-
   const pageData = useSelector((state) => state.pageSlice.pageData);
 
   const lan = useSelector((state) => state.language.language);
@@ -48,8 +47,6 @@ export default function VictorinaWinner() {
     },
     { title: t("victorina.winner"), url: "" },
   ];
-
-  console.log(quizData);
 
   return (
     <main className="victorinawinner">

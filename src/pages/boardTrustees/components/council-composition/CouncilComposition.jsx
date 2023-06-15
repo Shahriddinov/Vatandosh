@@ -35,8 +35,7 @@ const CouncilComposition = ({
               to={`/about/council-trustees?next=${
                 searchCount.login + "&" + (searchCount.id * 1 + 1)
               }`}
-              onClick={handleFetching}
-            >
+              onClick={handleFetching}>
               <img src={arrowDown} alt="" />
               <span className="council-composition__btn--span">
                 {t("seeMore")}
