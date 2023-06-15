@@ -123,6 +123,22 @@ export const updateVolunteerActivity = createAsyncThunk(
   }
 );
 
+export const updateVolunteerActivity2 = createAsyncThunk(
+  "updateVolunteerActivity",
+  async ({ id, payload }) => {
+    console.log(id);
+    console.log(payload);
+    return await axios
+      .post(`${UPDATE_VOLUNTEER_ACTIVITY}/${id}`, payload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
+  }
+);
+
 export const deleteVolunteerActivity = createAsyncThunk(
   "deleteVolunteerActivity",
   async (id) => {

@@ -28,8 +28,6 @@ const VoluntaryActivity = () => {
     });
   };
 
-  console.log(data);
-
   return (
     <div className="VoluntaryActivity">
       {data.map((el, index) => (
@@ -54,13 +52,15 @@ const VoluntaryActivity = () => {
           Barcha ma’lumotlarni to‘liq va to‘g‘ri kiritdim.
         </label>
       </div>
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        className="VoluntaryActivity-submitBtn"
         type="button"
         disabled={toggle}
         onClick={() => submitCompHandler(data)}
       >
         Saqlash
-      </button>
+      </motion.button>
     </div>
   );
 };
