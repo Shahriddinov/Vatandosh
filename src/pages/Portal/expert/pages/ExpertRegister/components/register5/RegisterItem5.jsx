@@ -118,25 +118,11 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
               />
             </div>
           </label>
-          <div className="registeritem-checkbox">
-            <Checkbox
-              checked={checked}
-              onChange={handleChangeCheckbox}
-              required
-              inputProps={{ "aria-label": "controlled" }}
-            />
-            <p>{t("expert.register5")}</p>
-          </div>
         </div>
       </div>
       <div className="registeritem-btnWrapper">
-        <button
-          type="submit"
-          disabled={!checked}
-          style={checked ? null : { opacity: 0.4, cursor: "auto" }}
-          className="registeritem-submitBtn"
-        >
-          {t("expert.save")}
+        <button type="submit" className="registeritem-submitBtn">
+          {t("expert.nextbtn")}
         </button>
       </div>
     </form>
