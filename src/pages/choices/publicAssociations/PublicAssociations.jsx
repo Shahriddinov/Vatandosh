@@ -57,8 +57,7 @@ const PublicAssociations = () => {
         <div className="choicesPAContainer-btnCont">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => setPostsPerpage((prev) => prev + 6)}
-          >
+            onClick={() => setPostsPerpage((prev) => prev + 6)}>
             <img src={btnArrowDown} alt="icon" />
             <span>{t("choices.all")}</span>
           </motion.button>

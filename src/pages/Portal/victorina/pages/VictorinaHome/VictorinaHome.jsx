@@ -41,8 +41,8 @@ function VictorinaHome() {
       <Victorina quizData={quizData.quizzes} />
       <ListWinners quizDataWinner={quizData.participants} />
       <VictorinaNews
-        url="/portal-category/victorina"
-        communityNews={victorinaNews.data}
+        communityNews={victorinaNews?.data}
+        url={"/portal-category/victorina"}
       />
     </div>
   );

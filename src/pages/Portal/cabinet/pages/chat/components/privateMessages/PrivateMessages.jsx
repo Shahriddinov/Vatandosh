@@ -186,7 +186,7 @@ const PrivateMessages = ({
                 alt="user"
               />
             ) : (
-              privateUser.name[0] + privateUser.name[1]
+              privateUser.name.split(" ")[0] + privateUser.name.split(" ")[1]
             )}
           </div>
           <div className="private-message__name-status">

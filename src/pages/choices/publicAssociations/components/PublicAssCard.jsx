@@ -41,8 +41,7 @@ const PublicAssCard = ({ data, allRegions }) => {
             navigate(
               `/portal-category/community-association/country/${countryInfo?.id}/${data.id}`
             )
-          }
-        >
+          }>
           {t("choices.more")}
         </motion.button>
       </div>
