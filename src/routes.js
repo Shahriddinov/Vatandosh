@@ -576,7 +576,6 @@ const RoutesContainer = () => {
                 />
               </>
             )}
-
             {userToken ? (
               <>
                 <Route
@@ -770,7 +769,6 @@ const RoutesContainer = () => {
             ) : (
               <Route path="/portal" element={<Portal />} />
             )}
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
