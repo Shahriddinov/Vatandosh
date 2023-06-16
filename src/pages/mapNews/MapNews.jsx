@@ -23,7 +23,7 @@ const MapNews = () => {
   }
 
   const { totalPagination, newData } = paginationNews({
-    data: countryNewsData?.posts,
+    data: [...countryNewsData?.posts, ...countryNewsData?.community_events],
     page: activePage,
     count: 8,
   });
@@ -39,14 +39,22 @@ const MapNews = () => {
         <div className="container">
           <h2 className="map-news__map-news-text">{t("news")}</h2>
           <div className="map-news__body">
-            {countryNewsData?.posts.length ? (
-              newData.map((item, index) => (
-                <PortalCard
-                  key={index}
-                  {...item}
-                  urlLink={{ category: "all-news", type: "new", id: item?.id }}
-                />
-              ))
+            {[...countryNewsData?.posts, ...countryNewsData?.community_events]
+              .length ? (
+              newData.map((item, index) => {
+                const match = typeof item.status === "boolean";
+                return (
+                  <PortalCard
+                    key={index}
+                    {...item}
+                    urlLink={{
+                      category: match ? "community" : "all-news",
+                      type: match ? "event" : "new",
+                      id: item?.id,
+                    }}
+                  />
+                );
+              })
             ) : (
               <p>{t("no_news")}</p>
             )}

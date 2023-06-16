@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import CabinetHeader from "./components/cabinetHeader/CabinetHeader";
 import CabinetLeftMenu from "./components/cabinetLeftMenu/CabinetLeftMenu";
@@ -7,6 +7,8 @@ import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import "./cabinetLayout.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { btnHandler } from "../../../reduxToolkit/orgPageSlice";
+import { getItem } from "../../../helpers/persistanceStorage";
+import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
 
 const CabinetLayout = () => {
   const [title, setTitle] = useState("");
@@ -29,6 +31,14 @@ const CabinetLayout = () => {
   const uploadHandler = (e) => {
     setImgUpload(e.target.files[0]);
   };
+
+  const userToken = getItem("token");
+
+  useEffect(() => {
+    if (!userToken) {
+      dispatch(removeToken());
+    }
+  }, [userToken]);
 
   const submitHandler = (e) => {
     e.preventDefault();
