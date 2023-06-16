@@ -1,47 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPublicAssociationData } from "../../../../reduxToolkit/publicAssociations/extraReducer";
-import { getAllCountriesData } from "../../../../reduxToolkit/publicAssociations/extraReducer";
+import { getAllQuizData } from "../../../../reduxToolkit/choicesPageSlice/extraReducer";
 
 export const usePublicAssData = (postsPerPage) => {
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
-  const publicAssloading = useSelector(
-    (state) => state.publicAssSlice.publicAssloading
-  );
-  const publicAssdata = useSelector(
-    (state) => state.publicAssSlice.publicAssdata
-  );
-  const publicAsserror = useSelector(
-    (state) => state.publicAssSlice.publicAsserror
-  );
-  const countriesLoading = useSelector(
-    (state) => state.publicAssSlice.countriesLoading
-  );
-  const countriesData = useSelector(
-    (state) => state.publicAssSlice.countriesData
-  );
-  const countriesError = useSelector(
-    (state) => state.publicAssSlice.countriesError
-  );
+  const quizTotalData = useSelector((state) => state.choiceQuizSlice);
 
   useEffect(() => {
-    dispatch(
-      getPublicAssociationData({
-        regionId: 0,
-        page: 1,
-        perPage: postsPerPage,
-      })
-    );
-    dispatch(getAllCountriesData());
+    dispatch(getAllQuizData({ status: 0, paginate: 1000000000000 }));
   }, [dispatch, lan, postsPerPage]);
 
   return {
-    publicAssloading,
-    publicAssdata,
-    publicAsserror,
-    countriesLoading,
-    countriesData,
-    countriesError,
+    quizTotalData,
   };
 };

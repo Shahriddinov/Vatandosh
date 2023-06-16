@@ -97,11 +97,11 @@ export const NavBarLinks = () => {
           url: "/choices/quiz",
           icon: botIcon,
         },
-        // {
-        //   title: t("choices.publicAss"),
-        //   url: "/choices/public-associations",
-        //   icon: paIcon,
-        // },
+        {
+          title: " Jamoat birlashmalari tanlovi",
+          url: "/choices/public-associations",
+          icon: paIcon,
+        },
       ],
     },
     {
