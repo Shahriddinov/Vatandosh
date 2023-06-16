@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { verifyToken } from "../../../reduxToolkit/authSlice/extraReducer";
 import { useEffect } from "react";
 import { Spinner } from "../../../component";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
+  const { t } = useTranslation();
   const { search } = useLocation();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.authSlice.verifyLoading);
@@ -27,7 +29,7 @@ const ResetPassword = () => {
     return <Spinner position="full" />;
   }
 
-  return <div>Reset Password</div>;
+  return <div>{t("reset")}</div>;
 };
 
 export default ResetPassword;

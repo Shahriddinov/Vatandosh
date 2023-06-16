@@ -545,5 +545,16 @@
   "mapTwo": "Tashkent",
   "mapThree": "Nowza",
   "mapFour": "Mirzo Ulugbek",
-  "mapFive": "National Park"
+  "mapFive": "National Park",
+  "verify": "Email Verify",
+  "reset": "Reset Password",
+  "editPassword": " Enter the email address associated with your account and we'll send you a confirmation code to reset your password.",
+  "registerSubmit": "Continue",
+  "editEmail": "Enter your email address",
+  "registerFacebook": "Login with Facebook",
+  "registerGoogle": "Login with Google",
+  "registerPrev": "Go back",
+  "registerNext": "I agree to the terms",
+  "searchResult": " Search results",
+  "searchResultOne": "No information found for the word!"
 }
