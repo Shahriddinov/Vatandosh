@@ -6,6 +6,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import "./groupMembers.scss";
 import { ChooseMember } from "../../Chat";
 import { checkUser } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
+import { useTranslation } from "react-i18next";
 
 const GroupMembers = ({
   members,
@@ -18,6 +19,7 @@ const GroupMembers = ({
   const dispatch = useDispatch();
   const { setActiveChat } = useContext(ChooseMember);
   const user = JSON.parse(localStorage.getItem("user"));
+  const { t } = useTranslation();
 
   const handleClick = (user) => {
     setActiveChat("private");
@@ -47,8 +49,7 @@ const GroupMembers = ({
                 className={`group-members__one-member ${
                   user?.user_id?.id === member.id ? "yourself" : ""
                 }`}
-                onClick={() => handleClick(member)}
-              >
+                onClick={() => handleClick(member)}>
                 <div className="group-members__picture">
                   {profileImg}
                   {member.last_online_at ? null : (
@@ -67,7 +68,7 @@ const GroupMembers = ({
             );
           })
         ) : (
-          <p className="group-members__no-member">No any member yet.</p>
+          <p className="group-members__no-member">{t("memberyet")}</p>
         )}
       </div>
     </div>
