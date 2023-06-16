@@ -4,6 +4,7 @@ import {
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import { Layout, Spinner } from "./component";
 import ScrollTop from "./hoc/ScrollTop";
@@ -14,7 +15,7 @@ import VolunterCouncilAbout from "./pages/Portal/volunter/pages/VolunterCouncilA
 import VolunterAbout from "./pages/Portal/volunter/pages/VolunterAbout/VolunterAbout";
 import VictorinaHome from "./pages/Portal/victorina/pages/VictorinaHome/VictorinaHome";
 import VictorinaLayout from "./pages/Portal/victorina/pages/VictorinaLayout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WebinarLayout from "./pages/Portal/webinar/WebinarLayout";
 import WebinarHome from "./pages/Portal/webinar/pages/WebinarHome/WebinarHome";
 import WebinarAbout from "./pages/Portal/webinar/pages/WebinarAbout/WebinarAbout";
@@ -22,6 +23,9 @@ import WebinarEvents from "./pages/Portal/webinar/pages/WebinarEvents/WebinarEve
 import FAQ from "./pages/Faq/Faq";
 import VictorinaWinnerWin from "./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner";
 import VolunteerOffers from "./pages/Portal/volunter/pages/VolunteerOffers/VolunteerOffers";
+import { getItem } from "./helpers/persistanceStorage";
+import { useEffect } from "react";
+import { removeToken } from "./reduxToolkit/authSlice/authSlice";
 
 const Home = lazy(() => import("./pages/Home"));
 const MapNews = lazy(() => import("./pages/mapNews/MapNews"));
@@ -466,6 +470,8 @@ const routes = [
 
 const RoutesContainer = () => {
   const token = useSelector((state) => state.authSlice.token);
+  const userToken = getItem("token");
+
   return (
     <Router>
       <Layout>
@@ -570,156 +576,199 @@ const RoutesContainer = () => {
                 />
               </>
             )}
-
-            {token ? (
-              <Route
-                path="/portal-category/webinar"
-                element={<WebinarLayout />}
-              >
-                <Route index element={<WebinarHome />} />
+            {userToken ? (
+              <>
                 <Route
-                  path="webinar-register/:id"
-                  element={<WebinarRegister />}
-                />
-                <Route path="online-webinar/:id" element={<OnlineWebinar />} />
-                <Route path="webinar-about" element={<WebinarAbout />} />
-                <Route path="webinar-events" element={<WebinarEvents />} />
-                <Route path="webinar-archive" element={<WebinarArchive />} />
-                <Route path="webinar-contact" element={<Contact />} />
-                <Route path=":newsId" element={<PortalNews />} />
-              </Route>
+                  path="/portal-category/expert"
+                  element={<ExpertLayout />}
+                >
+                  <Route index element={<ExpertCouncil />} />
+                  <Route path="council-about" element={<AboutCouncil />} />
+                  <Route path="expert-council" element={<ExpertEmploye />} />
+                  <Route path="profile/:id" element={<ExpertProfile />} />
+                  <Route path="offers" element={<ExpertOffers />} />
+                  <Route path="offers/:id" element={<ExpertOffersDetail />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="register" element={<ExpertRegister />} />
+                  <Route path=":newsId" element={<PortalNews />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/community-association"
+                  element={<CommunityAssociationLayout />}
+                >
+                  <Route index element={<CommunityAssociationHome />} />
+                  <Route path="about" element={<CommunityAssociationAbout />} />
+                  <Route
+                    path="country/:communityCountry"
+                    element={<CommunityAssociationCountry />}
+                  />
+                  <Route path="associations" element={<Associations />} />
+                  <Route
+                    path="events"
+                    element={<CommunityAssociationEvents />}
+                  />
+                  <Route
+                    path="country/:communityCountry/:communityCountryId"
+                    element={<CommunityAssociationDetail />}
+                  />
+                  <Route
+                    path="application"
+                    element={<CommunityAssociationRegister />}
+                  />
+                  <Route
+                    path="event/:eventId"
+                    element={<ComunityEventsDetail />}
+                  />
+                  <Route
+                    path="news/:newsId"
+                    element={<CommunityNewsDetail />}
+                  />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path=":newsId" element={<PortalNews />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/volunteer"
+                  element={<VolunterLayout />}
+                >
+                  <Route index element={<VolunterHome />} />
+                  <Route path="profile/:id" element={<VolunterProfile />} />
+                  <Route path="register" element={<VolunterRegister />} />
+                  <Route path="volunter-employe" element={<VolunterAbout />} />
+                  <Route
+                    path="council-about"
+                    element={<VolunterCouncilAbout />}
+                  />
+                  <Route path="contact" element={<Contact />} />
+                  <Route
+                    path="article/:id"
+                    element={<VolunterArticleDetail />}
+                  />
+                  <Route path="activity" element={<VolunterActivity />} />
+                  <Route
+                    path="activity/:id"
+                    element={<VolunterActivityDetail />}
+                  />
+                  <Route path="offers/:id" element={<VolunteerOffers />} />
+                  <Route path=":newsId" element={<PortalNews />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/webinar"
+                  element={<WebinarLayout />}
+                >
+                  <Route index element={<WebinarHome />} />
+                  <Route
+                    path="webinar-register/:id"
+                    element={<WebinarRegister />}
+                  />
+                  <Route
+                    path="online-webinar/:id"
+                    element={<OnlineWebinar />}
+                  />
+                  <Route path="webinar-about" element={<WebinarAbout />} />
+                  <Route path="webinar-events" element={<WebinarEvents />} />
+                  <Route path="webinar-archive" element={<WebinarArchive />} />
+                  <Route path="webinar-contact" element={<Contact />} />
+                  <Route path=":newsId" element={<PortalNews />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/online-teaching"
+                  element={<OnlineTeachingLayout />}
+                >
+                  <Route index element={<OnlineTeachingHome />} />
+                  <Route path="about" element={<AboutTeaching />} />
+                  <Route path="take-test" element={<PassTheTest />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/library"
+                  element={<LibraryLayout />}
+                >
+                  <Route index element={<LibraryAllBooks />} />
+                  <Route path="search" element={<LibrarySearchBooks />} />
+                  <Route path="about/:id" element={<LibraryAboutBook />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/victorina"
+                  element={<VictorinaLayout />}
+                >
+                  <Route index element={<VictorinaHome />}></Route>
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="listwinners" element={<ListOfWinners />} />
+                  <Route path="winner/:id" element={<VictorinaWinner />} />
+                  <Route
+                    path="image-project/:id"
+                    element={<VictorinaProject />}
+                  />
+                  <Route
+                    path="victorina-finish"
+                    element={<VictorinaFinish />}
+                  />
+                  <Route path="victorina-more" element={<MoreVictorina />} />
+                  <Route path="about" element={<VictorinaAbout />} />
+                  <Route path="projects" element={<MoreVictorina />} />
+                  <Route
+                    path="finished-projects"
+                    element={<VictorinaFinish />}
+                  />
+                  <Route
+                    path="victorinatest-finish"
+                    element={<VictorinaWinnerWin />}
+                  />
+                  <Route
+                    path="finished-projects/image-project/:id"
+                    element={<VictorinaProject />}
+                  />
+                  <Route path=":newsId" element={<PortalNews />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/electronic-journal"
+                  element={<ElectronicJournalLayout />}
+                >
+                  <Route index element={<ElectronicJournalHome />} />
+                  <Route
+                    path="about/:journalId"
+                    element={<ElectronicJournalAbout />}
+                  />
+                  <Route path="new-number" element={<NewNumber />} />
+                  <Route path="archive" element={<ElectronArchive />} />
+                  <Route
+                    path="contact"
+                    element={<ElectronicJournalContact />}
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+
+                <Route
+                  path="/portal-category/about-uzbekistan"
+                  element={<AboutUzbekistanLayout />}
+                >
+                  <Route index element={<AboutUzbekistanHome />} />
+                  <Route
+                    path="visual-information"
+                    element={<VisualInformation />}
+                  />
+                  <Route
+                    path="tourist-facilities"
+                    element={<AboutUzbekistanTouristFacilities />}
+                  />
+                  <Route
+                    path="city/:idCity"
+                    element={<AboutUzbekistanCity />}
+                  />
+                  <Route path="contact" element={<Contact />} />
+                </Route>
+              </>
             ) : (
               <Route path="/portal" element={<Portal />} />
             )}
-
-            <Route path="/portal-category/expert" element={<ExpertLayout />}>
-              <Route index element={<ExpertCouncil />} />
-              <Route path="council-about" element={<AboutCouncil />} />
-              <Route path="expert-council" element={<ExpertEmploye />} />
-              <Route path="profile/:id" element={<ExpertProfile />} />
-              <Route path="offers" element={<ExpertOffers />} />
-              <Route path="offers/:id" element={<ExpertOffersDetail />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="register" element={<ExpertRegister />} />
-              <Route path=":newsId" element={<PortalNews />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-
-            <Route
-              path="/portal-category/community-association"
-              element={<CommunityAssociationLayout />}
-            >
-              <Route index element={<CommunityAssociationHome />} />
-              <Route path="about" element={<CommunityAssociationAbout />} />
-              <Route
-                path="country/:communityCountry"
-                element={<CommunityAssociationCountry />}
-              />
-              <Route path="associations" element={<Associations />} />
-              <Route path="events" element={<CommunityAssociationEvents />} />
-              <Route
-                path="country/:communityCountry/:communityCountryId"
-                element={<CommunityAssociationDetail />}
-              />
-              <Route
-                path="application"
-                element={<CommunityAssociationRegister />}
-              />
-              <Route path="event/:eventId" element={<ComunityEventsDetail />} />
-              <Route path="news/:newsId" element={<CommunityNewsDetail />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path=":newsId" element={<PortalNews />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-
-            <Route
-              path="/portal-category/volunteer"
-              element={<VolunterLayout />}
-            >
-              <Route index element={<VolunterHome />} />
-              <Route path="profile/:id" element={<VolunterProfile />} />
-              <Route path="register" element={<VolunterRegister />} />
-              <Route path="volunter-employe" element={<VolunterAbout />} />
-              <Route path="council-about" element={<VolunterCouncilAbout />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="article/:id" element={<VolunterArticleDetail />} />
-              <Route path="activity" element={<VolunterActivity />} />
-              <Route path="activity/:id" element={<VolunterActivityDetail />} />
-              <Route path="offers/:id" element={<VolunteerOffers />} />
-              <Route path=":newsId" element={<PortalNews />} />
-            </Route>
-
-            <Route
-              path="/portal-category/online-teaching"
-              element={<OnlineTeachingLayout />}
-            >
-              <Route index element={<OnlineTeachingHome />} />
-              <Route path="about" element={<AboutTeaching />} />
-              <Route path="take-test" element={<PassTheTest />} />
-            </Route>
-
-            <Route path="/portal-category/library" element={<LibraryLayout />}>
-              <Route index element={<LibraryAllBooks />} />
-              <Route path="search" element={<LibrarySearchBooks />} />
-              <Route path="about/:id" element={<LibraryAboutBook />} />
-            </Route>
-
-            <Route
-              path="/portal-category/victorina"
-              element={<VictorinaLayout />}
-            >
-              <Route index element={<VictorinaHome />}></Route>
-              <Route path="contact" element={<Contact />} />
-              <Route path="listwinners" element={<ListOfWinners />} />
-              <Route path="winner/:id" element={<VictorinaWinner />} />
-              <Route path="image-project/:id" element={<VictorinaProject />} />
-              <Route path="victorina-finish" element={<VictorinaFinish />} />
-              <Route path="victorina-more" element={<MoreVictorina />} />
-              <Route path="about" element={<VictorinaAbout />} />
-              <Route path="projects" element={<MoreVictorina />} />
-              <Route path="finished-projects" element={<VictorinaFinish />} />
-              <Route
-                path="victorinatest-finish"
-                element={<VictorinaWinnerWin />}
-              />
-              <Route
-                path="finished-projects/image-project/:id"
-                element={<VictorinaProject />}
-              />
-              <Route path=":newsId" element={<PortalNews />} />
-            </Route>
-
-            <Route
-              path="/portal-category/electronic-journal"
-              element={<ElectronicJournalLayout />}
-            >
-              <Route index element={<ElectronicJournalHome />} />
-              <Route
-                path="about/:journalId"
-                element={<ElectronicJournalAbout />}
-              />
-              <Route path="new-number" element={<NewNumber />} />
-              <Route path="archive" element={<ElectronArchive />} />
-              <Route path="contact" element={<ElectronicJournalContact />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-
-            <Route
-              path="/portal-category/about-uzbekistan"
-              element={<AboutUzbekistanLayout />}
-            >
-              <Route index element={<AboutUzbekistanHome />} />
-              <Route
-                path="visual-information"
-                element={<VisualInformation />}
-              />
-              <Route
-                path="tourist-facilities"
-                element={<AboutUzbekistanTouristFacilities />}
-              />
-              <Route path="city/:idCity" element={<AboutUzbekistanCity />} />
-              <Route path="contact" element={<Contact />} />
-            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

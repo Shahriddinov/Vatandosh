@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { loginUser } from "../../../../reduxToolkit/authSlice/authSlice";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const SignInWithGoogle = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const SignInWithGoogle = () => {
     getGoogleUser();
   }, []);
 
-  return <div>Login with Google</div>;
+  return <div>{t("registerGoogle")}</div>;
 };
 
 export default SignInWithGoogle;

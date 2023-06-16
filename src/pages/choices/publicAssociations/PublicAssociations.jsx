@@ -7,32 +7,20 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Header from "../../../component/Layout/Header/Header";
 import { Spinner } from "../../../component";
-import PublicAssCard from "./components/PublicAssCard";
 import { useTranslation } from "react-i18next";
 import { usePublicAssData } from "./hooks/usePublicAssData";
+import Card from "../quizzes/cardComponent/card";
 
 const PublicAssociations = () => {
   const [postsPerPage, setPostsPerpage] = useState(6);
   const { t } = useTranslation();
 
-  const {
-    publicAssloading,
-    publicAssdata,
-    publicAsserror,
-    countriesLoading,
-    countriesData,
-    countriesError,
-  } = usePublicAssData(postsPerPage);
+  const { quizTotalData } = usePublicAssData(postsPerPage);
 
-  if (publicAssloading || countriesLoading) {
+  if (quizTotalData?.allDataLoading) {
     return <Spinner position="full" />;
-  } else if (publicAsserror || countriesError) {
-    return (
-      <p>
-        {publicAsserror}
-        {countriesError}
-      </p>
-    );
+  } else if (quizTotalData?.allDataError) {
+    return <p>{quizTotalData?.allDataError}</p>;
   }
 
   return (
@@ -50,14 +38,17 @@ const PublicAssociations = () => {
           </ul>
         </div>
         <div className="choicesPAContainer-body">
-          {publicAssdata?.data?.map((el, index) => (
-            <PublicAssCard key={index} data={el} allRegions={countriesData} />
-          ))}
+          {quizTotalData?.allData?.data?.map((el, index) => {
+            if (el.category === "option2") {
+              return <Card key={index} data={el} quiz={true} />;
+            }
+          })}
         </div>
         <div className="choicesPAContainer-btnCont">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => setPostsPerpage((prev) => prev + 6)}>
+            onClick={() => setPostsPerpage((prev) => prev + 6)}
+          >
             <img src={btnArrowDown} alt="icon" />
             <span>{t("choices.all")}</span>
           </motion.button>

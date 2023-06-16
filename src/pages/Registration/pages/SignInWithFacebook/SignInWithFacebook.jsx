@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { loginUser } from "../../../../reduxToolkit/authSlice/authSlice";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const SignInWithFacebook = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const SignInWithFacebook = () => {
     getFacebookUser();
   }, []);
 
-  return <div>Login with Facebook</div>;
+  return <div>{t("registerFacebook")}</div>;
 };
 
 export default SignInWithFacebook;

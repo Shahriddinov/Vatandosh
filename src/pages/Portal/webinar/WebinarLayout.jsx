@@ -1,13 +1,26 @@
 import React from "react";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import WebinarHeader from "./components/WebinarHeader/WebinarHeader";
+import { getItem } from "../../../helpers/persistanceStorage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
 
 export default function WebinarLayout() {
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const { t } = useTranslation();
+
+  const userToken = getItem("token");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!userToken) {
+      dispatch(removeToken());
+    }
+  }, [userToken]);
 
   const navData = [
     { id: 1, url: "/portal-category/webinar", label: t("expert.main") },

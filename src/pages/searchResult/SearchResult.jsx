@@ -7,8 +7,10 @@ import { getSearchResults } from "../../reduxToolkit/searchSlice/extraReducer";
 import "./searchResult.scss";
 import { Card, Pagination, Spinner } from "../../component";
 import Header from "../../component/Layout/Header/Header";
+import { useTranslation } from "react-i18next";
 
 const SearchResult = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { search } = useParams();
   const searchData = useSelector((state) => state.searchSlice.searchData);
@@ -39,12 +41,12 @@ const SearchResult = () => {
       <div className="search">
         <div className="container">
           <h2 className="search__search-text">
-            Qidirish natijasi:{" "}
+            {t("searchResult")}:{" "}
             {data.length ? (
               <i>{search}</i>
             ) : (
               <span>
-                <i>{search}</i> so'ziga oid ma'lumot topilmadi!
+                <i>{search}</i> {t("searchResultOne")}
               </span>
             )}
           </h2>

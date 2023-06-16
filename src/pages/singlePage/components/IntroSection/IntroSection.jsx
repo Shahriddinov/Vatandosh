@@ -21,7 +21,6 @@ const IntroSection = ({ data }) => {
     return null;
   }
 
-
   return (
     <div className="single-intro-section">
       <div className="single-intro-section__container container">
