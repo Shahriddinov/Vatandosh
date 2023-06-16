@@ -110,7 +110,8 @@ const MoreDetail = () => {
         {byIdData?.status === 1 ? (
           <button
             className="singleCardContainer-active"
-            onClick={() => navigate("/registration/signin")}>
+            onClick={() => navigate("/registration/signin")}
+          >
             {t("choices.participatee")}
           </button>
         ) : (
@@ -135,16 +136,18 @@ const MoreDetail = () => {
             __html: byIdData.description,
           }}
         />
-
-        <iframe
-          className="videosss"
-          width="100%"
-          height="500px"
-          src={`https://www.youtube.com/embed/${byIdData?.video}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen></iframe>
+        {byIdData?.video ? (
+          <iframe
+            className="videosss"
+            width="100%"
+            height="500px"
+            src={`https://www.youtube.com/embed/${byIdData?.video}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : null}
 
         <div className="singleCardContainer-socialsCont">
           <a>
