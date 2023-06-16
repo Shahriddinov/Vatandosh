@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { verifyToken } from "../../../reduxToolkit/authSlice/extraReducer";
 import { useEffect } from "react";
 import { Spinner } from "../../../component";
+import { useTranslation } from "react-i18next";
 
 const EmailVerify = () => {
+  const { t } = useTranslation();
   const { search } = useLocation();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.authSlice.verifyLoading);
@@ -27,7 +29,7 @@ const EmailVerify = () => {
     return <Spinner position="full" />;
   }
 
-  return <div>Email Verify</div>;
+  return <div>{t("verfiy")}</div>;
 };
 
 export default EmailVerify;

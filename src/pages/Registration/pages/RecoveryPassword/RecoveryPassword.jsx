@@ -5,8 +5,10 @@ import { resetPassword } from "../../../../reduxToolkit/authSlice/extraReducer";
 
 import "../SignIn/SignIn.scss";
 import Spinner from "../../../../component/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function RecoveryPassword() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(false);
@@ -39,18 +41,14 @@ export default function RecoveryPassword() {
           </div>
           <div className="auth-form auth-signup">
             <div className="auth-form-title">
-              <h3>Parolni tiklash</h3>
-              <p>
-                Hisobingiz bilan bog'langan email pochtangizni kiriting va
-                parolingizni tiklash uchun tasdiqlash kodini yuboramiz.
-              </p>
+              <h3>{t("reset")}</h3>
+              <p>{t("editPassword")}</p>
             </div>
             <form
               className="auth-form-inputs"
-              onSubmit={(e) => handleSubmit(e)}
-            >
+              onSubmit={(e) => handleSubmit(e)}>
               <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
-                <span>Email pochtangizni kiriting</span>
+                <span>{t("editEmail")}</span>
                 <input
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
@@ -58,12 +56,11 @@ export default function RecoveryPassword() {
               </label>
               <p
                 className="auth-form-inputs-sendMail"
-                style={isValid ? { display: "block" } : { display: "none" }}
-              >
+                style={isValid ? { display: "block" } : { display: "none" }}>
                 {message ? message : "Loading..."}
               </p>
               <button type="submit" className="auth-form-inputs-submitBtn">
-                Davom etish
+                {t("registerSubmit")}
               </button>
             </form>
           </div>
