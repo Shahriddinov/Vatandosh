@@ -12,9 +12,7 @@ function CouncilStatics({ expertCount }) {
           <img src={UserIcon} alt="error" />
         </span>
         <h4>
-          {expertCount?.length
-            ? expertCount.map((el) => el.users).flat().length
-            : 0}
+          {expertCount?.length > 0 ? expertCount[0].users[0].expert.length : 0}
         </h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>

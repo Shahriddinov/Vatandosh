@@ -77,7 +77,11 @@ function VolunterHome() {
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <Council councilData={councilData} VolunteerCount={VolunteerCount} />
+      <Council
+        councilData={councilData}
+        VolunteerCount={VolunteerCount}
+        volunteers={volunteers}
+      />
       <Volunter volunteers={volunteers.data} />
       <News
         communityNews={volunteerNews?.data}
