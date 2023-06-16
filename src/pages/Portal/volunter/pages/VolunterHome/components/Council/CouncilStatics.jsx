@@ -19,7 +19,7 @@ function CouncilStatics({ count, VolunteerCount }) {
           <img src={Globe} />
         </span>
         {VolunteerCount?.sort((a, b) => b.users.length - a.users.length)
-          .slice(0, 5)
+          .slice(0, 6)
           .map((data, index) => (
             <span className="council-span" key={index}>
               <h5>{data.name}</h5>

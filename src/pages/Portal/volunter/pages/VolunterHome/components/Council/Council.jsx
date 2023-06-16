@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next";
 function Council({ councilData, VolunteerCount, volunteers }) {
   const { t } = useTranslation();
 
-  console.log(VolunteerCount);
-
   return (
     <div className="council">
       <div className="container">
