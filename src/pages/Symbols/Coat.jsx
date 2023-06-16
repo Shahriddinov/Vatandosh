@@ -16,7 +16,7 @@ function Coat(props) {
         <div className="symbol_coat">{t("symbols.coat")}</div>
         <div className="symbol_title">
           <b className="symbol_title" style={{ marginLeft: "55px" }}>
-            "O'zbekiston
+            {t("BayroqOne")}
           </b>{" "}
           Respublikasi Davlat gerbi to‘g‘risida"gi Qonun 1992 yil 2 iyulda
           O‘zbekiston Respublikasi Oliy Kengashining X sessiyasida qabul

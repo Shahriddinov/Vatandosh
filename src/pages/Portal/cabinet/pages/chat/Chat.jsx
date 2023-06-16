@@ -9,10 +9,12 @@ import GroupsChats from "./components/groupsChats/GroupsChats";
 import GroupsMessages from "./components/groupsMessages/GroupsMessages";
 import { useContext } from "react";
 import { MessagesContext } from "../../../../../App";
+import { useTranslation } from "react-i18next";
 
 export const ChooseMember = createContext();
 
 const Chat = () => {
+  const { t } = useTranslation();
   const [activeChat, setActiveChat] = useState("private");
   const [userData, setUserData] = useState(null);
   const [showMessages, setShowMessages] = useState(false);
@@ -45,8 +47,7 @@ const Chat = () => {
 
   return (
     <ChooseMember.Provider
-      value={{ chooseMember, setChooseMember, setActiveChat }}
-    >
+      value={{ chooseMember, setChooseMember, setActiveChat }}>
       <div className="chat">
         <div className="chat__container">
           <div className="chat__left">
@@ -57,17 +58,15 @@ const Chat = () => {
                 }`}
                 onClick={() => {
                   setActiveChat("private");
-                }}
-              >
-                Чаты
+                }}>
+                {t("chat")}
               </button>
               <button
                 className={`chat__groups ${
                   activeChat === "group" ? "active" : ""
                 }`}
-                onClick={() => setActiveChat("group")}
-              >
-                Группы
+                onClick={() => setActiveChat("group")}>
+                {t("group")}
               </button>
             </div>
             {activeChat === "private" ? (

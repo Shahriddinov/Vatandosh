@@ -2,8 +2,10 @@ import React from "react";
 
 import "./chatDocs.scss";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 const ChatDocs = ({ showDocs, docsData }) => {
+  const { t } = useTranslation();
   return (
     <div className={`chat-docs ${showDocs ? "show" : ""}`}>
       <div className="chat-docs__container">
@@ -25,8 +27,7 @@ const ChatDocs = ({ showDocs, docsData }) => {
                   href={`${PORTAL_IMAGE_URL}${data.message}`}
                   className="chat-docs__file-name"
                   target="_blank"
-                  download
-                >
+                  download>
                   {data?.file.split(".")[0].slice(0, 50) +
                     "." +
                     data?.message.split("/")[1].split(".")[1]}
@@ -35,7 +36,7 @@ const ChatDocs = ({ showDocs, docsData }) => {
             </div>
           ))
         ) : (
-          <p className="chat-docs__no-file">No any document yet.</p>
+          <p className="chat-docs__no-file">{t("document")}</p>
         )}
       </div>
     </div>
