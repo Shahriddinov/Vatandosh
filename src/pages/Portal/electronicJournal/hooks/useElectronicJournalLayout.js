@@ -34,18 +34,19 @@ const changeMenu = createSelector(
   (state) => state.journal.lastMagazine,
   (menu, journals) => {
     const journal = journals?.data?.length > 0 ? journals.data[0] : {};
-    const data = menu?.slice(0, 5)?.map((el, index) => {
+    const data = navData.map((el, index) => {
+      const navItem = menu?.find((item) => item.id === el.id);
       if (el.id === 2) {
         return {
-          ...el,
-          url: navData[index].url + "/" + journal?.id,
-          label: el?.name,
+          ...navItem,
+          url: el.url + "/" + journal?.id,
+          label: navItem?.name,
         };
       }
       return {
-        ...el,
-        url: navData[index].url,
-        label: el?.name,
+        ...navItem,
+        url: el.url,
+        label: navItem?.name,
       };
     });
     return data;
