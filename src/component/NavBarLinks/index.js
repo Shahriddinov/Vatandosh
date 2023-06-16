@@ -98,7 +98,7 @@ export const NavBarLinks = () => {
           icon: botIcon,
         },
         {
-          title: " Jamoat birlashmalari tanlovi",
+          title: t("choices.publicAss"),
           url: "/choices/public-associations",
           icon: paIcon,
         },
