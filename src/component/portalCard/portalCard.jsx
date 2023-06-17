@@ -44,7 +44,7 @@ const PortalCard = (props) => {
           />
         </Link>
       </div>
-      {tags?.length > 0 ? (
+      {tags?.length > 0 && tags[0] !== "" ? (
         <div className="tags-box">
           <div className="animation-box">
             {tags?.map((tag, id) => {
