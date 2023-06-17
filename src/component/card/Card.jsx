@@ -104,11 +104,11 @@ const Card = (props) => {
         <div className="news-date">
           <BsFillCalendarEventFill />
           {props.pathUrl === "news" ? (
-            <span>{props.created_at.slice(0, 10)}</span>
+            <span>{props?.data}</span>
           ) : props.pathUrl === "events" ? (
-            <span>{props.created_at.slice(0, 10)}</span>
+            <span>{props?.date}</span>
           ) : (
-            <span>{props.data}</span>
+            <span>{props?.data}</span>
           )}
         </div>
         <div className="news-views">
