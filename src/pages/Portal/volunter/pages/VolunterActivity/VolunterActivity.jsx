@@ -10,8 +10,10 @@ import Aos from "aos";
 import { useState } from "react";
 import { Card, Hero, Pagination } from "../../../../../component";
 import { getPaginationCount } from "../../../../singlePage/extraFunck";
+import { useTranslation } from "react-i18next";
 
 export default function VolunterActivity() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const sliderData = useSelector((state) => state.sliderSlice.sliderData);
@@ -53,9 +55,7 @@ export default function VolunterActivity() {
     <main className="volunteractivity">
       <Hero sliderData={sliderData} error={error} loading={loading} />
       <div className="container">
-        <h4 className="volunteractivity-cardlist-title">
-          Volontyorlarni faoliyati
-        </h4>
+        <h4 className="volunteractivity-cardlist-title">{t("volunteryOne")}</h4>
         <div className="volunteractivity-cardlist">
           {newsData?.map((news) => (
             <Card

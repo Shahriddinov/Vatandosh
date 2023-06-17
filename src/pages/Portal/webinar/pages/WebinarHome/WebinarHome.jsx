@@ -9,7 +9,6 @@ import Webinar from "../../../../../assets/images/webinar/Vebinarlar.png";
 import WebinarCouncil from "./components/WebinarCouncil/WebinarCouncil";
 import { CouncilImage } from "../../../../../assets/images/webinar";
 import WebinarEvents from "./components/WebinarEvents/WebinarEvents";
-import WebinarNews from "./components/WebinarNews/WebinarNews";
 import { useDispatch, useSelector } from "react-redux";
 import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import News from "../../../expert/pages/ExpertHome/components/News/News";

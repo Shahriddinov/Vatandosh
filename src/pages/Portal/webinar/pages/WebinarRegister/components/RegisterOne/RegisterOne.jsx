@@ -76,14 +76,12 @@ export default function RegisterOne({ activeBarItem }) {
         activeBarItem !== 0
           ? "webinar-register registeritem-scaleHidden"
           : "webinar-register registeritem-scaleActive"
-      }
-    >
+      }>
       <div className="registeritem1-wrapper registeritem-borderLeft">
-        <h3 className="registeritem-title">Shahsiy malumotlaringiz</h3>
+        <h3 className="registeritem-title">{t("webinarPersonal")}</h3>
         <form
           className="webinar-register-item registeritem1"
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           <div className="registeritem1-wrapper">
             <div className="registeritem1-form">
               <div className="registeritem1-form-uploadImg">

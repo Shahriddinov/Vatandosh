@@ -93,28 +93,27 @@ export default function OnlineWebinar() {
                     <div className="victorinaproject-main-timer">
                       <div>
                         <span>{timeRemaining.days}</span>
-                        <span>Kun</span>
+                        <span>{t("choices.day")}</span>
                       </div>
                       <div>
                         <span>{timeRemaining.hours}</span>
-                        <span>Soat</span>
+                        <span>{t("choices.hour")}</span>
                       </div>
                       <div>
                         <span>{timeRemaining.minutes}</span>
-                        <span>Daqiqa</span>
+                        <span>{t("choices.minute")}</span>
                       </div>
                     </div>
                   )}
                   {meetingOnedata.status == 1 ? (
                     <Link
                       to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
-                    >
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive">
                       {t("webinar.join-webinar")}
                     </Link>
                   ) : (
                     <Link className="victorinaproject-main-btn">
-                      VEBINAR YAKUNLANDI!
+                     {t("webinarFinished")}
                     </Link>
                   )}
                 </>
@@ -129,7 +128,7 @@ export default function OnlineWebinar() {
                   />
                 ))}
                 <div className="victorinaproject-main-desc">
-                  <h3>Onlayn vebinarni o’tkazishdan maqsadi</h3>
+                  <h3>{t("webinarOne")}</h3>
                   <div className="victorinaproject-main-desc-action">
                     <div className="victorinaproject-main-desc-action-date">
                       <span className="online-webinar-date">
@@ -157,8 +156,7 @@ export default function OnlineWebinar() {
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                    allowFullScreen></iframe>
                 </div>
               </div>
               <ShareFriends />

@@ -21,20 +21,18 @@ export default function WebinarRegister() {
         <ExpertTitle title={t("projects_page.participate_btn")} url={url} />
         <div className="expertregister-main">
           <ul className="expertregister-main-bar">
-            {["Shaxsiy ma’lumotingiz", "Taklifingiz"].map((el, index) => {
+            {[t("expert.reg1"), t("expert.reg5")].map((el, index) => {
               return (
                 <li
                   key={index}
                   className="expertregister-main-bar-item"
-                  onClick={() => setactiveBarItem(index)}
-                >
+                  onClick={() => setactiveBarItem(index)}>
                   <div
                     className={
                       activeBarItem === index
                         ? "expertregister-main-bar-item-border activeBarItem"
                         : "expertregister-main-bar-item-border"
-                    }
-                  ></div>
+                    }></div>
                   <span>{el}</span>
                 </li>
               );

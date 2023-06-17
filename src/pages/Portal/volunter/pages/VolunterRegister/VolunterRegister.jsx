@@ -9,12 +9,14 @@ import RegisterItem5 from "../../../expert/pages/ExpertRegister/components/regis
 import Volunteer from "./components/volunteer/Volunteer";
 import { useSelector } from "react-redux";
 import Spinner from "../../../../../component/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function VolunterRegister() {
+  const { t } = useTranslation();
   let [activeBarItem, setactiveBarItem] = useState(0);
   const url = [
-    { title: "Asosiy", url: "/portal-category/volunter" },
-    { title: "Ariza berish", url: "/portal-category/volunter/register" },
+    { title: t("expert.main"), url: "/portal-category/volunter" },
+    { title: t("application"), url: "/portal-category/volunter/register" },
   ];
 
   const { volunteerActivityLoading } = useSelector(
@@ -30,25 +32,23 @@ export default function VolunterRegister() {
           <div className="expertregister-main">
             <ul className="expertregister-main-bar">
               {[
-                "Shaxsiy ma’lumotingiz",
-                "Oliy ma’lumotingiz",
-                "Mehnat faoliyatingiz",
-                "Ilmiy faoliyatingiz",
-                "Volonyorlik faoliyati",
+                t("expert.reg1"),
+                t("expert.reg2"),
+                t("expert.reg3"),
+                t("expert.reg4"),
+                t("expert.reg5"),
               ].map((el, index) => {
                 return (
                   <li
                     key={index}
                     className="expertregister-main-bar-item"
-                    onClick={() => setactiveBarItem(index)}
-                  >
+                    onClick={() => setactiveBarItem(index)}>
                     <div
                       className={
                         activeBarItem === index
                           ? "expertregister-main-bar-item-border activeBarItem"
                           : "expertregister-main-bar-item-border"
-                      }
-                    ></div>
+                      }></div>
                     <span>{el}</span>
                   </li>
                 );
@@ -71,7 +71,6 @@ export default function VolunterRegister() {
                 activeBarItem={activeBarItem}
                 setactiveBarItem={setactiveBarItem}
               />
-
               <Volunteer activeBarItem={activeBarItem + 1} />
             </div>
           </div>

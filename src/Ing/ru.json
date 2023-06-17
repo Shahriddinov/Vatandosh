@@ -582,5 +582,17 @@
   "group": "Группы",
   "document": "Документа пока нет",
   "linkyet": "Ссылки пока нет",
-  "memberyet": "Пока нет ни одного члена."
+  "memberyet": "Пока нет ни одного члена.",
+  "webinarFinished": "ВЕБИНАР ЗАВЕРШЕН!",
+  "webinarOne": "Цель проведения онлайн-вебинара",
+  "webinarAbout": "О вебинарах",
+  "eventFinished": "Завершения событий",
+  "webinarPersonal": "Ваша личная информация",
+  "cabinet": "Кабинет",
+  "logOut": "Выйти",
+  "allCity": "Barcha Shaharlar",
+  "volunteerNot": "Добровольцев нет",
+  "volunteryOne": "Деятельность волонтеров",
+  "volunteryWork": "Работа волонтером",
+  "volunterySport": "Волонтеры юных спортсменов"
 }
