@@ -1,10 +1,14 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { createContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { notificationAdd } from "./extra";
+import { getNotification } from "./reduxToolkit/notificationSlice/notificationSlice";
 
 export const MessagesContext = createContext();
 
 function App({ children }) {
   const [messages, setMessages] = useState([]);
+  const dispatch = useDispatch();
 
   const token = useSelector((state) => state.authSlice.token);
 
@@ -23,8 +27,7 @@ function App({ children }) {
       };
       socket.onmessage = (event) => {
         const message = JSON.parse(event.data)?.message;
-        console.log(JSON.parse(event.data));
-
+        notificationAdd({ dispatch, message });
         setMessages((prev) => [
           ...prev,
           prev[prev.length - 1]?.chat_room_id === message.chat_room_id
@@ -44,6 +47,8 @@ function App({ children }) {
         console.log(error);
       };
     }
+
+    dispatch(getNotification({ per_page: 1000, page: 1 }));
   }, []);
 
   return (

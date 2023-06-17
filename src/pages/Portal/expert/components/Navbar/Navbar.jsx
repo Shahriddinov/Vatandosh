@@ -40,6 +40,7 @@ const Navbar = ({ navbarUrl }) => {
 
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
+    console.log("fja");
   };
 
   const handleChangeLng = (lng) => {

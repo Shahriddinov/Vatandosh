@@ -67,7 +67,7 @@ const PortalCard = (props) => {
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props?.created_at?.split("T")[0]}</span>
+          <span>{props?.data}</span>
         </div>
         <div className="news-views">
           <IoEye />

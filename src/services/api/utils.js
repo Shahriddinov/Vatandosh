@@ -163,3 +163,6 @@ export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;
 export const DELETE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/delete`;
 export const DELETE_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/delete`;
 export const DELETE_EXPERT_ACTIVITY = `${portalBaseUrl}/expert/delete/`;
+
+//NOTIFICATION
+export const GET_NOTIFICATION = `/notification/notification`;
