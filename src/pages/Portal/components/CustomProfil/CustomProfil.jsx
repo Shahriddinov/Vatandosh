@@ -53,6 +53,19 @@ export default function CustomProfil() {
     experience += +data.experience;
   });
 
+  let verified_expert_activities = 0;
+  let verified_volunteer_activities = 0;
+
+  expertData?.user_volunteer_activities.map((act) => {
+    if (act.verified && act.type === 1) {
+      verified_expert_activities++;
+    }
+
+    if (act.verified && act.type === 2) {
+      verified_volunteer_activities++;
+    }
+  });
+
   return expertData ? (
     <div className="customprofil-wrapper">
       <div className="customprofil-detail">
@@ -233,7 +246,7 @@ export default function CustomProfil() {
               <Typography>{t("expert.ownoffers")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {expertData?.suggestions ? (
+              {expertData?.suggestions && expertData?.verified ? (
                 <div className="customprofil-list-offer">
                   <div className="customprofil-list-offer-info">
                     <div className="customprofil-list-offer-info-img">
@@ -272,12 +285,11 @@ export default function CustomProfil() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>{t("voluntery.nav4")}</Typography>
+              <Typography>Expertlar faoliyati</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {expertData?.user_volunteer_activities?.length > 0 ? (
+              {verified_expert_activities > 0 ? (
                 expertData?.user_volunteer_activities?.map((evt) => {
-                  console.log(evt);
                   return evt?.type === 1 ? (
                     <div key={id} className="customprofil-list-offer">
                       <div
@@ -317,7 +329,7 @@ export default function CustomProfil() {
                   ) : null;
                 })
               ) : (
-                <p>Tasdiqlangan volyontorlik faoliyati mavjud emas.</p>
+                <p>Expertlik faoliyati mavjud emas.</p>
               )}
             </AccordionDetails>
           </Accordion>
@@ -329,10 +341,10 @@ export default function CustomProfil() {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>Expertlar faoliyati</Typography>
+              <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {expertData?.user_volunteer_activities?.length > 0 ? (
+              {verified_volunteer_activities > 0 ? (
                 expertData?.user_volunteer_activities?.map((evt) => {
                   return evt?.type === 2 ? (
                     <div key={id} className="customprofil-list-offer">
@@ -373,7 +385,7 @@ export default function CustomProfil() {
                   ) : null;
                 })
               ) : (
-                <p>Tasdiqlangan expertlik faoliyati mavjud emas.</p>
+                <p>Volyontorlik faoliyati mavjud emas.</p>
               )}
             </AccordionDetails>
           </Accordion>
