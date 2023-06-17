@@ -53,22 +53,20 @@ function WebinarArchive() {
       <div className="container">
         <div className="webinar-list">
           <h3 style={{ marginBottom: "25px" }} className="webinar-name">
-            Tadbir yakunlanganlari
+            {t("eventFinished")}
           </h3>
         </div>
         <div className="webinar-lists">
           <button
             onClick={() => setEventType("webinar")}
-            className={eventType == "webinar" ? "webinar-top" : "webinar-tops"}
-          >
+            className={eventType == "webinar" ? "webinar-top" : "webinar-tops"}>
             {t("webinar.webinars")}
           </button>
           <button
             onClick={() => setEventType("conference")}
             className={
               eventType == "conference" ? "webinar-top" : "webinar-tops"
-            }
-          >
+            }>
             {t("webinar.conferences")}
           </button>
         </div>
@@ -90,8 +88,7 @@ function WebinarArchive() {
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
-                  className="webinar-more"
-                >
+                  className="webinar-more">
                   {t("more")}
                 </Link>
               </div>
@@ -103,8 +100,7 @@ function WebinarArchive() {
             onClick={() => {
               setPage(page + 1);
               dispatch(getMeetingAll({ page: page + 1 }));
-            }}
-          >
+            }}>
             <img src={ArrowDown} alt="" />
             {t("projects_page.see-more")}
           </button>

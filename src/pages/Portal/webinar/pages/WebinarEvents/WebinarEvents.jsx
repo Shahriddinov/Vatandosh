@@ -99,28 +99,26 @@ function WebinarEvents() {
               <div className="webinar-timer">
                 <div>
                   <span>{remainingTime(webinar.start_date, "days")}</span>
-                  <span>Kun</span>
+                  <span>{t("choices.day")}</span>
                 </div>
                 <div>
                   <span>{remainingTime(webinar.start_date, "hours")}</span>
-                  <span>Soat</span>
+                  <span>{t("choices.hour")}</span>
                 </div>
                 <div>
                   <span>{remainingTime(webinar.start_date, "minutes")}</span>
-                  <span>Daqiqa</span>
+                  <span>{t("choices.minute")}</span>
                 </div>
               </div>
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
-                  className="webinar-more"
-                >
+                  className="webinar-more">
                   {t("more")}
                 </Link>
                 <Link
                   to={`/portal-category/webinar/webinar-register/${webinar.id}`}
-                  className="webinar-links"
-                >
+                  className="webinar-links">
                   {t("webinar.header1")}
                 </Link>
               </div>
@@ -132,8 +130,7 @@ function WebinarEvents() {
             onClick={() => {
               setPage(page + 1);
               dispatch(getMeetingAll({ page: page + 1 }));
-            }}
-          >
+            }}>
             <img src={ArrowDown} alt="" />
             {t("projects_page.see-more")}
           </button>

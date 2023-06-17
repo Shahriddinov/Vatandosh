@@ -580,7 +580,19 @@
   "sertifikatDownload": "Скачать сертификат",
   "chat": "Суҳбатлар",
   "group": "Гуруҳлар",
-  "document": "No any document yet",
-  "linkyet": "No any link yet",
-  "memberyet": "No any member yet."
+  "document": "Ҳозирча ҳеч қандай ҳужжат йўқ",
+  "linkyet": "Ҳали ҳеч қандай ҳавола йўқ",
+  "memberyet": "Ҳозирча ҳеч қандай аъзо йўқ.",
+  "webinarFinished": "VEBINAR YAKUNLANDI!",
+  "webinarOne": "Onlayn vebinarni o’tkazishdan maqsadi",
+  "webinarAbout": "Webinarlar haqida",
+  "eventFinished": "Tadbir yakunlanganlari",
+  "webinarPersonal": "Shahsiy malumotlaringiz",
+  "cabinet": "Кабинет",
+  "logOut": "Выйти",
+  "allCity": "Barcha Shaharlar",
+  "volunteerNot": "Valantiyorlar mavjud emas",
+  "volunteryOne": "Volontyorlarni faoliyati",
+  "volunteryWork": "Volontyorlar ishlari",
+  "volunterySport": "Yosh sportchi volontyorlar"
 }

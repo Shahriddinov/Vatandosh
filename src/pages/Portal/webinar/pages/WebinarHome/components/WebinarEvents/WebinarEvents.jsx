@@ -116,15 +116,15 @@ function WebinarEvents() {
               <div className="webinar-timer">
                 <div>
                   <span>{remainingTime(webinar.start_date, "days")}</span>
-                  <span>Kun</span>
+                  <span>{t("choices.day")}</span>
                 </div>
                 <div>
                   <span>{remainingTime(webinar.start_date, "hours")}</span>
-                  <span>Soat</span>
+                  <span>{t("choices.hour")}</span>
                 </div>
                 <div>
                   <span>{remainingTime(webinar.start_date, "minutes")}</span>
-                  <span>Daqiqa</span>
+                  <span>{t("choices.minute")}</span>
                 </div>
               </div>
               <div className="webinar-bottom">
