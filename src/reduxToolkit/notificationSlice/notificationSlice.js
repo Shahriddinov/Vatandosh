@@ -7,6 +7,10 @@ const initialState = {
   notificationData: {},
   notificationDataLoading: true,
   error: true,
+
+  notificationOneDataStatus: null,
+  notificationOneDataS: {},
+  notificationCount: null,
 };
 
 export const getNotification = createAsyncThunk(
@@ -40,11 +44,15 @@ const notificationSlice = createSlice({
     closeNotification: (state, { payload }) => {
       state.open = payload;
     },
+    changeNotificationCount: (state, { payload }) => {
+      state.notificationCount = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getNotification.pending, (state) => {
         state.notificationDataLoading = true;
+        state.notificationOneDataStatus = null;
         state.error = null;
       })
       .addCase(getNotification.fulfilled, (state, { payload }) => {
@@ -58,21 +66,22 @@ const notificationSlice = createSlice({
 
     builder
       .addCase(getOneNotification.pending, (state) => {
-        state.notificationDataLoading = true;
+        state.notificationOneDataStatus = null;
+        state.error = null;
         state.error = null;
       })
       .addCase(getOneNotification.fulfilled, (state, { payload }) => {
-        state.notificationData = payload;
-        state.notificationDataLoading = false;
+        state.notificationOneDataStatus = "success";
+        state.notificationOneData = payload;
       })
       .addCase(getOneNotification.rejected, (state, { error }) => {
         state.error = error.message;
-        state.notificationDataLoading = false;
+        state.notificationOneDataStatus = "error";
       });
   },
 });
 
-export const { openNotification, closeNotification } =
+export const { openNotification, closeNotification, changeNotificationCount } =
   notificationSlice.actions;
 
 export default notificationSlice.reducer;

@@ -33,6 +33,9 @@ const Navbar = ({ navbarUrl }) => {
   const dispatch = useDispatch();
   const { communityCountryId } = useParams();
   const language = useSelector((state) => state.language.language);
+  const notificationCount = useSelector(
+    (state) => state.notification.notificationCount
+  );
   const [activeLang, setactiveLang] = useState(false);
   const { grayScale } = useContext(GrayContext);
 
@@ -40,7 +43,6 @@ const Navbar = ({ navbarUrl }) => {
 
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
-    console.log("fja");
   };
 
   const handleChangeLng = (lng) => {
@@ -188,6 +190,9 @@ const Navbar = ({ navbarUrl }) => {
               <Tooltip title="Account settings">
                 <NotificationIcon />
               </Tooltip>
+              <span className="navbarpage_notification_count">
+                {notificationCount}
+              </span>
             </button>
             <button
               className={

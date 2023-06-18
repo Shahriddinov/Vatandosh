@@ -11,6 +11,9 @@ function App({ children }) {
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.authSlice.token);
+  const notificationOneDataStatus = useSelector(
+    (store) => store.notification.notificationOneDataStatus
+  );
 
   let socket;
 
@@ -50,6 +53,12 @@ function App({ children }) {
 
     dispatch(getNotification({ per_page: 1000, page: 1 }));
   }, []);
+
+  useEffect(() => {
+    if (notificationOneDataStatus) {
+      dispatch(getNotification({ per_page: 1000, page: 1 }));
+    }
+  }, [notificationOneDataStatus, dispatch]);
 
   return (
     <MessagesContext.Provider value={{ messages, setMessages }}>
