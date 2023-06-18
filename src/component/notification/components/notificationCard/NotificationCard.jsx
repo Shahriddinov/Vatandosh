@@ -2,10 +2,14 @@ import React from "react";
 import "./notificationCard.scss";
 import { MenuItem } from "@mui/material";
 import hours from "../../../../assets/images/hours.svg";
-import { useDispatch } from "react-redux";
-import { openNotification } from "../../../../reduxToolkit/notificationSlice/notificationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getOneNotification,
+  openNotification,
+} from "../../../../reduxToolkit/notificationSlice/notificationSlice";
 import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 import AdminAvatar from "../../../../assets/images/admin-avatar.svg";
+import { notificationGetTime } from "../../extra";
 
 const isJsonString = (str) => {
   try {
@@ -16,9 +20,11 @@ const isJsonString = (str) => {
 };
 
 const NotificationCard = (props) => {
+  const lan = useSelector((state) => state.language.language);
   const dispatch = useDispatch();
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
+    dispatch(getOneNotification(props.id));
   };
 
   const isJson = isJsonString(props.image);
@@ -27,6 +33,8 @@ const NotificationCard = (props) => {
     props.type === "event" && image[0]?.split("/")[0] === "community-events"
       ? image[0]
       : image;
+
+  const { day, hours } = notificationGetTime(props.created_at, lan);
 
   return (
     <MenuItem onClick={handleClick}>
@@ -53,9 +61,7 @@ const NotificationCard = (props) => {
             </p>
           )}
 
-          <p className="notification-card__time_date">
-            {props?.created_at?.split("T")[0]}
-          </p>
+          <p className="notification-card__time_date">{day + "  " + hours}</p>
         </div>
       </div>
     </MenuItem>

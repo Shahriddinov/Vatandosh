@@ -12,6 +12,7 @@ import OfferStatesFriendship from "../components/offerStatesFriendship";
 import { baseServerUrl } from "../../../services/api/utils";
 
 import "./statesFriendshipSociety.scss";
+import FotoGallery from "../../../component/FotoGallery/FotoGallery";
 
 const StatesFriendshipSociety = () => {
   const {
@@ -55,6 +56,9 @@ const StatesFriendshipSociety = () => {
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
           <OfferStatesFriendship {...categoryData} />
+          <FotoGallery
+            images={categoryData.images ? categoryData.images : null}
+          />
           <MiniSlider
             title={`${t("events")}`}
             data={events?.data}

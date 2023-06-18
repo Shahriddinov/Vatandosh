@@ -19,6 +19,7 @@ const Notification = () => {
   const notificationDataLoading = useSelector(
     (store) => store.notification.notificationDataLoading
   );
+
   const error = useSelector((store) => store.notification.error);
   const dispatch = useDispatch();
 
@@ -29,7 +30,6 @@ const Notification = () => {
   }
 
   const open = Boolean(anchorEl);
-  // console.log(notificationData);
 
   const handleClose = (evt) => {
     if (!evt.target.parentElement.matches(".notification-tab__item")) {
@@ -40,9 +40,9 @@ const Notification = () => {
   };
   const { admin, news, events } = filterNotification({
     data: notificationData.data,
+    dispatch,
   });
 
-  console.log(admin, news, events);
   return (
     <div className="cabinet-notification_box">
       <Menu

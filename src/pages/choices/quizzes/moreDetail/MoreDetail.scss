@@ -12,7 +12,6 @@ body .singleCardContainer .slick-dots {
   overflow-x: scroll;
   display: flex !important;
   overflow-y: hidden;
-  
 }
 
 body .singleCardContainer .slick-dots::-webkit-scrollbar {
@@ -32,7 +31,6 @@ body .singleCardContainer .slick-dots::-webkit-scrollbar-thumb:hover {
 .singleCardContainer {
   max-width: 1270px;
   margin-inline: auto;
-  padding: 50px;
 
   &__image {
     width: 100%;
