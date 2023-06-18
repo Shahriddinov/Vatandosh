@@ -19,8 +19,8 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
     dispatch(deleteVolunteerActivity(id));
   };
 
-  const submitCompHandler = (payload) => {
-    payload.forEach((el) => {
+  const submitCompHandler = (data) => {
+    data.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
         el.imagesBrowser.forEach((file) => {
@@ -30,18 +30,13 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
         formData.append("description", el.description);
 
         dispatch(updateVolunteerActivity2(el.id, formData));
-      }
-      if (el.from === "client") {
+      } else if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);
         formData.append("description", el.description);
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
-        // formData.append("images[]", [...el.imagesBrowser]);
-        const data = Object.fromEntries(formData);
-        console.log("hello its client");
-        console.log(data);
         dispatch(volunteerCreate(formData));
       }
     });
@@ -49,7 +44,7 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
 
   useEffect(() => {
     dispatch(getVolunteerActivity());
-  }, [dispatch, lan, volounteerActivityData.length]);
+  }, [dispatch, lan]);
 
   useEffect(() => {
     if (volounteerActivityData.length === 0) {

@@ -125,9 +125,7 @@ export const updateVolunteerActivity = createAsyncThunk(
 
 export const updateVolunteerActivity2 = createAsyncThunk(
   "updateVolunteerActivity",
-  async ({ id, payload }) => {
-    console.log(id);
-    console.log(payload);
+  async (id, payload) => {
     return await axios
       .post(`${UPDATE_VOLUNTEER_ACTIVITY}/${id}`, payload, {
         headers: {
