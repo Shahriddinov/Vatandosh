@@ -20,6 +20,7 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   };
 
   const submitCompHandler = (data) => {
+    console.log(data);
     data.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
@@ -29,7 +30,9 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
         formData.append("title", el.title);
         formData.append("description", el.description);
 
-        dispatch(updateVolunteerActivity2(el.id, formData));
+        const volunteerId = el.id;
+
+        dispatch(updateVolunteerActivity2({ volunteerId, formData }));
       } else if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);

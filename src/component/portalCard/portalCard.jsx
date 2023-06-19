@@ -19,7 +19,8 @@ const PortalCard = (props) => {
       className="single-card portalCard"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000">
+      data-aos-duration="1000"
+    >
       <div className="img-container">
         <img
           src={`${PORTAL_IMAGE_URL}/${
@@ -43,7 +44,7 @@ const PortalCard = (props) => {
           />
         </Link>
       </div>
-      {tags?.length ? (
+      {tags?.length > 0 && tags[0] !== "" ? (
         <div className="tags-box">
           <div className="animation-box">
             {tags?.map((tag, id) => {
@@ -52,7 +53,8 @@ const PortalCard = (props) => {
                   <div
                     className="tag-item"
                     onClick={(e) => handleClick(e)}
-                    key={id}>
+                    key={id}
+                  >
                     {tag}
                   </div>
                 );
@@ -65,7 +67,7 @@ const PortalCard = (props) => {
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props?.created_at?.split("T")[0]}</span>
+          <span>{props?.data}</span>
         </div>
         <div className="news-views">
           <IoEye />

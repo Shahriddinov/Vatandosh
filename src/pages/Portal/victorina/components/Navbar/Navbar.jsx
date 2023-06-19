@@ -31,6 +31,9 @@ function Navbar({ navbarUrl }) {
   const dispatch = useDispatch();
   const { id } = useParams();
   const language = useSelector((state) => state.language.language);
+  const notificationCount = useSelector(
+    (state) => state.notification.notificationCount
+  );
   const [activeLang, setactiveLang] = useState(false);
   const [activeKabinet, setActiveKabinet] = useState(false);
 
@@ -117,6 +120,9 @@ function Navbar({ navbarUrl }) {
             <Tooltip title="Account settings">
               <NotificationIcon />
             </Tooltip>
+            <span className="navbarpage_notification_count">
+              {notificationCount}
+            </span>
           </button>
           <button className="navbarpage--notification">
             <MessengerIcon />

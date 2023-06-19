@@ -6,13 +6,29 @@ import { closeNotification } from "../../reduxToolkit/notificationSlice/notifica
 
 import "./notification.scss";
 import { NotificationList, Tab } from "./components";
-import { admin, events, news } from "./data";
+// import { admin, events, news } from "./data";
+import Spinner from "../Spinner/Spinner";
+import { filterNotification } from "./extra";
 
 const Notification = () => {
   const [value, setValue] = useState("admin");
-
   const anchorEl = useSelector((store) => store.notification.open);
+  const notificationData = useSelector(
+    (store) => store.notification.notificationData
+  );
+  const notificationDataLoading = useSelector(
+    (store) => store.notification.notificationDataLoading
+  );
+
+  const error = useSelector((store) => store.notification.error);
   const dispatch = useDispatch();
+
+  if (notificationDataLoading) {
+    return <Spinner />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
   const open = Boolean(anchorEl);
 
   const handleClose = (evt) => {
@@ -22,6 +38,10 @@ const Notification = () => {
       }
     }
   };
+  const { admin, news, events } = filterNotification({
+    data: notificationData.data,
+    dispatch,
+  });
 
   return (
     <div className="cabinet-notification_box">

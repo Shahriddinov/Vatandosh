@@ -36,7 +36,10 @@ export const InformationServicesSlider = ({ data, pageName }) => {
     return () => clearInterval(slideInterval);
   }, [img]);
 
-  const imageType = pathname.split("/")[2] === "community-association";
+  const imageType =
+    pathname.split("/")[1] === "portal-category" ||
+    pathname.split("/")[2] === "news" ||
+    pathname.split("/")[2] === "events";
 
   return (
     <div className="main-hero">
@@ -47,13 +50,20 @@ export const InformationServicesSlider = ({ data, pageName }) => {
             key={card.id}
             style={{
               backgroundImage: `url(${
-                pageName === "news" ? PORTAL_IMAGE_URL : baseServerUrl
-              }/${imageType ? JSON.parse(card?.images)[0] : card?.image})`,
+                imageType ? PORTAL_IMAGE_URL : baseServerUrl
+              }/${
+                card?.attachments
+                  ? card?.attachments[0]?.split("/")[0] === "community-events"
+                    ? JSON.parse(card?.image)[0]
+                    : ""
+                  : card?.image
+              })`,
               backgroundPosition: "center center",
             }}
           />
           <div
-            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}>
+            className={`main-hero-slider-bottom ${i === img ? "active" : ""}`}
+          >
             <div className="main-hero-slider-bottom-title">
               <h2>{card.title}</h2>
               <div className={`navigation-line ${i === img ? "active" : ""}`} />

@@ -21,9 +21,9 @@ export const useVolunteerHomeFetching = () => {
         let count = 0;
         if (el.users.length > 0) {
           for (let i = 0; i < el.users.length; i++) {
-            if (el.users[i].volunteer.length > 0) {
-              if (el.users[i].volunteer[0].type !== null) {
-                if (el.users[i].volunteer[0].type.includes("VOLUNTEER")) {
+            if (el.users[i].volunteer !== null) {
+              if (el.users[i].volunteer.type !== null) {
+                if (el.users[i].volunteer.type.includes("VOLUNTEER")) {
                   count += 1;
                 }
               }
@@ -38,7 +38,7 @@ export const useVolunteerHomeFetching = () => {
       volunteerCount.forEach((item) => {
         let users = [];
         for (let i = 0; i < item.users.length; i++) {
-          if (item.users[i].volunteer.length > 0) {
+          if (item.users[i].volunteer !== null) {
             users.push(item.users[i]);
           }
         }

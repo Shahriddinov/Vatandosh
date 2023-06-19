@@ -11,8 +11,10 @@ import HandsIcon from "../../../../../assets/images/cabinet/HandsIcon";
 import Victorina from "../../../../../assets/images/cabinet/Victorina";
 import CalendarIcon from "../../../../../assets/images/cabinet/CalendarIcon";
 import Certificate from "../../../../../assets/images/cabinet/Certificate";
+import { useTranslation } from "react-i18next";
 
 const CabinetLeftMenu = () => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const menuItems = [
     {
@@ -67,7 +69,7 @@ const CabinetLeftMenu = () => {
         <section className="cabinet-navbar__body">
           <Link to="/portal" className="cabinet-navbar__logo">
             <img src={logo} alt="logo" />
-            <p>“VATANDOSHLAR” JAMOAT FONDI</p>
+            <p>{t("expert.headtitle")}</p>
           </Link>
           <ul>
             {menuItems.map((menu) => (
@@ -77,8 +79,7 @@ const CabinetLeftMenu = () => {
                   className={`${
                     menu.url.split("/")[3] === activePage ? "active" : ""
                   }`}
-                  onClick={() => setActivePage(menu.url.split("/")[3])}
-                >
+                  onClick={() => setActivePage(menu.url.split("/")[3])}>
                   {<menu.logo />}
                   <span>{menu.name}</span>
                 </Link>

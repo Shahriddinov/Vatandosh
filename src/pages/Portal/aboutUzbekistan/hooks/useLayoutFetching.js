@@ -29,6 +29,7 @@ const navbarItems = [
 ];
 
 const CreateMenu = createSelector(
+
   (state) => state.aboutUzbekistan.allAboutUzbMenu,
   (menu) => {
     const data = [];
@@ -51,6 +52,8 @@ const CreateMenu = createSelector(
 );
 
 export const useLayoutFetching = () => {
+  const lan = useSelector((state) => state.language.language);
+
   const dispatch = useDispatch();
   const menu = useSelector(CreateMenu);
   const menuLoading = useSelector(
@@ -65,7 +68,7 @@ export const useLayoutFetching = () => {
   useEffect(() => {
     dispatch(getAllAboutUzbMenu());
     dispatch(getContact());
-  }, [dispatch]);
+  }, [lan, dispatch]);
 
   return {
     dispatch,

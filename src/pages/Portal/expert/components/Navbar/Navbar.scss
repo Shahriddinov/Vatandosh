@@ -203,6 +203,7 @@
   }
 
   &-notification {
+    position: relative;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     width: 40px;
@@ -217,6 +218,7 @@
   }
 
   &--notification {
+    position: relative;
     background: #eaedf6;
     border-radius: 12px;
     width: 40px;
@@ -255,4 +257,14 @@
       }
     }
   }
+}
+.navbarpage_notification_count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgba(255, 228, 196, 0.7);
 }

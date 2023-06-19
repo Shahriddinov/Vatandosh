@@ -34,7 +34,7 @@ const SiteNewsDetail = ({ latestNews, detailData, type }) => {
                 <img
                   src={`${PORTAL_IMAGE_URL}/${
                     type === "event"
-                      ? JSON.parse(detailData?.image)[0]
+                      ? detailData?.attachments[0]
                       : detailData?.image
                   }`}
                   alt=""
@@ -56,7 +56,8 @@ const SiteNewsDetail = ({ latestNews, detailData, type }) => {
                 className="news-detail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: detailData.body,
-                }}></div>
+                }}
+              ></div>
               {/* {data?.images
         ? JSON.parse(data?.images).length >= 1 && (
             <div className="news-detail-main-desc-gallery">

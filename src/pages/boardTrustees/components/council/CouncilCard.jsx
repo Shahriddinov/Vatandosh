@@ -33,8 +33,7 @@ const CouncilCard = ({ trusts }) => {
             </span>
             <a
               href={`tel:${trusts?.phone}`}
-              className="council-card__item_link"
-            >
+              className="council-card__item_link">
               {trusts?.phone}
             </a>
           </li>
@@ -45,8 +44,7 @@ const CouncilCard = ({ trusts }) => {
             </span>
             <a
               href={`mailto:${trusts?.email}`}
-              className="council-card__item_link"
-            >
+              className="council-card__item_link">
               {trusts?.email}
             </a>
           </li>

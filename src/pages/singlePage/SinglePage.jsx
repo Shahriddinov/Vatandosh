@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { getAllProjects } from "../../reduxToolkit/AllProjectSlice/extraReducer";
 import { useDispatch, useSelector } from "react-redux";
 import FotoGallery from "../../component/FotoGallery/FotoGallery";
+import { baseServerUrl } from "../../services/api/utils";
 
 export const SinglePage = () => {
   const { projectsMenuLoading, data, compatriotsMenuLoading } = useSingleData();
@@ -53,7 +54,7 @@ export const SinglePage = () => {
   }
 
   const styles = {
-    backgroundImage: `url(https://vatanparvarbackend.napaautomotive.uz/storage/${data?.background_image})`,
+    backgroundImage: `url(${baseServerUrl}/${data?.background_image})`,
   };
 
   return (

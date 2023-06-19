@@ -26,6 +26,7 @@ export default function CustomProfil() {
     expertLoading,
     error,
   } = useSelector((state) => state.expertSlice);
+  const expertEducation = useSelector((state) => state.education);
 
   useEffect(() => {
     if (pathname.includes("expert") || pathname.includes("volunteer")) {
@@ -50,6 +51,19 @@ export default function CustomProfil() {
 
   expertData.user_employment_info.map((data) => {
     experience += +data.experience;
+  });
+
+  let verified_expert_activities = 0;
+  let verified_volunteer_activities = 0;
+
+  expertData?.user_volunteer_activities.map((act) => {
+    if (act.verified && act.type === 1) {
+      verified_expert_activities++;
+    }
+
+    if (act.verified && act.type === 2) {
+      verified_volunteer_activities++;
+    }
   });
 
   return expertData ? (
@@ -94,8 +108,8 @@ export default function CustomProfil() {
           </AccordionSummary>
           <AccordionDetails>
             <div className="customprofil-list-otm">
-              {expertData.user_education?.length
-                ? expertData.user_education?.map((el) => {
+              {expertEducation?.education?.length > 0
+                ? expertEducation?.education?.map((el) => {
                     if (el?.type === 1)
                       return (
                         <div key={el.id} className="customprofil-list-otm-item">
@@ -169,7 +183,7 @@ export default function CustomProfil() {
                     </div>
                     <div className="customprofil-list-workexp-item">
                       <span>{t("expert.workend")}</span>
-                      <p>{el?.finish_date}</p>
+                      <p>{el?.finish_date ? el?.finish_date : "Present"}</p>
                     </div>
                   </div>
                 ))
@@ -232,33 +246,95 @@ export default function CustomProfil() {
               <Typography>{t("expert.ownoffers")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <div className="customprofil-list-offer">
-                <div className="customprofil-list-offer-info">
-                  <div className="customprofil-list-offer-info-img">
-                    <img
-                      src={`${PORTAL_IMAGE_URL}/${expertData?.image}`}
-                      alt="error"
-                    />
+              {expertData?.suggestions && expertData?.verified ? (
+                <div className="customprofil-list-offer">
+                  <div className="customprofil-list-offer-info">
+                    <div className="customprofil-list-offer-info-img">
+                      <img
+                        src={`${PORTAL_IMAGE_URL}/${JSON.parse(
+                          expertData?.images
+                        )}`}
+                        alt="error"
+                      />
+                    </div>
+                    <div className="customprofil-list-offer-info-desc">
+                      <span>{t("expert.offer")}</span>
+                      <p>{expertData?.suggestions}</p>
+                      <button className="customprofil-list-offer-info-desc-btn">
+                        <Link to={"/portal-category/expert/offers/" + id}>
+                          {t("expert.detail")}
+                        </Link>
+                      </button>
+                    </div>
                   </div>
-                  <div className="customprofil-list-offer-info-desc">
-                    <span>{t("expert.offer")}</span>
-                    <p>{expertData?.suggestions}</p>
-                    <button className="customprofil-list-offer-info-desc-btn">
-                      <Link to={"/portal-category/expert/offers/" + id}>
-                        {t("expert.detail")}
-                      </Link>
-                    </button>
+                  <div className="customprofil-list-offer-infoplus">
+                    <span>{t("expert.information")}</span>
+                    <p>{expertData?.additional_information}</p>
                   </div>
                 </div>
-                <div className="customprofil-list-offer-infoplus">
-                  <span>{t("expert.information")}</span>
-                  <p>{expertData?.additional_information}</p>
-                </div>
-              </div>
+              ) : (
+                <p>Tasdiqlangan takliflar mavjud emas.</p>
+              )}
             </AccordionDetails>
           </Accordion>
         ) : null}
-        {pathname?.includes("expert") ? null : (
+        {pathname.includes("expert") ? (
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Expertlar faoliyati</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {verified_expert_activities > 0 ? (
+                expertData?.user_volunteer_activities?.map((evt) => {
+                  return evt?.type === 1 ? (
+                    <div key={id} className="customprofil-list-offer">
+                      <div
+                        className="customprofil-list-offer-info"
+                        style={
+                          id % 2 === 0 ? { flexDirection: "row-reverse" } : null
+                        }
+                      >
+                        <div className="customprofil-list-offer-info-img">
+                          {evt.images &&
+                            JSON.parse(evt.images).map((image, index) => (
+                              <img
+                                key={index}
+                                src={`${PORTAL_IMAGE_URL}/${image}`}
+                                alt="error"
+                                className="valontery-desc-img"
+                              />
+                            ))}
+                        </div>
+                        <div className="customprofil-list-offer-info-desc valontery-desc-text">
+                          <p className="customprofil-list-offer-info-desc-text">
+                            {evt?.title}
+                          </p>
+                          <p>{evt?.description}</p>
+                          <button className="customprofil-list-offer-info-desc-btn">
+                            <Link
+                              to={
+                                "/portal-category/volunteer/offers/" + evt?.id
+                              }
+                            >
+                              {t("expert.detail")}
+                            </Link>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null;
+                })
+              ) : (
+                <p>Expertlik faoliyati mavjud emas.</p>
+              )}
+            </AccordionDetails>
+          </Accordion>
+        ) : null}
+        {pathname.includes("expert") ? null : (
           <Accordion>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -268,40 +344,49 @@ export default function CustomProfil() {
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {expertData?.user_volunteer_activities?.map((evt) => (
-                <div key={id} className="customprofil-list-offer">
-                  <div
-                    className="customprofil-list-offer-info"
-                    style={
-                      id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                    }
-                  >
-                    <div className="customprofil-list-offer-info-img">
-                      {evt.images &&
-                        JSON.parse(evt.images).map((image) => (
-                          <img
-                            src={`${PORTAL_IMAGE_URL}/${image}`}
-                            alt="error"
-                            className="valontery-desc-img"
-                          />
-                        ))}
+              {verified_volunteer_activities > 0 ? (
+                expertData?.user_volunteer_activities?.map((evt) => {
+                  return evt?.type === 2 ? (
+                    <div key={id} className="customprofil-list-offer">
+                      <div
+                        className="customprofil-list-offer-info"
+                        style={
+                          id % 2 === 0 ? { flexDirection: "row-reverse" } : null
+                        }
+                      >
+                        <div className="customprofil-list-offer-info-img">
+                          {evt.images &&
+                            JSON.parse(evt.images).map((image, index) => (
+                              <img
+                                key={index}
+                                src={`${PORTAL_IMAGE_URL}/${image}`}
+                                alt="error"
+                                className="valontery-desc-img"
+                              />
+                            ))}
+                        </div>
+                        <div className="customprofil-list-offer-info-desc valontery-desc-text">
+                          <p className="customprofil-list-offer-info-desc-text">
+                            {evt?.title}
+                          </p>
+                          <p>{evt?.description}</p>
+                          <button className="customprofil-list-offer-info-desc-btn">
+                            <Link
+                              to={
+                                "/portal-category/volunteer/offers/" + evt?.id
+                              }
+                            >
+                              {t("expert.detail")}
+                            </Link>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="customprofil-list-offer-info-desc valontery-desc-text">
-                      <p className="customprofil-list-offer-info-desc-text">
-                        {evt?.title}
-                      </p>
-                      <p>{evt?.description}</p>
-                      <button className="customprofil-list-offer-info-desc-btn">
-                        <Link
-                          to={"/portal-category/volunteer/offers/" + evt?.id}
-                        >
-                          {t("expert.detail")}
-                        </Link>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  ) : null;
+                })
+              ) : (
+                <p>Volyontorlik faoliyati mavjud emas.</p>
+              )}
             </AccordionDetails>
           </Accordion>
         )}

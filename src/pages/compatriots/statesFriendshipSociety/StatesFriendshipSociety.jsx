@@ -12,6 +12,7 @@ import OfferStatesFriendship from "../components/offerStatesFriendship";
 import { baseServerUrl } from "../../../services/api/utils";
 
 import "./statesFriendshipSociety.scss";
+import FotoGallery from "../../../component/FotoGallery/FotoGallery";
 
 const StatesFriendshipSociety = () => {
   const {
@@ -20,16 +21,17 @@ const StatesFriendshipSociety = () => {
     error,
     associationLoading,
     associationCategoryLoading,
-    eventsData,
+    events,
     eventsLoading,
+    eventsError,
   } = useAssociationFetching();
   const { categoryId } = useParams();
   const { t } = useTranslation();
 
   if (associationLoading || eventsLoading || associationCategoryLoading) {
     return <Spinner position={"full"} />;
-  } else if (error) {
-    return <p>{error}</p>;
+  } else if (error || eventsError) {
+    return <p>{error ? error : eventsError}</p>;
   }
 
   const categoryData = associationCategoryData.find(
@@ -54,9 +56,12 @@ const StatesFriendshipSociety = () => {
         <main className="main">
           <StatesFriendshipInfo {...categoryData} />
           <OfferStatesFriendship {...categoryData} />
+          <FotoGallery
+            images={categoryData.images ? categoryData.images : null}
+          />
           <MiniSlider
             title={`${t("events")}`}
-            data={eventsData}
+            data={events?.data}
             fetchUrl="events"
           />
         </main>

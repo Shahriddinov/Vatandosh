@@ -1,8 +1,10 @@
 import React from "react";
 
 import "./chatLinks.scss";
+import { useTranslation } from "react-i18next";
 
 const ChatLinks = ({ showLinks, linksData }) => {
+  const { t } = useTranslation();
   return (
     <div className={`chat-links ${showLinks ? "show-links" : ""}`}>
       <div className="chat-links__container">
@@ -25,15 +27,14 @@ const ChatLinks = ({ showLinks, linksData }) => {
                 <a
                   href={data.message}
                   className="chat-links__file-name"
-                  target="_blank"
-                >
+                  target="_blank">
                   {data.message.slice(0, 50)}
                 </a>
               </div>
             </div>
           ))
         ) : (
-          <p className="chat-links__no-link">No any link yet.</p>
+          <p className="chat-links__no-link">{t("linkyet")}</p>
         )}
       </div>
     </div>

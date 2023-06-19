@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
 import { useTranslation } from "react-i18next";
 
-function Council({ councilData, VolunteerCount }) {
+function Council({ councilData, VolunteerCount, volunteers }) {
   const { t } = useTranslation();
-  const dataCount = VolunteerCount.map((el) => el.users).flat();
+
   return (
     <div className="council">
       <div className="container">
@@ -17,10 +17,7 @@ function Council({ councilData, VolunteerCount }) {
             <Link to={councilData.pathUrl}>{t("expert.more")}</Link>
           </div>
         </div>
-        <CouncilStatics
-          count={dataCount.length}
-          VolunteerCount={VolunteerCount}
-        />
+        <CouncilStatics count={volunteers} VolunteerCount={VolunteerCount} />
       </div>
     </div>
   );

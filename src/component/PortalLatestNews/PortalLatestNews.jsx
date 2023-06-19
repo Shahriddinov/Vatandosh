@@ -30,7 +30,7 @@ export default function PortalLatestNews({ category, latestNews }) {
     <div className="latest_news">
       <h4 className="latest_news-title">So‘ngi yangiliklar</h4>
       <ul className="latest_news-list">
-        {(category.length === 0 ? latestNews : newsData.data.slice(0, 5)).map(
+        {(category?.length === 0 ? latestNews : newsData.data.slice(0, 5)).map(
           (el) => {
             return (
               <li key={el.id} className="latest_news-list-item">

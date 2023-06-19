@@ -43,13 +43,6 @@ function Management(props) {
                 </li>
               ))}
             </ul>
-
-            {/*<button className="management__btn">*/}
-            {/*  <img src={arrowDown} alt="" />*/}
-            {/*  <span className="council-composition__btn--span">*/}
-            {/*    {t("seeMore")}*/}
-            {/*  </span>*/}
-            {/*</button>*/}
           </div>
         </div>
       </section>

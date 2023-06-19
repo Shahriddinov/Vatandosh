@@ -11,8 +11,10 @@ import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { getCountryCities } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useVolunteerAbout } from "./hooks/useVolunterAbout";
+import { useTranslation } from "react-i18next";
 
 function VolunterAbout() {
+  const { t } = useTranslation();
   const [data, setData] = useState({ country: "", city: "" });
   const {
     allCitiesGet,
@@ -30,7 +32,6 @@ function VolunterAbout() {
       dispatch(getCountryCities({ location_id: id }));
     } else if (type === "city") {
       dispatch(getVolunteerFilter({ country: data.country, city: id }));
-      console.log(id);
     }
   };
 
@@ -42,18 +43,17 @@ function VolunterAbout() {
     <div className="employe">
       <div className="container">
         <div className="employe-list">
-          <h3>Volontyorlar</h3>
+          <h3>{t("voluntery.voluntery")}</h3>
           <div className="employe-item">
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha Davlatlar
+                {t("expert.allcountry")}
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
                 value={data.country}
-                label="Barcha Davlatlar"
-              >
+                label={t("expert.allcountry")}>
                 {locations?.map((location) => (
                   <MenuItem
                     onClick={() =>
@@ -61,8 +61,7 @@ function VolunterAbout() {
                     }
                     value={location.id}
                     key={location.id}
-                    name={location.name}
-                  >
+                    name={location.name}>
                     {location.name}
                   </MenuItem>
                 ))}
@@ -70,14 +69,13 @@ function VolunterAbout() {
             </FormControl>
             <FormControl sx={{ m: 3, minWidth: 270 }}>
               <InputLabel id="demo-simple-select-helper-label">
-                Barcha Shaharlar
+                {t("allCity")}
               </InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
                 value={data.city}
-                label="Barcha davlatlar"
-              >
+                label="Barcha davlatlar">
                 {allCitiesGet.length < 0
                   ? ""
                   : allCitiesGet?.map((city) => (
@@ -86,8 +84,7 @@ function VolunterAbout() {
                           handleСlick({ id: city.id, type: "city" })
                         }
                         value={city.id}
-                        key={city.id}
-                      >
+                        key={city.id}>
                         {city.name}
                       </MenuItem>
                     ))}
@@ -118,7 +115,7 @@ function VolunterAbout() {
                     volunteer?.user_profile?.last_name}
                 </h3>
                 <p style={{ color: "#656B70", fontWeight: 700 }}>
-                  Chop etilgan maqolalar soni:{" "}
+                  {t("card_articles")}:{" "}
                   <b style={{ color: "#065EA9" }}>
                     {volunteer?.user_volunteer_activities?.length}
                   </b>
@@ -126,16 +123,15 @@ function VolunterAbout() {
                 <div className="link-div">
                   <Link
                     className="employe-link"
-                    to={`/portal-category/volunteer/profile/${volunteer.id}`}
-                  >
-                    <span>Batafsil</span>
+                    to={`/portal-category/volunteer/profile/${volunteer.id}`}>
+                    <span>{t("expert.more")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
                   </Link>
                 </div>
               </div>
             ))
           ) : (
-            <p>Valantiyorlar mavjud emas</p>
+            <p>{t("volunteerNot")}</p>
           )}
         </div>
       </div>

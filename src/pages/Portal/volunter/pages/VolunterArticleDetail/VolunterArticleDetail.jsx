@@ -11,13 +11,15 @@ import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/Exp
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
 import "./VolunterArticleDetail.scss";
 import { ShareFriends } from "../../../../../component";
+import { useTranslation } from "react-i18next";
 
 export default function VolunterArticleDetail() {
+  const { t } = useTranslation();
   const [mainImg, setMainImg] = useState(DefaultProfilePic);
 
   const url = [
-    { title: "Asosiy", url: "/portal-category/volunter" },
-    { title: "Volonyorlik faoliyat", url: "#" },
+    { title: t("expert.main"), url: "/portal-category/volunter" },
+    { title: t("voluntery.nav4"), url: "#" },
     { title: "Maqola", url: "#" },
   ];
   return (

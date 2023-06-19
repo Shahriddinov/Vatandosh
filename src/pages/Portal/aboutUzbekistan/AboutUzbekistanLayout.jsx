@@ -1,5 +1,5 @@
-import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import AboutUzbekistanHeader from "./components/aboutUzbekistanHeader/AboutUzbekistanHeader";
 import AboutUzbekistanHeaderTransparent from "./components/aboutUzbekistanHeaderTransparent/AboutUzbekistanHeader";
@@ -9,12 +9,25 @@ import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFoo
 import { Spinner } from "../../../component";
 import { useLayoutFetching } from "./hooks/useLayoutFetching";
 import { ElectronicJournalFooter } from "../electronicJournal/components";
+import { getItem } from "../../../helpers/persistanceStorage";
+import { useDispatch } from "react-redux";
+import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
 
 const AboutUzbekistan = () => {
   const location = useLocation();
   let transparentIsTrue = location.pathname.split("/")[3];
   const { menu, menuLoading, contactData, contactLoading, contactError } =
     useLayoutFetching();
+
+  const dispatch = useDispatch();
+  const userToken = getItem("token");
+
+  useEffect(() => {
+    if (!userToken) {
+      console.log("dsfsdlf");
+      dispatch(removeToken());
+    }
+  }, [userToken]);
 
   if (menuLoading || contactLoading) {
     return <Spinner position="full" />;

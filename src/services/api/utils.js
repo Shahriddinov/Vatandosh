@@ -125,8 +125,8 @@ export const GET_MAGAZINE_MENU = "/magazine/get-menu";
 export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
 export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
 export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
-export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news?per_page=6&page=1`;
-export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event/?per_page=6&page=1`;
+export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news`;
+export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event`;
 export const GET_VOLUNTEER_USER = "/volunteer/get-one";
 
 // Post requests
@@ -163,3 +163,6 @@ export const DELETE_EXPERT_EDUCATION = `${portalBaseUrl}/education/delete`;
 export const DELETE_EXPERT_EMPLOYMENT = `${portalBaseUrl}/employment/delete`;
 export const DELETE_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/delete`;
 export const DELETE_EXPERT_ACTIVITY = `${portalBaseUrl}/expert/delete/`;
+
+//NOTIFICATION
+export const GET_NOTIFICATION = `/notification/notification`;

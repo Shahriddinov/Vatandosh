@@ -12,6 +12,7 @@ import "swiper/css/pagination";
 import "./miniSlider.scss";
 import { memo } from "react";
 import LazySpinner from "../lazySpinner/LazySpinner";
+import PortalCard from "../portalCard/portalCard";
 
 export const MiniSlider = memo(({ title, data, fetchUrl }) => {
   const { ref, inView } = useInView({
@@ -97,7 +98,15 @@ export const MiniSlider = memo(({ title, data, fetchUrl }) => {
                   key={item.id}
                   className="compatriots-events__slider-list"
                 >
-                  <Card {...item} pathUrl={fetchUrl} />
+                  <PortalCard
+                    key={item.id}
+                    {...item}
+                    urlLink={{
+                      category: "community",
+                      type: "event",
+                      id: item?.id,
+                    }}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

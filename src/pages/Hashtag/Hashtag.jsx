@@ -73,8 +73,7 @@ const Hashtag = () => {
                 onClick={() => {
                   setActiveTab(1);
                   setActivePage(1);
-                }}
-              >
+                }}>
                 Eng mashhur
               </button>
             </div>
@@ -84,8 +83,7 @@ const Hashtag = () => {
                 onClick={() => {
                   setActiveTab(2);
                   setActivePage(1);
-                }}
-              >
+                }}>
                 Eng so‘ngi
               </button>
             </div>
@@ -95,8 +93,7 @@ const Hashtag = () => {
                 onClick={() => {
                   setActiveTab(3);
                   setActivePage(1);
-                }}
-              >
+                }}>
                 Eng ko‘p ko‘rilgan
               </button>
             </div>
@@ -107,15 +104,13 @@ const Hashtag = () => {
             <div
               className={`hashtag__regular ${
                 activeTab === 1 ? "active-tab" : ""
-              }`}
-            >
+              }`}>
               {tagData.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
                     className="hashtag__image-card"
-                    onClick={() => {}}
-                  >
+                    onClick={() => {}}>
                     <div className="hashtag__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img
@@ -131,15 +126,13 @@ const Hashtag = () => {
             <div
               className={`hashtag__latest ${
                 activeTab === 2 ? "active-tab" : ""
-              }`}
-            >
+              }`}>
               {latestTags.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
                     className="hashtag__image-card"
-                    onClick={() => {}}
-                  >
+                    onClick={() => {}}>
                     <div className="hashtag__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img
@@ -155,15 +148,13 @@ const Hashtag = () => {
             <div
               className={`hashtag__popular ${
                 activeTab === 3 ? "active-tab" : ""
-              }`}
-            >
+              }`}>
               {popularTags.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
                     className="hashtag__image-card"
-                    onClick={() => {}}
-                  >
+                    onClick={() => {}}>
                     <div className="hashtag__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img

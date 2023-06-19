@@ -104,12 +104,6 @@ export const NavBarLinks = () => {
         },
       ],
     },
-    // {
-    //   title: t("contects"),
-    // },
-    // {
-    //   title: t("faq"),
-    // },
     {
       title: t("information"),
       links: [

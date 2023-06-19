@@ -13,8 +13,7 @@ function Table(props) {
       className="table"
       data-aos="zoom-out"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000"
-    >
+      data-aos-duration="1000">
       <div className="table_control">
         <div className="table_control_all">
           {t("aboutPage.section4.cardntk")}

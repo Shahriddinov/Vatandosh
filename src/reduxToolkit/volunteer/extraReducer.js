@@ -125,9 +125,9 @@ export const updateVolunteerActivity = createAsyncThunk(
 
 export const updateVolunteerActivity2 = createAsyncThunk(
   "updateVolunteerActivity",
-  async (id, payload) => {
+  async ({ volunteerId, formData }) => {
     return await axios
-      .post(`${UPDATE_VOLUNTEER_ACTIVITY}/${id}`, payload, {
+      .post(`${UPDATE_VOLUNTEER_ACTIVITY}/${volunteerId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

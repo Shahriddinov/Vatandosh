@@ -43,7 +43,7 @@ function Navbar() {
                   ? `navbar--name`
                   : `navbar--subname`
               }>
-              “VATANDOSHLAR” JAMOAT FONDI
+              {t("expert.headtitle")}
             </h4>
           </div>
         </Link>
@@ -162,7 +162,7 @@ function Navbar() {
                 : `navbar--button`
             }>
             <ExitIcon />
-            Кабинет
+            {t("cabinet")}
           </Link>
         </div>
       </div>

@@ -4,6 +4,7 @@
   margin-top: -30px;
   &__slider {
     height: 584px;
+    object-fit: cover;
     display: flex;
     position: relative;
   }
@@ -56,9 +57,9 @@
     flex-direction: column;
     justify-content: flex-end;
     position: absolute;
-    top: -80%;
+    //top: -16%;
     background-size: 100% 100%;
-    background-position: center center;
+    //background-position: center center;
     color: #fff;
     background-repeat: no-repeat;
     transition: all 0.5s;

@@ -15,7 +15,7 @@ import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
 const initialState = {
   emailLoading: false,
   verifyLoading: true,
-  passwordLoading: false,
+  passwordLoading: true,
   loginLoading: true,
   resetLoading: false,
   registerLoading: false,
@@ -101,17 +101,17 @@ const authSlice = createSlice({
     // Set Password
     build
       .addCase(setPassword.pending, (state) => {
-        state.passwordLoading = true;
+        state.loginLoading = true;
       })
       .addCase(setPassword.fulfilled, (state, action) => {
-        state.passwordLoading = false;
+        state.loginLoading = false;
         state.token = action.payload;
         state.userData = action.payload.user;
         setItem("token", action.payload.token);
         setItem("user", JSON.stringify(action.payload.user));
       })
       .addCase(setPassword.rejected, (state, action) => {
-        state.passwordLoading = false;
+        state.loginLoading = false;
         state.error = action.error.message;
       });
 
@@ -127,7 +127,8 @@ const authSlice = createSlice({
         if (action.payload.message) {
           state.error = action.payload.message;
         } else {
-          state.userData = action.payload.user;
+          state.userData = action.payload.profile;
+          console.log(action.payload);
           setItem("token", action.payload.token);
           setItem("user", JSON.stringify(action.payload.profile));
         }
@@ -184,7 +185,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerLoading = false;
-        state.registerData = action.payload;
+        state.userData = action.payload;
         setItem("user", JSON.stringify(action.payload));
         state.registerSuccess = "success";
       })

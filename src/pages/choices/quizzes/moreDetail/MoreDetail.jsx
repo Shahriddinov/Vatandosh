@@ -73,93 +73,100 @@ const MoreDetail = () => {
   return (
     <>
       <Header />
-      <div className="singleCardContainer">
-        <h1>{byIdData.title}</h1>
-        <Slider {...settings}>
-          {byIdData?.image?.map((evt) => (
+      <div className="container">
+        <div className="singleCardContainer">
+          <h1>{byIdData.title}</h1>
+          <Slider {...settings}>
+            {byIdData?.image?.map((evt) => (
+              <div>
+                <img
+                  className="singleCardContainer__image"
+                  src={`${PORTAL_IMAGE_URL}/${evt}`}
+                  alt="img"
+                />
+              </div>
+            ))}
+          </Slider>
+          {byIdData?.status === 0 ? (
+            <div className="singleCardContainer-timeOver">
+              <p>{t("choices.quizIsOver")}</p>
+            </div>
+          ) : (
+            <div className="singleCardContainer-timeCont">
+              <div className="singleCardContainer-timeCont-inner">
+                <span>{timeData?.days}</span>
+                <span>{t("choices.day")}</span>
+              </div>
+              <div className="singleCardContainer-timeCont-vl"></div>
+              <div className="singleCardContainer-timeCont-inner">
+                <span>{timeData?.hours}</span>
+                <span>{t("choices.hour")}</span>
+              </div>
+              <div className="singleCardContainer-timeCont-vl"></div>
+              <div className="singleCardContainer-timeCont-inner">
+                <span>{timeData?.minutes}</span>
+                <span>{t("choices.minute")}</span>
+              </div>
+            </div>
+          )}
+          {byIdData?.status === 1 ? (
+            <button
+              className="singleCardContainer-active"
+              onClick={() => navigate("/registration/signin")}
+            >
+              {t("choices.participatee")}
+            </button>
+          ) : (
+            <button className="singleCardContainer-ended">
+              {t("choices.projectEnded")}
+            </button>
+          )}
+          <div className="singleCardContainer-calEye">
             <div>
-              <img
-                className="singleCardContainer__image"
-                src={`${PORTAL_IMAGE_URL}/${evt}`}
-              />
+              <img src={calendarSvg} alt="cal" />
+              <span>12.02.2023</span>
             </div>
-          ))}
-        </Slider>
-        {byIdData?.status === 0 ? (
-          <div className="singleCardContainer-timeOver">
-            <p>{t("choices.quizIsOver")}</p>
-          </div>
-        ) : (
-          <div className="singleCardContainer-timeCont">
-            <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData?.days}</span>
-              <span>{t("choices.day")}</span>
-            </div>
-            <div className="singleCardContainer-timeCont-vl"></div>
-            <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData?.hours}</span>
-              <span>{t("choices.hour")}</span>
-            </div>
-            <div className="singleCardContainer-timeCont-vl"></div>
-            <div className="singleCardContainer-timeCont-inner">
-              <span>{timeData?.minutes}</span>
-              <span>{t("choices.minute")}</span>
+            <div>
+              <img src={eyeSvg} alt="eye" />
+              <span>100 k</span>
             </div>
           </div>
-        )}
-        {byIdData?.status === 1 ? (
-          <button
-            className="singleCardContainer-active"
-            onClick={() => navigate("/registration/signin")}>
-            {t("choices.participatee")}
-          </button>
-        ) : (
-          <button className="singleCardContainer-ended">
-            {t("choices.projectEnded")}
-          </button>
-        )}
-        <div className="singleCardContainer-calEye">
-          <div>
-            <img src={calendarSvg} alt="cal" />
-            <span>12.02.2023</span>
-          </div>
-          <div>
-            <img src={eyeSvg} alt="eye" />
-            <span>100 k</span>
-          </div>
-        </div>
 
-        <div className="singleCardContainer-hl"></div>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: byIdData.description,
-          }}
-        />
+          <div className="singleCardContainer-hl"></div>
+          <p
+            className="singleCardContainer-body"
+            dangerouslySetInnerHTML={{
+              __html: byIdData.description,
+            }}
+          />
+          {byIdData?.video ? (
+            <iframe
+              className="videosss"
+              width="100%"
+              height="500px"
+              src={`https://www.youtube.com/embed/${byIdData?.video}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : null}
 
-        <iframe
-          className="videosss"
-          width="100%"
-          height="500px"
-          src={`https://www.youtube.com/embed/${byIdData?.video}`}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen></iframe>
-
-        <div className="singleCardContainer-socialsCont">
-          <a>
-            <img src={square} alt="square" />
-          </a>
-          <a href="https://www.facebook.com" target="_blank">
-            <img src={facebook} alt="facebook" />
-          </a>
-          <a href="https://www.twitter.com" target="_blank">
-            <img src={twitter} alt="twiitter" />
-          </a>
-          <a>
-            <img src={telegram} alt="telegram" />
-          </a>
-          <p> {t("choices.shareFriends")}</p>
+          <div className="singleCardContainer-socialsCont">
+            <a>
+              <img src={square} alt="square" />
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+              <img src={facebook} alt="facebook" />
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <img src={twitter} alt="twiitter" />
+            </a>
+            <a>
+              <img src={telegram} alt="telegram" />
+            </a>
+            <p> {t("choices.shareFriends")}</p>
+          </div>
         </div>
       </div>
     </>

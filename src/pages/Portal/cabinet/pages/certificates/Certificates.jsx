@@ -1,6 +1,7 @@
 import "./certificates.scss";
 import downloadIcon from "../../../../../assets/images/portal/cabinetVolunteer/downloadIcon.svg";
 import certificateImg from "../../../../../assets/images/portal/cabinetVolunteer/certificate.png";
+import { useTranslation } from "react-i18next";
 
 const fakeCertificateData = [
   {
@@ -30,10 +31,11 @@ const fakeCertificateData = [
 ];
 
 const Certificates = () => {
+  const { t } = useTranslation();
   return (
     <div className="container-certificate">
       <div className="container-certificate-inner">
-        <h1>Сертификаты</h1>
+        <h1>{t("sertifikat")}</h1>
         <div className="container-certificate-inner_box">
           {fakeCertificateData.map((el, index) => (
             <div key={index} className="container-certificate-inner_box-each">
@@ -45,8 +47,7 @@ const Certificates = () => {
               />
               <div
                 key={index}
-                className="container-certificate-inner_box-each-right"
-              >
+                className="container-certificate-inner_box-each-right">
                 <h1>{el.name}</h1>
                 <p>{el.text}</p>
                 <div className="container-certificate-inner_box-each-right-contDownload">
@@ -54,7 +55,7 @@ const Certificates = () => {
                     <img src={downloadIcon} alt="icon" />
                   </div>
                   <a href={el.img} download="Certificate">
-                    Скачать сертификат
+                    {t("sertifikatDownload")}
                   </a>
                 </div>
               </div>

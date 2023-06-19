@@ -8,8 +8,10 @@ import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNe
 import { getMeetingPage } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import WebinarCouncilStatics from "../WebinarHome/components/WebinarCouncil/WebinarCouncilStatics";
+import { useTranslation } from "react-i18next";
 
 function WebinarAbout() {
+  const { t } = useTranslation();
   const language = useSelector((store) => store.language.language);
   const meetingPage = useSelector((store) => store.meetingSlice.pageData);
   const meetingPageLoading = useSelector(
@@ -31,13 +33,13 @@ function WebinarAbout() {
       {
         id: 1,
         pathUrl: "/portal-category/webinar",
-        label: "Asosiy",
+        label: t("expert.main"),
         active: false,
       },
       {
         id: 2,
         pathUrl: null,
-        label: "Webinarlar haqida",
+        label: t("webinarAbout"),
         active: true,
       },
     ],

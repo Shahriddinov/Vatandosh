@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import CabinetHeader from "./components/cabinetHeader/CabinetHeader";
 import CabinetLeftMenu from "./components/cabinetLeftMenu/CabinetLeftMenu";
@@ -7,8 +7,12 @@ import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import "./cabinetLayout.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { btnHandler } from "../../../reduxToolkit/orgPageSlice";
+import { getItem } from "../../../helpers/persistanceStorage";
+import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
+import { useTranslation } from "react-i18next";
 
 const CabinetLayout = () => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [imgUpload, setImgUpload] = useState([]);
@@ -29,6 +33,14 @@ const CabinetLayout = () => {
   const uploadHandler = (e) => {
     setImgUpload(e.target.files[0]);
   };
+
+  const userToken = getItem("token");
+
+  useEffect(() => {
+    if (!userToken) {
+      dispatch(removeToken());
+    }
+  }, [userToken]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -60,8 +72,7 @@ const CabinetLayout = () => {
         {btnOrgPageToggle ? (
           <div
             className="overlay-organizations"
-            onClick={toggleSwitchHandler}
-          ></div>
+            onClick={toggleSwitchHandler}></div>
         ) : null}
         <AnimatePresence>
           {btnOrgPageToggle && (
@@ -71,17 +82,14 @@ const CabinetLayout = () => {
                 animate={{ x: 0 }}
                 exit={{ x: -2000 }}
                 transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                className="modal-orgPage-container"
-              >
-                <h1>Tadbir yuborish</h1>
+                className="modal-orgPage-container">
+                <h1>{t("event")}</h1>
                 <form
                   onSubmit={submitHandler}
-                  className="modal-orgPage-container-form"
-                >
+                  className="modal-orgPage-container-form">
                   <label
                     htmlFor="title"
-                    className="modal-orgPage-container-form-title"
-                  >
+                    className="modal-orgPage-container-form-title">
                     <span>Title</span> <span>*</span>
                   </label>
                   <input
@@ -92,18 +100,16 @@ const CabinetLayout = () => {
                   />
                   <label
                     className="modal-orgPage-container-form-comment"
-                    htmlFor="Izoh"
-                  >
+                    htmlFor="Izoh">
                     <span>Izoh</span> <span>*</span>
                   </label>
                   <textarea
                     onChange={textHandler}
                     className="modal-orgPage-container-form-commentTextArea"
-                    placeholder="Izoh"
-                  ></textarea>
+                    placeholder="Izoh"></textarea>
                   <div className="modal-orgPage-container-form-fileUploadContainer">
                     <input type="file" id="file" onChange={uploadHandler} />
-                    <label htmlFor="file">Taklifingiz uchun rasm</label>
+                    <label htmlFor="file">{t("eventOne")}</label>
                     {imgUpload.length !== 0 && (
                       <img
                         src={URL.createObjectURL(imgUpload)}
@@ -115,9 +121,8 @@ const CabinetLayout = () => {
                     <motion.button
                       animate={controls}
                       whileTap={{ scale: 0.9 }}
-                      type="submit"
-                    >
-                      Yuborish
+                      type="submit">
+                      {t("footerSend")}
                     </motion.button>
                   </div>
                 </form>

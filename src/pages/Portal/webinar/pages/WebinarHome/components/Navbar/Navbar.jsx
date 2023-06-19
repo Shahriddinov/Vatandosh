@@ -64,8 +64,7 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
-                }
-              >
+                }>
                 {t("expert.headtitle")}
               </h4>
             </div>
@@ -78,8 +77,7 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }
-              >
+                }>
                 <PhoneIcon />
                 +998(55)502-22-99
               </a>
@@ -91,8 +89,7 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }
-              >
+                }>
                 <EmailIcon />
                 info@vatandoshlarfondi.uz
               </a>
@@ -114,8 +111,7 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-icon`
                   : `navbarpage--icon`
-              }
-            >
+              }>
               <Link to={"/anthem"}>
                 <MusicIcon />
               </Link>
@@ -126,8 +122,7 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }
-            >
+              }>
               <EyeIcon />
             </button>
             <div className="navbarpage_language">
@@ -140,8 +135,7 @@ function Navbar({ navbarUrl }) {
                       : `#065EA9`
                   }`,
                 }}
-                onClick={() => setactiveLang((el) => !el)}
-              >
+                onClick={() => setactiveLang((el) => !el)}>
                 <CiGlobe className="navbarpage_language-icon" />
                 <span style={{ color: "white" }}>
                   {languageList.find((lan) => lan.type === language).label}
@@ -161,15 +155,13 @@ function Navbar({ navbarUrl }) {
                         }`,
                       }
                     : null
-                }
-              >
+                }>
                 {languageList.map((el, index) => (
                   <p
                     key={index}
                     onClick={() => {
                       handleChangeLng(el.type);
-                    }}
-                  >
+                    }}>
                     {el.label}
                   </p>
                 ))}
@@ -181,8 +173,7 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }
-            >
+              }>
               <Tooltip title="Account settings">
                 <NotificationIcon />
               </Tooltip>
@@ -192,39 +183,34 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }
-            >
+              }>
               <MessengerIcon />
             </button>
             <div
               className="expert-header-cabinet"
-              onClick={() => setActiveKabinet((prev) => !prev)}
-            >
+              onClick={() => setActiveKabinet((prev) => !prev)}>
               <div
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-button`
                     : `navbar--button`
-                }
-              >
+                }>
                 <ExitIcon />
-                Кабинет
+                {t("cabinet")}
               </div>
               {activeKabinet ? (
                 <div className="expert-header-cabinet-bar">
                   <Link
                     to={"/portal-category/cabinet"}
-                    className="expert-header-cabinet-bar-cabinet"
-                  >
+                    className="expert-header-cabinet-bar-cabinet">
                     <BsPersonFill />
-                    <span>Кабинет</span>
+                    <span>{t("cabinet")}</span>
                   </Link>
                   <div
                     className="expert-header-cabinet-bar-logout"
-                    onClick={logOut}
-                  >
+                    onClick={logOut}>
                     <GoSignOut />
-                    <span>Выйти</span>
+                    <span>{t("logOut")}</span>
                   </div>
                 </div>
               ) : null}

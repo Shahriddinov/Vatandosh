@@ -23,7 +23,8 @@ const Card = (props) => {
       className="single-card"
       data-aos="zoom-in"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="1000">
+      data-aos-duration="1000"
+    >
       <div className="img-container">
         {props.pathUrl === "news" ? (
           <img src={`${PORTAL_IMAGE_URL}/${props.image}`} alt={props.title} />
@@ -47,7 +48,8 @@ const Card = (props) => {
               : props.pathUrl === "events"
               ? `/detail/community/event/${props.id}`
               : `/${props.pathUrl}/${props.id}`
-          }>
+          }
+        >
           {props.pathUrl === "news" ? (
             <h5 className="news__card-title">{props.title}</h5>
           ) : props.pathUrl === "events" ? (
@@ -88,7 +90,8 @@ const Card = (props) => {
                   <div
                     className="tag-item"
                     onClick={(e) => handleClick(e)}
-                    key={id}>
+                    key={id}
+                  >
                     {tag}
                   </div>
                 );
@@ -101,11 +104,11 @@ const Card = (props) => {
         <div className="news-date">
           <BsFillCalendarEventFill />
           {props.pathUrl === "news" ? (
-            <span>{props.created_at.slice(0, 10)}</span>
+            <span>{props?.data}</span>
           ) : props.pathUrl === "events" ? (
-            <span>{props.created_at.slice(0, 10)}</span>
+            <span>{props?.date}</span>
           ) : (
-            <span>{props.data}</span>
+            <span>{props?.data}</span>
           )}
         </div>
         <div className="news-views">

@@ -47,9 +47,7 @@ const WhriteHeader = () => {
     dispatch(languageChange(lng));
     setactiveLang((el) => !el);
   };
-  const contactData = useSelector(
-    (state) => state.contactSlice.contactData.data
-  );
+  const contactData = useSelector((state) => state.contactSlice.contactData);
 
   const handleSearch = () => {
     const search = searchRef.current.value;
@@ -81,7 +79,7 @@ const WhriteHeader = () => {
           >
             <img src={Phone} alt="phone" />
             <div className="header_navbar_phone_number colors">
-              +998(55)502-22-99
+              {contactData?.phone}
             </div>
           </a>
           <a
@@ -90,7 +88,7 @@ const WhriteHeader = () => {
           >
             <img src={Message} alt="message" />
             <div className="header_navbar_phone_number colors">
-              info@vatandoshlarfondi.uz
+              {contactData?.email}
             </div>
           </a>
 

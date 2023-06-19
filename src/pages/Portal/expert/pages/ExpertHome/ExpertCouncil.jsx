@@ -74,7 +74,7 @@ function ExpertCouncil() {
       <Council
         expertData={expertData}
         councilData={councilData}
-        expertCount={expertCount.slice(0, 5)}
+        expertCount={expertCount}
       />
       <Expert
         expertData={expertData}

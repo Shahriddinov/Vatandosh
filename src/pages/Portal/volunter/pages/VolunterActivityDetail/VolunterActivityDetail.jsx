@@ -16,8 +16,8 @@ export default function VolunterActivityDetail() {
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
   const url = [
-    { title: "Asosiy", url: "/portal-category/volunteer" },
-    { title: "Volontyorlar ishlari", url: "#" },
+    { title: t("expert.main"), url: "/portal-category/volunteer" },
+    { title: t("volunteryWork"), url: "#" },
   ];
 
   const { id } = useParams();
@@ -53,9 +53,9 @@ export default function VolunterActivityDetail() {
               </div>
               <div className="volunteractivitydetail-main-detail-desc-action-tags">
                 {[
-                  "Volontyorlar faoliyati",
-                  "Yosh sportchi volontyorlar",
-                  "Volontyorlar",
+                  t("voluntery.nav2"),
+                  t("volunterySport"),
+                  t("voluntery.voluntery"),
                 ].map((el, index) => {
                   return <span key={index}>{el}</span>;
                 })}

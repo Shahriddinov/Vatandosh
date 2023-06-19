@@ -14,20 +14,19 @@ import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid
 
 export default function VictorinaWinner() {
   const { t } = useTranslation();
-  const { id, victorinaById } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quizByIdSlice.quizByIdData);
   const quizDataLoading = useSelector((state) => state.quizByIdSlice.loading);
   const quizDataError = useSelector((state) => state.quizSlice.error);
-
   const pageData = useSelector((state) => state.pageSlice.pageData);
 
   const lan = useSelector((state) => state.language.language);
 
   useEffect(() => {
-    dispatch(getByIdQuizz({ id: victorinaById }));
+    dispatch(getByIdQuizz({ id: id }));
     dispatch(getQuizPage());
-  }, [lan, dispatch, victorinaById]);
+  }, [lan, dispatch, id]);
 
   if (quizDataLoading) {
     return <Spinner position="full" />;
@@ -67,18 +66,22 @@ export default function VictorinaWinner() {
           <div className="victorinawinner-main">
             <img
               className="victorinawinner-winner-img"
-              src={`${imageUrl}/${quizData?.image}`}
+              src={`${imageUrl}/${JSON.parse(quizData?.image)[0]}`}
               alt="error"
             />
             <div className="victorinawinner-main-profile">
               <img src={`${imageUrl}/${data?.user?.avatar}`} alt="error" />
               <div className="victorinawinner-main-profile-desc">
-                <p>{data.user.name}</p>
-                <span>{data.position}-o‘rin g‘olibi</span>
+                <p>{data?.user?.name}</p>
+                <span>{data?.position}-o‘rin g‘olibi</span>
               </div>
             </div>
             <h3>{t("victorina.winnerprice")}</h3>
-            <p>{data?.description}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: data?.description,
+              }}
+            />
             <ShareFriends />
           </div>
           <VictorinaStatics pageData={pageData} />

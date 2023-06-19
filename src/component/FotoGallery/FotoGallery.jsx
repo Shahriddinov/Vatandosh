@@ -52,6 +52,7 @@ export default function FotoGallery({ images }) {
             onSwiper={onSwiperInit}
             initialSlide={1}
             loop={true}
+            autoplay={true}
             {...swiperParams}
           >
             {JSON.parse(images).map((obj, index) => {
