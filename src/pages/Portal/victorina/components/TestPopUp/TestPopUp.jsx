@@ -189,13 +189,13 @@ export default function TestPopUp({ setactivePopUp }) {
             </Button>
           )}
           <span style={{ marginLeft: "15px" }}>
-            Вопрос {currentQuiz} из {testData?.length}
+            {t("voice")} {currentQuiz} из {testData?.length}
           </span>
           <Button
             type="submit"
             sx={{ gap: "10px", marginLeft: "15px" }}
             variant="contained">
-            Yakunlash
+            {t("finish")}
           </Button>
         </div>
       </form>

@@ -13,7 +13,9 @@ import { useEffect } from "react";
 import { timer } from "../../../../../../../helpers/extraFunction";
 
 import "./victorinaCard.scss";
+import { useTranslation } from "react-i18next";
 const VictorinaCard = ({ victorina, url }) => {
+  const { t } = useTranslation();
   const [timeData, setTimeDate] = useState({
     days: "00",
     hours: "00",
@@ -57,20 +59,20 @@ const VictorinaCard = ({ victorina, url }) => {
           <div className="victorina-item__list">
             <span className="victorina-item__item">
               <p>{timeData.days}</p>
-              <p>Kun</p>
+              <p>{t("choices.day")}</p>
             </span>
             <span className="victorina-item__item">
               <p>{timeData.hours}</p>
-              <p>Soat</p>
+              <p>{t("choices.hour")}</p>
             </span>
             <span className="victorina-item__item">
               <p>{timeData.minutes}</p>
-              <p>Daqiqa</p>
+              <p>{t("choices.minute")}</p>
             </span>
           </div>
         ) : (
           <button className="victorina-item-button">
-            VIKTORINA YAKUNLANDI!
+            {t("choices.quizIsOver")}
           </button>
         )}
         <Link
@@ -78,7 +80,7 @@ const VictorinaCard = ({ victorina, url }) => {
             url ? `/${url}` : ""
           }/image-project/${victorina.id}`}
           className="victorina-item-link">
-          Batafsil ma'lumot
+          {t("moreAbout")}
         </Link>
       </div>
     </div>

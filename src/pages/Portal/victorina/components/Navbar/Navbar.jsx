@@ -57,7 +57,7 @@ function Navbar({ navbarUrl }) {
         <Link to={navbarUrl?.home}>
           <div className="navbar-list">
             <img src={LogoIcon} alt="" className="navbar-icon" />
-            <h4 className="navbar--subname">“VATANDOSHLAR” JAMOAT FONDI</h4>
+            <h4 className="navbar--subname"> {t("expert.headtitle")}</h4>
           </div>
         </Link>
         <ul className="navbar-list">
@@ -91,8 +91,7 @@ function Navbar({ navbarUrl }) {
           <div className="navbarvictorina_language">
             <div
               className="navbarvictorina_language-wrapper"
-              onClick={() => setactiveLang((el) => !el)}
-            >
+              onClick={() => setactiveLang((el) => !el)}>
               <CiGlobe className="navbarvictorina_language-icon" />
               <span style={{ color: "white" }}>
                 {languageList.find((lan) => lan.type === language)?.label}
@@ -101,15 +100,13 @@ function Navbar({ navbarUrl }) {
             </div>
             <div
               className="navbarvictorina_language-bar"
-              style={activeLang ? { display: "flex" } : null}
-            >
+              style={activeLang ? { display: "flex" } : null}>
               {languageList.map((el, index) => (
                 <p
                   key={index}
                   onClick={() => {
                     handleChangeLng(el.type);
-                  }}
-                >
+                  }}>
                   {el.label}
                 </p>
               ))}
@@ -129,30 +126,26 @@ function Navbar({ navbarUrl }) {
           </button>
           <div
             className="expert-header-cabinet"
-            onClick={() => setActiveKabinet((prev) => !prev)}
-          >
+            onClick={() => setActiveKabinet((prev) => !prev)}>
             <div className="navbar--button">
               <ExitIcon />
-              Кабинет
+              {t("cabinet")}
             </div>
             {activeKabinet ? (
               <div
                 style={{ marginLeft: "-20px" }}
-                className="expert-header-cabinet-bar"
-              >
+                className="expert-header-cabinet-bar">
                 <Link
                   to={"/portal-category/cabinet"}
-                  className="expert-header-cabinet-bar-cabinet"
-                >
+                  className="expert-header-cabinet-bar-cabinet">
                   <BsPersonFill />
-                  <span>Кабинет</span>
+                  <span> {t("cabinet")}</span>
                 </Link>
                 <div
                   className="expert-header-cabinet-bar-logout"
-                  onClick={logOut}
-                >
+                  onClick={logOut}>
                   <GoSignOut />
-                  <span>Выйти</span>
+                  <span>{t("logOut")}</span>
                 </div>
               </div>
             ) : null}

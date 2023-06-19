@@ -19,6 +19,7 @@ import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const AboutBook = () => {
+
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const { id } = useParams();
@@ -87,8 +88,7 @@ const AboutBook = () => {
                 fontSize: "14px",
                 lineHeight: "24px",
                 fontWeight: 400,
-              }}
-            >
+              }}>
               {t("library.read_online")}
             </Button>
             <h3>{t("library.about")}</h3>
@@ -103,7 +103,9 @@ const AboutBook = () => {
             <ul>
               <li>
                 {t("library.for_ages")}:{" "}
-                <span>{ebookData.ages} years or older</span>
+                <span>
+                  {ebookData.ages} {t("libraryYears")}
+                </span>
               </li>
               <li>
                 {t("library.format")}: <span>{ebookData.format}</span>
@@ -124,13 +126,13 @@ const AboutBook = () => {
             </ul>
             <ul>
               <li>
-                Pages: <span>{ebookData.pages}</span>
+                {t("libraryPage")}: <span>{ebookData.pages}</span>
               </li>
               <li>
-                STIR: <span>{ebookData.stir}</span>
+                {t("libraryStir")}: <span>{ebookData.stir}</span>
               </li>
               <li>
-                Uploaded date:{" "}
+                {t("libraryAbout")}:{" "}
                 <span>
                   {new Date(ebookData.created_at).toLocaleDateString("en-US", {
                     month: "long",
@@ -140,7 +142,7 @@ const AboutBook = () => {
                 </span>
               </li>
               <li>
-                Genre: <span>{ebookData.type}</span>
+                {t("libraryGenre")}: <span>{ebookData.type}</span>
               </li>
             </ul>
           </div>

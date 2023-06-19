@@ -495,7 +495,7 @@ const RoutesContainer = () => {
                   path="/portal-category/cabinet"
                   element={<CabinetLayout />}
                 >
-                  <Route index element={<CabinetHome />} />
+                  <Route index element={<Chat />} />
                   <Route
                     path="private-information"
                     element={<PrivateInformation />}
@@ -676,14 +676,14 @@ const RoutesContainer = () => {
                   <Route path=":newsId" element={<PortalNews />} />
                 </Route>
 
-                <Route
-                  path="/portal-category/online-teaching"
-                  element={<OnlineTeachingLayout />}
-                >
-                  <Route index element={<OnlineTeachingHome />} />
-                  <Route path="about" element={<AboutTeaching />} />
-                  <Route path="take-test" element={<PassTheTest />} />
-                </Route>
+                {/*<Route*/}
+                {/*  path="/portal-category/online-teaching"*/}
+                {/*  element={<OnlineTeachingLayout />}*/}
+                {/*>*/}
+                {/*  <Route index element={<OnlineTeachingHome />} />*/}
+                {/*  <Route path="about" element={<AboutTeaching />} />*/}
+                {/*  <Route path="take-test" element={<PassTheTest />} />*/}
+                {/*</Route>*/}
 
                 <Route
                   path="/portal-category/library"

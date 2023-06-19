@@ -103,8 +103,7 @@ export default function Register6({ activeBarItem }) {
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSumbit}
-    >
+      onSubmit={handleSumbit}>
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
           <h3 className="registeritem-title">V. Volonyorlik faoliyati</h3>
@@ -130,7 +129,7 @@ export default function Register6({ activeBarItem }) {
                   </p>
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Maqola mavzusi
+                      {t("maqola")}
                       <span>*</span>
                     </p>
                     <div>
@@ -165,7 +164,7 @@ export default function Register6({ activeBarItem }) {
                         }}
                       />
                       <BsImage />
-                      <p>Taklifingiz uchun rasm</p>
+                      <p>{t("expert.offerforimg")}</p>
                     </label>
                   ) : (
                     <ul className="registeritem-imageList">
@@ -173,18 +172,18 @@ export default function Register6({ activeBarItem }) {
                         ? el.images.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item"
-                            >
+                              className="registeritem-imageList-item">
                               {el.images.length > 1 ? (
                                 <div
                                   className="registeritem-imageList-item-remove"
                                   onClick={() => {
                                     el.images.splice(index, 1);
                                     handleChange({ ...el, images: el.images });
-                                  }}
-                                >
+                                  }}>
                                   <HiOutlineTrash />
-                                  <span>Удалить</span>
+                                  <span>
+                                    {t("projects_page.form_image_delete")}
+                                  </span>
                                 </div>
                               ) : null}
                               <img src={URL.createObjectURL(item)} alt="" />
@@ -193,15 +192,13 @@ export default function Register6({ activeBarItem }) {
                         : el.volunteerImg.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item"
-                            >
+                              className="registeritem-imageList-item">
                               <img src={PORTAL_IMAGE_URL + item} alt="" />
                             </li>
                           ))}
                       <label
                         htmlFor={el.id}
-                        className="registeritem-imageList-inputFile"
-                      >
+                        className="registeritem-imageList-inputFile">
                         <input
                           className="registeritem-label-fileinput"
                           id={el.id}
@@ -221,7 +218,8 @@ export default function Register6({ activeBarItem }) {
                   )}
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Izohingiz yozing<span>*</span>
+                      {t("comment")}
+                      <span>*</span>
                     </p>
                     <div className="registeritem-label-textarea">
                       <textarea
@@ -256,8 +254,7 @@ export default function Register6({ activeBarItem }) {
                   description: "",
                 },
               ])
-            }
-          >
+            }>
             <BsPlusCircleFill />
           </button>
           <div className="registeritem-checkbox">
@@ -275,8 +272,7 @@ export default function Register6({ activeBarItem }) {
           disabled={!checked}
           type="submit"
           className="registeritem-submitBtn"
-          style={checked ? null : { opacity: 0.5, cursor: "auto" }}
-        >
+          style={checked ? null : { opacity: 0.5, cursor: "auto" }}>
           {t("expert.save")}
         </button>
       </div>
