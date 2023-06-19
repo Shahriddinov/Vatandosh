@@ -9,6 +9,7 @@ import NotFound from "../../../../404";
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useExportOfferDetail } from "./hooks/useExpertOffersDetail";
+import { useExpertHome } from "../ExpertHome/hooks/useExpertHome";
 
 export default function ExpertOffersDetail() {
   const { t } = useTranslation();
@@ -22,6 +23,8 @@ export default function ExpertOffersDetail() {
     expertCount,
   } = useExportOfferDetail();
 
+  // const { expertHomeData: expertData } = useExpertHome();
+
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
     { title: t("expert.offers"), url: "/portal-category/expert/offers" },
@@ -33,8 +36,6 @@ export default function ExpertOffersDetail() {
   } else if (error) {
     return <p>{error}</p>;
   } else if (!expertData) return <NotFound />;
-
-  console.log(expertData);
 
   return (
     <main className="expertofferdetail">
@@ -69,7 +70,10 @@ export default function ExpertOffersDetail() {
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">
-            <CouncilStatics expertCount={expertCount} />
+            <CouncilStatics
+              expertCount={expertCount}
+              // expertData={expertHomeData}
+            />
           </div>
         </div>
       </div>
