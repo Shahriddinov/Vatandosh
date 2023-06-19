@@ -7,7 +7,9 @@ import {
 import { useState } from "react";
 
 export const useLibraryFetching = (count) => {
-  const [activPage, setActivePage] = useState(1);
+    const lang = useSelector((store) => store.language.language);
+
+    const [activPage, setActivePage] = useState(1);
   const [language, setLanguage] = useState("");
   const [genre, setGenre] = useState("");
   const libraryData = useSelector((store) => store.librarySlice.libraryData);
@@ -150,7 +152,7 @@ export const useLibraryFetching = (count) => {
   useEffect(() => {
     dispatch(getLibraryAll({ count: count }));
     dispatch(getLibrarySlider());
-  }, []);
+  }, [lang]);
 
   return {
     libraryData,

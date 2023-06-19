@@ -6,24 +6,29 @@ import { useNavigate } from "react-router-dom";
 import "./Hero.scss";
 
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import {
+  getLibraryAll,
+  getLibrarySlider,
+} from "../../../../../reduxToolkit/portalSlices/librarySlice/extraReducer";
+import {PORTAL_IMAGE_URL} from "../../../../../services/api/utils";
 
-const Hero = ({ sliderData, error, loading }) => {
-  const [slideIndex, setSlideIndex] = useState(1);
+const Hero = ({ librarySliderData, error, loading }) => {
+  const [slideIndex, setSlideIndex] = useState(0);
   const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
   const navigate = useNavigate();
 
   const handleLeft = () => {
-    if (slideIndex === 1) {
-      setSlideIndex(sliderData.length);
+    if (slideIndex === 0) {
+      setSlideIndex(librarySliderData.length - 1);
     } else {
       setSlideIndex(slideIndex - 1);
     }
   };
 
   const handleRight = () => {
-    if (slideIndex === sliderData.length) {
-      setSlideIndex(1);
+    if (slideIndex === librarySliderData.length - 1) {
+      setSlideIndex(0);
     } else {
       setSlideIndex(slideIndex + 1);
     }
@@ -44,24 +49,26 @@ const Hero = ({ sliderData, error, loading }) => {
     return () => clearInterval(slideInterval);
   }, [slideIndex]);
 
+  // console.log(librarySliderData[0].image)
   return (
     <section className="library__hero">
       <div className="library__hero__container">
         <div className="library__hero__slider">
-          {sliderData?.map((slider) => (
+          {librarySliderData?.map((slider, index) => (
             <div
               className={`library__hero__slider-box ${
-                slideIndex === slider?.id ? "active" : ""
+                slideIndex === index ? "active" : ""
               }`}
-              key={slider.id}
+              key={index}
             >
               <div
                 className={`library__hero__slider-item`}
                 style={{
-                  backgroundImage: `url(${slider.image})`,
+                  backgroundImage: `url(${PORTAL_IMAGE_URL}${slider?.image})`,
                 }}
               >
-                <h1>{slider.text}</h1>
+                <h1>{slider.title}</h1>
+                <h2>{slider.text}</h2>
               </div>
             </div>
           ))}
@@ -76,13 +83,13 @@ const Hero = ({ sliderData, error, loading }) => {
             </div>
           </div>
           <div className="bullets">
-            {sliderData?.map((slider) => (
+            {librarySliderData?.map((slider, index) => (
               <div
                 className={`bullets-bullet ${
-                  slideIndex === slider?.id ? "bullets-bullet-active" : ""
+                  slideIndex === index ? "bullets-bullet-active" : ""
                 }`}
-                key={slider.id}
-                onClick={() => handleBulletClick(slider.id)}
+                key={index}
+                onClick={() => handleBulletClick(index)}
               />
             ))}
           </div>

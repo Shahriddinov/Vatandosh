@@ -19,6 +19,7 @@ import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const AboutBook = () => {
+
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const { id } = useParams();

@@ -95,23 +95,6 @@ const AllBooks = () => {
     }));
   };
 
-  const sliderData = [
-    {
-      id: 1,
-      image: HeroImage,
-      text: t("library.hero_title"),
-    },
-    {
-      id: 2,
-      image: HeroImage1,
-      text: "Eng shinam kutubxona",
-    },
-    {
-      id: 3,
-      image: HeroImage2,
-      text: "Most comfy library",
-    },
-  ];
 
   if (libraryLoading) {
     return <Spinner />;
@@ -122,7 +105,7 @@ const AllBooks = () => {
   return (
     <>
       <div className="hero__container">
-        <Hero sliderData={sliderData} className="hero__container" />
+        <Hero librarySliderData={librarySliderData} className="hero__container" />
       </div>
       <div className="all__books__container container">
         <div className="all__books__search">
