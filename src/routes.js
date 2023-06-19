@@ -495,7 +495,7 @@ const RoutesContainer = () => {
                   path="/portal-category/cabinet"
                   element={<CabinetLayout />}
                 >
-                  <Route index element={<CabinetHome />} />
+                  <Route index element={<Chat />} />
                   <Route
                     path="private-information"
                     element={<PrivateInformation />}
