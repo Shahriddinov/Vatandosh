@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Hero from "../../component/Hero/Hero";
 import News from "../../component/News/News";
-// import Partners from "../../component/Partners/Partners";
 import Peaceful from "../../component/peaceful/Peaceful";
 // import InteractiveServices from "../../component/interactiveServices/InteractiveServices";
 import MapsHome from "../../component/maps-home/MapsHome";
@@ -13,9 +12,6 @@ import { getSlider } from "../../reduxToolkit/sliderSlice/extraReducer";
 import HomeWebinarSlider from "../../component/homeWebinarSlider/HomeWebinarSlider";
 import { getWebinarSlider } from "../../reduxToolkit/webinarSlider/extraReducer";
 import { useTranslation } from "react-i18next";
-import { getLocation } from "../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
-import { Spinner } from "../../component";
-import { getCountriesNews } from "../../reduxToolkit/mapSlice/mapAsyncThunk";
 
 const Home = () => {
   const dispatch = useDispatch();

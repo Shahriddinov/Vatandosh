@@ -236,7 +236,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="portal-body-bottom">
-            <button onClick={() => setShowChat(!showChat)}>
+            {/* <button onClick={() => setShowChat(!showChat)}>
               <svg
                 width="20"
                 height="20"
@@ -252,7 +252,7 @@ const HomePage = () => {
                 />
               </svg>
             </button>
-            <ChatModal showChat={showChat} setShowChat={setShowChat} />
+            <ChatModal showChat={showChat} setShowChat={setShowChat} /> */}
           </div>
         </div>
       </div>

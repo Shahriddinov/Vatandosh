@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getPartners } from "./extraReducer";
 
 const initialState = {
-  loading: false,
+  loading: true,
   partnersData: [],
   error: null,
 };
