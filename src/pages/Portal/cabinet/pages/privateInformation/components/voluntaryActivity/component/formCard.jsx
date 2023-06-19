@@ -28,10 +28,6 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
     setData(changeData);
   };
 
-  const deleteCompHandlerBrowser = (id) => {
-    const newData = data.filter((el) => el.id !== id);
-    setData(newData);
-  };
   const deleteImgHandler = (id, each, from) => {
     setData((prev) => {
       const newData = prev.map((el) => {
@@ -62,7 +58,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
       animate={{ height: !openCard ? "45px" : "" }}
     >
       <div className="formCard-part1">
-        <h1>{el.title}</h1>
+        <h1>1. {el.title}</h1>
         <div>
           <motion.img
             animate={{ rotate: openCard ? 180 : 0 }}
@@ -74,9 +70,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             whileTap={{ scale: 0.9 }}
             src={trashIcon}
             alt="trashIcon"
-            onClick={() => {
-              return deleteCompHandler(el.id), deleteCompHandlerBrowser(el.id);
-            }}
+            onClick={() => deleteCompHandler(el.id)}
           />
         </div>
       </div>

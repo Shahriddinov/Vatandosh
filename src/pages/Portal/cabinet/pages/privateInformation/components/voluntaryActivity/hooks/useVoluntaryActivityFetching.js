@@ -14,6 +14,16 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   const volounteerActivityData = useSelector(
     (state) => state.volunteerSlice.volunteerActivity
   );
+  const deleteVolunteerStatus = useSelector(
+    (state) => state.volunteerSlice.deleteVolunteerStatus
+  );
+
+  const volunteerCreateLoading = useSelector(
+    (state) => state.volunteerSlice.volunteerCreateLoading
+  );
+  const updateVolunteerActivityLoading2 = useSelector(
+    (state) => state.volunteerSlice.updateVolunteerActivityLoading2
+  );
 
   const deleteCompHandler = (id) => {
     dispatch(deleteVolunteerActivity(id));
@@ -24,13 +34,14 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
     data.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
+        const volunteerId = el.id;
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
         formData.append("title", el.title);
         formData.append("description", el.description);
-
-        const volunteerId = el.id;
+        console.log("server running");
+        console.log(Object.fromEntries(formData));
 
         dispatch(updateVolunteerActivity2({ volunteerId, formData }));
       } else if (el.from === "client") {
@@ -40,6 +51,8 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
+        console.log("client running");
+        console.log(Object.fromEntries(formData));
         dispatch(volunteerCreate(formData));
       }
     });
@@ -48,6 +61,21 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   useEffect(() => {
     dispatch(getVolunteerActivity());
   }, [dispatch, lan]);
+
+  useEffect(() => {
+    if (deleteVolunteerStatus === "idle") {
+      dispatch(getVolunteerActivity());
+    }
+  }, [deleteVolunteerStatus]);
+
+  useEffect(() => {
+    if (!volunteerCreateLoading) {
+      window.location.reload();
+    }
+    if (!updateVolunteerActivityLoading2) {
+      window.location.reload();
+    }
+  }, [volunteerCreateLoading, updateVolunteerActivityLoading2]);
 
   useEffect(() => {
     if (volounteerActivityData.length === 0) {
