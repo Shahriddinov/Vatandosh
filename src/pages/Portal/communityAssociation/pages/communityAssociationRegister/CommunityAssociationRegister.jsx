@@ -12,14 +12,22 @@ import {
   CommunityRegister5,
 } from "./components";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const CommunityAssociationRegister = () => {
+  const lan = useSelector((state) => state.language.language);
+  const [registerPathData, setRegisterPathData] = useState(registerPath);
   const { hash } = useLocation();
   let [activeBarItem, setActiveBarItem] = useState(
     hash ? hash.slice(1) : "application-1"
   );
   const navigation = useNavigate();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setRegisterPathData(registerPathData);
+  }, [lan]);
 
   const handleClick = (url) => {
     setActiveBarItem(url);
@@ -52,7 +60,7 @@ const CommunityAssociationRegister = () => {
           <div className="community-association-register__box">
             <div className="expertregister-main">
               <ul className="expertregister-main-bar">
-                {registerPath?.map((el) => {
+                {registerPathData?.map((el) => {
                   return (
                     <li
                       key={el.id}
