@@ -10,8 +10,10 @@ import { useEffect } from "react";
 import { getQuizzFinish } from "../../../../../reduxToolkit/victorinaQuiz/victorinafinish/finish";
 import VictorinaCard from "../VictorinaHome/components/victorinaCard/VictorinaCard";
 import { Spinner } from "../../../../../component";
+import { useTranslation } from "react-i18next";
 
 function VictorinaFinish() {
+  const { t } = useTranslation();
   const [year, setYear] = useState("2022");
 
   const handleChange = (event) => {
@@ -37,7 +39,7 @@ function VictorinaFinish() {
     <div className="victorinafinish">
       <div className="container">
         <div className="victorinafinish-top">
-          <h2>Viktorina yakunlanganlar</h2>
+          <h2>{t("victorina.end")}</h2>
           <FormControl sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="demo-simple-select-helper-label">{year}</InputLabel>
             <Select
@@ -45,8 +47,7 @@ function VictorinaFinish() {
               id="demo-simple-select-helper"
               value={year}
               label="Age"
-              onChange={handleChange}
-            >
+              onChange={handleChange}>
               <MenuItem value="2022">2022</MenuItem>
               <MenuItem value="2023">2023</MenuItem>
             </Select>

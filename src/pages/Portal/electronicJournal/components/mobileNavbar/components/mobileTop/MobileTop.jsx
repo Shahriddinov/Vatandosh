@@ -9,8 +9,10 @@ import {
 import "./mobileTop.scss";
 import { useContext } from "react";
 import { GrayContext } from "../../../../../../../context/GrayContext";
+import { useTranslation } from "react-i18next";
 
 const MobileTop = () => {
+  const { t } = useTranslation();
   const { grayScale } = useContext(GrayContext);
   return (
     <div className="header-sideBar-top">
@@ -21,15 +23,14 @@ const MobileTop = () => {
           className="header-sideBar-top__logo--img"
         />
         <span className="header-sideBar-top__logo--text">
-          “VATANDOSHLAR” JAMOAT FONDI
+          {t("expert.headtitle")}
         </span>
       </Link>
       <ul className="header-sideBar-top__list">
         <li className="header-sideBar-top__item">
           <button
             className="header-sideBar-top__btn"
-            onClick={() => grayScale()}
-          >
+            onClick={() => grayScale()}>
             <img
               src={MobileEye}
               alt="eye button"

@@ -5,8 +5,10 @@ import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina
 import { useEffect } from "react";
 import { imageUrl } from "../../../../../services/api/utils";
 import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/VictorinaStatics";
+import { useTranslation } from "react-i18next";
 
 function VictorinaAbout() {
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const pageData = useSelector((state) => state.pageSlice.pageData);
 
@@ -20,10 +22,10 @@ function VictorinaAbout() {
     <div className="about">
       <div className="container">
         <div className="about-top">
-          <h3>Victorinalar haqida</h3>
+          <h3>{t("victorinaAbout")}</h3>
           <span>
-            <a href="/portal-category/victorina">Asosiy</a>
-            <p>Batafsil</p>
+            <a href="/portal-category/victorina">{t("expert.main")}</a>
+            <p>{t("expert.detail")}</p>
           </span>
         </div>
         <div className="about-page">

@@ -89,7 +89,7 @@ export default function ProjectImgPopUp({ setactivePopUp, toast }) {
       image: communityCreateData?.path,
     };
 
-    dispatch(sendVictorinaFile({ id, data,setactivePopUp }));
+    dispatch(sendVictorinaFile({ id, data, setactivePopUp }));
   };
 
   return (
@@ -123,7 +123,7 @@ export default function ProjectImgPopUp({ setactivePopUp, toast }) {
             htmlFor=""
             className="registeritem-label">
             <p>
-              Pasport yuklash (pdf, doc) <span>*</span>
+              {t("passportUpload")} <span>*</span>
             </p>
             <div>
               <input

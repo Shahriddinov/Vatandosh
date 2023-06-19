@@ -91,8 +91,7 @@ const SearchBooks = () => {
                 height="11"
                 viewBox="0 0 10 11"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M6.23309 4.92481C6.61654 5.21241 6.61654 5.78759 6.23309 6.07519L4.15037 7.63722C3.67639 7.99271 3 7.65451 3 7.06203L3 3.93797C3 3.34549 3.67639 3.00729 4.15037 3.36278L6.23309 4.92481Z"
                   fill="#5D6B8A"
@@ -117,8 +116,7 @@ const SearchBooks = () => {
                   border: "1px solid #EAEDF6",
                   borderRadius: "12px",
                   boxShadow: 0,
-                }}
-              >
+                }}>
                 <InputBase
                   sx={{
                     ml: 1,
@@ -140,8 +138,7 @@ const SearchBooks = () => {
                   aria-label="search"
                   onClick={() =>
                     handleСlick({ sort: data.search, type: "search" })
-                  }
-                >
+                  }>
                   <CiSearch color="#065EA9" size={24} />
                 </IconButton>
               </Paper>
@@ -160,37 +157,32 @@ const SearchBooks = () => {
                     color: "#656B70",
                     borderRadius: "12px",
                     boxShadow: 0,
-                  }}
-                >
+                  }}>
                   <MenuItem
                     value=""
-                    onClick={() => handleСlick({ sort: "", type: "lang" })}
-                  >
+                    onClick={() => handleСlick({ sort: "", type: "lang" })}>
                     {t("library.sort_by_language")}
                   </MenuItem>
                   <MenuItem
                     value={"English"}
                     onClick={() =>
                       handleСlick({ sort: "English", type: "lang" })
-                    }
-                  >
-                    English
+                    }>
+                    {t("english")}
                   </MenuItem>
                   <MenuItem
                     value={"O'zbek"}
                     onClick={() =>
                       handleСlick({ sort: "O'zbek", type: "lang" })
-                    }
-                  >
-                    O'zbek
+                    }>
+                    {t("uzbek")}
                   </MenuItem>
                   <MenuItem
                     value={"Русский"}
                     onClick={() =>
                       handleСlick({ sort: "Русский", type: "lang" })
-                    }
-                  >
-                    Русский
+                    }>
+                    {t("ruskiy")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -207,37 +199,32 @@ const SearchBooks = () => {
                     color: "#656B70",
                     borderRadius: "12px",
                     boxShadow: 0,
-                  }}
-                >
+                  }}>
                   <MenuItem
                     value=""
-                    onClick={() => handleСlick({ sort: "", type: "type" })}
-                  >
+                    onClick={() => handleСlick({ sort: "", type: "type" })}>
                     {t("library.sort_by_genre")}
                   </MenuItem>
                   <MenuItem
                     value={"Badiiy adabiyot"}
                     onClick={() =>
                       handleСlick({ sort: "Badiiy adabiyot", type: "type" })
-                    }
-                  >
-                    Badiiy adabiyot
+                    }>
+                    {t("libraryOne")}
                   </MenuItem>
                   <MenuItem
                     value={"Ilmiy-marifiy"}
                     onClick={() =>
                       handleСlick({ sort: "Ilmiy-marifiy", type: "type" })
-                    }
-                  >
-                    Ilmiy-marifiy
+                    }>
+                    {t("libraryTwo")}
                   </MenuItem>
                   <MenuItem
                     value={"Diniy-marifiy"}
                     onClick={() =>
                       handleСlick({ sort: "Diniy-marifiy", type: "type" })
-                    }
-                  >
-                    Diniy-marifiy
+                    }>
+                    {t("libraryThree")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -247,20 +234,17 @@ const SearchBooks = () => {
             <ul>
               <li
                 className={data.sort === "all" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "all", type: "sort" })}
-              >
-                Barchasi
+                onClick={() => handleСlick({ sort: "all", type: "sort" })}>
+                {t("all")}
               </li>
               <li
                 className={data.sort === "new" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "new", type: "sort" })}
-              >
+                onClick={() => handleСlick({ sort: "new", type: "sort" })}>
                 {t("library.new")}
               </li>
               <li
                 className={data.sort === "popular" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "popular", type: "sort" })}
-              >
+                onClick={() => handleСlick({ sort: "popular", type: "sort" })}>
                 {t("library.popular")}
               </li>
             </ul>
