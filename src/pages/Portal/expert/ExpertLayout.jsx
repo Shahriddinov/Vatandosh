@@ -1,6 +1,6 @@
 import React from "react";
 import ExpertHeader from "./components/ExpertHeader/ExpertHeader";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import ExpertFooter from "./components/ExpertFooter/ExpertFooter";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";
@@ -20,7 +20,7 @@ const ExpertLayout = () => {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navData = [
     { id: 1, url: "/portal-category/expert", label: t("expert.main") },

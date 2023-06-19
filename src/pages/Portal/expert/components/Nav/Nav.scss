@@ -27,3 +27,9 @@
     color: #5d6b8a;
   }
 }
+
+@media screen and (max-width: 1146px) {
+  .nav {
+    display: none;
+  }
+}
