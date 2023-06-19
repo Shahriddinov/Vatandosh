@@ -57,7 +57,6 @@ const Associations = () => {
 
   const pagination = paginationCount(allCommunityGet?.total, 8);
 
-  console.log(communityData);
   return (
     <div className="associations">
       <div className="container">
