@@ -676,14 +676,14 @@ const RoutesContainer = () => {
                   <Route path=":newsId" element={<PortalNews />} />
                 </Route>
 
-                <Route
-                  path="/portal-category/online-teaching"
-                  element={<OnlineTeachingLayout />}
-                >
-                  <Route index element={<OnlineTeachingHome />} />
-                  <Route path="about" element={<AboutTeaching />} />
-                  <Route path="take-test" element={<PassTheTest />} />
-                </Route>
+                {/*<Route*/}
+                {/*  path="/portal-category/online-teaching"*/}
+                {/*  element={<OnlineTeachingLayout />}*/}
+                {/*>*/}
+                {/*  <Route index element={<OnlineTeachingHome />} />*/}
+                {/*  <Route path="about" element={<AboutTeaching />} />*/}
+                {/*  <Route path="take-test" element={<PassTheTest />} />*/}
+                {/*</Route>*/}
 
                 <Route
                   path="/portal-category/library"
