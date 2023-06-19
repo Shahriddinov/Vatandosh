@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { useEffect } from "react";
 import VictorinaCard from "../VictorinaHome/components/victorinaCard/VictorinaCard";
+import { useTranslation } from "react-i18next";
 
 function MoreVictorina() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quizSlice.data.quizzes);
   const lan = useSelector((state) => state.language.language);
@@ -16,7 +18,7 @@ function MoreVictorina() {
   return (
     <div className="morevictorina">
       <div className="container">
-        <h2 className="victorina-name">Viktorinalar</h2>
+        <h2 className="victorina-name">{t("victorinas.victorinas")}</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
             <VictorinaCard victorina={victorina} key={index} url="" />

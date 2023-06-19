@@ -13,8 +13,10 @@ import {
 import { usePortalDetailFetching } from "./hooks/usePortalDetailFetching";
 import NotFound from "../../../../404";
 import Header from "../../../../../component/Layout/Header/Header";
+import { useTranslation } from "react-i18next";
 
 function PortalDetail() {
+  const { t } = useTranslation();
   const { data, loading, error } = usePortalDetailFetching();
 
   if (loading) {
@@ -35,10 +37,10 @@ function PortalDetail() {
           <div className="newsdetail-title">
             <h1 className="newsdetail-title-text">{data?.title}</h1>
             <div className="newsdetail-title-url">
-              <Link to="/">Asosiy sahifa</Link>
+              <Link to="/">{t("mainPage")}</Link>
               <MdArrowRight />
               <MdArrowRight />
-              <span>batafsil</span>
+              <span>{t("more")}</span>
             </div>
           </div>
 
@@ -64,8 +66,7 @@ function PortalDetail() {
                       <Link
                         to={`/hashtag/${el.trim()}`}
                         key={index}
-                        className="populartags-tag"
-                      >
+                        className="populartags-tag">
                         {el}
                       </Link>
                     );
@@ -76,8 +77,7 @@ function PortalDetail() {
                 className="newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: data?.content,
-                }}
-              ></div>
+                }}></div>
               <div className="newsdetail-main-desc-share">
                 <ShareFriends />
               </div>

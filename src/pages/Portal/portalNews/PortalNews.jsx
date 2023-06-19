@@ -24,8 +24,6 @@ export default function PortalNews() {
   const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   const { newsId } = useParams();
-  // const newsData = useSelector((store) => store.portalNews.news);
-  // const newsLoading = useSelector((store) => store.portalNews.loading);
   const oneNewsDetail = useSelector((store) => store.portalNews.oneNews);
   const oneNewsLoading = useSelector(
     (store) => store.portalNews.oneNewsLoading
@@ -57,7 +55,7 @@ export default function PortalNews() {
             <div className="portal-newsdetail-title-url">
               <Link to={navData[0].url}>{navData[0].label}</Link>
               <MdArrowRight />
-              <span>Batafsil</span>
+              <span>{t("more")}</span>
             </div>
           </div>
 
@@ -80,19 +78,6 @@ export default function PortalNews() {
                     <span>{oneNewsDetail?.view}</span>
                   </div>
                 </div>
-                {/* <div className="portal-newsdetail-main-desc-action-tags">
-              {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
-                return (
-                  <Link
-                    to={`/hashtag/${el.trim()}`}
-                    key={index}
-                    className="populartags-tag"
-                  >
-                    {el}
-                  </Link>
-                );
-              })}
-            </div> */}
               </div>
               <div
                 className="portal-newsdetail-main-desc-texts"

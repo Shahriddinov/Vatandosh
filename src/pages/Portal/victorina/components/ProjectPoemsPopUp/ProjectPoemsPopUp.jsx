@@ -108,7 +108,7 @@ export default function ProjectPoemsPopUp({ setactivePopUp }) {
             htmlFor="passport"
             className="registeritem-label">
             <p>
-              Pasport yuklash (pdf, doc) <span>*</span>
+            {t("passportUpload")}  <span>*</span>
             </p>
             <div>
               <input

@@ -6,8 +6,10 @@ import {
   getAllRegions,
 } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const useAssociationFetching = () => {
+  const { t } = useTranslation();
   const language = useSelector((store) => store.language.language);
   const allRegionsChange = createSelector(
     (store) => store.community.allRegionsGet,
@@ -58,7 +60,7 @@ export const useAssociationFetching = () => {
   allRegions.unshift({
     id: "all",
     name: "Barcha davlatlar",
-    label: "Barcha davlatlar",
+    label: t("expert.allcountry"),
     code: "Barcha davlatlar",
     flag: null,
     count: 0,
@@ -71,5 +73,6 @@ export const useAssociationFetching = () => {
     allCommunityGetLoading,
     dispatch,
     communityData,
+    lan: language,
   };
 };

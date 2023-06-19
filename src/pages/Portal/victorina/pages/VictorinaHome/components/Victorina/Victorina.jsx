@@ -8,13 +8,14 @@ import "./Victorina.scss";
 import { imageUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
 import VictorinaCard from "../victorinaCard/VictorinaCard";
+import { useTranslation } from "react-i18next";
 
 function Victorina({ quizData }) {
-  console.log(quizData);
+  const { t } = useTranslation();
   return (
     <div className="victorina">
       <div className="container">
-        <h2 className="victorina-name">Viktorinalar</h2>
+        <h2 className="victorina-name">{t("victorinas.victorinas")}</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
             <VictorinaCard victorina={victorina} key={index} url="" />
@@ -22,7 +23,7 @@ function Victorina({ quizData }) {
         </div>
         <Link className="victorina_link" to="victorina-more">
           <img src={ExcludeIcon} alt="error" />
-          Barcha viktorinalar
+          {t("choices.allQuizzes")}
         </Link>
       </div>
     </div>
