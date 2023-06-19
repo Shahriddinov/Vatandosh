@@ -68,7 +68,7 @@ const Hero = ({ librarySliderData, error, loading }) => {
                 }}
               >
                 <h1>{slider.title}</h1>
-                <h2>{slider.text}</h2>
+                {/*<h2>{slider.text}</h2>*/}
               </div>
             </div>
           ))}
