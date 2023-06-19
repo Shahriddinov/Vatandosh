@@ -104,7 +104,7 @@ export default function ProjectYouTubePopUp({ setactivePopUp, id }) {
             htmlFor=""
             className="registeritem-label">
             <p>
-              Pasport yuklash (pdf, doc) <span>*</span>
+              {t("passportUpload")} <span>*</span>
             </p>
             <div>
               <input

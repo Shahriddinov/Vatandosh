@@ -91,14 +91,14 @@ function HeaderTime({ quizData }) {
               className={`hero__slider-box ${
                 slideIndex === slider?.id ? "active" : ""
               }`}
-              key={slider.id}
-            >
+              key={slider.id}>
               <div
                 className={`hero__slider-item`}
                 style={{
-                  backgroundImage: `url(${imageUrl}/${JSON?.parse(slider?.image)[0]})`,
-                }}
-              ></div>
+                  backgroundImage: `url(${imageUrl}/${
+                    JSON?.parse(slider?.image)[0]
+                  })`,
+                }}></div>
               <div className="hero__slider-left-bottom">
                 <h3
                   dangerouslySetInnerHTML={{
@@ -108,23 +108,22 @@ function HeaderTime({ quizData }) {
                 <div className="headertime-page">
                   <div className="headertime-box">
                     <span>{days}</span>
-                    <p>Kun</p>
+                    <span>{t("choices.day")}</span>
                   </div>
                   <div className="headertime-box">
                     <span>{hours}</span>
-                    <p>SOAT</p>
+                    <span>{t("choices.hour")}</span>
                   </div>
                   <div className="headertime-box">
                     <span>{minutes}</span>
-                    <p>DAQIQA</p>
+                    <span>{t("choices.minute")}</span>
                   </div>
                 </div>
                 <Link
                   to={`/portal-category/victorina/image-project/${slider.id}`}
                   style={{ width: "163px" }}
-                  className="headertime-button"
-                >
-                  Batafsil ma’lumot
+                  className="headertime-button">
+                  {t("moreAbout")}
                 </Link>
               </div>
             </div>

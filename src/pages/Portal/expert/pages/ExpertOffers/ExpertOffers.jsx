@@ -65,15 +65,14 @@ export default function ExpertOffers() {
               </div>
             ))
           ) : (
-            <p>Tasdiqlangan takliflar mavjud emas.</p>
+            <p>{t("expertnone")}</p>
           )}
           <div className="expertoffer-list-morebtn">
             {getSuggestion?.total - 12 * page > 0 ? (
               <button
                 onClick={() => {
                   SetPage((prev) => ++prev);
-                }}
-              >
+                }}>
                 <BsArrowDownCircleFill />
                 <span>{t("expert.alloffers")}</span>
               </button>

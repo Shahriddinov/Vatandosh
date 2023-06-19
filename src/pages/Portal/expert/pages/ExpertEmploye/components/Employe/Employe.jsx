@@ -145,7 +145,7 @@ function Employe() {
                 </div>
               ))
             ) : (
-              <p>Hozirda expertlar mavjud emas</p>
+              <p>{t("expertNone")}</p>
             )}
           </div>
           {countPagination >= 2 ? (
