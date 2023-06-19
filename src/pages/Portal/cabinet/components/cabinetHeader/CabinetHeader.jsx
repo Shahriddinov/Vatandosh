@@ -40,7 +40,7 @@ const CabinetHeader = () => {
         <div className="cabinet-header__user-data">
           <h4>{user.first_name + " " + user.last_name}</h4>
           <p>
-            {t("experience")}: <span>4 {t("experienceOne")}</span>
+            {t("experience")}: <span>4 </span>
           </p>
         </div>
       </div>
