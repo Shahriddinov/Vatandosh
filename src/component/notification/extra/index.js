@@ -22,12 +22,14 @@ export const filterNotification = ({ data, dispatch }) => {
         default:
       }
     }
-    dispatch(
-      changeNotificationCount(news.length + admin.length + events.length)
-    );
   });
+  dispatch(
+    changeNotificationCount(
+      news.length + admin.length + events.slice(0, 20).length
+    )
+  );
 
-  return { admin, news, events };
+  return { admin, news, events: events.slice(20) };
 };
 
 export const notificationGetTime = (time, lan) => {
