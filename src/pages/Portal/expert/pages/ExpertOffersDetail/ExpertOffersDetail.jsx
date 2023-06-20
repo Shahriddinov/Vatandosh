@@ -23,7 +23,7 @@ export default function ExpertOffersDetail() {
     expertCount,
   } = useExportOfferDetail();
 
-  // const { expertHomeData: expertData } = useExpertHome();
+  const expertHomeData = useExpertHome();
 
   const url = [
     { title: t("expert.main"), url: "/portal-category/expert" },
@@ -72,7 +72,7 @@ export default function ExpertOffersDetail() {
           <div className="expertofferdetail-actions">
             <CouncilStatics
               expertCount={expertCount}
-              // expertData={expertHomeData}
+              expertData={expertHomeData.expertData}
             />
           </div>
         </div>

@@ -157,15 +157,11 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>
-                    {t("expert.workcountry")}
-                    <span>*</span>
-                  </p>
+                  <p>{t("expert.workcountry")}</p>
                   <FormControl style={{ padding: 0 }}>
                     <Select
                       className="registeritem-select"
                       value={el.location_id}
-                      required
                       onChange={(e) =>
                         handleChange({ ...el, location_id: e.target.value })
                       }
@@ -185,13 +181,9 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   </FormControl>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>
-                    {t("expert.workregionorcity")}
-                    <span>*</span>
-                  </p>
+                  <p>{t("expert.workregionorcity")}</p>
                   <div>
                     <input
-                      required
                       type="text"
                       minLength={3}
                       maxLength={200}
@@ -224,13 +216,9 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                 </div>
               </label>
               <label htmlFor="" className="registeritem-label">
-                <p>
-                  {t("expert.workspace")}
-                  <span>*</span>
-                </p>
+                <p>{t("expert.workspace")}</p>
                 <div>
                   <input
-                    required
                     type="text"
                     minLength={3}
                     maxLength={100}
@@ -253,13 +241,9 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>
-                    {t("expert.workstart")}
-                    <span>*</span>
-                  </p>
+                  <p>{t("expert.workstart")}</p>
                   <div>
                     <input
-                      required
                       type="date"
                       minLength={3}
                       maxLength={100}
@@ -275,14 +259,10 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   </div>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>
-                    {t("expert.workend")}
-                    <span>*</span>
-                  </p>
+                  <p>{t("expert.workend")}</p>
                   <div>
                     <input
                       disabled={el?.status}
-                      required
                       type="date"
                       minLength={3}
                       maxLength={30}

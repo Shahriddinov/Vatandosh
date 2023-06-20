@@ -53,7 +53,8 @@ function VolunterAbout() {
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
                 value={data.country}
-                label={t("expert.allcountry")}>
+                label={t("expert.allcountry")}
+              >
                 {locations?.map((location) => (
                   <MenuItem
                     onClick={() =>
@@ -61,7 +62,8 @@ function VolunterAbout() {
                     }
                     value={location.id}
                     key={location.id}
-                    name={location.name}>
+                    name={location.name}
+                  >
                     {location.name}
                   </MenuItem>
                 ))}
@@ -75,7 +77,8 @@ function VolunterAbout() {
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
                 value={data.city}
-                label="Barcha davlatlar">
+                label="Barcha davlatlar"
+              >
                 {allCitiesGet.length < 0
                   ? ""
                   : allCitiesGet?.map((city) => (
@@ -84,7 +87,8 @@ function VolunterAbout() {
                           handleСlick({ id: city.id, type: "city" })
                         }
                         value={city.id}
-                        key={city.id}>
+                        key={city.id}
+                      >
                         {city.name}
                       </MenuItem>
                     ))}
@@ -123,7 +127,8 @@ function VolunterAbout() {
                 <div className="link-div">
                   <Link
                     className="employe-link"
-                    to={`/portal-category/volunteer/profile/${volunteer.id}`}>
+                    to={`/portal-category/volunteer/profile/${volunteer.id}`}
+                  >
                     <span>{t("expert.more")}</span>
                     <img src={ArrowIcon} alt="Arrow Icon" />
                   </Link>
