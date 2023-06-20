@@ -629,5 +629,10 @@
   "cabinetFour": "Participation in public organizations",
   "cabinetFive": "Quizzes ",
   "cabinetSix": "Events",
-  "cabinetSeven": "Certificates"
+  "cabinetSeven": "Certificates",
+  "allWiews": "See all",
+  "NoInternet": "No internet. Connection lost.",
+  "notification": "Notifications",
+  "famousTag": "Popular tags",
+  "copy":"Copied!"
 }

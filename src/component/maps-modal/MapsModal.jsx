@@ -93,8 +93,7 @@ const MapsModal = ({ changeActive, countryCode }) => {
                   <li className="maps_modal__body_text">
                     <span
                       className="maps_modal__body_text--span"
-                      style={{ width: "70px" }}
-                    >
+                      style={{ width: "70px" }}>
                       {t("modalText2")}
                     </span>
                     <span style={{ whiteSpace: "nowrap" }}>
@@ -104,8 +103,7 @@ const MapsModal = ({ changeActive, countryCode }) => {
                   <li className="maps_modal__body_text">
                     <span
                       className="maps_modal__body_text--span"
-                      style={{ width: "70px" }}
-                    >
+                      style={{ width: "70px" }}>
                       {t("modalText3")}
                     </span>
                     <span style={{ whiteSpace: "nowrap" }}>
@@ -116,9 +114,8 @@ const MapsModal = ({ changeActive, countryCode }) => {
 
                 <Link
                   to={`/country-news/${countryPosts.id}`}
-                  className="maps_modal__body_link"
-                >
-                  Barchasini ko‘rish
+                  className="maps_modal__body_link">
+                  {t("allWiews")}
                 </Link>
               </div>
             </>

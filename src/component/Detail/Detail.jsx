@@ -9,8 +9,10 @@ import { AiFillEye } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
 import { baseServerUrl } from "../../services/api/utils";
+import { useTranslation } from "react-i18next";
 
 export default function Detail(data) {
+  const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
   const [galleryMainImg, setgalleryMainImg] = useState(null);
 
@@ -29,11 +31,11 @@ export default function Detail(data) {
           <div className="newsdetail-title">
             <h1 className="newsdetail-title-text">{data[`title_${lan}`]}</h1>
             <div className="newsdetail-title-url">
-              <Link to="/">Asosiy sahifa</Link>
+              <Link to="/">{t("mainPage")}</Link>
               <MdArrowRight />
-              <Link to="/information-service/news">Yangiliklar</Link>
+              <Link to="/information-service/news">{t("news")}</Link>
               <MdArrowRight />
-              <span>batafsil</span>
+              <span>{t("more")}</span>
             </div>
           </div>
 

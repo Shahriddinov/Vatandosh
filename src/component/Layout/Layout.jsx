@@ -44,8 +44,7 @@ const Layout = ({ children }) => {
             : registerHeader.includes("portal")
             ? "page-wrapper1"
             : ""
-        }
-      >
+        }>
         {registerHeader === "portal" && <HeaderPortal />}
         {registerHeader.includes("registration") && <RegisterHeader />}
         <div className="page-content">{children}</div>

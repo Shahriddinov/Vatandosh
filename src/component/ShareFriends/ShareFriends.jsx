@@ -28,9 +28,8 @@ export default function ShareFriends() {
           <img src={filled} alt="" />
           <span
             className="sharefriends-list-item-copy"
-            style={isurlCopy ? { opacity: 1 } : null}
-          >
-            Copied!
+            style={isurlCopy ? { opacity: 1 } : null}>
+            {t("copy")}
           </span>
         </div>
         <FacebookShareButton url={shareUrl} className="sharefriends-list-item">
