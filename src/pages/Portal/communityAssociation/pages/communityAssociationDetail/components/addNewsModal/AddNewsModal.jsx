@@ -19,6 +19,8 @@ const AddNewsModal = ({ open, handleClose, id, toast }) => {
     handleSubmit,
   } = useAddNewsModalFetching(id, toast, handleClose);
 
+  console.log(data.attachments);
+
   return (
     <>
       <Modal
@@ -67,8 +69,9 @@ const AddNewsModal = ({ open, handleClose, id, toast }) => {
                 ? data.attachments.map((img, i) => (
                     <div className="my-img-upload__img_item" key={i}>
                       <button
-                        onClick={() => handleClick(img.id)}
+                        onClick={() => handleClick(img.path)}
                         className="my-img-upload__img_delete"
+                        type="button"
                       >
                         <BsFillTrashFill />{" "}
                         <span>{t("communityAssociation.delete")}</span>
