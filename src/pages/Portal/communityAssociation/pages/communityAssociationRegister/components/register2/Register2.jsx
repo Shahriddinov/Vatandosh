@@ -69,7 +69,6 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
     });
   }, [communityCreateData]);
 
-  console.log(data);
   return (
     <div
       className={`community-association-register2  ${
@@ -113,6 +112,7 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
               <button
                 onClick={() => dispatch(deleteCommunityImage(img))}
                 className="community-association-register1__img_delete"
+                type="button"
               >
                 <BsFillTrashFill />{" "}
                 <span>{t("communityAssociation.delete")}</span>
