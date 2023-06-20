@@ -13,7 +13,7 @@ const NetworkError = () => {
 			<div className="no-connection__overlay" />
 			<div className="no-connection__content">
 				<div className="no-connection__text">
-					<Trans t={t}>No internet. Connection lost.</Trans>
+					<Trans t={t}>{t("NoInternet")}</Trans>
 				</div>
 				<div className="no-connection__icon">
 					<WifiIcon />

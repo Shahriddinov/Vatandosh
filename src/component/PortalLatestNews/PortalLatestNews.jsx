@@ -8,8 +8,10 @@ import { Link, useParams } from "react-router-dom";
 import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
 import { getPortalNews } from "../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import Spinner from "../Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 export default function PortalLatestNews({ category, latestNews }) {
+  const { t } = useTranslation();
   const lan = useSelector((state) => state.language.language);
   const newsData = useSelector((store) => store.portalNews.news);
   const newsLoading = useSelector((store) => store.portalNews.loading);
@@ -28,7 +30,7 @@ export default function PortalLatestNews({ category, latestNews }) {
 
   return (
     <div className="latest_news">
-      <h4 className="latest_news-title">So‘ngi yangiliklar</h4>
+      <h4 className="latest_news-title">{t("lates")}</h4>
       <ul className="latest_news-list">
         {(category?.length === 0 ? latestNews : newsData.data.slice(0, 5)).map(
           (el) => {
@@ -36,8 +38,7 @@ export default function PortalLatestNews({ category, latestNews }) {
               <li key={el.id} className="latest_news-list-item">
                 <Link
                   to={`/portal-category/${category}/${el.id}`}
-                  className="latest_news-list-item-link"
-                >
+                  className="latest_news-list-item-link">
                   <div className="latest_news-list-item-img">
                     <img src={`${PORTAL_IMAGE_URL}/${el.image}`} alt="" />
                   </div>

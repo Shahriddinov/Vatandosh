@@ -21,9 +21,8 @@ const InteractiveServices = () => {
   const error = useSelector((state) => state.peaceful.error);
   const lan = useSelector((state) => state.language.language);
 
-
   useEffect(() => {
-    Aos.init({duration: 2000})
+    Aos.init({ duration: 2000 });
   }, []);
 
   useEffect(() => {
@@ -50,8 +49,7 @@ const InteractiveServices = () => {
                   height="20"
                   viewBox="0 0 9 15"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -67,8 +65,7 @@ const InteractiveServices = () => {
                   height="20"
                   viewBox="0 0 9 15"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -84,9 +81,9 @@ const InteractiveServices = () => {
         <div className="interactive_services__slider slider_box">
           <div className="slider_box__wrapper">
             <Swiper
-                  data-aos="zoom-in-down"
-                  data-aos-easing="ease-out-cubic"
-                  data-aos-duration="1000"
+              data-aos="zoom-in-down"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
               slidesPerView={4}
               spaceBetween={30}
               modules={[Navigation]}
@@ -115,8 +112,7 @@ const InteractiveServices = () => {
                   spaceBetween: 30,
                 },
               }}
-              className="mySwiper"
-            >
+              className="mySwiper">
               {data?.map((el) => (
                 <SwiperSlide
                   key={el.id}

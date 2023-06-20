@@ -28,8 +28,7 @@ const SiteHero = ({ data }) => {
 
                 <li
                   className="site-hero__breadcrumb_item breadcrumb_item_active"
-                  aria-current="page"
-                >
+                  aria-current="page">
                   {data[`menu_${lan}`]}
                 </li>
               </ul>
