@@ -3,12 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { PORTAL_IMAGE_URL } from "../../services/api/utils";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 const SiteLatestNews = ({ latestNews }) => {
+  const { t } = useTranslation();
   const { category, type } = useParams();
   return (
     <div className="latest_news">
-      <h4 className="latest_news-title">So‘ngi yangiliklar</h4>
+      <h4 className="latest_news-title">{t("lates")}</h4>
       <ul className="latest_news-list">
         {latestNews.slice(0, 5).map((el) => {
           return (

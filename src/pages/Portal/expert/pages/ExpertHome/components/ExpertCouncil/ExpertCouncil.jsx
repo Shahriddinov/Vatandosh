@@ -32,7 +32,7 @@ function Expert({
 
   return expertData?.data?.length ? (
     <div className="expert">
-      <div className="container expert-container">
+      <div className="expert-container">
         <h2>{t("expert.expertCouncil")}</h2>
         <div className="expert-list">
           <button
@@ -57,8 +57,12 @@ function Expert({
               nextEl: ".slider_controls__right",
             }}
             breakpoints={{
-              375: {
+              270: {
                 slidesPerView: 1,
+                spaceBetween: 30,
+              },
+              375: {
+                slidesPerView: 1.5,
                 spaceBetween: 30,
               },
               768: {

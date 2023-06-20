@@ -398,8 +398,8 @@
     },
     "menu4_info": {
       "menu4_title": "Ташкилот фаолияти",
-      "input1_name": "Ташкилот ташкил етилган сана",
-      "input2_name": "Date of establishment of the organization",
+      "input1_name": "Ташкилотнинг низом фаолияти",
+      "input2_name": "Ташкилот ташкил етилган сана",
       "input3_name": "Ташкилот аъзолари сони",
       "input4_name": "Aсосий ютуқлар"
     },
@@ -631,5 +631,10 @@
   "cabinetFour": "Жамоат ташкилотларида иштирок этиш",
   "cabinetFive": "Викториналар ",
   "cabinetSix": "Воқеалар",
-  "cabinetSeven": "Сертификатлар"
+  "cabinetSeven": "Сертификатлар",
+  "allWiews": "Барчасини кўриш",
+  "NoInternet": "Интернет йўқ. Уланиш узилди.",
+  "notification": "Билдиришномалар",
+  "famousTag": "Машҳур таглар",
+  "copy": "Кўчирилди!"
 }

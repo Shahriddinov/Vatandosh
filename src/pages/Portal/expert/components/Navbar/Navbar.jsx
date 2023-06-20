@@ -25,6 +25,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { GrayContext } from "../../../../../context/GrayContext";
 import { Tooltip } from "@mui/material";
 import { openNotification } from "../../../../../reduxToolkit/notificationSlice/notificationSlice";
+import PortalSideBar from "../../../components/PortalSideBar/PortalSideBar";
 
 const Navbar = ({ navbarUrl }) => {
   const { t } = useTranslation();
@@ -56,12 +57,25 @@ const Navbar = ({ navbarUrl }) => {
     window.location = "/portal";
   };
 
+  const navData = [
+    { url: "/portal-category/expert", title: t("expert.main") },
+    {
+      url: "/portal-category/expert/expert-council",
+      title: t("expert.expertCouncil"),
+    },
+    { url: "/portal-category/expert/offers", title: t("expert.offers") },
+    {
+      url: "/portal-category/expert/contact",
+      title: t("contactPage.contactUs"),
+    },
+  ];
+
   return (
     <div className="navbarpage">
       <div className="container">
         <div className="navbarpage__inner">
           <Link to={navbarUrl?.home}>
-            <div className="navbar-list">
+            <div className="navbar-logo">
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4
                 className={
@@ -223,6 +237,7 @@ const Navbar = ({ navbarUrl }) => {
               ) : null}
             </div>
           </div>
+          <PortalSideBar data={navData} />
         </div>
       </div>
     </div>

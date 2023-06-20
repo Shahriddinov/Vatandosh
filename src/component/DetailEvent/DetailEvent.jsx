@@ -18,7 +18,6 @@ export default function DetailEvent(siteNews) {
     if (siteNews?.images) setgalleryMainImg(JSON.parse(siteNews?.images)[0]);
   }, [siteNews]);
 
-
   return siteNews ? (
     <div className="newsdetail">
       <Header />
@@ -32,11 +31,11 @@ export default function DetailEvent(siteNews) {
               {siteNews[`title_${lan}`]}
             </h1>
             <div className="newsdetail-title-url">
-              <Link to="/">Asosiy sahifa</Link>
+              <Link to="/">{t("mainPage")}</Link>
               <MdArrowRight />
-              <Link to="/information-service/news">Yangiliklar</Link>
+              <Link to="/information-service/news">{t("news")}</Link>
               <MdArrowRight />
-              <span>batafsil</span>
+              <span>{t("more")}</span>
             </div>
           </div>
 

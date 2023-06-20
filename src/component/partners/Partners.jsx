@@ -93,7 +93,7 @@ const Partners = () => {
       nav1: sliderRef.current,
       nav2: sliderRef2.current,
     }));
-  }, []);
+  }, [dispatch, partnersData]);
 
   if (loading) {
     return <Spinner position="full" />;

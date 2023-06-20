@@ -637,5 +637,10 @@
   "cabinetFour": "Jamoat tashkilotlarida ishtirok etish",
   "cabinetFive": "Viktorinalar ",
   "cabinetSix": "Voqealar",
-  "cabinetSeven": "Sertifikatlar"
+  "cabinetSeven": "Sertifikatlar",
+  "allWiews": "Barchasini ko‘rish",
+  "NoInternet": "Internet yo'q. Ulanish uzildi.",
+  "notification": "Bildirishnomalar",
+  "famousTag": "Mashhur taglar",
+  "copy":"Ko‘chirildi!"
 }

@@ -19,7 +19,7 @@ function AboutCouncil() {
   } else if (expertError) {
     return <p>{expertError}</p>;
   }
-  const findExpertAboutPage = expertPage.find((el) => el.type === 1);
+  const findExpertAboutPage = expertPage?.find((el) => el.type === 1);
 
   const aboutData = {
     title: t("expert.councildetail"),

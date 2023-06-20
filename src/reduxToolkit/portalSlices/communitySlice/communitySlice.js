@@ -104,6 +104,17 @@ const communitySlice = createSlice({
       };
       state.communityCreateData = data;
     },
+    deleteCommunityImage: (state, { payload }) => {
+      const newImages = state.communityCreateData.attachments.filter(
+        (el) => el === payload
+      );
+      const newObj = {
+        ...state.communityCreateData,
+        attachments: newImages,
+      };
+      state.communityCreateData = { ...newObj };
+      setItem("communityCreate", JSON.stringify(newObj));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -213,11 +224,12 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePost = action.payload;
         state.communityImagePostStatus = "success";
+        console.log(action.meta.arg.key);
         const newCommunityCreateData = {
           ...state.communityCreateData,
           [action.meta.arg.key]:
-            [action.meta.arg.key] === "attachments"
-              ? action.payload.path
+            action.meta.arg.key === "attachments"
+              ? [...state.communityCreateData.attachments, action.payload.path]
               : action.payload.path,
         };
         state.communityCreateData = newCommunityCreateData;
@@ -267,5 +279,6 @@ export const {
   communityCreateDataAdd,
   communityCreateReset,
   deleteAvatar,
+  deleteCommunityImage,
 } = communitySlice.actions;
 export default communitySlice.reducer;

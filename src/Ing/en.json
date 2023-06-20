@@ -400,7 +400,7 @@
     "menu4_info": {
       "menu4_title": "Activities of the organization",
       "input1_name": "Charter activities of the organization",
-      "input2_name": "Date of establishment of the organization",
+      "input2_name": "Founding date",
       "input3_name": "The number of members of the organization",
       "input4_name": "Main achievements"
     },
@@ -631,5 +631,10 @@
   "cabinetFour": "Participation in public organizations",
   "cabinetFive": "Quizzes ",
   "cabinetSix": "Events",
-  "cabinetSeven": "Certificates"
+  "cabinetSeven": "Certificates",
+  "allWiews": "See all",
+  "NoInternet": "No internet. Connection lost.",
+  "notification": "Notifications",
+  "famousTag": "Popular tags",
+  "copy":"Copied!"
 }
