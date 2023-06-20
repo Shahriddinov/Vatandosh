@@ -31,7 +31,7 @@ const MyInput = ({
             value={value}
             placeholder={placeholder}
             onChange={(e) =>
-              handleChange({ key: valueKey, value: e.target.value.trim(), id })
+              handleChange({ key: valueKey, value: e.target.value, id })
             }
             required={required}
           />
@@ -42,7 +42,7 @@ const MyInput = ({
             placeholder={placeholder}
             className="my-input__textarea"
             onChange={(e) =>
-              handleChange({ key: valueKey, value: e.target.value.trim() })
+              handleChange({ key: valueKey, value: e.target.value })
             }
           />
         )}
