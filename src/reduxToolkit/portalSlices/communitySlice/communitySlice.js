@@ -106,7 +106,7 @@ const communitySlice = createSlice({
     },
     deleteCommunityImage: (state, { payload }) => {
       const newImages = state.communityCreateData.attachments.filter(
-        (el) => el === payload
+        (el) => el !== payload
       );
       const newObj = {
         ...state.communityCreateData,
@@ -224,7 +224,6 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePost = action.payload;
         state.communityImagePostStatus = "success";
-        console.log(action.meta.arg.key);
         const newCommunityCreateData = {
           ...state.communityCreateData,
           [action.meta.arg.key]:

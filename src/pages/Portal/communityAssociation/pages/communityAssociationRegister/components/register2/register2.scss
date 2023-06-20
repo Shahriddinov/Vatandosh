@@ -96,13 +96,7 @@
     cursor: pointer;
   }
 
-  &__img_item:hover &__img_edi {
-    visibility: visible;
-    opacity: 1;
-    transition: all 0.3s linear;
-  }
-
-  &__img_item:hover .my-img-upload__img_delete {
+  &__img_item:hover &__img_delete {
     visibility: visible;
     opacity: 1;
     transition: all 0.3s linear;
