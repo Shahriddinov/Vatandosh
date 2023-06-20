@@ -11,7 +11,7 @@ function CouncilStatics({ expertCount, expertData }) {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>{expertData.total}</h4>
+        <h4>{expertData?.total}</h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="expert-council-bottom">

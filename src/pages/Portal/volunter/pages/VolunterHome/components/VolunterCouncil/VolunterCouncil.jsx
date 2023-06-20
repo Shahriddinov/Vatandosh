@@ -59,7 +59,7 @@ function Volunter({ volunteers }) {
         <div className="expert-item">
           <Link to="volunter-employe" className="expert-link">
             <img src={ExcludeIcon} alt="error" />
-            {t("expert.allexperts")}
+            {t("voluntery.allVolunteers")}
           </Link>
         </div>
       </div>

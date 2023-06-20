@@ -21,9 +21,9 @@ export const useExportOfferDetail = () => {
         let count = 0;
         if (el.users.length > 0) {
           for (let i = 0; i < el.users.length; i++) {
-            if (el.users[i].expert.length > 0) {
-              if (el.users[i].expert[0].type !== null) {
-                if (el.users[i].expert[0].type.includes("EXPERT")) {
+            if (el.users[i].expert !== null) {
+              if (el.users[i].expert.type !== null) {
+                if (el.users[i].expert.type.includes("EXPERT")) {
                   count += 1;
                 }
               }
@@ -38,7 +38,7 @@ export const useExportOfferDetail = () => {
       expertCount.forEach((item) => {
         let users = [];
         for (let i = 0; i < item.users.length; i++) {
-          if (item.users[i].expert.length > 0) {
+          if (item.users[i].expert !== null) {
             users.push(item.users[i]);
           }
         }

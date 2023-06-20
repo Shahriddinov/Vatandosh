@@ -3,7 +3,6 @@ import CouncilStatics from "../../pages/ExpertHome/components/Council/CouncilSta
 import "./About.scss";
 import { PageTop } from "../../../communityAssociation/components";
 
-console.log();
 function About({ aboutData, expertCount }) {
   const pageTopData = {
     title: aboutData?.title,
