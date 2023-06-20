@@ -47,6 +47,7 @@
 
 .navbarpage {
   &__inner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,7 +55,8 @@
     padding: 10px 0;
   }
 
-  .navbar-list {
+  .navbar-list,
+  .navbar-logo {
     display: flex;
     align-items: center;
   }
@@ -267,4 +269,12 @@
   border-radius: 50%;
   color: #fff;
   background-color: rgba(255, 228, 196, 0.7);
+}
+
+@media screen and (max-width: 1146px) {
+  .navbarpage {
+    .navbar-list {
+      display: none;
+    }
+  }
 }

@@ -115,5 +115,9 @@
     .expert-list {
       margin-top: 20px;
     }
+
+    &-list > button {
+      display: none;
+    }
   }
 }

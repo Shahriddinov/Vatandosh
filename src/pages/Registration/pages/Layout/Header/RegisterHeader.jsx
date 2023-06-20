@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import burger from "../../../../../assets/images/icons/burger.svg";
 import { languageList } from "../../../../../component/Layout/data";
+import { Link } from "react-router-dom";
 
 export default function RegisterHeader() {
   const [activeLangBar, setactiveLangBar] = useState(false);
@@ -27,10 +28,10 @@ export default function RegisterHeader() {
     <header className="auth-header">
       <div className="container">
         <div className="auth-header-wrapper">
-          <div className="auth-header-logo">
+          <Link to={"/portal"} className="auth-header-logo">
             <img src={logo} alt="logo" />
             <p>VATANDOSHLAR JAMOAT FONDI</p>
-          </div>
+          </Link>
           <nav className="auth-header-nav">
             <div className="auth-header-nav-link">
               <a className="auth-header-nav-link-item" href="tel:+998555022299">

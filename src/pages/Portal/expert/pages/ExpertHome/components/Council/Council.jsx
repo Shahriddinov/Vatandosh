@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import CouncilStatics from "./CouncilStatics";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import Spinner from "../../../../../../../component/Spinner/Spinner";
 import LazySpinner from "../../../../../../../component/lazySpinner/LazySpinner";
 
 function Council({ councilData, expertCount, expertData }) {

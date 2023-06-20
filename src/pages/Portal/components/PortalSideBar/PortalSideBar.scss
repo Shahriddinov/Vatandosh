@@ -1,0 +1,159 @@
+@import "../../../../assets/style/global.scss";
+
+.portal-sideBar {
+  display: none;
+  &-burger {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eaedf6;
+    border-radius: 12px;
+    & > img {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      object-fit: cover;
+    }
+  }
+  &-top {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f2f9;
+
+    &-btn {
+      display: flex;
+      gap: 15px;
+    }
+    &-eyeGlass,
+    &-close {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eaedf6;
+      border-radius: 12px;
+      & > svg {
+        color: #5d6b8a;
+      }
+    }
+  }
+  &-list {
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      text-transform: uppercase;
+      padding: 20px 0;
+      @include fontStyles(700, 16px, 19px, #161616);
+      border-bottom: 1px solid #f0f2f9;
+    }
+  }
+  &-connection {
+    padding: 62px 40px 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    &-item {
+      display: flex;
+      gap: 12px;
+
+      &-icon {
+        width: 24px;
+        height: 24px;
+        color: #000000;
+      }
+
+      & > span {
+        white-space: nowrap;
+        word-break: keep-all;
+        @include fontStyles(400, 16px, 26px, #000000);
+        mix-blend-mode: normal;
+        opacity: 0.8;
+      }
+    }
+
+    &-action {
+      display: flex;
+      gap: 23px;
+
+      &-img {
+        width: 27px;
+        height: 27px;
+        object-fit: contain;
+        cursor: pointer;
+      }
+    }
+  }
+  &-bottom {
+    padding: 20px 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #f0f2f9;
+    &-socialMedia {
+      display: flex;
+      gap: 20px;
+
+      &-item {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $colorTitle;
+        border-radius: 50%;
+
+        &-icon {
+          width: 20px;
+          height: 20px;
+          color: $colorTitle;
+        }
+      }
+    }
+    &-lang {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      &-item {
+        @include fontStyles(400, 14px, 17px, #4b5157);
+        letter-spacing: 0.2px;
+        cursor: pointer;
+      }
+    }
+
+    .langActive {
+      font-weight: 700;
+      color: #062a49;
+    }
+  }
+}
+
+@media screen and (max-width: 1146px) {
+  .portal-sideBar {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .portal-sideBar {
+    &-top {
+      padding: 20px 16px;
+    }
+    &-list {
+      padding: 0 16px;
+    }
+    &-connection {
+      padding: 45px 16px 16px;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+}
