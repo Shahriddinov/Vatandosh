@@ -14,34 +14,45 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   const volounteerActivityData = useSelector(
     (state) => state.volunteerSlice.volunteerActivity
   );
+  const deleteVolunteerStatus = useSelector(
+    (state) => state.volunteerSlice.deleteVolunteerStatus
+  );
+
+  const volunteerCreateLoading = useSelector(
+    (state) => state.volunteerSlice.volunteerCreateLoading
+  );
+  const updateVolunteerActivityLoading2 = useSelector(
+    (state) => state.volunteerSlice.updateVolunteerActivityLoading2
+  );
 
   const deleteCompHandler = (id) => {
     dispatch(deleteVolunteerActivity(id));
   };
 
-  const submitCompHandler = (payload) => {
-    payload.forEach((el) => {
+  const submitCompHandler = (data) => {
+    console.log(data);
+    data.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
+        const volunteerId = el.id;
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
         formData.append("title", el.title);
         formData.append("description", el.description);
+        console.log("server running");
+        console.log(Object.fromEntries(formData));
 
-        dispatch(updateVolunteerActivity2(el.id, formData));
-      }
-      if (el.from === "client") {
+        dispatch(updateVolunteerActivity2({ volunteerId, formData }));
+      } else if (el.from === "client") {
         const formData = new FormData();
         formData.append("title", el.title);
         formData.append("description", el.description);
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
-        // formData.append("images[]", [...el.imagesBrowser]);
-        const data = Object.fromEntries(formData);
-        console.log("hello its client");
-        console.log(data);
+        console.log("client running");
+        console.log(Object.fromEntries(formData));
         dispatch(volunteerCreate(formData));
       }
     });
@@ -49,7 +60,22 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
 
   useEffect(() => {
     dispatch(getVolunteerActivity());
-  }, [dispatch, lan, volounteerActivityData.length]);
+  }, [dispatch, lan]);
+
+  useEffect(() => {
+    if (deleteVolunteerStatus === "idle") {
+      dispatch(getVolunteerActivity());
+    }
+  }, [deleteVolunteerStatus]);
+
+  useEffect(() => {
+    if (!volunteerCreateLoading) {
+      window.location.reload();
+    }
+    if (!updateVolunteerActivityLoading2) {
+      window.location.reload();
+    }
+  }, [volunteerCreateLoading, updateVolunteerActivityLoading2]);
 
   useEffect(() => {
     if (volounteerActivityData.length === 0) {

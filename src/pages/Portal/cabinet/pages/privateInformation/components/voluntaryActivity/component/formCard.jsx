@@ -5,14 +5,10 @@ import arrowIcon from "../../../../../../../../assets/images/choose/arrowIcon.sv
 import penSvg from "../../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import plusIcon from "../../../../../../../../assets/images/choose/addPic.svg";
 import trashIconSmall from "../../../../../../../../assets/images/choose/trash.svg";
-
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateVolunteerActivity2 } from "../../../../../../../../reduxToolkit/volunteer/extraReducer";
 
 const FormCard = ({ el, data, setData, deleteCompHandler }) => {
-  const dispatch = useDispatch();
   const [openCard, setOpenCard] = useState(true);
 
   const inputHandler = (e, id) => {
@@ -32,40 +28,28 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
     setData(changeData);
   };
 
-  const deleteCompHandlerBrowser = (id) => {
-    const newData = data.filter((el) => el.id !== id);
-    setData(newData);
-  };
-  const deleteImgHandler = (id, each) => {
-    console.log(id);
-    console.log(each);
+  const deleteImgHandler = (id, each, from) => {
     setData((prev) => {
       const newData = prev.map((el) => {
         if (el.id === id) {
-          return {
-            ...el,
-            images: [...el.images].filter((img) => img !== each),
-          };
+          if (from === "client") {
+            return {
+              ...el,
+              imagesBrowser: [...el.imagesBrowser].filter(
+                (img) => img !== each
+              ),
+            };
+          } else if (from === "server") {
+            return {
+              ...el,
+              images: [...el.images].filter((img) => img !== each),
+            };
+          }
         }
         return el;
       });
       return newData;
     });
-    const objToUpdate = data.find((every) => every.id === id);
-    dispatch(updateVolunteerActivity2(el.id, objToUpdate));
-
-    // const newData = data.map((el) => {
-    //   if (el.id === id) {
-    //     return {
-    //       ...el,
-    //       pics: [...el.pics].filter(
-    //         (el) => el.lastModified !== each.lastModified
-    //       ),
-    //     };
-    //   }
-    //   return el;
-    // });
-    // setData(newData);
   };
 
   return (
@@ -74,7 +58,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
       animate={{ height: !openCard ? "45px" : "" }}
     >
       <div className="formCard-part1">
-        <h1>“O‘zbekiston zamini” ilmiy-amaliy va innovatsion maqola</h1>
+        <h1>1. {el.title}</h1>
         <div>
           <motion.img
             animate={{ rotate: openCard ? 180 : 0 }}
@@ -86,9 +70,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             whileTap={{ scale: 0.9 }}
             src={trashIcon}
             alt="trashIcon"
-            onClick={() => {
-              return deleteCompHandler(el.id), deleteCompHandlerBrowser(el.id);
-            }}
+            onClick={() => deleteCompHandler(el.id)}
           />
         </div>
       </div>
@@ -115,7 +97,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             <img src={`${PORTAL_IMAGE_URL}/${each}`} alt="imgloaded" />
             <div
               className="formCard-form-part3-deleteIcon"
-              onClick={() => deleteImgHandler(el.id, each)}
+              onClick={() => deleteImgHandler(el.id, each, el.from)}
             >
               <img src={trashIconSmall} alt="trashicon" />
               <p>Удалить</p>
@@ -127,7 +109,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             <img src={URL.createObjectURL(each)} alt="imgloaded" />
             <div
               className="formCard-form-part3-deleteIcon"
-              onClick={() => deleteImgHandler(el.id, each)}
+              onClick={() => deleteImgHandler(el.id, each, el.from)}
             >
               <img src={trashIconSmall} alt="trashicon" />
               <p>Удалить</p>

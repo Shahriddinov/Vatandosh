@@ -624,5 +624,12 @@
   "volunteryNone": "Volunteering is not available.",
   "vatandosh": "COUNTRIMEN",
   "jamoat": "COMMUNITY FUND",
-  "portalVoice": "Ask a question - we will answer by mail or here."
+  "portalVoice": "Ask a question - we will answer by mail or here.",
+  "cabinetOne": "personal information",
+  "cabinetTwo": "Volunteering",
+  "cabinetThree": "Expert activity",
+  "cabinetFour": "Participation in public organizations",
+  "cabinetFive": "Quizzes ",
+  "cabinetSix": "Events",
+  "cabinetSeven": "Certificates"
 }

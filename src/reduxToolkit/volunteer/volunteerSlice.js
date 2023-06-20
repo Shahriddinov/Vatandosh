@@ -8,6 +8,8 @@ import {
   getVolunteerActivity,
   getVolunteerCity,
   getVolunteerFilter,
+  deleteVolunteerActivity,
+  updateVolunteerActivity2,
 } from "./extraReducer";
 
 const initialState = {
@@ -31,6 +33,9 @@ const initialState = {
   volunteerActivity: [],
   volunteerActivityLoading: true,
   volunteerActivityError: null,
+
+  deleteVolunteerStatus: "idle",
+  updateVolunteerActivityLoading2: true,
 
   status: "idle",
   error: null,
@@ -146,6 +151,28 @@ const volunteerSlice = createSlice({
       .addCase(getVolunteerActivity.rejected, (state, action) => {
         state.volunteerActivityLoading = false;
         state.volunteerActivityError = action.error.message;
+      });
+    // updateVolunteerActivity2 2
+    builder
+      .addCase(updateVolunteerActivity2.pending, (state) => {
+        state.updateVolunteerActivityLoading2 = true;
+      })
+      .addCase(updateVolunteerActivity2.fulfilled, (state, action) => {
+        state.updateVolunteerActivityLoading2 = false;
+      })
+      .addCase(updateVolunteerActivity2.rejected, (state, action) => {
+        state.updateVolunteerActivityLoading2 = false;
+      });
+    // delete volunteer
+    builder
+      .addCase(deleteVolunteerActivity.pending, (state) => {
+        state.deleteVolunteerStatus = "pending";
+      })
+      .addCase(deleteVolunteerActivity.fulfilled, (state) => {
+        state.deleteVolunteerStatus = "idle";
+      })
+      .addCase(deleteVolunteerActivity.rejected, (state) => {
+        state.deleteVolunteerStatus = "error";
       });
   },
 });

@@ -630,5 +630,12 @@
   "volunteryNone": "Volyontorlik faoliyati mavjud emas.",
   "vatandosh": "VATANDOSHLAR",
   "jamoat": "JAMOAT FONDI",
-  "portalVoice": "Задайте вопрос - мы ответим на почту или здесь."
+  "portalVoice": "Savol bering - biz pochta orqali yoki bu erda javob beramiz.",
+  "cabinetOne": "Shaxsiy ma'lumot",
+  "cabinetTwo": "Ko'ngillilik",
+  "cabinetThree": "Ekspert faoliyati",
+  "cabinetFour": "Jamoat tashkilotlarida ishtirok etish",
+  "cabinetFive": "Viktorinalar ",
+  "cabinetSix": "Voqealar",
+  "cabinetSeven": "Sertifikatlar"
 }
