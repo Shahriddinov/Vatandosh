@@ -35,7 +35,7 @@ export class CreateFunction {
       this.dispatch(
         postCommunityCreate({
           ...newCommunityCreateData,
-          attachments: [newCommunityCreateData.attachments],
+          attachments: newCommunityCreateData.attachments,
           site: newCommunityCreateData.site.join(","),
         })
       );
