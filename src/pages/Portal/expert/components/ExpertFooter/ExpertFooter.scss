@@ -141,3 +141,30 @@
     }
   }
 }
+
+@media screen and (max-width: 556px) {
+  .expertfooter {
+    &-item {
+      flex-direction: column;
+      align-items: start;
+      gap: 15px;
+      & > p {
+        margin: 0;
+      }
+    }
+
+    &-page {
+      padding-top: 0;
+      padding-left: 10px;
+      & > ul {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    &-bottom {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+}
