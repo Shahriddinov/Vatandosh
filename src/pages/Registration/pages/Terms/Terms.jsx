@@ -15,45 +15,30 @@ const Terms = ({ toggleModal, handleCheckbox }) => {
         <h2>{t("terms")}</h2>
         <div className="terms">
           <div className="term">
-            <h3>1.1 Lorem ipsum dolor sit amet consectetur.</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-              necessitatibus quis, excepturi commodi numquam enim ea dolore at
-              officia quam eos beatae aperiam est ad quidem velit ex modi iusto!
-            </p>
+            <h3>{t("terms.use")}</h3>
+            <p>{t("terms.one")}</p>
+            <p>{t("terms.two")}</p>
+            <p>{t("terms.three")}</p>
+            <p>{t("terms.four")}</p>
           </div>
           <div className="term">
-            <h3>1.1 Lorem ipsum dolor sit amet consectetur.</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-              necessitatibus quis, excepturi commodi numquam enim ea dolore at
-              officia quam eos beatae aperiam est ad quidem velit ex modi iusto!
-            </p>
+            <h3>{t("terms.rights")}</h3>
+            <p>{t("terms.five")}</p>
+            <p>{t("terms.six")}</p>
           </div>
           <div className="term">
-            <h3>1.2 Lorem ipsum dolor sit amet consectetur.</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-              necessitatibus quis, excepturi commodi numquam enim ea dolore at
-              officia quam eos beatae aperiam est ad quidem velit ex modi iusto!
-            </p>
+            <h3>{t("terms.uses")}</h3>
+            <p>{t("terms.seven")}</p>
+            <p>{t("terms.eight")}</p>
+            <p>{t("terms.nine")}</p>
+            <p>{t("terms.ten")}</p>
           </div>
           <div className="term">
-            <h3>1.3 Lorem ipsum dolor sit amet consectetur.</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-              necessitatibus quis, excepturi commodi numquam enim ea dolore at
-              officia quam eos beatae aperiam est ad quidem velit ex modi iusto!
-            </p>
+            <h3>{t("terms.other")}</h3>
+            <p>{t("terms.eleven")}</p>
+            <p>{t("terms.twelve")}</p>
           </div>
-          <div className="term">
-            <h3>1.4 Lorem ipsum dolor sit amet consectetur.</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-              necessitatibus quis, excepturi commodi numquam enim ea dolore at
-              officia quam eos beatae aperiam est ad quidem velit ex modi iusto!
-            </p>
-          </div>
+
         </div>
         <div className="fade" />
         <div className="terms__buttons">
