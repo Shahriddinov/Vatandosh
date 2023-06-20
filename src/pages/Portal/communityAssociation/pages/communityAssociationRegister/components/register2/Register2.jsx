@@ -9,20 +9,18 @@ import {
   communityCreateDataAdd,
   deleteCommunityImage,
 } from "../../../../../../../reduxToolkit/portalSlices/communitySlice/communitySlice";
-import { Application2ImageUpload, MyInput } from "../";
+import { MyInput } from "../";
 import { useEffect } from "react";
 import { BsFillTrashFill, BsImage } from "react-icons/bs";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { PlusIcon } from "../../../../../../../assets/images/communityAssociation";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
   const communityCreateData = useSelector(
     (store) => store.community.communityCreateData
   );
 
-  const communityImagePostStatus = useSelector(
-    (store) => store.community.communityImagePostStatus
-  );
   const [data, setData] = useState({
     title: communityCreateData.title,
     description: communityCreateData.description,
@@ -33,14 +31,12 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
 
   const handleChangeApplication2 = ({ key, value }) => {
     if (key === "attachments") {
-      setData((prev) => ({
-        ...prev,
-        [key]: [value],
-      }));
-      const attachmentsData = new FormData();
-      attachmentsData.append("image", value);
-      attachmentsData.append("folder", "community");
-      dispatch(postCommunityImage({ key, image: attachmentsData }));
+      if (value !== undefined) {
+        const attachmentsData = new FormData();
+        attachmentsData.append("image", value);
+        attachmentsData.append("folder", "community");
+        dispatch(postCommunityImage({ key, image: attachmentsData }));
+      }
     } else {
       setData((prev) => ({
         ...prev,
@@ -68,6 +64,12 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
       attachments: communityCreateData.attachments,
     });
   }, [communityCreateData]);
+
+  const images = data.attachments
+    ? Object.values(data.attachments).reverse()
+    : [];
+
+  console.log(images);
 
   return (
     <div
@@ -107,7 +109,69 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
         />
 
         <div className="community-association-register1__img_list">
-          {data.attachments?.map((img, i) => (
+          {data.attachments.length > 0 ? (
+            <Swiper
+              slidesPerView={4}
+              spaceBetween={20}
+              breakpoints={{
+                0: {
+                  slidesPerView: 2,
+                },
+                400: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+                600: {
+                  slidesPerView: 4,
+                  spaceBetween: 10,
+                },
+                730: {
+                  slidesPerView: 5,
+                  spaceBetween: 10,
+                },
+                // 850: {
+                //   slidesPerView: ,
+                //   spaceBetween: 18,
+                // },
+                // 1060: {
+                //   slidesPerView: 7,
+                //   spaceBetween: 20,
+                // },
+                // 1150: {
+                //   slidesPerView: 8,
+                //   spaceBetween: 20,
+                // },
+              }}
+              className="community-association-company-offer__inner_list"
+            >
+              {images.map((img, i) => (
+                <SwiperSlide
+                  key={i}
+                  className="community-association-register1__img_item_slider"
+                >
+                  <div
+                    className="community-association-register1__img_item"
+                    key={i}
+                  >
+                    <button
+                      onClick={() => dispatch(deleteCommunityImage(img))}
+                      className="community-association-register1__img_delete"
+                      type="button"
+                    >
+                      <BsFillTrashFill />{" "}
+                      <span>{t("communityAssociation.delete")}</span>
+                    </button>
+                    <img
+                      className="community-association-register1__img"
+                      src={`${PORTAL_IMAGE_URL}${img}`}
+                      alt="img"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : null}
+          {/* {data.attachments?.map((img, i) => (
             <div className="community-association-register1__img_item" key={i}>
               <button
                 onClick={() => dispatch(deleteCommunityImage(img))}
@@ -123,7 +187,7 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
                 alt="img"
               />
             </div>
-          ))}
+          ))} */}
           <label
             htmlFor="attachments"
             className={
@@ -163,15 +227,6 @@ const CommunityRegister2 = ({ activeBarItem, handleClick }) => {
             )}
           </label>
         </div>
-
-        {/* <Application2ImageUpload
-          data={communityCreateData.attachments}
-          uploadStatus={communityImagePostStatus}
-          text={t("communityAssociation.menu2_info.input3_name")}
-          handleChange={handleChangeApplication2}
-          valueKey="attachments"
-          countImg={2}
-        /> */}
 
         <button
           className="community-association-register__form--btn"

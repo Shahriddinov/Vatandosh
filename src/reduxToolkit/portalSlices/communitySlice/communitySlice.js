@@ -238,7 +238,7 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePostStatus = "error";
         state.error = error.message;
-        alert("Fayl yuklanmadi, qaytadan urunib ko'ring");
+        // alert("Fayl yuklanmadi, qaytadan urunib ko'ring");
       });
 
     builder
@@ -247,7 +247,7 @@ const communitySlice = createSlice({
       })
       .addCase(getAllEvents.fulfilled, (state, { payload }) => {
         state.allEventsLoading = false;
-        state.allEvents = payload;
+        state.allEvents = { ...payload, data: payload.data.reverse() };
       })
       .addCase(getAllEvents.rejected, (state, { error }) => {
         state.allEventsLoading = false;
