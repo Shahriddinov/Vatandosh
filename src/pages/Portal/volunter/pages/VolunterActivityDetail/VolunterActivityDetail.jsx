@@ -11,27 +11,39 @@ import { useParams } from "react-router-dom";
 import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
 import { useEffect } from "react";
 import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
+import { getVolunteerActivityOne } from "../../../../../reduxToolkit/volunteer/extraReducer";
+import { Spinner } from "../../../../../component";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 export default function VolunterActivityDetail() {
   const dispatch = useDispatch();
-  const lan = useSelector((state) => state.language.language);
+  const { id } = useParams();
   const { t } = useTranslation();
+
   const url = [
     { title: t("expert.main"), url: "/portal-category/volunteer" },
     { title: t("volunteryWork"), url: "#" },
   ];
 
-  const { id } = useParams();
-  const newsData = useSelector((state) =>
-    state.newsSlice?.newsData?.find((evt) => evt?.id === Number(id))
+  const volunteerActivityOne = useSelector(
+    (state) => state.volunteerSlice.volunteerActivityOne
+  );
+
+  const loading = useSelector(
+    (state) => state.volunteerSlice.volunteerActivityOneLoading
   );
 
   useEffect(() => {
-    dispatch(getNews());
+    dispatch(getVolunteerActivityOne({ id }));
   }, [dispatch]);
 
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
+
   return (
     <main className="volunteractivitydetail">
       <div className="container">
@@ -39,20 +51,23 @@ export default function VolunterActivityDetail() {
         <div className="volunteractivitydetail-main">
           <div className="volunteractivitydetail-main-detail">
             <div className="volunteractivitydetail-main-detail-desc-img">
-              <img src={img} alt="" />
+              <img
+                src={`${PORTAL_IMAGE_URL}${volunteerActivityOne?.images[0]}`}
+                alt=""
+              />
             </div>
             <div className="volunteractivitydetail-main-detail-desc-action">
               <div className="volunteractivitydetail-main-detail-desc-action-date-viewers">
                 <div className="volunteractivitydetail-main-detail-desc-action-date">
                   <BsFillCalendar2EventFill />
-                  <span>{newsData?.data}</span>
+                  <span>{volunteerActivityOne?.created_at.split("T")[0]}</span>
                 </div>
                 <div className="volunteractivitydetail-main-detail-desc-action-viewers">
                   <AiFillEye />
-                  <span>{newsData?.viewers}</span>
+                  <span>{volunteerActivityOne?.viewers}</span>
                 </div>
               </div>
-              <div className="volunteractivitydetail-main-detail-desc-action-tags">
+              {/* <div className="volunteractivitydetail-main-detail-desc-action-tags">
                 {[
                   t("voluntery.nav2"),
                   t("volunterySport"),
@@ -60,22 +75,22 @@ export default function VolunterActivityDetail() {
                 ].map((el, index) => {
                   return <span key={index}>{el}</span>;
                 })}
-              </div>
+              </div>*/}
             </div>
             <h3 className="volunteractivitydetail-main-detail-title">
-              {newsData[`title_${lan}`]}
+              {volunteerActivityOne.title}
             </h3>
             <div className="volunteractivitydetail-main-detail-text">
               <p
                 dangerouslySetInnerHTML={{
-                  __html: newsData[`text_${lan}`],
+                  __html: volunteerActivityOne.description,
                 }}
               />
             </div>
             <ShareFriends />
           </div>
           <CouncilStatics
-            count={dataCount.length}
+            count={{ total: dataCount.length }}
             VolunteerCount={VolunteerCount}
           />
         </div>

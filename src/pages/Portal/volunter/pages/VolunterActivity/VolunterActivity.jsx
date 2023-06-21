@@ -26,6 +26,8 @@ export default function VolunterActivity() {
     (store) => store.singleSlice.paginationData
   );
 
+  const { volunteers, volunteersLoading } = useVolunteerHomeFetching();
+
   const { volunteerNews, volunteerNewsLoading, volunteerNewsError } =
     useVolunteerHomeFetching();
 
@@ -39,7 +41,7 @@ export default function VolunterActivity() {
     Aos.init({ duration: 2000 });
   }, []);
 
-  if (volunteerNewsLoading) {
+  if (volunteerNewsLoading || volunteersLoading) {
     return <Spinner position="full" />;
   }
 
@@ -64,15 +66,21 @@ export default function VolunterActivity() {
       <div className="container">
         <h4 className="volunteractivity-cardlist-title">{t("volunteryOne")}</h4>
         <div className="volunteractivity-cardlist">
-          {volunteerNews?.data?.map((news) => (
-            <Card key={news.id} {...news} pathUrl="news" />
-          ))}
+          {volunteers?.data?.map((data) => {
+            return data?.user_volunteer_activities?.map((act) => {
+              return act?.verified ? (
+                <Card key={act.id} {...act} pathUrl="volunteer/activity" />
+              ) : null;
+            });
+          })}
         </div>
-        <Pagination
-          page={page}
-          paginationFetching={paginationFetching}
-          count={paginationCount}
-        />
+        {paginationCount > 1 ? (
+          <Pagination
+            page={page}
+            paginationFetching={paginationFetching}
+            count={paginationCount}
+          />
+        ) : null}
       </div>
     </main>
   );

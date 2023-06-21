@@ -3,6 +3,7 @@ import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
 
 function CouncilStatics({ count, VolunteerCount }) {
   const { t } = useTranslation();
+
   return (
     <div className="council-right">
       <div>

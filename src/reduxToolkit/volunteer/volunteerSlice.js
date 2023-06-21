@@ -10,6 +10,7 @@ import {
   getVolunteerFilter,
   deleteVolunteerActivity,
   updateVolunteerActivity2,
+  getVolunteerActivityOne,
 } from "./extraReducer";
 
 const initialState = {
@@ -33,6 +34,10 @@ const initialState = {
   volunteerActivity: [],
   volunteerActivityLoading: true,
   volunteerActivityError: null,
+
+  volunteerActivityOne: [],
+  volunteerActivityOneLoading: true,
+  volunteerActivityOneError: null,
 
   deleteVolunteerStatus: "idle",
   updateVolunteerActivityLoading2: true,
@@ -152,6 +157,21 @@ const volunteerSlice = createSlice({
         state.volunteerActivityLoading = false;
         state.volunteerActivityError = action.error.message;
       });
+
+    // get volunteer activity one
+    builder
+      .addCase(getVolunteerActivityOne.pending, (state) => {
+        state.volunteerActivityOneLoading = true;
+      })
+      .addCase(getVolunteerActivityOne.fulfilled, (state, action) => {
+        state.volunteerActivityOneLoading = false;
+        state.volunteerActivityOne = action.payload;
+      })
+      .addCase(getVolunteerActivityOne.rejected, (state, action) => {
+        state.volunteerActivityOneLoading = false;
+        state.volunteerActivityOneError = action.error.message;
+      });
+
     // updateVolunteerActivity2 2
     builder
       .addCase(updateVolunteerActivity2.pending, (state) => {
