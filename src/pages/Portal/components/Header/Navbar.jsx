@@ -15,7 +15,7 @@ const activeLanguage = localStorage.getItem("language")
   ? localStorage.getItem("language")
   : "uz";
 
-const Navbar = ({ activeSidebar }) => {
+const Navbar = ({ activeSidebar, setactiveSidebar }) => {
   const [activeLng, setActiveLng] = useState(activeLanguage);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -112,6 +112,7 @@ const Navbar = ({ activeSidebar }) => {
                   key={navbar.id}
                   className="header-sideBar-navlist-item"
                   style={{ height: "auto" }}
+                  onClick={() => setactiveSidebar(false)}
                 >
                   <Link to={navbar.url}>{navbar.label}</Link>
                 </li>

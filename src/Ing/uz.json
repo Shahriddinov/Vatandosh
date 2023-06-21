@@ -319,7 +319,7 @@
     "secondname": "Sharifi",
     "reg2": "II. Oliy ma’lumotingiz",
     "nextbtn": "Keyingisi",
-    "reg3": "III. Mehnat faoliyatigiz",
+    "reg3": "III. Mehnat faoliyatingiz",
     "nowwork": "Hozirda shu sohada ishlayapti",
     "register5": "Barcha ma’lumotlarni to‘liq va to‘g‘ri kiritdim.",
     "reg4": "IV. Ilmiy faoliyatingiz",
@@ -327,7 +327,8 @@
     "reg5": "V. Taklifingiz",
     "offerforimg": "Taklifingiz uchun rasm",
     "articleoffer": "O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida takliflaringiz",
-    "save": "Saqlash"
+    "save": "Saqlash",
+    "expert_activity": "Ekspert faoliyati"
   },
   "victorina": {
     "listwinner": "G‘oliblar ro‘yxati",
@@ -434,6 +435,7 @@
     "nav3": "Bog‘lanish",
     "nav4": "Volontyorlik faoliyati",
     "reg5": "V. Volontyorlik faoliyati",
+    "card_articles": "Chop etilgan maqolalar soni",
     "allVolunteers": "Barcha volontyorlar",
     "Signup": "Ro‘yxatdan o‘tish"
   },

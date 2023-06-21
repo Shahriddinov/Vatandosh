@@ -284,3 +284,32 @@
     }
   }
 }
+
+@media screen and (max-width: 876px) {
+  .registeritem {
+    &-title {
+      margin-bottom: 20px;
+    }
+    &-borderLeft {
+      padding: 0;
+      border: none;
+    }
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .registeritem {
+    &-submitBtn {
+      width: 100%;
+    }
+    &-label {
+      & > p {
+        white-space: normal;
+      }
+    }
+    &-flexbox {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px;
+    }
+  }
+}

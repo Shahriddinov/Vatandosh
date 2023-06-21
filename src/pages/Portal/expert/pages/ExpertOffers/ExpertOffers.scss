@@ -15,13 +15,14 @@
       border-radius: 20px;
 
       & > img {
-        width: 396px;
+        width: 40%;
         height: 308px;
         object-fit: cover;
         border-radius: 10px;
       }
 
       &-desc {
+        width: 60%;
         & > p {
           margin-top: 20px;
           overflow: hidden;
@@ -83,8 +84,6 @@
 
 @media (max-width: 768px) {
   .expertoffer {
-    padding: 30px 0 100px;
-
     &-list {
       gap: 20px;
 
@@ -92,73 +91,13 @@
         padding: 20px;
         flex-direction: column;
         gap: 25px;
-        background: #f6f7fb;
-        border-radius: 20px;
-        width: 688px;
 
         & > img {
-          width: 648px;
-          height: 448px;
-          object-fit: cover;
-          border-radius: 10px;
+          width: 100%;
         }
 
         &-desc {
-          & > p {
-            margin-top: 20px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            letter-spacing: 0.5px;
-            @include fontStyles(500, 16px, 19px, #434b54);
-          }
-
-          &-button {
-            margin-top: 32px;
-            display: flex;
-            justify-content: end;
-            height: 48px;
-
-            & > button {
-              border: none;
-              cursor: pointer;
-
-              & > a {
-                padding: 12px 22px;
-                background: #065ea9;
-                border-radius: 5px;
-                @include fontStyles(500, 14px, 24px, #ffffff);
-              }
-            }
-          }
-        }
-      }
-
-      &-morebtn {
-        display: flex;
-        justify-content: center;
-
-        & > button {
-          padding: 12px 22px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #e3f0ff;
-          border-radius: 16px;
-          border: none;
-          cursor: pointer;
-
-          & > span {
-            @include fontStyles(500, 14px, 24px, $colorTitle);
-          }
-
-          & > svg {
-            width: 20px;
-            height: 20px;
-            color: $colorTitle;
-          }
+          width: 100%;
         }
       }
     }
@@ -167,84 +106,14 @@
 
 @media (max-width: 375px) {
   .expertoffer {
-    padding: 30px 0 100px;
-
     .container {
       padding: 0 16px !important;
     }
 
     &-list {
       &-item {
-        padding: 20px;
-        flex-direction: column;
-        gap: 25px;
-        background: #f6f7fb;
-        border-radius: 20px;
-        width: 343px;
-
         & > img {
-          width: 303px;
           height: 230px;
-          object-fit: cover;
-          border-radius: 10px;
-        }
-
-        &-desc {
-          & > p {
-            margin-top: 20px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            letter-spacing: 0.5px;
-            @include fontStyles(500, 16px, 19px, #434b54);
-          }
-
-          &-button {
-            margin-top: 32px;
-            display: flex;
-            justify-content: end;
-            height: 48px;
-
-            & > button {
-              border: none;
-              cursor: pointer;
-
-              & > a {
-                padding: 12px 22px;
-                background: #065ea9;
-                border-radius: 5px;
-                @include fontStyles(500, 14px, 24px, #ffffff);
-              }
-            }
-          }
-        }
-      }
-
-      &-morebtn {
-        display: flex;
-        justify-content: center;
-
-        & > button {
-          padding: 12px 22px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #e3f0ff;
-          border-radius: 16px;
-          border: none;
-          cursor: pointer;
-
-          & > span {
-            @include fontStyles(500, 14px, 24px, $colorTitle);
-          }
-
-          & > svg {
-            width: 20px;
-            height: 20px;
-            color: $colorTitle;
-          }
         }
       }
     }

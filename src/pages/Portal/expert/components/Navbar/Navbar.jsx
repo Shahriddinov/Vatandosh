@@ -57,7 +57,7 @@ const Navbar = ({ navbarUrl }) => {
     window.location = "/portal";
   };
 
-  const navData = [
+  const ExpertNavData = [
     { url: "/portal-category/expert", title: t("expert.main") },
     {
       url: "/portal-category/expert/expert-council",
@@ -67,6 +67,18 @@ const Navbar = ({ navbarUrl }) => {
     {
       url: "/portal-category/expert/contact",
       title: t("contactPage.contactUs"),
+    },
+  ];
+  const VolunteerNavData = [
+    { url: "/portal-category/expert", title: t("expert.main") },
+    {
+      url: "/portal-category/volunteer/volunter-employe",
+      title: t("voluntery.nav1"),
+    },
+    { url: "/portal-category/volunteer/activity", title: t("voluntery.nav2") },
+    {
+      url: "/portal-category/volunteer/contact",
+      title: t("voluntery.nav3"),
     },
   ];
 
@@ -82,7 +94,8 @@ const Navbar = ({ navbarUrl }) => {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
-                }>
+                }
+              >
                 {t("expert.headtitle")}
               </h4>
             </div>
@@ -95,7 +108,8 @@ const Navbar = ({ navbarUrl }) => {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }>
+                }
+              >
                 <PhoneIcon />
                 +998(55)502-22-99
               </a>
@@ -107,7 +121,8 @@ const Navbar = ({ navbarUrl }) => {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }>
+                }
+              >
                 <EmailIcon />
                 info@vatandoshlarfondi.uz
               </a>
@@ -129,7 +144,8 @@ const Navbar = ({ navbarUrl }) => {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-icon`
                   : `navbarpage--icon`
-              }>
+              }
+            >
               <Link to={"/anthem"}>
                 <MusicIcon />
               </Link>
@@ -140,7 +156,8 @@ const Navbar = ({ navbarUrl }) => {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <EyeIcon />
             </button>
             <div className="navbarpage_language">
@@ -153,7 +170,8 @@ const Navbar = ({ navbarUrl }) => {
                       : `#065EA9`
                   }`,
                 }}
-                onClick={() => setactiveLang((el) => !el)}>
+                onClick={() => setactiveLang((el) => !el)}
+              >
                 <CiGlobe className="navbarpage_language-icon" />
                 <span style={{ color: "white" }}>
                   {languageList.find((lan) => lan.type === language).label}
@@ -173,13 +191,15 @@ const Navbar = ({ navbarUrl }) => {
                         }`,
                       }
                     : null
-                }>
+                }
+              >
                 {languageList.map((el, index) => (
                   <p
                     key={index}
                     onClick={() => {
                       handleChangeLng(el.type);
-                    }}>
+                    }}
+                  >
                     {el.label}
                   </p>
                 ))}
@@ -191,7 +211,8 @@ const Navbar = ({ navbarUrl }) => {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <Tooltip title="Account settings">
                 <NotificationIcon />
               </Tooltip>
@@ -204,18 +225,21 @@ const Navbar = ({ navbarUrl }) => {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <MessengerIcon />
             </button>
             <div
               className="expert-header-cabinet"
-              onClick={() => setActiveKabinet((prev) => !prev)}>
+              onClick={() => setActiveKabinet((prev) => !prev)}
+            >
               <div
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-button`
                     : `navbar--button`
-                }>
+                }
+              >
                 <ExitIcon />
                 {t("cabinet")}
               </div>
@@ -223,13 +247,15 @@ const Navbar = ({ navbarUrl }) => {
                 <div className="expert-header-cabinet-bar">
                   <Link
                     to={"/portal-category/cabinet"}
-                    className="expert-header-cabinet-bar-cabinet">
+                    className="expert-header-cabinet-bar-cabinet"
+                  >
                     <BsPersonFill />
                     <span>{t("cabinet")}</span>
                   </Link>
                   <div
                     className="expert-header-cabinet-bar-logout"
-                    onClick={logOut}>
+                    onClick={logOut}
+                  >
                     <GoSignOut />
                     <span>{t("logOut")}</span>
                   </div>
@@ -237,7 +263,13 @@ const Navbar = ({ navbarUrl }) => {
               ) : null}
             </div>
           </div>
-          <PortalSideBar data={navData} />
+          <PortalSideBar
+            data={
+              location.pathname.includes("expert")
+                ? ExpertNavData
+                : VolunteerNavData
+            }
+          />
         </div>
       </div>
     </div>

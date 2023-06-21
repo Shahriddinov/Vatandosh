@@ -12,6 +12,7 @@ import {
 } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 import { useEffect } from "react";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
+import { BsFillTrashFill } from "react-icons/bs";
 
 export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
   const { t } = useTranslation();
@@ -99,7 +100,10 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   }));
                 }}
               >
-                {t("expert.delete")}
+                <span className="registeritem1-delete-text">
+                  {t("expert.delete")}
+                </span>
+                <BsFillTrashFill className="registeritem1-delete-icon" />
               </button>
             </div>
             <span className="registeritem1-form-uploadImg-desc">
@@ -121,7 +125,6 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   maxLength={30}
                   value={formData?.last_name ? formData.last_name : ""}
                   onChange={(e) => {
-                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
                       last_name: e.target.value,
@@ -145,7 +148,6 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   value={formData?.first_name ? formData.first_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
-                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
                       first_name: e.target.value,
@@ -168,7 +170,6 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   value={formData?.second_name ? formData.second_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
-                    e.target.value = e.target.value;
                     setFormData((args) => ({
                       ...args,
                       second_name: e.target.value,

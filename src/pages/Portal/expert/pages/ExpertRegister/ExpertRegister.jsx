@@ -66,19 +66,6 @@ export default function ExpertRegister() {
                     );
                   })
                 : null}
-              {/* <li
-                className="expertregister-main-bar-item"
-                onClick={() => setactiveBarItem(6)}
-              >
-                <div
-                  className={
-                    activeBarItem === 6
-                      ? "expertregister-main-bar-item-border activeBarItem"
-                      : "expertregister-main-bar-item-border"
-                  }
-                ></div>
-                <span>{"Expert faoliyati"}</span>
-              </li> */}
             </ul>
             <div className="expertregister-main-list">
               <RegisterItem1

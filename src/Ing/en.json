@@ -329,7 +329,8 @@
     "reg5": "V. Your proposal",
     "offerforimg": "Picture for your proposal",
     "articleoffer": "Your proposals for cooperation with Uzbekistan in the field of education and science",
-    "save": "Save"
+    "save": "Save",
+    "expert_activity": "Expert activities"
   },
   "victorina": {
     "listwinner": "List of winners",
@@ -430,6 +431,7 @@
     "nav3": "Connect",
     "nav4": "Volunteer activities",
     "reg5": "V. Volunteer activities",
+    "card_articles": "Number of articles published",
     "allVolunteers": "All volunteers",
     "Signup": "Sign up"
   },
