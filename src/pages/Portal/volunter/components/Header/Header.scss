@@ -27,26 +27,3 @@
   }
 }
 
-@media (max-width: 1440px) {
-  .container {
-    width: 1200px;
-  }
-}
-
-@media (max-width: 1220px) {
-  .container {
-    width: 1140px;
-  }
-}
-
-@media (max-width: 1160px) {
-  .container {
-    width: 1020px;
-  }
-
-  .headeres {
-    &--text {
-      width: 90%;
-    }
-  }
-}

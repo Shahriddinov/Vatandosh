@@ -28,10 +28,11 @@ function Volunter({ volunteers }) {
               <div key={volunteer.id} className="expert-list-item">
                 <div className="expert-list-item-desc">
                   <img
-                    style={{
-                      width: "270px",
-                      height: "270px",
-                    }}
+                  className="expert-list-item-img"
+                    // style={{
+                    //   width: "270px",
+                    //   height: "270px",
+                    // }}
                     src={`${PORTAL_IMAGE_URL}${
                       volunteer?.user_profile?.avatar_url
                         ? volunteer?.user_profile?.avatar_url
