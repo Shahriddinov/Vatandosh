@@ -32,102 +32,104 @@ function Expert({
 
   return expertData?.data?.length ? (
     <div className="expert">
-      <div className="expert-container">
-        <h2>{t("expert.expertCouncil")}</h2>
-        <div className="expert-list">
-          <button
-            className="listwinners-list-leftbtn slider_controls__left"
-            style={isHiddenLeftBtn ? { display: "none" } : null}
-          >
-            <MdKeyboardArrowLeft />
-          </button>
-          <button
-            className="listwinners-list-rightbtn slider_controls__right"
-            style={isHiddenRightBtn ? { display: "none" } : null}
-          >
-            <MdKeyboardArrowRight />
-          </button>
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
-            modules={[Navigation]}
-            onSlideChange={handleChange}
-            navigation={{
-              prevEl: ".slider_controls__left",
-              nextEl: ".slider_controls__right",
-            }}
-            breakpoints={{
-              270: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-              },
-              375: {
-                slidesPerView: 1.5,
-                spaceBetween: 30,
-              },
-              768: {
-                slidesPerView: 2.5,
-                spaceBetween: 30,
-              },
-              992: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1300: {
-                slidesPerView: 4,
-                spaceBetween: 30,
-              },
-            }}
-            className="listwinners-list"
-          >
-            {expertData?.data?.map((evt) => {
-              return (
-                <SwiperSlide key={evt.id}>
-                  <div className="expert-list-item">
-                    <div className="expert-list-item-desc">
-                      <img
-                        alt="error"
-                        src={`${PORTAL_IMAGE_URL}${
-                          evt?.user_profile?.avatar_url
-                            ? evt?.user_profile?.avatar_url
-                            : evt?.user?.avatar
-                        }`}
-                        className="expert-list-item-img"
-                      />
-                      <p>
-                        {evt?.user_profile?.international_location_id?.name}{" "}
-                        {"   "}
-                        {evt?.user_profile?.international_address_id?.name}
-                      </p>
-                      <h3>
-                        {evt?.user_profile?.last_name}{" "}
-                        {evt?.user_profile?.first_name}{" "}
-                        {evt?.user_profile?.second_name}
-                      </h3>
-                      <h4>
-                        {evt?.user_education?.length > 0
-                          ? specialization.find(
-                              (spe) =>
-                                spe.id ===
-                                evt?.user_education[0]?.specialization_id
-                            ).title
-                          : null}
-                      </h4>
+      <div className="container">
+        <div className="expert-container">
+          <h2>{t("expert.expertCouncil")}</h2>
+          <div className="expert-list">
+            <button
+              className="listwinners-list-leftbtn slider_controls__left"
+              style={isHiddenLeftBtn ? { display: "none" } : null}
+            >
+              <MdKeyboardArrowLeft />
+            </button>
+            <button
+              className="listwinners-list-rightbtn slider_controls__right"
+              style={isHiddenRightBtn ? { display: "none" } : null}
+            >
+              <MdKeyboardArrowRight />
+            </button>
+            <Swiper
+              slidesPerView={4}
+              spaceBetween={30}
+              modules={[Navigation]}
+              onSlideChange={handleChange}
+              navigation={{
+                prevEl: ".slider_controls__left",
+                nextEl: ".slider_controls__right",
+              }}
+              breakpoints={{
+                270: {
+                  slidesPerView: 1,
+                  spaceBetween: 30,
+                },
+                375: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 30,
+                },
+                768: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 30,
+                },
+                992: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+                1300: {
+                  slidesPerView: 4,
+                  spaceBetween: 30,
+                },
+              }}
+              className="listwinners-list"
+            >
+              {expertData?.data?.map((evt) => {
+                return (
+                  <SwiperSlide key={evt.id}>
+                    <div className="expert-list-item">
+                      <div className="expert-list-item-desc">
+                        <img
+                          alt="error"
+                          src={`${PORTAL_IMAGE_URL}${
+                            evt?.user_profile?.avatar_url
+                              ? evt?.user_profile?.avatar_url
+                              : evt?.user?.avatar
+                          }`}
+                          className="expert-list-item-img"
+                        />
+                        <p>
+                          {evt?.user_profile?.international_location_id?.name}{" "}
+                          {"   "}
+                          {evt?.user_profile?.international_address_id?.name}
+                        </p>
+                        <h3>
+                          {evt?.user_profile?.last_name}{" "}
+                          {evt?.user_profile?.first_name}{" "}
+                          {evt?.user_profile?.second_name}
+                        </h3>
+                        <h4>
+                          {evt?.user_education?.length > 0
+                            ? specialization.find(
+                                (spe) =>
+                                  spe.id ===
+                                  evt?.user_education[0]?.specialization_id
+                              ).title
+                            : null}
+                        </h4>
+                      </div>
+                      <div className="link-div">
+                        <Link
+                          className="employe-link"
+                          to={`/portal-category/expert/profile/${evt.id}`}
+                        >
+                          <span>{t("expert.detail")}</span>
+                          <img src={ArrowIcon} alt="Arrow Icon" />
+                        </Link>
+                      </div>
                     </div>
-                    <div className="link-div">
-                      <Link
-                        className="employe-link"
-                        to={`/portal-category/expert/profile/${evt.id}`}
-                      >
-                        <span>{t("expert.detail")}</span>
-                        <img src={ArrowIcon} alt="Arrow Icon" />
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>
