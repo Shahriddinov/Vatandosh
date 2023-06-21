@@ -149,7 +149,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
           ? "registeritem2 registeritem-scaleHidden"
           : "registeritem2 registeritem-scaleActive"
       }
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+    >
       <div className="registeritem2-wrapper registeritem-borderLeft">
         <h3 className="registeritem-title">{t("expert.reg2")}</h3>
         <div className="registeritem-form registeritem-gapNon">
@@ -177,7 +178,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         type="text"
                         value={el.institution}
                         minLength={3}
-                        maxLength={100}
+                        maxLength={500}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
@@ -198,7 +199,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           type="text"
                           minLength={3}
                           value={el.faculty}
-                          maxLength={100}
+                          maxLength={500}
                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChange({ ...el, faculty: e.target.value })
@@ -221,7 +222,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                             })
                           }
                           displayEmpty
-                          inputProps={{ "aria-label": "Without label" }}>
+                          inputProps={{ "aria-label": "Without label" }}
+                        >
                           {specialization ? (
                             specialization?.map(({ id, title }) => (
                               <MenuItem key={id} value={id}>
@@ -254,7 +256,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                   type: 1,
                 },
               ])
-            }>
+            }
+          >
             <BsPlusCircleFill />
           </button>
           {/*<h3>{t("expert.xorotm")}</h3>*/}
@@ -281,7 +284,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         type="text"
                         value={el.institution}
                         minLength={3}
-                        maxLength={100}
+                        maxLength={500}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChangeX({
@@ -302,7 +305,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           type="text"
                           minLength={3}
                           value={el.faculty}
-                          maxLength={100}
+                          maxLength={500}
                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChangeX({ ...el, faculty: e.target.value })
@@ -325,7 +328,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                             })
                           }
                           displayEmpty
-                          inputProps={{ "aria-label": "Without label" }}>
+                          inputProps={{ "aria-label": "Without label" }}
+                        >
                           {specialization ? (
                             specialization?.map(({ id, title }) => (
                               <MenuItem key={id} value={id}>
@@ -357,7 +361,8 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                   type: 2,
                 },
               ])
-            }>
+            }
+          >
             <BsPlusCircleFill />
           </button>
         </div>

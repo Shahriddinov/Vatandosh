@@ -11,6 +11,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getExpertRegisterMenu } from "../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 import Spinner from "../../../../../component/Spinner/Spinner";
 import Register6 from "./components/register6/register6";
+const registerMenuData = [
+  { id: 1, label: "Shaxsiy ma’lumotingiz", menuId: 6 },
+  { id: 2, label: "Oliy ma’lumotingiz", menuId: 7 },
+  { id: 3, label: "Mehnat faoliyatingiz", menuId: 8 },
+  { id: 4, label: "Ilmiy faoliyatingiz", menuId: 9 },
+  { id: 6, label: "Taklifingiz", menuId: 10 },
+  { id: 5, label: "Ekspert faoliyati", menuId: 11 },
+];
 
 export default function ExpertRegister() {
   let [activeBarItem, setactiveBarItem] = useState(0);
@@ -33,6 +41,18 @@ export default function ExpertRegister() {
   useEffect(() => {
     dispatch(getExpertRegisterMenu());
   }, [dispatch, language]);
+
+  const registerMenu = menu.length
+    ? registerMenuData.map((el) => {
+        const obj = menu.find((item) => item?.id === el.menuId);
+        return {
+          ...el,
+          label: obj[`name_${language}`],
+          menuId: obj?.id,
+        };
+      })
+    : [];
+
   return (
     <>
       <main className="expertregister">
@@ -46,8 +66,8 @@ export default function ExpertRegister() {
           <ExpertTitle title={t("expert.register")} url={url} />
           <div className="expertregister-main">
             <ul className="expertregister-main-bar">
-              {menu?.length
-                ? menu?.map((el, index) => {
+              {registerMenu?.length
+                ? registerMenu?.map((el, index) => {
                     return (
                       <li
                         key={index}
@@ -61,7 +81,7 @@ export default function ExpertRegister() {
                               : "expertregister-main-bar-item-border"
                           }
                         ></div>
-                        <span>{el[`name_${language}`]}</span>
+                        <span>{el.label}</span>
                       </li>
                     );
                   })

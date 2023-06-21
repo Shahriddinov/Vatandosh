@@ -50,8 +50,9 @@ function App({ children }) {
         console.log(error);
       };
     }
-
-    dispatch(getNotification({ per_page: 1000, page: 1 }));
+    if (token) {
+      dispatch(getNotification({ per_page: 1000, page: 1 }));
+    }
   }, []);
 
   useEffect(() => {

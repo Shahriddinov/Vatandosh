@@ -83,7 +83,9 @@ export default function CustomProfil() {
           {pathname.includes("expert") ? (
             <div className="customprofil-detail-desc-workexp">
               <span>{t("expert.workexp")}</span>
-              <span>{experience} yil</span>
+              <span>
+                {experience} {t("expert.year")}
+              </span>
             </div>
           ) : (
             ""
@@ -371,7 +373,10 @@ export default function CustomProfil() {
                             ))}
                         </div>
                         <div className="customprofil-list-offer-info-desc valontery-desc-text">
-                          <p className="customprofil-list-offer-info-desc-text">
+                          <p
+                            className="customprofil-list-offer-info-desc-text"
+                            style={{ fontSize: "30px", color: "green" }}
+                          >
                             {evt?.title}
                           </p>
                           <p>{evt?.description}</p>
