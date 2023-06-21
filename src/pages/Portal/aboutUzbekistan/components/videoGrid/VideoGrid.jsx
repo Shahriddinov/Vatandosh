@@ -16,7 +16,7 @@ const VideoGrid = ({ data, handleClick }) => {
             <img src={`${PORTAL_IMAGE_URL}${video.content}`} alt="img" />
           </div>
           <div className="videos__video-name">
-            <p>{video.title}</p>
+            {/*<p>{video.title}</p>*/}
           </div>
         </div>
       ))}

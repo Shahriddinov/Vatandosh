@@ -97,7 +97,7 @@
   "introduction": "Profilga kirish",
   "registerYet": "Hali ro’yxatdan o’tmaganmisiz?",
   "registeri": "Ro’yxatdan o’ting",
-  "sendEmail": "Ro'yxatdan o'tish uchun e-mail pochtangizni kiriting va biz sizga tasdiqlash kodini yuboramiz",
+  "sendEmail": "Ro'yxatdan o'tish uchun E-mail pochtangizni kiriting va biz sizga tasdiqlash kodini yuboramiz",
   "keep": "Davom etish",
   "againPassword": "Qaytadan parol",
   "registerTitle": "Ro'yxatdan o'ting",
@@ -658,5 +658,6 @@
   "NoInternet": "Internet yo'q. Ulanish uzildi.",
   "notification": "Bildirishnomalar",
   "famousTag": "Mashhur taglar",
-  "copy":"Ko‘chirildi!"
+  "copy":"Ko‘chirildi!",
+  "others": "Toshkent shahrining boshqa manzilgohlari"
 }

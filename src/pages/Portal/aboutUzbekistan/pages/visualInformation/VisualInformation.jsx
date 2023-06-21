@@ -62,10 +62,10 @@ const VisualInformation = () => {
         </div>
         {activeMenu?.page_menu_contents[1] ? (
           <div className="visual-information__open-uzbekistan">
-            <h2 className="about-uzbekistan-title">
-              {activeMenu?.page_menu_contents[1]?.title}
-            </h2>
-            <p>{activeMenu?.page_menu_contents[1]?.text}</p>
+            {/*<h2 className="about-uzbekistan-title">*/}
+            {/*  {activeMenu?.page_menu_contents[1]?.title}*/}
+            {/*</h2>*/}
+            {/*<p>{activeMenu?.page_menu_contents[1]?.text}</p>*/}
           </div>
         ) : null}
         <AboutUzbekistanGallery allGallery={allGallery.data} />

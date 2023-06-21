@@ -97,7 +97,7 @@
   "introduction": "Profile access",
   "registerYet": "Haven't registered yet?",
   "registeri": "Register",
-  "sendEmail": "Enter your email mail to open an account and we will send you the transfer code",
+  "sendEmail": "Please enter your E-mail to register and we will send you the confirmation code",
   "keep": "Continue",
   "againPassword": "Reverse password",
   "registerTitle": "Sign up",
@@ -656,5 +656,6 @@
   "NoInternet": "No internet. Connection lost.",
   "notification": "Notifications",
   "famousTag": "Popular tags",
-  "copy":"Copied!"
+  "copy":"Copied!",
+  "others": "Other addresses of Tashkent City"
 }
