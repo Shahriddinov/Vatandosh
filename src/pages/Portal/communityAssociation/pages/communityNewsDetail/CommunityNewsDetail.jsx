@@ -19,11 +19,6 @@ export default function CommunityNewsDetail() {
     allRegionsGetLoading,
   } = useCommunityNewsDetail();
 
-  const url = [
-    { title: "Asosiy", url: "/portal-category/community-association" },
-    { title: "news", url: "#" },
-  ];
-
   if (oneNewsLoading || allCommunityGetLoading || allRegionsGetLoading) {
     return <Spinner position="full" />;
   } else if (error) {

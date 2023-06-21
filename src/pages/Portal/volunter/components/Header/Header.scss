@@ -6,7 +6,7 @@
     text-transform: uppercase;
     color: #fff;
     margin-top: 100px;
-    width: 600px;
+    max-width: 600px;
     margin-bottom: 15px;
   }
   &--text {
@@ -29,24 +29,6 @@
 
 @media (max-width: 1440px) {
   .container {
-    width: 1200px;
-  }
-}
-
-@media (max-width: 1220px) {
-  .container {
-    width: 1140px;
-  }
-}
-
-@media (max-width: 1160px) {
-  .container {
-    width: 1020px;
-  }
-
-  .headeres {
-    &--text {
-      width: 90%;
-    }
+    max-width: 1200px;
   }
 }

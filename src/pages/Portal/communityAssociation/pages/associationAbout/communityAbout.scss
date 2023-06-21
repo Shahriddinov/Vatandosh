@@ -2,6 +2,7 @@
   &-page {
     display: grid;
     grid-template-columns: minmax(200px, 770px) minmax(200px, 370px);
+    gap: 30px;
     justify-content: space-between;
     padding-bottom: 100px;
     padding-top: 30px;
@@ -52,6 +53,26 @@
 
       .council-span {
         margin: 10px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 956px) {
+  .community_about {
+    &-page {
+      grid-template-columns: 100%;
+    }
+    &-left {
+      max-width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 556px) {
+  .community_about {
+    &-left {
+      & img {
+        height: 200px;
       }
     }
   }

@@ -81,6 +81,24 @@ const Navbar = ({ navbarUrl }) => {
       title: t("voluntery.nav3"),
     },
   ];
+  const AssociationNavData = [
+    {
+      url: "/portal-category/community-association",
+      title: t("communityAssociation.navbar.navbar_link1"),
+    },
+    {
+      url: "/portal-category/community-association/associations",
+      title: t("communityAssociation.navbar.navbar_link2"),
+    },
+    {
+      url: "/portal-category/community-association/events",
+      title: t("communityAssociation.navbar.navbar_link3"),
+    },
+    {
+      url: "/portal-category/community-association/contact",
+      title: t("communityAssociation.navbar.navbar_link4"),
+    },
+  ];
 
   return (
     <div className="navbarpage">
@@ -267,6 +285,8 @@ const Navbar = ({ navbarUrl }) => {
             data={
               location.pathname.includes("expert")
                 ? ExpertNavData
+                : location.pathname.includes("community-association")
+                ? AssociationNavData
                 : VolunteerNavData
             }
           />

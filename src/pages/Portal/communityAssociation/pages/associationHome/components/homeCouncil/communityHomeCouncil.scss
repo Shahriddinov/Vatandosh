@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: minmax(200px, 770px) 370px;
     justify-content: space-between;
+    gap: 30px;
   }
 
   &__left {
@@ -119,6 +120,21 @@
       font-size: 18px;
       line-height: 22px;
       color: #5d6b8a;
+    }
+  }
+}
+
+@media screen and (max-width: 926px) {
+  .community-home-council {
+    &__inner {
+      grid-template-columns: 100%;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .community-home-council {
+    &__left > img {
+      height: 200px;
     }
   }
 }
