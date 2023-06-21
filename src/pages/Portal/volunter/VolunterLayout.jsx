@@ -52,7 +52,7 @@ export default function VolunterLayout() {
         <ExpertHeader navData={navData} navbarUrl={navbarUrl} />
       )}
       <Outlet context={{ navData, navbarUrl, category: "volunteer" }} />
-      {/* <ExpertFooter navData={navData} /> */}
+      <ExpertFooter navData={navData} />
     </>
   );
 }
