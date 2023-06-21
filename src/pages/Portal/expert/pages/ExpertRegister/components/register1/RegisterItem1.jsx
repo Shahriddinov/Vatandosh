@@ -122,7 +122,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   required
                   type="text"
                   minLength={3}
-                  maxLength={30}
+                  maxLength={200}
                   value={formData?.last_name ? formData.last_name : ""}
                   onChange={(e) => {
                     setFormData((args) => ({
@@ -144,7 +144,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   required
                   type="text"
                   minLength={3}
-                  maxLength={30}
+                  maxLength={200}
                   value={formData?.first_name ? formData.first_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
@@ -166,7 +166,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   required
                   type="text"
                   minLength={3}
-                  maxLength={30}
+                  maxLength={200}
                   value={formData?.second_name ? formData.second_name : ""}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {

@@ -107,7 +107,9 @@ export default function Register6({ activeBarItem }) {
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
-          <h3 className="registeritem-title">V. Volonyorlik faoliyati</h3>
+          <h3 className="registeritem-title">
+            V. {t("expert.expert_activities")}
+          </h3>
           {volunteerProfile?.length
             ? volunteerProfile?.map((el, index) => (
                 <div key={index} className="registeritem-form">
@@ -138,7 +140,6 @@ export default function Register6({ activeBarItem }) {
                         required
                         type="text"
                         minLength={3}
-                        maxLength={200}
                         value={el.title}
                         placeholder={"Kiriting"}
                         onChange={(e) =>
@@ -232,7 +233,6 @@ export default function Register6({ activeBarItem }) {
                         type="text"
                         value={el.description}
                         minLength={3}
-                        maxLength={500}
                         placeholder={"Izoh"}
                         onChange={(e) =>
                           handleChange({
