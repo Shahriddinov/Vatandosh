@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getVolunteerAll,
   getVolunteerCity,
+  getVolunteerFilter,
 } from "../../../../../../reduxToolkit/volunteer/extraReducer";
 import { getExpertPage } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { createSelector } from "@reduxjs/toolkit";
@@ -63,7 +63,7 @@ export const useVolunteerCouncilAbout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVolunteerAll(1));
+    dispatch(getVolunteerFilter({ country: "", city: "" }));
     dispatch(getExpertPage());
     dispatch(getVolunteerCity());
   }, [dispatch, language]);
