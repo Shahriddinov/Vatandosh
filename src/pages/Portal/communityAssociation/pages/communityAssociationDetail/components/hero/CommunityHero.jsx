@@ -19,7 +19,7 @@ const CommunityAssociationHero = ({ data, handleOpen }) => {
       {
         id: 2,
         label: t("communityAssociation.navbar.navbar_link2"),
-        url: "portal-category/community-association/associations",
+        url: "/portal-category/community-association/associations",
         active: false,
       },
       {

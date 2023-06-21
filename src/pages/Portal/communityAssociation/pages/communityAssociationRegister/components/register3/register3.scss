@@ -8,6 +8,8 @@
   &__user {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   &__user_module {
@@ -77,5 +79,13 @@
     line-height: 24px;
     color: #eb5757;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .community-association-register3 {
+    &__user_module {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }

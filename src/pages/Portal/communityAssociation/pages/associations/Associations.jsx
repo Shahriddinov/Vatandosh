@@ -49,7 +49,7 @@ const Associations = () => {
 
   useEffect(() => {
     setCountry(t("communityAssociation.all_states"));
-  }, [lan]);
+  }, [lan, t]);
 
   if (allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;

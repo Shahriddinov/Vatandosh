@@ -1,27 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useOutletContext, useParams } from "react-router-dom";
-import Header from "../../../component/Layout/Header/Header";
 import "./portalNews.scss";
 import { MdArrowRight } from "react-icons/md";
-import { LatestNews, PopularTags, Spinner } from "../../../component";
+import { PopularTags, Spinner } from "../../../component";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ShareFriends from "../../../component/ShareFriends/ShareFriends";
-import { baseServerUrl } from "../../../services/api/utils";
 import {
   getPortalNews,
   getPortalOneNews,
 } from "../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import PortalLatestNews from "../../../component/PortalLatestNews/PortalLatestNews";
-import { ExpertHeader } from "../expert/components";
 import { useTranslation } from "react-i18next";
 
 export default function PortalNews() {
   const { t } = useTranslation();
-  const lan = useSelector((state) => state.language.language);
-  const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   const { newsId } = useParams();
   const oneNewsDetail = useSelector((store) => store.portalNews.oneNews);
@@ -35,7 +30,7 @@ export default function PortalNews() {
   useEffect(() => {
     dispatch(getPortalNews({ type: category, per_page: 3, page: 1 }));
     dispatch(getPortalOneNews(newsId));
-  }, [newsId]);
+  }, [newsId, dispatch, category]);
 
   if (oneNewsLoading) {
     return <Spinner position="full" />;
@@ -83,7 +78,8 @@ export default function PortalNews() {
                 className="portal-newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: oneNewsDetail.body,
-                }}></div>
+                }}
+              ></div>
               {/* {data?.images
             ? JSON.parse(data?.images).length >= 1 && (
                 <div className="portal-newsdetail-main-desc-gallery">

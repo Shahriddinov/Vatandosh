@@ -46,6 +46,7 @@
   .my-img-upload {
     &__img_list {
       display: flex;
+      flex-wrap: wrap;
       gap: 16px;
     }
 
@@ -251,9 +252,15 @@
     border: 1px solid #065ea9;
     transition: all 0.3s linear;
   }
+}
 
-  // .MuiInputBase-root {
-  //   max-width: 100% !important;
-  //   border: none !important;
-  // }
+@media screen and (max-width: 556px) {
+  .add-news-modal {
+    &__content {
+      padding: 20px;
+    }
+    &__btn {
+      padding: 10px 12px;
+    }
+  }
 }
