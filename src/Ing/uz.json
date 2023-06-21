@@ -281,6 +281,7 @@
     "compatriot": "Vatandoshimiz",
     "workexp": "Umumiy ish staji:",
     "education": "Oliy ma’lumoti",
+    "expert_activities": "Expert faoliyati",
     "uzbotm": "O‘zbekistonda tahsil olgan OTM",
     "faculty": "Fakultet",
     "profession": "Mutaxassisligi",
@@ -328,7 +329,8 @@
     "offerforimg": "Taklifingiz uchun rasm",
     "articleoffer": "O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida takliflaringiz",
     "save": "Saqlash",
-    "expert_activity": "Ekspert faoliyati"
+    "expert_activity": "Ekspert faoliyati",
+    "year": "Yil"
   },
   "victorina": {
     "listwinner": "G‘oliblar ro‘yxati",

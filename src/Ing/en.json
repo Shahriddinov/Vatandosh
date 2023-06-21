@@ -284,6 +284,7 @@
     "compatriot": "Our compatriot",
     "workexp": "General seniority:",
     "education": "Higher education",
+    "expert_activities": "Expert activities",
     "uzbotm": "OTM educated in Uzbekistan",
     "faculty": "Faculty",
     "profession": "Specialty",
@@ -330,7 +331,8 @@
     "offerforimg": "Picture for your proposal",
     "articleoffer": "Your proposals for cooperation with Uzbekistan in the field of education and science",
     "save": "Save",
-    "expert_activity": "Expert activities"
+    "expert_activity": "Expert activities",
+    "year": "Year"
   },
   "victorina": {
     "listwinner": "List of winners",

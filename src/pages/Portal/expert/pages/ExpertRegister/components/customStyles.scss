@@ -92,7 +92,6 @@
       }
 
       & > strong {
-        white-space: nowrap;
         word-break: keep-all;
         @include fontStyles(600, 16px, 24px, #1e202c);
       }
@@ -116,7 +115,6 @@
     }
 
     & > p {
-      white-space: nowrap;
       word-break: keep-all;
       @include fontStyles(400, 14px, 17px, #000000);
 

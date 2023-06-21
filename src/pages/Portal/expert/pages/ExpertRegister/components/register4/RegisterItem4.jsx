@@ -45,7 +45,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                   type="text"
                   value={data.academic_degree}
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
@@ -62,7 +62,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 <input
                   type="text"
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   value={data.scientific_title}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
@@ -81,7 +81,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               <input
                 type="text"
                 minLength={3}
-                maxLength={100}
+                maxLength={5000}
                 value={data.topic_of_scientific_article}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
@@ -100,7 +100,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 <input
                   type="text"
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   value={data.article_published_journal_name}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
@@ -136,7 +136,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 <input
                   type="text"
                   minLength={3}
-                  maxLength={50}
+                  maxLength={5000}
                   placeholder={t("expert.inputplaceholder")}
                   value={data.article_url}
                   onChange={(e) =>
@@ -177,7 +177,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               <input
                 type="text"
                 minLength={3}
-                maxLength={50}
+                maxLength={5000}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) => {
                   const arr = e.target.value.split(",");

@@ -186,7 +186,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                     <input
                       type="text"
                       minLength={3}
-                      maxLength={200}
+                      maxLength={5000}
                       value={el.city}
                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
@@ -205,7 +205,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   <input
                     type="text"
                     minLength={3}
-                    maxLength={50}
+                    maxLength={5000}
                     placeholder={t("expert.inputplaceholder")}
                     value={el.position}
                     onChange={(e) =>
@@ -221,7 +221,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   <input
                     type="text"
                     minLength={3}
-                    maxLength={100}
+                    maxLength={5000}
                     value={el.company}
                     placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
@@ -265,7 +265,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                       disabled={el?.status}
                       type="date"
                       minLength={3}
-                      maxLength={30}
+                      maxLength={100}
                       style={el?.status ? { opacity: 0.3 } : null}
                       placeholder={t("expert.inputplaceholder")}
                       value={el.finish_date}
