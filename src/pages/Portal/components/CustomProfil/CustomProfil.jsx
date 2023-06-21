@@ -1,5 +1,4 @@
 import "./CustomProfil.scss";
-import DefaultProfilePic from "../../../../assets/images/mediateka/2.png";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -49,14 +48,14 @@ export default function CustomProfil() {
 
   let experience = 0;
 
-  expertData.user_employment_info.map((data) => {
+  expertData.user_employment_info.forEach((data) => {
     experience += +data.experience;
   });
 
   let verified_expert_activities = 0;
   let verified_volunteer_activities = 0;
 
-  expertData?.user_volunteer_activities.map((act) => {
+  expertData?.user_volunteer_activities.forEach((act) => {
     if (act.verified && act.type === 1) {
       verified_expert_activities++;
     }

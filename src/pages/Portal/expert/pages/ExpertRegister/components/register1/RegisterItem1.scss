@@ -46,4 +46,37 @@
       gap: 20px;
     }
   }
+  &-delete-icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    color: #eb5757;
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .registeritem1 {
+    &-form {
+      &-input-list {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      &-uploadImg {
+        &-inputs {
+          & > img {
+            margin-right: 10px;
+          }
+          & > button {
+            padding: 12px 12px;
+          }
+        }
+      }
+    }
+    &-delete-icon {
+      display: block;
+    }
+    &-delete-text {
+      display: none;
+    }
+  }
 }

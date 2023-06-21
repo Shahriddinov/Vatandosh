@@ -1,7 +1,7 @@
 import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";
 import { useEffect } from "react";
@@ -20,7 +20,7 @@ export default function VolunterLayout() {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navData = [
     { id: 1, url: "/portal-category/volunteer", label: t("expert.main") },

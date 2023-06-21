@@ -77,8 +77,6 @@ export default function ExpertRegister() {
                       : "expertregister-main-bar-item-border"
                   }
                 ></div>
-                <span>{"Expert faoliyati"}</span>
-              </li> */}
             </ul>
             <div className="expertregister-main-list">
               <RegisterItem1
