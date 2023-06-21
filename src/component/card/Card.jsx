@@ -33,6 +33,11 @@ const Card = (props) => {
             src={`${PORTAL_IMAGE_URL}/${JSON.parse(props.image)[0]}`}
             alt={props.title}
           />
+        ) : props.pathUrl === "volunteer/activity" ? (
+          <img
+            src={`${PORTAL_IMAGE_URL}/${JSON.parse(props.images)[0]}`}
+            alt={props.title}
+          />
         ) : (
           <img
             src={`${baseServerUrl}/${props.image}`}
@@ -47,12 +52,16 @@ const Card = (props) => {
               ? `/detail/all-news/new/${props.id}`
               : props.pathUrl === "events"
               ? `/detail/community/event/${props.id}`
+              : props.pathUrl === "volunteer/activity"
+              ? `/portal-category/volunteer/activity/${props.id}`
               : `/${props.pathUrl}/${props.id}`
           }
         >
           {props.pathUrl === "news" ? (
             <h5 className="news__card-title">{props.title}</h5>
           ) : props.pathUrl === "events" ? (
+            <h5 className="news__card-title">{props.title}</h5>
+          ) : props.pathUrl === "volunteer/activity" ? (
             <h5 className="news__card-title">{props.title}</h5>
           ) : (
             <h5 className="news__card-title">{props[`title_${lan}`]}</h5>
@@ -69,6 +78,13 @@ const Card = (props) => {
               className="news__card-text"
               dangerouslySetInnerHTML={{
                 __html: props.content,
+              }}
+            />
+          ) : props.pathUrl === "volunteer/activity" ? (
+            <p
+              className="news__card-text"
+              dangerouslySetInnerHTML={{
+                __html: props.description,
               }}
             />
           ) : (
@@ -107,6 +123,8 @@ const Card = (props) => {
             <span>{props?.data}</span>
           ) : props.pathUrl === "events" ? (
             <span>{props?.date}</span>
+          ) : props.pathUrl === "volunteer/activity" ? (
+            <span>{props?.created_at.split("T")[0]}</span>
           ) : (
             <span>{props?.data}</span>
           )}

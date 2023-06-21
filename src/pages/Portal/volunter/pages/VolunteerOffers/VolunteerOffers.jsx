@@ -22,6 +22,9 @@ export default function VolunteerOffers() {
   const getOneVolunteer = useSelector(
     (state) => state.volunteerShowUserSlice.volunteerShowOneData
   );
+  const loading = useSelector(
+    (state) => state.volunteerShowUserSlice.loading
+  );
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
 
@@ -33,6 +36,10 @@ export default function VolunteerOffers() {
   useEffect(() => {
     dispatch(getVolunteerShowUser({ id }));
   }, [id, dispatch]);
+
+  if(loading) {
+    return <Spinner position="full" />
+  }
 
   return (
     <main className="expertofferdetail">
@@ -64,7 +71,7 @@ export default function VolunteerOffers() {
           </div>
           <div className="expertofferdetail-actions">
             <CouncilStatics
-              count={dataCount.length}
+              count={{total: dataCount.length}}
               VolunteerCount={VolunteerCount}
             />
           </div>

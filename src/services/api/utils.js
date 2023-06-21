@@ -113,6 +113,7 @@ export const GET_ALL_SIGHTSEEING = "/sightseeing/get-all";
 export const GET_SINGLE_SIGHTSEEING = "/sightseeing/get-one/";
 export const GET_VICTORINA_TEST = "/quiz/quiz";
 export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer-user`;
+export const GET_VOLUNTEER_ACTIVITY_ONE = `${portalBaseUrl}/volunteer/get-one`;
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
 export const GET_WEBINAR_BODY = `/meeting`;

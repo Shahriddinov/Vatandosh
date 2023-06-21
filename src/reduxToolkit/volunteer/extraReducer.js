@@ -13,6 +13,7 @@ import {
   UPDATE_VOLUNTEER_ACTIVITY,
   DELETE_VOLUNTEER_ACTIVITY,
   VOLUNTEER_CITY,
+  GET_VOLUNTEER_ACTIVITY_ONE,
 } from "../../services/api/utils";
 
 const token = localStorage.getItem("token");
@@ -103,6 +104,15 @@ export const getVolunteerActivity = createAsyncThunk(
   "getVolunteerActivity",
   async () => {
     return await axios.get(GET_VOLUNTEER_ACTIVITY).then((res) => res.data);
+  }
+);
+
+export const getVolunteerActivityOne = createAsyncThunk(
+  "getVolunteerActivityOne",
+  async ({ id }) => {
+    return await axios
+      .get(`${GET_VOLUNTEER_ACTIVITY_ONE}/${id}`)
+      .then((res) => res.data);
   }
 );
 
