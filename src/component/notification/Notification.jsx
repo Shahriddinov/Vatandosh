@@ -6,8 +6,6 @@ import { closeNotification } from "../../reduxToolkit/notificationSlice/notifica
 
 import "./notification.scss";
 import { NotificationList, Tab } from "./components";
-// import { admin, events, news } from "./data";
-import Spinner from "../Spinner/Spinner";
 import { filterNotification } from "./extra";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +24,7 @@ const Notification = () => {
   const dispatch = useDispatch();
 
   if (notificationDataLoading) {
-    return <Spinner />;
+    return null;
   } else if (error) {
     return <p>{error}</p>;
   }
@@ -82,14 +80,17 @@ const Notification = () => {
           },
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
         <Typography
           component="p"
           className="cabinet-notification__title"
-          sx={{ p: "12px 16px", width: "100%", maxWidth: "440px" }}>
+          sx={{ p: "12px 16px", width: "100%", maxWidth: "440px" }}
+        >
           {t("notification")}
         </Typography>
         <Tab value={value} handleClose={handleClose} setValue={setValue} />
+
         <NotificationList
           data={value === "admin" ? admin : value === "news" ? news : events}
         />
