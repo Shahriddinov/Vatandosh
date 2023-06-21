@@ -1,5 +1,16 @@
 @import "../../../../../../../assets/style/global.scss";
 .community-association-register1 {
+  &__img_item_slider {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img_item {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+  }
+
   &__img_list {
     display: flex;
     gap: 16px;

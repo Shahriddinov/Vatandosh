@@ -135,7 +135,7 @@ const HeaderPortal = () => {
             <input
               type="text"
               className="header_navbar_search_inputs"
-              placeholder="Qidirish"
+              placeholder={t("search")}
             />
             <svg
               width="24"

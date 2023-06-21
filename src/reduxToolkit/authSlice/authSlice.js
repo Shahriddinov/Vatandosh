@@ -38,7 +38,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      console.log(payload);
       state.userData = payload.user;
       state.token = payload.token;
 
@@ -128,7 +127,6 @@ const authSlice = createSlice({
           state.error = action.payload.message;
         } else {
           state.userData = action.payload.profile;
-          console.log(action.payload);
           setItem("token", action.payload.token);
           setItem("user", JSON.stringify(action.payload.profile));
         }

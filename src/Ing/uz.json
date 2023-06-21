@@ -319,7 +319,7 @@
     "secondname": "Sharifi",
     "reg2": "II. Oliy ma’lumotingiz",
     "nextbtn": "Keyingisi",
-    "reg3": "III. Mehnat faoliyatigiz",
+    "reg3": "III. Mehnat faoliyatingiz",
     "nowwork": "Hozirda shu sohada ishlayapti",
     "register5": "Barcha ma’lumotlarni to‘liq va to‘g‘ri kiritdim.",
     "reg4": "IV. Ilmiy faoliyatingiz",
@@ -435,6 +435,7 @@
     "nav3": "Bog‘lanish",
     "nav4": "Volontyorlik faoliyati",
     "reg5": "V. Volontyorlik faoliyati",
+    "card_articles": "Chop etilgan maqolalar soni",
     "allVolunteers": "Barcha volontyorlar",
     "Signup": "Ro‘yxatdan o‘tish"
   },
@@ -463,7 +464,7 @@
     "main_page_header": "Кutubxonaga tashrif buyurib, o‘zbek va jahon adabiyotining eng sara asarlarini mutolaa qilishingiz mumkin!",
     "search": "Qidirish",
     "suggest": "Taklif qilish",
-    "sort_by_language": "Til bo'yicha",
+    "sort_by_language": "Mutolaa tili",
     "sort_by_genre": "Turi bo'yicha",
     "new": "Yangiliklar",
     "popular": "Ommabop",
@@ -522,6 +523,20 @@
     "shareFriends": "Do'stlaringizga ulashing",
     "participatee": "Loyihada ishtirok etish",
     "projectEnded": "Loyiha tugallangan"
+  },
+  "terms": {
+    "ones": "1.1. www.vatandoshlarfondi.uz veb-sayti (keyingi o‘rinlarda “veb-sayt” deb ataladi) “Vatandoshlar” jamoat fondi (keyingi o‘rinlarda “Fond” deb ataladi) mulki hisoblanadi va veb-saytdan foydalanish quyidagi shartlar bilan tartibga solinadi (keyingi o‘rinlarda matnda “foydalanish shartlari”deb ataladi).",
+    "two": "1.2. Veb-saytga kirish, uning sahifalarini ko‘rish va veb-saytdan foydalanish orqali siz ushbu foydalanish shartlariga rioya qilishga rozilik bildirasiz va ular siz uchun qonuniy ravishda majburiy ekanligini tan olasiz. Iltimos, ushbu foydalanish shartlarini diqqat bilan o‘qing. Agar siz ushbu foydalanish shartlariga rozi bo‘lmasangiz, veb-saytni tark etishingiz so‘raladi.",
+    "three": "1.3. Fond istalgan vaqtda o‘z xohishiga ko‘ra ushbu foydalanish shartlarini qayta ko‘rib chiqish, o‘zgartirish, to‘ldirish va (yoki) ulardan ma’lum qismini olib qo‘yish huquqiga ega. Ushbu foydalanish shartlarining yangi eskirgan versiyasi veb-saytda e’lon qilingan paytda kuchga kiradi.",
+    "four": "1.4. Veb-sayt boshqaruvi O‘zbekiston Respublikasining turli joylaridan amalga oshirilishi mumkin. Veb-saytga dunyoning istalgan nuqtasidan kirish mumkin.",
+    "five": "2.1. Fond veb-saytga kiritilgan intellektual mulk huquqlariga, xususan, veb-saytga joylashtirilgan materiallarga nisbatan mulkiy huquqlarning mutlaq egasidir.",
+    "six": "2.2 Intellektual mulk huquqlari obyektlariga har qanday turdagi cheklovlarsiz barcha tegishli obyektlar kiradi: barcha matnlar, grafik materiallar, foydalanuvchi va vizual interfeyslar, fotosuratlar, rasmlar, illustratsiyalar, logotiplar, maket, video yozuvlar, audio yozuvlar, ovoz, musiqa, dizayn, nou-xau, texnologiya, chizmalar, veb-saytda chop etilgan tasviriy va boshqa materiallar, mualliflik, shuningdek, huquqlar yoki himoya shakllari Fond xodimlari tomonidan yaratilgan.",
+    "seven": "3.1. Veb-saytda joylashtirilgan ma’lumotlar faqat ma’lumot maqsadida taqdim etiladi.",
+    "eight": "3.2. Taqdim etilgan ma’lumotlar faqat shaxsiy foydalanish uchun mo‘ljallangan. Saytni o‘z ishini tugatishga, ortiqcha yuklashga, zararga yoki boshqa salbiy oqibatlarga olib kelishi mumkin bo‘lgan har qanday usulda ishlatmang, shuningdek, saytni uchinchi shaxslar tomonidan, shu jumladan, sayt bilan real vaqtda ishlash qobiliyatiga to‘sqinlik qilmang.",
+    "nine": "3.3. Saytda joylashtirilgan materiallarni kuzatish va nusxalash, shu jumladan, har qanday maqsadda saytga kirish uchun robotlar yoki boshqa avtomatik qurilmalar, usullar va vositalardan foydalanmang.",
+    "ten": "3.4. Siz veb-saytda joylashtirilgan ma’lumotlarni faqat shaxsiy, notijorat maqsadlarda foydalanishingiz uchun yuklab olishingiz, namoyish qilishingiz yoki chop etishingiz mumkin. Veb-saytdagi hujjat yoki dasturiy ta’minotni yuklab olish yoki ko‘chirish tegishli hujjat yoki dasturiy ta’minot uchun hech qanday huquq bermaydi.",
+    "eleven": "4.1. Fondning veb-saytida joylashtirilgan ma’lumotlardagi xatolar (uslubiy, orfografik, texnik va boshqa xatolar), ogohlantirishlarsiz Fond tomonidan o‘zgartirilishi mumkin. ",
+    "twelve": "4.2. Fond veb-saytida boshqa veb-saytlarga havolalar berilishi mumkin. Ushbu havolalar bo‘yicha ma’lumotlarning to‘g‘riligi, haqqoniyligi uchun Fond javob bermaydi."
   },
   "about_uzbekistan": {
     "galleria": "Fotogalereya",

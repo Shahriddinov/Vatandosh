@@ -99,11 +99,12 @@ export default function Register6({ activeBarItem }) {
   return (
     <form
       className={
-        activeBarItem !== 6
+        activeBarItem !== 5
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSumbit}>
+      onSubmit={handleSumbit}
+    >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
           <h3 className="registeritem-title">V. Volonyorlik faoliyati</h3>
@@ -172,14 +173,16 @@ export default function Register6({ activeBarItem }) {
                         ? el.images.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item">
+                              className="registeritem-imageList-item"
+                            >
                               {el.images.length > 1 ? (
                                 <div
                                   className="registeritem-imageList-item-remove"
                                   onClick={() => {
                                     el.images.splice(index, 1);
                                     handleChange({ ...el, images: el.images });
-                                  }}>
+                                  }}
+                                >
                                   <HiOutlineTrash />
                                   <span>
                                     {t("projects_page.form_image_delete")}
@@ -192,13 +195,15 @@ export default function Register6({ activeBarItem }) {
                         : el.volunteerImg.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item">
+                              className="registeritem-imageList-item"
+                            >
                               <img src={PORTAL_IMAGE_URL + item} alt="" />
                             </li>
                           ))}
                       <label
                         htmlFor={el.id}
-                        className="registeritem-imageList-inputFile">
+                        className="registeritem-imageList-inputFile"
+                      >
                         <input
                           className="registeritem-label-fileinput"
                           id={el.id}
@@ -254,7 +259,8 @@ export default function Register6({ activeBarItem }) {
                   description: "",
                 },
               ])
-            }>
+            }
+          >
             <BsPlusCircleFill />
           </button>
           <div className="registeritem-checkbox">
@@ -272,7 +278,8 @@ export default function Register6({ activeBarItem }) {
           disabled={!checked}
           type="submit"
           className="registeritem-submitBtn"
-          style={checked ? null : { opacity: 0.5, cursor: "auto" }}>
+          style={checked ? null : { opacity: 0.5, cursor: "auto" }}
+        >
           {t("expert.save")}
         </button>
       </div>

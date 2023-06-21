@@ -10,7 +10,7 @@ function CouncilStatics({ count, VolunteerCount }) {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} />
         </span>
-        <h4>{count.total}</h4>
+        <h4>{count?.total}</h4>
         <p>{t("voluntery.voluntery")}</p>
       </div>
       <div className="council-bottom">

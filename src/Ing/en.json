@@ -431,6 +431,7 @@
     "nav3": "Connect",
     "nav4": "Volunteer activities",
     "reg5": "V. Volunteer activities",
+    "card_articles": "Number of articles published",
     "allVolunteers": "All volunteers",
     "Signup": "Sign up"
   },
@@ -456,7 +457,7 @@
   "library": {
     "library": "Library",
     "hero_title": "Most comfy library",
-    "main_page_header": "You can read the best works of Uzbek and world literature by visiting the library!",
+    "main_page_header": "By visiting the library, you could read the best works of Uzbek and world literature!",
     "search": "Search",
     "suggest": "Suggest a book",
     "sort_by_language": "By language",
@@ -517,6 +518,24 @@
     "shareFriends": "Share with friends",
     "participatee": "Participate in the project",
     "projectEnded": "Project completed"
+  },
+  "terms": {
+    "use": "TERMS OF USE OF THE SITE:",
+    "rights": "INTELLECTUAL PROPERTY RIGHTS",
+    "uses": "USE OF WEBSITE",
+    "other": "OTHERS",
+    "ones": "1.1. The website www.vatandoshlarfondi.uz  (here in after referred to as the \"website\") is the property of the \"Vatandoshlar\" public foundation (here in after referred to as the \"Foundation\") and the use of the website is governed by the following conditions (here in after referred to as \" it is called \"terms of use\").",
+    "two": "1.2. By accessing the Website, viewing its pages and using the Website, you agree to be bound by these Terms of Use and acknowledge that they are legally binding on you. Please read these terms of use carefully. If you do not agree to these terms of use, you are asked to leave the website.",
+    "three": "1.3. The Foundation has the right to revise, change, supplement and (or) withdraw a certain part of these terms of use at any time at its discretion. A new outdated version of these terms of use will be effective when posted on the website. ",
+    "four": "1.4. Website management can be done from different places of the Republic of Uzbekistan. The website can be accessed from anywhere in the world.",
+    "five": "2.1. The Foundation is the sole owner of the intellectual property rights included in the website, in particular, the property rights to the materials posted on the website.",
+    "six": "2.2 Objects of intellectual property rights include, without limitation of any kind, all related objects: all texts, graphic materials, user and visual interfaces, photographs, images, illustrations, logos, layout, video recordings, audio recordings, sound, music, design, know-how , technology, drawings, pictorial and other materials published on the website, authorship, as well as rights or forms of protection created by the employees of the Foundation.",
+    "seven": "3.1. The information posted on the website is provided for informational purposes only.",
+    "eight": "3.2. The information provided is for personal use only. Do not use the site in any way that can cause termination, overloading, damage or other negative consequences, and also do not interfere with the ability of third parties to work with the site, including in real time.",
+    "nine": "3.3. Do not use robots or other automatic devices, methods or tools to access the site for any purpose, including monitoring and copying materials posted on the site.",
+    "ten": "3.4. You may download, display or print the information posted on the website for your personal, non-commercial use only. Downloading or copying of the document or software on the website does not give you any rights to the related document or software.",
+    "eleven": "4.1. Errors in the information posted on the Foundation's website (methodical, spelling, technical and other errors) may be changed by the Foundation without notice.",
+    "twelve": "4.2. The Foundation's website may contain links to other websites. The Fund is not responsible for the accuracy and truthfulness of the information on these links."
   },
   "about_uzbekistan": {
     "galleria": "Photo gallery",

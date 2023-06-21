@@ -32,7 +32,7 @@ export default function ExpertRegister() {
 
   useEffect(() => {
     dispatch(getExpertRegisterMenu());
-  }, [dispatch]);
+  }, [dispatch, language]);
   return (
     <>
       <main className="expertregister">
@@ -66,7 +66,7 @@ export default function ExpertRegister() {
                     );
                   })
                 : null}
-              <li
+              {/* <li
                 className="expertregister-main-bar-item"
                 onClick={() => setactiveBarItem(6)}
               >
@@ -77,8 +77,6 @@ export default function ExpertRegister() {
                       : "expertregister-main-bar-item-border"
                   }
                 ></div>
-                <span>{t("expert.expert_activity")}</span>
-              </li>
             </ul>
             <div className="expertregister-main-list">
               <RegisterItem1

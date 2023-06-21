@@ -98,43 +98,53 @@ function VolunterAbout() {
         </div>
         <div className="employe-page">
           {volunteers.data.length > 0 ? (
-            volunteers.data.map((volunteer) => (
-              <div key={volunteer.id}>
-                <img
-                  src={`${PORTAL_IMAGE_URL}${
-                    volunteer?.user_profile?.avatar_url
-                      ? volunteer?.user_profile?.avatar_url
-                      : volunteer?.user?.avatar
-                  }`}
-                  alt="error"
-                  className="employe-img"
-                />
-                <p>
-                  {volunteer?.user_profile?.international_location_id?.name},{" "}
-                  {volunteer?.user_profile?.international_address_id?.name}
-                </p>
-                <h3 style={{ color: "#065EA9" }}>
-                  {volunteer?.user_profile?.first_name +
-                    " " +
-                    volunteer?.user_profile?.last_name}
-                </h3>
-                <p style={{ color: "#656B70", fontWeight: 700 }}>
-                  {t("card_articles")}:{" "}
-                  <b style={{ color: "#065EA9" }}>
-                    {volunteer?.user_volunteer_activities?.length}
-                  </b>
-                </p>
-                <div className="link-div">
-                  <Link
-                    className="employe-link"
-                    to={`/portal-category/volunteer/profile/${volunteer.id}`}
-                  >
-                    <span>{t("expert.more")}</span>
-                    <img src={ArrowIcon} alt="Arrow Icon" />
-                  </Link>
+            volunteers.data.map((volunteer) => {
+              let verified_volunteer_activities = 0;
+
+              volunteer?.user_volunteer_activities.map((act) => {
+                if (act.verified && act.type === 2) {
+                  verified_volunteer_activities++;
+                }
+              });
+
+              return (
+                <div key={volunteer.id}>
+                  <img
+                    src={`${PORTAL_IMAGE_URL}${
+                      volunteer?.user_profile?.avatar_url
+                        ? volunteer?.user_profile?.avatar_url
+                        : volunteer?.user?.avatar
+                    }`}
+                    alt="error"
+                    className="employe-img"
+                  />
+                  <p>
+                    {volunteer?.user_profile?.international_location_id?.name},{" "}
+                    {volunteer?.user_profile?.international_address_id?.name}
+                  </p>
+                  <h3 style={{ color: "#065EA9" }}>
+                    {volunteer?.user_profile?.first_name +
+                      " " +
+                      volunteer?.user_profile?.last_name}
+                  </h3>
+                  <p style={{ color: "#656B70", fontWeight: 700 }}>
+                    {t("voluntery.card_articles")}:{" "}
+                    <b style={{ color: "#065EA9" }}>
+                      {verified_volunteer_activities}
+                    </b>
+                  </p>
+                  <div className="link-div">
+                    <Link
+                      className="employe-link"
+                      to={`/portal-category/volunteer/profile/${volunteer.id}`}
+                    >
+                      <span>{t("expert.more")}</span>
+                      <img src={ArrowIcon} alt="Arrow Icon" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p>{t("volunteerNot")}</p>
           )}

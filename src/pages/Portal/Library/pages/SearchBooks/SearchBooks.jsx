@@ -98,7 +98,7 @@ const SearchBooks = () => {
                 />
               </svg>
             </li>
-            <li className="current_path">Kutubxona</li>
+            <li className="current_path">{t("library.library")}</li>
           </ul>
         </div>
         <div className="all__books__search">

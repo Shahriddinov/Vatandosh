@@ -24,6 +24,7 @@ const SignInWithGoogle = () => {
           .then((res) => res.data);
 
         dispatch(loginUser(user));
+
         if (user.token) {
           navigate("/registration/register");
         }

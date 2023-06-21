@@ -28,15 +28,10 @@ export default function RecoveryPassword() {
         <div className="auth-wrapper">
           <div className="auth-desc">
             <h2 className="auth-desc-title">
-              Lorem ipsum dolor sit amet consectetur. Mauris sit mauris
+              {t("registeri")}
             </h2>
             <p className="auth-desc-text">
-              Lorem ipsum dolor sit amet consectetur. Neque sed ultrices vel
-              orci mollis felis ultrices leo. Erat vestibulum amet nibh luctus
-              vitae velit vitae vulputate blandit. Malesuada commodo magna sed
-              sem justo non convallis. Vestibulum id nunc et morbi lobortis non
-              bibendum arcu netus. Eget nisi tincidunt aliquam rutrum nunc
-              feugiat fermentum in nisi
+              {t("create")}
             </p>
           </div>
           <div className="auth-form auth-signup">
