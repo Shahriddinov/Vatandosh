@@ -1,5 +1,4 @@
 import "./CustomProfil.scss";
-import DefaultProfilePic from "../../../../assets/images/mediateka/2.png";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -49,14 +48,14 @@ export default function CustomProfil() {
 
   let experience = 0;
 
-  expertData.user_employment_info.map((data) => {
+  expertData.user_employment_info.forEach((data) => {
     experience += +data.experience;
   });
 
   let verified_expert_activities = 0;
   let verified_volunteer_activities = 0;
 
-  expertData?.user_volunteer_activities.map((act) => {
+  expertData?.user_volunteer_activities.forEach((act) => {
     if (act.verified && act.type === 1) {
       verified_expert_activities++;
     }
@@ -102,7 +101,8 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.education")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -152,7 +152,8 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.workexper")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -192,7 +193,8 @@ export default function CustomProfil() {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header">
+            id="panel1a-header"
+          >
             <Typography>{t("expert.activity")}</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -238,7 +240,8 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography>{t("expert.ownoffers")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -279,7 +282,8 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography>{t("expertActivity")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -291,7 +295,8 @@ export default function CustomProfil() {
                         className="customprofil-list-offer-info"
                         style={
                           id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                        }>
+                        }
+                      >
                         <div className="customprofil-list-offer-info-img">
                           {evt.images &&
                             JSON.parse(evt.images).map((image, index) => (
@@ -312,7 +317,8 @@ export default function CustomProfil() {
                             <Link
                               to={
                                 "/portal-category/volunteer/offers/" + evt?.id
-                              }>
+                              }
+                            >
                               {t("expert.detail")}
                             </Link>
                           </button>
@@ -332,7 +338,8 @@ export default function CustomProfil() {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography>{t("voluntery.nav4")}</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -344,7 +351,8 @@ export default function CustomProfil() {
                         className="customprofil-list-offer-info"
                         style={
                           id % 2 === 0 ? { flexDirection: "row-reverse" } : null
-                        }>
+                        }
+                      >
                         <div className="customprofil-list-offer-info-img">
                           {evt.images &&
                             JSON.parse(evt.images).map((image, index) => (
@@ -365,7 +373,8 @@ export default function CustomProfil() {
                             <Link
                               to={
                                 "/portal-category/volunteer/offers/" + evt?.id
-                              }>
+                              }
+                            >
                               {t("expert.detail")}
                             </Link>
                           </button>

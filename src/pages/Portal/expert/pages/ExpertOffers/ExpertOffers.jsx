@@ -1,5 +1,4 @@
 import "./ExpertOffers.scss";
-import DefaultProfilePic from "../../../../../assets/images/mediateka/2.png";
 import { Link } from "react-router-dom";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
@@ -7,7 +6,6 @@ import ExpertProfileInfo from "./components/ExpertProfileInfo";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getExperts } from "../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { Spinner } from "../../../../../component";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useState } from "react";

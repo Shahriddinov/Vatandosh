@@ -98,6 +98,7 @@
 
     &-otm {
       display: flex;
+      flex-wrap: wrap;
       gap: 60px;
 
       &:not(:first-child) {
@@ -131,9 +132,10 @@
       gap: 20px;
 
       &-printDate {
-        display: grid;
-        grid-template-columns: repeat(2, 332px);
-        column-gap: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 140px;
+        row-gap: 20px;
       }
 
       &-tags-list {
@@ -200,6 +202,60 @@
       &-infoplus {
         margin-top: 20px;
         max-width: 1070px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 898px) {
+  .customprofil {
+    &-list {
+      &-workexp {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      &-offer {
+        &-info {
+          flex-direction: column;
+          &-img > img {
+            max-width: 100%;
+            height: 438px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .customprofil {
+    &-detail {
+      padding: 20px 10px;
+      gap: 20px;
+      &-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      &-desc > h4 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+    &-list {
+      &-workexp {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &-offer {
+        &-info {
+          &-img > img {
+            max-width: 100%;
+            height: 245px;
+          }
+          &-desc {
+            &-btn {
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }

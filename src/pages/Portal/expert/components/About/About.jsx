@@ -34,7 +34,9 @@ function About({ aboutData, expertCount }) {
             <p className="about-text">{aboutData?.desc1}</p>
             {aboutData?.img2 && <img src={aboutData?.img2} alt="img" />}
             <p className="about-text">{aboutData?.desc2}</p>
-            <ShareFriends />
+            <div>
+              <ShareFriends />
+            </div>
           </div>
           <CouncilStatics expertCount={expertCount} />
         </div>

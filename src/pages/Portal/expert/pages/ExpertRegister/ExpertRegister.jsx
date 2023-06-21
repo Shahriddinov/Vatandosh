@@ -77,7 +77,7 @@ export default function ExpertRegister() {
                       : "expertregister-main-bar-item-border"
                   }
                 ></div>
-                <span>{"Expert faoliyati"}</span>
+                <span>{t("expert.expert_activity")}</span>
               </li>
             </ul>
             <div className="expertregister-main-list">

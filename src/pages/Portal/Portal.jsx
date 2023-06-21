@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
-import ChatModal from "./components/PortalChatModal/ChatModal";
 
 import { FaLinkedinIn, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 
@@ -21,10 +20,8 @@ import bg5 from "../../assets/images/portal/5.png";
 
 const HomePage = () => {
   const token = useSelector((state) => state.authSlice.token);
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [showChat, setShowChat] = useState(false);
   const [horizontal, setHorizontal] = useState(false);
 
   const navbarList = [
@@ -96,7 +93,7 @@ const HomePage = () => {
         setHorizontal(false);
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="portal">

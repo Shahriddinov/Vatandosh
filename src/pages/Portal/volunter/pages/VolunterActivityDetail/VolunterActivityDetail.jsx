@@ -15,13 +15,13 @@ import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHome
 export default function VolunterActivityDetail() {
   const dispatch = useDispatch();
   const lan = useSelector((state) => state.language.language);
+  const { t } = useTranslation();
   const url = [
     { title: t("expert.main"), url: "/portal-category/volunteer" },
     { title: t("volunteryWork"), url: "#" },
   ];
 
   const { id } = useParams();
-  const { t } = useTranslation();
   const newsData = useSelector((state) =>
     state.newsSlice?.newsData?.find((evt) => evt?.id === Number(id))
   );
@@ -29,6 +29,7 @@ export default function VolunterActivityDetail() {
   useEffect(() => {
     dispatch(getNews());
   }, [dispatch]);
+
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();
   return (
