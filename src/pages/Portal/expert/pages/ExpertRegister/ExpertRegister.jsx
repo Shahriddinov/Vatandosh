@@ -52,15 +52,13 @@ export default function ExpertRegister() {
                       <li
                         key={index}
                         className="expertregister-main-bar-item"
-                        onClick={() => setactiveBarItem(index)}
-                      >
+                        onClick={() => setactiveBarItem(index)}>
                         <div
                           className={
                             activeBarItem === index
                               ? "expertregister-main-bar-item-border activeBarItem"
                               : "expertregister-main-bar-item-border"
-                          }
-                        ></div>
+                          }></div>
                         <span>{el[`name_${language}`]}</span>
                       </li>
                     );

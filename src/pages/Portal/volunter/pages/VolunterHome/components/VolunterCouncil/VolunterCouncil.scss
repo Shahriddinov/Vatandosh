@@ -4,6 +4,11 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 
+  &-list-item-img {
+    width: 270px;
+    height: 270px;
+  }
+
   &-list-item-desc {
     img {
       width: 100%;
