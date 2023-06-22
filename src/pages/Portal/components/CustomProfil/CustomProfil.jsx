@@ -317,7 +317,10 @@ export default function CustomProfil() {
                             ))}
                         </div>
                         <div className="customprofil-list-offer-info-desc valontery-desc-text">
-                          <p className="customprofil-list-offer-info-desc-text">
+                          <p
+                            className="customprofil-list-offer-info-desc-text"
+                            style={{ fontSize: "20px" }}
+                          >
                             {evt?.title}
                           </p>
                           <p>{evt?.description}</p>
@@ -375,7 +378,7 @@ export default function CustomProfil() {
                         <div className="customprofil-list-offer-info-desc valontery-desc-text">
                           <p
                             className="customprofil-list-offer-info-desc-text"
-                            style={{ fontSize: "30px", color: "green" }}
+                            style={{ fontSize: "20px" }}
                           >
                             {evt?.title}
                           </p>
