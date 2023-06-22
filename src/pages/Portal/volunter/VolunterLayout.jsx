@@ -1,6 +1,5 @@
 import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
-import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";

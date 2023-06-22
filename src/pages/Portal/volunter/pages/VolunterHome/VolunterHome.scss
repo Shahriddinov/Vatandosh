@@ -4,19 +4,7 @@
   padding-bottom: 50px;
 }
 
-@media (max-width: 1160px) {
-  .container {
-    width: 1020px;
-  }
-}
-
 @media (max-width: 1020px) {
-  .container {
-    width: 900px;
-  }
-
-  
-
   .expertnews-page {
     display: flex;
     flex-direction: column;
@@ -33,11 +21,5 @@
   }
   .expert-list-item-desc img {
     width: 100%;
-  }
-}
-
-@media (max-width: 920px) {
-  .container {
-    width: 800px;
   }
 }

@@ -23,7 +23,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
 
-export default function SwipeableTemporaryDrawer({ data }) {
+export default function PortalSide({ data }) {
   const [state, setState] = useState(false);
 
   const contactData = useSelector((state) => state.contactSlice.contactData);

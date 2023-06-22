@@ -9,7 +9,7 @@ function CouncilStatics({ count, VolunteerCount }) {
       <div>
         <span className="council--span">
           <h5>{t("expert.registered")}</h5>
-          <img src={UserIcon} />
+          <img src={UserIcon} alt="error" />
         </span>
         <h4>{count?.total}</h4>
         <p>{t("voluntery.voluntery")}</p>
@@ -17,7 +17,7 @@ function CouncilStatics({ count, VolunteerCount }) {
       <div className="council-bottom">
         <span className="council--span">
           <h5>{t("expert.country")}</h5>
-          <img src={Globe} />
+          <img src={Globe} alt="error" />
         </span>
         {VolunteerCount?.sort((a, b) => b.users.length - a.users.length)
           .slice(0, 6)
