@@ -32,3 +32,43 @@
     max-width: 1200px;
   }
 }
+
+@media (max-width: 920px) {
+  .container {
+    width: 800px;
+  }
+}
+
+@media (max-width: 820px) {
+  .container {
+    width: 700px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: 500px;
+  }
+
+  .headeres h2 {
+    font-size: 24px;
+  }
+  .headeres--text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: 100%;
+  }
+  .headeres h2 {
+    line-height: 32px;
+  }
+}

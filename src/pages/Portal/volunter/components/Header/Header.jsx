@@ -8,7 +8,12 @@ function Header({ headerData }) {
     <div className="headeres">
       <div className="container">
         <h2>{headerData.title}</h2>
-        <p className="headeres--text">{headerData.subTitle}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: headerData.subTitle,
+          }}
+          className="headeres--text"
+        />
         <Link to="/portal-category/volunteer/register">
           {t("voluntery.Signup")}
         </Link>
