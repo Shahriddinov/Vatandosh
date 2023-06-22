@@ -11,6 +11,7 @@ import {
   getExpertScientific,
   getExpertSpecialization,
   postExpertEducation,
+  postExpertRegister,
   postExpertScientific,
   updateExpertEducation,
   updateExpertEmployment,
@@ -32,6 +33,10 @@ const initialState = {
   specialization: [],
   specializationLoading: true,
   specializationError: null,
+
+  expertRegister: [],
+  expertRegisterLoading: true,
+  expertRegisterError: null,
 
   employment: [],
   employmentLoading: true,
