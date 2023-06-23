@@ -29,10 +29,13 @@ const NotificationCard = (props) => {
 
   const isJson = isJsonString(props.image);
   const image = isJson ? JSON.parse(props.image) : props.image;
-  const eventImage =
-    props.type === "event" && image[0]?.split("/")[0] === "community-events"
+  const eventImage = image
+    ? (props.type === "event" &&
+        image[0]?.split("/")[0] === "community-events") ||
+      image[0]?.split("/")[0] === "community-news"
       ? image[0]
-      : image;
+      : image
+    : null;
 
   const { day, hours } = notificationGetTime(props.created_at, lan);
 

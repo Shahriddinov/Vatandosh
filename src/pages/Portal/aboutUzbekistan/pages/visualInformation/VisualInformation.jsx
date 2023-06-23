@@ -68,7 +68,9 @@ const VisualInformation = () => {
             {/*<p>{activeMenu?.page_menu_contents[1]?.text}</p>*/}
           </div>
         ) : null}
-        <AboutUzbekistanGallery allGallery={allGallery.data} />
+        {allGallery?.data?.length > 0 && (
+          <AboutUzbekistanGallery allGallery={allGallery?.data.slice(8)} />
+        )}
       </div>
     </div>
   );
