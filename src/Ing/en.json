@@ -660,6 +660,11 @@
   "NoInternet": "No internet. Connection lost.",
   "notification": "Notifications",
   "famousTag": "Popular tags",
-  "copy":"Copied!",
-  "others": "Other addresses of Tashkent City"
+  "copy": "Copied!",
+  "others": "Other addresses of Tashkent City",
+  "chatOut": "Logout",
+  "chatMember": "Members",
+  "chatLink": "Links",
+  "chatDoc": "Docs",
+  "chatOne": "Chat"
 }
