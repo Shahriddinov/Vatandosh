@@ -1,9 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { UserIcon, Globe } from "../../../../../../../assets/images/expert";
+import { useLocation } from "react-router-dom";
 
 function CouncilStatics({ count, VolunteerCount }) {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
 
+  const pathMatch = pathname.split("/")[2];
   return (
     <div className="council-right">
       <div>
@@ -12,7 +15,12 @@ function CouncilStatics({ count, VolunteerCount }) {
           <img src={UserIcon} alt="error" />
         </span>
         <h4>{count?.total}</h4>
-        <p>{t("voluntery.voluntery")}</p>
+
+        <p>
+          {pathMatch === "expert"
+            ? t("expert.allexperts")
+            : t("voluntery.voluntery")}
+        </p>
       </div>
       <div className="council-bottom">
         <span className="council--span">
