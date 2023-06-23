@@ -43,7 +43,6 @@ const AssociationHome = () => {
 
   const headerData = {
     title: communityHomePageData?.title,
-    subTitle: filteredText[1].split(" ").slice(0, 5).join(" ") + "...",
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };

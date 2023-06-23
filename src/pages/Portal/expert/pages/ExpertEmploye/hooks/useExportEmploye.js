@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllRegions } from "../../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { getExpertFilter } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { getExpertSpecialization } from "../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { useTranslation } from "react-i18next";
 
 export const useExportEmploy = () => {
+  const { t } = useTranslation();
   const language = useSelector((store) => store.language.language);
   const allRegionsChange = createSelector(
     (store) => store.community.allRegionsGet,
@@ -36,9 +38,9 @@ export const useExportEmploy = () => {
 
   allRegions.unshift({
     id: "all",
-    name: "Barcha davlatlar",
-    label: "Barcha davlatlar",
-    code: "Barcha davlatlar",
+    name: t("expert.all_countries"),
+    label: t("expert.all_countries"),
+    code: t("expert.all_countries"),
     flag: null,
     count: 0,
   });
@@ -51,5 +53,6 @@ export const useExportEmploy = () => {
     specialization,
     loading,
     expertError,
+    language,
   };
 };

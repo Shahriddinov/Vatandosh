@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   DELETE_EXPERT_ACTIVITY,
   GET_EXPERT_ACTIVITY,
+  GET_EXPERT_ACTIVITY_DETAIL,
   SEND_EXPERT_ACTIVITY,
   UPDATE_EXPERT_ACTIVITY,
 } from "../../../services/api/utils";
@@ -52,3 +53,14 @@ export const deleteExpertActivity = createAsyncThunk(
       .then((res) => res.data);
   }
 );
+
+export const getExpertActivityOne = createAsyncThunk(
+  "getExpertActivityOne",
+  async ({ id }) => {
+    return await axios
+      .get(GET_EXPERT_ACTIVITY_DETAIL + id)
+      .then((res) => res.data);
+  }
+);
+
+//getExpertActivityOne

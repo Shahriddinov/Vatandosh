@@ -110,6 +110,11 @@ const ExpertOffers = lazy(() =>
 const ExpertOffersDetail = lazy(() =>
   import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
 );
+const ExpertActivityDetail = lazy(() =>
+  import(
+    "./pages/Portal/expert/pages/expertActivityDerail/ExpertActivityDerail"
+  )
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
@@ -591,6 +596,10 @@ const RoutesContainer = () => {
                   <Route path="contact" element={<Contact />} />
                   <Route path="register" element={<ExpertRegister />} />
                   <Route path=":newsId" element={<PortalNews />} />
+                  <Route
+                    path="activity/:id"
+                    element={<ExpertActivityDetail />}
+                  />
                   <Route path="*" element={<NotFound />} />
                 </Route>
 
