@@ -24,3 +24,14 @@
     }
   }
 }
+
+@media screen and (max-width: 556px) {
+  .webinar-register {
+    .webinar-register-item {
+      .webinar-ragister-input-list,
+      .webinar-register-inputList {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}

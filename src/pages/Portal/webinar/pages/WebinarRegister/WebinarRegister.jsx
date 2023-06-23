@@ -12,7 +12,7 @@ export default function WebinarRegister() {
   console.log(activeBarItem);
   const { t } = useTranslation();
   const url = [
-    { title: t("expert.main"), url: "/portal-category/expert" },
+    { title: t("expert.main"), url: "/portal-category/webinar" },
     { title: t("projects_page.participate_btn"), url: "" },
   ];
   return (
@@ -26,13 +26,15 @@ export default function WebinarRegister() {
                 <li
                   key={index}
                   className="expertregister-main-bar-item"
-                  onClick={() => setactiveBarItem(index)}>
+                  onClick={() => setactiveBarItem(index)}
+                >
                   <div
                     className={
                       activeBarItem === index
                         ? "expertregister-main-bar-item-border activeBarItem"
                         : "expertregister-main-bar-item-border"
-                    }></div>
+                    }
+                  ></div>
                   <span>{el}</span>
                 </li>
               );

@@ -3,8 +3,7 @@ import "../../../victorina/pages/VictorinaProject/VictorinaProject.scss";
 import { ExpertTitle } from "../../../expert/components";
 import { useTranslation } from "react-i18next";
 import CouncilStatics from "../../../expert/pages/ExpertHome/components/Council/CouncilStatics1";
-import img from "../../../../../assets/images/portal/5.png";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ExpertProfileInfo from "../../../expert/pages/ExpertOffers/components/ExpertProfileInfo";
 import { ShareFriends, Spinner } from "../../../../../component";
 import { getMeetingOne } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
@@ -28,7 +27,7 @@ export default function OnlineWebinar() {
 
   useEffect(() => {
     dispatch(getMeetingOne(id));
-  }, []);
+  }, [dispatch, id]);
 
   const { t } = useTranslation();
   const url = [
@@ -108,12 +107,13 @@ export default function OnlineWebinar() {
                   {meetingOnedata.status == 1 ? (
                     <Link
                       to={`/portal-category/webinar/webinar-register/${meetingOnedata.id}`}
-                      className="victorinaproject-main-btn victorinaproject-main-btnActive">
+                      className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    >
                       {t("webinar.join-webinar")}
                     </Link>
                   ) : (
                     <Link className="victorinaproject-main-btn">
-                     {t("webinarFinished")}
+                      {t("webinarFinished")}
                     </Link>
                   )}
                 </>
@@ -156,7 +156,8 @@ export default function OnlineWebinar() {
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen></iframe>
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </div>
               <ShareFriends />

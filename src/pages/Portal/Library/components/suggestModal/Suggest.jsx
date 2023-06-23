@@ -1,16 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import "./suggest.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import TextField from "@mui/material/TextField";
 import PhoneInput from "react-phone-number-input/input";
 
 const Suggest = (props) => {
-  const lng = props.lng;
   const t = props.t;
-  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -42,7 +39,8 @@ const Suggest = (props) => {
           action=""
           method="post"
           autoComplete="off"
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit}
+        >
           <TextField
             id="outlined-basic"
             label={t("projects_page.form_name")}
@@ -88,7 +86,8 @@ const Suggest = (props) => {
             <button
               className="cancel__button"
               type="button"
-              onClick={props.toggleModal}>
+              onClick={props.toggleModal}
+            >
               {t("projects_page.form_cancel")}
             </button>
             <button className="submit__button" type="submit">

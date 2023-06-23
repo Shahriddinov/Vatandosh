@@ -11,28 +11,20 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 
-import HeroImage from "../../../../../assets/images/library/libraryHero.png";
-import HeroImage1 from "../../../../../assets/images/library/libraryHero1.png";
-import HeroImage2 from "../../../../../assets/images/library/libraryHero2.png";
 import { FormControl, MenuItem, Select } from "@mui/material";
 
-import Book1 from "../../../../../assets/images/library/ken.png";
-import Book2 from "../../../../../assets/images/library/agata.png";
-import Book3 from "../../../../../assets/images/library/jeyn.png";
-import Book4 from "../../../../../assets/images/library/paulo.png";
 import Suggest from "../../components/suggestModal/Suggest";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { Pagination, Spinner } from "../../../../../component";
 import { paginationCount } from "../../../../../helpers/extraFunction";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AllBooks = () => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [activeSort, setActiveSort] = useState("all");
   const [suggestModal, setSuggestModal] = useState(false);
   const [data, setData] = useState({
     lang: "",
@@ -53,18 +45,14 @@ const AllBooks = () => {
     }
   };
 
-  const dispatch = useDispatch();
-
   const {
     libraryData,
     libraryLoading,
     librarySliderData,
-    librarySliderLoading,
     activPage,
     changePagination,
     filterBooks,
     filterBooksType,
-    searchBook,
     sortBook,
   } = useLibraryFetching(12);
 
@@ -95,7 +83,6 @@ const AllBooks = () => {
     }));
   };
 
-
   if (libraryLoading) {
     return <Spinner />;
   }
@@ -105,7 +92,10 @@ const AllBooks = () => {
   return (
     <>
       <div className="hero__container">
-        <Hero librarySliderData={librarySliderData} className="hero__container" />
+        <Hero
+          librarySliderData={librarySliderData}
+          className="hero__container"
+        />
       </div>
       <div className="all__books__container container">
         <div className="all__books__search">
@@ -123,7 +113,8 @@ const AllBooks = () => {
                   border: "1px solid #EAEDF6",
                   borderRadius: "12px",
                   boxShadow: 0,
-                }}>
+                }}
+              >
                 <InputBase
                   sx={{
                     ml: 1,
@@ -145,7 +136,8 @@ const AllBooks = () => {
                   aria-label="search"
                   onClick={() =>
                     handleСlick({ sort: data.search, type: "search" })
-                  }>
+                  }
+                >
                   <CiSearch color="#065EA9" size={24} />
                 </IconButton>
               </Paper>
@@ -163,7 +155,8 @@ const AllBooks = () => {
                   fontSize: "14px",
                   lineHeight: "24px",
                   fontWeight: 400,
-                }}>
+                }}
+              >
                 {t("library.suggest")}
               </Button>
             </div>
@@ -181,31 +174,36 @@ const AllBooks = () => {
                     color: "#656B70",
                     borderRadius: "12px",
                     boxShadow: 0,
-                  }}>
+                  }}
+                >
                   <MenuItem
                     value=""
-                    onClick={() => handleСlick({ sort: "", type: "lang" })}>
+                    onClick={() => handleСlick({ sort: "", type: "lang" })}
+                  >
                     {t("library.sort_by_language")}
                   </MenuItem>
                   <MenuItem
                     value={"English"}
                     onClick={() =>
                       handleСlick({ sort: "English", type: "lang" })
-                    }>
+                    }
+                  >
                     {t("english")}
                   </MenuItem>
                   <MenuItem
                     value={"O'zbek"}
                     onClick={() =>
                       handleСlick({ sort: "O'zbek", type: "lang" })
-                    }>
+                    }
+                  >
                     {t("uzbek")}
                   </MenuItem>
                   <MenuItem
                     value={"Русский"}
                     onClick={() =>
                       handleСlick({ sort: "Русский", type: "lang" })
-                    }>
+                    }
+                  >
                     {t("ruskiy")}
                   </MenuItem>
                 </Select>
@@ -223,31 +221,36 @@ const AllBooks = () => {
                     color: "#656B70",
                     borderRadius: "12px",
                     boxShadow: 0,
-                  }}>
+                  }}
+                >
                   <MenuItem
                     value=""
-                    onClick={() => handleСlick({ sort: "", type: "type" })}>
+                    onClick={() => handleСlick({ sort: "", type: "type" })}
+                  >
                     {t("library.sort_by_genre")}
                   </MenuItem>
                   <MenuItem
                     value={"Badiiy adabiyot"}
                     onClick={() =>
                       handleСlick({ sort: "Badiiy adabiyot", type: "type" })
-                    }>
+                    }
+                  >
                     {t("libraryOne")}
                   </MenuItem>
                   <MenuItem
                     value={"Ilmiy-marifiy"}
                     onClick={() =>
                       handleСlick({ sort: "Ilmiy-marifiy", type: "type" })
-                    }>
+                    }
+                  >
                     {t("libraryTwo")}
                   </MenuItem>
                   <MenuItem
                     value={"Diniy-marifiy"}
                     onClick={() =>
                       handleСlick({ sort: "Diniy-marifiy", type: "type" })
-                    }>
+                    }
+                  >
                     {t("libraryThree")}
                   </MenuItem>
                 </Select>
@@ -258,17 +261,20 @@ const AllBooks = () => {
             <ul>
               <li
                 className={data.sort === "all" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "all", type: "sort" })}>
+                onClick={() => handleСlick({ sort: "all", type: "sort" })}
+              >
                 {t("all")}
               </li>
               <li
                 className={data.sort === "new" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "new", type: "sort" })}>
+                onClick={() => handleСlick({ sort: "new", type: "sort" })}
+              >
                 {t("library.new")}
               </li>
               <li
                 className={data.sort === "popular" ? "active" : ""}
-                onClick={() => handleСlick({ sort: "popular", type: "sort" })}>
+                onClick={() => handleСlick({ sort: "popular", type: "sort" })}
+              >
                 {t("library.popular")}
               </li>
             </ul>

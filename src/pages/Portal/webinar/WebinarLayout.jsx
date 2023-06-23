@@ -1,6 +1,6 @@
 import React from "react";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import WebinarHeader from "./components/WebinarHeader/WebinarHeader";
 import { getItem } from "../../../helpers/persistanceStorage";
@@ -20,7 +20,7 @@ export default function WebinarLayout() {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navData = [
     { id: 1, url: "/portal-category/webinar", label: t("expert.main") },
