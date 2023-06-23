@@ -68,7 +68,9 @@ const CabinetLeftMenu = ({ leftMenuToggle, setLeftMenuToggle }) => {
 
   const handleClick = (menu) => {
     setActivePage(menu.url.split("/")[3]);
+    
     setLeftMenuToggle(false);
+
   };
   return (
     <>
