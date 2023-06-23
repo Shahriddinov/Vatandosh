@@ -112,6 +112,7 @@ const Card = (props) => {
                   </div>
                 );
               }
+              return null;
             })}
           </div>
         </div>

@@ -4,10 +4,11 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid #eaedf6;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
 
-  .navbar-list {
+  .navbar-list,
+  .navbar-logo {
     display: flex;
     align-items: center;
   }
@@ -156,5 +157,13 @@
     padding: 8px;
     margin: 0 9px;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1146px) {
+  .navbarvictorina {
+    .navbar-list {
+      display: none !important;
+    }
   }
 }

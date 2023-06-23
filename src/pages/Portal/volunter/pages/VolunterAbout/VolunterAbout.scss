@@ -11,6 +11,10 @@
     color: #10131b;
   }
 
+  .MuiFormControl-root {
+    margin: 0;
+  }
+
   &-img {
     width: 270px;
     height: 270px;
@@ -21,21 +25,23 @@
   &-list {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
   &-page {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin: 40px 0;
 
     & > div {
+      width: 100%;
+      max-width: 270px;
+      height: 449px;
       background: #f6f7fb;
       border: 1px solid #eaedf6;
       border-radius: 10px;
-      height: 449px;
 
       & > img {
         width: 100%;
