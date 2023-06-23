@@ -334,7 +334,12 @@
     "articleoffer": "Your proposals for cooperation with Uzbekistan in the field of education and science",
     "save": "Save",
     "expert_activity": "Expert activities",
-    "year": "Year"
+    "year": "Year",
+    "all_specialists": "All specialists",
+    "all_countries" : "All countries",
+    "expertRegister2Title1": "Education in Uzbekistan",
+    "expertRegister2Title2": "Education abroad",
+    "expert_activitie": "Expert activitie"
   },
   "victorina": {
     "listwinner": "List of winners",

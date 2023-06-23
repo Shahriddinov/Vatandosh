@@ -326,9 +326,7 @@ export default function CustomProfil() {
                           <p>{evt?.description}</p>
                           <button className="customprofil-list-offer-info-desc-btn">
                             <Link
-                              to={
-                                "/portal-category/volunteer/offers/" + evt?.id
-                              }
+                              to={"/portal-category/expert/activity/" + evt?.id}
                             >
                               {t("expert.detail")}
                             </Link>

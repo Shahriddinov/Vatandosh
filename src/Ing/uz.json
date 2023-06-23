@@ -331,7 +331,12 @@
     "articleoffer": "O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida takliflaringiz",
     "save": "Saqlash",
     "expert_activity": "Ekspert faoliyati",
-    "year": "Yil"
+    "year": "Yil",
+    "all_specialists": "Barcha mutaxassislar",
+    "all_countries" : "Barcha mamlakatlar",
+    "expertRegister2Title1": "O'zbekistondagi ta'lim",
+    "expertRegister2Title2": "Chet eldagi ta'lim",
+    "expert_activitie": "Ekspert faoliyati"
   },
   "victorina": {
     "listwinner": "G‘oliblar ro‘yxati",
