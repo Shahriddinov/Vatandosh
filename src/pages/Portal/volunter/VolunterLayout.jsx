@@ -6,6 +6,7 @@ import { getItem } from "../../../helpers/persistanceStorage";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
+import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 
 export default function VolunterLayout() {
   const location = useLocation();
