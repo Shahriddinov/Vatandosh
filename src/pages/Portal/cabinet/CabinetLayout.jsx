@@ -15,8 +15,11 @@ const CabinetLayout = () => {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [leftMenuToggle, setLeftMenuToggle] = useState(false);
+  const [rightBtnToggle, setRightBtnToggle] = useState(false);
   const [imgUpload, setImgUpload] = useState([]);
   const controls = useAnimation();
+
   const btnOrgPageToggle = useSelector((state) => state.orgPageSlice.btnToggle);
   const dispatch = useDispatch();
   const toggleSwitchHandler = () => {
@@ -135,10 +138,17 @@ const CabinetLayout = () => {
           )}
         </AnimatePresence>
         <div className="cabinet-layout__left">
-          <CabinetLeftMenu />
+          <CabinetLeftMenu
+            leftMenuToggle={leftMenuToggle}
+            setLeftMenuToggle={setLeftMenuToggle}
+          />
         </div>
         <div className="cabinet-layout__right">
-          <CabinetHeader />
+          <CabinetHeader
+            setLeftMenuToggle={setLeftMenuToggle}
+            setRightBtnToggle={setRightBtnToggle}
+            rightBtnToggle={rightBtnToggle}
+          />
           <Outlet />
         </div>
       </div>

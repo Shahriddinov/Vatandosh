@@ -31,14 +31,14 @@
 
   &__user-data {
     h4 {
-      font-size: 18px;
+      font-size: 1.125rem;
       font-weight: 500;
       color: #10131b;
     }
 
     p {
       font-weight: 400;
-      font-size: 12px;
+      font-size: 0.75rem;
       color: #5d6b8a;
 
       span {
@@ -46,7 +46,21 @@
       }
     }
   }
-
+  &__right-buttons-open,
+  &__left-menu-open {
+    display: none;
+    background-color: $ButtonBackground;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    img {
+      margin: auto 0;
+    }
+  }
+  &__left-menu-open{
+    margin-right: 3rem;
+  }
   &__right-buttons {
     display: flex;
     align-items: center;
@@ -133,6 +147,18 @@
         background-color: grey;
         color: $colorLight;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cabinet-header {
+    &__right-buttons {
+      display: none;
+    }
+    &__left-menu-open,
+    &__right-buttons-open {
+      display: flex;
     }
   }
 }

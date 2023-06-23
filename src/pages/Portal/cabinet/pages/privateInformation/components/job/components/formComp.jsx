@@ -2,10 +2,12 @@ import "./formComp.scss";
 import penSvg from "../../../../../../../../assets/images/portal/privateInformation/pen.svg";
 import calendarSvg from "../../../../../../../../assets/images/portal/privateInformation/calendar.svg";
 import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
+import trashIcon from "../../../../../../../../assets/images/choose/trashIcon.svg";
+
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import DeleteForeverTwoToneIcon from "@mui/icons-material/DeleteForeverTwoTone";
-import { pink } from "@mui/material/colors";
+import { motion } from "framer-motion";
+
 const locationDataChange = createSelector(
   (store) => store.community.locationGet,
   (location) => {
@@ -30,9 +32,10 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
           className="jobCont-cabinet-btn"
           onClick={() => deleteFunction(el.id)}
         >
-          <DeleteForeverTwoToneIcon
-            sx={{ color: pink[500] }}
-            fontSize="large"
+          <motion.img
+            whileTap={{ scale: 0.9 }}
+            src={trashIcon}
+            alt="trashIcon"
           />
         </button>
         <div className="form-cont">
