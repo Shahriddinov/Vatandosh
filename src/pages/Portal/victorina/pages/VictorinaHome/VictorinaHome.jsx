@@ -30,7 +30,8 @@ function VictorinaHome() {
     return <p>{error}</p>;
   }
 
-  return (
+
+    return (
     <div>
       <div className="victorina-home">
         <Navbar navbarUrl={navbarUrl} />

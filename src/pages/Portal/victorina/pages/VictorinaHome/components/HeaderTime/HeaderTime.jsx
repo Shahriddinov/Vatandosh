@@ -91,7 +91,7 @@ function HeaderTime({ quizData }) {
               className={`hero__slider-box ${
                 slideIndex === slider?.id ? "active" : ""
               }`}
-              key={slider.id}>
+              key={slider?.id}>
               <div
                 className={`hero__slider-item`}
                 style={{

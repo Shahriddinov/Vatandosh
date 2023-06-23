@@ -63,7 +63,7 @@ function VictorinaNews({ communityNews, url }) {
                         <div className="expertnews-item">
                           <img src={ViewIcon} alt="Calendar Icon" />
                           <p>
-                            {news.view.toString().length >= 4
+                            {news?.view?.toString().length >= 4
                               ? news.view % 1000 > 1
                                 ? (news.view / 1000).toFixed(1) + "K"
                                 : (news.view / 1000).toFixed()
