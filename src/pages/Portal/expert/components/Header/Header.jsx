@@ -15,6 +15,14 @@ function Header({ headerData }) {
             ? headerData.subTitle
             : "Vatandosh jamoat birlashmalaring elektron platformasining"}
         </p>
+        {headerData.expertAboutMoreLink && (
+          <Link
+            to="/portal-category/expert/council-about"
+            className="expert-headeres__more--link"
+          >
+            {headerData.expertAboutMoreLink}
+          </Link>
+        )}
         <Link to={headerData.link}>{headerData.btnText}</Link>
       </div>
     </div>

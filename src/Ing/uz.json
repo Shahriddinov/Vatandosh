@@ -266,6 +266,7 @@
     "allexperts": "Barcha olim va ekspertlar",
     "enter": "Kirish",
     "headertitle": "“VATANDOSHLAR” EKSPERTLAR KENGASHI",
+    "homeHeaderLink": "jamg'arma tibbiy ekspertiza kengashi faoliyati haqida ko'proq ma'lumot oling",
     "headersubtitle": "Vatandosh ekspertlar kengashining elektron platformasi",
     "counciltitle": "“VATANDOSHLAR” jamg‘armasi qoshidagi xalqaro ekspertlar kengashi",
     "main": "Asosiy",
@@ -660,6 +661,11 @@
   "NoInternet": "Internet yo'q. Ulanish uzildi.",
   "notification": "Bildirishnomalar",
   "famousTag": "Mashhur taglar",
-  "copy":"Ko‘chirildi!",
-  "others": "Toshkent shahrining boshqa manzilgohlari"
+  "copy": "Ko‘chirildi!",
+  "others": "Toshkent shahrining boshqa manzilgohlari",
+  "chatOut": "Chiqish",
+  "chatMember": "A'zolar",
+  "chatLink": "Havolalar",
+  "chatDoc": "Hujjatlar",
+  "chatOne":"Suhbat"
 }

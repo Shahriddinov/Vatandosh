@@ -7,9 +7,8 @@ export const filterNotification = ({ data, dispatch }) => {
   const events = [];
 
   data.forEach((el) => {
-    const { type, is_read } = el;
-    if (!is_read) {
-      switch (type) {
+    if (el.is_read === null || el.is_read === false) {
+      switch (el.type) {
         case "notification":
           admin.push(el);
           break;
@@ -23,13 +22,14 @@ export const filterNotification = ({ data, dispatch }) => {
       }
     }
   });
+  console.log(events);
   dispatch(
     changeNotificationCount(
       news.length + admin.length + events.slice(0, 20).length
     )
   );
 
-  return { admin, news, events: events.slice(20) };
+  return { admin, news, events: events.slice(0, 20) };
 };
 
 export const notificationGetTime = (time, lan) => {

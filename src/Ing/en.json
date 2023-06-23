@@ -269,6 +269,7 @@
     "expertsand": "International scientists and experts",
     "enter": "Enter",
     "headertitle": "“EXPERT COUNCIL” COMPATRIOTS",
+    "homeHeaderLink": "see more about the activities of the Medical Expert Council of the Foundation",
     "headersubtitle": "Electronic platform of the compatriot expert council",
     "counciltitle": "“International expert council under the foundation” compatriots",
     "more": "More",
@@ -659,6 +660,11 @@
   "NoInternet": "No internet. Connection lost.",
   "notification": "Notifications",
   "famousTag": "Popular tags",
-  "copy":"Copied!",
-  "others": "Other addresses of Tashkent City"
+  "copy": "Copied!",
+  "others": "Other addresses of Tashkent City",
+  "chatOut": "Logout",
+  "chatMember": "Members",
+  "chatLink": "Links",
+  "chatDoc": "Docs",
+  "chatOne": "Chat"
 }

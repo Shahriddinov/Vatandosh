@@ -53,6 +53,7 @@ const Partners = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     cssEase: "linear",
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1200,

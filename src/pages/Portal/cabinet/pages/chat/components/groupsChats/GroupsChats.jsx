@@ -61,6 +61,8 @@ const GroupsChats = ({
     }
   }, [leaveGroup]);
 
+  console.log(data);
+
   return (
     <div className="groups">
       {data?.length === 0 ? (
@@ -99,11 +101,11 @@ const GroupsChats = ({
                   <p>{group.users_count} ta a'zo</p>
                 )}
               </div>
-              {group.messages ? (
+              {group.unread > 0 ? (
                 <div className="groups__has-message">
-                  {group.messages > 1000
-                    ? `${Math.round(group.messages / 1000)}k`
-                    : group.messages}
+                  {group.unread > 1000
+                    ? `${Math.round(group.unread / 1000)}k`
+                    : group.unread}
                 </div>
               ) : null}
             </div>

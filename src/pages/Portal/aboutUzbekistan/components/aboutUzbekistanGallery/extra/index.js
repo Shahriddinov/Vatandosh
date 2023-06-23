@@ -74,12 +74,12 @@ export const aboutUzbSlideMove = ({
   }
 
   if (value === "left" && indexMedia > 0) {
-    indexMedia -= 1;
     if (activeVideo) {
       setActiveVideo(JSON.parse(data[indexMedia - 1].video)[0].download_link);
     } else {
       setActiveImage(data[indexMedia - 1].image);
     }
+    indexMedia -= 1;
   } else if (value === "right" && data.length > indexMedia) {
     if (activeVideo) {
       setActiveVideo(JSON.parse(data[indexMedia + 1].video)[0].download_link);
