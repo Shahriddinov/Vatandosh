@@ -257,7 +257,7 @@
   },
   "countrys": {
     "russia": "Россия",
-    "turkey": "Turkiya",
+    "turkey": "Турция",
     "germany": "Германия",
     "malaziy": "Малазия"
   },
@@ -317,7 +317,7 @@
     "uploadnew": "Загрузить новое изображение",
     "passportFile": "Скачать паспорт (pdf, doc)",
     "delete": "Удалить",
-    "uploaddesc": "JPG, GIF yoki PNG. Максимальный хадж 800 тыс.",
+    "uploaddesc": "JPG, GIF или PNG. Максимальный хадж 800 тыс.",
     "surname": "Фамилия",
     "inputplaceholder": "Введите",
     "name": "Имя",
@@ -413,7 +413,7 @@
       "input1_name": "Государство",
       "input1_desc": "Выбрать",
       "input2_name": "Город",
-      "input3_name": "Phone number",
+      "input3_name": "Номер телефона",
       "input4_name": "Электронная почта",
       "input5_name": "Юридический адрес",
       "input6_name": "Веб-сайт и другие официальные страницы",
