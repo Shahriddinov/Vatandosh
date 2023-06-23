@@ -19,7 +19,7 @@ function Council({ councilData, expertCount, expertData }) {
             <div className="expert-council-left">
               <img src={councilData?.image} alt="img" />
               <h3>{councilData?.title}</h3>
-              <p>{councilData?.desc}</p>
+              <p dangerouslySetInnerHTML={{ __html: councilData?.desc }} />
               <div>
                 <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
               </div>

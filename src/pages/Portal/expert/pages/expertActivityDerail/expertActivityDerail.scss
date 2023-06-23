@@ -1,0 +1,78 @@
+@import "../../../../../assets/style/global.scss";
+
+.expert_activity_detail {
+  padding: 30px 0 80px;
+
+  &-main {
+    display: flex;
+    &-detail {
+      width: 70%;
+      &-desc {
+        &-img {
+          height: 430px;
+
+          & > img {
+            border-radius: 15px;
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+          }
+        }
+
+        &-action {
+          padding: 30px 0;
+
+          &-date-viewers {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+          }
+
+          &-date,
+          &-viewers {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            & > span {
+              @include fontStyles(400, 16px, 19px, $colorGrey);
+            }
+
+            & > svg {
+              width: 20px;
+              height: 20px;
+              color: $colorGrey;
+            }
+          }
+
+          &-tags {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+
+            & > span {
+              padding: 8px 16px;
+              @include fontStyles(400, 16px, 19px, $colorTitle !important);
+              background: #e3f0ff;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &-title {
+        @include fontStyles(600, 28px, 34px, $colorBlack);
+      }
+
+      &-text {
+        margin: 20px 0 30px;
+        & > p {
+          @include fontStyles(400, 16px, 19px, #434b54);
+        }
+      }
+    }
+  }
+}

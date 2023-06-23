@@ -334,7 +334,11 @@
     "articleoffer": "Ўзбекистон билан таълим ва илмий соҳада ҳамкорлик борасида таклифларингиз",
     "save": "Сақлаш",
     "expert_activity": "Эхперт фаолияти",
-    "year": "Йил"
+    "year": "Йил",
+    "all_specialists": "Барча мутахассислар",
+    "all_countries" : "Барча мамлакатлар",
+    "expertRegister2Title1": " Ўзбекистондаги таълим",
+    "expertRegister2Title2": "Чет елдаги таълим"
   },
   "victorina": {
     "listwinner": "Ғолиблар рўйхати",

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getExpertActivity } from "./extraReducer";
+import { getExpertActivity, getExpertActivityOne } from "./extraReducer";
 
 const initialState = {
   data: [],
   loading: true,
+  oneData: {},
+  oneDataLoading: true,
   error: null,
 };
 
@@ -23,6 +25,20 @@ const expertActivity = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
+    builder
+      .addCase(getExpertActivityOne.pending, (state) => {
+        state.oneDataLoading = true;
+      })
+      .addCase(getExpertActivityOne.fulfilled, (state, action) => {
+        state.oneDataLoading = false;
+        state.oneData = action.payload;
+      })
+      .addCase(getExpertActivityOne.rejected, (state, action) => {
+        state.oneDataLoading = false;
+        state.error = action.error.message;
+      });
+
+    //getExpertActivityOne
   },
 });
 
