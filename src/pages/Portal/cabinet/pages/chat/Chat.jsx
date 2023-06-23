@@ -47,7 +47,8 @@ const Chat = () => {
 
   return (
     <ChooseMember.Provider
-      value={{ chooseMember, setChooseMember, setActiveChat }}>
+      value={{ chooseMember, setChooseMember, setActiveChat }}
+    >
       <div className="chat">
         <div className="chat__container">
           <div className="chat__left">
@@ -58,14 +59,22 @@ const Chat = () => {
                 }`}
                 onClick={() => {
                   setActiveChat("private");
-                }}>
+                  setShowGroupMessages(false);
+                  setActiveGroup(null);
+                }}
+              >
                 {t("chat")}
               </button>
               <button
                 className={`chat__groups ${
                   activeChat === "group" ? "active" : ""
                 }`}
-                onClick={() => setActiveChat("group")}>
+                onClick={() => {
+                  setActiveChat("group");
+                  setShowMessages(false);
+                  setActiveUser(null);
+                }}
+              >
                 {t("group")}
               </button>
             </div>
@@ -115,6 +124,7 @@ const Chat = () => {
             <GroupsMessages
               groupData={groupData}
               showGroupMessages={showGroupMessages}
+              setShowGroupMessages={setShowGroupMessages}
               activeGroup={activeGroup}
               setShowDocs={setShowDocs}
               showDocs={showDocs}
@@ -127,6 +137,7 @@ const Chat = () => {
               data={data}
               setData={setData}
               setActiveUser={setActiveUser}
+              setActiveGroup={setActiveGroup}
             />
           )}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import i18next from "i18next";
 import { Link, useLocation } from "react-router-dom";
@@ -15,6 +15,8 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useTranslation } from "react-i18next";
+import { getExpertEmployment } from "../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import Spinner from "../../../../../component/Spinner/Spinner";
 
 const CabinetHeader = () => {
   const { t } = useTranslation();
@@ -24,12 +26,39 @@ const CabinetHeader = () => {
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
   const user = useSelector((state) => state.authSlice.userData);
+  const employmentLoading = useSelector(
+    (state) => state.expertRegisterSlice.employmentLoading
+  );
+  const error = useSelector(
+    (state) => state.expertRegisterSlice.employmentError
+  );
+  const userEmployment = useSelector(
+    (state) => state.expertRegisterSlice.employment
+  );
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
     setActiveLang((el) => !el);
   };
+
+  useEffect(() => {
+    dispatch(getExpertEmployment());
+  }, [dispatch]);
+
+  if (employmentLoading) {
+    return <Spinner position="full" />;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  let userExperience = 0;
+
+  userEmployment.map((data) => {
+    userExperience += data.experience;
+  });
 
   return (
     <div className="cabinet-header">
@@ -40,7 +69,11 @@ const CabinetHeader = () => {
         <div className="cabinet-header__user-data">
           <h4>{user.first_name + " " + user.last_name}</h4>
           <p>
-            {t("experience")}: <span>4 </span>
+            {t("experience")}:{" "}
+            <span>
+              {userExperience + " "}
+              {t("experienceYear")}
+            </span>
           </p>
         </div>
       </div>
@@ -85,7 +118,10 @@ const CabinetHeader = () => {
         <Link
           to="/portal-category/cabinet/chat"
           className={`cabinet-header__chat ${
-            pathname === "/portal-category/cabinet/chat" ? "active" : ""
+            pathname === "/portal-category/cabinet/chat" ||
+            pathname === "/portal-category/cabinet"
+              ? "active"
+              : ""
           }`}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
