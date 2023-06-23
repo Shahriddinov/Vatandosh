@@ -14,8 +14,8 @@ const ExpertActivityDerail = () => {
     useExportActivityDetail();
 
   const url = [
-    { title: t("expert.main"), url: "/portal-category/volunteer" },
-    { title: t("volunteryWork"), url: "#" },
+    { title: t("expert.main"), url: "/portal-category/expert" },
+    { title: t("expert.expert_activitie"), url: "#" },
   ];
 
   if (loading || expertCountLoading) {
@@ -27,7 +27,7 @@ const ExpertActivityDerail = () => {
   return (
     <main className="expert_activity_detail">
       <div className="container">
-        <ExpertTitle title={"Expertni faoliyati"} url={url} />
+        <ExpertTitle title={t("expert.expert_activitie")} url={url} />
         <div className="expert_activity_detail-main">
           <div className="expert_activity_detail-main-detail">
             <div className="expert_activity_detail-main-detail-desc-img">
