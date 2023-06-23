@@ -1,19 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import "./WebinarHeader.scss";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { imageUrl } from "../../../../../../../services/api/utils";
-import Navbar from "../Navbar/Navbar";
-import Nav from "../Nav/Nav";
-import { useOutletContext } from "react-router-dom";
 
 const WebinarHeader = ({ sliderData, error, loading }) => {
-  const { navData, navbarUrl } = useOutletContext();
   const [slideIndex, setSlideIndex] = useState(0);
   const { t } = useTranslation();
-  const lan = useSelector((state) => state.language.language);
   const navigate = useNavigate();
 
   const handleLeft = () => {
@@ -69,7 +63,6 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
   return (
     <section className="webinarheader">
       <div className="webinarheader__container">
-
         <div className="webinarheader__slider">
           {sliderData?.meetings?.map((slider, index) => (
             <div
@@ -82,7 +75,8 @@ const WebinarHeader = ({ sliderData, error, loading }) => {
                 className={`webinarheader__slider-item`}
                 style={{
                   backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${imageUrl}/${slider.image})`,
-                }}></div>
+                }}
+              ></div>
               <div className="container webinarheader__content">
                 <div className="webinarheader__slider-left-bottom">
                   <div className="webinarheader__slider-left-bottom-text">

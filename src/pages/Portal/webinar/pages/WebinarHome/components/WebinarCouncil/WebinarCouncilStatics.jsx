@@ -6,45 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "../../../../../../../component";
 import "../../WebinarHome.scss";
 
-const data = [
-  {
-    id: 1,
-    country: "Rossiya",
-    number: 0,
-  },
-  {
-    id: 2,
-    country: "Turkiya",
-    number: 0,
-  },
-  {
-    id: 3,
-    country: "Germaniya",
-    number: 0,
-  },
-  {
-    id: 4,
-    country: "Rossiya",
-    number: 0,
-  },
-  {
-    id: 5,
-    country: "Malayziya",
-    number: 0,
-  },
-  {
-    id: 6,
-    country: "Rossiya",
-    number: 0,
-  },
-];
-
 function WebinarCouncilStatics({ count, locations, attendees }) {
   const { t } = useTranslation();
 
-  const meetingsCount = useSelector(
-    (store) => store.meetingSlice.meetingsCount
-  );
   const meetingsCountLoading = useSelector(
     (store) => store.meetingSlice.meetingsCountLoading
   );
@@ -54,7 +18,7 @@ function WebinarCouncilStatics({ count, locations, attendees }) {
 
   useEffect(() => {
     dispatch(getMeetingCount());
-  }, []);
+  }, [dispatch]);
 
   if (meetingsCountLoading) {
     return <Spinner />;

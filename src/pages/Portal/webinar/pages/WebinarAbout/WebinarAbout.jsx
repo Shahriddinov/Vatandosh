@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { PageTop } from "../../../communityAssociation/components";
 import { ShareFriends, Spinner } from "../../../../../component";
-// import WebinarCouncilStatics from "../WebinarHome/components/WebinarCouncil/WebinarCouncilStatics";
 import { aboutData } from "./data";
 import { useDispatch, useSelector } from "react-redux";
-import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { getMeetingPage } from "../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import WebinarCouncilStatics from "../WebinarHome/components/WebinarCouncil/WebinarCouncilStatics";
@@ -25,7 +23,7 @@ function WebinarAbout() {
 
   useEffect(() => {
     dispatch(getMeetingPage());
-  }, [language]);
+  }, [language, dispatch]);
 
   const pageTopData = {
     title: aboutData?.title,

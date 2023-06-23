@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { webinar } from "../../../webinar";
 import { CalendarIcon } from "../../../../../../../assets/images/expert";
 import "./WebinarEvents.scss";
 import { useTranslation } from "react-i18next";
@@ -38,7 +37,7 @@ function WebinarEvents() {
 
   useEffect(() => {
     dispatch(getMeetingAll({ page, eventType }));
-  }, [eventType, page]);
+  }, [eventType, page, dispatch]);
 
   const remainingTime = (targetDate, type) => {
     const now = new Date();
@@ -86,15 +85,17 @@ function WebinarEvents() {
             <button
               onClick={() => setEventType("webinar")}
               className={
-                eventType == "webinar" ? "webinar-top" : "webinar-tops"
-              }>
+                eventType === "webinar" ? "webinar-top" : "webinar-tops"
+              }
+            >
               {t("webinar.webinars")}
             </button>
             <button
               onClick={() => setEventType("conference")}
               className={
-                eventType == "conference" ? "webinar-top" : "webinar-tops"
-              }>
+                eventType === "conference" ? "webinar-top" : "webinar-tops"
+              }
+            >
               {t("webinar.conferences")}
             </button>
           </div>
@@ -108,7 +109,7 @@ function WebinarEvents() {
                 className="webinar-img"
               />
               <span>
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="error" />
                 <p>{webinar.start_date.split(" ")[0]}</p>
               </span>
               <h5 className="webinar-names">{webinar.title}</h5>
@@ -130,12 +131,14 @@ function WebinarEvents() {
               <div className="webinar-bottom">
                 <Link
                   to={`/portal-category/webinar/online-webinar/${webinar.id}`}
-                  className="webinar-more">
+                  className="webinar-more"
+                >
                   {t("more")}
                 </Link>
                 <Link
                   to={`/portal-category/webinar/webinar-register/${webinar.id}`}
-                  className="webinar-links">
+                  className="webinar-links"
+                >
                   {t("webinar.header1")}
                 </Link>
               </div>

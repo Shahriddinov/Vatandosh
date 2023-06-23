@@ -25,13 +25,13 @@ import { BsPersonFill } from "react-icons/bs";
 import { GrayContext } from "../../../../../../../context/GrayContext";
 import { Tooltip } from "@mui/material";
 import { openNotification } from "../../../../../../../reduxToolkit/notificationSlice/notificationSlice";
+import PortalSide from "../../../../../components/PortalSideBar/PortalSideBar";
 
 function Navbar({ navbarUrl }) {
   const { t } = useTranslation();
   const location = useLocation();
   const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
-  const { id } = useParams();
   const { communityCountryId } = useParams();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
@@ -52,23 +52,42 @@ function Navbar({ navbarUrl }) {
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
   };
+
+  const sideBarData = [
+    { url: "/portal-category/webinar", title: t("expert.main") },
+    {
+      url: "/portal-category/webinar/webinar-events",
+      title: t("webinar.nav2"),
+    },
+    {
+      url: "/portal-category/webinar/webinar-archive",
+      title: t("webinar.nav3"),
+    },
+    {
+      url: "/portal-category/webinar/webinar-contact",
+      title: t("webinar.nav4"),
+    },
+  ];
+
   return (
     <div className="navbarpage">
       <div className="container">
         <div className="navbarpage__inner">
           <Link to={navbarUrl?.home}>
-            <div className="navbar-list">
+            <div className="navbar-logo">
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar--name`
                     : `navbar--subname`
-                }>
+                }
+              >
                 {t("expert.headtitle")}
               </h4>
             </div>
           </Link>
+          <PortalSide data={sideBarData} />
           <ul className="navbar-list">
             <li className="navbar-item">
               <a
@@ -77,7 +96,8 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }>
+                }
+              >
                 <PhoneIcon />
                 +998(55)502-22-99
               </a>
@@ -89,7 +109,8 @@ function Navbar({ navbarUrl }) {
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
                     : `navbar--link`
-                }>
+                }
+              >
                 <EmailIcon />
                 info@vatandoshlarfondi.uz
               </a>
@@ -111,7 +132,8 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-icon`
                   : `navbarpage--icon`
-              }>
+              }
+            >
               <Link to={"/anthem"}>
                 <MusicIcon />
               </Link>
@@ -122,7 +144,8 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <EyeIcon />
             </button>
             <div className="navbarpage_language">
@@ -135,7 +158,8 @@ function Navbar({ navbarUrl }) {
                       : `#065EA9`
                   }`,
                 }}
-                onClick={() => setactiveLang((el) => !el)}>
+                onClick={() => setactiveLang((el) => !el)}
+              >
                 <CiGlobe className="navbarpage_language-icon" />
                 <span style={{ color: "white" }}>
                   {languageList.find((lan) => lan.type === language).label}
@@ -155,13 +179,15 @@ function Navbar({ navbarUrl }) {
                         }`,
                       }
                     : null
-                }>
+                }
+              >
                 {languageList.map((el, index) => (
                   <p
                     key={index}
                     onClick={() => {
                       handleChangeLng(el.type);
-                    }}>
+                    }}
+                  >
                     {el.label}
                   </p>
                 ))}
@@ -173,7 +199,8 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <Tooltip title="Account settings">
                 <NotificationIcon />
               </Tooltip>
@@ -183,18 +210,21 @@ function Navbar({ navbarUrl }) {
                 editClass.length <= 3 || communityCountryId !== undefined
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
-              }>
+              }
+            >
               <MessengerIcon />
             </button>
             <div
               className="expert-header-cabinet"
-              onClick={() => setActiveKabinet((prev) => !prev)}>
+              onClick={() => setActiveKabinet((prev) => !prev)}
+            >
               <div
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-button`
                     : `navbar--button`
-                }>
+                }
+              >
                 <ExitIcon />
                 {t("cabinet")}
               </div>
@@ -202,13 +232,15 @@ function Navbar({ navbarUrl }) {
                 <div className="expert-header-cabinet-bar">
                   <Link
                     to={"/portal-category/cabinet"}
-                    className="expert-header-cabinet-bar-cabinet">
+                    className="expert-header-cabinet-bar-cabinet"
+                  >
                     <BsPersonFill />
                     <span>{t("cabinet")}</span>
                   </Link>
                   <div
                     className="expert-header-cabinet-bar-logout"
-                    onClick={logOut}>
+                    onClick={logOut}
+                  >
                     <GoSignOut />
                     <span>{t("logOut")}</span>
                   </div>

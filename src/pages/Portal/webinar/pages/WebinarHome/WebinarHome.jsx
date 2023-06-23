@@ -5,7 +5,6 @@ import Nav from "./components/Nav/Nav";
 import WebinarHeader from "./components/Header/Header";
 import "./WebinarHome.scss";
 import { useTranslation } from "react-i18next";
-import Webinar from "../../../../../assets/images/webinar/Vebinarlar.png";
 import WebinarCouncil from "./components/WebinarCouncil/WebinarCouncil";
 import { CouncilImage } from "../../../../../assets/images/webinar";
 import WebinarEvents from "./components/WebinarEvents/WebinarEvents";
@@ -42,7 +41,7 @@ function WebinarHome() {
     dispatch(getPortalNews({ type: "webinar", per_page: 3, page: 1 }));
     dispatch(getMeetingPage());
     dispatch(getWebinarBody());
-  }, [language]);
+  }, [language, dispatch]);
 
   const headerData = {
     title: t("webinar.headerName"),
