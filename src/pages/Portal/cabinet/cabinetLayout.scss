@@ -6,6 +6,8 @@
   .container {
     display: flex;
     padding: 0;
+    max-width: 1440px;
+    width: 98%;
   }
 
   &__right {
@@ -41,7 +43,7 @@
     border-radius: 20px;
 
     & > h1 {
-      @include fontStyles(600, 20px, 24px, #10131b);
+      @include fontStyles(600, 1.25rem, 24px, #10131b);
     }
 
     &-form {

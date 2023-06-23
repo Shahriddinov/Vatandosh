@@ -15,8 +15,16 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useTranslation } from "react-i18next";
+import {
+  moreInfoIcon,
+  rightButtonOpenIcon,
+} from "../../../../../assets/images/cabinet";
 
-const CabinetHeader = () => {
+const CabinetHeader = ({
+  setLeftMenuToggle,
+  setRightBtnToggle,
+  rightBtnToggle,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -34,6 +42,12 @@ const CabinetHeader = () => {
   return (
     <div className="cabinet-header">
       <div className="cabinet-header__user-information">
+        <div
+          className="cabinet-header__left-menu-open"
+          onClick={() => setLeftMenuToggle(true)}
+        >
+          <img src={moreInfoIcon} alt="" />
+        </div>
         <div className="cabinet-header__user-image">
           <img src={`${PORTAL_IMAGE_URL}${user?.avatar_url}`} alt="user" />
         </div>
@@ -43,6 +57,12 @@ const CabinetHeader = () => {
             {t("experience")}: <span>4 </span>
           </p>
         </div>
+      </div>
+      <div
+        className="cabinet-header__right-buttons-open"
+        onClick={() => setRightBtnToggle(!rightBtnToggle)}
+      >
+        <img src={rightButtonOpenIcon} alt="" />
       </div>
       <div className="cabinet-header__right-buttons">
         <div className="cabinet-header__glasses" onClick={() => grayScale()}>
