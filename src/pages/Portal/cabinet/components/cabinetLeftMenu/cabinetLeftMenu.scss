@@ -4,6 +4,10 @@
   padding: 20px 0;
   border-right: 1px solid #eaedf6;
 
+  @media (max-width: 50em) {
+    display: none;
+  }
+
   &__body {
     display: flex;
     flex-direction: column;

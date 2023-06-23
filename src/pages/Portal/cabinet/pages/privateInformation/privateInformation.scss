@@ -2,8 +2,14 @@
 
 .piMainCont {
   &-secondaryCont {
-    padding: 50px;
+    padding: 3.12em;
     padding-top: 0;
+    @media (max-width: 50em) {
+      padding: 2.5em;
+    }
+    @media (max-width: 21.44em) {
+      padding: 2.5em 1em;
+    }
 
     &-navCont {
       & > ul {
@@ -36,6 +42,9 @@
           }
         }
       }
+    }
+    &-outletsCont {
+      max-width: 66.63em;
     }
   }
 }

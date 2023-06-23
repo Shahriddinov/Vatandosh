@@ -30,7 +30,6 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
   };
 
   const submitCompHandler = (data) => {
-    console.log(data);
     data.forEach((el) => {
       if (el.from === "server") {
         const formData = new FormData();
@@ -40,9 +39,6 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
         });
         formData.append("title", el.title);
         formData.append("description", el.description);
-        console.log("server running");
-        console.log(Object.fromEntries(formData));
-
         dispatch(updateVolunteerActivity2({ volunteerId, formData }));
       } else if (el.from === "client") {
         const formData = new FormData();
@@ -51,8 +47,6 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
         el.imagesBrowser.forEach((file) => {
           formData.append("images[]", file);
         });
-        console.log("client running");
-        console.log(Object.fromEntries(formData));
         dispatch(volunteerCreate(formData));
       }
     });

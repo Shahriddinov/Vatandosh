@@ -32,7 +32,7 @@ const Offer = () => {
         pauseOnHover
         theme="dark"
       />
-      <button
+      {/* <button
         className="cabinet-offer-trash-btn"
         onClick={() =>
           cabinetOfferDelete({ dispatch, id: expertSuggestionsData[0].id })
@@ -45,7 +45,7 @@ const Offer = () => {
           src={trashIcon}
           alt="trashIcon"
         />
-      </button>
+      </button> */}
       <CabinetOfferForm
         data={data}
         setData={setData}

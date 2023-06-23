@@ -81,5 +81,9 @@
         }
       }
     }
+
+    @media (max-width: 31.45em) {
+      grid-template-columns: 1fr;
+    }
   }
 }

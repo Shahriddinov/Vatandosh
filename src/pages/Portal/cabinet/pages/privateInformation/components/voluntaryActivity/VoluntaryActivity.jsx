@@ -4,6 +4,7 @@ import FormCard from "./component/formCard";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import useVoluntaryActivityFetching from "./hooks/useVoluntaryActivityFetching";
+import { useEffect } from "react";
 
 const initialState = {
   id: new Date().getTime(),
@@ -34,6 +35,7 @@ const VoluntaryActivity = () => {
         <FormCard
           key={index}
           el={el}
+          index={index}
           data={data}
           setData={setData}
           deleteCompHandler={deleteCompHandler}

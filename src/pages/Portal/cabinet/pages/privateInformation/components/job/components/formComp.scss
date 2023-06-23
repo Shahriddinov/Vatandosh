@@ -10,6 +10,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
+  @media (max-width: 31.44em) {
+    grid-template-columns: 1fr;
+  }
   &-left {
     &-fieldCont:first-child {
       margin-top: 0;

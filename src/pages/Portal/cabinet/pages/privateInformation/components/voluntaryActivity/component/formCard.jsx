@@ -8,7 +8,7 @@ import trashIconSmall from "../../../../../../../../assets/images/choose/trash.s
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const FormCard = ({ el, data, setData, deleteCompHandler }) => {
+const FormCard = ({ el, data, setData, deleteCompHandler, index }) => {
   const [openCard, setOpenCard] = useState(true);
 
   const inputHandler = (e, id) => {
@@ -58,7 +58,9 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
       animate={{ height: !openCard ? "45px" : "" }}
     >
       <div className="formCard-part1">
-        <h1>1. {el.title}</h1>
+        <h1>
+          {index + 1}. {el.title}
+        </h1>
         <div>
           <motion.img
             animate={{ rotate: openCard ? 180 : 0 }}
