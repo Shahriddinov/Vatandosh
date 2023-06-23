@@ -23,6 +23,7 @@ import { useTranslation } from "react-i18next";
 const GroupsMessages = ({
   groupData,
   showGroupMessages,
+  setShowGroupMessages,
   activeGroup,
   setShowDocs,
   showDocs,
@@ -36,6 +37,7 @@ const GroupsMessages = ({
   setActivePage,
   setActiveUser,
   activePage,
+  setActiveGroup,
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch()
@@ -228,7 +230,7 @@ const GroupsMessages = ({
 
   return (
     <div className="group-message">
-      {groupData ? (
+      {groupData && showGroupMessages ? (
         <div className="group-message__messages-header">
           <div className="group-message__picture">{groupData.groupImg}</div>
           <div className="group-message__name-status">
@@ -354,6 +356,7 @@ const GroupsMessages = ({
           </div>
         </div>
       ) : null}
+      {showGroupMessages ? (
       <div className="group-message__messages-body" ref={messagesRef}>
         <ChatDocs docsData={filesData} showDocs={showDocs} />
         <ChatLinks linksData={linksData} showLinks={showLinks} />
@@ -432,23 +435,23 @@ const GroupsMessages = ({
                             </svg>
                             {message?.message.slice(0, 40)}
                           </a>
-                        ) : (
-                          message?.message
-                        )}
-                      </p>
-                      <span>
-                        {message?.created_at
-                          .split("T")[1]
-                          .split(".")[0]
-                          .split(":")[0] +
-                          ":" +
-                          message?.created_at
+                          ) : (
+                            message?.message
+                          )}
+                        </p>
+                        <span>
+                          {message?.created_at
                             .split("T")[1]
                             .split(".")[0]
-                            .split(":")[1]}
-                      </span>
+                            .split(":")[0] +
+                            ":" +
+                            message?.created_at
+                              .split("T")[1]
+                              .split(".")[0]
+                              .split(":")[1]}
+                        </span>
+                      </div>
                     </div>
-                  </div>
                 ) : (
                   <div
                     key={message?.id}
@@ -508,33 +511,35 @@ const GroupsMessages = ({
                           .split(":")[0] +
                           ":" +
                           message.created_at
-                            .split("T")[1]
-                            .split(".")[0]
-                            .split(":")[1]}
-                      </span>
+                              .split("T")[1]
+                              .split(".")[0]
+                              .split(":")[1]}
+                        </span>
+                      </div>
+                      <div className="group-message__sent-user">
+                        <img
+                          src={`${PORTAL_IMAGE_URL}${user.avatar_url}`}
+                          alt="user"
+                        />
+                      </div>
                     </div>
-                    <div className="group-message__sent-user">
-                      <img
-                        src={`${PORTAL_IMAGE_URL}${user.avatar_url}`}
-                        alt="user"
-                      />
-                    </div>
-                  </div>
-                )
-              ) : null;
-            })}
-          </div>
-        ) : (
-          <p className="group-message__no-group">
-            Select a chat to start messaging.
-          </p>
-        )}
-        {messagesLoading && (
-          <div className="group-message__loading">
-            <Spinner />
-          </div>
-        )}
-      </div>
+                  )
+                ) : null;
+              })}
+            </div>
+          ) : (
+            <p className="group-message__no-group">
+              Select a chat to start messaging.
+            </p>
+          )}
+          {messagesLoading && (
+            <div className="group-message__loading">
+              <Spinner />
+            </div>
+          )}
+        </div>
+      ) : null}
+
       <form onSubmit={handleSubmit}>
         <div
           className={`group-message__messages-bottom ${
