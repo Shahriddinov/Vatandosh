@@ -15,6 +15,8 @@ const GroupMembers = ({
   setData,
   setActiveUser,
   data,
+  setActiveGroup,
+  setShowGroupMessages,
 }) => {
   const dispatch = useDispatch();
   const { setActiveChat } = useContext(ChooseMember);
@@ -25,6 +27,8 @@ const GroupMembers = ({
     setActiveChat("private");
     setActiveUser(user.id);
     setShowMembers(false);
+    setActiveGroup(null);
+    setShowGroupMessages(false);
     dispatch(checkUser(user.id));
   };
 
@@ -49,7 +53,8 @@ const GroupMembers = ({
                 className={`group-members__one-member ${
                   user?.user_id?.id === member.id ? "yourself" : ""
                 }`}
-                onClick={() => handleClick(member)}>
+                onClick={() => handleClick(member)}
+              >
                 <div className="group-members__picture">
                   {profileImg}
                   {member.last_online_at ? null : (

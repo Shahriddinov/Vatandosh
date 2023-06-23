@@ -108,11 +108,11 @@ const PrivateChats = ({
                   <p>Last seen {chat?.user?.last_online_at}</p>
                 )}
               </div>
-              {chat.messages ? (
+              {chat.unread ? (
                 <div className="users__has-message">
-                  {chat.message > 1000
-                    ? `${Math.round(chat.message / 1000)}k`
-                    : chat.message}
+                  {chat.unread > 1000
+                    ? `${Math.round(chat.unread / 1000)}k`
+                    : chat.unread}
                 </div>
               ) : null}
             </div>
@@ -139,11 +139,11 @@ const PrivateChats = ({
                   <p>Last seen {chat?.last_online_at}</p>
                 )}
               </div>
-              {chat.messages ? (
+              {chat.unread > 0 ? (
                 <div className="users__has-message">
-                  {chat.message > 1000
-                    ? `${Math.round(chat.message / 1000)}k`
-                    : chat.message}
+                  {chat.unread > 1000
+                    ? `${Math.round(chat.unread / 1000)}k`
+                    : chat.unread}
                 </div>
               ) : null}
             </div>

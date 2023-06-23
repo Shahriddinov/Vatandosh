@@ -63,16 +63,14 @@ const CabinetLayout = () => {
     return;
   };
 
-  useEffect(() => {}, [title]);
-  useEffect(() => {}, [text]);
-
   return (
     <div className="cabinet-layout">
       <div className="container">
         {btnOrgPageToggle ? (
           <div
             className="overlay-organizations"
-            onClick={toggleSwitchHandler}></div>
+            onClick={toggleSwitchHandler}
+          ></div>
         ) : null}
         <AnimatePresence>
           {btnOrgPageToggle && (
@@ -82,14 +80,17 @@ const CabinetLayout = () => {
                 animate={{ x: 0 }}
                 exit={{ x: -2000 }}
                 transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                className="modal-orgPage-container">
+                className="modal-orgPage-container"
+              >
                 <h1>{t("event")}</h1>
                 <form
                   onSubmit={submitHandler}
-                  className="modal-orgPage-container-form">
+                  className="modal-orgPage-container-form"
+                >
                   <label
                     htmlFor="title"
-                    className="modal-orgPage-container-form-title">
+                    className="modal-orgPage-container-form-title"
+                  >
                     <span>Title</span> <span>*</span>
                   </label>
                   <input
@@ -100,13 +101,15 @@ const CabinetLayout = () => {
                   />
                   <label
                     className="modal-orgPage-container-form-comment"
-                    htmlFor="Izoh">
+                    htmlFor="Izoh"
+                  >
                     <span>Izoh</span> <span>*</span>
                   </label>
                   <textarea
                     onChange={textHandler}
                     className="modal-orgPage-container-form-commentTextArea"
-                    placeholder="Izoh"></textarea>
+                    placeholder="Izoh"
+                  ></textarea>
                   <div className="modal-orgPage-container-form-fileUploadContainer">
                     <input type="file" id="file" onChange={uploadHandler} />
                     <label htmlFor="file">{t("eventOne")}</label>
@@ -121,7 +124,8 @@ const CabinetLayout = () => {
                     <motion.button
                       animate={controls}
                       whileTap={{ scale: 0.9 }}
-                      type="submit">
+                      type="submit"
+                    >
                       {t("footerSend")}
                     </motion.button>
                   </div>

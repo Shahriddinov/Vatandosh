@@ -38,7 +38,7 @@ const City = () => {
           {/*<h2>{singleCitySightseeing[1]?.name}</h2>*/}
           {/*<h1>*/}
           {/*  {singleCitySightseeing[0]?.title} <br />*/}
-            {/* {singleCitySightseeing[0]?.content_title} */}
+          {/* {singleCitySightseeing[0]?.content_title} */}
           {/*</h1>*/}
           {/*<div className="city_hero_line" />*/}
         </div>
@@ -49,10 +49,12 @@ const City = () => {
           {/*    <p>{city_content_infos[0]?.content}</p>*/}
           {/*  </div>*/}
           {/*) : null}*/}
-          <div className="city_videos">
-            <h1>{t("about_uzbekistan.video_clips")}</h1>
-            <AboutUzbekistanVideos mediaData={videoData} />
-          </div>
+          {videoData.length > 0 && (
+            <div className="city_videos">
+              <h1>{t("about_uzbekistan.video_clips")}</h1>
+              <AboutUzbekistanVideos mediaData={videoData} />
+            </div>
+          )}
           {/*{city_content_infos[1] ? (*/}
           {/*  <div className="city_intro">*/}
           {/*    <h1>{city_content_infos[1]?.title}</h1>*/}
@@ -66,17 +68,16 @@ const City = () => {
           {/*    <p>{city_content_infos[2]?.content}</p>*/}
           {/*  </div>*/}
           {/*) : null}*/}
-          <AboutUzbekistanGallery allGallery={galeresData} />
+          {galeresData.length > 0 && (
+            <AboutUzbekistanGallery allGallery={galeresData} />
+          )}
           {/*{city_content_infos[3] ? (*/}
           {/*  <div className="city_intro">*/}
           {/*    <h1>{city_content_infos[3]?.title}</h1>*/}
           {/*    <p>{city_content_infos[3]?.content}</p>*/}
           {/*  </div>*/}
           {/*) : null}*/}
-          <Slider
-            title={t("others")}
-            data={sightseeingPlaces}
-          />
+          <Slider title={t("others")} data={sightseeingPlaces} />
         </div>
       </div>
     </>

@@ -46,6 +46,7 @@ function ExpertCouncil() {
   const headerData = {
     title: findExpertHeroPage[`title_${lan}`],
     subTitle: findExpertHeroPage[`text_${lan}`],
+    expertAboutMoreLink: t("expert.homeHeaderLink"),
     link: "/portal-category/expert/register",
     btnText: t("expert.register"),
   };

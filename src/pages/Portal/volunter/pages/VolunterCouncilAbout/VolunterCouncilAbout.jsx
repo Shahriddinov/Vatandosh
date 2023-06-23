@@ -49,9 +49,12 @@ function VolunterCouncilAbout() {
             <h3 className="about-title">
               {findExpertAboutPage[`title_${language}`]}
             </h3>
-            <p className="about-text">
-              {findExpertAboutPage[`text_${language}`]}
-            </p>
+            <p
+              className="about-text"
+              dangerouslySetInnerHTML={{
+                __html: findExpertAboutPage[`text_${language}`],
+              }}
+            />
             <ShareFriends />
           </div>
           <CouncilStatics count={volunteers} VolunteerCount={VolunteerCount} />
