@@ -24,6 +24,7 @@ import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 import "./aboutUzbekistanHeader.scss";
+import PortalSide from "../../../components/PortalSideBar/PortalSideBar";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,30 @@ const Header = () => {
       navigate(`/search/${search}`);
     }
   };
+
+  const sidebarData = [
+    { id: 1, title: "BOSH SAHIFA", url: "/portal-category/about-uzbekistan" },
+    {
+      id: 2,
+      title: "VIZUAL MA'LUMOT",
+      url: "/portal-category/about-uzbekistan/visual-information",
+    },
+    {
+      id: 3,
+      title: "3D SAYOHAT",
+      url: "https://uzbekistan360.uz/",
+    },
+    {
+      id: 4,
+      title: "TURISTIK OBYEKTLAR",
+      url: "/portal-category/about-uzbekistan/tourist-facilities",
+    },
+    {
+      id: 5,
+      title: "BOG'LANISH",
+      url: "/portal-category/about-uzbekistan/contact",
+    },
+  ];
 
   useEffect(() => {
     if (activeSidebar) document.body.style.overflow = "hidden";
@@ -161,11 +186,12 @@ const Header = () => {
             )}
           </button>
         </div>
-
-        <div
-          className={activeSidebar ? "overlay overlayActive" : "overlay"}
-          onClick={() => setactiveSidebar(!activeSidebar)}
-        ></div>
+        <div className="header-mobile-navbar">
+          <Link to="/portal" className="header_navbar_left">
+            <img src={Logo} alt="logo" />
+          </Link>
+          <PortalSide data={sidebarData} />
+        </div>
       </div>
     </header>
   );

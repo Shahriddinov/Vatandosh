@@ -13,6 +13,12 @@
     padding: 10px 0;
     border-bottom: 1px solid #eaedf6;
 
+    .header-mobile-navbar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     &_navbar {
       display: flex;
       align-items: center;
@@ -372,107 +378,15 @@
   bottom: 0;
 }
 
-@media only screen and (max-width: 1000px) {
-  .head {
-    height: 90px;
-    position: sticky;
-    top: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+@media only screen and (max-width: 1096px) {
+  .about-uzbekistan-header {
+    padding: 0 20px 10px 20px;
     .header {
-      padding: 20px 1rem;
-      position: relative;
-      border: none;
-      background-color: white;
-
-      &-sideBar {
-        display: block;
+      .header_navbar {
+        display: none;
       }
-
-      &_navbar {
-        justify-content: left;
-
-        & > div {
-          display: none;
-        }
-
-        & > a:not(:first-child) {
-          display: none;
-        }
-
-        & > img {
-          display: none;
-        }
-
-        &_eye {
-          margin-left: auto;
-        }
-
-        &_search {
-          display: none;
-        }
-
-        .burger {
-          display: flex;
-        }
-      }
-    }
-  }
-
-  .overlay {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 574px) {
-  .head {
-    .overlay {
-      display: none;
-    }
-
-    .header {
-      .activeSideBar {
-        bottom: 0;
-      }
-
-      &-sideBar {
-        &-navlinks {
-          padding: 0;
-          row-gap: 20px;
-          justify-content: flex-start;
-        }
-
-        &-navlist {
-          padding: 0;
-          padding-bottom: 30px;
-          gap: 20px;
-        }
-
-        &-connection {
-          width: 100%;
-          flex-direction: column;
-          gap: 15px;
-
-          &-action {
-            &-img {
-              width: 18px;
-              height: 18px;
-            }
-          }
-        }
-
-        &-bottom {
-          padding: 0;
-          display: block;
-          border-width: 1px;
-          gap: 15px;
-
-          &-lang {
-            height: 100%;
-            padding: 20px 0;
-            border-bottom: 1px solid #f0f2f9;
-          }
-        }
+      .header-mobile-navbar {
+        display: flex;
       }
     }
   }
