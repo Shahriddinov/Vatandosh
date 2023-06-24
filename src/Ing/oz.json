@@ -336,7 +336,7 @@
     "expert_activity": "Эхперт фаолияти",
     "year": "Йил",
     "all_specialists": "Барча мутахассислар",
-    "all_countries" : "Барча мамлакатлар",
+    "all_countries": "Барча мамлакатлар",
     "expertRegister2Title1": " Ўзбекистондаги таълим",
     "expertRegister2Title2": "Чет елдаги таълим",
     "expert_activitie": "Експерт фаолияти"
@@ -667,5 +667,12 @@
   "chatMember": "Аъзолар",
   "chatLink": "Ҳаволалар",
   "chatDoc": "Ҳужжатлар",
-  "chatOne": "Суҳбат"
+  "chatOne": "Суҳбат",
+  "OneCabinet": "Умумий маълумот",
+  "TwoCabinet": "Иш",
+  "ThreeCabinet": "Таълим",
+  "FourCabinet": "Илмий фаолиятингиз",
+  "FiveCabinet": "Таклифингиз",
+  "SixCabinet": "Волонёрлик фаолияти",
+  "wordNone":"Ҳозирда маълумот мавжуд эмас"
 }

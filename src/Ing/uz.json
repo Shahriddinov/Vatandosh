@@ -333,7 +333,7 @@
     "expert_activity": "Ekspert faoliyati",
     "year": "Yil",
     "all_specialists": "Barcha mutaxassislar",
-    "all_countries" : "Barcha mamlakatlar",
+    "all_countries": "Barcha mamlakatlar",
     "expertRegister2Title1": "O'zbekistondagi ta'lim",
     "expertRegister2Title2": "Chet eldagi ta'lim",
     "expert_activitie": "Ekspert faoliyati"
@@ -627,7 +627,7 @@
   "volunteryOne": "Volontyorlarni faoliyati",
   "volunteryWork": "Volontyorlarni faoliyati",
   "volunterySport": "Yosh sportchi volontyorlar",
-  "passportUpload": "Pasport yuklash (pdf, doc)",
+  "passportUpload": "Passport yuklash (pdf, doc)",
   "finish": "Yakunlash",
   "voice": "Savol",
   "victorinaAbout": "Victorinalar haqida",
@@ -672,5 +672,12 @@
   "chatMember": "A'zolar",
   "chatLink": "Havolalar",
   "chatDoc": "Hujjatlar",
-  "chatOne":"Suhbat"
+  "chatOne": "Suhbat",
+  "OneCabinet": "Umumiy ma'lumot",
+  "TwoCabinet": "Ish",
+  "ThreeCabinet": "Ta'lim",
+  "FourCabinet": "Ilmiy faoliyatingiz",
+  "FiveCabinet": "Taklifingiz",
+  "SixCabinet": "Volonyorlik faoliyati",
+  "wordNone":"Hozirda ma'lumot mavjud emas"
 }
