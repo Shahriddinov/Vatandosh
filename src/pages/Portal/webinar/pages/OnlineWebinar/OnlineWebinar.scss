@@ -25,3 +25,11 @@
     border: none;
   }
 }
+
+@media screen and (max-width: 1016px) {
+  .online-webinar {
+    &-wrapper {
+      flex-direction: column;
+    }
+  }
+}

@@ -15,7 +15,7 @@ export default function WinnerCard({ el, key }) {
           "{el?.quiz?.title}" {el?.position}-o‘rin g‘olibi
         </span>
         <h4>{el?.user?.name}</h4>
-        <p>{el.description}</p>
+        <p>{el?.description}</p>
       </div>
     </Link>
   );

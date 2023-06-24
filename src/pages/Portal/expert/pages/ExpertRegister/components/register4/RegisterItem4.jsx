@@ -39,16 +39,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
         <div className="registeritem-form">
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.degree")} <span>*</span>
-              </p>
+              <p>{t("expert.degree")}</p>
               <div>
                 <input
-                  required
                   type="text"
                   value={data.academic_degree}
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
@@ -60,15 +57,12 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.activitypositon")} <span>*</span>
-              </p>
+              <p>{t("expert.activitypositon")}</p>
               <div>
                 <input
-                  required
                   type="text"
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   value={data.scientific_title}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
@@ -82,15 +76,12 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
             </label>
           </div>
           <label htmlFor="" className="registeritem-label">
-            <p>
-              {t("expert.articletitle")} <span>*</span>
-            </p>
+            <p>{t("expert.articletitle")}</p>
             <div>
               <input
-                required
                 type="text"
                 minLength={3}
-                maxLength={100}
+                maxLength={5000}
                 value={data.topic_of_scientific_article}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
@@ -104,16 +95,12 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
           </label>
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.articlename")}
-                <span>*</span>
-              </p>
+              <p>{t("expert.articlename")}</p>
               <div>
                 <input
-                  required
                   type="text"
                   minLength={3}
-                  maxLength={100}
+                  maxLength={5000}
                   value={data.article_published_journal_name}
                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
@@ -126,12 +113,9 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.articledate")} <span>*</span>
-              </p>
+              <p>{t("expert.articledate")}</p>
               <div>
                 <input
-                  required
                   type="date"
                   placeholder={t("expert.inputplaceholder")}
                   value={data.scientific_article_created_at}
@@ -152,7 +136,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 <input
                   type="text"
                   minLength={3}
-                  maxLength={50}
+                  maxLength={5000}
                   placeholder={t("expert.inputplaceholder")}
                   value={data.article_url}
                   onChange={(e) =>
@@ -188,16 +172,12 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
             </label>
           </div>
           <label htmlFor="" className="registeritem-label">
-            <p>
-              {t("expert.articlehobby")}
-              <span>*</span>
-            </p>
+            <p>{t("expert.articlehobby")}</p>
             <div>
               <input
-                required
                 type="text"
                 minLength={3}
-                maxLength={50}
+                maxLength={5000}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) => {
                   const arr = e.target.value.split(",");

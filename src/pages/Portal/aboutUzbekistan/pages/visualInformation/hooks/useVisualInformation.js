@@ -32,7 +32,7 @@ export const useVisualInformation = () => {
 
   useEffect(() => {
     dispatch(getAllCityVideo({ paginate: 9 }));
-    dispatch(getAllGallery({ paginate: 8 }));
+    dispatch(getAllGallery({ paginate: 16 }));
   }, [dispatch, lan]);
 
   return {

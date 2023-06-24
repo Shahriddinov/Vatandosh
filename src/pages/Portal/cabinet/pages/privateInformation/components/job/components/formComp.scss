@@ -7,18 +7,18 @@
 }
 
 .form-cont {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 30px;
-  @media (max-width: 31.44em) {
-    grid-template-columns: 1fr;
-  }
   &-left {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 30px;
+      align-items: flex-end;
+    }
     &-fieldCont:first-child {
-      margin-top: 0;
+      margin-top: 20;
     }
     &-fieldCont {
-      margin-top: 30px;
+      margin-top: 20px;
       & > label {
         @include fontStyles(400, 14px, 18px, #000000);
         & > span {
@@ -56,7 +56,7 @@
       }
     }
     &-checkBox {
-      margin-top: 32px;
+      margin-top: 20px;
       display: flex;
       gap: 11px;
       & > input {
@@ -70,10 +70,10 @@
   }
   &-right {
     &-fieldCont:first-child {
-      margin-top: 0px;
+      margin-top: 20px;
     }
     &-fieldCont {
-      margin-top: 30px;
+      margin-top: 20px;
       & > label {
         @include fontStyles(400, 14px, 18px, #000000);
         & > span {
@@ -102,7 +102,7 @@
     }
 
     &-fieldCont:last-child {
-      margin-top: 78px;
+      // margin-top: 78px;
     }
   }
 }

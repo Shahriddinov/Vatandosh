@@ -35,7 +35,7 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
     if (formData.suggestions && formData.suggestions) {
       const res = dispatch(postSuggestions(formData));
       if (!res.error) {
-        setactiveBarItem(6);
+        setactiveBarItem(5);
       }
     }
   };
@@ -86,7 +86,6 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
                 type="text"
                 value={formData.suggestions}
                 minLength={3}
-                maxLength={1000}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({
@@ -107,7 +106,6 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
                 type="text"
                 value={formData.additional_information}
                 minLength={3}
-                maxLength={1000}
                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({

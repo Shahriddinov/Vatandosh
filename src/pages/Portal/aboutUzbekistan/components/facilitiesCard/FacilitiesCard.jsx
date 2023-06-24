@@ -20,7 +20,7 @@ const FacilitiesCard = (props) => {
             alt={props?.title}
           />
         </div>
-        <p className="facility_card_text">{props?.title}</p>
+        {/*<p className="facility_card_text">{props?.title}</p>*/}
       </div>
     </>
   );

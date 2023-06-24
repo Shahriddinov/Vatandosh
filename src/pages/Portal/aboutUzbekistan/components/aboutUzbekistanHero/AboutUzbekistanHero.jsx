@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Pagination, Navigation } from "swiper";
+import { Keyboard, Pagination, Navigation, Autoplay } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -31,7 +31,11 @@ const AboutUzbekistanHero = ({ data }) => {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
-          modules={[Keyboard, Pagination, Navigation]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          modules={[Keyboard, Pagination, Navigation, Autoplay]}
         >
           {sliderData.map((slide) => (
             <SwiperSlide key={slide.id}>

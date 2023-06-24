@@ -54,8 +54,7 @@ export default function ElectronicJournalContact() {
                 <form
                   className="contact-action-form"
                   ref={formRef}
-                  onSubmit={handleSumbit}
-                >
+                  onSubmit={handleSumbit}>
                   <input
                     className="contact-action-form-nameInput"
                     type="text"
@@ -89,8 +88,7 @@ export default function ElectronicJournalContact() {
                         ...prev,
                         text: e.target.value,
                       }))
-                    }
-                  ></textarea>
+                    }></textarea>
                   <div className="contact-action-form-btn-wrapper">
                     <button className="contact-action-form-btn" type="submit">
                       {t("contactPage.send")}
@@ -126,54 +124,49 @@ export default function ElectronicJournalContact() {
             className="contact-map-iframe"
             src={`https://yandex.uz/map-widget/v1/-/CCUBAVbA3C?scroll=false&lang=${lan}`}
             frameBorder={0}
-            allowFullScreen={true}
-          ></iframe>
+            allowFullScreen={true}></iframe>
           {
             <div
               className="contact-map-navigation"
-              style={!activeMapNavigationBar ? { scale: 0 } : null}
-            >
+              style={!activeMapNavigationBar ? { scale: 0 } : null}>
               <RiCloseFill
                 className="contact-map-navigation-closeIcon"
                 onClick={() => setactiveMapNavigationBar(false)}
               />
               <div className="contact-map-navigation-title">
                 <h3>${contactData[`address_${lan}`]}</h3>
-                <p>Toshkent</p>
+                <p>{t("mapTwo")}</p>
               </div>
               <div className="contact-map-navigation-marsh">
                 <div className="contact-map-navigation-marsh-item">
                   <SiMetrodeparis className="contact-map-navigation-marsh-item-metroIcon" />
-                  <span>Novza</span>
+                  <span>{t("mapThree")}</span>
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.220824%2C41.294111&mode=routes&rtext=41.292749%2C69.223505~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=17"
-                    className="contact-map-navigation-marsh-item-link"
-                  >
+                    className="contact-map-navigation-marsh-item-link">
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>610 m</span>
                   </Link>
                 </div>
                 <div className="contact-map-navigation-marsh-item">
                   <SiMetrodeparis className="contact-map-navigation-marsh-item-metroIcon" />
-                  <span>Mirzo Ulug'bek</span>
+                  <span>{t("mapFour")}</span>
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.217282%2C41.289394&mode=routes&rtext=41.283096%2C69.212793~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=15"
-                    className="contact-map-navigation-marsh-item-link"
-                  >
+                    className="contact-map-navigation-marsh-item-link">
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>1.87 km</span>
                   </Link>
                 </div>
                 <div className="contact-map-navigation-marsh-item">
                   <SiMetrodeparis className="contact-map-navigation-marsh-item-metroIcon" />
-                  <span>Milliy Bog'</span>
+                  <span>{t("mapFive")}</span>
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.227127%2C41.299663&mode=routes&rtext=41.304318%2C69.234868~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=14.83"
-                    className="contact-map-navigation-marsh-item-link"
-                  >
+                    className="contact-map-navigation-marsh-item-link">
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>2.13 km</span>
                   </Link>
@@ -182,14 +175,12 @@ export default function ElectronicJournalContact() {
               <div className="contact-map-navigation-btns">
                 <Link
                   target={"_blank"}
-                  to="https://yandex.uz/maps/10335/tashkent/house/YkAYdAZoS0EAQFprfX54dHpqZg==/inside/?from=mapframe&ll=69.218247%2C41.295693&tab=inside&z=16"
-                >
+                  to="https://yandex.uz/maps/10335/tashkent/house/YkAYdAZoS0EAQFprfX54dHpqZg==/inside/?from=mapframe&ll=69.218247%2C41.295693&tab=inside&z=16">
                   {t("contactPage.houseOrg")}
                 </Link>
                 <Link
                   target={"_blank"}
-                  to="https://yandex.uz/maps/10335/tashkent/?feedback=object%2Fedit&ll=69.218247%2C41.295693&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=16"
-                >
+                  to="https://yandex.uz/maps/10335/tashkent/?feedback=object%2Fedit&ll=69.218247%2C41.295693&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=16">
                   {t("contactPage.warnUs")}
                 </Link>
               </div>

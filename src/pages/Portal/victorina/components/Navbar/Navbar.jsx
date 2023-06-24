@@ -12,7 +12,7 @@ import {
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import i18next from "i18next";
@@ -23,13 +23,11 @@ import { GoSignOut } from "react-icons/go";
 import { BsPersonFill } from "react-icons/bs";
 import { openNotification } from "../../../../../reduxToolkit/notificationSlice/notificationSlice";
 import { Tooltip } from "@mui/material";
+import PortalSide from "../../../components/PortalSideBar/PortalSideBar";
 
 function Navbar({ navbarUrl }) {
   const { t } = useTranslation();
-  const location = useLocation();
-  const editClass = location.pathname.split("/");
   const dispatch = useDispatch();
-  const { id } = useParams();
   const language = useSelector((state) => state.language.language);
   const notificationCount = useSelector(
     (state) => state.notification.notificationCount
@@ -51,15 +49,36 @@ function Navbar({ navbarUrl }) {
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
   };
+
+  const SideBarData = [
+    {
+      url: "/portal-category/victorina",
+      title: t("expert.main"),
+    },
+    {
+      url: "/portal-category/victorina/victorina-more",
+      title: t("victorina.victorinas"),
+    },
+    {
+      url: "/portal-category/victorina/victorina-finish",
+      title: t("victorina.end"),
+    },
+    {
+      url: "/portal-category/victorina/contact",
+      title: t("footerContact"),
+    },
+  ];
+
   return (
     <div className="navbarvictorina">
       <div className="container">
         <Link to={navbarUrl?.home}>
-          <div className="navbar-list">
+          <div className="navbar-logo">
             <img src={LogoIcon} alt="" className="navbar-icon" />
-            <h4 className="navbar--subname">“VATANDOSHLAR” JAMOAT FONDI</h4>
+            <h4 className="navbar--subname"> {t("expert.headtitle")}</h4>
           </div>
         </Link>
+        <PortalSide data={SideBarData} />
         <ul className="navbar-list">
           <li className="navbar-item">
             <a href="tel:+998555022299" className="navbar--link">
@@ -77,12 +96,12 @@ function Navbar({ navbarUrl }) {
         <div className="navbar-list">
           <Link to="/flag">
             <button className="navbarpage-icon">
-              <img src={GerbIcon} />
+              <img src={GerbIcon} alt="error" />
             </button>
           </Link>
           <Link to="/coat">
             <button className="navbarpage-icon">
-              <img src={BayroqIcon} />
+              <img src={BayroqIcon} alt="error" />
             </button>
           </Link>
           <button className="navbarpage--icon">
@@ -133,7 +152,7 @@ function Navbar({ navbarUrl }) {
           >
             <div className="navbar--button">
               <ExitIcon />
-              Кабинет
+              {t("cabinet")}
             </div>
             {activeKabinet ? (
               <div
@@ -145,14 +164,14 @@ function Navbar({ navbarUrl }) {
                   className="expert-header-cabinet-bar-cabinet"
                 >
                   <BsPersonFill />
-                  <span>Кабинет</span>
+                  <span> {t("cabinet")}</span>
                 </Link>
                 <div
                   className="expert-header-cabinet-bar-logout"
                   onClick={logOut}
                 >
                   <GoSignOut />
-                  <span>Выйти</span>
+                  <span>{t("logOut")}</span>
                 </div>
               </div>
             ) : null}

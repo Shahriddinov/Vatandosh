@@ -104,6 +104,17 @@ const communitySlice = createSlice({
       };
       state.communityCreateData = data;
     },
+    deleteCommunityImage: (state, { payload }) => {
+      const newImages = state.communityCreateData.attachments.filter(
+        (el) => el !== payload
+      );
+      const newObj = {
+        ...state.communityCreateData,
+        attachments: newImages,
+      };
+      state.communityCreateData = { ...newObj };
+      setItem("communityCreate", JSON.stringify(newObj));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -216,8 +227,8 @@ const communitySlice = createSlice({
         const newCommunityCreateData = {
           ...state.communityCreateData,
           [action.meta.arg.key]:
-            [action.meta.arg.key] === "attachments"
-              ? action.payload.path
+            action.meta.arg.key === "attachments"
+              ? [...state.communityCreateData.attachments, action.payload.path]
               : action.payload.path,
         };
         state.communityCreateData = newCommunityCreateData;
@@ -227,7 +238,7 @@ const communitySlice = createSlice({
         state.communityImagePostLoading = false;
         state.communityImagePostStatus = "error";
         state.error = error.message;
-        alert("Fayl yuklanmadi, qaytadan urunib ko'ring");
+        // alert("Fayl yuklanmadi, qaytadan urunib ko'ring");
       });
 
     builder
@@ -236,7 +247,7 @@ const communitySlice = createSlice({
       })
       .addCase(getAllEvents.fulfilled, (state, { payload }) => {
         state.allEventsLoading = false;
-        state.allEvents = payload;
+        state.allEvents = { ...payload, data: payload.data.reverse() };
       })
       .addCase(getAllEvents.rejected, (state, { error }) => {
         state.allEventsLoading = false;
@@ -267,5 +278,6 @@ export const {
   communityCreateDataAdd,
   communityCreateReset,
   deleteAvatar,
+  deleteCommunityImage,
 } = communitySlice.actions;
 export default communitySlice.reducer;

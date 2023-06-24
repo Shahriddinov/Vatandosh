@@ -33,42 +33,41 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
   });
 
   const ImageUpload = (data) => {
-    const formData = new FormData();
-    formData.append("folder", "community-news");
-    formData.append("image", data.image);
-    setImageFetchData((prev) => ({ ...prev, loading: true }));
-    axios({
-      method: "POST",
-      url: POST_COMMUNITY_IMAGE,
-      data: formData,
-      headers: {
-        "Content-Type": "multipart/form-data;",
-      },
-    })
-      .then((res) => {
-        setData((prev) => ({
-          ...prev,
-          attachments: [...prev.attachments, res.data],
-        }));
-        setImageFetchData((prev) => ({ ...prev, imgPath: res.data }));
+    if (data.image !== undefined) {
+      const formData = new FormData();
+      formData.append("folder", "community-news");
+      formData.append("image", data.image);
+      setImageFetchData((prev) => ({ ...prev, loading: true }));
+      axios({
+        method: "POST",
+        url: POST_COMMUNITY_IMAGE,
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data;",
+        },
       })
-      .catch((e) => {
-        console.log(e.message);
-        setImageFetchData((prev) => ({ ...prev, error: e.message }));
-      })
-      .finally(() => {
-        setImageFetchData((prev) => ({ ...prev, loading: false }));
-      });
+        .then((res) => {
+          setData((prev) => ({
+            ...prev,
+            attachments: [...prev.attachments, res.data],
+          }));
+          setImageFetchData((prev) => ({ ...prev, imgPath: res.data }));
+        })
+        .catch((e) => {
+          console.log(e.message);
+          setImageFetchData((prev) => ({ ...prev, error: e.message }));
+        })
+        .finally(() => {
+          setImageFetchData((prev) => ({ ...prev, loading: false }));
+        });
+    }
   };
 
   const handleChangeApplication1 = ({ key, value }) => {
     if (value !== undefined) {
       setData((prev) => ({
         ...prev,
-        [key]:
-          key === "images"
-            ? [...prev.images, { id: Date.now(), imgUrl: value }]
-            : value,
+        [key]: value,
       }));
     }
   };
@@ -76,7 +75,7 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
   const handleClick = (path) => {
     setData((prev) => ({
       ...prev,
-      attachments: prev.images.filter((el) => el.path !== path),
+      attachments: prev.attachments.filter((el) => el.path !== path),
     }));
   };
 

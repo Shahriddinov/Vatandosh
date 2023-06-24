@@ -83,15 +83,15 @@ export default function VictorinaProject() {
                   <div className="victorinaproject-main-timer">
                     <div>
                       <span>{quizData?.finished_at?.slice(9, 11)}</span>
-                      <span>Kun</span>
+                      <span>{t("choices.day")}</span>
                     </div>
                     <div>
                       <span>{quizData?.finished_at?.slice(11, 13)}</span>
-                      <span>Soat</span>
+                      <span>{t("choices.hour")}</span>
                     </div>
                     <div>
                       <span>{quizData?.finished_at?.slice(14, 16)}</span>
-                      <span>Daqiqa</span>
+                      <span>{t("choices.minute")}</span>
                     </div>
                   </div>
                   <button

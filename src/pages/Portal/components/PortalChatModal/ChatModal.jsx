@@ -3,8 +3,10 @@ import React from "react";
 import "./chatModal.scss";
 
 import logo from "../../../../assets/images/Logo.png";
+import { useTranslation } from "react-i18next";
 
 const ChatModal = ({ showChat, setShowChat }) => {
+  const { t } = useTranslation();
   return (
     <div className={`chat-modal ${showChat ? "show-chat" : ""}`}>
       <div className="chat-header">
@@ -13,8 +15,7 @@ const ChatModal = ({ showChat, setShowChat }) => {
           height="8"
           viewBox="0 0 8 8"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <circle cx="4" cy="4" r="4" fill="#065EA9" fillOpacity="0.9" />
         </svg>
         <span>Напишите нам</span>
@@ -24,8 +25,7 @@ const ChatModal = ({ showChat, setShowChat }) => {
           height="12"
           viewBox="0 0 12 12"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             d="M1 1L11 11"
             stroke="black"
@@ -42,9 +42,9 @@ const ChatModal = ({ showChat, setShowChat }) => {
       </div>
       <div className="chat-body">
         <img src={logo} alt="logo" width="86" />
-        <h3>VATANDOSHLAR</h3>
-        <h4>JAMOAT FONDI</h4>
-        <p>Задайте вопрос - мы ответим на почту или здесь.</p>
+        <h3>{t("vatandosh")}</h3>
+        <h4>{t("jamoat")}</h4>
+        <p>{t("portalVoice")}</p>
       </div>
       <div className="chat-footer">
         <input type="text" placeholder="Сообщение..." />
@@ -53,8 +53,7 @@ const ChatModal = ({ showChat, setShowChat }) => {
           height="16"
           viewBox="0 0 16 16"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+          xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14.9276 3.98438C14.2122 2.75874 13.2418 1.78832 12.0161 1.07294C10.7901 0.357599 9.45184 0 8.00039 0C6.54894 0 5.21031 0.357599 3.98464 1.07294C2.75889 1.78821 1.78847 2.75863 1.07305 3.98438C0.357599 5.2102 0 6.54883 0 8.00017C0 9.45159 0.357709 10.79 1.07294 12.0159C1.78832 13.2415 2.75874 14.212 3.98449 14.9274C5.21031 15.6426 6.54883 16.0002 8.00025 16.0002C9.45166 16.0002 10.7903 15.6426 12.0161 14.9274C13.2418 14.212 14.2121 13.2415 14.9275 12.0159C15.6427 10.79 16.0003 9.45151 16.0003 8.00017C16.0003 6.54869 15.6427 5.21002 14.9276 3.98438ZM14.1359 10.5887C13.7816 11.4117 13.3078 12.1201 12.7141 12.7138C12.1204 13.3074 11.4119 13.7814 10.5889 14.1355C9.76599 14.4899 8.9032 14.6669 8.00039 14.6669C7.09758 14.6669 6.2348 14.4896 5.41179 14.1355C4.58888 13.7814 3.88043 13.3074 3.28666 12.7138C2.69307 12.12 2.21911 11.4118 1.8648 10.5887C1.51063 9.76588 1.33349 8.90284 1.33349 8.00017C1.33349 7.09736 1.51059 6.23458 1.8648 5.41157C2.21897 4.58866 2.69292 3.88032 3.28666 3.28644C3.88043 2.69285 4.58888 2.21886 5.41179 1.86458C6.23469 1.51052 7.09762 1.33342 8.00039 1.33342C8.90306 1.33342 9.76613 1.51041 10.5889 1.86458C11.4119 2.21875 12.1202 2.69274 12.7141 3.28644C13.3078 3.88021 13.7816 4.58855 14.1359 5.41157C14.4901 6.23447 14.6673 7.09726 14.6673 8.00017C14.6674 8.90298 14.4901 9.76599 14.1359 10.5887Z"
             fill="#C0C0C5"

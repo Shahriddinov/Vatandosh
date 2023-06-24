@@ -50,14 +50,8 @@ export const InformationServicesSlider = ({ data, pageName }) => {
             key={card.id}
             style={{
               backgroundImage: `url(${
-                imageType ? PORTAL_IMAGE_URL : baseServerUrl
-              }/${
-                card?.attachments
-                  ? card?.attachments[0]?.split("/")[0] === "community-events"
-                    ? JSON.parse(card?.image)[0]
-                    : ""
-                  : card?.image
-              })`,
+                imageType ? PORTAL_IMAGE_URL : baseServerUrl + "/"
+              }${card?.attachments ? card?.attachments[0] : card?.image})`,
               backgroundPosition: "center center",
             }}
           />

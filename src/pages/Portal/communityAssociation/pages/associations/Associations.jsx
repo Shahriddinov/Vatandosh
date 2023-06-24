@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import "./associations.scss";
 
 import FormControl from "@mui/material/FormControl";
@@ -13,10 +13,10 @@ import { useState } from "react";
 import { paginationCount } from "../../../../../helpers/extraFunction";
 
 const Associations = () => {
-  const [count, setCount] = useState(1);
-  const [country, setCountry] = useState("Barcha davlatlar");
-  const [conId, setConId] = useState("");
   const { t } = useTranslation();
+  const [count, setCount] = useState(1);
+  const [country, setCountry] = useState(t("communityAssociation.all_states"));
+  const [conId, setConId] = useState("");
   const {
     allRegions,
     allRegionsGetLoading,
@@ -24,6 +24,7 @@ const Associations = () => {
     allCommunityGetLoading,
     communityData,
     dispatch,
+    lan,
   } = useAssociationFetching();
 
   const handleChange = (event, { id, name }) => {
@@ -46,13 +47,16 @@ const Associations = () => {
     setCount((prev) => prev + 1);
   };
 
+  useEffect(() => {
+    setCountry(t("communityAssociation.all_states"));
+  }, [lan, t]);
+
   if (allRegionsGetLoading || allCommunityGetLoading) {
     return <Spinner position="full" />;
   }
 
   const pagination = paginationCount(allCommunityGet?.total, 8);
 
-  console.log(communityData);
   return (
     <div className="associations">
       <div className="container">

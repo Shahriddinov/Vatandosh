@@ -34,7 +34,7 @@ const FormList = ({
   return (
     <div className="commonInformation-cont-formCont-form-box">
       <div className="commonInformation-cont-formCont-form-box-divCon">
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper item-lastName">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper ">
           <label htmlFor="lastName">
             Familiyasi <span>*</span>
           </label>
@@ -54,94 +54,6 @@ const FormList = ({
             <img src={penSvg} alt="icon" />
           </div>
         </div>
-
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-          <label htmlFor="middleName">
-            Sharifi <span>*</span>
-          </label>
-          <div>
-            <input
-              type="text"
-              id="middleName"
-              placeholder="Kiriting"
-              value={data.second_name}
-              onChange={(evt) =>
-                handleChange({
-                  key: "second_name",
-                  value: evt.target.value,
-                })
-              }
-            />
-            <img src={penSvg} alt="icon" />
-          </div>
-        </div>
-
-        <div className="commonInformation-cont-formCont-form-box-divCon-select">
-          <MySelect
-            value={data.gender ? findGender.label : ""}
-            handleChange={handleChange}
-            data={genderOptions}
-            text={"Jinsi"}
-            valueKey={"gender"}
-            placeholder="Jinsi"
-          />
-        </div>
-
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-          <label htmlFor="uzbAddress">
-            O'zbekistondagi manzil <span>*</span>
-          </label>
-          <div>
-            <input
-              type="text"
-              id="uzbAddress"
-              placeholder="Kiriting"
-              value={data.national_address}
-              onChange={(evt) =>
-                handleChange({
-                  key: "national_address",
-                  value: evt.target.value,
-                })
-              }
-            />
-            <img src={penSvg} alt="icon" />
-          </div>
-        </div>
-
-        <div className="commonInformation-cont-formCont-form-box-divCon-select">
-          <MySelect
-            value={findCity ? findCity?.label : ""}
-            handleChange={handleChange}
-            data={allCitiesGet}
-            text={t("communityAssociation.menu5_info.input2_name")}
-            valueKey={"international_address_id"}
-            placeholder="Barcha shaharlar"
-          />
-        </div>
-
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
-          <label htmlFor="activityType">
-            Faoliyat turi <span>*</span>
-          </label>
-          <div>
-            <input
-              type="text"
-              id="activityType"
-              placeholder="Kiriting"
-              value={data.job_position}
-              onChange={(evt) =>
-                handleChange({
-                  key: "job_position",
-                  value: evt.target.value,
-                })
-              }
-            />
-            <img src={penSvg} alt="icon" />
-          </div>
-        </div>
-      </div>
-
-      <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper item-firstName">
           <label htmlFor="firstName">
             Ismi <span>*</span>
@@ -162,13 +74,47 @@ const FormList = ({
             <img src={penSvg} alt="icon" />
           </div>
         </div>
-
+      </div>
+      <div className="commonInformation-cont-formCont-form-box-divCon">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
+          <label htmlFor="middleName">
+            Sharifi <span>*</span>
+          </label>
+          <div>
+            <input
+              type="text"
+              id="middleName"
+              placeholder="Kiriting"
+              value={data.second_name}
+              onChange={(evt) =>
+                handleChange({
+                  key: "second_name",
+                  value: evt.target.value,
+                })
+              }
+            />
+            <img src={penSvg} alt="icon" />
+          </div>
+        </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-select">
           <MyInputDate
             text="Tugilgan sana"
             handleChange={handleChange}
             valueKey="birth_date"
             value={data?.birth_date ? data?.birth_date : "12-12-1999"}
+          />
+        </div>
+      </div>
+
+      <div className="commonInformation-cont-formCont-form-box-divCon">
+        <div className="commonInformation-cont-formCont-form-box-divCon-select">
+          <MySelect
+            value={data.gender ? findGender.label : ""}
+            handleChange={handleChange}
+            data={genderOptions}
+            text={"Jinsi"}
+            valueKey={"gender"}
+            placeholder="Jinsi"
           />
         </div>
 
@@ -182,7 +128,29 @@ const FormList = ({
             placeholder="Millati"
           />
         </div>
+      </div>
 
+      <div className="commonInformation-cont-formCont-form-box-divCon">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
+          <label htmlFor="uzbAddress">
+            O'zbekistondagi manzil <span>*</span>
+          </label>
+          <div>
+            <input
+              type="text"
+              id="uzbAddress"
+              placeholder="Kiriting"
+              value={data.national_address}
+              onChange={(evt) =>
+                handleChange({
+                  key: "national_address",
+                  value: evt.target.value,
+                })
+              }
+            />
+            <img src={penSvg} alt="icon" />
+          </div>
+        </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-select">
           <MySelect
             value={findCountry ? findCountry?.label : ""}
@@ -192,7 +160,19 @@ const FormList = ({
             valueKey={"international_location_id"}
           />
         </div>
+      </div>
 
+      <div className="commonInformation-cont-formCont-form-box-divCon">
+        <div className="commonInformation-cont-formCont-form-box-divCon-select">
+          <MySelect
+            value={findCity ? findCity?.label : ""}
+            handleChange={handleChange}
+            data={allCitiesGet}
+            text={t("communityAssociation.menu5_info.input2_name")}
+            valueKey={"international_address_id"}
+            placeholder="Barcha shaharlar"
+          />
+        </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <FormHelperText
             id="outlined-weight-helper-text"
@@ -212,7 +192,29 @@ const FormList = ({
             required
           />
         </div>
+      </div>
 
+      <div className="commonInformation-cont-formCont-form-box-divCon">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
+          <label htmlFor="activityType">
+            Faoliyat turi <span>*</span>
+          </label>
+          <div>
+            <input
+              type="text"
+              id="activityType"
+              placeholder="Kiriting"
+              value={data.job_position}
+              onChange={(evt) =>
+                handleChange({
+                  key: "job_position",
+                  value: evt.target.value,
+                })
+              }
+            />
+            <img src={penSvg} alt="icon" />
+          </div>
+        </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="uploadFile">
             Passport yuklash (pdf, doc) <span>*</span>

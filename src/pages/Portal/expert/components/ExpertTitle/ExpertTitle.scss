@@ -7,9 +7,9 @@
     align-items: end;
     justify-content: space-between;
     flex-wrap: wrap-reverse;
+    gap: 24px;
 
     &-text {
-      width: 80%;
       @include fontStyles(600, 32px, 39px, $colorBlack);
     }
 
@@ -35,6 +35,21 @@
         & > svg {
           display: none;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .experttitle {
+    &-title {
+      &-text {
+        font-size: 24px;
+        line-height: 29px;
+      }
+      &-url > a {
+        font-size: 12px;
+        line-height: 15px;
       }
     }
   }

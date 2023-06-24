@@ -11,6 +11,7 @@ import {
   verifyToken,
 } from "./extraReducer";
 import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
+import { postExpertRegister } from "../ExpertSlice/RegisterSlice/extraReducer";
 
 const initialState = {
   emailLoading: false,
@@ -38,7 +39,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      console.log(payload);
       state.userData = payload.user;
       state.token = payload.token;
 
@@ -82,6 +82,21 @@ const authSlice = createSlice({
       .addCase(sendEmail.rejected, (state, action) => {
         state.loading = false;
         state.message = action.message;
+      });
+
+    // Expert Register
+    build
+      .addCase(postExpertRegister.pending, (state) => {
+        state.registerLoading = true;
+      })
+      .addCase(postExpertRegister.fulfilled, (state, action) => {
+        state.registerLoading = false;
+        state.userData = action.payload;
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      })
+      .addCase(postExpertRegister.rejected, (state, action) => {
+        state.registerLoading = false;
+        state.error = action.error.message;
       });
 
     // Verify Token
@@ -128,7 +143,6 @@ const authSlice = createSlice({
           state.error = action.payload.message;
         } else {
           state.userData = action.payload.profile;
-          console.log(action.payload);
           setItem("token", action.payload.token);
           setItem("user", JSON.stringify(action.payload.profile));
         }

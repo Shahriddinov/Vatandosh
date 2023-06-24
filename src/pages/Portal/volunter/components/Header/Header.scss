@@ -6,7 +6,7 @@
     text-transform: uppercase;
     color: #fff;
     margin-top: 100px;
-    width: 600px;
+    max-width: 600px;
     margin-bottom: 15px;
   }
   &--text {
@@ -29,24 +29,46 @@
 
 @media (max-width: 1440px) {
   .container {
-    width: 1200px;
+    max-width: 1200px;
   }
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 920px) {
   .container {
-    width: 1140px;
+    width: 800px;
   }
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 820px) {
   .container {
-    width: 1020px;
+    width: 700px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: 500px;
   }
 
-  .headeres {
-    &--text {
-      width: 90%;
-    }
+  .headeres h2 {
+    font-size: 24px;
+  }
+  .headeres--text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: 100%;
+  }
+  .headeres h2 {
+    line-height: 32px;
   }
 }

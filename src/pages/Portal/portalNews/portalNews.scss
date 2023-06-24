@@ -199,7 +199,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .newsdetail {
+  .portal-newsdetail {
     &-desktop-tags {
       display: none;
     }
@@ -257,7 +257,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .newsdetail {
+  .portal-newsdetail {
     .container {
       padding: 0;
     }

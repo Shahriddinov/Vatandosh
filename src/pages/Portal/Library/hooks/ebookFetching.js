@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { getLibraryOne } from "../../../../reduxToolkit/portalSlices/librarySlice/extraReducer";
 
 export const useEbookFetching = (id) => {
+  const language = useSelector((store) => store.language.language);
+
   const ebookData = useSelector((store) => store.librarySlice.ebookData);
   const ebookLoading = useSelector((store) => store.librarySlice.ebookLoading);
 
@@ -10,7 +12,7 @@ export const useEbookFetching = (id) => {
 
   useEffect(() => {
     dispatch(getLibraryOne(id));
-  }, [id]);
+  }, [language, id]);
 
   return {
     ebookData,

@@ -1,12 +1,12 @@
 import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
-import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
+import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 
 export default function VolunterLayout() {
   const location = useLocation();
@@ -20,7 +20,7 @@ export default function VolunterLayout() {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navData = [
     { id: 1, url: "/portal-category/volunteer", label: t("expert.main") },

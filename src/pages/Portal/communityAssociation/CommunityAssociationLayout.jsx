@@ -1,6 +1,6 @@
 import React from "react";
 import ExpertHeader from "../expert/components/ExpertHeader/ExpertHeader";
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import ExpertFooter from "../expert/components/ExpertFooter/ExpertFooter";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";
@@ -21,7 +21,7 @@ const CommunityAssociationLayout = () => {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navData = [
     {

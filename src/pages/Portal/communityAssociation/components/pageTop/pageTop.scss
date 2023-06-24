@@ -1,8 +1,11 @@
 .page-top {
+  padding-top: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 28px;
+  flex-wrap: wrap-reverse;
+  column-gap: 30px;
+  row-gap: 10px;
 
   &__title {
     font-weight: 600;

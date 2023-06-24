@@ -1,15 +1,16 @@
 @import "../../../../../../../assets/style/global.scss";
 .organization-card {
-  max-width: 240px;
+  // max-width: 240px;
   background: #f6f7fb;
   border: 1px solid #eaedf6;
   border-radius: 10px;
   padding: 15px 12px;
 
   &_cardTop {
-    display: grid;
+    display: flex;
     column-gap: 12px;
-    grid-auto-flow: column;
+    height: 30px;
+    align-items: center;
     justify-content: flex-start;
 
     & > img {

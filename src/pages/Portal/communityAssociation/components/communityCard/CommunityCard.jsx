@@ -15,9 +15,6 @@ const CommunityCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  const tags = props?.tags
-    ? props?.tags?.split(",")
-    : ["Italiya", "Yosh oila", "Kun fotosi", "Yosh oila"];
   const text = props?.content?.replace(/<[^>]+>/g, "");
 
   const image = props?.image ? JSON.parse(props?.image) : "";
@@ -40,7 +37,7 @@ const CommunityCard = (props) => {
           </p>
         </Link>
       </div>
-      {tags.length ? (
+      {/* {tags.length ? (
         <div className="tags-box">
           <div className="animation-box">
             {tags.map((tag, id) => {
@@ -58,7 +55,7 @@ const CommunityCard = (props) => {
             })}
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />

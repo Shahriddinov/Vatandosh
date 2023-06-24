@@ -17,13 +17,13 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <GrayContextProvider>
-    <Provider store={store}>
-      <App>
-        <Routes />
-      </App>
-    </Provider>
-  </GrayContextProvider>
-  // <React.StrictMode>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <GrayContextProvider>
+      <Provider store={store}>
+        <App>
+          <Routes />
+        </App>
+      </Provider>
+    </GrayContextProvider>
+  </React.StrictMode>
 );

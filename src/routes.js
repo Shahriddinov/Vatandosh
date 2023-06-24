@@ -110,6 +110,11 @@ const ExpertOffers = lazy(() =>
 const ExpertOffersDetail = lazy(() =>
   import("./pages/Portal/expert/pages/ExpertOffersDetail/ExpertOffersDetail")
 );
+const ExpertActivityDetail = lazy(() =>
+  import(
+    "./pages/Portal/expert/pages/expertActivityDerail/ExpertActivityDerail"
+  )
+);
 const SignIn = lazy(() => import("./pages/Registration/pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./pages/Registration/pages/SignUp/SignUp"));
 const AboutCouncil = lazy(() =>
@@ -495,7 +500,7 @@ const RoutesContainer = () => {
                   path="/portal-category/cabinet"
                   element={<CabinetLayout />}
                 >
-                  <Route index element={<CabinetHome />} />
+                  <Route index element={<Chat />} />
                   <Route
                     path="private-information"
                     element={<PrivateInformation />}
@@ -591,6 +596,10 @@ const RoutesContainer = () => {
                   <Route path="contact" element={<Contact />} />
                   <Route path="register" element={<ExpertRegister />} />
                   <Route path=":newsId" element={<PortalNews />} />
+                  <Route
+                    path="activity/:id"
+                    element={<ExpertActivityDetail />}
+                  />
                   <Route path="*" element={<NotFound />} />
                 </Route>
 
@@ -676,14 +685,14 @@ const RoutesContainer = () => {
                   <Route path=":newsId" element={<PortalNews />} />
                 </Route>
 
-                <Route
-                  path="/portal-category/online-teaching"
-                  element={<OnlineTeachingLayout />}
-                >
-                  <Route index element={<OnlineTeachingHome />} />
-                  <Route path="about" element={<AboutTeaching />} />
-                  <Route path="take-test" element={<PassTheTest />} />
-                </Route>
+                {/*<Route*/}
+                {/*  path="/portal-category/online-teaching"*/}
+                {/*  element={<OnlineTeachingLayout />}*/}
+                {/*>*/}
+                {/*  <Route index element={<OnlineTeachingHome />} />*/}
+                {/*  <Route path="about" element={<AboutTeaching />} />*/}
+                {/*  <Route path="take-test" element={<PassTheTest />} />*/}
+                {/*</Route>*/}
 
                 <Route
                   path="/portal-category/library"

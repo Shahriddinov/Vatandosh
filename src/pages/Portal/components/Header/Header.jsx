@@ -16,8 +16,10 @@ import { GrayContext } from "../../../../context/GrayContext";
 import { languageList } from "../../../../component/Layout/data";
 import { languageChange } from "../../../../reduxToolkit/languageSlice";
 import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
+import { useTranslation } from "react-i18next";
 
 const HeaderPortal = () => {
+  const { t } = useTranslation();
   const [activeLangBar, setactiveLangBar] = useState(false);
   const scrollRef = useRef(0);
   const [isFixed, setFixed] = useState(false);
@@ -36,7 +38,7 @@ const HeaderPortal = () => {
   useEffect(() => {
     scrollRef.current = window.pageYOffset;
     dispatch(getContact());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -48,12 +50,7 @@ const HeaderPortal = () => {
         setFixed(false);
       }
     });
-  }, [scrollRef.current]);
-
-  useEffect(() => {
-    if (activeSidebar) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "inherit";
-  }, [activeSidebar]);
+  }, [scrollRef]);
 
   return (
     <div className={`portal-head ${isFixed ? "portal-fixed" : ""}`}>
@@ -62,7 +59,7 @@ const HeaderPortal = () => {
           <div className="header_navbar_left">
             <Link to="/">
               <img src={Logo} alt="logo" />
-              <span>VATANDOSHLAR JAMOAT FONDI</span>
+              <span>{t("expert.headtitle")}</span>
             </Link>
           </div>
           <div className="header_navbar_phone">
@@ -138,7 +135,7 @@ const HeaderPortal = () => {
             <input
               type="text"
               className="header_navbar_search_inputs"
-              placeholder="Qidirish"
+              placeholder={t("search")}
             />
             <svg
               width="24"
@@ -211,13 +208,7 @@ const HeaderPortal = () => {
             {activeSidebar ? (
               <CgClose className="burger-closeIcon" />
             ) : (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"

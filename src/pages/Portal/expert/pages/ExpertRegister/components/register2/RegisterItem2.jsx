@@ -155,8 +155,12 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
         <h3 className="registeritem-title">{t("expert.reg2")}</h3>
         <div className="registeritem-form registeritem-gapNon">
           {/*<h3>{t("expert.uzbotm")}</h3>*/}
-          {data1.length
-            ? data1.map((el, index) => (
+          {data1.length ? (
+            <>
+              <h5 className="registeritem2-addForm__title">
+                {t("expert.expertRegister2Title1")}
+              </h5>
+              {data1.map((el, index) => (
                 <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
                     <p className="registeritem-label-delete">
@@ -178,7 +182,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         type="text"
                         value={el.institution}
                         minLength={3}
-                        maxLength={100}
+                        maxLength={500}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
@@ -199,7 +203,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           type="text"
                           minLength={3}
                           value={el.faculty}
-                          maxLength={100}
+                          maxLength={500}
                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChange({ ...el, faculty: e.target.value })
@@ -231,15 +235,18 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                               </MenuItem>
                             ))
                           ) : (
-                            <MenuItem value={1}>Yurist</MenuItem>
+                            <MenuItem value={1}>{t("yurist")}</MenuItem>
                           )}
                         </Select>
                       </FormControl>
                     </label>
                   </div>
                 </div>
-              ))
-            : ""}
+              ))}
+            </>
+          ) : (
+            ""
+          )}
           <button
             type="button"
             className="registeritem-addForm"
@@ -261,8 +268,12 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
             <BsPlusCircleFill />
           </button>
           {/*<h3>{t("expert.xorotm")}</h3>*/}
-          {data2.length
-            ? data2.map((el, index) => (
+          {data2.length ? (
+            <>
+              <h5 className="registeritem2-addForm__title">
+                {t("expert.expertRegister2Title2")}
+              </h5>
+              {data2.map((el, index) => (
                 <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
                     <p className="registeritem-label-delete">
@@ -284,7 +295,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         type="text"
                         value={el.institution}
                         minLength={3}
-                        maxLength={100}
+                        maxLength={500}
                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChangeX({
@@ -305,7 +316,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           type="text"
                           minLength={3}
                           value={el.faculty}
-                          maxLength={100}
+                          maxLength={500}
                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChangeX({ ...el, faculty: e.target.value })
@@ -337,15 +348,18 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                               </MenuItem>
                             ))
                           ) : (
-                            <MenuItem value={1}>Yurist</MenuItem>
+                            <MenuItem value={1}>{t("yurist")}</MenuItem>
                           )}
                         </Select>
                       </FormControl>
                     </label>
                   </div>
                 </div>
-              ))
-            : ""}
+              ))}
+            </>
+          ) : (
+            ""
+          )}
           <button
             type="button"
             className="registeritem-addForm"

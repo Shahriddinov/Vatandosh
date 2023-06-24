@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { baseServerUrl } from "../../services/api/utils";
 import Aos from "aos";
+import Spinner from "../Spinner/Spinner";
 
 const Partners = () => {
   const sliderRef = useRef();
@@ -20,6 +21,7 @@ const Partners = () => {
 
   const dispatch = useDispatch();
   const partnersData = useSelector((state) => state.partnersSlice.partnersData);
+  const loading = useSelector((state) => state.partnersSlice.loading);
   const error = useSelector((state) => state.partnersSlice.error);
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
@@ -51,6 +53,7 @@ const Partners = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     cssEase: "linear",
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -91,7 +94,11 @@ const Partners = () => {
       nav1: sliderRef.current,
       nav2: sliderRef2.current,
     }));
-  }, []);
+  }, [dispatch, partnersData]);
+
+  if (loading) {
+    return <Spinner position="full" />;
+  }
 
   if (error) {
     return <p>{error}</p>;
@@ -146,6 +153,7 @@ const Partners = () => {
             </div>
           ))}
         </Slider>
+
         <div className="horizontal__line" />
 
         <div className="partners">
@@ -165,7 +173,7 @@ const Partners = () => {
                 <img
                   className="partner__img"
                   src={`${baseServerUrl}/${el.logoImg}`}
-                  alt=""
+                  alt="partner"
                 />
               </div>
             ))}

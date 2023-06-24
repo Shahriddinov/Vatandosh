@@ -32,7 +32,7 @@ const CommunityFriendshipInfo = (props) => {
                 />
               </div>
 
-              <h3 className="friendship-info__company_name">{props.title}</h3>
+              <h3 className="friendship-info__company_name">{props.name}</h3>
             </div>
 
             <div className="friendship-info__box2">

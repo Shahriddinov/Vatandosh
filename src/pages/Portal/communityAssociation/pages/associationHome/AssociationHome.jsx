@@ -12,6 +12,8 @@ import { CommunityHomeCouncil } from "./components";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { extraFun } from "./components/homeCouncil/extra";
 
+import "./associationHome.scss";
+
 const AssociationHome = () => {
   const { navData, navbarUrl } = useOutletContext();
   const { t } = useTranslation();
@@ -41,7 +43,6 @@ const AssociationHome = () => {
 
   const headerData = {
     title: communityHomePageData?.title,
-    subTitle: filteredText[1].split(" ").slice(0, 5).join(" ") + "...",
     link: "/portal-category/community-association/application#1",
     btnText: t("communityAssociation.application"),
   };
@@ -54,7 +55,7 @@ const AssociationHome = () => {
   return (
     <>
       <div
-        className="expert-council"
+        className="community-home-hero"
         style={{
           backgroundImage: `url(${PORTAL_IMAGE_URL}${communityHomePageData?.image})`,
         }}

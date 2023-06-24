@@ -1,31 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useOutletContext, useParams } from "react-router-dom";
-import Header from "../../../component/Layout/Header/Header";
 import "./portalNews.scss";
 import { MdArrowRight } from "react-icons/md";
-import { LatestNews, PopularTags, Spinner } from "../../../component";
+import { PopularTags, Spinner } from "../../../component";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ShareFriends from "../../../component/ShareFriends/ShareFriends";
-import { baseServerUrl } from "../../../services/api/utils";
 import {
   getPortalNews,
   getPortalOneNews,
 } from "../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import { PORTAL_IMAGE_URL } from "../../../services/api/utils";
 import PortalLatestNews from "../../../component/PortalLatestNews/PortalLatestNews";
-import { ExpertHeader } from "../expert/components";
 import { useTranslation } from "react-i18next";
 
 export default function PortalNews() {
   const { t } = useTranslation();
-  const lan = useSelector((state) => state.language.language);
-  const [galleryMainImg, setgalleryMainImg] = useState(null);
 
   const { newsId } = useParams();
-  // const newsData = useSelector((store) => store.portalNews.news);
-  // const newsLoading = useSelector((store) => store.portalNews.loading);
   const oneNewsDetail = useSelector((store) => store.portalNews.oneNews);
   const oneNewsLoading = useSelector(
     (store) => store.portalNews.oneNewsLoading
@@ -37,7 +30,7 @@ export default function PortalNews() {
   useEffect(() => {
     dispatch(getPortalNews({ type: category, per_page: 3, page: 1 }));
     dispatch(getPortalOneNews(newsId));
-  }, [newsId]);
+  }, [newsId, dispatch, category]);
 
   if (oneNewsLoading) {
     return <Spinner position="full" />;
@@ -57,7 +50,7 @@ export default function PortalNews() {
             <div className="portal-newsdetail-title-url">
               <Link to={navData[0].url}>{navData[0].label}</Link>
               <MdArrowRight />
-              <span>Batafsil</span>
+              <span>{t("more")}</span>
             </div>
           </div>
 
@@ -80,25 +73,13 @@ export default function PortalNews() {
                     <span>{oneNewsDetail?.view}</span>
                   </div>
                 </div>
-                {/* <div className="portal-newsdetail-main-desc-action-tags">
-              {data?.[`tag_${lan}`]?.split(",").map((el, index) => {
-                return (
-                  <Link
-                    to={`/hashtag/${el.trim()}`}
-                    key={index}
-                    className="populartags-tag"
-                  >
-                    {el}
-                  </Link>
-                );
-              })}
-            </div> */}
               </div>
               <div
                 className="portal-newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: oneNewsDetail.body,
-                }}></div>
+                }}
+              ></div>
               {/* {data?.images
             ? JSON.parse(data?.images).length >= 1 && (
                 <div className="portal-newsdetail-main-desc-gallery">

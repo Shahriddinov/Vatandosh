@@ -10,21 +10,15 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 
 import { FormControl, MenuItem, Select } from "@mui/material";
-import Suggest from "../../components/suggestModal/Suggest";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { Pagination, Spinner } from "../../../../../component";
 import { paginationCount } from "../../../../../helpers/extraFunction";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SearchBooks = () => {
-  const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const location = useLocation();
-  const [activeSort, setActiveSort] = useState("all");
-  const [suggestModal, setSuggestModal] = useState(false);
   const [data, setData] = useState({
     lang: "",
     type: "",
@@ -36,8 +30,6 @@ const SearchBooks = () => {
   const {
     libraryData,
     libraryLoading,
-    librarySliderData,
-    librarySliderLoading,
     activPage,
     changePagination,
     filterBooks,
@@ -48,7 +40,7 @@ const SearchBooks = () => {
 
   useEffect(() => {
     searchBook({ search: location.state });
-  }, []);
+  }, [location.state, searchBook]);
 
   const handleСlick = ({ sort, type }) => {
     setData((prev) => ({ ...prev, [type]: sort }));
@@ -99,7 +91,7 @@ const SearchBooks = () => {
                 />
               </svg>
             </li>
-            <li className="current_path">Kutubxona</li>
+            <li className="current_path">{t("library.library")}</li>
           </ul>
         </div>
         <div className="all__books__search">
@@ -174,7 +166,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "English", type: "lang" })
                     }
                   >
-                    English
+                    {t("english")}
                   </MenuItem>
                   <MenuItem
                     value={"O'zbek"}
@@ -182,7 +174,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "O'zbek", type: "lang" })
                     }
                   >
-                    O'zbek
+                    {t("uzbek")}
                   </MenuItem>
                   <MenuItem
                     value={"Русский"}
@@ -190,7 +182,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "Русский", type: "lang" })
                     }
                   >
-                    Русский
+                    {t("ruskiy")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -221,7 +213,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "Badiiy adabiyot", type: "type" })
                     }
                   >
-                    Badiiy adabiyot
+                    {t("libraryOne")}
                   </MenuItem>
                   <MenuItem
                     value={"Ilmiy-marifiy"}
@@ -229,7 +221,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "Ilmiy-marifiy", type: "type" })
                     }
                   >
-                    Ilmiy-marifiy
+                    {t("libraryTwo")}
                   </MenuItem>
                   <MenuItem
                     value={"Diniy-marifiy"}
@@ -237,7 +229,7 @@ const SearchBooks = () => {
                       handleСlick({ sort: "Diniy-marifiy", type: "type" })
                     }
                   >
-                    Diniy-marifiy
+                    {t("libraryThree")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -249,7 +241,7 @@ const SearchBooks = () => {
                 className={data.sort === "all" ? "active" : ""}
                 onClick={() => handleСlick({ sort: "all", type: "sort" })}
               >
-                Barchasi
+                {t("all")}
               </li>
               <li
                 className={data.sort === "new" ? "active" : ""}

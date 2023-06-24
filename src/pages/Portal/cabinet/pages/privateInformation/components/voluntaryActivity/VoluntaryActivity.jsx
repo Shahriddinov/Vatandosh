@@ -56,7 +56,7 @@ const VoluntaryActivity = () => {
       </div>
       <motion.button
         whileTap={{ scale: 0.9 }}
-        className="VoluntaryActivity-submitBtn"
+        className={`commonInformation-form-btn ${toggle ? 'disabled' : ''}`}
         type="button"
         disabled={toggle}
         onClick={() => submitCompHandler(data)}

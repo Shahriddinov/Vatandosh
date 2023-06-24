@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { getContact } from "../../reduxToolkit/contactSlice/extraReducer";
-import ChatModal from "./components/PortalChatModal/ChatModal";
 
 import { FaLinkedinIn, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 
@@ -21,10 +20,8 @@ import bg5 from "../../assets/images/portal/5.png";
 
 const HomePage = () => {
   const token = useSelector((state) => state.authSlice.token);
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [showChat, setShowChat] = useState(false);
   const [horizontal, setHorizontal] = useState(false);
 
   const navbarList = [
@@ -96,7 +93,7 @@ const HomePage = () => {
         setHorizontal(false);
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="portal">
@@ -234,25 +231,6 @@ const HomePage = () => {
                 })}
               </Swiper>
             </div>
-          </div>
-          <div className="portal-body-bottom">
-            <button onClick={() => setShowChat(!showChat)}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M10 0C4.47715 0 0 4.47715 0 10C0 11.8153 0.484506 13.5196 1.33127 14.9883C1.50372 15.2874 1.5333 15.6516 1.38777 15.9647L0.534056 17.8016C0.00986135 18.7933 0.727364 20 1.86159 20H10C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM6.0002 11.3C6.71817 11.3 7.3002 10.7179 7.3002 9.99995C7.3002 9.28198 6.71817 8.69995 6.0002 8.69995C5.28223 8.69995 4.7002 9.28198 4.7002 9.99995C4.7002 10.7179 5.28223 11.3 6.0002 11.3ZM14.0002 11.3C14.7182 11.3 15.3002 10.7179 15.3002 9.99995C15.3002 9.28198 14.7182 8.69995 14.0002 8.69995C13.2822 8.69995 12.7002 9.28198 12.7002 9.99995C12.7002 10.7179 13.2822 11.3 14.0002 11.3ZM10.0002 11.3C10.7182 11.3 11.3002 10.7179 11.3002 9.99995C11.3002 9.28198 10.7182 8.69995 10.0002 8.69995C9.28222 8.69995 8.7002 9.28198 8.7002 9.99995C8.7002 10.7179 9.28222 11.3 10.0002 11.3Z"
-                  fill="white"
-                />
-              </svg>
-            </button>
-            <ChatModal showChat={showChat} setShowChat={setShowChat} />
           </div>
         </div>
       </div>

@@ -11,28 +11,20 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 
-import HeroImage from "../../../../../assets/images/library/libraryHero.png";
-import HeroImage1 from "../../../../../assets/images/library/libraryHero1.png";
-import HeroImage2 from "../../../../../assets/images/library/libraryHero2.png";
 import { FormControl, MenuItem, Select } from "@mui/material";
 
-import Book1 from "../../../../../assets/images/library/ken.png";
-import Book2 from "../../../../../assets/images/library/agata.png";
-import Book3 from "../../../../../assets/images/library/jeyn.png";
-import Book4 from "../../../../../assets/images/library/paulo.png";
 import Suggest from "../../components/suggestModal/Suggest";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { Pagination, Spinner } from "../../../../../component";
 import { paginationCount } from "../../../../../helpers/extraFunction";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AllBooks = () => {
   const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [activeSort, setActiveSort] = useState("all");
   const [suggestModal, setSuggestModal] = useState(false);
   const [data, setData] = useState({
     lang: "",
@@ -53,18 +45,14 @@ const AllBooks = () => {
     }
   };
 
-  const dispatch = useDispatch();
-
   const {
     libraryData,
     libraryLoading,
     librarySliderData,
-    librarySliderLoading,
     activPage,
     changePagination,
     filterBooks,
     filterBooksType,
-    searchBook,
     sortBook,
   } = useLibraryFetching(12);
 
@@ -95,24 +83,6 @@ const AllBooks = () => {
     }));
   };
 
-  const sliderData = [
-    {
-      id: 1,
-      image: HeroImage,
-      text: t("library.hero_title"),
-    },
-    {
-      id: 2,
-      image: HeroImage1,
-      text: "Eng shinam kutubxona",
-    },
-    {
-      id: 3,
-      image: HeroImage2,
-      text: "Most comfy library",
-    },
-  ];
-
   if (libraryLoading) {
     return <Spinner />;
   }
@@ -122,7 +92,10 @@ const AllBooks = () => {
   return (
     <>
       <div className="hero__container">
-        <Hero sliderData={sliderData} className="hero__container" />
+        <Hero
+          librarySliderData={librarySliderData}
+          className="hero__container"
+        />
       </div>
       <div className="all__books__container container">
         <div className="all__books__search">
@@ -215,7 +188,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "English", type: "lang" })
                     }
                   >
-                    English
+                    {t("english")}
                   </MenuItem>
                   <MenuItem
                     value={"O'zbek"}
@@ -223,7 +196,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "O'zbek", type: "lang" })
                     }
                   >
-                    O'zbek
+                    {t("uzbek")}
                   </MenuItem>
                   <MenuItem
                     value={"Русский"}
@@ -231,7 +204,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "Русский", type: "lang" })
                     }
                   >
-                    Русский
+                    {t("ruskiy")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -262,7 +235,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "Badiiy adabiyot", type: "type" })
                     }
                   >
-                    Badiiy adabiyot
+                    {t("libraryOne")}
                   </MenuItem>
                   <MenuItem
                     value={"Ilmiy-marifiy"}
@@ -270,7 +243,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "Ilmiy-marifiy", type: "type" })
                     }
                   >
-                    Ilmiy-marifiy
+                    {t("libraryTwo")}
                   </MenuItem>
                   <MenuItem
                     value={"Diniy-marifiy"}
@@ -278,7 +251,7 @@ const AllBooks = () => {
                       handleСlick({ sort: "Diniy-marifiy", type: "type" })
                     }
                   >
-                    Diniy-marifiy
+                    {t("libraryThree")}
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -290,7 +263,7 @@ const AllBooks = () => {
                 className={data.sort === "all" ? "active" : ""}
                 onClick={() => handleСlick({ sort: "all", type: "sort" })}
               >
-                Barchasi
+                {t("all")}
               </li>
               <li
                 className={data.sort === "new" ? "active" : ""}

@@ -64,7 +64,9 @@ export const aboutUzbSlideMove = ({
   const data = mediaData;
 
   if (activeVideo) {
-    indexMedia = data.findIndex((video) => video.video_url === activeVideo);
+    indexMedia = data.findIndex(
+      (video) => JSON.parse(video.video)[0].download_link === activeVideo
+    );
     activeMedia = activeVideo;
   } else if (activeImage) {
     indexMedia = data.findIndex((image) => image.image === activeImage);
@@ -73,15 +75,14 @@ export const aboutUzbSlideMove = ({
 
   if (value === "left" && indexMedia > 0) {
     if (activeVideo) {
-      setActiveVideo(data[indexMedia - 1].video_url);
+      setActiveVideo(JSON.parse(data[indexMedia - 1].video)[0].download_link);
     } else {
       setActiveImage(data[indexMedia - 1].image);
     }
-
     indexMedia -= 1;
-  } else {
+  } else if (value === "right" && data.length > indexMedia) {
     if (activeVideo) {
-      setActiveVideo(data[indexMedia + 1].video_url);
+      setActiveVideo(JSON.parse(data[indexMedia + 1].video)[0].download_link);
     } else {
       setActiveImage(data[indexMedia + 1].image);
     }

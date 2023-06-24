@@ -47,7 +47,7 @@ const EventsCard = ({ webinar }) => {
         </h5>
         <p className="cabinet-events-text">
           {webinar?.description?.split(" ").length > 10
-            ? webinar?.description?.split(" ").slice(0, 16).join(" ") + "..."
+            ? webinar?.description?.split(" ").slice(0, 14).join(" ") + "..."
             : webinar?.description}
         </p>
         <ul className="cabinet-events-timer">

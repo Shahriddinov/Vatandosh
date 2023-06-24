@@ -4,9 +4,30 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 
+  &-list-item-img {
+    width: 270px;
+    height: 270px;
+  }
+
   &-list-item-desc {
     img {
       width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 922px) {
+  .volunter-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 856px) {
+  .volunter-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 656px) {
+  .volunter-list {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

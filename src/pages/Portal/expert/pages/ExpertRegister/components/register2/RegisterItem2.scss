@@ -4,11 +4,15 @@
   &-form {
     &-otm {
       display: grid;
-      gap: 20px;
+      gap: 10px;
 
       &:not(:first-child) {
-        margin-top: 20px;
+        margin-top: 10px;
       }
     }
+  }
+
+  &-addForm__title {
+    font-size: 18px;
   }
 }

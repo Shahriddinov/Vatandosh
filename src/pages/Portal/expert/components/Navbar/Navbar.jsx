@@ -25,6 +25,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { GrayContext } from "../../../../../context/GrayContext";
 import { Tooltip } from "@mui/material";
 import { openNotification } from "../../../../../reduxToolkit/notificationSlice/notificationSlice";
+import PortalSideBar from "../../../components/PortalSideBar/PortalSideBar";
 
 const Navbar = ({ navbarUrl }) => {
   const { t } = useTranslation();
@@ -56,12 +57,55 @@ const Navbar = ({ navbarUrl }) => {
     window.location = "/portal";
   };
 
+  const ExpertNavData = [
+    { url: "/portal-category/expert", title: t("expert.main") },
+    {
+      url: "/portal-category/expert/expert-council",
+      title: t("expert.expertCouncil"),
+    },
+    { url: "/portal-category/expert/offers", title: t("expert.offers") },
+    {
+      url: "/portal-category/expert/contact",
+      title: t("contactPage.contactUs"),
+    },
+  ];
+  const VolunteerNavData = [
+    { url: "/portal-category/expert", title: t("expert.main") },
+    {
+      url: "/portal-category/volunteer/volunter-employe",
+      title: t("voluntery.nav1"),
+    },
+    { url: "/portal-category/volunteer/activity", title: t("voluntery.nav2") },
+    {
+      url: "/portal-category/volunteer/contact",
+      title: t("voluntery.nav3"),
+    },
+  ];
+  const AssociationNavData = [
+    {
+      url: "/portal-category/community-association",
+      title: t("communityAssociation.navbar.navbar_link1"),
+    },
+    {
+      url: "/portal-category/community-association/associations",
+      title: t("communityAssociation.navbar.navbar_link2"),
+    },
+    {
+      url: "/portal-category/community-association/events",
+      title: t("communityAssociation.navbar.navbar_link3"),
+    },
+    {
+      url: "/portal-category/community-association/contact",
+      title: t("communityAssociation.navbar.navbar_link4"),
+    },
+  ];
+
   return (
     <div className="navbarpage">
       <div className="container">
         <div className="navbarpage__inner">
           <Link to={navbarUrl?.home}>
-            <div className="navbar-list">
+            <div className="navbar-logo">
               <img src={LogoIcon} alt="" className="navbar-icon" />
               <h4
                 className={
@@ -215,7 +259,7 @@ const Navbar = ({ navbarUrl }) => {
                 }
               >
                 <ExitIcon />
-                Кабинет
+                {t("cabinet")}
               </div>
               {activeKabinet ? (
                 <div className="expert-header-cabinet-bar">
@@ -224,19 +268,28 @@ const Navbar = ({ navbarUrl }) => {
                     className="expert-header-cabinet-bar-cabinet"
                   >
                     <BsPersonFill />
-                    <span>Кабинет</span>
+                    <span>{t("cabinet")}</span>
                   </Link>
                   <div
                     className="expert-header-cabinet-bar-logout"
                     onClick={logOut}
                   >
                     <GoSignOut />
-                    <span>Выйти</span>
+                    <span>{t("logOut")}</span>
                   </div>
                 </div>
               ) : null}
             </div>
           </div>
+          <PortalSideBar
+            data={
+              location.pathname.includes("expert")
+                ? ExpertNavData
+                : location.pathname.includes("community-association")
+                ? AssociationNavData
+                : VolunteerNavData
+            }
+          />
         </div>
       </div>
     </div>

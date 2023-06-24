@@ -26,6 +26,7 @@ function VolunterCouncilAbout() {
   }
 
   const findExpertAboutPage = volunteerPage.find((el) => el.type === 2);
+
   return (
     <div className="about">
       <div className="container">
@@ -41,22 +42,22 @@ function VolunterCouncilAbout() {
         <div className="about-page">
           <div className="about-left">
             <img
-                style={{width:"100%"}}
+              style={{ width: "100%" }}
               src={`${PORTAL_IMAGE_URL}${findExpertAboutPage.image}`}
               alt={findExpertAboutPage[`title_${language}`]}
             />
             <h3 className="about-title">
               {findExpertAboutPage[`title_${language}`]}
             </h3>
-            <p className="about-text">
-              {findExpertAboutPage[`text_${language}`]}
-            </p>
+            <p
+              className="about-text"
+              dangerouslySetInnerHTML={{
+                __html: findExpertAboutPage[`text_${language}`],
+              }}
+            />
             <ShareFriends />
           </div>
-          <CouncilStatics
-            count={volunteers.total}
-            VolunteerCount={VolunteerCount}
-          />
+          <CouncilStatics count={volunteers} VolunteerCount={VolunteerCount} />
         </div>
       </div>
     </div>

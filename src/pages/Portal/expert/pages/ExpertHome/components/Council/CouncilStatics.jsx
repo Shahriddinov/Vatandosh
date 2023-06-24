@@ -1,9 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Globe, UserIcon } from "../../../../../../../assets/images/expert";
+import { AiFillExclamationCircle } from "react-icons/ai";
 
 function CouncilStatics({ expertCount, expertData }) {
   const { t } = useTranslation();
-
+  const total = expertCount
+    ?.map((el) => el?.users?.length)
+    .reduce((a, b) => a + b, 0);
   return (
     <div className="expert-council-right">
       <div>
@@ -11,7 +14,7 @@ function CouncilStatics({ expertCount, expertData }) {
           <h5>{t("expert.registered")}</h5>
           <img src={UserIcon} alt="error" />
         </span>
-        <h4>{expertData.total}</h4>
+        <h4>{total}</h4>
         <p className="margin_bottom_60">{t("expert.expertsand")}</p>
       </div>
       <div className="expert-council-bottom">

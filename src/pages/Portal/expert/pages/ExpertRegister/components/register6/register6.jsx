@@ -99,7 +99,7 @@ export default function Register6({ activeBarItem }) {
   return (
     <form
       className={
-        activeBarItem !== 6
+        activeBarItem !== 5
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
@@ -107,7 +107,9 @@ export default function Register6({ activeBarItem }) {
     >
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
-          <h3 className="registeritem-title">V. Volonyorlik faoliyati</h3>
+          <h3 className="registeritem-title">
+            V. {t("expert.expert_activities")}
+          </h3>
           {volunteerProfile?.length
             ? volunteerProfile?.map((el, index) => (
                 <div key={index} className="registeritem-form">
@@ -130,7 +132,7 @@ export default function Register6({ activeBarItem }) {
                   </p>
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Maqola mavzusi
+                      {t("maqola")}
                       <span>*</span>
                     </p>
                     <div>
@@ -138,7 +140,6 @@ export default function Register6({ activeBarItem }) {
                         required
                         type="text"
                         minLength={3}
-                        maxLength={200}
                         value={el.title}
                         placeholder={"Kiriting"}
                         onChange={(e) =>
@@ -165,7 +166,7 @@ export default function Register6({ activeBarItem }) {
                         }}
                       />
                       <BsImage />
-                      <p>Taklifingiz uchun rasm</p>
+                      <p>{t("expert.offerforimg")}</p>
                     </label>
                   ) : (
                     <ul className="registeritem-imageList">
@@ -184,7 +185,9 @@ export default function Register6({ activeBarItem }) {
                                   }}
                                 >
                                   <HiOutlineTrash />
-                                  <span>Удалить</span>
+                                  <span>
+                                    {t("projects_page.form_image_delete")}
+                                  </span>
                                 </div>
                               ) : null}
                               <img src={URL.createObjectURL(item)} alt="" />
@@ -221,7 +224,8 @@ export default function Register6({ activeBarItem }) {
                   )}
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Izohingiz yozing<span>*</span>
+                      {t("comment")}
+                      <span>*</span>
                     </p>
                     <div className="registeritem-label-textarea">
                       <textarea
@@ -229,7 +233,6 @@ export default function Register6({ activeBarItem }) {
                         type="text"
                         value={el.description}
                         minLength={3}
-                        maxLength={500}
                         placeholder={"Izoh"}
                         onChange={(e) =>
                           handleChange({
