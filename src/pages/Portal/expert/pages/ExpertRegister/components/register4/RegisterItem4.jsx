@@ -176,13 +176,9 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>
-                {t("expert.articlefile")}
-                {pathname.includes("expert") ? <span> *</span> : null}
-              </p>
+              <p>{t("expert.articlefile")}</p>
               <label htmlFor="registeritem-label-fileinput-id">
                 <input
-                  required={pathname.includes("expert") ? true : false}
                   id="registeritem-label-fileinput-id"
                   className="registeritem-label-fileinput"
                   type="file"
