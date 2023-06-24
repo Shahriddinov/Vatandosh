@@ -95,5 +95,6 @@ export const useExpertHome = () => {
     loading,
     specialization,
     specializationLoading,
+    dispatch,
   };
 };
