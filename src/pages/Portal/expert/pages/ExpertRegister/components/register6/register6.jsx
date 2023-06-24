@@ -141,7 +141,7 @@ export default function Register6({ activeBarItem }) {
                         type="text"
                         minLength={3}
                         value={el.title}
-                        placeholder={"Kiriting"}
+                        placeholder={t("inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
                             ...el,

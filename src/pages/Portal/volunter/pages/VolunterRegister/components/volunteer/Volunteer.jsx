@@ -148,7 +148,7 @@ export default function Volunteer({ activeBarItem }) {
                         minLength={3}
                         maxLength={200}
                         value={el.title}
-                        placeholder={"Kiriting"}
+                        placeholder={t("inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
                             ...el,
