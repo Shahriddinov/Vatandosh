@@ -9,11 +9,6 @@ import {
   MySelect,
 } from "../../../../../../../communityAssociation/pages/communityAssociationRegister/components";
 
-const genderOptions = [
-  { id: "1", label: "Erkak" },
-  { id: "2", label: "Ayol" },
-];
-
 const FormList = ({
   data,
   handleChange,
@@ -22,6 +17,10 @@ const FormList = ({
   nationsData,
 }) => {
   const { t } = useTranslation();
+  const genderOptions = [
+    { id: "1", label: t("man") },
+    { id: "2", label: t("woman") },
+  ];
 
   const { findCountry, findCity, findNation, findGender } = findsUserData({
     locationData,

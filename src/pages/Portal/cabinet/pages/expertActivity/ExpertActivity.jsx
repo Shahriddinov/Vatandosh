@@ -8,6 +8,7 @@ import { useCabinetVolunteerFetching } from "../volunteering/hooks/useCabinetVol
 import { Spinner } from "../../../../../component";
 import { filteredArrFun } from "../volunteering/extra";
 import { useCabinetExpertActivity } from "./hooks/useCabinetExpertActivity";
+import { useTranslation } from "react-i18next";
 
 const btnGroup = [
   { id: 1, label: "Barchasi", type: "all" },
@@ -16,6 +17,7 @@ const btnGroup = [
 ];
 
 const ExpertActivity = () => {
+  const { t } = useTranslation();
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
   const { error, loading, data } = useCabinetExpertActivity();
 
@@ -24,7 +26,7 @@ const ExpertActivity = () => {
   } else if (error) {
     return <p>{error}</p>;
   } else if (data.length === 0) {
-    return <p>Hozirda ma'lumot mavjud emas</p>;
+    return <p>{t("wordNone")}</p>;
   }
 
   const handleBtn = (el) => {

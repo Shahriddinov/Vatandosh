@@ -67,7 +67,7 @@ const CommonInformation = () => {
               alt="userImg"
             />
             <div>
-              <label htmlFor="uploadImg">{t("uploadnew")}</label>
+              <label htmlFor="uploadImg">{t("expert.uploadnew")}</label>
               <input
                 type="file"
                 id="uploadImg"
@@ -87,7 +87,7 @@ const CommonInformation = () => {
                   value: null,
                 })
               }>
-              {t("delete")}
+              {t("expert.delete")}
             </button>
           </div>
           <p>{t("uploaddesc")}</p>
