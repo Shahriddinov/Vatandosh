@@ -124,11 +124,11 @@ const MoreDetail = () => {
           <div className="singleCardContainer-calEye">
             <div>
               <img src={calendarSvg} alt="cal" />
-              <span>12.02.2023</span>
+              <span>{byIdData?.created_at?.slice(0, 10)}</span>
             </div>
             <div>
               <img src={eyeSvg} alt="eye" />
-              <span>100 k</span>
+              <span>{byIdData.count}</span>
             </div>
           </div>
 
