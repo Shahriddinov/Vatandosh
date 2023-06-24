@@ -17,10 +17,13 @@ import {
   getExpertEmployment,
   updateExpertEmployment,
 } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+import { useLocation } from "react-router-dom";
 
 export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
+
   const { locationGet } = useSelector((state) => state.community);
   const { employment } = useSelector((state) => state.expertRegisterSlice);
   const [data, setData] = useState([
@@ -157,7 +160,10 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.workcountry")}</p>
+                  <p>
+                    {t("expert.workcountry")}
+                    {pathname.includes("expert") ? <span> *</span> : null}
+                  </p>
                   <FormControl style={{ padding: 0 }}>
                     <Select
                       className="registeritem-select"
@@ -181,9 +187,13 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   </FormControl>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.workregionorcity")}</p>
+                  <p>
+                    {t("expert.workregionorcity")}
+                    {pathname.includes("expert") ? <span> *</span> : null}
+                  </p>
                   <div>
                     <input
+                      required={pathname.includes("expert") ? true : false}
                       type="text"
                       minLength={3}
                       maxLength={5000}
@@ -200,9 +210,13 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                 </label>
               </div>
               <label htmlFor="" className="registeritem-label">
-                <p>{t("expert.position")}</p>
+                <p>
+                  {t("expert.position")}
+                  {pathname.includes("expert") ? <span> *</span> : null}
+                </p>
                 <div>
                   <input
+                    required={pathname.includes("expert") ? true : false}
                     type="text"
                     minLength={3}
                     maxLength={5000}
@@ -216,9 +230,13 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                 </div>
               </label>
               <label htmlFor="" className="registeritem-label">
-                <p>{t("expert.workspace")}</p>
+                <p>
+                  {t("expert.workspace")}
+                  {pathname.includes("expert") ? <span> *</span> : null}
+                </p>
                 <div>
                   <input
+                    required={pathname.includes("expert") ? true : false}
                     type="text"
                     minLength={3}
                     maxLength={5000}
@@ -241,9 +259,13 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
               </div>
               <div className="registeritem-flexbox">
                 <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.workstart")}</p>
+                  <p>
+                    {t("expert.workstart")}
+                    {pathname.includes("expert") ? <span> *</span> : null}
+                  </p>
                   <div>
                     <input
+                      required={pathname.includes("expert") ? true : false}
                       type="date"
                       minLength={3}
                       maxLength={100}
@@ -259,9 +281,17 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                   </div>
                 </label>
                 <label htmlFor="" className="registeritem-label">
-                  <p>{t("expert.workend")}</p>
+                  <p>
+                    {t("expert.workend")}
+                    {pathname.includes("expert") && !el.status ? (
+                      <span> *</span>
+                    ) : null}
+                  </p>
                   <div>
                     <input
+                      required={
+                        pathname.includes("expert") && !el.status ? true : false
+                      }
                       disabled={el?.status}
                       type="date"
                       minLength={3}
