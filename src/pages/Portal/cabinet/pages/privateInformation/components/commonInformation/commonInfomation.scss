@@ -9,6 +9,9 @@
       align-items: center;
       grid-auto-flow: column;
       column-gap: 20px;
+      @media (max-width: 31.44em) {
+        column-gap: 7px;
+      }
       & > img {
         border-radius: 50%;
         width: 80px;
@@ -73,6 +76,13 @@
         gap: 30px;
         @media (max-width: 31.44em) {
           grid-template-columns: 1fr;
+          // grid-template-rows: repeat(12, 50px);
+          .item-lastName {
+            grid-area: 1/1/2/2;
+          }
+          .item-firstName {
+            grid-area: 2/1/3/2;
+          }
         }
 
         &-divCon {

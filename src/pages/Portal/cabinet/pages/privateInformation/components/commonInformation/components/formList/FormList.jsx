@@ -34,7 +34,7 @@ const FormList = ({
   return (
     <div className="commonInformation-cont-formCont-form-box">
       <div className="commonInformation-cont-formCont-form-box-divCon">
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper item-lastName">
           <label htmlFor="lastName">
             Familiyasi <span>*</span>
           </label>
@@ -142,7 +142,7 @@ const FormList = ({
       </div>
 
       <div className="commonInformation-cont-formCont-form-box-divCon">
-        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
+        <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper item-firstName">
           <label htmlFor="firstName">
             Ismi <span>*</span>
           </label>
