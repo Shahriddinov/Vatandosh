@@ -8,6 +8,7 @@
   align-items: center;
   padding: 0 50px;
   border-bottom: 1px solid #eaedf6;
+  position: relative;
 
   &__user-information {
     height: 100%;
@@ -173,7 +174,7 @@
     &__right-buttons {
       transition: 0.5s ease;
       position: absolute;
-      transform: translateX(150%);
+      transform: translateX(180%);
       right: 110px;
       &.active {
         transform: translateX(0);
