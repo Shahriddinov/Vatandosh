@@ -11,8 +11,10 @@ import plusIcon from "../../../../../../../../assets/images/choose/plusIcon.svg"
 import { useSelector } from "react-redux";
 import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
 import { cabinetEducationDataChange, deleteCabinetEducation } from "../extra";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ el, data, setData, dispatch }) => {
+  const { t } = useTranslation();
   const { specialization } = useSelector((state) => state.expertRegisterSlice);
   const [btnToggle, setBtnToggle] = useState(false);
 
@@ -28,8 +30,7 @@ const Card = ({ el, data, setData, dispatch }) => {
   return (
     <motion.div
       animate={{ height: !btnToggle ? "auto" : "70px" }}
-      className="card-container"
-    >
+      className="card-container">
       <div className="card-container-hl"></div>
       <div className="card-container-header-cont">
         <h1>{el.institution}</h1>
@@ -50,7 +51,7 @@ const Card = ({ el, data, setData, dispatch }) => {
       </div>
 
       <div className="card-container-inputWrapper1">
-        <label htmlFor="univercity">Xorijda tahsil olgan OTM</label>
+        <label htmlFor="univercity">{t("expert.xorotm")}</label>
         <div>
           <input
             type="text"
@@ -60,14 +61,14 @@ const Card = ({ el, data, setData, dispatch }) => {
               handleChange({ key: "institution", value: evt.target.value })
             }
             value={el?.institution}
-            placeholder="Kiriting"
+            placeholder={t("inputplaceholder")}
           />
         </div>
       </div>
 
       <div className="card-container-inputWrapper2">
         <div className="card-container-inputWrapper2-wrapper">
-          <label htmlFor="faculty">Xorijda fakulteti</label>
+          <label htmlFor="faculty">{t("country")}</label>
           <div>
             <input
               type="text"
@@ -77,7 +78,7 @@ const Card = ({ el, data, setData, dispatch }) => {
                 handleChange({ key: "faculty", value: evt.target.value })
               }
               value={el?.faculty}
-              placeholder="Kiriting"
+              placeholder={t("inputplaceholder")}
             />
           </div>
         </div>
