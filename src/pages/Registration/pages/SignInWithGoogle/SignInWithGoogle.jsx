@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { loginUser } from "../../../../reduxToolkit/authSlice/authSlice";
-import { useDispatch } from "react-redux";
+import {
+  changeStatus,
+  loginUser,
+} from "../../../../reduxToolkit/authSlice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 const SignInWithGoogle = () => {
@@ -12,11 +15,15 @@ const SignInWithGoogle = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const status = useSelector((state) => state.authSlice.statusAuth);
+
   const url = location.search.slice(6);
 
   useEffect(() => {
     const getGoogleUser = async () => {
       try {
+        dispatch(changeStatus());
+
         const user = await axios
           .get(
             `https://api.vatandoshlarfondi.uz/api/oauth/call-back/google?code=${url}`
@@ -24,10 +31,6 @@ const SignInWithGoogle = () => {
           .then((res) => res.data);
 
         dispatch(loginUser(user));
-
-        if (user.token) {
-          navigate("/registration/register");
-        }
       } catch (e) {
         console.log(e);
       }
@@ -35,6 +38,12 @@ const SignInWithGoogle = () => {
 
     getGoogleUser();
   }, []);
+
+  useEffect(() => {
+    if (status) {
+      navigate("/registration/register");
+    }
+  }, [status]);
 
   return <div>{t("registerGoogle")}</div>;
 };

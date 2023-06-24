@@ -4,10 +4,13 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { postExpertScientific } from "../../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
+
   const [data, setData] = useState({
     academic_degree: "",
     scientific_title: "",
@@ -39,9 +42,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
         <div className="registeritem-form">
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.degree")}</p>
+              <p>
+                {t("expert.degree")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <div>
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   type="text"
                   value={data.academic_degree}
                   minLength={3}
@@ -57,9 +64,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.activitypositon")}</p>
+              <p>
+                {t("expert.activitypositon")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <div>
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   type="text"
                   minLength={3}
                   maxLength={5000}
@@ -76,9 +87,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
             </label>
           </div>
           <label htmlFor="" className="registeritem-label">
-            <p>{t("expert.articletitle")}</p>
+            <p>
+              {t("expert.articletitle")}
+              {pathname.includes("expert") ? <span> *</span> : null}
+            </p>
             <div>
               <input
+                required={pathname.includes("expert") ? true : false}
                 type="text"
                 minLength={3}
                 maxLength={5000}
@@ -95,9 +110,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
           </label>
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.articlename")}</p>
+              <p>
+                {t("expert.articlename")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <div>
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   type="text"
                   minLength={3}
                   maxLength={5000}
@@ -113,9 +132,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.articledate")}</p>
+              <p>
+                {t("expert.articledate")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <div>
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   type="date"
                   placeholder={t("expert.inputplaceholder")}
                   value={data.scientific_article_created_at}
@@ -131,9 +154,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
           </div>
           <div className="registeritem-flexbox">
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.articlelink")}</p>
+              <p>
+                {t("expert.articlelink")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <div>
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   type="text"
                   minLength={3}
                   maxLength={5000}
@@ -149,9 +176,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
               </div>
             </label>
             <label htmlFor="" className="registeritem-label">
-              <p>{t("expert.articlefile")}</p>
+              <p>
+                {t("expert.articlefile")}
+                {pathname.includes("expert") ? <span> *</span> : null}
+              </p>
               <label htmlFor="registeritem-label-fileinput-id">
                 <input
+                  required={pathname.includes("expert") ? true : false}
                   id="registeritem-label-fileinput-id"
                   className="registeritem-label-fileinput"
                   type="file"
@@ -172,9 +203,13 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
             </label>
           </div>
           <label htmlFor="" className="registeritem-label">
-            <p>{t("expert.articlehobby")}</p>
+            <p>
+              {t("expert.articlehobby")}
+              {pathname.includes("expert") ? <span> *</span> : null}
+            </p>
             <div>
               <input
+                required={pathname.includes("expert") ? true : false}
                 type="text"
                 minLength={3}
                 maxLength={5000}

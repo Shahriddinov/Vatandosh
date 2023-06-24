@@ -14,6 +14,7 @@ import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
 import { postExpertRegister } from "../ExpertSlice/RegisterSlice/extraReducer";
 
 const initialState = {
+  statusAuth: null,
   emailLoading: false,
   verifyLoading: true,
   passwordLoading: true,
@@ -39,22 +40,13 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      state.userData = payload.user;
       state.token = payload.token;
 
       if (payload.userProfile) {
+        state.userData = payload.userProfile;
         localStorage.setItem("user", JSON.stringify(payload.userProfile));
       } else {
-        const newUser = {
-          user_id: { id: payload.user.id },
-          avatar_url: payload.user.avatar,
-          first_name: payload.user.name.split(" ")[0],
-          last_name: payload.user.name.split(" ")[1]
-            ? payload.user.name.split(" ")[1]
-            : "",
-        };
-
-        localStorage.setItem("user", JSON.stringify(newUser));
+        state.statusAuth = "success";
       }
 
       localStorage.setItem("token", payload.token);
@@ -63,6 +55,9 @@ const authSlice = createSlice({
       removeItem("token");
       removeItem("user");
       state.token = null;
+    },
+    changeStatus: (state) => {
+      state.statusAuth = null;
     },
   },
   extraReducers: (build) => {
@@ -239,5 +234,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { removeToken, loginUser } = authSlice.actions;
+export const { removeToken, loginUser, changeStatus } = authSlice.actions;
 export default authSlice.reducer;

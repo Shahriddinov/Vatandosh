@@ -4,7 +4,6 @@ import "./VolunterHome.scss";
 import { useOutletContext } from "react-router-dom";
 import Nav from "../../../expert/components/Nav/Nav";
 import Navbar from "../../../expert/components/Navbar/Navbar";
-import backImg from "../../../../../assets/images/volunter/volunter.png";
 import Council from "./components/Council/Council";
 import Header from "../../components/Header/Header";
 import News from "../../../expert/pages/ExpertHome/components/News/News";
@@ -71,7 +70,9 @@ function VolunterHome() {
     <>
       <div
         className="volunter-home"
-        style={{ backgroundImage: `url(${backImg})` }}
+        style={{
+          backgroundImage: `url(${PORTAL_IMAGE_URL}${findExpertHeroPage.image})`,
+        }}
       >
         <Navbar navbarUrl={navbarUrl} />
         <Nav navData={navData} />
