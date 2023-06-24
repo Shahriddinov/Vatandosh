@@ -40,6 +40,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       grid-template-columns: 1fr 1fr;
       column-gap: 30px;
       & > div {
+        @media (max-width: 500px) {
+          margin-top: 20px;
+        }
         & > div {
           border: 1px solid #eaedf6;
           border-radius: 6px;

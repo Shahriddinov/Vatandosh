@@ -11,8 +11,10 @@ import {
   handleCabinetJob,
 } from "./extra";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Job = () => {
+  const { t } = useTranslation();
   const { data, setData, employment, employmentLoading, dispatch } =
     useJobFetching();
   if (employmentLoading) {
@@ -65,7 +67,7 @@ const Job = () => {
         </motion.button>
       </div>
       <button className="commonInformation-form-btn" onClick={handleSubmit}>
-        Submit
+        {t("private-information.save")}
       </button>
     </>
   );

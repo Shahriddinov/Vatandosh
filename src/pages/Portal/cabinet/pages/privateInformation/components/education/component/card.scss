@@ -54,6 +54,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;
+    align-items: flex-end;
+    &-select {
+      @media (max-width: 500px) {
+        margin-top: 20px;
+      }
+    }
     &-wrapper {
       & > label {
         @include fontStyles(400, 14px, 17px, #1e202c);

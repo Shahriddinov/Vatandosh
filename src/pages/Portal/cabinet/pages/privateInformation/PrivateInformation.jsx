@@ -2,43 +2,44 @@ import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./privateInformation.scss";
 import { motion } from "framer-motion";
-
-const menuButtons = [
-  {
-    id: 1,
-    name: "Общая информация",
-    url: "personal-information",
-  },
-  {
-    id: 2,
-    name: "Работа",
-    url: "job",
-  },
-  {
-    id: 3,
-    name: "Образование",
-    url: "education",
-  },
-  {
-    id: 4,
-    name: "Ilmiy faoliyatingiz",
-    url: "scientificActivity",
-  },
-  {
-    id: 5,
-    name: "Taklifingiz",
-    url: "offer",
-  },
-  {
-    id: 6,
-    name: "Volonyorlik faoliyati",
-    url: "voluntaryActivity",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const PrivateInformation = () => {
   const { pathname } = useLocation();
   const [active, setActive] = useState(pathname.split("/")[4]);
+  const { t } = useTranslation();
+  const menuButtons = [
+    {
+      id: 1,
+      name: t("private-information.generalInformation"),
+      url: "personal-information",
+    },
+    {
+      id: 2,
+      name: t("private-information.job"),
+      url: "job",
+    },
+    {
+      id: 3,
+      name: t("private-information.education"),
+      url: "education",
+    },
+    {
+      id: 4,
+      name: t("private-information.scientificActivity"),
+      url: "scientificActivity",
+    },
+    {
+      id: 5,
+      name: t("private-information.offer"),
+      url: "offer",
+    },
+    {
+      id: 6,
+      name: t("private-information.volunteerActivity"),
+      url: "voluntaryActivity",
+    },
+  ];
   return (
     <div className="piMainCont">
       <div className="piMainCont-secondaryCont">

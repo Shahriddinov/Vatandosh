@@ -8,6 +8,12 @@ const EventsList = ({ meetingsData }) => {
       {meetingsData?.map((el) => (
         <EventsCard key={el.id} webinar={el} />
       ))}
+      {meetingsData?.map((el) => (
+        <EventsCard key={el.id} webinar={el} />
+      ))}
+      {meetingsData?.map((el) => (
+        <EventsCard key={el.id} webinar={el} />
+      ))}
     </div>
   );
 };

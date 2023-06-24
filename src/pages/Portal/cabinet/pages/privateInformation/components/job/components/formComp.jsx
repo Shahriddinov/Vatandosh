@@ -7,6 +7,7 @@ import trashIcon from "../../../../../../../../assets/images/choose/trashIcon.sv
 import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const locationDataChange = createSelector(
   (store) => store.community.locationGet,
@@ -19,6 +20,7 @@ const locationDataChange = createSelector(
 );
 
 const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
+  const { t } = useTranslation();
   const locationData = useSelector(locationDataChange);
   const findCountry = locationData.find(
     (country) => country.id === el?.location_id
@@ -45,7 +47,7 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
                 value={findCountry ? findCountry?.label : ""}
                 handleChange={handleChange}
                 data={locationData}
-                text="Ish joyi joylashgan davlat"
+                text={t("private-information.workLocationCountry")}
                 valueKey={"location_id"}
                 comId={el.id}
               />
@@ -53,7 +55,7 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
 
             <div className="form-cont-right-fieldCont">
               <label htmlFor="jobcity">
-                Ish joyi joylashgan davlatni mintaqasi yoki shahar{" "}
+                {t("private-information.workLocationCity")}
                 <span>*</span>
               </label>
               <div>
@@ -77,7 +79,7 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
           <div className="form-cont-left">
             <div className="form-cont-left-fieldCont">
               <label htmlFor="position">
-                Lavozimi <span>*</span>
+                {t("private-information.Position")} <span>*</span>
               </label>
               <div>
                 <input
@@ -96,7 +98,8 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
             </div>
             <div className="form-cont-right-fieldCont">
               <label htmlFor="jobplace">
-                Ish joyi <span>*</span>
+                {t("private-information.workPlace")}
+                <span>*</span>
               </label>
               <div>
                 <input
@@ -129,14 +132,15 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
                   })
                 }
               />
-              <span>Hozirda shu sohada ishlayapti</span>
+              <span>{t("private-information.currentlyWorking")}</span>
             </div>
           </div>
 
           <div className="form-cont-left">
             <div className="form-cont-left-fieldCont">
               <label htmlFor="yearOfStart">
-                Ish boshlagan yili <span>*</span>
+                {t("private-information.startDate")}
+                <span>*</span>
               </label>
               <div>
                 <input
@@ -157,7 +161,8 @@ const FormComp = ({ handleChange, data, el, handleSubmit, deleteFunction }) => {
 
             <div className="form-cont-right-fieldCont">
               <label htmlFor="yearOfEnd">
-                Tamomlagan yil <span>*</span>
+                {t("private-information.endDate")}
+                <span>*</span>
               </label>
               <div>
                 <input

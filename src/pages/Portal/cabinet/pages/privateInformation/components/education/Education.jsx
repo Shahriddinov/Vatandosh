@@ -14,6 +14,7 @@ import {
 import Spinner from "../../../../../../../component/Spinner/Spinner";
 import { cabinetEducationDataSubmit } from "./extra";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const initialData = {
   univercity: "",
@@ -24,6 +25,7 @@ const initialData = {
 };
 
 const Education = () => {
+  const { t } = useTranslation();
   const [inputData, setInputData] = useState([{ ...initialData }]);
   const {
     data,
@@ -86,7 +88,7 @@ const Education = () => {
       </div>
 
       <button className="commonInformation-form-btn" onClick={handleSubmit}>
-        Submit
+        {t("private-information.save")}
       </button>
     </>
   );

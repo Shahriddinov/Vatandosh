@@ -36,7 +36,8 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper ">
           <label htmlFor="lastName">
-            Familiyasi <span>*</span>
+            {t("private-information.lastName")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -56,7 +57,8 @@ const FormList = ({
         </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper item-firstName">
           <label htmlFor="firstName">
-            Ismi <span>*</span>
+            {t("private-information.firstName")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -78,7 +80,8 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="middleName">
-            Sharifi <span>*</span>
+            {t("private-information.middleName")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -100,7 +103,7 @@ const FormList = ({
           <MyInputDate
             text="Tugilgan sana"
             handleChange={handleChange}
-            valueKey="birth_date"
+            valueKey={t("private-information.DOB")}
             value={data?.birth_date ? data?.birth_date : "12-12-1999"}
           />
         </div>
@@ -112,7 +115,7 @@ const FormList = ({
             value={data.gender ? findGender.label : ""}
             handleChange={handleChange}
             data={genderOptions}
-            text={"Jinsi"}
+            text={t("private-information.sex")}
             valueKey={"gender"}
             placeholder="Jinsi"
           />
@@ -123,7 +126,7 @@ const FormList = ({
             value={findNation ? findNation.label : ""}
             handleChange={handleChange}
             data={nationsData}
-            text={"Millati"}
+            text={t("private-information.nationality")}
             valueKey={"national_id"}
             placeholder="Millati"
           />
@@ -133,7 +136,8 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="uzbAddress">
-            O'zbekistondagi manzil <span>*</span>
+            {t("private-information.uzbAddress")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -156,7 +160,7 @@ const FormList = ({
             value={findCountry ? findCountry?.label : ""}
             handleChange={handleChange}
             data={locationData}
-            text="Xorijiy davlat"
+            text={t("private-information.abroadAddress")}
             valueKey={"international_location_id"}
           />
         </div>
@@ -168,7 +172,7 @@ const FormList = ({
             value={findCity ? findCity?.label : ""}
             handleChange={handleChange}
             data={allCitiesGet}
-            text={t("communityAssociation.menu5_info.input2_name")}
+            text={t("private-information.city")}
             valueKey={"international_address_id"}
             placeholder="Barcha shaharlar"
           />
@@ -178,7 +182,9 @@ const FormList = ({
             id="outlined-weight-helper-text"
             className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper-span"
           >
-            <span className="my-input__text">Telefon raqam</span>
+            <span className="my-input__text">
+              {t("private-information.phoneNumber")}
+            </span>
             <span className="my-input__required"> *</span>
           </FormHelperText>
           <PhoneInput
@@ -197,7 +203,8 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="activityType">
-            Faoliyat turi <span>*</span>
+            {t("private-information.activityType")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -217,7 +224,7 @@ const FormList = ({
         </div>
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="uploadFile">
-            Passport yuklash (pdf, doc) <span>*</span>
+            {t("private-information.uploadPassport")} <span>*</span>
           </label>
           <div>
             <label htmlFor="passport">

@@ -17,8 +17,10 @@ import {
   cabinetScientificSubmit,
 } from "../extra";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const FormCard = ({ scientificData, data, setData }) => {
+  const { t } = useTranslation();
   const [hobby, setHobby] = useState("");
   const dispatch = useDispatch();
 
@@ -65,7 +67,8 @@ const FormCard = ({ scientificData, data, setData }) => {
         <div className="formCard-cont-form-row1">
           <div>
             <label htmlFor="degree">
-              Ilmiy darajasi <span>*</span>
+              {t("private-information.degree")}
+              <span>*</span>
             </label>
             <div>
               <input
@@ -82,7 +85,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div>
             <label htmlFor="title">
-              Ilmiy unvoni <span>*</span>
+              {t("private-information.title")}
+              <span>*</span>
             </label>
             <div>
               <input
@@ -100,7 +104,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
         <div className="formCard-cont-form-row2">
           <label htmlFor="article">
-            Ilmiy maqola mavzusi <span>*</span>
+            {t("private-information.articleTopic")}
+            <span>*</span>
           </label>
           <div>
             <input
@@ -118,7 +123,8 @@ const FormCard = ({ scientificData, data, setData }) => {
         <div className="formCard-cont-form-row3">
           <div>
             <label htmlFor="journal">
-              Chop etilgan jurnal nomi <span>*</span>
+              {t("private-information.publishedJournal")}
+              <span>*</span>
             </label>
             <div>
               <input
@@ -135,7 +141,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div className="formCard-cont-form-row3-inner2">
             <label htmlFor="release">
-              Chop etilgan sana <span>*</span>
+              {t("private-information.publishedDate")}
+              <span>*</span>
             </label>
             <div>
               <input
@@ -152,7 +159,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div>
             <label htmlFor="articleLink">
-              Maqola havolasi <span>*</span>
+              {t("private-information.articleLink")}
+              <span>*</span>
             </label>
             <div>
               <input
@@ -174,7 +182,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div className="formCard-cont-form-row3-inner3">
             <label htmlFor="articleFile">
-              Maqola fayli <span>*</span>
+              {t("private-information.articleFile")}
+              <span>*</span>
             </label>
             <div>
               <label htmlFor="articleFile">
@@ -196,7 +205,8 @@ const FormCard = ({ scientificData, data, setData }) => {
 
         <div className="formCard-cont-form-row4">
           <label htmlFor="hobby">
-            Asosiy ilmiy qiziqish yo‘nalishlari <span>*</span>
+            {t("private-information.areasInterest")}
+            <span>*</span>
           </label>
           <div>
             <input

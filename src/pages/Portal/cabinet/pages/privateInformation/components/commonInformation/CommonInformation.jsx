@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const CommonInformation = () => {
+  const { t } = useTranslation();
   const {
     locationData,
     locationLoading,
@@ -66,7 +67,10 @@ const CommonInformation = () => {
               alt="userImg"
             />
             <div>
-              <label htmlFor="uploadImg">Yangi rasm yuklang </label>
+              <label htmlFor="uploadImg">
+                {" "}
+                {t("private-information.uploadNewImage")}
+              </label>
               <input
                 type="file"
                 id="uploadImg"
@@ -87,10 +91,10 @@ const CommonInformation = () => {
                 })
               }
             >
-              O‘chirish
+              {t("private-information.deleteImage")}
             </button>
           </div>
-          <p>JPG, GIF yoki PNG. Maksimal hajmi 800K</p>
+          <p>{t("private-information.imgUploadType")}</p>
         </div>
 
         <div className="commonInformation-cont-formCont">
@@ -110,7 +114,7 @@ const CommonInformation = () => {
               className="commonInformation-cont-formCont-form-btn"
               type="submit"
             >
-              Submit
+              {t("private-information.save")}
             </button>
           </form>
         </div>

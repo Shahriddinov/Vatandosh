@@ -7,8 +7,10 @@ import trashIcon from "../../../../../../../assets/images/choose/trashIcon.svg";
 // libarary
 import { motion } from "framer-motion";
 import { cabinetOfferDelete } from "./extra";
+import { useTranslation } from "react-i18next";
 
 const Offer = () => {
+  const { t } = useTranslation();
   const { data, setData, loading, error, expertSuggestionsData, dispatch } =
     useCabinetOfferFetching();
 
@@ -52,7 +54,7 @@ const Offer = () => {
         expertSuggestionsData={expertSuggestionsData}
       />
       <button className="commonInformation-form-btn" form="cabinetOfferSubmit">
-        Submit
+        {t("private-information.save")}
       </button>
     </>
   );

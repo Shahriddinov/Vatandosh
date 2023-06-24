@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import useVoluntaryActivityFetching from "./hooks/useVoluntaryActivityFetching";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   id: new Date().getTime(),
@@ -16,6 +17,7 @@ const initialState = {
 };
 
 const VoluntaryActivity = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(true);
   const { deleteCompHandler, submitCompHandler } = useVoluntaryActivityFetching(
@@ -51,17 +53,17 @@ const VoluntaryActivity = () => {
           onChange={(e) => setToggle(!e.target.checked)}
         />
         <label htmlFor="allTrue">
-          Barcha ma’lumotlarni to‘liq va to‘g‘ri kiritdim.
+          {t("private-information.enteredCorrectly")}
         </label>
       </div>
       <motion.button
         whileTap={{ scale: 0.9 }}
-        className={`commonInformation-form-btn ${toggle ? 'disabled' : ''}`}
+        className={`commonInformation-form-btn ${toggle ? "disabled" : ""}`}
         type="button"
         disabled={toggle}
         onClick={() => submitCompHandler(data)}
       >
-        Saqlash
+        {t("private-information.save")}
       </motion.button>
     </div>
   );

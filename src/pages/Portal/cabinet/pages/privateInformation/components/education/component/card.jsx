@@ -11,8 +11,10 @@ import plusIcon from "../../../../../../../../assets/images/choose/plusIcon.svg"
 import { useSelector } from "react-redux";
 import { MySelect } from "../../../../../../communityAssociation/pages/communityAssociationRegister/components";
 import { cabinetEducationDataChange, deleteCabinetEducation } from "../extra";
+import { useTranslation } from "react-i18next";
 
 const Card = ({ el, data, setData, dispatch }) => {
+  const { t } = useTranslation();
   const { specialization } = useSelector((state) => state.expertRegisterSlice);
   const [btnToggle, setBtnToggle] = useState(false);
 
@@ -50,7 +52,9 @@ const Card = ({ el, data, setData, dispatch }) => {
       </div>
 
       <div className="card-container-inputWrapper1">
-        <label htmlFor="univercity">Xorijda tahsil olgan OTM</label>
+        <label htmlFor="univercity">
+          {t("private-information.educatedAbroad")}
+        </label>
         <div>
           <input
             type="text"
@@ -67,7 +71,10 @@ const Card = ({ el, data, setData, dispatch }) => {
 
       <div className="card-container-inputWrapper2">
         <div className="card-container-inputWrapper2-wrapper">
-          <label htmlFor="faculty">Xorijda fakulteti</label>
+          <label htmlFor="faculty">
+            {" "}
+            {t("private-information.abroadFaculty")}
+          </label>
           <div>
             <input
               type="text"
@@ -86,7 +93,7 @@ const Card = ({ el, data, setData, dispatch }) => {
             value={findSpecialization ? findSpecialization?.label : ""}
             handleChange={handleChange}
             data={specialization}
-            text="Mutaxassisligi"
+            text={t("private-information.spacialty")}
             valueKey={"specialization_id"}
           />
           {/* <label htmlFor="specialty">Xorijdagi mutaxassisligi</label>

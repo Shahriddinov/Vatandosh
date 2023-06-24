@@ -4,8 +4,10 @@ import { useScientificActivity } from "./hooks/useScientificActivity";
 import { Spinner } from "../../../../../../../component";
 import { cabinetScientificSubmit } from "./extra";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const ScientificActivity = () => {
+  const { t } = useTranslation();
   const {
     scientificData,
     data,
@@ -45,7 +47,7 @@ const ScientificActivity = () => {
         />
       </div>
       <button className="commonInformation-form-btn" onClick={handleSubmit}>
-        Submit
+        {t("private-information.save")}
       </button>
     </>
   );

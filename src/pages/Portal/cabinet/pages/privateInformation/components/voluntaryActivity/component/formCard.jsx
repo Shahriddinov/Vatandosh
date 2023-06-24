@@ -7,8 +7,10 @@ import plusIcon from "../../../../../../../../assets/images/choose/addPic.svg";
 import trashIconSmall from "../../../../../../../../assets/images/choose/trash.svg";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const FormCard = ({ el, data, setData, deleteCompHandler, index }) => {
+  const { t } = useTranslation();
   const [openCard, setOpenCard] = useState(true);
 
   const inputHandler = (e, id) => {
@@ -79,7 +81,8 @@ const FormCard = ({ el, data, setData, deleteCompHandler, index }) => {
 
       <div className="formCard-form-part2">
         <label htmlFor={`${el.id}a`}>
-          Maqola mavzusi <span>*</span>
+          {t("private-information.articleTopic")}
+          <span>*</span>
         </label>
         <div>
           <input
@@ -114,7 +117,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler, index }) => {
               onClick={() => deleteImgHandler(el.id, each, el.from)}
             >
               <img src={trashIconSmall} alt="trashicon" />
-              <p>Удалить</p>
+              <p> {t("private-information.deleteImage")}</p>
             </div>
           </div>
         ))}
@@ -136,7 +139,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler, index }) => {
 
       <div className="formCard-form-part4">
         <label htmlFor={el.id}>
-          Izohingiz yozing <span>*</span>
+          {t("private-information.yourComment")} <span>*</span>
         </label>
         <textarea
           name="description"
