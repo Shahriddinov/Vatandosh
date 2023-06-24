@@ -12,6 +12,7 @@ import CardComp from "../components/card/CardComp";
 import { useCabinetVolunteerFetching } from "./hooks/useCabinetVoluneerFetching";
 import { Pagination, Spinner } from "../../../../../component";
 import { someDataFun } from "./extra";
+import { useTranslation } from "react-i18next";
 
 const btns = [
   { id: 1, label: "Barchasi", type: "all" },
@@ -20,6 +21,7 @@ const btns = [
 ];
 
 const Volunteering = () => {
+  const { t } = useTranslation();
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
   const [activePage, setActivePage] = useState(1);
   const { error, volunteerActivity, volunteerActivityLoading } =
@@ -30,7 +32,7 @@ const Volunteering = () => {
   } else if (error) {
     return <p>{error}</p>;
   } else if (volunteerActivity.length === 0) {
-    return <p>Hozirda ma'lumot mavjud emas</p>;
+    return <p>{t("wordNone")}</p>;
   }
 
   const handleBtn = (el) => {
