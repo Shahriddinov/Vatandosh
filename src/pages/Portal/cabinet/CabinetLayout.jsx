@@ -141,6 +141,7 @@ const CabinetLayout = () => {
           <CabinetLeftMenu
             leftMenuToggle={leftMenuToggle}
             setLeftMenuToggle={setLeftMenuToggle}
+            
           />
         </div>
         <div className="cabinet-layout__right">
