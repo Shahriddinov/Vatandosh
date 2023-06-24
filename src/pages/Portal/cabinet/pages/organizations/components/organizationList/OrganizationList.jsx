@@ -13,6 +13,9 @@ const OrganizationList = ({ data }) => {
           {data.map((el) => (
             <OrganizationCard el={el} key={el.id} allRegions={allRegions} />
           ))}
+          {data.map((el) => (
+            <OrganizationCard el={el} key={el.id} allRegions={allRegions} />
+          ))}
         </ul>
       ) : (
         <p>Jamoat birlashmalari ma'vjud emas</p>

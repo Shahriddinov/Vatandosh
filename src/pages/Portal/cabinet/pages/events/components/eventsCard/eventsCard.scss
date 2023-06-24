@@ -97,8 +97,8 @@
 
 @media screen and (max-width: 768px) {
   .cabinet-events {
-    &-box{
-      margin: 2rem 0 ;
+    &-box {
+      margin: 2rem 0;
     }
     &-img {
       height: 450px;
@@ -116,15 +116,23 @@
       justify-content: space-evenly;
       margin: 20px 0;
       &__item {
-        font-size: .9em;
+        font-size: 0.9em;
       }
     }
   }
 }
-@media screen and (max-width: 548px){
+@media screen and (max-width: 548px) {
   .cabinet-events {
     &-img {
       height: 270px;
+    }
+  }
+}
+@media screen and (max-width: 470px) {
+  .cabinet-events {
+    &-more,
+    &-links {
+      padding: 10px 0;
     }
   }
 }
