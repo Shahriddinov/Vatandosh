@@ -26,6 +26,7 @@ const CabinetHeader = () => {
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
   const user = useSelector((state) => state.authSlice.userData);
+  const loading = useSelector((state) => state.authSlice.registerLoading);
   const employmentLoading = useSelector(
     (state) => state.expertRegisterSlice.employmentLoading
   );
@@ -46,7 +47,7 @@ const CabinetHeader = () => {
     dispatch(getExpertEmployment());
   }, [dispatch]);
 
-  if (employmentLoading) {
+  if (employmentLoading || loading) {
     return <Spinner position="full" />;
   }
 
