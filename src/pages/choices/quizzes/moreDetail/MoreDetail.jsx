@@ -88,9 +88,7 @@ const MoreDetail = () => {
             ))}
           </Slider>
           {byIdData?.status === 0 ? (
-            <div className="singleCardContainer-timeOver">
-              <p>{t("choices.quizIsOver")}</p>
-            </div>
+            ""
           ) : (
             <div className="singleCardContainer-timeCont">
               <div className="singleCardContainer-timeCont-inner">
@@ -111,13 +109,15 @@ const MoreDetail = () => {
           )}
           {byIdData?.status === 1 ? (
             <button
+              style={{ marginTop: "100px" }}
               className="singleCardContainer-active"
-              onClick={() => navigate("/registration/signin")}
-            >
+              onClick={() => navigate("/registration/signin")}>
               {t("choices.participatee")}
             </button>
           ) : (
-            <button className="singleCardContainer-ended">
+            <button
+              style={{ marginTop: "100px" }}
+              className="singleCardContainer-ended">
               {t("choices.projectEnded")}
             </button>
           )}
@@ -148,8 +148,7 @@ const MoreDetail = () => {
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+              allowFullScreen></iframe>
           ) : null}
 
           <div className="singleCardContainer-socialsCont">
