@@ -58,7 +58,7 @@
       margin: auto 0;
     }
   }
-  &__left-menu-open{
+  &__left-menu-open {
     margin-right: 3rem;
   }
   &__right-buttons {
@@ -150,15 +150,25 @@
     }
   }
 }
-
+@media screen and (max-width: 950px) {
+  .cabinet-header {
+    &__left-menu-open {
+      display: flex;
+    }
+  }
+}
 @media screen and (max-width: 768px) {
   .cabinet-header {
     &__right-buttons {
       display: none;
     }
-    &__left-menu-open,
     &__right-buttons-open {
       display: flex;
     }
+  }
+}
+@media screen and (max-width: 500px) {
+  .cabinet-header {
+    padding: 0 25px;
   }
 }

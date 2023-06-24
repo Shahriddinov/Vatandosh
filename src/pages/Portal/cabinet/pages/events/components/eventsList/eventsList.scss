@@ -1,6 +1,11 @@
 .cabinet-events-list {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 350px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
+}
+@media screen and (max-width: 768px) {
+  .cabinet-events-list {
+    display: block;
+  }
 }
