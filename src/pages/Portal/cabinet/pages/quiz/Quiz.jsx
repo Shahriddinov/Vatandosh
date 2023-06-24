@@ -21,7 +21,7 @@ const Quiz = () => {
   } else if (error) {
     return <p>{error}</p>;
   } else if (quizData?.quizzes.length === 0) {
-    return <p>Hozirda bizda malumot mavjud emas</p>;
+    // return <p>Hozirda bizda malumot mavjud emas</p>;
   }
 
   const handleChangeBtn = ({ id, status, type }) => {

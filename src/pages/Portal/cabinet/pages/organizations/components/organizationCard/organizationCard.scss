@@ -19,7 +19,7 @@
       border-radius: 50%;
     }
     & > span {
-      @include fontStyles(700, 14px, 22px, $colorTitle);
+      @include fontStyles(700, 0.875em, 140%, $colorTitle);
     }
   }
 
@@ -32,7 +32,7 @@
   &_text {
     height: 54px;
     overflow: hidden;
-    @include fontStyles(400, 14px, 18px, #4b5157);
+    @include fontStyles(400, 0.875em, 130%, #4b5157);
     margin-top: 15px;
     text-align: center;
   }
@@ -49,12 +49,12 @@
 
   &_bottomText {
     margin-top: 12px;
-    @include fontStyles(400, 14px, 18px, #4b5157);
+    @include fontStyles(400, 0.875em, 130%, #4b5157);
   }
 
   & > button {
     margin-top: 12px;
-    @include fontStyles(500, 14px, 17px, $colorTitle);
+    @include fontStyles(500, 0.875em, 125%, $colorTitle);
     padding: 12.5px 0;
     width: 100%;
     border: 1px solid #eaedf6;
@@ -63,5 +63,21 @@
   }
   & > button:hover {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .organization-card {
+    &_text {
+      height: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .organization-card {
+    &_text {
+      height: auto;
+    }
   }
 }

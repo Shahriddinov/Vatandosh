@@ -24,7 +24,7 @@ const ExpertActivity = () => {
   } else if (error) {
     return <p>{error}</p>;
   } else if (data.length === 0) {
-    return <p>Hozirda ma'lumot mavjud emas</p>;
+    // return <p>Hozirda ma'lumot mavjud emas</p>;
   }
 
   const handleBtn = (el) => {
@@ -46,9 +46,12 @@ const ExpertActivity = () => {
           ))}
         </div>
         <div className="container-expert-inner_cardContainer">
-          {filteredArr.map((el, index) => (
+          {/* {filteredArr.map((el, index) => (
             <CardComp el={el} calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
-          ))}
+          ))} */}
+            <CardComp calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
+            <CardComp calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
+            <CardComp calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
         </div>
       </div>
     </div>
