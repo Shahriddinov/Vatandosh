@@ -9,7 +9,7 @@ import { languageList } from "../../../../component/Layout/data";
 import { useDispatch, useSelector } from "react-redux";
 import i18next from "i18next";
 import { languageChange } from "../../../../reduxToolkit/languageSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
 import Flag from "../../../../assets/images/Flag.svg";
 import Blazon from "../../../../assets/images/blazon.svg";
@@ -25,6 +25,7 @@ import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
 
 export default function PortalSide({ data }) {
   const [state, setState] = useState(false);
+  const { pathname } = useLocation();
 
   const contactData = useSelector((state) => state.contactSlice.contactData);
   const dispatch = useDispatch();
@@ -42,8 +43,8 @@ export default function PortalSide({ data }) {
   };
 
   useEffect(() => {
-    dispatch(getContact());
-  }, [dispatch]);
+    if (!pathname.includes("about-uzbekistan")) dispatch(getContact());
+  }, [dispatch, pathname]);
 
   const list = (anchor) => (
     <Box
