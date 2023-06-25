@@ -30,7 +30,7 @@ const SignInWithGoogle = () => {
           )
           .then((res) => res.data);
 
-        dispatch(loginUser(user));
+        dispatch(loginUser({ user, navigate }));
       } catch (e) {
         console.log(e);
       }
@@ -39,11 +39,13 @@ const SignInWithGoogle = () => {
     getGoogleUser();
   }, []);
 
-  useEffect(() => {
-    if (status) {
-      navigate("/registration/register");
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (status === "user_register") {
+  //     navigate("/registration/register");
+  //   } else if (status === "user_profile") {
+  //     navigate("/portal-category/cabinet");
+  //   }
+  // }, [status]);
 
   return <div>{t("registerGoogle")}</div>;
 };

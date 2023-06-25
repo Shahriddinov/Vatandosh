@@ -30,7 +30,7 @@ const SignInWithFacebook = () => {
           )
           .then((res) => res.data);
 
-        dispatch(loginUser(user));
+        dispatch(loginUser({ user, navigate }));
       } catch (e) {
         console.log(e);
       }
@@ -39,11 +39,11 @@ const SignInWithFacebook = () => {
     getFacebookUser();
   }, []);
 
-  useEffect(() => {
-    if (status) {
-      navigate("/registration/register");
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (status) {
+  //     navigate("/registration/register");
+  //   }
+  // }, [status]);
 
   return <div>{t("registerFacebook")}</div>;
 };

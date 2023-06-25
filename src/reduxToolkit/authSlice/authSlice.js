@@ -40,16 +40,23 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      state.token = payload.token;
+      const { user, navigate } = payload;
+      state.token = user.token;
+      localStorage.setItem("token", user.token);
 
-      if (payload.userProfile) {
-        state.userData = payload.userProfile;
-        localStorage.setItem("user", JSON.stringify(payload.userProfile));
+      if (user.userProfile) {
+        state.userData = user.userProfile;
+        localStorage.setItem("user", JSON.stringify(user.userProfile));
+        state.statusAuth = "user_profile";
+        console.log("profile");
+
+        navigate("/portal-category/cabinet");
       } else {
-        state.statusAuth = "success";
-      }
+        state.statusAuth = "user_register";
+        console.log("Register");
 
-      localStorage.setItem("token", payload.token);
+        navigate("/registration/register");
+      }
     },
     removeToken: (state) => {
       removeItem("token");

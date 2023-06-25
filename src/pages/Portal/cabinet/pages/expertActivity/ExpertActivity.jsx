@@ -32,6 +32,7 @@ const ExpertActivity = () => {
   const handleBtn = (el) => {
     setActiveBtn({ id: el.id, type: el.type });
   };
+
   const filteredArr = filteredArrFun(data, activeBtn.type);
 
   return (
@@ -49,7 +50,12 @@ const ExpertActivity = () => {
         </div>
         <div className="container-expert-inner_cardContainer">
           {filteredArr.map((el, index) => (
-            <CardComp el={el} calendarSvg={calendarSvg} eyeSvg={eyeSvg} />
+            <CardComp
+              el={el}
+              calendarSvg={calendarSvg}
+              eyeSvg={eyeSvg}
+              key={el?.id}
+            />
           ))}
         </div>
       </div>
