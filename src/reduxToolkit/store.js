@@ -56,6 +56,7 @@ import websiteNewsSlice from "./siteNews";
 import websiteEventSlice from "./SiteEvent";
 import publicAssSlice from "./publicAssociations/index";
 import expertActivitySlice from "./ExpertSlice/ExpertActivity/index";
+import cabinet from "./portalSlices/CabinetSlice";
 
 const store = configureStore({
   reducer: {
@@ -114,6 +115,7 @@ const store = configureStore({
     websiteNewsSlice,
     websiteEventSlice,
     publicAssSlice,
+    cabinet,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

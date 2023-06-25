@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import CabinetHeader from "./components/cabinetHeader/CabinetHeader";
 import CabinetLeftMenu from "./components/cabinetLeftMenu/CabinetLeftMenu";
@@ -12,6 +12,8 @@ import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
 import { useTranslation } from "react-i18next";
 
 const CabinetLayout = () => {
+  const { pathname } = useLocation();
+  const [activePage, setActivePage] = useState(pathname.split("/")[3]);
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -72,7 +74,8 @@ const CabinetLayout = () => {
         {btnOrgPageToggle ? (
           <div
             className="overlay-organizations"
-            onClick={toggleSwitchHandler}></div>
+            onClick={toggleSwitchHandler}
+          ></div>
         ) : null}
         <AnimatePresence>
           {btnOrgPageToggle && (
@@ -82,14 +85,17 @@ const CabinetLayout = () => {
                 animate={{ x: 0 }}
                 exit={{ x: -2000 }}
                 transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                className="modal-orgPage-container">
+                className="modal-orgPage-container"
+              >
                 <h1>{t("event")}</h1>
                 <form
                   onSubmit={submitHandler}
-                  className="modal-orgPage-container-form">
+                  className="modal-orgPage-container-form"
+                >
                   <label
                     htmlFor="title"
-                    className="modal-orgPage-container-form-title">
+                    className="modal-orgPage-container-form-title"
+                  >
                     <span>{t("communityAssociation.input_title")}</span>{" "}
                     <span>*</span>
                   </label>
@@ -101,16 +107,16 @@ const CabinetLayout = () => {
                   />
                   <label
                     className="modal-orgPage-container-form-comment"
-                    htmlFor="Izoh">
+                    htmlFor="Izoh"
+                  >
                     <span>{t("communityAssociation.desc_textarea_plack")}</span>{" "}
                     <span>*</span>
                   </label>
                   <textarea
                     onChange={textHandler}
                     className="modal-orgPage-container-form-commentTextArea"
-                    placeholder={t(
-                      "communityAssociation.desc_textarea_plack"
-                    )}></textarea>
+                    placeholder={t("communityAssociation.desc_textarea_plack")}
+                  ></textarea>
                   <div className="modal-orgPage-container-form-fileUploadContainer">
                     <input type="file" id="file" onChange={uploadHandler} />
                     <label htmlFor="file">{t("eventOne")}</label>
@@ -125,7 +131,8 @@ const CabinetLayout = () => {
                     <motion.button
                       animate={controls}
                       whileTap={{ scale: 0.9 }}
-                      type="submit">
+                      type="submit"
+                    >
                       {t("footerSend")}
                     </motion.button>
                   </div>
@@ -138,6 +145,8 @@ const CabinetLayout = () => {
           <CabinetLeftMenu
             leftMenuToggle={leftMenuToggle}
             setLeftMenuToggle={setLeftMenuToggle}
+            setActivePage={setActivePage}
+            activePage={activePage}
           />
         </div>
         <div className="cabinet-layout__right">
@@ -145,6 +154,7 @@ const CabinetLayout = () => {
             setLeftMenuToggle={setLeftMenuToggle}
             setRightBtnToggle={setRightBtnToggle}
             rightBtnToggle={rightBtnToggle}
+            setActivePage={setActivePage}
           />
           <Outlet />
         </div>
