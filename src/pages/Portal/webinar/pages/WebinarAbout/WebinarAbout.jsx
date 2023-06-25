@@ -60,11 +60,6 @@ function WebinarAbout() {
               className="about-text"
               dangerouslySetInnerHTML={{ __html: meetingPage.body }}
             />
-            <img src={`${PORTAL_IMAGE_URL}${meetingPage?.image}`} alt="img" />
-            <p
-              className="about-text"
-              dangerouslySetInnerHTML={{ __html: meetingPage.body }}
-            />
             <ShareFriends />
           </div>
           <WebinarCouncilStatics
