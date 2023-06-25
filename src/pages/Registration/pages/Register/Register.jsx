@@ -35,7 +35,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const { t } = useTranslation();
@@ -193,19 +193,11 @@ const Register = () => {
     return <Spinner position="full" />;
   }
 
-  const user = localStorage.getItem("user");
-
-  if (JSON.parse(user).first_name) {
-    navigate("/portal-category/cabinet");
-  }
-
   return (
     <div className="container position__relative register__wrapper">
       <div className="left__side__text">
         <h1>{t("registerTitle")}</h1>
-        <p>
-          {t("registerText")}
-        </p>
+        <p>{t("registerText")}</p>
       </div>
       <div className="registration__form">
         <div className="form__title">
@@ -288,7 +280,9 @@ const Register = () => {
                 />
               </LocalizationProvider>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">{t("nation")}</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  {t("nation")}
+                </InputLabel>
                 <Select
                   required
                   label={t("nation")}
@@ -307,7 +301,9 @@ const Register = () => {
                 </Select>
               </FormControl>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">{t("gender")}</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  {t("gender")}
+                </InputLabel>
                 <Select
                   required
                   label={t("gender")}
@@ -443,9 +439,7 @@ const Register = () => {
                 )}
               </div>
               <p>
-                {t("during")}{" "}
-                <span onClick={toggleModal}>
-                  {t("terms")}</span>
+                {t("during")} <span onClick={toggleModal}>{t("terms")}</span>
                 {t("acquainted ")}
               </p>
             </div>

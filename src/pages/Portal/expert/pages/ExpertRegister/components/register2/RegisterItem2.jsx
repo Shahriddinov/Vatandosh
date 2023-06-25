@@ -164,7 +164,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                 <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
                     <p className="registeritem-label-delete">
-                      <span>{t("expert.uzbotm")}</span>
+                      <span>
+                        {t("expert.uzbotm")}
+                        <i style={{ color: "red" }}> *</i>
+                      </span>
                       <AiOutlineDelete
                         style={data1.length === 1 ? { display: "none" } : null}
                         onClick={() => {
@@ -196,7 +199,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                   </label>
                   <div className="registeritem-flexbox">
                     <label htmlFor="" className="registeritem-label">
-                      <p>{t("expert.faculty")}</p>
+                      <p>
+                        {t("expert.faculty")}
+                        <span> *</span>
+                      </p>
                       <div>
                         <input
                           required
@@ -213,7 +219,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                       </div>
                     </label>
                     <label htmlFor="" className="registeritem-label">
-                      <p>{t("expert.profession")}</p>
+                      <p>
+                        {t("expert.profession")}
+                        <span> *</span>
+                      </p>
                       <FormControl style={{ padding: 0 }}>
                         <Select
                           className="registeritem-select"
@@ -267,7 +276,6 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
           >
             <BsPlusCircleFill />
           </button>
-          {/*<h3>{t("expert.xorotm")}</h3>*/}
           {data2.length ? (
             <>
               <h5 className="registeritem2-addForm__title">
@@ -277,7 +285,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                 <div key={index} className="registeritem2-form-otm">
                   <label htmlFor="" className="registeritem-label">
                     <p className="registeritem-label-delete">
-                      <span>{t("expert.xorotm")}</span>
+                      <span>
+                        {t("expert.xorotm")}
+                        <i style={{ color: "#f00" }}> *</i>
+                      </span>
                       <AiOutlineDelete
                         style={data2.length === 1 ? { display: "none" } : null}
                         onClick={() => {
@@ -309,7 +320,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                   </label>
                   <div className="registeritem-flexbox">
                     <label htmlFor="" className="registeritem-label">
-                      <p>{t("expert.xorfaculty")}</p>
+                      <p>
+                        {t("expert.xorfaculty")}
+                        <span> *</span>
+                      </p>
                       <div>
                         <input
                           required
@@ -326,7 +340,10 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                       </div>
                     </label>
                     <label htmlFor="" className="registeritem-label">
-                      <p>{t("expert.xorprofession")}</p>
+                      <p>
+                        {t("expert.xorprofession")}
+                        <span> *</span>
+                      </p>
                       <FormControl style={{ padding: 0 }}>
                         <Select
                           className="registeritem-select"

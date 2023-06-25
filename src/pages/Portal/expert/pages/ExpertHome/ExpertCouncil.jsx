@@ -11,6 +11,8 @@ import { useTranslation } from "react-i18next";
 import { useExpertHome } from "./hooks/useExpertHome";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { Spinner } from "../../../../../component";
+import { useEffect } from "react";
+import { changePostSuccess } from "../../../../../reduxToolkit/ExpertSlice/ExpertActivity";
 
 function ExpertCouncil() {
   const { t } = useTranslation();
@@ -29,7 +31,12 @@ function ExpertCouncil() {
     loading,
     specialization,
     specializationLoading,
+    dispatch,
   } = useExpertHome();
+
+  useEffect(() => {
+    dispatch(changePostSuccess());
+  }, []);
 
   if (
     expertCountLoading ||

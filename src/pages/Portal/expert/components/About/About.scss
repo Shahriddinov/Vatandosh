@@ -132,6 +132,14 @@
   }
 }
 
+@media screen and (max-width: 1016px) {
+  .about {
+    &-left {
+      width: 100%;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .about {
     .container {

@@ -131,6 +131,9 @@ export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news`;
 export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event`;
 export const GET_VOLUNTEER_USER = "/volunteer/get-one";
 
+//CABINET URL
+export const GET_CABINET_EXPERT_ACTIVITY = "/expert/show-expert-user";
+
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;
 export const SEND_EMAIL = `${authUrl}/send-mail`;
