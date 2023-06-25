@@ -720,14 +720,6 @@ const RoutesContainer = () => {
                   />
                   <Route path="contact" element={<Contact />} />
                 </Route>
-              </>
-            ) : token ? (
-              <>
-                <Route path="/registration/register" element={<Register />} />
-                <Route
-                  path="/registration/set-password"
-                  element={<Navigate to="/registration/register" />}
-                />
                 <Route
                   path="/registration/signin"
                   element={<Navigate to="/portal-category/cabinet" />}
@@ -735,6 +727,14 @@ const RoutesContainer = () => {
                 <Route
                   path="/registration/register"
                   element={<Navigate to="/portal-category/cabinet" />}
+                />
+              </>
+            ) : token ? (
+              <>
+                <Route path="/registration/register" element={<Register />} />
+                <Route
+                  path="/registration/set-password"
+                  element={<Navigate to="/registration/register" />}
                 />
               </>
             ) : (
