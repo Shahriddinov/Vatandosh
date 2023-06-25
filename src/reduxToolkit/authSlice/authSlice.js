@@ -14,7 +14,6 @@ import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
 import { postExpertRegister } from "../ExpertSlice/RegisterSlice/extraReducer";
 
 const initialState = {
-  statusAuth: null,
   emailLoading: false,
   verifyLoading: true,
   passwordLoading: true,
@@ -47,14 +46,9 @@ const authSlice = createSlice({
       if (user.userProfile) {
         state.userData = user.userProfile;
         localStorage.setItem("user", JSON.stringify(user.userProfile));
-        state.statusAuth = "user_profile";
-        console.log("profile");
 
         navigate("/portal-category/cabinet");
       } else {
-        state.statusAuth = "user_register";
-        console.log("Register");
-
         navigate("/registration/register");
       }
     },
@@ -62,9 +56,6 @@ const authSlice = createSlice({
       removeItem("token");
       removeItem("user");
       state.token = null;
-    },
-    changeStatus: (state) => {
-      state.statusAuth = null;
     },
   },
   extraReducers: (build) => {
