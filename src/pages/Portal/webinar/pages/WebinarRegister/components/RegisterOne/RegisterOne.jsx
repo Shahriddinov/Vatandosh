@@ -123,7 +123,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="first_name"
                       value={formData.first_name}
                       onChange={handleInputChange}
@@ -141,7 +141,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="second_name"
                       value={formData.second_name}
                       onChange={handleInputChange}
@@ -161,7 +161,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="tel"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="phone_number"
                       value={formData.phone_number}
                       onChange={handleInputChange}
@@ -177,7 +177,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="last_name"
                       value={formData.last_name}
                       onChange={handleInputChange}
@@ -197,7 +197,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="email"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}

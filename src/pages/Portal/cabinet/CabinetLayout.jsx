@@ -101,7 +101,7 @@ const CabinetLayout = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder={t("inputplaceholder")}
+                    placeholder={t("expert.inputplaceholder")}
                     className="modal-orgPage-container-form-titleInput"
                     onChange={titleHandler}
                   />

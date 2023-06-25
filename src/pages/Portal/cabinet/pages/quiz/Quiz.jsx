@@ -6,14 +6,10 @@ import { QuizList } from "./components";
 import { getQuizz } from "../../../../../reduxToolkit/victorinaQuiz/getquiz";
 import { filteredQuizzes } from "./extra";
 import { Spinner } from "../../../../../component";
-
-const dataBtn = [
-  { id: 1, label: "Aktiv yani qatnashgan", status: 1, type: "active" },
-  { id: 2, label: "Registratsiya qigan", status: 1, type: "start" },
-  { id: 3, label: "Arxiv", status: 0, type: "finish" },
-];
+import { useTranslation } from "react-i18next";
 
 const Quiz = () => {
+  const { t } = useTranslation();
   const { quizData, quizDataLoading, error, dispatch } = useQuizFetching();
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "active" });
   if (quizDataLoading) {
@@ -21,7 +17,7 @@ const Quiz = () => {
   } else if (error) {
     return <p>{error}</p>;
   } else if (quizData?.quizzes.length === 0) {
-    return <p>Hozirda bizda malumot mavjud emas</p>;
+    return <p>{t("informationNone")}</p>;
   }
 
   const handleChangeBtn = ({ id, status, type }) => {
@@ -33,6 +29,12 @@ const Quiz = () => {
     quizData?.quizzes?.length > 0
       ? filteredQuizzes(quizData?.quizzes, activeBtn?.type)
       : [];
+
+  const dataBtn = [
+    { id: 1, label: t("active"), status: 1, type: "active" },
+    { id: 2, label: t("register"), status: 1, type: "start" },
+    { id: 3, label: t("finishOne"), status: 0, type: "finish" },
+  ];
 
   return (
     <div className="container-quiz">

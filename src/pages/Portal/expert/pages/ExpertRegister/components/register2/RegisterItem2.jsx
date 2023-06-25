@@ -186,7 +186,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         value={el.institution}
                         minLength={3}
                         maxLength={500}
-                        placeholder={t("expert.inputplaceholder")}
+                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
                             ...el,
@@ -210,7 +210,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           minLength={3}
                           value={el.faculty}
                           maxLength={500}
-                          placeholder={t("expert.inputplaceholder")}
+                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChange({ ...el, faculty: e.target.value })
                           }
@@ -307,7 +307,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                         value={el.institution}
                         minLength={3}
                         maxLength={500}
-                        placeholder={t("expert.inputplaceholder")}
+                         placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChangeX({
                             ...el,
@@ -331,7 +331,7 @@ export default function RegisterItem2({ activeBarItem, setActiveBarItem }) {
                           minLength={3}
                           value={el.faculty}
                           maxLength={500}
-                          placeholder={t("expert.inputplaceholder")}
+                           placeholder={t("expert.inputplaceholder")}
                           onChange={(e) =>
                             handleChangeX({ ...el, faculty: e.target.value })
                           }

@@ -53,28 +53,26 @@ const EventsCard = ({ webinar }) => {
         <ul className="cabinet-events-timer">
           <li className="cabinet-events-timer__item">
             <span>{timeData.days}</span>
-            <span>Kun</span>
+            <span>{t("day")}</span>
           </li>
           <li className="cabinet-events-timer__item">
             <span>{timeData.hours}</span>
-            <span>Soat</span>
+            <span>{t("hour")}</span>
           </li>
           <li className="cabinet-events-timer__item">
             <span>{timeData.minutes}</span>
-            <span>Daqiqa</span>
+            <span>{t("minute")}</span>
           </li>
         </ul>
         <div className="cabinet-events-box__footer">
           <Link
             to={`/portal-category/webinar/online-webinar/${webinar?.id}`}
-            className="cabinet-events-more"
-          >
+            className="cabinet-events-more">
             {t("more")}
           </Link>
           <Link
             to={`/portal-category/webinar/webinar-register/${webinar?.id}`}
-            className="cabinet-events-links"
-          >
+            className="cabinet-events-links">
             {t("webinar.header1")}
           </Link>
         </div>

@@ -680,5 +680,15 @@
   "FiveCabinet": "Taklifingiz",
   "SixCabinet": "Volonyorlik faoliyati",
   "wordNone": "Hozirda ma'lumot mavjud emas",
-  "country": "Xorijda fakulteti"
+  "country": "Xorijda fakulteti",
+  "groupNone": "Siz hali hech qanday guruhga qo'shilmagansiz.",
+  "selectStart": "Xabar yozishni boshlash uchun suhbatni tanlang.",
+  "chatNone": "Sizda hali hech qanday chat yo'q.",
+  "success": "qabul qilingan",
+  "danger": "Rad etilgan",
+  "jamoatOne": "Jamoat birlashmalari mavjud emas",
+  "active": "Aktiv yani qatnashgan",
+  "register": "Registratsiya qigan",
+  "finishOne":"Arxiv",
+  "informationNone":"Hozirda bizda malumot mavjud emas"
 }

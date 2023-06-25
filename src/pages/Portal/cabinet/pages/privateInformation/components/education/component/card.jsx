@@ -61,7 +61,7 @@ const Card = ({ el, data, setData, dispatch }) => {
               handleChange({ key: "institution", value: evt.target.value })
             }
             value={el?.institution}
-            placeholder={t("inputplaceholder")}
+             placeholder={t("expert.inputplaceholder")}
           />
         </div>
       </div>
@@ -78,7 +78,7 @@ const Card = ({ el, data, setData, dispatch }) => {
                 handleChange({ key: "faculty", value: evt.target.value })
               }
               value={el?.faculty}
-              placeholder={t("inputplaceholder")}
+               placeholder={t("expert.inputplaceholder")}
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ const Card = ({ el, data, setData, dispatch }) => {
             value={findSpecialization ? findSpecialization?.label : ""}
             handleChange={handleChange}
             data={specialization}
-            text="Mutaxassisligi"
+            text={t("expert.profession")}
             valueKey={"specialization_id"}
           />
           {/* <label htmlFor="specialty">Xorijdagi mutaxassisligi</label>

@@ -137,7 +137,7 @@ export default function Volunteer({ activeBarItem }) {
                   </p>
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      {t("about_uzbekistan.maqola")}
+                      {t("maqola")}
                       <span>*</span>
                     </p>
                     <div>
@@ -147,7 +147,7 @@ export default function Volunteer({ activeBarItem }) {
                         minLength={3}
                         maxLength={200}
                         value={el.title}
-                        placeholder={t("inputplaceholder")}
+                        placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
                             ...el,
@@ -226,7 +226,7 @@ export default function Volunteer({ activeBarItem }) {
                   )}
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      {t("about_uzbekistan.comment")} <span>*</span>
+                      {t("comment")} <span>*</span>
                     </p>
                     <div className="registeritem-label-textarea">
                       <textarea

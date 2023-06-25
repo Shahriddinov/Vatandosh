@@ -10,12 +10,6 @@ import { filteredArrFun } from "../volunteering/extra";
 import { useCabinetExpertActivity } from "./hooks/useCabinetExpertActivity";
 import { useTranslation } from "react-i18next";
 
-const btnGroup = [
-  { id: 1, label: "Barchasi", type: "all" },
-  { id: 2, label: "принят", type: "success" },
-  { id: 3, label: "Отклонен", type: "danger" },
-];
-
 const ExpertActivity = () => {
   const { t } = useTranslation();
   const [activeBtn, setActiveBtn] = useState({ id: 1, type: "all" });
@@ -34,6 +28,12 @@ const ExpertActivity = () => {
   };
 
   const filteredArr = filteredArrFun(data, activeBtn.type);
+
+  const btnGroup = [
+    { id: 1, label: t("all"), type: "all" },
+    { id: 2, label: t("success"), type: "success" },
+    { id: 3, label: t("danger"), type: "danger" },
+  ];
 
   return (
     <div className="container-expert">

@@ -41,7 +41,7 @@ const FormList = ({
             <input
               type="text"
               id="lastname"
-              placeholder={t("inputplaceholder")}
+               placeholder={t("expert.inputplaceholder")}
               value={data.last_name}
               onChange={(evt) =>
                 handleChange({
@@ -62,7 +62,7 @@ const FormList = ({
             <input
               type="text"
               id="middleName"
-              placeholder={t("inputplaceholder")}
+               placeholder={t("expert.inputplaceholder")}
               value={data.second_name}
               onChange={(evt) =>
                 handleChange({
@@ -94,7 +94,7 @@ const FormList = ({
             <input
               type="text"
               id="uzbAddress"
-              placeholder={t("inputplaceholder")}
+              placeholder={t("expert.inputplaceholder")}
               value={data.national_address}
               onChange={(evt) =>
                 handleChange({
@@ -126,7 +126,7 @@ const FormList = ({
             <input
               type="text"
               id="activityType"
-              placeholder={t("inputplaceholder")}
+              placeholder={t("expert.inputplaceholder")}
               value={data.job_position}
               onChange={(evt) =>
                 handleChange({
@@ -149,7 +149,7 @@ const FormList = ({
             <input
               type="text"
               id="firstName"
-              placeholder={t("inputplaceholder")}
+              placeholder={t("expert.inputplaceholder")}
               value={data.first_name}
               onChange={(evt) =>
                 handleChange({
@@ -225,7 +225,7 @@ const FormList = ({
               className="passportPdforDocUpload"
               type="file"
               id="passport"
-              placeholder={t("inputplaceholder")}
+              placeholder={t("expert.inputplaceholder")}
               value={""}
               onChange={(evt) =>
                 handleChange({
