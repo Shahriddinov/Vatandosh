@@ -2,6 +2,14 @@
   border-radius: 6px !important;
 }
 
+.MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.MuiFormLabel-root {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
 .register__wrapper {
   height: calc(100vh - 96px);
   display: flex;

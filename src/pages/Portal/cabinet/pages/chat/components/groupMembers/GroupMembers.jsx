@@ -12,9 +12,7 @@ const GroupMembers = ({
   members,
   showMembers,
   setShowMembers,
-  setData,
   setActiveUser,
-  data,
   setActiveGroup,
   setShowGroupMessages,
 }) => {
@@ -31,6 +29,8 @@ const GroupMembers = ({
     setShowGroupMessages(false);
     dispatch(checkUser(user.id));
   };
+
+  console.log(members);
 
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>

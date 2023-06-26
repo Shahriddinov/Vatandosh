@@ -70,6 +70,8 @@ const PrivateChats = ({
         <p className="users__no-users">{t("chatNone")}</p>
       ) : (
         data?.map((chat) => {
+          // console.log(chat);
+
           let profileImg;
           if (chat?.user) {
             if (chat?.user?.avatar_url) {
@@ -94,7 +96,8 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat?.user, profileImg, chat?.id);
                 setIsActive(false);
-              }}>
+              }}
+            >
               <div className="users__user-image">
                 {profileImg}
                 {chat?.user?.last_online_at ? (
@@ -124,7 +127,8 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat, profileImg, chat?.id);
                 setIsActive(true);
-              }}>
+              }}
+            >
               <div className="users__user-image">
                 {profileImg}
                 {chat?.last_online_at ? (
