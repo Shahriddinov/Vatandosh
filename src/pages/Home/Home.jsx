@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Hero from "../../component/Hero/Hero";
 import News from "../../component/News/News";
 import Peaceful from "../../component/peaceful/Peaceful";
-// import InteractiveServices from "../../component/interactiveServices/InteractiveServices";
 import MapsHome from "../../component/maps-home/MapsHome";
 import Partners from "../../component/partners/Partners";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +38,7 @@ const Home = () => {
     if (!webinarData?.length) {
       dispatch(getWebinarSlider());
     }
-  }, [dispatch]);
+  }, [dispatch, peacefulData?.length, sliderData?.length, webinarData?.length]);
 
   if (countryNewsError) {
     return <p>{countryNewsError}</p>;

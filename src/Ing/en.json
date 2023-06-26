@@ -1,5 +1,6 @@
 {
   "404": "Ync! Page not found",
+  "test_sayt": "The site was launched on a trial basis",
   "404One": "Here only the cat and Tom are leaving...",
   "404Link": "Home",
   "version": "OLD VERSION",
@@ -689,5 +690,12 @@
   "active": "Active participant",
   "register": "Registered",
   "finishOne":"Archive",
-  "informationNone":"We currently have no information"
+  "informationNone":"We currently have no information",
+  "Cabinet" : {
+    "online": "online",
+    "member": "members",
+    "last_seen": "Last seen",
+    "user_online": "Online",
+    "start_chat": "Select a chat to start messaging."
+  }
 }

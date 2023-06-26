@@ -26,7 +26,7 @@ const Footer = () => {
     if (!Object.keys(contactData)?.length) {
       dispatch(getContact());
     }
-  }, [dispatch]);
+  }, [dispatch, contactData]);
 
   return (
     <>

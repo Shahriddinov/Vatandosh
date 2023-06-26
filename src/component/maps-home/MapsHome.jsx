@@ -8,7 +8,6 @@ import {
   getCountriesNews,
   mapGetData,
 } from "../../reduxToolkit/mapSlice/mapAsyncThunk";
-import { useLocation } from "react-router-dom";
 
 const MapsHome = ({ title }) => {
   const countries = useSelector((state) => state.mapSlice.countries);
@@ -48,7 +47,7 @@ const MapsHome = ({ title }) => {
     if (!countries?.length) {
       dispatch(getCountriesNews());
     }
-  }, [dispatch]);
+  }, [dispatch, countryNews, countryAssociationData, countries]);
 
   useEffect(() => {
     if (countryAssociationData.length) {

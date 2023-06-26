@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router-dom";
 
 import Spinner from "../../../../component/Spinner/Spinner";
 import {
@@ -39,7 +38,6 @@ import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const createCountries = createSelector(
     (state) => state.authSlice.countriesData,
     (countries) => {
@@ -187,7 +185,7 @@ const Register = () => {
   useEffect(() => {
     dispatch(getAllNations());
     dispatch(getAllCountries());
-  }, []);
+  }, [dispatch]);
 
   if (loading || loadingNations) {
     return <Spinner position="full" />;
