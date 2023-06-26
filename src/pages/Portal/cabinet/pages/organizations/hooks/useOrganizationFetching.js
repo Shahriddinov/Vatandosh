@@ -27,7 +27,6 @@ export const useOrganizationFetching = () => {
       getAllCommunity({
         region_id: 0,
         page: 1,
-        per_page: 8,
         typePage: "association",
         user_id: null,
       })
