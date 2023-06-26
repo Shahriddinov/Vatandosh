@@ -15,8 +15,10 @@ import {
   SecondImg,
   Third,
 } from "../../../../../../../assets/images/cabinet";
+import { useTranslation } from "react-i18next";
 
 const QuizCard = (props) => {
+  const { t } = useTranslation();
   const [timeData, setTimeDate] = useState({
     days: "00",
     hours: "00",
@@ -50,8 +52,7 @@ const QuizCard = (props) => {
             props.status === 0 ? "/finished-projects" : ""
           }/image-project/${props?.id}`
         );
-      }}
-    >
+      }}>
       <div className="cabinet-quiz-card-img">
         <img
           // src={`${PORTAL_IMAGE_URL}/${image[0]}`}
@@ -91,15 +92,15 @@ const QuizCard = (props) => {
           <div className="cabinet-quiz-card__list">
             <span className="cabinet-quiz-card__item">
               <p>{timeData.days}</p>
-              <p>Kun</p>
+              <p>{t("day")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.hours}</p>
-              <p>Soat</p>
+              <p>{t("hour")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.minutes}</p>
-              <p>Daqiqa</p>
+              <p>{t("minute")}</p>
             </span>
           </div>
         ) : null}

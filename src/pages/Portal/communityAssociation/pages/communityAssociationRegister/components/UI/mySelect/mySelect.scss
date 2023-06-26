@@ -22,6 +22,9 @@
     margin-right: 0 !important;
     margin-bottom: 5px !important;
     margin-left: 0 !important;
+    @media (max-width: 48em) {
+      // margin-bottom: 32px !important;
+    }
   }
 
   .MuiAutocomplete-root {

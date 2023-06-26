@@ -111,8 +111,7 @@ export default function Volunteer({ activeBarItem }) {
           ? "registeritem5 registeritem-scaleHidden"
           : "registeritem5 registeritem-scaleActive"
       }
-      onSubmit={handleSubmit}
-    >
+      onSubmit={handleSubmit}>
       <div className="registeritem5-wrapper registeritem-borderLeft">
         <div className="registeritem3-list">
           <h3 className="registeritem-title">V. {t("voluntery.nav4")} </h3>
@@ -138,7 +137,7 @@ export default function Volunteer({ activeBarItem }) {
                   </p>
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Maqola mavzusi
+                      {t("maqola")}
                       <span>*</span>
                     </p>
                     <div>
@@ -148,7 +147,7 @@ export default function Volunteer({ activeBarItem }) {
                         minLength={3}
                         maxLength={200}
                         value={el.title}
-                        placeholder={"Kiriting"}
+                        placeholder={t("expert.inputplaceholder")}
                         onChange={(e) =>
                           handleChange({
                             ...el,
@@ -173,7 +172,7 @@ export default function Volunteer({ activeBarItem }) {
                         }}
                       />
                       <BsImage />
-                      <p>Taklifingiz uchun rasm</p>
+                      <p>{t("expert.offerforimg")}</p>
                     </label>
                   ) : (
                     <ul className="registeritem-imageList">
@@ -181,18 +180,18 @@ export default function Volunteer({ activeBarItem }) {
                         ? el.images.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item"
-                            >
+                              className="registeritem-imageList-item">
                               {el.images.length > 1 ? (
                                 <div
                                   className="registeritem-imageList-item-remove"
                                   onClick={() => {
                                     el.images.splice(index, 1);
                                     handleChange({ ...el, images: el.images });
-                                  }}
-                                >
+                                  }}>
                                   <HiOutlineTrash />
-                                  <span>Удалить</span>
+                                  <span>
+                                    {t("projects_page.form_image_delete")}
+                                  </span>
                                 </div>
                               ) : null}
                               <img src={URL.createObjectURL(item)} alt="" />
@@ -201,15 +200,13 @@ export default function Volunteer({ activeBarItem }) {
                         : el.volunteerImg.map((item, index) => (
                             <li
                               key={index}
-                              className="registeritem-imageList-item"
-                            >
+                              className="registeritem-imageList-item">
                               <img src={PORTAL_IMAGE_URL + item} alt="" />
                             </li>
                           ))}
                       <label
                         htmlFor={el.id}
-                        className="registeritem-imageList-inputFile"
-                      >
+                        className="registeritem-imageList-inputFile">
                         <input
                           className="registeritem-label-fileinput"
                           id={el.id}
@@ -229,7 +226,7 @@ export default function Volunteer({ activeBarItem }) {
                   )}
                   <label htmlFor="" className="registeritem-label">
                     <p>
-                      Izohingiz yozing<span>*</span>
+                      {t("comment")} <span>*</span>
                     </p>
                     <div className="registeritem-label-textarea">
                       <textarea
@@ -238,7 +235,9 @@ export default function Volunteer({ activeBarItem }) {
                         value={el.description}
                         minLength={3}
                         maxLength={500}
-                        placeholder={"Izoh"}
+                        placeholder={t(
+                          "communityAssociation.desc_textarea_plack"
+                        )}
                         onChange={(e) =>
                           handleChange({
                             ...el,
@@ -264,8 +263,7 @@ export default function Volunteer({ activeBarItem }) {
                   description: "",
                 },
               ])
-            }
-          >
+            }>
             <BsPlusCircleFill />
           </button>
           <div className="registeritem-checkbox">
@@ -283,8 +281,7 @@ export default function Volunteer({ activeBarItem }) {
           disabled={!checked}
           type="submit"
           className="registeritem-submitBtn"
-          style={checked ? null : { opacity: 0.5, cursor: "auto" }}
-        >
+          style={checked ? null : { opacity: 0.5, cursor: "auto" }}>
           {t("expert.save")}
         </button>
       </div>

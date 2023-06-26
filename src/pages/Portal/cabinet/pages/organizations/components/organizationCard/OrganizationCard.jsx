@@ -32,7 +32,7 @@ const OrganizationCard = ({ el, allRegions }) => {
       </p>
       <img src={`${PORTAL_IMAGE_URL}${el?.logo}`} alt="channel" />
       <p className="organization-card_bottomText">
-        Chop etilgan maqolalar: {el.news}
+        {t("choices.publishedArticles")}: {el.news}
       </p>
       <motion.button
         whileTap={{ scale: 0.9 }}
@@ -40,8 +40,7 @@ const OrganizationCard = ({ el, allRegions }) => {
           navigate(
             `/portal-category/community-association/country/${countryInfo?.id}/${el.id}`
           )
-        }
-      >
+        }>
         {t("communityAssociation.detail")}
       </motion.button>
     </li>

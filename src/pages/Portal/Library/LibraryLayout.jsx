@@ -15,7 +15,7 @@ const LibraryLayout = () => {
     if (!userToken) {
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   const navbarUrl = {
     home: "/portal",

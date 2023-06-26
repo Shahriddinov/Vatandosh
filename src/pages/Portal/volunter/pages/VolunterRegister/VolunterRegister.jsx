@@ -16,7 +16,10 @@ export default function VolunterRegister() {
   let [activeBarItem, setactiveBarItem] = useState(0);
   const url = [
     { title: t("expert.main"), url: "/portal-category/volunter" },
-    { title: t("application"), url: "/portal-category/volunter/register" },
+    {
+      title: t("communityAssociation.application"),
+      url: "/portal-category/volunter/register",
+    },
   ];
 
   const { volunteerActivityLoading } = useSelector(
@@ -42,15 +45,13 @@ export default function VolunterRegister() {
                   <li
                     key={index}
                     className="expertregister-main-bar-item"
-                    onClick={() => setactiveBarItem(index)}
-                  >
+                    onClick={() => setactiveBarItem(index)}>
                     <div
                       className={
                         activeBarItem === index
                           ? "expertregister-main-bar-item-border activeBarItem"
                           : "expertregister-main-bar-item-border"
-                      }
-                    ></div>
+                      }></div>
                     <span>{el}</span>
                   </li>
                 );

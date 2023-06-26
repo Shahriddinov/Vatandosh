@@ -10,11 +10,18 @@ function Header({ headerData }) {
             ? headerData.title
             : "“Vatandoshlar” Jamoat birlashmalari"}
         </h2>
-        <p className="expert-headeres--text">
-          {headerData.subTitle
-            ? headerData.subTitle
-            : "Vatandosh jamoat birlashmalaring elektron platformasining"}
-        </p>
+        <p
+          className="expert-headeres--text"
+          dangerouslySetInnerHTML={{ __html: headerData?.subTitle }}
+        />
+        {headerData.expertAboutMoreLink && (
+          <Link
+            to="/portal-category/expert/council-about"
+            className="expert-headeres__more--link"
+          >
+            {headerData.expertAboutMoreLink}
+          </Link>
+        )}
         <Link to={headerData.link}>{headerData.btnText}</Link>
       </div>
     </div>

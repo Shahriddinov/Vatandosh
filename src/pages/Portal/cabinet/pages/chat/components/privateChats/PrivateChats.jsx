@@ -9,6 +9,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 
 import "./privateChats.scss";
 import { ChooseMember } from "../../Chat";
+import { useTranslation } from "react-i18next";
 
 const PrivateChats = ({
   setUserData,
@@ -22,6 +23,7 @@ const PrivateChats = ({
   setPrivateChatId,
   activeChat,
 }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const [chatRoomId, setChatRoomId] = useState(null);
@@ -65,7 +67,7 @@ const PrivateChats = ({
   return (
     <div className="users">
       {data?.length === 0 ? (
-        <p className="users__no-users">You have not any chat yet.</p>
+        <p className="users__no-users">{t("chatNone")}</p>
       ) : (
         data?.map((chat) => {
           let profileImg;
@@ -92,8 +94,7 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat?.user, profileImg, chat?.id);
                 setIsActive(false);
-              }}
-            >
+              }}>
               <div className="users__user-image">
                 {profileImg}
                 {chat?.user?.last_online_at ? (
@@ -108,11 +109,11 @@ const PrivateChats = ({
                   <p>Last seen {chat?.user?.last_online_at}</p>
                 )}
               </div>
-              {chat.messages ? (
+              {chat.unread ? (
                 <div className="users__has-message">
-                  {chat.message > 1000
-                    ? `${Math.round(chat.message / 1000)}k`
-                    : chat.message}
+                  {chat.unread > 1000
+                    ? `${Math.round(chat.unread / 1000)}k`
+                    : chat.unread}
                 </div>
               ) : null}
             </div>
@@ -123,8 +124,7 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat, profileImg, chat?.id);
                 setIsActive(true);
-              }}
-            >
+              }}>
               <div className="users__user-image">
                 {profileImg}
                 {chat?.last_online_at ? (
@@ -139,11 +139,11 @@ const PrivateChats = ({
                   <p>Last seen {chat?.last_online_at}</p>
                 )}
               </div>
-              {chat.messages ? (
+              {chat.unread > 0 ? (
                 <div className="users__has-message">
-                  {chat.message > 1000
-                    ? `${Math.round(chat.message / 1000)}k`
-                    : chat.message}
+                  {chat.unread > 1000
+                    ? `${Math.round(chat.unread / 1000)}k`
+                    : chat.unread}
                 </div>
               ) : null}
             </div>

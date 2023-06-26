@@ -7,6 +7,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { getMessages } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 
 import "./groupsChats.scss";
+import { useTranslation } from "react-i18next";
 
 const GroupsChats = ({
   setGroupData,
@@ -19,6 +20,7 @@ const GroupsChats = ({
   activePage,
   data,
 }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [chatRoomId, setChatRoomId] = useState(null);
   const leaveGroup = useSelector((state) => state.chatSlice.leaveData);
@@ -61,10 +63,12 @@ const GroupsChats = ({
     }
   }, [leaveGroup]);
 
+  console.log(data);
+
   return (
     <div className="groups">
       {data?.length === 0 ? (
-        <p className="groups__no-group">You have not joined any group yet.</p>
+        <p className="groups__no-group">{t("groupNone")}</p>
       ) : (
         data?.map((group) => {
           let groupImg;
@@ -86,8 +90,7 @@ const GroupsChats = ({
               className={`groups__one-group ${
                 group.id === activeGroup ? "active" : ""
               }`}
-              onClick={() => handleClick(group, groupImg)}
-            >
+              onClick={() => handleClick(group, groupImg)}>
               <div className="groups__group-image">{groupImg}</div>
               <div className="groups__group-information">
                 <h4>{group.name}</h4>
@@ -99,11 +102,11 @@ const GroupsChats = ({
                   <p>{group.users_count} ta a'zo</p>
                 )}
               </div>
-              {group.messages ? (
+              {group.unread > 0 ? (
                 <div className="groups__has-message">
-                  {group.messages > 1000
-                    ? `${Math.round(group.messages / 1000)}k`
-                    : group.messages}
+                  {group.unread > 1000
+                    ? `${Math.round(group.unread / 1000)}k`
+                    : group.unread}
                 </div>
               ) : null}
             </div>

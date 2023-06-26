@@ -1,6 +1,5 @@
 import ExpertTitle from "../../../expert/components/ExpertTitle/ExpertTitle";
 import CouncilStatics from "../VolunterHome/components/Council/CouncilStatics";
-import img from "../../../../../assets/images/mediateka/4.png";
 import "./VolunterActivityDetail.scss";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
@@ -8,7 +7,6 @@ import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getNews } from "../../../../../reduxToolkit/newsSlice/extraReducer";
 import { useEffect } from "react";
 import { useVolunteerHomeFetching } from "../VolunterHome/hooks/useVolunteerHomeFetching";
 import { getVolunteerActivityOne } from "../../../../../reduxToolkit/volunteer/extraReducer";
@@ -35,7 +33,7 @@ export default function VolunterActivityDetail() {
 
   useEffect(() => {
     dispatch(getVolunteerActivityOne({ id }));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const { VolunteerCount } = useVolunteerHomeFetching();
   const dataCount = VolunteerCount.map((el) => el.users).flat();

@@ -61,57 +61,62 @@ const Hashtag = () => {
   };
 
   return (
-    <div className="hashtag">
+    <div className="hashtag-official">
       <Header />
       <div className="container">
-        <div className="hashtag__top">
+        <div className="hashtag-official__top">
           <h2>#{tag}</h2>
-          <div className="hashtag__btns">
-            <div className="hashtag__image-btn">
+          <div className="hashtag-official__btns">
+            <div className="hashtag-official__image-btn">
               <button
                 className={activeTab === 1 ? "active-btn" : ""}
                 onClick={() => {
                   setActiveTab(1);
                   setActivePage(1);
-                }}>
+                }}
+              >
                 Eng mashhur
               </button>
             </div>
-            <div className="hashtag__image-btn">
+            <div className="hashtag-official__image-btn">
               <button
                 className={activeTab === 2 ? "active-btn" : ""}
                 onClick={() => {
                   setActiveTab(2);
                   setActivePage(1);
-                }}>
+                }}
+              >
                 Eng so‘ngi
               </button>
             </div>
-            <div className="hashtag__image-btn">
+            <div className="hashtag-official__image-btn">
               <button
                 className={activeTab === 3 ? "active-btn" : ""}
                 onClick={() => {
                   setActiveTab(3);
                   setActivePage(1);
-                }}>
+                }}
+              >
                 Eng ko‘p ko‘rilgan
               </button>
             </div>
           </div>
         </div>
-        <div className="hashtag__body">
-          <div className="hashtag__images">
+        <div className="hashtag-official__body">
+          <div className="hashtag-official__images">
             <div
-              className={`hashtag__regular ${
+              className={`hashtag-official__regular ${
                 activeTab === 1 ? "active-tab" : ""
-              }`}>
+              }`}
+            >
               {tagData.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
-                    className="hashtag__image-card"
-                    onClick={() => {}}>
-                    <div className="hashtag__image-container">
+                    className="hashtag-official__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag-official__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img
                           src={`${baseServerUrl}/${image.image}`}
@@ -124,16 +129,18 @@ const Hashtag = () => {
               })}
             </div>
             <div
-              className={`hashtag__latest ${
+              className={`hashtag-official__latest ${
                 activeTab === 2 ? "active-tab" : ""
-              }`}>
+              }`}
+            >
               {latestTags.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
-                    className="hashtag__image-card"
-                    onClick={() => {}}>
-                    <div className="hashtag__image-container">
+                    className="hashtag-official__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag-official__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img
                           src={`${baseServerUrl}/${image.image}`}
@@ -146,16 +153,18 @@ const Hashtag = () => {
               })}
             </div>
             <div
-              className={`hashtag__popular ${
+              className={`hashtag-official__popular ${
                 activeTab === 3 ? "active-tab" : ""
-              }`}>
+              }`}
+            >
               {popularTags.data.map((image, index) => {
                 return image.image ? (
                   <div
                     key={index}
-                    className="hashtag__image-card"
-                    onClick={() => {}}>
-                    <div className="hashtag__image-container">
+                    className="hashtag-official__image-card"
+                    onClick={() => {}}
+                  >
+                    <div className="hashtag-official__image-container">
                       <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
                         <img
                           src={`${baseServerUrl}/${image.image}`}

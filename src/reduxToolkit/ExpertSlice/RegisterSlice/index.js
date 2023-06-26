@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import i18next from "i18next";
+
 import {
   createExpertEmployment,
   deleteExpertEducation,
@@ -11,6 +13,7 @@ import {
   getExpertScientific,
   getExpertSpecialization,
   postExpertEducation,
+  postExpertRegister,
   postExpertScientific,
   updateExpertEducation,
   updateExpertEmployment,
@@ -32,6 +35,10 @@ const initialState = {
   specialization: [],
   specializationLoading: true,
   specializationError: null,
+
+  expertRegister: [],
+  expertRegisterLoading: true,
+  expertRegisterError: null,
 
   employment: [],
   employmentLoading: true,
@@ -114,8 +121,8 @@ const expertRegisterSlice = createSlice({
         state.specializationLoading = false;
         const obj = {
           id: "all",
-          title: "Barcha mutaxassislar",
-          label: "Barcha mutaxassislar",
+          title: i18next.t("expert.all_specialists"),
+          label: i18next.t("expert.all_specialists"),
           created_at: "2023-05-05T13:03:07.000000Z",
           updated_at: "2023-05-05T13:03:07.000000Z",
         };

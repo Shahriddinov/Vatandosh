@@ -3,8 +3,9 @@ import React from "react";
 import "./organizationList.scss";
 import OrganizationCard from "../organizationCard/OrganizationCard";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 const OrganizationList = ({ data }) => {
-  //   console.log(data);
+  const { t } = useTranslation();
   const allRegions = useSelector((store) => store.community.allRegionsGet);
   return (
     <>
@@ -18,7 +19,7 @@ const OrganizationList = ({ data }) => {
           ))}
         </ul>
       ) : (
-        <p>Jamoat birlashmalari ma'vjud emas</p>
+        <p>{t("jamoatOne")}</p>
       )}
     </>
   );

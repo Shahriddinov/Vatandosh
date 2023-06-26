@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormControl from "@mui/material/FormControl";
 import "./Employe.scss";
 import { Link } from "react-router-dom";
@@ -14,17 +14,17 @@ import { Autocomplete, TextField } from "@mui/material";
 import { useExportEmploy } from "../../hooks/useExportEmploye";
 
 function Employe() {
+  const { t } = useTranslation();
   const [activePage, setActivePage] = useState(1);
   const [country, setCountry] = useState({
-    countryName: "Barcha davlatlar",
+    countryName: t("expert.all_countries"),
     countryId: "",
   });
 
   const [spec, setSpec] = useState({
-    specName: "Barcha mutahasislar",
+    specName: t("expert.all_specialists"),
     specId: "",
   });
-  const { t } = useTranslation();
 
   const {
     allRegions,
@@ -34,7 +34,22 @@ function Employe() {
     specialization,
     loading,
     expertError,
+    language,
   } = useExportEmploy();
+  useEffect(() => {
+    setCountry((prev) => ({
+      ...prev,
+      countryName: prev.countryId
+        ? prev.countryName
+        : t("expert.all_countries"),
+      countryId: prev.countryId ? prev.countryId : "",
+    }));
+    setSpec((prev) => ({
+      ...prev,
+      specName: prev.specId ? prev.specName : t("expert.all_specialists"),
+      specId: prev.specId ? prev.specId : "",
+    }));
+  }, [language]);
 
   if (loading || allRegionsGetLoading) {
     return <Spinner position="full" />;

@@ -3,10 +3,7 @@ import {
   CalendarIcon,
   ViewIcon,
 } from "../../../../../../../assets/images/expert";
-import {
-  PORTAL_IMAGE_URL,
-  imageUrl,
-} from "../../../../../../../services/api/utils";
+import { imageUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -79,7 +76,8 @@ const VictorinaCard = ({ victorina, url }) => {
           to={`/portal-category/victorina${
             url ? `/${url}` : ""
           }/image-project/${victorina.id}`}
-          className="victorina-item-link">
+          className="victorina-item-link"
+        >
           {t("moreAbout")}
         </Link>
       </div>

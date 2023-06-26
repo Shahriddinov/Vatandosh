@@ -27,7 +27,7 @@ export default function VictorinaLayout() {
     {
       id: 2,
       url: "/portal-category/victorina/victorina-more",
-      label: t("victorina.victorinas"),
+      label: t("cabinetFive"),
     },
     {
       id: 3,

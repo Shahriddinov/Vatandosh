@@ -84,6 +84,7 @@ export const GET_EXPERT_COUNT = "/expert/get-expert-city";
 export const GET_EXPERT_PAGE = "/volunteer/get-volunteer-banners";
 export const GET_EXPERT_FILTER = "/expert/filter-expert/";
 export const GET_EXPERT_ACTIVITY = `${portalBaseUrl}/expert/user-expert-activity/`;
+export const GET_EXPERT_ACTIVITY_DETAIL = `/expert/get-one/`;
 export const POST_COMMUNITY_CREATE = "/community/create";
 export const POST_COMMUNITY_IMAGE = "/media/create";
 export const POST_COMMUNITY_NEWS_CREATE = "/community/event";
@@ -129,6 +130,9 @@ export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
 export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news`;
 export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event`;
 export const GET_VOLUNTEER_USER = "/volunteer/get-one";
+
+//CABINET URL
+export const GET_CABINET_EXPERT_ACTIVITY = "/expert/show-expert-user";
 
 // Post requests
 export const SEND_CONTACT = `${baseUrl}/sendContact`;

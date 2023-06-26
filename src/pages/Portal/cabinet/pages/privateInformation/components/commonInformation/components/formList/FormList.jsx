@@ -9,11 +9,6 @@ import {
   MySelect,
 } from "../../../../../../../communityAssociation/pages/communityAssociationRegister/components";
 
-const genderOptions = [
-  { id: "1", label: "Erkak" },
-  { id: "2", label: "Ayol" },
-];
-
 const FormList = ({
   data,
   handleChange,
@@ -22,6 +17,10 @@ const FormList = ({
   nationsData,
 }) => {
   const { t } = useTranslation();
+  const genderOptions = [
+    { id: "1", label: t("man") },
+    { id: "2", label: t("woman") },
+  ];
 
   const { findCountry, findCity, findNation, findGender } = findsUserData({
     locationData,
@@ -36,7 +35,7 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="lastName">
-            Familiyasi <span>*</span>
+            {t("surname")} <span>*</span>
           </label>
           <div>
             <input
@@ -57,13 +56,13 @@ const FormList = ({
 
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="middleName">
-            Sharifi <span>*</span>
+            {t("patronymic")} <span>*</span>
           </label>
           <div>
             <input
               type="text"
               id="middleName"
-              placeholder="Kiriting"
+               placeholder={t("expert.inputplaceholder")}
               value={data.second_name}
               onChange={(evt) =>
                 handleChange({
@@ -81,21 +80,21 @@ const FormList = ({
             value={data.gender ? findGender.label : ""}
             handleChange={handleChange}
             data={genderOptions}
-            text={"Jinsi"}
+            text={t("gender")}
             valueKey={"gender"}
-            placeholder="Jinsi"
+            placeholder={t("gender")}
           />
         </div>
 
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="uzbAddress">
-            O'zbekistondagi manzil <span>*</span>
+            {t("uzbLocation")} <span>*</span>
           </label>
           <div>
             <input
               type="text"
               id="uzbAddress"
-              placeholder="Kiriting"
+              placeholder={t("expert.inputplaceholder")}
               value={data.national_address}
               onChange={(evt) =>
                 handleChange({
@@ -115,19 +114,19 @@ const FormList = ({
             data={allCitiesGet}
             text={t("communityAssociation.menu5_info.input2_name")}
             valueKey={"international_address_id"}
-            placeholder="Barcha shaharlar"
+            placeholder={t("allCity")}
           />
         </div>
 
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="activityType">
-            Faoliyat turi <span>*</span>
+            {t("typeOfActivity")} <span>*</span>
           </label>
           <div>
             <input
               type="text"
               id="activityType"
-              placeholder="Kiriting"
+              placeholder={t("expert.inputplaceholder")}
               value={data.job_position}
               onChange={(evt) =>
                 handleChange({
@@ -144,13 +143,13 @@ const FormList = ({
       <div className="commonInformation-cont-formCont-form-box-divCon">
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="firstName">
-            Ismi <span>*</span>
+            {t("name")} <span>*</span>
           </label>
           <div>
             <input
               type="text"
               id="firstName"
-              placeholder="Kiriting"
+              placeholder={t("expert.inputplaceholder")}
               value={data.first_name}
               onChange={(evt) =>
                 handleChange({
@@ -165,7 +164,7 @@ const FormList = ({
 
         <div className="commonInformation-cont-formCont-form-box-divCon-select">
           <MyInputDate
-            text="Tugilgan sana"
+            text={t("dataOfBirth")}
             handleChange={handleChange}
             valueKey="birth_date"
             value={data?.birth_date ? data?.birth_date : "12-12-1999"}
@@ -174,12 +173,12 @@ const FormList = ({
 
         <div className="commonInformation-cont-formCont-form-box-divCon-select">
           <MySelect
-            value={findNation ? findNation.label : ""}
+            value={findCountry ? findCountry?.label : ""}
             handleChange={handleChange}
             data={nationsData}
-            text={"Millati"}
+            text={t("nation")}
             valueKey={"national_id"}
-            placeholder="Millati"
+            placeholder={t("nation")}
           />
         </div>
 
@@ -188,7 +187,7 @@ const FormList = ({
             value={findCountry ? findCountry?.label : ""}
             handleChange={handleChange}
             data={locationData}
-            text="Xorijiy davlat"
+            text={t("foreignCountry")}
             valueKey={"international_location_id"}
           />
         </div>
@@ -196,9 +195,8 @@ const FormList = ({
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <FormHelperText
             id="outlined-weight-helper-text"
-            className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper-span"
-          >
-            <span className="my-input__text">Telefon raqam</span>
+            className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper-span">
+            <span className="my-input__text">{t("phoneNumber")}</span>
             <span className="my-input__required"> *</span>
           </FormHelperText>
           <PhoneInput
@@ -227,7 +225,7 @@ const FormList = ({
               className="passportPdforDocUpload"
               type="file"
               id="passport"
-              placeholder="Kiriting"
+              placeholder={t("expert.inputplaceholder")}
               value={""}
               onChange={(evt) =>
                 handleChange({

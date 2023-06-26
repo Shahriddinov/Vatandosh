@@ -15,9 +15,13 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { removeToken } from "../../../../../reduxToolkit/authSlice/authSlice";
 
-const CabinetLeftMenu = ({ leftMenuToggle, setLeftMenuToggle }) => {
+const CabinetLeftMenu = ({
+  leftMenuToggle,
+  setLeftMenuToggle,
+  setActivePage,
+  activePage,
+}) => {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const menuItems = [
     {
@@ -64,13 +68,10 @@ const CabinetLeftMenu = ({ leftMenuToggle, setLeftMenuToggle }) => {
     },
   ];
 
-  const [activePage, setActivePage] = useState(pathname.split("/")[3]);
-
   const handleClick = (menu) => {
     setActivePage(menu.url.split("/")[3]);
-    
-    setLeftMenuToggle(false);
 
+    setLeftMenuToggle(false);
   };
   return (
     <>

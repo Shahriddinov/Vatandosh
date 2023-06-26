@@ -7,16 +7,15 @@ import { useTranslation } from "react-i18next";
 import "./RegisterOne.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import { ExpertTitle } from "../../../../../expert/components";
+import { toast } from "react-toastify";
 import { meetingCreate } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/extraReducer";
 import { changeStatus } from "../../../../../../../reduxToolkit/portalSlices/meetingSlice/meetingSlice";
+import { BsFillTrashFill } from "react-icons/bs";
 
 export default function RegisterOne({ activeBarItem }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [uploadImg, setuploadImg] = useState(null);
-  const [data, setData] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -34,7 +33,7 @@ export default function RegisterOne({ activeBarItem }) {
         dispatch(changeStatus());
       }, 5000);
     }
-  }, [status]);
+  }, [status, dispatch, navigate]);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -51,11 +50,6 @@ export default function RegisterOne({ activeBarItem }) {
       [name]: value,
     }));
   };
-
-  const url = [
-    { title: t("expert.main"), url: "/portal-category/expert" },
-    { title: t("projects_page.participate_btn"), url: "" },
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,12 +70,14 @@ export default function RegisterOne({ activeBarItem }) {
         activeBarItem !== 0
           ? "webinar-register registeritem-scaleHidden"
           : "webinar-register registeritem-scaleActive"
-      }>
+      }
+    >
       <div className="registeritem1-wrapper registeritem-borderLeft">
         <h3 className="registeritem-title">{t("webinarPersonal")}</h3>
         <form
           className="webinar-register-item registeritem1"
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit}
+        >
           <div className="registeritem1-wrapper">
             <div className="registeritem1-form">
               <div className="registeritem1-form-uploadImg">
@@ -106,7 +102,10 @@ export default function RegisterOne({ activeBarItem }) {
                     {t("expert.uploadnew")}
                   </label>
                   <button onClick={() => setuploadImg(null)}>
-                    {t("expert.delete")}
+                    <span className="registeritem1-delete-text">
+                      {t("expert.delete")}
+                    </span>
+                    <BsFillTrashFill className="registeritem1-delete-icon" />
                   </button>
                 </div>
                 <span className="registeritem1-form-uploadImg-desc">
@@ -124,7 +123,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="first_name"
                       value={formData.first_name}
                       onChange={handleInputChange}
@@ -142,7 +141,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="second_name"
                       value={formData.second_name}
                       onChange={handleInputChange}
@@ -162,7 +161,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="tel"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="phone_number"
                       value={formData.phone_number}
                       onChange={handleInputChange}
@@ -178,7 +177,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="text"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="last_name"
                       value={formData.last_name}
                       onChange={handleInputChange}
@@ -198,7 +197,7 @@ export default function RegisterOne({ activeBarItem }) {
                       type="email"
                       minLength={3}
                       maxLength={30}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}

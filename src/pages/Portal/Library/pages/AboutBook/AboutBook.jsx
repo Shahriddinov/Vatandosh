@@ -1,16 +1,11 @@
 import React from "react";
 import "./aboutBook.scss";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 
 import FullStar from "../../../../../assets/images/library/fullStar.svg";
 import EmptyStar from "../../../../../assets/images/library/emptyStar.svg";
 import { Button } from "@mui/material";
 
-import Book1 from "../../../../../assets/images/library/ken.png";
-import Book2 from "../../../../../assets/images/library/agata.png";
-import Book3 from "../../../../../assets/images/library/jeyn.png";
-import Book4 from "../../../../../assets/images/library/paulo.png";
 import BookCard from "../../components/BookCard/BookCard";
 import { useParams } from "react-router-dom";
 import { useEbookFetching } from "../../hooks/ebookFetching";
@@ -19,8 +14,6 @@ import { useLibraryFetching } from "../../hooks/libraryFetching";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const AboutBook = () => {
-
-  const lng = useSelector((state) => state.language.language);
   const { t } = useTranslation();
   const { id } = useParams();
 
@@ -88,7 +81,8 @@ const AboutBook = () => {
                 fontSize: "14px",
                 lineHeight: "24px",
                 fontWeight: 400,
-              }}>
+              }}
+            >
               {t("library.read_online")}
             </Button>
             <h3>{t("library.about")}</h3>

@@ -11,6 +11,7 @@ import {
   verifyToken,
 } from "./extraReducer";
 import { getItem, removeItem, setItem } from "../../helpers/persistanceStorage";
+import { postExpertRegister } from "../ExpertSlice/RegisterSlice/extraReducer";
 
 const initialState = {
   emailLoading: false,
@@ -38,25 +39,18 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      state.userData = payload.user;
-      state.token = payload.token;
+      const { user, navigate } = payload;
+      state.token = user.token;
+      localStorage.setItem("token", user.token);
 
-      if (payload.userProfile) {
-        localStorage.setItem("user", JSON.stringify(payload.userProfile));
+      if (user.userProfile) {
+        state.userData = user.userProfile;
+        localStorage.setItem("user", JSON.stringify(user.userProfile));
+
+        navigate("/portal-category/cabinet");
       } else {
-        const newUser = {
-          user_id: { id: payload.user.id },
-          avatar_url: payload.user.avatar,
-          first_name: payload.user.name.split(" ")[0],
-          last_name: payload.user.name.split(" ")[1]
-            ? payload.user.name.split(" ")[1]
-            : "",
-        };
-
-        localStorage.setItem("user", JSON.stringify(newUser));
+        navigate("/registration/register");
       }
-
-      localStorage.setItem("token", payload.token);
     },
     removeToken: (state) => {
       removeItem("token");
@@ -81,6 +75,21 @@ const authSlice = createSlice({
       .addCase(sendEmail.rejected, (state, action) => {
         state.loading = false;
         state.message = action.message;
+      });
+
+    // Expert Register
+    build
+      .addCase(postExpertRegister.pending, (state) => {
+        state.registerLoading = true;
+      })
+      .addCase(postExpertRegister.fulfilled, (state, action) => {
+        state.registerLoading = false;
+        state.userData = action.payload;
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      })
+      .addCase(postExpertRegister.rejected, (state, action) => {
+        state.registerLoading = false;
+        state.error = action.error.message;
       });
 
     // Verify Token
@@ -223,5 +232,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { removeToken, loginUser } = authSlice.actions;
+export const { removeToken, loginUser, changeStatus } = authSlice.actions;
 export default authSlice.reducer;

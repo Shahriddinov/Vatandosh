@@ -101,7 +101,7 @@ function VolunterAbout() {
             volunteers.data.map((volunteer) => {
               let verified_volunteer_activities = 0;
 
-              volunteer?.user_volunteer_activities.map((act) => {
+              volunteer?.user_volunteer_activities.forEach((act) => {
                 if (act.verified && act.type === 2) {
                   verified_volunteer_activities++;
                 }

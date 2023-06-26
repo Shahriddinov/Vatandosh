@@ -3,9 +3,8 @@
 .volunteractivity {
   padding-bottom: 80px;
   &-cardlist {
-    display: grid;
-    grid-template-columns: repeat(3, 400px);
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
 
     &-title {
       margin: 100px 0 30px;

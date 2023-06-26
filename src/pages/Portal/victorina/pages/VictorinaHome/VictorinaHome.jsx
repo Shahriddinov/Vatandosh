@@ -15,6 +15,8 @@ import { getPortalNews } from "../../../../../reduxToolkit/portalSlices/portalNe
 function VictorinaHome() {
   const { navData, navbarUrl } = useOutletContext();
   const dispatch = useDispatch();
+
+  const lan = useSelector((state) => state.language.language);
   const victorinaNews = useSelector((store) => store.portalNews.news);
   const communityNewsLoading = useSelector((store) => store.portalNews.loading);
   const { quizData, pageData, quizDataLoading, pageDataLoading, error } =
@@ -22,7 +24,7 @@ function VictorinaHome() {
 
   useEffect(() => {
     dispatch(getPortalNews({ type: "victorina", per_page: "10", page: 1 }));
-  }, [dispatch]);
+  }, [dispatch, lan]);
 
   if (quizDataLoading || pageDataLoading || communityNewsLoading) {
     return <Spinner position="full" />;
