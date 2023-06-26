@@ -52,7 +52,8 @@ const QuizCard = (props) => {
             props.status === 0 ? "/finished-projects" : ""
           }/image-project/${props?.id}`
         );
-      }}>
+      }}
+    >
       <div className="cabinet-quiz-card-img">
         <img
           // src={`${PORTAL_IMAGE_URL}/${image[0]}`}
@@ -77,7 +78,9 @@ const QuizCard = (props) => {
         )}
       </div>
       <div className="cabinet-quiz-card-items-body">
-        <h4 className="cabinet-quiz-card-subname">{props?.title} Eng yaxshi she’rlar to'plami  loyihasi</h4>
+        <h4 className="cabinet-quiz-card-subname">
+          {props?.title} Eng yaxshi she’rlar to'plami loyihasi
+        </h4>
         <p className="cabinet-quiz-card-desc">
           {/* {text.length > 5
             ? text.slice(0, 10).join(" ") + "..."
@@ -92,15 +95,15 @@ const QuizCard = (props) => {
           <div className="cabinet-quiz-card__list">
             <span className="cabinet-quiz-card__item">
               <p>{timeData.days}</p>
-              <p>{t("day")}</p>
+              <p>{t("choices.day")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.hours}</p>
-              <p>{t("hour")}</p>
+              <p>{t("choices.hour")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.minutes}</p>
-              <p>{t("minute")}</p>
+              <p>{t("choices.minute")}</p>
             </span>
           </div>
         ) : null}

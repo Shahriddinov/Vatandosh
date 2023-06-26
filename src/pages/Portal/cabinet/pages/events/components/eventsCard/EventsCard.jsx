@@ -53,15 +53,15 @@ const EventsCard = ({ webinar }) => {
         <ul className="cabinet-events-timer">
           <li className="cabinet-events-timer__item">
             <span>{timeData.days}</span>
-            <span>{t("day")}</span>
+            <span>{t("choices.day")}</span>
           </li>
           <li className="cabinet-events-timer__item">
             <span>{timeData.hours}</span>
-            <span>{t("hour")}</span>
+            <span>{t("choices.hour")}</span>
           </li>
           <li className="cabinet-events-timer__item">
             <span>{timeData.minutes}</span>
-            <span>{t("minute")}</span>
+            <span>{t("choices.minute")}</span>
           </li>
         </ul>
         <div className="cabinet-events-box__footer">
