@@ -27,6 +27,7 @@ const initialState = {
 
   volunteerCreateLoading: true,
   volunteerCreateData: [],
+  volunteerCreateStatus: null,
 
   volunteerUpdateLoading: true,
   volunteerUpdateData: [],
@@ -59,6 +60,7 @@ const volunteerSlice = createSlice({
     builder
       .addCase(getVolunteerFilter.pending, (state) => {
         state.volunteerLoading = true;
+        state.volunteerCreateStatus = null;
       })
       .addCase(getVolunteerFilter.fulfilled, (state, action) => {
         state.volunteerLoading = false;
@@ -101,6 +103,7 @@ const volunteerSlice = createSlice({
     builder
       .addCase(deleteVolunteerOne.pending, (state) => {
         state.deleteLoading = true;
+        state.volunteerCreateStatus = null;
       })
       .addCase(deleteVolunteerOne.fulfilled, (state, action) => {
         state.deleteLoading = false;
@@ -116,16 +119,18 @@ const volunteerSlice = createSlice({
       .addCase(volunteerCreate.pending, (state) => {
         state.volunteerCreateLoading = true;
         state.status = "idle";
+        state.volunteerCreateStatus = null;
       })
       .addCase(volunteerCreate.fulfilled, (state, action) => {
         state.volunteerCreateLoading = false;
         state.volunteerCreateData = action.payload;
-        console.log(action.payload);
         state.status = "succeeded";
+        state.volunteerCreateStatus = "post_succeeded";
       })
       .addCase(volunteerCreate.rejected, (state, action) => {
         state.volunteerCreateLoading = false;
         state.error = action.error.message;
+        state.volunteerCreateStatus = "error";
       });
 
     // Update volunteer
@@ -133,11 +138,13 @@ const volunteerSlice = createSlice({
       .addCase(volunteerUpdate.pending, (state) => {
         state.volunteerUpdateLoading = true;
         state.status = "idle";
+        state.volunteerCreateStatus = null;
       })
       .addCase(volunteerUpdate.fulfilled, (state, action) => {
         state.volunteerUpdateLoading = false;
         state.volunteerUpdateData = action.payload;
         state.status = "succeeded";
+        state.volunteerCreateStatus = "update_succeeded";
       })
       .addCase(volunteerUpdate.rejected, (state, action) => {
         state.volunteerUpdateLoading = false;
@@ -148,6 +155,7 @@ const volunteerSlice = createSlice({
     builder
       .addCase(getVolunteerActivity.pending, (state) => {
         state.volunteerActivityLoading = true;
+        state.volunteerCreateStatus = null;
       })
       .addCase(getVolunteerActivity.fulfilled, (state, action) => {
         state.volunteerActivityLoading = false;
@@ -176,12 +184,15 @@ const volunteerSlice = createSlice({
     builder
       .addCase(updateVolunteerActivity2.pending, (state) => {
         state.updateVolunteerActivityLoading2 = true;
+        state.volunteerCreateStatus = "null";
       })
       .addCase(updateVolunteerActivity2.fulfilled, (state, action) => {
         state.updateVolunteerActivityLoading2 = false;
+        state.volunteerCreateStatus = "update_succeeded";
       })
       .addCase(updateVolunteerActivity2.rejected, (state, action) => {
         state.updateVolunteerActivityLoading2 = false;
+        state.volunteerCreateStatus = "error";
       });
     // delete volunteer
     builder
