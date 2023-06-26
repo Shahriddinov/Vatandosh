@@ -685,6 +685,7 @@
   "groupNone": "Siz hali hech qanday guruhga qo'shilmagansiz.",
   "selectStart": "Xabar yozishni boshlash uchun suhbatni tanlang.",
   "chatNone": "Sizda hali hech qanday chat yo'q.",
+  "delete_message": "Ushbu xabarni o'chirishga ishonchingiz komilmi?",
   "success": "qabul qilingan",
   "danger": "Rad etilgan",
   "jamoatOne": "Jamoat birlashmalari mavjud emas",

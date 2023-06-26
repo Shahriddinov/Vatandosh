@@ -133,7 +133,7 @@ const PrivateMessages = ({
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure deleting this message?")) {
+    if (window.confirm(t("delete_message"))) {
       dispatch(deleteMessage(id));
       dispatch(
         getMessages({

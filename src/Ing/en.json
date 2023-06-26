@@ -684,6 +684,7 @@
   "groupNone": "You have not joined any group yet.",
   "selectStart": "Select a chat to start messaging.",
   "chatNone": "You have not any chat yet.",
+  "delete_message": "Are you sure deleting this message?",
   "success": "accepted",
   "danger": "Rejected",
   "jamoatOne": "There are no public associations",
