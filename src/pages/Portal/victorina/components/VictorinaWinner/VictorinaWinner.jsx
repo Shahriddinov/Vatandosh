@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import winner from "../../../../../assets/images/victorina/win.png";
 import polygon from "../../../../../assets/images/victorina/polygon.png";
 import "./VictorinaWinner.scss";
 
 function VictorinaWinnerWin() {
+  const { id } = useParams();
   return (
     <div className="winnervictorina">
       <div className="container">
@@ -20,7 +21,10 @@ function VictorinaWinnerWin() {
               <img src={polygon} alt="" className="winnervictorina-icon" />
             </li>
             <li className="winnervictorina-item">
-              <Link to="/" className="winnervictorina-link">
+              <Link
+                to="/portal-category/victorina/victorina-more"
+                className="winnervictorina-link"
+              >
                 Viktorinalar
               </Link>
             </li>
@@ -28,7 +32,10 @@ function VictorinaWinnerWin() {
               <img src={polygon} alt="" className="winnervictorina-icon" />
             </li>
             <li className="winnervictorina-item">
-              <Link to="/" className="winnervictorina-link">
+              <Link
+                to={`/portal-category/victorina/image-project/${id}`}
+                className="winnervictorina-link"
+              >
                 EDU BRANDING
               </Link>
             </li>
@@ -50,12 +57,14 @@ function VictorinaWinnerWin() {
             </p>
             <Link
               to="/portal-category/victorina/victorina-more"
-              className="winnervictorina-prev">
+              className="winnervictorina-prev"
+            >
               Tanlovga qaytish
             </Link>
             <Link
-              to="/portal-category/victorina/victorina-more"
-              className="winnervictorina-next">
+              to={`/portal-category/victorina/image-project/${id}`}
+              className="winnervictorina-next"
+            >
               Testni qayta ishlash
             </Link>
           </div>

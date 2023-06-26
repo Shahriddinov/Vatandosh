@@ -256,6 +256,10 @@ const VictorinaProject = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
 );
 
+const VictorinaProjectTest = lazy(() =>
+  import("./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner")
+);
+
 const VictorinaAbout = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout")
 );
@@ -679,6 +683,10 @@ const RoutesContainer = () => {
                   <Route
                     path="finished-projects/image-project/:id"
                     element={<VictorinaProject />}
+                  />
+                  <Route
+                    path="image-project/:id/test"
+                    element={<VictorinaProjectTest />}
                   />
                   <Route path=":newsId" element={<PortalNews />} />
                 </Route>
