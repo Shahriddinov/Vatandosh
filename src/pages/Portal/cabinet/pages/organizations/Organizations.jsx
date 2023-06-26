@@ -35,15 +35,8 @@ const Organizations = () => {
     <div className="container-organizations">
       <div className="container-organizations-inner">
         <div className="container-organizations-inner-top">
-          <span>{t("about_uzbekistan.cabinetFour")}</span>
-          {/* <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleSwitchHandler}
-          >
-            <img src={plusIcon} alt="icon" /> <span>Tadbir</span>
-          </motion.button> */}
+          <span>{t("cabinetFour")}</span>
         </div>
-
         <div className="container-organizations-inner-bottom">
           <OrganizationList data={allCommunityGet?.data} />
         </div>

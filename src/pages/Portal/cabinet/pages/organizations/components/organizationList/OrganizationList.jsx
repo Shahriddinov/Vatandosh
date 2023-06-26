@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 const OrganizationList = ({ data }) => {
   const { t } = useTranslation();
-  //   console.log(data);
   const allRegions = useSelector((store) => store.community.allRegionsGet);
   return (
     <>
