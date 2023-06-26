@@ -117,6 +117,7 @@ export const GET_VOLUNTEER_ACTIVITY = `${portalBaseUrl}/volunteer/show-volunteer
 export const GET_VOLUNTEER_ACTIVITY_ONE = `${portalBaseUrl}/volunteer/get-one`;
 export const VICTORINA_YOUTUBE = "/quiz/participant";
 export const GET_CHAT_DATA = `${portalBaseUrl}/chat`;
+export const DELETE_MESSAGE = `${portalBaseUrl}/chat/chat`;
 export const GET_WEBINAR_BODY = `/meeting`;
 export const GET_MAGAZINE_ABOUT = "/magazine/get-about";
 export const GET_MAGAZINE_ONE_ABOUT = "/magazine/get-one-about";

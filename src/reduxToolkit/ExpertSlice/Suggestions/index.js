@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   deleteSuggestions,
-  getSuggestionMenu,
   getSuggestions,
   postSuggestions,
 } from "./extraReducer";

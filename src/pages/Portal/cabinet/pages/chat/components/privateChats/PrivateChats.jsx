@@ -70,6 +70,8 @@ const PrivateChats = ({
         <p className="users__no-users">{t("chatNone")}</p>
       ) : (
         data?.map((chat) => {
+          // console.log(chat);
+
           let profileImg;
           if (chat?.user) {
             if (chat?.user?.avatar_url) {

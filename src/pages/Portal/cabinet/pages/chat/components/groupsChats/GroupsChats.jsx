@@ -63,8 +63,6 @@ const GroupsChats = ({
     }
   }, [leaveGroup]);
 
-  console.log(data);
-
   return (
     <div className="groups">
       {data?.length === 0 ? (

@@ -217,6 +217,22 @@
       font-weight: 500;
       color: #333;
     }
+
+    &:hover .group-message__delete-message svg {
+      opacity: 1;
+    }
+  }
+
+  &__delete-message {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    & > svg {
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.1s;
+    }
   }
 
   &__messages-bottom {

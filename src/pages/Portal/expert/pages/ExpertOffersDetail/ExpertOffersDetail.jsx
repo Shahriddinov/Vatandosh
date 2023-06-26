@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import DefaultProfilePic from "../../../../../assets/images/mediateka/2.png";
 import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import ExpertTitle from "../../components/ExpertTitle/ExpertTitle";
 import CouncilStatics from "../ExpertHome/components/Council/CouncilStatics";
@@ -44,11 +43,7 @@ export default function ExpertOffersDetail() {
         <div className="expertofferdetail-wrapper">
           <div className="expertofferdetail-main">
             <img
-              src={`${PORTAL_IMAGE_URL}${
-                expertSuggestionsData[0]?.images
-                  ? expertSuggestionsData[0]?.images[0]
-                  : null
-              }`}
+              src={`${PORTAL_IMAGE_URL}${JSON.parse(expertData?.images)[0]}`}
               alt="error"
               className="expertofferdetail-pic"
             />
@@ -65,8 +60,8 @@ export default function ExpertOffersDetail() {
               }
               position={expertData?.user_profile?.job_position}
             />
-            <p>{expertSuggestionsData[0]?.suggestions}</p>
-            <p>{expertSuggestionsData[0]?.additional_information}</p>
+            <p>{expertData?.suggestions}</p>
+            <p>{expertData?.additional_information}</p>
             <ShareFriends />
           </div>
           <div className="expertofferdetail-actions">
