@@ -250,11 +250,13 @@ const GroupsMessages = ({
             <h4>{groupData.group.name}</h4>
             {groupData.group.online_count > 0 ? (
               <p>
-                {groupData.group.users_count} ta a'zo,{" "}
-                {groupData.group.online_count} ta online
+                {groupData.group.users_count} {t("Cabinet.member")},{" "}
+                {groupData.group.online_count} {t("Cabinet.online")}
               </p>
             ) : (
-              <p>{groupData.group.users_count} ta a'zo</p>
+              <p>
+                {groupData.group.users_count} {t("Cabinet.member")}
+              </p>
             )}
           </div>
           <div className="group-message__extra-functions">

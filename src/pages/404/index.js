@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import znak from "../../assets/images/znak.png";
-import znakLeft from "../../assets/images/znak-left.png";
 import Erorr from "../../assets/images/404.svg";
 import "./style.scss";
 import Header from "../../component/Layout/Header/Header";

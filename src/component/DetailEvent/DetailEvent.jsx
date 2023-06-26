@@ -9,10 +9,12 @@ import { useEffect, useState } from "react";
 import ShareFriends from "../ShareFriends/ShareFriends";
 import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
 import "./DetailEvent.scss";
+import { useTranslation } from "react-i18next";
 
 export default function DetailEvent(siteNews) {
   const lan = useSelector((state) => state.language.language);
   const [galleryMainImg, setgalleryMainImg] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (siteNews?.images) setgalleryMainImg(JSON.parse(siteNews?.images)[0]);
@@ -61,7 +63,8 @@ export default function DetailEvent(siteNews) {
                       <Link
                         to={`/hashtag/${el.trim()}`}
                         key={index}
-                        className="populartags-tag">
+                        className="populartags-tag"
+                      >
                         {el}
                       </Link>
                     );
@@ -75,7 +78,8 @@ export default function DetailEvent(siteNews) {
                 className="newsdetail-main-desc-texts"
                 dangerouslySetInnerHTML={{
                   __html: siteNews.body,
-                }}></div>
+                }}
+              ></div>
               <div className="newsdetail-main-desc-texts">
                 {siteNews.excerpt}
               </div>

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { sendEmail } from "../../../../reduxToolkit/authSlice/extraReducer";
 import Spinner from "../../../../component/Spinner/Spinner";
@@ -29,6 +28,10 @@ export default function SignUp() {
     return <Spinner position="full" />;
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div className="auth">
       <div className="container">
@@ -44,14 +47,16 @@ export default function SignUp() {
             </div>
             <form
               className="auth-form-inputs"
-              onSubmit={(e) => handleSubmit(e)}>
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label className="auth-form-inputs-emailInput auth-form-inputs-emailInput-signup">
                 <span>{t("createEmail")}</span>
                 <input type="email" ref={emailRef} required />
               </label>
               <p
                 className="auth-form-inputs-sendMail"
-                style={isValid ? { display: "block" } : { display: "none" }}>
+                style={isValid ? { display: "block" } : { display: "none" }}
+              >
                 {message ? message : "Loading..."}
               </p>
               <button type="submit" className="auth-form-inputs-submitBtn">

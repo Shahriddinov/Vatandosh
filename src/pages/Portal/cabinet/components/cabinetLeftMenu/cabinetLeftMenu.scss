@@ -73,7 +73,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
   .cabinet-navbar {
     border: none;
     transform: translateX(-100%);
@@ -82,10 +82,10 @@
     left: 0;
     background-color: #fff;
     z-index: 999;
+    padding: 1.5rem 2.5rem;
+    width: 80%;
     &.active {
       transform: translateX(0);
-      padding: 1.5rem 2.5rem;
-      width: 80%;
     }
 
     &__overlay {
@@ -94,7 +94,7 @@
       width: 100%;
       height: 100%;
       left: 0;
-      position: absolute;
+      position: fixed;
       top: 0;
       z-index: 9;
       left: 0;
@@ -125,5 +125,11 @@
     &__logout {
       display: flex;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cabinet-navbar {
+    width: 100%;
   }
 }

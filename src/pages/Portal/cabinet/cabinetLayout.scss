@@ -160,3 +160,17 @@
     }
   }
 }
+@media screen and (max-width: 1075px) {
+  .cabinet-layout {
+    &__right{
+      width: 70%;
+    }
+  }
+}
+@media screen and (max-width: 950px) {
+  .cabinet-layout {
+    &__right{
+      width: 100%;
+    }
+  }
+}

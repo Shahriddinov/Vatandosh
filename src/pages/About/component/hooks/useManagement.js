@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import {getManagement} from "../../../../reduxToolkit/ManagementSlice/ManagementSlice";
+import { getManagement } from "../../../../reduxToolkit/ManagementSlice/ManagementSlice";
 import { useEffect } from "react";
 
 export const usePaginationFetching = () => {
-  const management = useSelector((state) => state.managementSlice.moreManagement);
+  const management = useSelector(
+    (state) => state.managementSlice.moreManagement
+  );
   const managementLoading = useSelector(
     (state) => state.managementSlice.loadingManagement
   );
@@ -19,7 +21,7 @@ export const usePaginationFetching = () => {
 
   useEffect(() => {
     dispatch(getManagement(searchCount.id));
-  }, []);
+  }, [dispatch, searchCount]);
 
   const handleFetching = () => {
     dispatch(getManagement(searchCount.id * 1 + 1));
@@ -29,5 +31,11 @@ export const usePaginationFetching = () => {
     }));
   };
 
-  return { management, searchCount, setSearchCount, handleFetching, managementLoading };
+  return {
+    management,
+    searchCount,
+    setSearchCount,
+    handleFetching,
+    managementLoading,
+  };
 };

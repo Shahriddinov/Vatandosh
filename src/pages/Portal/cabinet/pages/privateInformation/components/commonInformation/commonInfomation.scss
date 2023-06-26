@@ -9,10 +9,17 @@
       align-items: center;
       grid-auto-flow: column;
       column-gap: 20px;
+      @media (max-width: 31.44em) {
+        column-gap: 7px;
+      }
       & > img {
         border-radius: 50%;
         width: 80px;
         height: 80px;
+        @media (max-width: 31.44em) {
+          width: 4em;
+          height: 4em;
+        }
       }
       & > div {
         & > label {
@@ -22,6 +29,10 @@
           padding: 17px 22px;
           &:hover {
             cursor: pointer;
+          }
+          @media (max-width: 31.44em) {
+            @include fontStyles(500, 0.75em, 24px, #ffffff);
+            padding: 0.75em 1.3em;
           }
         }
         & > input {
@@ -37,6 +48,10 @@
         padding: 12px 22px;
         &:hover {
           cursor: pointer;
+        }
+        @media (max-width: 31.44em) {
+          @include fontStyles(500, 0.75em, 24px, #eb5757);
+          padding: 0.2em 1.3em;
         }
       }
     }
@@ -56,11 +71,18 @@
     }
     &-form {
       &-box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // gap: 30px;
+        @media (max-width: 31.44em) {
+        }
 
         &-divCon {
+          @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+          }
           &-inputLabelWrapper {
             margin-top: 30px;
 

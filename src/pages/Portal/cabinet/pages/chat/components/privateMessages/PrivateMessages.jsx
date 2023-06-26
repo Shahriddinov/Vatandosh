@@ -17,6 +17,7 @@ import {
   sendMessage,
 } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 import { ChooseMember } from "../../Chat";
+import { useTranslation } from "react-i18next";
 
 const PrivateMessages = ({
   showMessages,
@@ -53,6 +54,7 @@ const PrivateMessages = ({
   const filesData = useSelector((state) => state.chatSlice.filesData);
   const linksData = useSelector((state) => state.chatSlice.linksData);
   const user = JSON.parse(localStorage.getItem("user"));
+  const { t } = useTranslation();
 
   const handleChange = (input) => {
     setSendFile(input.target.files);
@@ -198,9 +200,11 @@ const PrivateMessages = ({
               <>
                 <h4>{privateUser.name}</h4>
                 {!privateUser.last_online_at ? (
-                  <p>Online</p>
+                  <p>{t("Cabinet.user_online")}</p>
                 ) : (
-                  <p>Last seen {privateUser.last_online_at}</p>
+                  <p>
+                    {t("Cabinet.last_seen")} {privateUser.last_online_at}
+                  </p>
                 )}
               </>
             ) : null}
@@ -421,7 +425,7 @@ const PrivateMessages = ({
             </div>
           ) : (
             <p className="private-message__no-user">
-              Select a chat to start messaging.
+              {t("Cabinet.start_chat")}
             </p>
           )}
           {messagesLoading && (

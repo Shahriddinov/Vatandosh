@@ -8,6 +8,7 @@
   align-items: center;
   padding: 0 50px;
   border-bottom: 1px solid #eaedf6;
+  position: relative;
 
   &__user-information {
     height: 100%;
@@ -15,7 +16,11 @@
     align-items: center;
     gap: 10px;
   }
-
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   &__user-image {
     width: 50px;
     height: 50px;
@@ -30,6 +35,7 @@
   }
 
   &__user-data {
+    line-height: 23px;
     h4 {
       font-size: 1.125rem;
       font-weight: 500;
@@ -46,6 +52,7 @@
       }
     }
   }
+
   &__right-buttons-open,
   &__left-menu-open {
     display: none;
@@ -58,7 +65,7 @@
       margin: auto 0;
     }
   }
-  &__left-menu-open{
+  &__left-menu-open {
     margin-right: 3rem;
   }
   &__right-buttons {
@@ -102,6 +109,12 @@
       border-radius: 12px;
       background: #065ea9;
       cursor: pointer;
+
+      & > span {
+        display: flex;
+        align-items: center;
+        @include fontStyles(400, 14px, 17px, #062a49);
+      }
     }
 
     &-icon {
@@ -114,12 +127,6 @@
       width: 16px;
       height: 16px;
       color: #ffff;
-    }
-
-    & > span {
-      display: flex;
-      align-items: center;
-      @include fontStyles(400, 14px, 17px, #062a49);
     }
 
     &-bar {
@@ -150,15 +157,65 @@
     }
   }
 }
-
+@media screen and (max-width: 950px) {
+  .cabinet-header {
+    &__left-menu-open {
+      display: flex;
+    }
+  }
+}
 @media screen and (max-width: 768px) {
   .cabinet-header {
+    &__right {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
     &__right-buttons {
+      transition: 0.5s ease;
+      position: absolute;
+      transform: translateX(180%);
+      right: 110px;
+      &.active {
+        transform: translateX(0);
+      }
+    }
+    &__user {
+      &.nonactive {
+        display: none;
+      }
+    }
+    &__logout {
       display: none;
     }
-    &__left-menu-open,
     &__right-buttons-open {
       display: flex;
+    }
+
+    &__language {
+      &-wrapper {
+        & > span {
+          display: none;
+        }
+      }
+      &-iconArrow {
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .cabinet-header {
+    padding: 0 25px;
+    &__right-buttons {
+      right: 80px;
+    }
+    &__user-image {
+      width: 40px;
+      height: 40px;
+    }
+    &__left-menu-open {
+      margin-right: 0.7rem;
     }
   }
 }

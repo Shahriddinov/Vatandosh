@@ -1,5 +1,6 @@
 {
   "404": "Ync! Sahifa topilmadi",
+  "test_sayt": "Sayt sinov tariqasida ishga tushirilgan",
   "404One": "Bu yerda faqat mushuk bilan TOM ketmoqda ...",
   "404Link": "Bosh sahifa",
   "version": "OLDINGI VERSIYA",
@@ -627,7 +628,7 @@
   "volunteryOne": "Volontyorlarni faoliyati",
   "volunteryWork": "Volontyorlarni faoliyati",
   "volunterySport": "Yosh sportchi volontyorlar",
-  "passportUpload": "Passport yuklash (pdf, doc)",
+  "passportUpload": "Pasport yuklash (pdf, doc)",
   "finish": "Yakunlash",
   "voice": "Savol",
   "victorinaAbout": "Victorinalar haqida",
@@ -690,5 +691,12 @@
   "active": "Aktiv yani qatnashgan",
   "register": "Registratsiya qigan",
   "finishOne":"Arxiv",
-  "informationNone":"Hozirda bizda malumot mavjud emas"
+  "informationNone":"Hozirda bizda malumot mavjud emas",
+  "Cabinet" : {
+    "online": "ta onlayn",
+    "member": "ta a'zo",
+    "last_seen": "Oxirgi ko'rilgan",
+    "user_online": "Onlayn",
+    "start_chat": "Xabar almashishni boshlash uchun suhbatni tanlang."
+  }
 }
