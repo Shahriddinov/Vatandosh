@@ -17,9 +17,10 @@ import { Link } from "react-router-dom";
 import { BsYoutube } from "react-icons/bs";
 
 const Footer = () => {
+  const lan = useSelector((state) => state.language.language);
+  const data = useSelector((store) => store.singleSlice.projectsData);
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
   const contactData = useSelector((state) => state.contactSlice.contactData);
 
   useEffect(() => {
@@ -68,36 +69,13 @@ const Footer = () => {
                 </div>
                 <div className="footer-menu">
                   <ul>
-                    <li>
-                      <Link to="/projects/columns?=2">
-                        {t("projects_page.item2")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects/columns?=4">
-                        {t("projects_page.item3")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects/columns?=5">
-                        {t("projects_page.item4")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects/columns?=6">
-                        {t("projects_page.item5")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects/columns?=7">
-                        {t("projects_page.item6")}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/projects/columns?=10">
-                        {t("projects_page.item7")}
-                      </Link>
-                    </li>
+                    {data?.map((el) => (
+                      <li key={el?.id}>
+                        <Link to={`/projects/columns?=${el?.id}`}>
+                          {el[`menu_${lan}`]}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="footer-right">
