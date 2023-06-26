@@ -679,5 +679,15 @@
   "FiveCabinet": "Your offer",
   "SixCabinet": "Voluntary activities",
   "wordNone": "There is currently no information available",
-  "country": "Faculty abroad"
+  "country": "Faculty abroad",
+  "groupNone": "You have not joined any group yet.",
+  "selectStart": "Select a chat to start messaging.",
+  "chatNone": "You have not any chat yet.",
+  "success": "accepted",
+  "danger": "Rejected",
+  "jamoatOne": "There are no public associations",
+  "active": "Active participant",
+  "register": "Registered",
+  "finishOne":"Archive",
+  "informationNone":"We currently have no information"
 }

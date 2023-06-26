@@ -198,7 +198,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                       minLength={3}
                       maxLength={5000}
                       value={el.city}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       onChange={(e) =>
                         handleChange({
                           ...el,
@@ -220,7 +220,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                     type="text"
                     minLength={3}
                     maxLength={5000}
-                    placeholder={t("expert.inputplaceholder")}
+                     placeholder={t("expert.inputplaceholder")}
                     value={el.position}
                     onChange={(e) =>
                       handleChange({ ...el, position: e.target.value })
@@ -241,7 +241,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                     minLength={3}
                     maxLength={5000}
                     value={el.company}
-                    placeholder={t("expert.inputplaceholder")}
+                     placeholder={t("expert.inputplaceholder")}
                     onChange={(e) =>
                       handleChange({ ...el, company: e.target.value })
                     }
@@ -269,7 +269,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                       type="date"
                       minLength={3}
                       maxLength={100}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       value={el.start_date}
                       onChange={(e) =>
                         handleChange({
@@ -297,7 +297,7 @@ export default function RegisterItem3({ activeBarItem, setActiveBarItem }) {
                       minLength={3}
                       maxLength={100}
                       style={el?.status ? { opacity: 0.3 } : null}
-                      placeholder={t("expert.inputplaceholder")}
+                       placeholder={t("expert.inputplaceholder")}
                       value={el.finish_date}
                       onChange={(e) =>
                         handleChange({

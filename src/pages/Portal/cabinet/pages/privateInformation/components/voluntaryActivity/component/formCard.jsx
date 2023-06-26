@@ -7,8 +7,10 @@ import plusIcon from "../../../../../../../../assets/images/choose/addPic.svg";
 import trashIconSmall from "../../../../../../../../assets/images/choose/trash.svg";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const FormCard = ({ el, data, setData, deleteCompHandler }) => {
+  const { t } = useTranslation();
   const [openCard, setOpenCard] = useState(true);
 
   const inputHandler = (e, id) => {
@@ -55,8 +57,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
   return (
     <motion.div
       className="formCard"
-      animate={{ height: !openCard ? "45px" : "" }}
-    >
+      animate={{ height: !openCard ? "45px" : "" }}>
       <div className="formCard-part1">
         <h1>1. {el.title}</h1>
         <div>
@@ -77,7 +78,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
 
       <div className="formCard-form-part2">
         <label htmlFor={`${el.id}a`}>
-          Maqola mavzusi <span>*</span>
+          {t("about_uzbekistan.maqola")} <span>*</span>
         </label>
         <div>
           <input
@@ -97,10 +98,9 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             <img src={`${PORTAL_IMAGE_URL}/${each}`} alt="imgloaded" />
             <div
               className="formCard-form-part3-deleteIcon"
-              onClick={() => deleteImgHandler(el.id, each, el.from)}
-            >
+              onClick={() => deleteImgHandler(el.id, each, el.from)}>
               <img src={trashIconSmall} alt="trashicon" />
-              <p>Удалить</p>
+              <p>{t("projects_page.form_image_delete")}</p>
             </div>
           </div>
         ))}
@@ -109,17 +109,15 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
             <img src={URL.createObjectURL(each)} alt="imgloaded" />
             <div
               className="formCard-form-part3-deleteIcon"
-              onClick={() => deleteImgHandler(el.id, each, el.from)}
-            >
+              onClick={() => deleteImgHandler(el.id, each, el.from)}>
               <img src={trashIconSmall} alt="trashicon" />
-              <p>Удалить</p>
+              <p>{t("projects_page.form_image_delete")}</p>
             </div>
           </div>
         ))}
         <motion.div
           whileTap={{ scale: 0.9 }}
-          className="formCard-form-part3-addImg"
-        >
+          className="formCard-form-part3-addImg">
           <label htmlFor={el.id}>
             <img src={plusIcon} alt="plusIcon" />
           </label>
@@ -134,14 +132,13 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
 
       <div className="formCard-form-part4">
         <label htmlFor={el.id}>
-          Izohingiz yozing <span>*</span>
+          {t("about_uzbekistan.comment")} <span>*</span>
         </label>
         <textarea
           name="description"
           id={el.id}
           value={el.description}
-          onChange={(e) => inputHandler(e, el.id)}
-        ></textarea>
+          onChange={(e) => inputHandler(e, el.id)}></textarea>
       </div>
       <div className="formCard-hl"></div>
     </motion.div>

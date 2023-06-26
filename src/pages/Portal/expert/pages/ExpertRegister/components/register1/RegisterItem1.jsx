@@ -130,7 +130,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                       last_name: e.target.value,
                     }));
                   }}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                 />
                 <img src={pencil} alt="" />
               </div>
@@ -146,7 +146,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   minLength={3}
                   maxLength={200}
                   value={formData?.first_name ? formData.first_name : ""}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
                     setFormData((args) => ({
                       ...args,
@@ -168,7 +168,7 @@ export default function RegisterItem1({ activeBarItem, setActiveBarItem }) {
                   minLength={3}
                   maxLength={200}
                   value={formData?.second_name ? formData.second_name : ""}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) => {
                     setFormData((args) => ({
                       ...args,

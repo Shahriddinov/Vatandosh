@@ -17,8 +17,10 @@ import {
   cabinetScientificSubmit,
 } from "../extra";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const FormCard = ({ scientificData, data, setData }) => {
+  const { t } = useTranslation();
   const [hobby, setHobby] = useState("");
   const dispatch = useDispatch();
 
@@ -60,12 +62,11 @@ const FormCard = ({ scientificData, data, setData }) => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(cabinetScientificSubmit({ dispatch, data }));
-        }}
-      >
+        }}>
         <div className="formCard-cont-form-row1">
           <div>
             <label htmlFor="degree">
-              Ilmiy darajasi <span>*</span>
+              {t("expert.degree")} <span>*</span>
             </label>
             <div>
               <input
@@ -82,7 +83,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div>
             <label htmlFor="title">
-              Ilmiy unvoni <span>*</span>
+              {t("expert.activitypositon")} <span>*</span>
             </label>
             <div>
               <input
@@ -100,7 +101,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
         <div className="formCard-cont-form-row2">
           <label htmlFor="article">
-            Ilmiy maqola mavzusi <span>*</span>
+            {t("expert.articletitle")} <span>*</span>
           </label>
           <div>
             <input
@@ -118,7 +119,7 @@ const FormCard = ({ scientificData, data, setData }) => {
         <div className="formCard-cont-form-row3">
           <div>
             <label htmlFor="journal">
-              Chop etilgan jurnal nomi <span>*</span>
+              {t("expert.articlename")} <span>*</span>
             </label>
             <div>
               <input
@@ -135,7 +136,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div className="formCard-cont-form-row3-inner2">
             <label htmlFor="release">
-              Chop etilgan sana <span>*</span>
+              {t("expert.articledate")} <span>*</span>
             </label>
             <div>
               <input
@@ -152,7 +153,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div>
             <label htmlFor="articleLink">
-              Maqola havolasi <span>*</span>
+              {t("expert.articlelink")} <span>*</span>
             </label>
             <div>
               <input
@@ -174,7 +175,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
           <div className="formCard-cont-form-row3-inner3">
             <label htmlFor="articleFile">
-              Maqola fayli <span>*</span>
+              {t("expert.articlefile")} <span>*</span>
             </label>
             <div>
               <label htmlFor="articleFile">
@@ -196,7 +197,7 @@ const FormCard = ({ scientificData, data, setData }) => {
 
         <div className="formCard-cont-form-row4">
           <label htmlFor="hobby">
-            Asosiy ilmiy qiziqish yo‘nalishlari <span>*</span>
+            {t("expert.articlehobby")} <span>*</span>
           </label>
           <div>
             <input

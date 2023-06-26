@@ -59,7 +59,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                       academic_degree: e.target.value,
                     }))
                   }
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                 />
               </div>
             </label>
@@ -75,7 +75,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                   minLength={3}
                   maxLength={5000}
                   value={data.scientific_title}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
@@ -98,7 +98,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 minLength={3}
                 maxLength={5000}
                 value={data.topic_of_scientific_article}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setData((prev) => ({
                     ...prev,
@@ -121,7 +121,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                   minLength={3}
                   maxLength={5000}
                   value={data.article_published_journal_name}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
@@ -140,7 +140,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 <input
                   required={pathname.includes("expert") ? true : false}
                   type="date"
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   value={data.scientific_article_created_at}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -164,7 +164,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                   type="text"
                   minLength={3}
                   maxLength={5000}
-                  placeholder={t("expert.inputplaceholder")}
+                   placeholder={t("expert.inputplaceholder")}
                   value={data.article_url}
                   onChange={(e) =>
                     setData((prev) => ({
@@ -209,7 +209,7 @@ export default function RegisterItem4({ activeBarItem, setactiveBarItem }) {
                 type="text"
                 minLength={3}
                 maxLength={5000}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) => {
                   const arr = e.target.value.split(",");
                   setData((prev) => ({

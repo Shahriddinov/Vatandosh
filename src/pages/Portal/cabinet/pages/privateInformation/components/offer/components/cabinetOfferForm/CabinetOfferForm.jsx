@@ -11,8 +11,10 @@ import trashSvg from "../../../../../../../../../assets/images/choose/trash.svg"
 import { useDispatch } from "react-redux";
 
 import "./cabinetOfferForm.scss";
+import { useTranslation } from "react-i18next";
 
 const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const textAreaHandler = (e) => cabinetOfferInputHandler({ e, setData });
@@ -27,9 +29,8 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
         e.preventDefault();
         cabinetOfferSubmit({ dispatch, data, expertSuggestionsData });
       }}
-      id="cabinetOfferSubmit"
-    >
-      <p>Taklifingiz uchun rasm</p>
+      id="cabinetOfferSubmit">
+      <p>{t("expert.offerforimg")}</p>
       <div className="offerCont-imgCont">
         {(data.images ? data.images : []).map((el, index) => (
           <div className="offerCont-imgCont-pics" key={index}>
@@ -43,10 +44,9 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
             />
             <div
               className="offerCont-imgCont-pics-deleteBtn"
-              onClick={() => deleteImgHandler(el)}
-            >
+              onClick={() => deleteImgHandler(el)}>
               <img src={trashSvg} alt="Удалить" />
-              <p>Удалить</p>
+              <p>{t("projects_page.form_image_delete")}</p>
             </div>
           </div>
         ))}
@@ -66,27 +66,24 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
 
       <div className="offerCont-textAreaCont">
         <label htmlFor="cooperationOffer">
-          O‘zbekiston bilan ta’lim va ilmiy sohada hamkorlik borasida
-          takliflaringiz <span>*</span>
+          {t("expert.articleoffer")} <span>*</span>
         </label>
         <textarea
           id="cooperationOffer"
           value={data.suggestions}
           name="suggestions"
-          onChange={textAreaHandler}
-        ></textarea>
+          onChange={textAreaHandler}></textarea>
       </div>
 
       <div className="offerCont-textAreaCont">
         <label htmlFor="addInfo">
-          Qo‘shimcha ma’lumotlar <span>*</span>
+          {t("expert.information")} <span>*</span>
         </label>
         <textarea
           id="addInfo"
           name="additional_information"
           value={data.additional_information}
-          onChange={textAreaHandler}
-        ></textarea>
+          onChange={textAreaHandler}></textarea>
       </div>
     </form>
   );
