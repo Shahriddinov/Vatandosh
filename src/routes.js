@@ -466,8 +466,6 @@ const routes = [
   { path: "/information-service/mediateka", element: Mediateka },
   { path: "/hashtag/:tag", element: Hashtag },
   { path: "/search/:search", element: SearchResult },
-  { path: "/registration/signup/api/verify/", element: EmailVerify },
-  { path: "/registration/signup/api/reset/", element: ResetPassword },
   { path: "/choices/quiz", element: ChoicesQuizzes },
   { path: "/choices/quiz/more-detail/:id", element: MoreDetail },
   { path: "/choices/public-associations", element: ChoicesPublicAssociations },
@@ -475,6 +473,7 @@ const routes = [
 
 const RoutesContainer = () => {
   const token = useSelector((state) => state.authSlice.token);
+  const userData = useSelector((state) => state.authSlice.userData);
   const userToken = getItem("token");
 
   return (
@@ -493,9 +492,8 @@ const RoutesContainer = () => {
               );
             })}
 
-            {token ? (
+            {token && userData ? (
               <>
-                <Route path="/registration/register" element={<Register />} />
                 <Route
                   path="/portal-category/cabinet"
                   element={<CabinetLayout />}
@@ -530,59 +528,7 @@ const RoutesContainer = () => {
                   <Route path="certificates" element={<Certificates />} />
                   <Route path="chat" element={<Chat />} />
                 </Route>
-                <Route
-                  path="/registration/set-password"
-                  element={<Navigate to="/registration/register" />}
-                />
-                <Route
-                  path="/registration/signin"
-                  element={<Navigate to="/portal-category/cabinet" />}
-                />
-                <Route
-                  path="/registration/register"
-                  element={<Navigate to="/portal-category/cabinet" />}
-                />
-              </>
-            ) : (
-              <>
-                <Route path="/registration/signup" element={<SignUp />} />
-                <Route path="/registration/signin" element={<SignIn />} />
-                <Route
-                  path="/registration/set-password"
-                  element={<SetPassword />}
-                />
-                <Route
-                  path="/registration/change-password"
-                  element={<ChangePassword />}
-                />
-                <Route
-                  path="/registration/recovery-password"
-                  element={<RecoveryPassword />}
-                />
-                <Route
-                  path="/registration/signup/api/reset/"
-                  element={<ResetPassword />}
-                />
-                <Route
-                  path="/registration/signup/api/verify/"
-                  element={<EmailVerify />}
-                />
-                <Route
-                  path="/registration/signup/api/redirect/google"
-                  element={<SignInWithGoogle />}
-                />
-                <Route
-                  path="/registration/signup/api/redirect/facebook"
-                  element={<SignInWithFacebook />}
-                />
-                <Route
-                  path="/portal-category/*"
-                  element={<Navigate to="/portal" />}
-                />
-              </>
-            )}
-            {userToken ? (
-              <>
+
                 <Route
                   path="/portal-category/expert"
                   element={<ExpertLayout />}
@@ -774,9 +720,60 @@ const RoutesContainer = () => {
                   />
                   <Route path="contact" element={<Contact />} />
                 </Route>
+                <Route
+                  path="/registration/signin"
+                  element={<Navigate to="/portal-category/cabinet" />}
+                />
+                <Route
+                  path="/registration/register"
+                  element={<Navigate to="/portal-category/cabinet" />}
+                />
+              </>
+            ) : token ? (
+              <>
+                <Route path="/registration/register" element={<Register />} />
+                <Route
+                  path="/registration/set-password"
+                  element={<Navigate to="/registration/register" />}
+                />
               </>
             ) : (
-              <Route path="/portal" element={<Portal />} />
+              <>
+                <Route path="/registration/signup" element={<SignUp />} />
+                <Route path="/registration/signin" element={<SignIn />} />
+                <Route
+                  path="/registration/set-password"
+                  element={<SetPassword />}
+                />
+                <Route
+                  path="/registration/change-password"
+                  element={<ChangePassword />}
+                />
+                <Route
+                  path="/registration/recovery-password"
+                  element={<RecoveryPassword />}
+                />
+                <Route
+                  path="/registration/signup/api/reset/"
+                  element={<ResetPassword />}
+                />
+                <Route
+                  path="/registration/signup/api/verify/"
+                  element={<EmailVerify />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/google"
+                  element={<SignInWithGoogle />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/facebook"
+                  element={<SignInWithFacebook />}
+                />
+                <Route
+                  path="/portal-category/*"
+                  element={<Navigate to="/portal" />}
+                />
+              </>
             )}
             <Route path="*" element={<NotFound />} />
           </Routes>

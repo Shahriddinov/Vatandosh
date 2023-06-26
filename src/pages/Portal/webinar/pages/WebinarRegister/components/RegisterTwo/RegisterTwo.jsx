@@ -95,7 +95,7 @@ export default function RegisterTwo({ activeBarItem }) {
                 value={formData.suggestions}
                 minLength={3}
                 maxLength={1000}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({
                     ...args,
@@ -116,7 +116,7 @@ export default function RegisterTwo({ activeBarItem }) {
                 value={formData.additional_information}
                 minLength={3}
                 maxLength={1000}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({
                     ...args,

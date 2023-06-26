@@ -165,6 +165,9 @@ a {
 }
 
 @media (max-width: 1001px) {
+  html{
+    font-size: 80%;
+  }
   .page-about {
     background-image: url("../../assets/images/pattern-md.png"),
       url("../../assets/images/bottom-md.png");

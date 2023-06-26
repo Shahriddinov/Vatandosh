@@ -7,8 +7,10 @@ import plusIcon from "../../../../../../../../assets/images/choose/addPic.svg";
 import trashIconSmall from "../../../../../../../../assets/images/choose/trash.svg";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const FormCard = ({ el, data, setData, deleteCompHandler }) => {
+  const { t } = useTranslation();
   const [openCard, setOpenCard] = useState(true);
 
   const inputHandler = (e, id) => {
@@ -77,7 +79,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
 
       <div className="formCard-form-part2">
         <label htmlFor={`${el.id}a`}>
-          Maqola mavzusi <span>*</span>
+          {t("maqola")} <span>*</span>
         </label>
         <div>
           <input
@@ -100,7 +102,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
               onClick={() => deleteImgHandler(el.id, each, el.from)}
             >
               <img src={trashIconSmall} alt="trashicon" />
-              <p>Удалить</p>
+              <p>{t("projects_page.form_image_delete")}</p>
             </div>
           </div>
         ))}
@@ -112,7 +114,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
               onClick={() => deleteImgHandler(el.id, each, el.from)}
             >
               <img src={trashIconSmall} alt="trashicon" />
-              <p>Удалить</p>
+              <p>{t("projects_page.form_image_delete")}</p>
             </div>
           </div>
         ))}
@@ -134,7 +136,7 @@ const FormCard = ({ el, data, setData, deleteCompHandler }) => {
 
       <div className="formCard-form-part4">
         <label htmlFor={el.id}>
-          Izohingiz yozing <span>*</span>
+          {t("comment")} <span>*</span>
         </label>
         <textarea
           name="description"

@@ -7,8 +7,10 @@ import { btnHandler } from "../../../../../reduxToolkit/orgPageSlice";
 import { useOrganizationFetching } from "./hooks/useOrganizationFetching";
 import { Spinner } from "../../../../../component";
 import OrganizationList from "./components/organizationList/OrganizationList";
+import { useTranslation } from "react-i18next";
 
 const Organizations = () => {
+  const { t } = useTranslation();
   const btnToggle = useSelector((state) => state.orgPageSlice.btnToggle);
   const dispatch = useDispatch();
 
@@ -33,15 +35,8 @@ const Organizations = () => {
     <div className="container-organizations">
       <div className="container-organizations-inner">
         <div className="container-organizations-inner-top">
-          <span>Участие в общественных организациях</span>
-          {/* <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleSwitchHandler}
-          >
-            <img src={plusIcon} alt="icon" /> <span>Tadbir</span>
-          </motion.button> */}
+          <span>{t("cabinetFour")}</span>
         </div>
-
         <div className="container-organizations-inner-bottom">
           <OrganizationList data={allCommunityGet?.data} />
         </div>

@@ -7,7 +7,23 @@
     max-width: 100%;
 
     & > h1 {
-      @include fontStyles(700, 20px, 24px, $colorTitle);
+      @include fontStyles(700, 1.25em, 24px, $colorTitle);
     }
+  }
+}
+@media screen and (max-width:768px) {
+  .container-events{
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:628px){
+  .container-events{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width:488px){
+  .container-events{
+    font-size: 18px;
   }
 }

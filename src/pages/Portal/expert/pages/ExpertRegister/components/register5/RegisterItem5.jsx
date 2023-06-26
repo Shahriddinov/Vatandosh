@@ -86,7 +86,7 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
                 type="text"
                 value={formData.suggestions}
                 minLength={3}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({
                     ...args,
@@ -106,7 +106,7 @@ export default function RegisterItem5({ activeBarItem, setactiveBarItem }) {
                 type="text"
                 value={formData.additional_information}
                 minLength={3}
-                placeholder={t("expert.inputplaceholder")}
+                 placeholder={t("expert.inputplaceholder")}
                 onChange={(e) =>
                   setFormData((args) => ({
                     ...args,

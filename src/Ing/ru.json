@@ -65,7 +65,7 @@
   "eventBase": "База данных конференций и мероприятий",
   "electronLibrary": "Электронная библиотека",
   "electronBook": "Электронный журнал",
-  "aboutUzbekistan": "Визуальная информация об узбекистане",
+  "aboutUzbekistan": "Визуальная информация об Узбекистане",
   "participationProject": "Участие в викторинах и проектах",
   "electronCommunity": "Электронный реестр общественных объединений",
   "compatriotsValunteer": "Волонтёры соотечественники",
@@ -337,7 +337,7 @@
     "expert_activity": "Экспертная деятельность",
     "year": "Год",
     "all_specialists": "Все специалисты",
-    "all_countries" : "Все страны",
+    "all_countries": "Все страны",
     "expertRegister2Title1": "Образование в Узбекистане",
     "expertRegister2Title2": "Образование за рубежом",
     "expert_activitie": "Экспертная деятельность"
@@ -357,7 +357,7 @@
     "winner": "Победитель викторины",
     "winnerprice": "Награжден победитель викторины",
     "allwinner": "Все победители",
-    "all_countries" : "Барча мамлакатлар"
+    "all_countries": "Барча мамлакатлар"
   },
   "communityAssociation": {
     "navbar": {
@@ -654,5 +654,23 @@
   "chatMember": "Члены",
   "chatLink": "Ссылки",
   "chatDoc": "Документы",
-  "chatOne": "Чат"
+  "chatOne": "Чат",
+  "OneCabinet": "Общая информация",
+  "TwoCabinet": "Работа",
+  "ThreeCabinet": "Образование",
+  "FourCabinet": "Ваша научная деятельность",
+  "FiveCabinet": "Ваше предложение",
+  "SixCabinet": "Волонтерская деятельность",
+  "wordNone": "В настоящее время нет доступной информации",
+  "country": "Факультет за границей",
+  "groupNone": "Вы еще не вступили ни в одну группу.",
+  "selectStart": "Выберите чат, чтобы начать обмен сообщениями.",
+  "chatNone": "У вас еще нет чата.",
+  "success": "принят",
+  "danger": "Отклонен",
+  "jamoatOne": "Нет общественных объединений",
+  "active": "Активный участник",
+  "register": "Зарегистрировано",
+  "finishOne":"Архив",
+  "informationNone":"На данный момент у нас нет информации"
 }

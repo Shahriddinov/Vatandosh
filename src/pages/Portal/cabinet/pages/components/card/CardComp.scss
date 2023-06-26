@@ -1,10 +1,11 @@
 @import "../../../../../../assets//style//global.scss";
 
 .singleCard {
-  max-width: 330px;
+  // max-width: 330px;
   border: 2px solid #eaedf6;
   border-radius: 15px;
   box-shadow: rgba(69, 69, 69, 0.05);
+  cursor: pointer;
 
   &-imgCont {
     width: 100%;
@@ -38,11 +39,11 @@
   &-bodyCont {
     padding: 15px;
     & > h1 {
-      @include fontStyles(bold, 16px, 19px, $colorTitle);
+      @include fontStyles(bold, 1em, 135%, $colorTitle);
     }
 
     & > P {
-      @include fontStyles(regular, 14px, 17px, $colorGrey);
+      @include fontStyles(regular, 0.875em, 125%, $colorGrey);
       margin-top: 15px;
       height: 52px;
       overflow-y: hidden;
@@ -57,7 +58,7 @@
       overflow: hidden;
       & > button {
         padding: 4px 8px;
-        @include fontStyles(400, 12px, 15px, $colorTitle);
+        @include fontStyles(400, 0.75em, 110%, $colorTitle);
         background-color: #e3f0ff;
         border: none;
         border-radius: 5px;
@@ -82,12 +83,33 @@
       align-items: center;
       gap: 8px;
       & > span {
-        @include fontStyles(Regular, 12px, 20px, $colorGrey);
+        @include fontStyles(Regular, 0.75em, 130%, $colorGrey);
       }
       & > img {
         width: 13.33px;
         height: 13.33px;
       }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .singleCard {
+    margin: 30px 0;
+    &-imgCont {
+      height: 450px;
+    }
+    &-bodyCont {
+      & > P {
+        height: auto;
+        margin: 20px 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .singleCard {
+    &-imgCont {
+      height: 240px;
     }
   }
 }

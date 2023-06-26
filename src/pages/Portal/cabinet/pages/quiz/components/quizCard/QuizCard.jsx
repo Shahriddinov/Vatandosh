@@ -15,8 +15,10 @@ import {
   SecondImg,
   Third,
 } from "../../../../../../../assets/images/cabinet";
+import { useTranslation } from "react-i18next";
 
 const QuizCard = (props) => {
+  const { t } = useTranslation();
   const [timeData, setTimeDate] = useState({
     days: "00",
     hours: "00",
@@ -36,8 +38,8 @@ const QuizCard = (props) => {
   console.log(timeData);
 
   const { filteredText } = htmlElement(props?.description);
-  const text = filteredText[0].replace(/&nbsp;/g, "").split(" ");
-  const date = getDate(props?.started_at);
+  // const text = filteredText[0].replace(/&nbsp;/g, "").split(" ");
+  // const date = getDate(props?.started_at);
 
   const image = props?.image ? JSON.parse(props?.image) : [];
   return (
@@ -50,35 +52,39 @@ const QuizCard = (props) => {
             props.status === 0 ? "/finished-projects" : ""
           }/image-project/${props?.id}`
         );
-      }}
-    >
+      }}>
       <div className="cabinet-quiz-card-img">
         <img
-          src={`${PORTAL_IMAGE_URL}/${image[0]}`}
-          alt=""
+          // src={`${PORTAL_IMAGE_URL}/${image[0]}`}
+          src="https://api.vatandoshlarfondi.uz/storage/meetings/June2023/Q1GSDePdw24w1fRJ6fiv.jpg"
+          alt="quiz"
           className="cabinet-quiz-card-img"
         />
         {props.cardType === "finish" && props.position !== null && (
           <span className="cabinet-quiz-card-img_span">
             <img
-              src={
-                props.position === 1
-                  ? FirstImg
-                  : props.position === 2
-                  ? SecondImg
-                  : props.position === 3 && Third
-              }
+              // src={
+              //   props.position === 1
+              //     ? FirstImg
+              //     : props.position === 2
+              //     ? SecondImg
+              //     : props.position === 3 && Third
+              // }
+              src="https://api.vatandoshlarfondi.uz/storage/meetings/June2023/Q1GSDePdw24w1fRJ6fiv.jpg"
               alt="img"
             />
           </span>
         )}
       </div>
       <div className="cabinet-quiz-card-items-body">
-        <h4 className="cabinet-quiz-card-subname">{props?.title}</h4>
+        <h4 className="cabinet-quiz-card-subname">{props?.title} Eng yaxshi she’rlar to'plami  loyihasi</h4>
         <p className="cabinet-quiz-card-desc">
-          {text.length > 5
+          {/* {text.length > 5
             ? text.slice(0, 10).join(" ") + "..."
-            : text.join(" ")}
+            : text.join(" ")} */}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+          error dolore explicabo saepe beatae perspiciatis placeat ea sequi fuga
+          consequatur.
         </p>
         {props.cardType === "active" ? (
           <p className="cabinet-quiz-card-active">Active</p>
@@ -86,15 +92,15 @@ const QuizCard = (props) => {
           <div className="cabinet-quiz-card__list">
             <span className="cabinet-quiz-card__item">
               <p>{timeData.days}</p>
-              <p>Kun</p>
+              <p>{t("day")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.hours}</p>
-              <p>Soat</p>
+              <p>{t("hour")}</p>
             </span>
             <span className="cabinet-quiz-card__item">
               <p>{timeData.minutes}</p>
-              <p>Daqiqa</p>
+              <p>{t("minute")}</p>
             </span>
           </div>
         ) : null}
@@ -104,15 +110,19 @@ const QuizCard = (props) => {
           <img src={CalendarIcon} alt="" className="cabinet-quiz-card-icon" />
           <p>
             <span>
-              {date.getDay().length > 2 ? date.getDay() : `0${date.getDay()}`}.
+              {/* {date.getDay().length > 2 ? date.getDay() : `0${date.getDay()}`}. */}
+              10
             </span>
             <span>
-              {date.getMonth().length > 2
+              {/* {date.getMonth().length > 2
                 ? date.getMonth()
-                : `0${date.getMonth()}`}
-              .
+                : `0${date.getMonth()}`} */}
+              June .
             </span>
-            <span>{date.getFullYear()}</span>
+            <span>
+              {/* {date.getFullYear()} */}
+              2023
+            </span>
           </p>
         </div>
         <div className="cabinet-quiz-card-item">

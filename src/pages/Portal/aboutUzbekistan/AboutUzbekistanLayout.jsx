@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import AboutUzbekistanHeader from "./components/aboutUzbekistanHeader/AboutUzbekistanHeader";
 import AboutUzbekistanHeaderTransparent from "./components/aboutUzbekistanHeaderTransparent/AboutUzbekistanHeader";
 import AboutUzbekistanNavbar from "./components/aboutUzbekistanNavbar/AboutUzbekistanNavbar";
 import AboutUzbekistanNavbarTransparent from "./components/aboutUzbekistanNavbarTransparent/AboutUzbekistanNavbar";
-import OnlineTeachingFooter from "../OnlineTeaching/components/OnlineTeachingFooter/OnlineTeachingFooter";
 import { Spinner } from "../../../component";
 import { useLayoutFetching } from "./hooks/useLayoutFetching";
 import { ElectronicJournalFooter } from "../electronicJournal/components";
@@ -24,10 +23,9 @@ const AboutUzbekistan = () => {
 
   useEffect(() => {
     if (!userToken) {
-      console.log("dsfsdlf");
       dispatch(removeToken());
     }
-  }, [userToken]);
+  }, [userToken, dispatch]);
 
   if (menuLoading || contactLoading) {
     return <Spinner position="full" />;

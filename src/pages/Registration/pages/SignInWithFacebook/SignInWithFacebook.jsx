@@ -23,10 +23,7 @@ const SignInWithFacebook = () => {
           )
           .then((res) => res.data);
 
-        dispatch(loginUser(user));
-        if (user.token) {
-          navigate("/registration/register");
-        }
+        dispatch(loginUser({ user, navigate }));
       } catch (e) {
         console.log(e);
       }

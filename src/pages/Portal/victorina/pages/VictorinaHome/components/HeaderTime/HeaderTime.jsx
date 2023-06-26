@@ -108,15 +108,15 @@ function HeaderTime({ quizData }) {
                 <div className="headertime-page">
                   <div className="headertime-box">
                     <span>{days}</span>
-                    <span>{t("choices.day")}</span>
+                    <p>{t("choices.day")}</p>
                   </div>
                   <div className="headertime-box">
                     <span>{hours}</span>
-                    <span>{t("choices.hour")}</span>
+                    <p>{t("choices.hour")}</p>
                   </div>
                   <div className="headertime-box">
                     <span>{minutes}</span>
-                    <span>{t("choices.minute")}</span>
+                    <p>{t("choices.minute")}</p>
                   </div>
                 </div>
                 <Link

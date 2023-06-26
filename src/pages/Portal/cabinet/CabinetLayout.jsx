@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import CabinetHeader from "./components/cabinetHeader/CabinetHeader";
 import CabinetLeftMenu from "./components/cabinetLeftMenu/CabinetLeftMenu";
@@ -12,6 +12,8 @@ import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
 import { useTranslation } from "react-i18next";
 
 const CabinetLayout = () => {
+  const { pathname } = useLocation();
+  const [activePage, setActivePage] = useState(pathname.split("/")[3]);
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -94,11 +96,12 @@ const CabinetLayout = () => {
                     htmlFor="title"
                     className="modal-orgPage-container-form-title"
                   >
-                    <span>Title</span> <span>*</span>
+                    <span>{t("communityAssociation.input_title")}</span>{" "}
+                    <span>*</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Kiriting"
+                    placeholder={t("expert.inputplaceholder")}
                     className="modal-orgPage-container-form-titleInput"
                     onChange={titleHandler}
                   />
@@ -106,12 +109,13 @@ const CabinetLayout = () => {
                     className="modal-orgPage-container-form-comment"
                     htmlFor="Izoh"
                   >
-                    <span>Izoh</span> <span>*</span>
+                    <span>{t("communityAssociation.desc_textarea_plack")}</span>{" "}
+                    <span>*</span>
                   </label>
                   <textarea
                     onChange={textHandler}
                     className="modal-orgPage-container-form-commentTextArea"
-                    placeholder="Izoh"
+                    placeholder={t("communityAssociation.desc_textarea_plack")}
                   ></textarea>
                   <div className="modal-orgPage-container-form-fileUploadContainer">
                     <input type="file" id="file" onChange={uploadHandler} />
@@ -141,6 +145,8 @@ const CabinetLayout = () => {
           <CabinetLeftMenu
             leftMenuToggle={leftMenuToggle}
             setLeftMenuToggle={setLeftMenuToggle}
+            setActivePage={setActivePage}
+            activePage={activePage}
           />
         </div>
         <div className="cabinet-layout__right">
@@ -148,6 +154,7 @@ const CabinetLayout = () => {
             setLeftMenuToggle={setLeftMenuToggle}
             setRightBtnToggle={setRightBtnToggle}
             rightBtnToggle={rightBtnToggle}
+            setActivePage={setActivePage}
           />
           <Outlet />
         </div>

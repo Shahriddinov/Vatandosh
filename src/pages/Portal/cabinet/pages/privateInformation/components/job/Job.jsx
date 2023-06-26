@@ -11,8 +11,10 @@ import {
   handleCabinetJob,
 } from "./extra";
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Job = () => {
+  const { t } = useTranslation();
   const { data, setData, employment, employmentLoading, dispatch } =
     useJobFetching();
   if (employmentLoading) {
@@ -59,13 +61,12 @@ const Job = () => {
           whileTap={{ scale: 0.9 }}
           onClick={() =>
             setData((prev) => [...prev, { ...initialJobData, id: Date.now() }])
-          }
-        >
+          }>
           <img src={btnPlusIcon} alt="plusIcon" />
         </motion.button>
       </div>
       <button className="commonInformation-form-btn" onClick={handleSubmit}>
-        Submit
+        {t("projects_page.form_submit")}
       </button>
     </>
   );

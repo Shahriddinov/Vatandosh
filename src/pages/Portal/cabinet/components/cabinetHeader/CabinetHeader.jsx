@@ -2,14 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import i18next from "i18next";
 import { Link, useLocation } from "react-router-dom";
-
 import "./cabinetHeader.scss";
-
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
 import { GrayContext } from "../../../../../context/GrayContext";
 import { removeToken } from "../../../../../reduxToolkit/authSlice/authSlice";
-
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
 
@@ -26,6 +23,7 @@ const CabinetHeader = ({
   setLeftMenuToggle,
   setRightBtnToggle,
   rightBtnToggle,
+  setActivePage,
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -34,6 +32,7 @@ const CabinetHeader = ({
   const [activeLang, setActiveLang] = useState(false);
   const language = useSelector((state) => state.language.language);
   const user = useSelector((state) => state.authSlice.userData);
+  const loading = useSelector((state) => state.authSlice.registerLoading);
   const employmentLoading = useSelector(
     (state) => state.expertRegisterSlice.employmentLoading
   );
@@ -54,7 +53,7 @@ const CabinetHeader = ({
     dispatch(getExpertEmployment());
   }, [dispatch]);
 
-  if (employmentLoading) {
+  if (employmentLoading || loading) {
     return <Spinner position="full" />;
   }
 
@@ -143,6 +142,7 @@ const CabinetHeader = ({
               ? "active"
               : ""
           }`}
+          onClick={() => setActivePage("chat")}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
