@@ -94,7 +94,8 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat?.user, profileImg, chat?.id);
                 setIsActive(false);
-              }}>
+              }}
+            >
               <div className="users__user-image">
                 {profileImg}
                 {chat?.user?.last_online_at ? (
@@ -104,9 +105,11 @@ const PrivateChats = ({
               <div className="users__user-information">
                 <h4>{chat?.user?.first_name + " " + chat?.user?.last_name}</h4>
                 {!chat?.user?.last_online_at ? (
-                  <p>Online</p>
+                  <p>{t("Cabinet.user_online")}</p>
                 ) : (
-                  <p>Last seen {chat?.user?.last_online_at}</p>
+                  <p>
+                    {t("Cabinet.last_seen")} {chat?.user?.last_online_at}
+                  </p>
                 )}
               </div>
               {chat.unread ? (
@@ -124,7 +127,8 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat, profileImg, chat?.id);
                 setIsActive(true);
-              }}>
+              }}
+            >
               <div className="users__user-image">
                 {profileImg}
                 {chat?.last_online_at ? (
@@ -134,9 +138,11 @@ const PrivateChats = ({
               <div className="users__user-information">
                 <h4>{chat?.name}</h4>
                 {!chat?.last_online_at ? (
-                  <p>Online</p>
+                  <p>{t("Cabinet.user_online")}</p>
                 ) : (
-                  <p>Last seen {chat?.last_online_at}</p>
+                  <p>
+                    {t("Cabinet.last_seen")} {chat?.last_online_at}
+                  </p>
                 )}
               </div>
               {chat.unread > 0 ? (

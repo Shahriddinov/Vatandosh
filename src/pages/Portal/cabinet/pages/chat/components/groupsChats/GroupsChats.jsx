@@ -90,16 +90,20 @@ const GroupsChats = ({
               className={`groups__one-group ${
                 group.id === activeGroup ? "active" : ""
               }`}
-              onClick={() => handleClick(group, groupImg)}>
+              onClick={() => handleClick(group, groupImg)}
+            >
               <div className="groups__group-image">{groupImg}</div>
               <div className="groups__group-information">
                 <h4>{group.name}</h4>
                 {group.online_count > 0 ? (
                   <p>
-                    {group.users_count} ta a'zo, {group.online_count} ta online
+                    {group.users_count} {t("Cabinet.member")},{" "}
+                    {group.online_count} {t("Cabinet.online")}
                   </p>
                 ) : (
-                  <p>{group.users_count} ta a'zo</p>
+                  <p>
+                    {group.users_count} {t("Cabinet.member")}
+                  </p>
                 )}
               </div>
               {group.unread > 0 ? (

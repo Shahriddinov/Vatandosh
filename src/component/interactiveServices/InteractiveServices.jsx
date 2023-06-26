@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -27,7 +27,7 @@ const InteractiveServices = () => {
 
   useEffect(() => {
     dispatch(getInteractiveServices());
-  }, []);
+  }, [dispatch]);
 
   if (error) {
     return <p>{error}</p>;
@@ -49,7 +49,8 @@ const InteractiveServices = () => {
                   height="20"
                   viewBox="0 0 9 15"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -65,7 +66,8 @@ const InteractiveServices = () => {
                   height="20"
                   viewBox="0 0 9 15"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -112,7 +114,8 @@ const InteractiveServices = () => {
                   spaceBetween: 30,
                 },
               }}
-              className="mySwiper">
+              className="mySwiper"
+            >
               {data?.map((el) => (
                 <SwiperSlide
                   key={el.id}

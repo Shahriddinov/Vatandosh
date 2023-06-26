@@ -12,7 +12,6 @@ import {
   portalNews,
 } from "../../reduxToolkit/portalSlices/news-events/extraReducer";
 import PortalCard from "../portalCard/portalCard";
-import PortalEvent from "../portalEvent/portalEvent";
 
 const News = () => {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const News = () => {
     if (!projectMenu?.length) {
       dispatch(getProjectsMenu());
     }
-  }, [dispatch, lan]);
+  }, [dispatch, lan, news, events, projectMenu]);
 
   if (newsError || eventsError) {
     return <p>{newsError || eventsError}</p>;

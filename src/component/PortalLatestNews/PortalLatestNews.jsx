@@ -3,9 +3,8 @@ import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNews } from "../../reduxToolkit/newsSlice/extraReducer";
-import { Link, useParams } from "react-router-dom";
-import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
+import { Link } from "react-router-dom";
+import { PORTAL_IMAGE_URL } from "../../services/api/utils";
 import { getPortalNews } from "../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
 import Spinner from "../Spinner/Spinner";
 import { useTranslation } from "react-i18next";
@@ -38,7 +37,8 @@ export default function PortalLatestNews({ category, latestNews }) {
               <li key={el.id} className="latest_news-list-item">
                 <Link
                   to={`/portal-category/${category}/${el.id}`}
-                  className="latest_news-list-item-link">
+                  className="latest_news-list-item-link"
+                >
                   <div className="latest_news-list-item-img">
                     <img src={`${PORTAL_IMAGE_URL}/${el.image}`} alt="" />
                   </div>

@@ -19,7 +19,7 @@ export const usePaginationFetching = () => {
 
   useEffect(() => {
     dispatch(getPaginationTrusts(searchCount.id));
-  }, []);
+  }, [dispatch, searchCount]);
 
   const handleFetching = () => {
     dispatch(getPaginationTrusts(searchCount.id * 1 + 1));
