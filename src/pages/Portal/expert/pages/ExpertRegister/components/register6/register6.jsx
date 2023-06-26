@@ -273,7 +273,9 @@ export default function Register6({ activeBarItem }) {
                           type="text"
                           value={el.description}
                           minLength={3}
-                          placeholder={"Izoh"}
+                          placeholder={t(
+                            "communityAssociation.desc_textarea_plack"
+                          )}
                           onChange={(e) =>
                             handleChange({
                               ...el,

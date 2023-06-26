@@ -45,7 +45,7 @@ export default function VolunterActivityDetail() {
   return (
     <main className="volunteractivitydetail">
       <div className="container">
-        <ExpertTitle title={"Volontyorlarni faoliyati"} url={url} />
+        <ExpertTitle title={t("cabinetTwo")} url={url} />
         <div className="volunteractivitydetail-main">
           <div className="volunteractivitydetail-main-detail">
             <div className="volunteractivitydetail-main-detail-desc-img">
