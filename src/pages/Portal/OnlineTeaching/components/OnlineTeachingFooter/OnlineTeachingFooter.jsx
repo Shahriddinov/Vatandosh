@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FooterLogo from "../../../../../assets/images/online-teaching/FooterLogo.svg";
 import Phones from "../../../../../assets/images/online-teaching/phones.png";
 import Email from "../../../../../assets/images/online-teaching/mail.svg";
@@ -7,7 +7,19 @@ import Twitter from "../../../../../assets/images/online-teaching/twitter.svg";
 import Instagram from "../../../../../assets/images/online-teaching/intagram.svg";
 import Napa from "../../../../../assets/images/online-teaching/Napa.png";
 import "./onlineTeachingFooter.scss";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getContact } from "../../../../../reduxToolkit/contactSlice/extraReducer";
+import { Link } from "react-router-dom";
+
 function OnlineTeachingFooter(props) {
+  const { t } = useTranslation();
+  const { contactData } = useSelector((state) => state.contactSlice);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getContact());
+  }, [dispatch]);
   return (
     <div className="OnlineTeachingFooter">
       <div className="container">
@@ -45,24 +57,30 @@ function OnlineTeachingFooter(props) {
               <div className="OnlineTeachingFooter_boxes_end">
                 <div className="flexes">
                   <div className="OnlineTeachingFooter_boxes_end_contacts">
-                    Bizning kontaktlarimiz
+                    {t("footerOurContacts")}
                   </div>
                   <div className="OnlineTeachingFooter_boxes_end_phones">
                     <img src={Phones} alt="" />
                     <div className="OnlineTeachingFooter_boxes_end_phones_number">
-                      +998(55)502-22-99
+                      {contactData?.phone}
                     </div>
                   </div>
                   <div className="OnlineTeachingFooter_boxes_end_phones">
                     <img src={Email} alt="" />
                     <div className="OnlineTeachingFooter_boxes_end_phones_number">
-                      info@Vatandoshlar
+                      {contactData?.email}
                     </div>
                   </div>
                   <div className="OnlineTeachingFooter_boxes_end_phones">
-                    <img src={Facebook} alt="" />
-                    <img src={Twitter} alt="" />
-                    <img src={Instagram} alt="" />
+                    <Link to={contactData?.facebook}>
+                      <img src={Facebook} alt="" />
+                    </Link>
+                    <Link to={contactData?.twitter}>
+                      <img src={Twitter} alt="" />
+                    </Link>
+                    <Link to={contactData?.instagram}>
+                      <img src={Instagram} alt="" />
+                    </Link>
                   </div>
                 </div>
               </div>
