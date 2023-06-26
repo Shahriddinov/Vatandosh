@@ -8,7 +8,7 @@ import {
   getTestQuizz,
   sendVictorinaTest,
 } from "../../../../../reduxToolkit/victorinaQuiz/victorinaTest/getTest";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import { imageUrl } from "../../../../../services/api/utils";
 import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
@@ -31,6 +31,7 @@ export default function TestPopUp({ setactivePopUp }) {
   const [data, setData] = useState({
     document: communityCreateData.document,
   });
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   useEffect(() => {
@@ -121,14 +122,16 @@ export default function TestPopUp({ setactivePopUp }) {
     <div className="projectImg">
       <div
         className="victorina-overlay"
-        onClick={() => setactivePopUp(false)}></div>
+        onClick={() => setactivePopUp(false)}
+      ></div>
       <form className="victorina-test" onSubmit={handleSubmit}>
         {testData?.map((evt, index) => (
           <div
             key={evt.id}
             className={`victorina-test-wrapper ${
               currentQuiz === evt?.id ? "active" : ""
-            }`}>
+            }`}
+          >
             <p
               className="victorina-test-list-desc"
               dangerouslySetInnerHTML={{
@@ -141,7 +144,8 @@ export default function TestPopUp({ setactivePopUp }) {
                   <li
                     onClick={() => handleQuestion({ q: evt.id, a: el.id })}
                     key={el?.id}
-                    className="victorina-test-list-item">
+                    className="victorina-test-list-item"
+                  >
                     <Checkbox
                       type="checkbox"
                       checked={testResponse === el?.id ? true : false}
@@ -164,7 +168,8 @@ export default function TestPopUp({ setactivePopUp }) {
               sx={{ gap: "10px" }}
               variant="contained"
               disabled
-              onClick={prev}>
+              onClick={prev}
+            >
               {t("victorina.prev")}
             </Button>
           ) : (
@@ -176,7 +181,8 @@ export default function TestPopUp({ setactivePopUp }) {
             <Button
               sx={{ gap: "10px", marginLeft: "15px" }}
               variant="contained"
-              onClick={next}>
+              onClick={next}
+            >
               {t("expert.nextbtn")}
             </Button>
           ) : (
@@ -184,7 +190,8 @@ export default function TestPopUp({ setactivePopUp }) {
               sx={{ gap: "10px", marginLeft: "15px" }}
               disabled
               variant="contained"
-              onClick={next}>
+              onClick={next}
+            >
               {t("expert.nextbtn")}
             </Button>
           )}
@@ -192,9 +199,14 @@ export default function TestPopUp({ setactivePopUp }) {
             {t("voice")} {currentQuiz} из {testData?.length}
           </span>
           <Button
+            onClick={() => {
+              navigate(`/portal-category/victorina/image-project/${id}/test`);
+              console.log("salom");
+            }}
             type="submit"
             sx={{ gap: "10px", marginLeft: "15px" }}
-            variant="contained">
+            variant="contained"
+          >
             {t("finish")}
           </Button>
         </div>
