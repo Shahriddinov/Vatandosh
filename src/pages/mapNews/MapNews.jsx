@@ -21,6 +21,7 @@ const MapNews = () => {
   } else if (error) {
     return <p>{error}</p>;
   }
+  
 
   const { totalPagination, newData } = paginationNews({
     data: [...countryNewsData?.posts, ...countryNewsData?.community_events],

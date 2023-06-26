@@ -22,6 +22,7 @@ const CabinetLayout = () => {
 
   const btnOrgPageToggle = useSelector((state) => state.orgPageSlice.btnToggle);
   const dispatch = useDispatch();
+
   const toggleSwitchHandler = () => {
     dispatch(btnHandler());
   };
@@ -33,9 +34,11 @@ const CabinetLayout = () => {
   const textHandler = (e) => {
     setText(e.target.value);
   };
+
   const uploadHandler = (e) => {
     setImgUpload(e.target.files[0]);
   };
+
 
   const userToken = getItem("token");
 
@@ -69,6 +72,8 @@ const CabinetLayout = () => {
   useEffect(() => {}, [title]);
   useEffect(() => {}, [text]);
 
+
+  
   return (
     <div className="cabinet-layout">
       <div className="container">
@@ -146,6 +151,7 @@ const CabinetLayout = () => {
             setLeftMenuToggle={setLeftMenuToggle}
             
           />
+
         </div>
         <div className="cabinet-layout__right">
           <CabinetHeader
