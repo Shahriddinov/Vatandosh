@@ -20,6 +20,7 @@ import bg5 from "../../assets/images/portal/5.png";
 
 const HomePage = () => {
   const token = useSelector((state) => state.authSlice.token);
+  const user = useSelector((state) => state.authSlice.userData);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [horizontal, setHorizontal] = useState(false);
@@ -187,7 +188,7 @@ const HomePage = () => {
             <div className="register-field">
               <h2>{t("teams")}</h2>
               <div className="portal-btns">
-                {token ? (
+                {token && user ? (
                   <Link to="/portal-category/cabinet">
                     {t("portal.kabinet")}
                   </Link>
