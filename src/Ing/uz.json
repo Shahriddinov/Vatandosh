@@ -360,7 +360,11 @@
     "victorinas": "Viktorinalar",
     "youtubeproject": "Youtubudagi eng yaxshi videolari loyihasi",
     "poemproject": "Eng yaxshi she’rlar to'plami  loyihasi",
-    "edubrand": "Eng yaxshi ta’lim brendi"
+    "edubrand": "Eng yaxshi ta’lim brendi",
+    "test": "Test",
+    "pass_test": "Siz tanlovdan muvafaqqiyatli qatnashdingiz",
+    "back_test":"Tanlovga qaytish",
+    "return_test": "Testni qayta ishlash"
   },
   "communityAssociation": {
     "navbar": {
