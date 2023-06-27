@@ -58,7 +58,7 @@ function VictorinaWinnerWin() {
                 to={`/portal-category/victorina/image-project/${id}`}
                 className="winnervictorina-link"
               >
-                {title?.slice(0, 3) + title.length > 3 ? "..." : ""}
+                {title?.slice(0, 3)?.join()} {title.length > 3 ? "..." : ""}
               </Link>
             </li>
             <li className="winnervictorina-item">

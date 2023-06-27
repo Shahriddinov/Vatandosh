@@ -18,7 +18,7 @@ function MoreVictorina() {
   return (
     <div className="morevictorina">
       <div className="container">
-        <h2 className="victorina-name">{t("victorinas.victorinas")}</h2>
+        <h2 className="victorina-name">{t("choices.quizzes")}</h2>
         <div className="victorina-page">
           {quizData?.map((victorina, index) => (
             <VictorinaCard victorina={victorina} key={index} url="" />
