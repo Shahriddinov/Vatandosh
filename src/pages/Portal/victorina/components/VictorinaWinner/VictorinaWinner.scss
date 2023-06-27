@@ -1,7 +1,10 @@
 .winnervictorina {
   padding: 20px 0;
   padding-bottom: 90px;
-
+  &__title {
+    width: 100%;
+    max-width: 800px;
+  }
   &-page {
     display: flex;
     align-items: center;
