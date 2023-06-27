@@ -356,7 +356,11 @@
     "bestimgproject": "Best painting project",
     "winner": " Quiz winner",
     "winnerprice": "Winner of the quiz awarded",
-    "allwinner": "All winners"
+    "allwinner": "All winners",
+    "test": "Test",
+    "pass_test": "You participated in the competition",
+    "back_test":"Return to competition",
+    "return_test": "Test processing"
   },
   "communityAssociation": {
     "navbar": {

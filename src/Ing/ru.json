@@ -358,7 +358,11 @@
     "winner": "Победитель викторины",
     "winnerprice": "Награжден победитель викторины",
     "allwinner": "Все победители",
-    "all_countries": "Барча мамлакатлар"
+    "all_countries": "Все страны",
+    "test": "Тест",
+    "pass_test": "Вы успешно прошли конкурс",
+    "back_test":"Вернуться к выбору",
+    "return_test": "Обработка теста"
   },
   "communityAssociation": {
     "navbar": {
