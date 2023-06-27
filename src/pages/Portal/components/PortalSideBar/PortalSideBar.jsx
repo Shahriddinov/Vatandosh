@@ -19,13 +19,15 @@ import eyeGlass from "../../../../assets/images/EyeGlass.png";
 import { GrClose } from "react-icons/gr";
 import logo from "../../../../assets/images/Logos.svg";
 import burger from "../../../../assets/images/icons/burger.svg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
+import { GrayContext } from "../../../../context/GrayContext";
 
 export default function PortalSide({ data }) {
   const [state, setState] = useState(false);
   const { pathname } = useLocation();
+  const { grayScale } = useContext(GrayContext);
 
   const contactData = useSelector((state) => state.contactSlice.contactData);
   const dispatch = useDispatch();
@@ -58,7 +60,10 @@ export default function PortalSide({ data }) {
             <img src={logo} alt="Vatandoshlar jamoat fondi" />
           </Link>
           <div className="portal-sideBar-top-btn">
-            <div className="portal-sideBar-top-eyeGlass">
+            <div
+              className="portal-sideBar-top-eyeGlass"
+              onClick={() => grayScale()}
+            >
               <img src={eyeGlass} alt="eye glass" />
             </div>
             <div className="portal-sideBar-top-close">
