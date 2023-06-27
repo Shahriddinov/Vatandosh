@@ -12,7 +12,7 @@ import {
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import i18next from "i18next";
@@ -34,6 +34,7 @@ function Navbar({ navbarUrl }) {
   );
   const [activeLang, setactiveLang] = useState(false);
   const [activeKabinet, setActiveKabinet] = useState(false);
+  const navigate = useNavigate();
 
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
@@ -143,7 +144,10 @@ function Navbar({ navbarUrl }) {
               {notificationCount}
             </span>
           </button>
-          <button className="navbarpage--notification">
+          <button
+            className="navbarpage--notification"
+            onClick={() => navigate("/portal-category/cabinet/chat")}
+          >
             <MessengerIcon />
           </button>
           <div
