@@ -19,6 +19,7 @@ import { useState } from "react";
 import i18next from "i18next";
 import { languageChange } from "../../../../../reduxToolkit/languageSlice";
 import { languageList } from "../../../../../component/Layout/data";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const language = useSelector((state) => state.language.language);
   const [activeLang, setactiveLang] = useState(false);
+  const { t } = useTranslation();
   const handleChangeLng = (lng) => {
     i18next.changeLanguage(lng);
     dispatch(languageChange(lng));
@@ -42,7 +44,8 @@ function Navbar() {
                 editClass === "/portal-category/volunter"
                   ? `navbar--name`
                   : `navbar--subname`
-              }>
+              }
+            >
               {t("expert.headtitle")}
             </h4>
           </div>
@@ -55,7 +58,8 @@ function Navbar() {
                 editClass === "/portal-category/volunter"
                   ? `navbar-link`
                   : `navbar--link`
-              }>
+              }
+            >
               <PhoneIcon />
               +998(55)502-22-99
             </a>
@@ -67,7 +71,8 @@ function Navbar() {
                 editClass === "/portal-category/volunter"
                   ? `navbar-link`
                   : `navbar--link`
-              }>
+              }
+            >
               <EmailIcon />
               info@vatandoshlarfondi.uz
             </a>
@@ -85,7 +90,8 @@ function Navbar() {
               editClass.length <= 3 || id !== undefined
                 ? `navbarpage-icon`
                 : `navbarpage--icon`
-            }>
+            }
+          >
             <MusicIcon />
           </button>
           <button
@@ -93,7 +99,8 @@ function Navbar() {
               editClass.length <= 3 || id !== undefined
                 ? `navbarpage-notification`
                 : `navbarpage--notification`
-            }>
+            }
+          >
             <EyeIcon />
           </button>
           <div className="navbarpage_language">
@@ -106,7 +113,8 @@ function Navbar() {
                     : `#065EA9`
                 }`,
               }}
-              onClick={() => setactiveLang((el) => !el)}>
+              onClick={() => setactiveLang((el) => !el)}
+            >
               <CiGlobe className="navbarpage_language-icon" />
               <span style={{ color: "white" }}>
                 {languageList.find((lan) => lan.type === language).label}
@@ -126,13 +134,15 @@ function Navbar() {
                       }`,
                     }
                   : null
-              }>
+              }
+            >
               {languageList.map((el, index) => (
                 <p
                   key={index}
                   onClick={() => {
                     handleChangeLng(el.type);
-                  }}>
+                  }}
+                >
                   {el.label}
                 </p>
               ))}
@@ -143,7 +153,8 @@ function Navbar() {
               editClass.length <= 3 || id !== undefined
                 ? `navbarpage-notification`
                 : `navbarpage--notification`
-            }>
+            }
+          >
             <NotificationIcon />
           </button>
           <button
@@ -151,7 +162,8 @@ function Navbar() {
               editClass.length <= 3 || id !== undefined
                 ? `navbarpage-notification`
                 : `navbarpage--notification`
-            }>
+            }
+          >
             <MessengerIcon />
           </button>
           <Link
@@ -160,7 +172,8 @@ function Navbar() {
               editClass.length <= 3 || id !== undefined
                 ? `navbar-button`
                 : `navbar--button`
-            }>
+            }
+          >
             <ExitIcon />
             {t("cabinet")}
           </Link>
