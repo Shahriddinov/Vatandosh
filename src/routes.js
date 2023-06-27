@@ -478,7 +478,8 @@ const routes = [
 const RoutesContainer = () => {
   const token = useSelector((state) => state.authSlice.token);
   const userData = useSelector((state) => state.authSlice.userData);
-  const userToken = getItem("token");
+  console.log(token);
+  console.log(userData);
 
   return (
     <Router>
@@ -744,6 +745,18 @@ const RoutesContainer = () => {
                   path="/registration/set-password"
                   element={<Navigate to="/registration/register" />}
                 />
+                <Route
+                  path="/registration/signup/api/redirect/google"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/facebook"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signin"
+                  element={<Navigate to="/registration/register" />}
+                />
               </>
             ) : (
               <>
@@ -776,6 +789,10 @@ const RoutesContainer = () => {
                 <Route
                   path="/registration/signup/api/redirect/facebook"
                   element={<SignInWithFacebook />}
+                />
+                <Route
+                  path="registration/register"
+                  element={<Navigate to="/portal" />}
                 />
                 <Route
                   path="/portal-category/*"
