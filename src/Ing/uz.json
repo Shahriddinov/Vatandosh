@@ -533,7 +533,11 @@
     "participatee": "Loyihada ishtirok etish",
     "projectEnded": "Loyiha tugallangan"
   },
-  "terms": {
+  "term": {
+    "use": "SAYTDAN FOYDALANISH SHARTLARI:",
+    "rights": "INTЕLLЕKTUAL MULK HUQUQLARI",
+    "uses": "VЕB-SAYTDAN FOYDALANISH",
+    "other": "BOSHQALAR",
     "ones": "1.1. www.vatandoshlarfondi.uz veb-sayti (keyingi o‘rinlarda “veb-sayt” deb ataladi) “Vatandoshlar” jamoat fondi (keyingi o‘rinlarda “Fond” deb ataladi) mulki hisoblanadi va veb-saytdan foydalanish quyidagi shartlar bilan tartibga solinadi (keyingi o‘rinlarda matnda “foydalanish shartlari”deb ataladi).",
     "two": "1.2. Veb-saytga kirish, uning sahifalarini ko‘rish va veb-saytdan foydalanish orqali siz ushbu foydalanish shartlariga rioya qilishga rozilik bildirasiz va ular siz uchun qonuniy ravishda majburiy ekanligini tan olasiz. Iltimos, ushbu foydalanish shartlarini diqqat bilan o‘qing. Agar siz ushbu foydalanish shartlariga rozi bo‘lmasangiz, veb-saytni tark etishingiz so‘raladi.",
     "three": "1.3. Fond istalgan vaqtda o‘z xohishiga ko‘ra ushbu foydalanish shartlarini qayta ko‘rib chiqish, o‘zgartirish, to‘ldirish va (yoki) ulardan ma’lum qismini olib qo‘yish huquqiga ega. Ushbu foydalanish shartlarining yangi eskirgan versiyasi veb-saytda e’lon qilingan paytda kuchga kiradi.",
