@@ -117,7 +117,9 @@ const Hashtag = () => {
                     onClick={() => {}}
                   >
                     <div className="hashtag-official__image-container">
-                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                      <Link
+                        to={`/detail/${image.image.split("/")[0]}/${image.id}`}
+                      >
                         <img
                           src={`${baseServerUrl}/${image.image}`}
                           alt="mediatake"
@@ -141,7 +143,9 @@ const Hashtag = () => {
                     onClick={() => {}}
                   >
                     <div className="hashtag-official__image-container">
-                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                      <Link
+                        to={`/detail/${image.image.split("/")[0]}/${image.id}`}
+                      >
                         <img
                           src={`${baseServerUrl}/${image.image}`}
                           alt="mediatake"
@@ -165,7 +169,9 @@ const Hashtag = () => {
                     onClick={() => {}}
                   >
                     <div className="hashtag-official__image-container">
-                      <Link to={`/${image.image.split("/")[0]}/${image.id}`}>
+                      <Link
+                        to={`/detail/${image.image.split("/")[0]}/${image.id}`}
+                      >
                         <img
                           src={`${baseServerUrl}/${image.image}`}
                           alt="mediatake"
