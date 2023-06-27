@@ -89,11 +89,13 @@ function OnlineTeachingFooter(props) {
           <hr className="" />
 
           <div className="OnlineTeachingFooter_production ">
-            <img
-              className="OnlineTeachingFooter_production_napa"
-              src={Napa}
-              alt=""
-            />
+            <a href="https://napaautomotive.uz/" target="_blank">
+              <img
+                className="OnlineTeachingFooter_production_napa"
+                src={Napa}
+                alt=""
+              />
+            </a>
             <div className="OnlineTeachingFooter_production_napa_year">
               Copyright © 2023 Vatandoshlar jamoat fondi
             </div>

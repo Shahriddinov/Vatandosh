@@ -66,7 +66,9 @@ const ExpertFooter = ({ navData }) => {
           </div>
           <div className="expertfooter-bottom">
             <div className="footer-company-name">
-              <img src={napaName} alt="napa-name" />
+              <a href="https://napaautomotive.uz" target="_blank">
+                <img src={napaName} alt="napa-name" />
+              </a>
             </div>
             <div className="copyright">
               <span>Copyright © 2023 {t("footerFund")}</span>
