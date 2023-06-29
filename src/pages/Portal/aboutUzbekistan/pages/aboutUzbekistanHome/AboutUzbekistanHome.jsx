@@ -43,7 +43,6 @@ const AboutUzbekistanHome = () => {
           title={t("about_uzbekistan.tourist_sites")}
           data={allCitySightseeing?.data}
         />
-        <View3D />
         <AboutUzbekistanGallery allGallery={allGallery?.data} />
         {heroData.page_menu_contents[1] ? (
           <div className="about-uzbekistan-home__open-uzbekistan">
