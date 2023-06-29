@@ -1,7 +1,21 @@
 .volunter-home {
+  position: relative;
+  z-index: 1;
+  min-height: 524px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding-bottom: 50px;
+}
+
+.volunter-home::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.3);
+  content: "";
 }
 
 @media (max-width: 1020px) {
