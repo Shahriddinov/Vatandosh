@@ -24,6 +24,12 @@ function Anthem(props) {
             {t("symbols.textsFour")} <br />
             {t("symbols.textsFive")} <br />
             {t("symbols.textsSix")} <br />
+            {t("symbols.textsSeven")} <br />
+            {t("symbols.textsEight")} <br />
+            {t("symbols.textsNine")} <br />
+            {t("symbols.textsTen")} <br />
+            {t("symbols.textsEleven")} <br />
+            {t("symbols.textsTwelve")} <br />
           </div>
           <ReactAudioPlayer
             className="symbol_text_audio"
