@@ -41,9 +41,11 @@ const Card = ({ data, quiz }) => {
           {data?.description?.replace(/(<([^>]+)>+)|(&([a-zA-Z]+);+)/gi, "")}
         </p>
         {quiz ? (
-          <div className="card-bottomBox-quizEnded">
-            <p>{t("choices.quizIsOver")}</p>
-          </div>
+          data.category === "option2" ? null : (
+            <div className="card-bottomBox-quizEnded">
+              <p>{t("choices.quizIsOver")}</p>
+            </div>
+          )
         ) : (
           <div className="card-bottomBox-timerBox">
             <div className="card-bottomBox-timerBox-box">
@@ -77,7 +79,8 @@ const Card = ({ data, quiz }) => {
         <div className="card-bottomBox-btnBox">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}>
+            onClick={() => navigate(`/choices/quiz/more-detail/${data.id}`)}
+          >
             {t("choices.moreDetail")}
           </motion.button>
         </div>

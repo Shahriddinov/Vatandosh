@@ -98,13 +98,12 @@ const TouristFacilities = () => {
               </MyButton>
             </div>
           ) : null}
-          <View3D />
-          {activeMenu?.page_menu_contents[1] ? (
+          {/* {activeMenu?.page_menu_contents[1] ? (
             <div className="facilities_intro">
               <h1>{activeMenu?.page_menu_contents[1]?.title}</h1>
               <p>{activeMenu?.page_menu_contents[1]?.text}</p>
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </>

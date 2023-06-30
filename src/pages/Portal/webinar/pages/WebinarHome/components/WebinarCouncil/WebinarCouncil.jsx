@@ -25,7 +25,7 @@ function WebinarCouncil({ councilData, meetingPage, meetingsPageDataError }) {
             <div className="council-left">
               <img src={`${PORTAL_IMAGE_URL}${meetingPage?.image}`} alt="img" />
               <h3>{meetingPage?.title}</h3>
-              <p>{filteredText[0]?.split(" ")?.slice(0, 30)?.join(" ")} ...</p>
+              <p dangerouslySetInnerHTML={{ __html: filteredText[0] }} />
               <div>
                 <Link to={councilData?.pathUrl}>{t("expert.detail")}</Link>
               </div>
