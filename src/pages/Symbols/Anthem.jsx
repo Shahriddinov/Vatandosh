@@ -15,8 +15,14 @@ function Anthem(props) {
 
         <div className="symbol_text">
           <div className="symbol_text_start">{t("symbols.anthem")}</div>
-          <p className="symbol_text_title" dangerouslySetInnerHTML={{ __html: t("symbols.text")}}/>
-          <p className="symbol_text_post" dangerouslySetInnerHTML={{ __html: t("symbols.textsOne")}}/>
+          <p
+            className="symbol_text_title"
+            dangerouslySetInnerHTML={{ __html: t("symbols.text") }}
+          />
+          <p
+            className="symbol_text_post"
+            dangerouslySetInnerHTML={{ __html: t("symbols.textsOne") }}
+          />
           <ReactAudioPlayer
             className="symbol_text_audio"
             src={Madhiya}
