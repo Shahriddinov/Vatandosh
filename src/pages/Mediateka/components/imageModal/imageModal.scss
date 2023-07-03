@@ -67,16 +67,17 @@
   }
 
   &__download {
-    right: 290px;
+    right: 225px;
     button {
       background-color: transparent;
       border: 0;
       outline: 0;
+      cursor: pointer;
     }
   }
 
   &__share {
-    right: 225px;
+    right: 290px;
   }
 
   &__image-close {

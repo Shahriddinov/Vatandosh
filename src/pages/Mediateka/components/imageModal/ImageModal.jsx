@@ -38,7 +38,7 @@ const ImageModal = ({
           </svg>
         </button>
       </div>
-      <div className="image-modal__share" onClick={() => {}}>
+      {/* <div className="image-modal__share" onClick={() => {}}>
         <svg
           width="18"
           height="21"
@@ -51,7 +51,7 @@ const ImageModal = ({
             fill="#062A49"
           />
         </svg>
-      </div>
+      </div> */}
       <div
         className="image-modal__image-close"
         onClick={() => setShowImageModal(false)}
