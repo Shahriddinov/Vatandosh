@@ -15,7 +15,10 @@ function Coat(props) {
         <img src={Coats} alt="" />
         <div className="symbol_coat">{t("symbols.coat")}</div>
         <div className="symbol_title">
-          <p style={{width:"50%"}} dangerouslySetInnerHTML={{ __html: t("symbols.coatAbout")}}/>
+          <p
+            style={{ width: "50%" }}
+            dangerouslySetInnerHTML={{ __html: t("symbols.coatAbout") }}
+          />
         </div>
       </div>
     </>

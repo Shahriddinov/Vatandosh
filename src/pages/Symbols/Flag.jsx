@@ -13,9 +13,10 @@ function Flag(props) {
         <img className="symbol_allSym flay" src={Flags} alt="" />
         <div className="symbol_text">
           <div className="symbol_text_start">{t("BayroqTwo")}</div>
-           <p className="symbol_title_flags" dangerouslySetInnerHTML={{ __html: t("BayroqThree")}}/>
-
-
+          <p
+            className="symbol_title_flags"
+            dangerouslySetInnerHTML={{ __html: t("BayroqThree") }}
+          />
         </div>
       </div>
     </>
