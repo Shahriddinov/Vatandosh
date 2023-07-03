@@ -9,12 +9,23 @@
     align-items: center;
     justify-content: center;
   }
+
+  &__expert_item {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5d6b8a;
+    cursor: pointer;
+  }
+
   &-link {
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     text-transform: uppercase;
     color: #ffffff;
+    cursor: pointer;
   }
   li {
     margin: 0 25px;
@@ -25,6 +36,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #5d6b8a;
+    cursor: pointer;
   }
 }
 

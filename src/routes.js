@@ -536,7 +536,10 @@ const RoutesContainer = () => {
                   element={<ExpertLayout />}
                 >
                   <Route index element={<ExpertCouncil />} />
-                  <Route path="council-about" element={<AboutCouncil />} />
+                  <Route
+                    path="council-about/:expertAssociationsId"
+                    element={<AboutCouncil />}
+                  />
                   <Route path="expert-council" element={<ExpertEmploye />} />
                   <Route path="profile/:id" element={<ExpertProfile />} />
                   <Route path="offers" element={<ExpertOffers />} />

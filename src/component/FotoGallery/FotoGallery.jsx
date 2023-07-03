@@ -2,11 +2,13 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { baseServerUrl } from "../../services/api/utils";
+import { PORTAL_IMAGE_URL, baseServerUrl } from "../../services/api/utils";
 import "../../pages/Projects/projects.scss";
+import { useLocation } from "react-router-dom";
 
 export default function FotoGallery({ images }) {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
 
   const swiperRef = useRef(null);
   const onSwiperInit = () => {};
@@ -59,7 +61,11 @@ export default function FotoGallery({ images }) {
               return (
                 <SwiperSlide key={index}>
                   <img
-                    src={`${baseServerUrl}/${obj}`}
+                    src={`${
+                      pathname.split("/")[1] === "portal-category"
+                        ? PORTAL_IMAGE_URL
+                        : baseServerUrl + "/"
+                    }${obj}`}
                     alt=""
                     className="gallery__img"
                   />

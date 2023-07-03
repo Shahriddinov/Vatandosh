@@ -19,8 +19,6 @@ const AddNewsModal = ({ open, handleClose, id, toast }) => {
     handleSubmit,
   } = useAddNewsModalFetching(id, toast, handleClose);
 
-  console.log(data.attachments);
-
   return (
     <>
       <Modal

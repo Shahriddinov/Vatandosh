@@ -34,7 +34,7 @@ const VisualInformation = () => {
   };
 
   const countPagination = !allCityVideoLoading
-    ? paginationCount(allCityVideo?.total, 9)
+    ? paginationCount(activeMenu?.page_menu_videos, 9)
     : 0;
   return (
     <div className="visual-information">
@@ -52,13 +52,12 @@ const VisualInformation = () => {
         ) : null}
         <div className="visual-information__videos">
           <AboutUzbekistanVideos
-            mediaData={allCityVideo?.data}
+            mediaData={activeMenu?.page_menu_videos}
             lan={lan}
             countPagination={countPagination}
             activePage={activePage}
             moreData={moreData}
           />
-          {allCityVideoLoading ? <Spinner /> : null}
         </div>
         {activeMenu?.page_menu_contents[1] ? (
           <div className="visual-information__open-uzbekistan">
