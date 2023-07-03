@@ -14,11 +14,19 @@
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: justify;
-
-
     display: flex;
     align-items: center;
     justify-content: center;
+    &_flags{
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      letter-spacing: 0.7px;
+      color: #656B70;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      text-align: justify;
+    }
   }
 
   &_text {

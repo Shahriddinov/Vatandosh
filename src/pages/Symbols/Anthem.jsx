@@ -15,29 +15,8 @@ function Anthem(props) {
 
         <div className="symbol_text">
           <div className="symbol_text_start">{t("symbols.anthem")}</div>
-          <div className="symbol_text_title">{t("symbols.text")}</div>
-          <div className="symbol_text_poets">{t("symbols.author")}</div>
-          <div className="symbol_text_post">
-            {t("symbols.textsOne")} <br />
-            {t("symbols.textsTwo")} <br />
-            {t("symbols.textsThree")} <br />
-            {t("symbols.textsFour")} <br />
-
-            {t("symbols.textsFive")} <br />
-            {t("symbols.textsSix")} <br />
-            {t("symbols.textsSeven")} <br />
-            {t("symbols.textsEight")} <br />
-
-            {t("symbols.textsNine")} <br />
-            {t("symbols.textsTen")} <br />
-            {t("symbols.textsEleven")} <br />
-            {t("symbols.textsTwelve")} <br />
-
-            {t("symbols.textsFive")} <br />
-            {t("symbols.textsSix")} <br />
-            {t("symbols.textsSeven")} <br />
-            {t("symbols.textsEight")} <br />
-          </div>
+          <p className="symbol_text_title" dangerouslySetInnerHTML={{ __html: t("symbols.text")}}/>
+          <p className="symbol_text_post" dangerouslySetInnerHTML={{ __html: t("symbols.textsOne")}}/>
           <ReactAudioPlayer
             className="symbol_text_audio"
             src={Madhiya}
