@@ -68,6 +68,11 @@
 
   &__download {
     right: 290px;
+    button {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+    }
   }
 
   &__share {

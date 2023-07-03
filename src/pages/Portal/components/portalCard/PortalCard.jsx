@@ -8,6 +8,7 @@ import { BsFillCalendarEventFill } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
 import { PORTAL_IMAGE_URL } from "../../../../services/api/utils";
 import { getDate } from "../../../../config/constants";
+import { isJson } from "../../../../extra";
 
 const PortalCard = (props) => {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ const PortalCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
-  const image = props.image ? JSON.parse(props.image) : "";
+  const json = isJson(props.image);
+
+  const image = json ? JSON.parse(props.image) : props.image;
 
   return (
     <div
@@ -28,7 +31,10 @@ const PortalCard = (props) => {
       data-aos-duration="1000"
     >
       <div className="img-container">
-        <img src={`${PORTAL_IMAGE_URL}${image[0]}`} alt={props.title} />
+        <img
+          src={`${PORTAL_IMAGE_URL}${json ? image[0] : image}`}
+          alt={props.title}
+        />
       </div>
       <div className="news-information">
         <Link to={`/${props.pathUrl}/${props.id}`}>

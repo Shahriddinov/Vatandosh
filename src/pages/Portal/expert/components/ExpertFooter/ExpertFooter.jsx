@@ -71,7 +71,9 @@ const ExpertFooter = ({ navData }) => {
               </a>
             </div>
             <div className="copyright">
-              <span>Copyright © 2023 {t("footerFund")}</span>
+              <span>
+                Copyright © {new Date().getFullYear()} {t("footerFund")}
+              </span>
             </div>
           </div>
         </div>

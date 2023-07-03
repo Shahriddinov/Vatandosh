@@ -20,35 +20,37 @@ const AssociationsEvents = () => {
   const pagination = paginationCount(data?.total, 6);
 
   return (
-    <div className="container associations__events__container">
-      <div className="associations__events__top">
-        <h2>{t("events")}</h2>
-        <p>
-          {t("communityAssociation.navbar.navbar_link1")}{" "}
-          <img src={ArrowRight} alt="breadcrumb line" />
-          <span>{t("communityAssociation.navbar.navbar_link3")}</span>
-        </p>
-      </div>
-      <InformationServicesSlider data={data?.data} />
-      <div className="events__cards">
-        {data?.data?.map((card) => (
-          <div className="main-content-card" key={card.id}>
-            <CommunityCard
-              {...card}
-              pathUrl="portal-category/community-association/event"
+    <div className="associations__events__page">
+      <div className="container associations__events__container">
+        <div className="associations__events__top">
+          <h2>{t("events")}</h2>
+          <p>
+            {t("communityAssociation.navbar.navbar_link1")}{" "}
+            <img src={ArrowRight} alt="breadcrumb line" />
+            <span>{t("communityAssociation.navbar.navbar_link3")}</span>
+          </p>
+        </div>
+        <InformationServicesSlider data={data?.data} />
+        <div className="events__cards">
+          {data?.data?.map((card) => (
+            <div className="main-content-card" key={card.id}>
+              <CommunityCard
+                {...card}
+                pathUrl="portal-category/community-association/event"
+              />
+            </div>
+          ))}
+        </div>
+        {pagination > 1 ? (
+          <div className="associations__events__paginator">
+            <Pagination
+              page={page}
+              paginationFetching={paginationFetching}
+              count={pagination}
             />
           </div>
-        ))}
+        ) : null}
       </div>
-      {pagination > 1 ? (
-        <div className="associations__events__paginator">
-          <Pagination
-            page={page}
-            paginationFetching={paginationFetching}
-            count={pagination}
-          />
-        </div>
-      ) : null}
     </div>
   );
 };

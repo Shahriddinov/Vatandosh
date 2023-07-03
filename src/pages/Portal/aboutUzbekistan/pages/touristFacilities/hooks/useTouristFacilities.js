@@ -51,5 +51,6 @@ export const useTouristFacilities = () => {
     allCityLoading,
     allCity,
     dispatch,
+    lan,
   };
 };

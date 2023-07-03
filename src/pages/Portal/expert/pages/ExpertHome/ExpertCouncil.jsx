@@ -13,6 +13,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { Spinner } from "../../../../../component";
 import { useEffect } from "react";
 import { changePostSuccess } from "../../../../../reduxToolkit/ExpertSlice/ExpertActivity";
+import Employe from "../ExpertEmploye/components/Employe/Employe";
 
 function ExpertCouncil() {
   const { t } = useTranslation();
@@ -27,10 +28,10 @@ function ExpertCouncil() {
     expertError,
     communityNewsLoading,
     communityNews,
-    expertData,
-    loading,
-    specialization,
-    specializationLoading,
+    // expertData,
+    // loading,
+    // specialization,
+    // specializationLoading,
     dispatch,
   } = useExpertHome();
 
@@ -38,12 +39,7 @@ function ExpertCouncil() {
     dispatch(changePostSuccess());
   }, []);
 
-  if (
-    expertCountLoading ||
-    expertPageLoading ||
-    communityNewsLoading ||
-    loading
-  ) {
+  if (expertCountLoading || expertPageLoading || communityNewsLoading) {
     return <Spinner position="full" />;
   } else if (expertError) {
     return <p>{expertError}</p>;
@@ -79,17 +75,14 @@ function ExpertCouncil() {
         <Nav navData={navData} />
         <Header headerData={headerData} />
       </div>
-      <Council
-        expertData={expertData}
-        councilData={councilData}
-        expertCount={expertCount}
-      />
-      <Expert
+      {/* <Council councilData={councilData} expertCount={expertCount} /> */}
+      <Employe />
+      {/* <Expert
         expertData={expertData}
         loading={loading}
         specializationLoading={specializationLoading}
         specialization={specialization}
-      />
+      /> */}
       <News
         communityNews={communityNews?.data}
         url={"/portal-category/expert"}

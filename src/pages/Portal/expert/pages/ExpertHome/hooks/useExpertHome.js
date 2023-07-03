@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   getExpertCount,
-  getExpertFilter,
+  // getExpertFilter,
   getExpertPage,
-  getExperts,
+  // getExperts,
 } from "../../../../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
 import { useEffect } from "react";
 import { createSelector } from "@reduxjs/toolkit";
 import { getPortalNews } from "../../../../../../reduxToolkit/portalSlices/portalNewsSlice/portalNewsSlice";
-import { getExpertSpecialization } from "../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
+// import { getExpertSpecialization } from "../../../../../../reduxToolkit/ExpertSlice/RegisterSlice/extraReducer";
 
 export const useExpertHome = () => {
   const lan = useSelector((state) => state.language.language);
@@ -62,15 +62,15 @@ export const useExpertHome = () => {
   const communityNews = useSelector((store) => store.portalNews.news);
   const communityNewsLoading = useSelector((store) => store.portalNews.loading);
 
-  const expertData = useSelector((state) => state.expertSlice.expertData);
-  const loading = useSelector((state) => state.expertSlice.loading);
+  // const expertData = useSelector((state) => state.expertSlice.expertData);
+  // const loading = useSelector((state) => state.expertSlice.loading);
 
-  const specialization = useSelector(
-    (state) => state.expertRegisterSlice.specialization
-  );
-  const specializationLoading = useSelector(
-    (state) => state.expertRegisterSlice.specializationLoading
-  );
+  // const specialization = useSelector(
+  //   (state) => state.expertRegisterSlice.specialization
+  // );
+  // const specializationLoading = useSelector(
+  //   (state) => state.expertRegisterSlice.specializationLoading
+  // );
 
   const dispatch = useDispatch();
 
@@ -78,8 +78,8 @@ export const useExpertHome = () => {
     dispatch(getExpertCount());
     dispatch(getExpertPage());
     dispatch(getPortalNews({ type: "expert", per_page: "3", page: 1 }));
-    dispatch(getExpertFilter({ perPage: 12 }));
-    dispatch(getExpertSpecialization());
+    //dispatch(getExpertFilter({ perPage: 12 }));
+    // dispatch(getExpertSpecialization());
   }, [dispatch, lan]);
 
   return {
@@ -91,10 +91,10 @@ export const useExpertHome = () => {
     expertError,
     communityNewsLoading,
     communityNews,
-    expertData,
-    loading,
-    specialization,
-    specializationLoading,
+    // expertData,
+    // loading,
+    // specialization,
+    // specializationLoading,
     dispatch,
   };
 };

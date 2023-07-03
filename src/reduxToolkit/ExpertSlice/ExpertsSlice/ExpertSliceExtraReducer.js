@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   GET_EXPERT,
   GET_EXPERTS,
+  GET_EXPERT_ASSOCIATIONS,
   GET_EXPERT_COUNT,
   GET_EXPERT_FILTER,
   GET_EXPERT_PAGE,
@@ -26,6 +27,12 @@ export const getExpertPage = createAsyncThunk("getExpertPage", async () => {
   return await axios.get(GET_EXPERT_PAGE).then((res) => res.data);
 });
 
+export const getExpertAssociation = createAsyncThunk(
+  "getExpertAssociation",
+  async () => {
+    return await axios.get(GET_EXPERT_ASSOCIATIONS).then((res) => res.data);
+  }
+);
 export const getExpertFilter = createAsyncThunk(
   "getExpertFilterCountry",
   async ({ country, specialization, perPage = 12 }) => {
