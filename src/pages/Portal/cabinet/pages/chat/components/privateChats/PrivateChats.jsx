@@ -64,6 +64,9 @@ const PrivateChats = ({
     dispatch(getAllChats());
   }, []);
 
+  const date = new Date();
+  const milliseconds = date.getTime();
+
   return (
     <div className="users">
       {data?.length === 0 ? (
