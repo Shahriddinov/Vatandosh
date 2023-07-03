@@ -22,14 +22,21 @@ function Anthem(props) {
             {t("symbols.textsTwo")} <br />
             {t("symbols.textsThree")} <br />
             {t("symbols.textsFour")} <br />
+
             {t("symbols.textsFive")} <br />
             {t("symbols.textsSix")} <br />
             {t("symbols.textsSeven")} <br />
             {t("symbols.textsEight")} <br />
+
             {t("symbols.textsNine")} <br />
             {t("symbols.textsTen")} <br />
             {t("symbols.textsEleven")} <br />
             {t("symbols.textsTwelve")} <br />
+
+            {t("symbols.textsFive")} <br />
+            {t("symbols.textsSix")} <br />
+            {t("symbols.textsSeven")} <br />
+            {t("symbols.textsEight")} <br />
           </div>
           <ReactAudioPlayer
             className="symbol_text_audio"
