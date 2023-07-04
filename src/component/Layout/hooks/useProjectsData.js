@@ -22,7 +22,7 @@ export const useProjectsData = () => {
         dispatch(getColumnMenu());
       }
     }
-  }, []);
+  }, [dispatch, pathStatus, data]);
 
   return { error };
 };

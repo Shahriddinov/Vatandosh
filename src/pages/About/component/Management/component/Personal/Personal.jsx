@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Personal.scss";
 import { useSelector } from "react-redux";
 import { baseServerUrl } from "../../../../../../services/api/utils";
 import phone from "../../../../../../assets/images/about/Phone.svg";
 import mail from "../../../../../../assets/images/about/mail.svg";
-import { getContact } from "../../../../../../reduxToolkit/contactSlice/extraReducer";
 
 function Personal({ management }) {
   const lan = useSelector((state) => state.language.language);
@@ -31,7 +30,8 @@ function Personal({ management }) {
           <li className="personal__item">
             <a
               href={`tel: ${management?.phone}`}
-              className="personal__item_flexss">
+              className="personal__item_flexss"
+            >
               <span className="personal__item--icon">
                 <img src={phone} alt="" />
               </span>
@@ -42,7 +42,8 @@ function Personal({ management }) {
           <li className="personal__item">
             <a
               href={`mailto: ${management?.mail}`}
-              className="personal__item_flexss">
+              className="personal__item_flexss"
+            >
               <span className="personal__item--icon">
                 <img src={mail} alt="email" />
               </span>

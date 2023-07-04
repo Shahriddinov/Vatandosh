@@ -12,9 +12,9 @@ import { FormList } from "./components";
 import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import axios from "axios";
-import { t } from "i18next";
 
 const CommonInformation = () => {
+  const { t } = useTranslation();
   const {
     locationData,
     locationLoading,

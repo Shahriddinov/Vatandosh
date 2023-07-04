@@ -114,9 +114,7 @@ const authSlice = createSlice({
       .addCase(setPassword.fulfilled, (state, action) => {
         state.loginLoading = false;
         state.token = action.payload;
-        state.userData = action.payload.user;
         setItem("token", action.payload.token);
-        setItem("user", JSON.stringify(action.payload.user));
       })
       .addCase(setPassword.rejected, (state, action) => {
         state.loginLoading = false;

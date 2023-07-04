@@ -7,7 +7,7 @@ function Header({ headerData }) {
   return (
     <div className="headeres">
       <div className="container">
-        <h2>{headerData.title}</h2>
+        <h2>{headerData?.title}</h2>
         <p
           dangerouslySetInnerHTML={{
             __html: headerData.subTitle,

@@ -41,7 +41,7 @@ const FormList = ({
             <input
               type="text"
               id="lastname"
-               placeholder={t("expert.inputplaceholder")}
+              placeholder="Kiriting"
               value={data.last_name}
               onChange={(evt) =>
                 handleChange({
@@ -173,7 +173,7 @@ const FormList = ({
 
         <div className="commonInformation-cont-formCont-form-box-divCon-select">
           <MySelect
-            value={findNation ? findNation.label : ""}
+            value={findCountry ? findCountry?.label : ""}
             handleChange={handleChange}
             data={nationsData}
             text={t("nation")}
@@ -213,7 +213,7 @@ const FormList = ({
 
         <div className="commonInformation-cont-formCont-form-box-divCon-inputLabelWrapper">
           <label htmlFor="uploadFile">
-            {t("passportUpload")} <span>*</span>
+            Passport yuklash (pdf, doc) <span>*</span>
           </label>
           <div>
             <label htmlFor="passport">

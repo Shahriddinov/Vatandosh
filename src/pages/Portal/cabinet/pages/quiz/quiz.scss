@@ -4,7 +4,7 @@
   max-width: 100%;
   &-inner {
     padding: 50px;
-
+    font-size: 16px;
     &_btnContainer {
       max-width: 100%;
       display: grid;
@@ -20,6 +20,21 @@
       grid-template-columns: repeat(auto-fit, minmax(330px, max-content));
       column-gap: 32px;
       row-gap: 32px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-quiz {
+    &-inner {
+      font-size: 25px;
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .container-quiz {
+    &-inner {
+      font-size: 18px;
     }
   }
 }

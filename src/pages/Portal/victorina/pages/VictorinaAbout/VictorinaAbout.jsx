@@ -8,7 +8,7 @@ import VictorinaStatics from "../VictorinaHome/components/VictorinaStatics/Victo
 import { useTranslation } from "react-i18next";
 
 function VictorinaAbout() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const pageData = useSelector((state) => state.pageSlice.pageData);
 
@@ -37,11 +37,6 @@ function VictorinaAbout() {
             />
             <h3 className="about-title">{pageData?.title}</h3>
             <p className="about-text">{pageData.excerpt}</p>
-            <img
-              className="victorina-images"
-              src={`${imageUrl}/${pageData?.image}`}
-              alt="error"
-            />
             <p
               className="about-text"
               dangerouslySetInnerHTML={{ __html: pageData.body }}

@@ -12,6 +12,12 @@ import VictorinaCard from "../VictorinaHome/components/victorinaCard/VictorinaCa
 import { Spinner } from "../../../../../component";
 import { useTranslation } from "react-i18next";
 
+const yearTime = new Date().getFullYear();
+const years = [];
+for (let year = 2020; year <= yearTime; year++) {
+  years.push(year);
+}
+
 function VictorinaFinish() {
   const { t } = useTranslation();
   const [year, setYear] = useState("2022");
@@ -47,20 +53,25 @@ function VictorinaFinish() {
               id="demo-simple-select-helper"
               value={year}
               label="Age"
-              onChange={handleChange}>
-              <MenuItem value="2022">2022</MenuItem>
-              <MenuItem value="2023">2023</MenuItem>
+              onChange={handleChange}
+            >
+              {years.map((el) => (
+                <MenuItem value={el}>{el}</MenuItem>
+              ))}
             </Select>
           </FormControl>
         </div>
         <div className="victorina-page">
-          {quizData?.map((victorina) => (
-            <VictorinaCard
-              victorina={victorina}
-              key={victorina}
-              url={"finished-projects"}
-            />
-          ))}
+          {quizData?.map(
+            (victorina) =>
+              victorina.category !== "option2" && (
+                <VictorinaCard
+                  victorina={victorina}
+                  key={victorina}
+                  url={"finished-projects"}
+                />
+              )
+          )}
         </div>
         {/* <Link className="victorina_link" to="victorina-more">
           <img src={ExcludeIcon} alt="error" />

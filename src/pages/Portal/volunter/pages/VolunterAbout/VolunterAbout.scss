@@ -4,6 +4,8 @@
 }
 
 .employe {
+  margin-top: 20px;
+
   h3 {
     font-weight: 600;
     font-size: 36px;
@@ -29,15 +31,21 @@
     justify-content: space-between;
   }
 
+  &-item {
+    div:first-child {
+      margin-right: 40px;
+    }
+  }
+
   &-page {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px;
     margin: 40px 0;
 
     & > div {
       width: 100%;
-      max-width: 270px;
+      max-width: 280px;
       height: 449px;
       background: #f6f7fb;
       border: 1px solid #eaedf6;

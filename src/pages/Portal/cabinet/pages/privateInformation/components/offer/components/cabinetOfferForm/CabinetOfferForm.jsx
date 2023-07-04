@@ -46,7 +46,7 @@ const CabinetOfferForm = ({ data, setData, expertSuggestionsData }) => {
               className="offerCont-imgCont-pics-deleteBtn"
               onClick={() => deleteImgHandler(el)}>
               <img src={trashSvg} alt="Удалить" />
-              <p>{t("projects_page.form_image_delete")}</p>
+              <p>{t("private-information.deleteImage")}</p>
             </div>
           </div>
         ))}

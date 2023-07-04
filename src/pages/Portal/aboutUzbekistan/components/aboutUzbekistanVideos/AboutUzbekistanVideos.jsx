@@ -47,7 +47,7 @@ const AboutUzbekistanVideos = ({
       />
 
       <VideoGrid data={mediaData} handleClick={handleClick} />
-
+      {/* 
       {countPagination > 1 && activePage < countPagination ? (
         <div
           className="facilities_intro_btn"
@@ -57,7 +57,7 @@ const AboutUzbekistanVideos = ({
             {t("about_uzbekistan.see_more")}
           </MyButton>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

@@ -61,12 +61,12 @@ const Quizzes = () => {
   const showMoreActive = (e) => {
     e.preventDefault();
     setPostsPerpageActive((prev) => prev + 6);
-    dispatch(getAllQuizData({ status: 1, paginate: postsPerPageActive }));
+    dispatch(getAllQuizData({ status: 1, paginate: postsPerPageActive + 6 }));
   };
   const showMoreEnded = (e) => {
     e.preventDefault();
     setPostsPerpageEnded((prev) => prev + 6);
-    dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded }));
+    dispatch(getAllQuizData({ status: 0, paginate: postsPerPageEnded + 6 }));
   };
 
   return (
@@ -96,7 +96,8 @@ const Quizzes = () => {
             <button
               onClick={() => changeBtn(el)}
               className={el.id === activeBtn && "active"}
-              key={index}>
+              key={index}
+            >
               {el.name}
             </button>
           ))}
@@ -104,15 +105,19 @@ const Quizzes = () => {
         {activeBtn === 1 ? (
           <div className="choices-quiz-Container-bodyCont">
             <div className="choices-quiz-Container-bodyCont-cardCont">
-              {quizTotalData.allData.data.map((el, index) => (
-                <Card key={index} data={el} quiz={false} />
-              ))}
+              {quizTotalData.allData.data.map(
+                (el, index) =>
+                  el.category !== "option2" && (
+                    <Card key={index} data={el} quiz={false} />
+                  )
+              )}
             </div>
 
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={(e) => showMoreActive(e)}>
+                onClick={(e) => showMoreActive(e)}
+              >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1
@@ -125,14 +130,18 @@ const Quizzes = () => {
         ) : (
           <div className="choices-quiz-Container-bodyCont">
             <div className="choices-quiz-Container-bodyCont-cardCont">
-              {quizTotalData.allData.data.map((el, index) => (
-                <Card key={index} data={el} quiz={true} />
-              ))}
+              {quizTotalData.allData.data.map(
+                (el, index) =>
+                  el.category !== "option2" && (
+                    <Card key={index} data={el} quiz={true} />
+                  )
+              )}
             </div>
             <div className="choices-quiz-Container-bodyCont-bottomBtn">
               <motion.button
                 whileTap={{ scale: 0.9 }}
-                onClick={(e) => showMoreEnded(e)}>
+                onClick={(e) => showMoreEnded(e)}
+              >
                 <img src={btnArrowDown} alt="icon" />
                 <span>
                   {activeBtn === 1

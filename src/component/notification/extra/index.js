@@ -22,7 +22,6 @@ export const filterNotification = ({ data, dispatch }) => {
       }
     }
   });
-  console.log(events);
   dispatch(
     changeNotificationCount(
       news.length + admin.length + events.slice(0, 20).length

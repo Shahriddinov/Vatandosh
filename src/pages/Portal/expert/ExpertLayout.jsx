@@ -5,22 +5,38 @@ import ExpertFooter from "./components/ExpertFooter/ExpertFooter";
 import { useTranslation } from "react-i18next";
 import { getItem } from "../../../helpers/persistanceStorage";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../../../reduxToolkit/authSlice/authSlice";
+import { Spinner } from "../../../component";
+import { getExpertAssociation } from "../../../reduxToolkit/ExpertSlice/ExpertsSlice/ExpertSliceExtraReducer";
+import { getContact } from "../../../reduxToolkit/contactSlice/extraReducer";
 
 const ExpertLayout = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const editClass = location.pathname.split("/");
-
   const dispatch = useDispatch();
-  const userToken = getItem("token");
+  const lan = useSelector((state) => state.language.language);
+  const { pathname } = useLocation();
+  const {
+    expertAssociationData,
+    expertAssociationLoading,
+    expertAssociationError,
+  } = useSelector((state) => state.expertSlice);
 
   useEffect(() => {
-    if (!userToken) {
-      dispatch(removeToken());
-    }
-  }, [userToken, dispatch]);
+    dispatch(getExpertAssociation());
+  }, [lan, dispatch]);
+
+  useEffect(() => {
+    if (!pathname.includes("about-uzbekistan")) dispatch(getContact());
+  }, [dispatch, pathname]);
+
+  if (expertAssociationLoading) {
+    return <Spinner position="full" />;
+  } else if (expertAssociationError) {
+    return <p>{expertAssociationError}</p>;
+  }
 
   const navData = [
     { id: 1, url: "/portal-category/expert", label: t("expert.main") },
@@ -28,6 +44,7 @@ const ExpertLayout = () => {
       id: 2,
       url: "/portal-category/expert/expert-council",
       label: t("expert.expertCouncil"),
+      data: expertAssociationData?.data,
     },
     {
       id: 3,

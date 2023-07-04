@@ -1,7 +1,6 @@
 import React from "react";
 import "./notificationCard.scss";
 import { MenuItem } from "@mui/material";
-import hours from "../../../../assets/images/hours.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getOneNotification,

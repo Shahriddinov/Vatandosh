@@ -13,7 +13,7 @@ import {
 } from "../../../../../assets/images/expert";
 import { CiGlobe } from "react-icons/ci";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useContext, useState } from "react";
 import i18next from "i18next";
@@ -41,6 +41,9 @@ const Navbar = ({ navbarUrl }) => {
   const { grayScale } = useContext(GrayContext);
 
   const [activeKabinet, setActiveKabinet] = useState(false);
+  const navigate = useNavigate();
+  const contactData = useSelector((state) => state.contactSlice.contactData);
+  const { expertAssociationData } = useSelector((state) => state.expertSlice);
 
   const handleClick = (event) => {
     dispatch(openNotification(event.currentTarget));
@@ -56,12 +59,12 @@ const Navbar = ({ navbarUrl }) => {
     localStorage.clear();
     window.location = "/portal";
   };
-
   const ExpertNavData = [
     { url: "/portal-category/expert", title: t("expert.main") },
     {
       url: "/portal-category/expert/expert-council",
       title: t("expert.expertCouncil"),
+      data: expertAssociationData?.data,
     },
     { url: "/portal-category/expert/offers", title: t("expert.offers") },
     {
@@ -70,7 +73,7 @@ const Navbar = ({ navbarUrl }) => {
     },
   ];
   const VolunteerNavData = [
-    { url: "/portal-category/expert", title: t("expert.main") },
+    { url: "/portal-category/volunteer", title: t("expert.main") },
     {
       url: "/portal-category/volunteer/volunter-employe",
       title: t("voluntery.nav1"),
@@ -121,7 +124,7 @@ const Navbar = ({ navbarUrl }) => {
           <ul className="navbar-list">
             <li className="navbar-item">
               <a
-                href="tel:+998555022299"
+                href={`tel: ${contactData?.phone}`}
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
@@ -129,12 +132,12 @@ const Navbar = ({ navbarUrl }) => {
                 }
               >
                 <PhoneIcon />
-                +998(55)502-22-99
+                {contactData?.phone}
               </a>
             </li>
             <li className="navbar-item">
               <a
-                href="mailto:info@vatandoshlarfondi.uz"
+                href={`mailto:${contactData?.email}`}
                 className={
                   editClass.length <= 3 || communityCountryId !== undefined
                     ? `navbar-link`
@@ -142,7 +145,7 @@ const Navbar = ({ navbarUrl }) => {
                 }
               >
                 <EmailIcon />
-                info@vatandoshlarfondi.uz
+                {contactData?.email}
               </a>
             </li>
           </ul>
@@ -244,6 +247,7 @@ const Navbar = ({ navbarUrl }) => {
                   ? `navbarpage-notification`
                   : `navbarpage--notification`
               }
+              onClick={() => navigate("/portal-category/cabinet/chat")}
             >
               <MessengerIcon />
             </button>

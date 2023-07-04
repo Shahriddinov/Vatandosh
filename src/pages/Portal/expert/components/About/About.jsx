@@ -2,11 +2,15 @@ import ShareFriends from "../../../../../component/ShareFriends/ShareFriends";
 import CouncilStatics from "../../pages/ExpertHome/components/Council/CouncilStatics";
 import "./About.scss";
 import { PageTop } from "../../../communityAssociation/components";
+import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import FotoGallery from "../../../../../component/FotoGallery/FotoGallery";
+import { PortalMiniSlider } from "../../../components/portalMiniSlider/PortalMiniSlider";
+import { useTranslation } from "react-i18next";
 
-function About({ aboutData, expertCount }) {
+function About({ aboutData, expertCount, newsData }) {
+  const { t } = useTranslation();
   const pageTopData = {
     title: aboutData?.title,
-
     pathUrl: [
       {
         id: 1,
@@ -29,14 +33,16 @@ function About({ aboutData, expertCount }) {
         <PageTop pageTopData={pageTopData} />
         <div className="about-page">
           <div className="about-left">
-            <img src={aboutData?.img1} alt="img" className="about-left-img" />
-            <h3 className="about-title">{aboutData?.title2}</h3>
+            <img
+              src={`${PORTAL_IMAGE_URL}${aboutData?.img1}`}
+              alt="img"
+              className="about-left-img"
+            />
+            <h3 className="about-title">{aboutData?.title1}</h3>
             <p
               className="about-text"
               dangerouslySetInnerHTML={{ __html: aboutData?.desc1 }}
             />
-            {aboutData?.img2 && <img src={aboutData?.img2} alt="img" />}
-            <p className="about-text">{aboutData?.desc2}</p>
             <div>
               <ShareFriends />
             </div>
@@ -44,6 +50,12 @@ function About({ aboutData, expertCount }) {
           <CouncilStatics expertCount={expertCount} />
         </div>
       </div>
+      <PortalMiniSlider
+        title={`${t("news")}`}
+        data={newsData}
+        fetchUrl="detail/all-news/new"
+      />
+      <FotoGallery images={aboutData.images} />
     </div>
   );
 }

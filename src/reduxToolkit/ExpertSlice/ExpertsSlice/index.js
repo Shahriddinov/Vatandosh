@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getExpert,
+  getExpertAssociation,
   getExpertCount,
   getExpertFilter,
   getExpertFilterCountry,
@@ -17,6 +18,11 @@ const initialState = {
   expertPageLoading: true,
   expert: {},
   expertLoading: true,
+
+  expertAssociationData: [],
+  expertAssociationLoading: true,
+  expertAssociationError: null,
+
   error: null,
 };
 
@@ -88,6 +94,20 @@ const expertsSlice = createSlice({
       .addCase(getExpertFilter.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      });
+
+    builder
+      .addCase(getExpertAssociation.pending, (state) => {
+        state.expertAssociationLoading = true;
+        state.expertAssociationError = null;
+      })
+      .addCase(getExpertAssociation.fulfilled, (state, action) => {
+        state.expertAssociationLoading = false;
+        state.expertAssociationData = action.payload;
+      })
+      .addCase(getExpertAssociation.rejected, (state, action) => {
+        state.expertAssociationLoading = false;
+        state.expertAssociationError = action.error.message;
       });
   },
 });

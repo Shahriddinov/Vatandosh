@@ -12,6 +12,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { getCountryCities } from "../../../../../reduxToolkit/portalSlices/communitySlice/communityExtraReducers";
 import { useVolunteerAbout } from "./hooks/useVolunterAbout";
 import { useTranslation } from "react-i18next";
+import { volunteersSort } from "../VolunterHome/extra";
 
 function VolunterAbout() {
   const { t } = useTranslation();
@@ -39,13 +40,17 @@ function VolunterAbout() {
     return <Spinner />;
   }
 
+  const volunteersData = volunteers?.data?.length
+    ? volunteersSort(volunteers?.data)
+    : [];
+
   return (
     <div className="employe">
       <div className="container">
         <div className="employe-list">
           <h3>{t("voluntery.voluntery")}</h3>
           <div className="employe-item">
-            <FormControl sx={{ m: 3, minWidth: 270 }}>
+            <FormControl sx={{ m: 3, minWidth: 270, marginRight: 40 }}>
               <InputLabel id="demo-simple-select-helper-label">
                 {t("expert.allcountry")}
               </InputLabel>
@@ -97,16 +102,8 @@ function VolunterAbout() {
           </div>
         </div>
         <div className="employe-page">
-          {volunteers.data.length > 0 ? (
-            volunteers.data.map((volunteer) => {
-              let verified_volunteer_activities = 0;
-
-              volunteer?.user_volunteer_activities.forEach((act) => {
-                if (act.verified && act.type === 2) {
-                  verified_volunteer_activities++;
-                }
-              });
-
+          {volunteers?.data?.length > 0 ? (
+            volunteersData?.map((volunteer) => {
               return (
                 <div key={volunteer.id}>
                   <img
@@ -130,7 +127,7 @@ function VolunterAbout() {
                   <p style={{ color: "#656B70", fontWeight: 700 }}>
                     {t("voluntery.card_articles")}:{" "}
                     <b style={{ color: "#065EA9" }}>
-                      {verified_volunteer_activities}
+                      {volunteer?.user_volunteer_activities}
                     </b>
                   </p>
                   <div className="link-div">

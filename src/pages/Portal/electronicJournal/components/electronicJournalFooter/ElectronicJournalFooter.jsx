@@ -103,11 +103,13 @@ function ElectronicJournalFooter({ contactData }) {
           <hr className="" />
 
           <div className="electronic-journal-footer_production ">
-            <img
-              className="electronic-journal-footer_production_napa"
-              src={Napa}
-              alt=""
-            />
+            <a href="https://napaautomotive.uz/" target="_blank">
+              <img
+                className="electronic-journal-footer_production_napa"
+                src={Napa}
+                alt=""
+              />
+            </a>
             <div className="electronic-journal-footer_production_napa_year">
               Copyright © 2023 Vatandoshlar jamoat fondi
             </div>

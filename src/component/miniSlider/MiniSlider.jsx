@@ -1,7 +1,6 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
-import Card from "../card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 

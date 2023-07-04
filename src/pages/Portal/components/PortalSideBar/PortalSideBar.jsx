@@ -19,15 +19,21 @@ import eyeGlass from "../../../../assets/images/EyeGlass.png";
 import { GrClose } from "react-icons/gr";
 import logo from "../../../../assets/images/Logos.svg";
 import burger from "../../../../assets/images/icons/burger.svg";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { getContact } from "../../../../reduxToolkit/contactSlice/extraReducer";
+import { GrayContext } from "../../../../context/GrayContext";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 export default function PortalSide({ data }) {
   const [state, setState] = useState(false);
-  const { pathname } = useLocation();
+  const { grayScale } = useContext(GrayContext);
+  const location = useLocation();
+  const editClass = location.pathname.split("/");
 
   const contactData = useSelector((state) => state.contactSlice.contactData);
+
   const dispatch = useDispatch();
 
   const activeLanguage = localStorage.getItem("language")
@@ -42,23 +48,24 @@ export default function PortalSide({ data }) {
     setActiveLng(lng);
   };
 
-  useEffect(() => {
-    if (!pathname.includes("about-uzbekistan")) dispatch(getContact());
-  }, [dispatch, pathname]);
+  const handleClick = (e) => {
+    if (!e.target.matches(".open-dropdown")) {
+      setState((state) => !state);
+    }
+  };
 
   const list = (anchor) => (
-    <Box
-      role="presentation"
-      onClick={() => setState((state) => !state)}
-      className="portal-sideBar"
-    >
+    <Box role="presentation" onClick={handleClick} className="portal-sideBar">
       <List>
         <div className="portal-sideBar-top">
           <Link to={"/portal"}>
             <img src={logo} alt="Vatandoshlar jamoat fondi" />
           </Link>
           <div className="portal-sideBar-top-btn">
-            <div className="portal-sideBar-top-eyeGlass">
+            <div
+              className="portal-sideBar-top-eyeGlass"
+              onClick={() => grayScale()}
+            >
               <img src={eyeGlass} alt="eye glass" />
             </div>
             <div className="portal-sideBar-top-close">
@@ -69,11 +76,55 @@ export default function PortalSide({ data }) {
       </List>
       <List>
         <div className="portal-sideBar-list">
-          {data?.map((el, index) => (
-            <Link className="portal-sideBar-list-item" to={el?.url} key={index}>
-              {el?.title}
-            </Link>
-          ))}
+          {data?.map((el, index) => {
+            if (index === 1 && editClass[2] === "expert") {
+              return (
+                <PopupState
+                  variant="popover"
+                  popupId="demo-popup-menu"
+                  className="open-dropdown"
+                  key={index}
+                >
+                  {(popupState) => (
+                    <>
+                      <li
+                        {...bindTrigger(popupState)}
+                        className="portal-sideBar-list-item open-dropdown"
+                      >
+                        {el.title}
+                      </li>
+                      <Menu {...bindMenu(popupState)}>
+                        {el?.data.length &&
+                          el?.data.map((navItem) => (
+                            <Link
+                              to={`/portal-category/expert/council-about/${navItem.id}`}
+                              key={navItem.id}
+                            >
+                              <MenuItem
+                                onClick={popupState.close}
+                                key={navItem.id}
+                              >
+                                {navItem.title}
+                              </MenuItem>
+                            </Link>
+                          ))}
+                      </Menu>
+                    </>
+                  )}
+                </PopupState>
+              );
+            } else {
+              return (
+                <Link
+                  className="portal-sideBar-list-item"
+                  to={el?.url}
+                  key={index}
+                >
+                  {el?.title}
+                </Link>
+              );
+            }
+          })}
         </div>
       </List>
       <List>

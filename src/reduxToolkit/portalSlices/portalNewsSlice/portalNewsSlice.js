@@ -43,6 +43,7 @@ const portalNewsSlice = createSlice({
     builder
       .addCase(getPortalNews.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getPortalNews.fulfilled, (state, { payload }) => {
         state.loading = false;
@@ -56,6 +57,7 @@ const portalNewsSlice = createSlice({
     builder
       .addCase(getPortalOneNews.pending, (state) => {
         state.oneNewsLoading = true;
+        state.error = null;
       })
       .addCase(getPortalOneNews.fulfilled, (state, { payload }) => {
         state.oneNewsLoading = false;

@@ -1,7 +1,10 @@
 .winnervictorina {
   padding: 20px 0;
   padding-bottom: 90px;
-
+  &__title {
+    width: 100%;
+    max-width: 800px;
+  }
   &-page {
     display: flex;
     align-items: center;
@@ -48,7 +51,6 @@
     font-size: 14px;
     line-height: 24px;
     color: #ffffff;
-    margin-left: 15px;
   }
 
   &-list {
@@ -68,7 +70,9 @@
   &-top {
     display: flex;
     align-items: center;
+    flex-wrap: wrap-reverse;
     justify-content: space-between;
+    gap: 10px;
     margin-bottom: 70px;
   }
   &-texts {
@@ -77,5 +81,31 @@
     line-height: 17px;
     color: #065ea9;
   }
+  &-btnWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+}
 
+@media screen and (max-width: 918px) {
+  .winnervictorina {
+    &-page {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 556px) {
+  .winnervictorina {
+    &-name {
+      width: 100%;
+    }
+
+    &-image {
+      width: 100%;
+    }
+  }
 }

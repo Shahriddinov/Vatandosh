@@ -13,11 +13,24 @@ import {
 } from "../../../../../../../reduxToolkit/volunteer/extraReducer";
 import { PORTAL_IMAGE_URL } from "../../../../../../../services/api/utils";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+const options = {
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+};
 
 export default function Volunteer({ activeBarItem }) {
   const { t } = useTranslation();
   const history = useNavigate();
-  const { volunteerActivity } = useSelector((state) => state.volunteerSlice);
+  const { volunteerActivity, volunteerCreateStatus } = useSelector(
+    (state) => state.volunteerSlice
+  );
   const [volunteerProfile, setVolunteerProfile] = useState([
     {
       id: "123",
@@ -75,7 +88,6 @@ export default function Volunteer({ activeBarItem }) {
         );
       });
     }
-    history("/portal-category/volunteer");
   };
 
   useEffect(() => {
@@ -100,191 +112,230 @@ export default function Volunteer({ activeBarItem }) {
     dispatch(getVolunteerActivity());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log("fkahds");
+    if (volunteerCreateStatus === "post_succeeded") {
+      toast.success("success sending !", options);
+      setTimeout(() => {
+        history("/portal-category/volunteer");
+      }, 2000);
+    } else if (volunteerCreateStatus === "update_succeeded") {
+      console.log("fkahds");
+      history("/portal-category/volunteer");
+    } else if (volunteerCreateStatus === "error") {
+      toast.error("Error sending !", options);
+    }
+  }, [volunteerCreateStatus]);
+
   const deleteVolunteer = (id) => {
     dispatch(deleteVolunteerActivity(id));
   };
 
   return (
-    <form
-      className={
-        activeBarItem !== 5
-          ? "registeritem5 registeritem-scaleHidden"
-          : "registeritem5 registeritem-scaleActive"
-      }
-      onSubmit={handleSubmit}>
-      <div className="registeritem5-wrapper registeritem-borderLeft">
-        <div className="registeritem3-list">
-          <h3 className="registeritem-title">V. {t("voluntery.nav4")} </h3>
-          {volunteerProfile?.length
-            ? volunteerProfile?.map((el, index) => (
-                <div key={index} className="registeritem-form">
-                  <p className="registeritem-label-delete">
-                    <strong>{`${index + 1}. ${el.title}`}</strong>
-                    <AiOutlineDelete
-                      style={
-                        volunteerProfile?.length === 1
-                          ? { display: "none" }
-                          : null
-                      }
-                      onClick={() => {
-                        deleteVolunteer(el.id);
-                        setVolunteerProfile(
-                          (prev) =>
-                            (prev = prev.filter((item) => item.id !== el.id))
-                        );
-                      }}
-                    />
-                  </p>
-                  <label htmlFor="" className="registeritem-label">
-                    <p>
-                      {t("maqola")}
-                      <span>*</span>
-                    </p>
-                    <div>
-                      <input
-                        required
-                        type="text"
-                        minLength={3}
-                        maxLength={200}
-                        value={el.title}
-                        placeholder={t("expert.inputplaceholder")}
-                        onChange={(e) =>
-                          handleChange({
-                            ...el,
-                            title: e.target.value,
-                          })
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <form
+        className={
+          activeBarItem !== 5
+            ? "registeritem5 registeritem-scaleHidden"
+            : "registeritem5 registeritem-scaleActive"
+        }
+        onSubmit={handleSubmit}
+      >
+        <div className="registeritem5-wrapper registeritem-borderLeft">
+          <div className="registeritem3-list">
+            <h3 className="registeritem-title">V. {t("voluntery.nav4")} </h3>
+            {volunteerProfile?.length
+              ? volunteerProfile?.map((el, index) => (
+                  <div key={index} className="registeritem-form">
+                    <p className="registeritem-label-delete">
+                      <strong>{`${index + 1}. ${el.title}`}</strong>
+                      <AiOutlineDelete
+                        style={
+                          volunteerProfile?.length === 1
+                            ? { display: "none" }
+                            : null
                         }
-                      />
-                    </div>
-                  </label>
-                  {!el.images?.length && !el.volunteerImg?.length ? (
-                    <label htmlFor={el.id} className="registeritem-imgInput">
-                      <input
-                        className="registeritem-label-fileinput"
-                        id={el.id}
-                        type="file"
-                        accept="image/png, image/gif, image/jpeg, image/jpg"
-                        onChange={(e) => {
-                          handleChange({
-                            ...el,
-                            images: [...el.images, e.target.files[0]],
-                          });
+                        onClick={() => {
+                          deleteVolunteer(el.id);
+                          setVolunteerProfile(
+                            (prev) =>
+                              (prev = prev.filter((item) => item.id !== el.id))
+                          );
                         }}
                       />
-                      <BsImage />
-                      <p>{t("expert.offerforimg")}</p>
+                    </p>
+                    <label htmlFor="" className="registeritem-label">
+                      <p>
+                        {t("maqola")}
+                        <span>*</span>
+                      </p>
+                      <div>
+                        <input
+                          required
+                          type="text"
+                          minLength={3}
+                          maxLength={200}
+                          value={el.title}
+                          placeholder={t("expert.inputplaceholder")}
+                          onChange={(e) =>
+                            handleChange({
+                              ...el,
+                              title: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
                     </label>
-                  ) : (
-                    <ul className="registeritem-imageList">
-                      {el.images?.length
-                        ? el.images.map((item, index) => (
-                            <li
-                              key={index}
-                              className="registeritem-imageList-item">
-                              {el.images.length > 1 ? (
-                                <div
-                                  className="registeritem-imageList-item-remove"
-                                  onClick={() => {
-                                    el.images.splice(index, 1);
-                                    handleChange({ ...el, images: el.images });
-                                  }}>
-                                  <HiOutlineTrash />
-                                  <span>
-                                    {t("projects_page.form_image_delete")}
-                                  </span>
-                                </div>
-                              ) : null}
-                              <img src={URL.createObjectURL(item)} alt="" />
-                            </li>
-                          ))
-                        : el.volunteerImg.map((item, index) => (
-                            <li
-                              key={index}
-                              className="registeritem-imageList-item">
-                              <img src={PORTAL_IMAGE_URL + item} alt="" />
-                            </li>
-                          ))}
-                      <label
-                        htmlFor={el.id}
-                        className="registeritem-imageList-inputFile">
+                    {!el.images?.length && !el.volunteerImg?.length ? (
+                      <label htmlFor={el.id} className="registeritem-imgInput">
                         <input
                           className="registeritem-label-fileinput"
                           id={el.id}
                           type="file"
                           accept="image/png, image/gif, image/jpeg, image/jpg"
-                          onChange={(e) =>
-                            e.target.files[0] &&
+                          onChange={(e) => {
                             handleChange({
                               ...el,
                               images: [...el.images, e.target.files[0]],
+                            });
+                          }}
+                        />
+                        <BsImage />
+                        <p>{t("expert.offerforimg")}</p>
+                      </label>
+                    ) : (
+                      <ul className="registeritem-imageList">
+                        {el.images?.length
+                          ? el.images.map((item, index) => (
+                              <li
+                                key={index}
+                                className="registeritem-imageList-item"
+                              >
+                                {el.images.length > 1 ? (
+                                  <div
+                                    className="registeritem-imageList-item-remove"
+                                    onClick={() => {
+                                      el.images.splice(index, 1);
+                                      handleChange({
+                                        ...el,
+                                        images: el.images,
+                                      });
+                                    }}
+                                  >
+                                    <HiOutlineTrash />
+                                    <span>
+                                      {t("projects_page.form_image_delete")}
+                                    </span>
+                                  </div>
+                                ) : null}
+                                <img src={URL.createObjectURL(item)} alt="" />
+                              </li>
+                            ))
+                          : el.volunteerImg.map((item, index) => (
+                              <li
+                                key={index}
+                                className="registeritem-imageList-item"
+                              >
+                                <img src={PORTAL_IMAGE_URL + item} alt="" />
+                              </li>
+                            ))}
+                        <label
+                          htmlFor={el.id}
+                          className="registeritem-imageList-inputFile"
+                        >
+                          <input
+                            className="registeritem-label-fileinput"
+                            id={el.id}
+                            type="file"
+                            accept="image/png, image/gif, image/jpeg, image/jpg"
+                            onChange={(e) =>
+                              e.target.files[0] &&
+                              handleChange({
+                                ...el,
+                                images: [...el.images, e.target.files[0]],
+                              })
+                            }
+                          />
+                          <BsPlusCircleFill />
+                        </label>
+                      </ul>
+                    )}
+                    <label htmlFor="" className="registeritem-label">
+                      <p>
+                        {t("comment")} <span>*</span>
+                      </p>
+                      <div className="registeritem-label-textarea">
+                        <textarea
+                          required
+                          type="text"
+                          value={el.description}
+                          minLength={3}
+                          maxLength={500}
+                          placeholder={t(
+                            "communityAssociation.desc_textarea_plack"
+                          )}
+                          onChange={(e) =>
+                            handleChange({
+                              ...el,
+                              description: e.target.value,
                             })
                           }
                         />
-                        <BsPlusCircleFill />
-                      </label>
-                    </ul>
-                  )}
-                  <label htmlFor="" className="registeritem-label">
-                    <p>
-                      {t("comment")} <span>*</span>
-                    </p>
-                    <div className="registeritem-label-textarea">
-                      <textarea
-                        required
-                        type="text"
-                        value={el.description}
-                        minLength={3}
-                        maxLength={500}
-                        placeholder={t(
-                          "communityAssociation.desc_textarea_plack"
-                        )}
-                        onChange={(e) =>
-                          handleChange({
-                            ...el,
-                            description: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                  </label>
-                </div>
-              ))
-            : null}
-          <button
-            type="button"
-            className="registeritem-addForm"
-            onClick={() =>
-              setVolunteerProfile((prev) => [
-                ...prev,
-                {
-                  id: "" + Date.now(),
-                  title: "",
-                  images: [],
-                  description: "",
-                },
-              ])
-            }>
-            <BsPlusCircleFill />
-          </button>
-          <div className="registeritem-checkbox">
-            <Checkbox
-              checked={checked}
-              inputProps={{ "aria-label": "controlled" }}
-              onChange={() => setChecked((e) => !e)}
-            />
-            <p>{t("expert.register5")}</p>
+                      </div>
+                    </label>
+                  </div>
+                ))
+              : null}
+            <button
+              type="button"
+              className="registeritem-addForm"
+              onClick={() =>
+                setVolunteerProfile((prev) => [
+                  ...prev,
+                  {
+                    id: "" + Date.now(),
+                    title: "",
+                    images: [],
+                    description: "",
+                  },
+                ])
+              }
+            >
+              <BsPlusCircleFill />
+            </button>
+            <div className="registeritem-checkbox">
+              <Checkbox
+                checked={checked}
+                inputProps={{ "aria-label": "controlled" }}
+                onChange={() => setChecked((e) => !e)}
+              />
+              <p>{t("expert.register5")}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="registeritem-btnWrapper">
-        <button
-          disabled={!checked}
-          type="submit"
-          className="registeritem-submitBtn"
-          style={checked ? null : { opacity: 0.5, cursor: "auto" }}>
-          {t("expert.save")}
-        </button>
-      </div>
-    </form>
+        <div className="registeritem-btnWrapper">
+          <button
+            disabled={!checked}
+            type="submit"
+            className="registeritem-submitBtn"
+            style={checked ? null : { opacity: 0.5, cursor: "auto" }}
+          >
+            {t("expert.save")}
+          </button>
+        </div>
+      </form>
+    </>
   );
 }

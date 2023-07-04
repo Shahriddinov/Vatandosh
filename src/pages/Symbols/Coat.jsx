@@ -15,31 +15,10 @@ function Coat(props) {
         <img src={Coats} alt="" />
         <div className="symbol_coat">{t("symbols.coat")}</div>
         <div className="symbol_title">
-          <b className="symbol_title" style={{ marginLeft: "55px" }}>
-            {t("BayroqOne")}
-          </b>{" "}
-          Respublikasi Davlat gerbi to‘g‘risida"gi Qonun 1992 yil 2 iyulda
-          O‘zbekiston Respublikasi Oliy Kengashining X sessiyasida qabul
-          qilingan. O‘zbekiston Respublikasining Davlat gerbi gullagan vodiy
-          uzra charaqlab turgan quyosh tasviridan hamda so‘l tomonida bug‘doy
-          boshoqlari, o‘ng tomonida ochilgan paxta chanoqlari suvrati
-          tushirilgan chambardan iborat. Gerbning yuqori qismida respublika
-          jipsligining ramzi sifatida sakkiz qirrali yulduz tasvirlangan: sakkiz
-          qirra ichida joylashgan yarim oy va yulduz musulmonlarning qutlug‘
-          ramzidir.
-          <br />
-          <b className="symbol_title" style={{ marginLeft: "55px" }}>
-            Gerbning
-          </b>{" "}
-          markazida himmat, olijanoblik va fidoyilik timsoli bo‘lgan afsonaviy
-          Xumo qushi qanotlarini yozib turibdi. Ushbu ramz va timsollar
-          xalqimizning tinchlik, yaxshilik, baxt-saodat, farovonlik yo‘lidagi
-          orzu-umidlarini ifodalaydi. <br />
-          <b className="symbol_title" style={{ marginLeft: "55px" }}>
-            Gerbning
-          </b>{" "}
-          pastki qismida respublika Davlat bayrog‘ini ifoda etuvchi chambar
-          lentasining bandiga "O‘zbekiston” deb yozib qo‘yilgan.
+          <p
+            style={{ width: "50%" }}
+            dangerouslySetInnerHTML={{ __html: t("symbols.coatAbout") }}
+          />
         </div>
       </div>
     </>

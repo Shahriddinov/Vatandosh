@@ -54,7 +54,7 @@ const Card = (props) => {
               ? `/detail/community/event/${props.id}`
               : props.pathUrl === "volunteer/activity"
               ? `/portal-category/volunteer/activity/${props.id}`
-              : `/${props.pathUrl}/${props.id}`
+              : `/detail/${props.link}/${props.id}`
           }
         >
           {props.pathUrl === "news" ? (

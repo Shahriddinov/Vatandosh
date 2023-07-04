@@ -91,7 +91,6 @@ const useVoluntaryActivityFetching = (setData, initialState) => {
       setData(newData);
     }
   }, [volounteerActivityData]);
-
   return {
     deleteCompHandler,
     submitCompHandler,

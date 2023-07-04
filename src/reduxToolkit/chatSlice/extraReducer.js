@@ -1,7 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../services/api/axios";
 
-import { GET_CHAT_DATA, POST_COMMUNITY_IMAGE } from "../../services/api/utils";
+import {
+  DELETE_MESSAGE,
+  GET_CHAT_DATA,
+  POST_COMMUNITY_IMAGE,
+} from "../../services/api/utils";
 
 // Get All Chats
 export const getAllChats = createAsyncThunk("get/allChats", async () => {
@@ -62,6 +66,16 @@ export const checkUser = createAsyncThunk("check/user", async (userId) => {
     .get(`${GET_CHAT_DATA}/check?user_id=${userId}`)
     .then((res) => res.data);
 });
+
+// Delete message
+export const deleteMessage = createAsyncThunk(
+  "delete/message",
+  async (messageId) => {
+    return await axios
+      .post(`${DELETE_MESSAGE}/${messageId}`)
+      .then((res) => res.data);
+  }
+);
 
 // Create url for chat media
 

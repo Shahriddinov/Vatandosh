@@ -2,25 +2,19 @@ import { Spinner } from "../../../../../component";
 import About from "../../components/About/About";
 import { t } from "i18next";
 import { useAboutCouncil } from "./hooks/useAboutCouncil";
-import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
+import { isJson } from "../../../../../extra";
 
 function AboutCouncil() {
   const {
     expertCount,
     expertCountLoading,
-    expertPageLoading,
-    expertPage,
-    lan,
-    expertError,
+    data,
+    communityNews,
+    communityNewsLoading,
+    error,
+    expertAssociationsId,
   } = useAboutCouncil();
-
-  if (expertCountLoading || expertPageLoading) {
-    return <Spinner position="full" />;
-  } else if (expertError) {
-    return <p>{expertError}</p>;
-  }
-  const findExpertAboutPage = expertPage?.find((el) => el.type === 1);
-
+  const json = isJson(data?.images);
   const aboutData = {
     title: t("expert.councildetail"),
     path: {
@@ -28,14 +22,30 @@ function AboutCouncil() {
       pageHomeName: t("expert.main"),
       pageName: t("expert.detail"),
     },
-    img1: PORTAL_IMAGE_URL + findExpertAboutPage?.image,
-    title2: findExpertAboutPage[`title_${lan}`],
-    desc1: findExpertAboutPage[`text_${lan}`],
+    img1: json ? JSON.parse(data?.images)[0] : data?.image,
+    title1: data?.title,
+    desc1: data?.text,
+    images: data?.images,
+    id: data?.id,
   };
+
+  if (expertCountLoading || communityNewsLoading) {
+    return <Spinner position="full" />;
+  } else if (error) {
+    return <p>{error}</p>;
+  }
+
+  const newsData = communityNews?.data?.filter(
+    (el) => el?.expert_association_id === expertAssociationsId * 1
+  );
 
   return (
     <div>
-      <About aboutData={aboutData} expertCount={expertCount} />
+      <About
+        aboutData={aboutData}
+        expertCount={expertCount}
+        newsData={newsData}
+      />
     </div>
   );
 }

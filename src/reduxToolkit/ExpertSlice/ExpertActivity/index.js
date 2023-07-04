@@ -3,6 +3,7 @@ import {
   getExpertActivity,
   getExpertActivityOne,
   postExpertActivity,
+  updateExpertActivity,
 } from "./extraReducer";
 
 const initialState = {
@@ -55,13 +56,22 @@ const expertActivity = createSlice({
         state.postExportActivitySuccess = null;
       })
       .addCase(postExpertActivity.fulfilled, (state, action) => {
-        state.postExportActivitySuccess = "success";
+        state.postExportActivitySuccess = "create_success";
       })
       .addCase(postExpertActivity.rejected, (state, action) => {
         state.postExportActivitySuccess = "error";
-        state.error = action.error.message;
       });
-    //getExpertActivityOne
+    builder
+      .addCase(updateExpertActivity.pending, (state) => {
+        state.postExportActivitySuccess = null;
+      })
+      .addCase(updateExpertActivity.fulfilled, (state, action) => {
+        state.postExportActivitySuccess = "update_success";
+      })
+      .addCase(updateExpertActivity.rejected, (state, action) => {
+        state.postExportActivitySuccess = "error";
+      });
+    //updateExpertActivity
   },
 });
 

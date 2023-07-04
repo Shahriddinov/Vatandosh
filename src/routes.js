@@ -256,6 +256,10 @@ const VictorinaProject = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaProject/VictorinaProject")
 );
 
+const VictorinaProjectTest = lazy(() =>
+  import("./pages/Portal/victorina/components/VictorinaWinner/VictorinaWinner")
+);
+
 const VictorinaAbout = lazy(() =>
   import("./pages/Portal/victorina/pages/VictorinaAbout/VictorinaAbout")
 );
@@ -434,7 +438,7 @@ const MoreDetail = lazy(() =>
 const routes = [
   { path: "", element: Home },
   { path: "/detail/:category/:type/:id", element: OneNewsDetail },
-  { path: "/:page/:id", element: NewsDetail },
+  { path: "/detail/:page/:id", element: NewsDetail },
   { path: "/about", element: About },
   { path: "/about/direction", element: Direction },
   { path: "/about/management", element: Management },
@@ -456,7 +460,6 @@ const routes = [
   },
   { path: "/country-news/:countryId", element: MapNews },
   { path: "/information-service/:pageName", element: InformationServices },
-  { path: "/:page/id", element: NewsDetail },
   { path: "/projects", element: Projects },
   { path: "/contact", element: Contact },
   { path: "/faq", element: FAQ },
@@ -474,7 +477,6 @@ const routes = [
 const RoutesContainer = () => {
   const token = useSelector((state) => state.authSlice.token);
   const userData = useSelector((state) => state.authSlice.userData);
-  const userToken = getItem("token");
 
   return (
     <Router>
@@ -534,7 +536,10 @@ const RoutesContainer = () => {
                   element={<ExpertLayout />}
                 >
                   <Route index element={<ExpertCouncil />} />
-                  <Route path="council-about" element={<AboutCouncil />} />
+                  <Route
+                    path="council-about/:expertAssociationsId"
+                    element={<AboutCouncil />}
+                  />
                   <Route path="expert-council" element={<ExpertEmploye />} />
                   <Route path="profile/:id" element={<ExpertProfile />} />
                   <Route path="offers" element={<ExpertOffers />} />
@@ -680,6 +685,10 @@ const RoutesContainer = () => {
                     path="finished-projects/image-project/:id"
                     element={<VictorinaProject />}
                   />
+                  <Route
+                    path="image-project/:id/test"
+                    element={<VictorinaProjectTest />}
+                  />
                   <Route path=":newsId" element={<PortalNews />} />
                 </Route>
 
@@ -736,6 +745,18 @@ const RoutesContainer = () => {
                   path="/registration/set-password"
                   element={<Navigate to="/registration/register" />}
                 />
+                <Route
+                  path="/registration/signup/api/redirect/google"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signup/api/redirect/facebook"
+                  element={<Navigate to="/registration/register" />}
+                />
+                <Route
+                  path="/registration/signin"
+                  element={<Navigate to="/registration/register" />}
+                />
               </>
             ) : (
               <>
@@ -768,6 +789,10 @@ const RoutesContainer = () => {
                 <Route
                   path="/registration/signup/api/redirect/facebook"
                   element={<SignInWithFacebook />}
+                />
+                <Route
+                  path="registration/register"
+                  element={<Navigate to="/portal" />}
                 />
                 <Route
                   path="/portal-category/*"

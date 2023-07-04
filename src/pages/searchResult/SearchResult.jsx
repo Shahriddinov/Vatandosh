@@ -56,7 +56,8 @@ const SearchResult = () => {
                   <Card
                     key={index}
                     {...search}
-                    pathUrl={`${search.image.split("/")[0]}`}
+                    pathUrl="another"
+                    link={`${search.image.split("/")[0]}`}
                   />
                 ))
               : null}

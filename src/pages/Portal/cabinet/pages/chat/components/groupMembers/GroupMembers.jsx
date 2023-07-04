@@ -12,9 +12,7 @@ const GroupMembers = ({
   members,
   showMembers,
   setShowMembers,
-  setData,
   setActiveUser,
-  data,
   setActiveGroup,
   setShowGroupMessages,
 }) => {
@@ -32,11 +30,20 @@ const GroupMembers = ({
     dispatch(checkUser(user.id));
   };
 
+  const date = new Date();
+  const milliseconds = date.getTime();
+
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
       <div className="group-members__container">
         {members ? (
           members.map((member) => {
+            const new_date = new Date(member.last_online_at);
+
+            const time_interval = Math.floor(
+              Math.abs(milliseconds - new_date.getTime()) / 60000
+            );
+
             let profileImg;
             if (member.avatar) {
               profileImg = (
@@ -63,7 +70,7 @@ const GroupMembers = ({
                 </div>
                 <div className="group-members__member-information">
                   <h4>{member.name}</h4>
-                  {member.last_online_at ? (
+                  {time_interval > 3 ? (
                     <p>Last seen {member.last_online_at}</p>
                   ) : (
                     <p>Online</p>

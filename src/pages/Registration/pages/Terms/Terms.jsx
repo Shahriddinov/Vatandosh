@@ -15,28 +15,28 @@ const Terms = ({ toggleModal, handleCheckbox }) => {
         <h2>{t("terms")}</h2>
         <div className="terms">
           <div className="term">
-            <h3>{t("terms.use")}</h3>
-            <p>{t("terms.one")}</p>
-            <p>{t("terms.two")}</p>
-            <p>{t("terms.three")}</p>
-            <p>{t("terms.four")}</p>
+            <h3>{t("term.use")}</h3>
+            <p>{t("term.ones")}</p>
+            <p>{t("term.two")}</p>
+            <p>{t("term.three")}</p>
+            <p>{t("term.four")}</p>
           </div>
           <div className="term">
-            <h3>{t("terms.rights")}</h3>
-            <p>{t("terms.five")}</p>
-            <p>{t("terms.six")}</p>
+            <h3>{t("term.rights")}</h3>
+            <p>{t("term.five")}</p>
+            <p>{t("term.six")}</p>
           </div>
           <div className="term">
-            <h3>{t("terms.uses")}</h3>
-            <p>{t("terms.seven")}</p>
-            <p>{t("terms.eight")}</p>
-            <p>{t("terms.nine")}</p>
-            <p>{t("terms.ten")}</p>
+            <h3>{t("term.uses")}</h3>
+            <p>{t("term.seven")}</p>
+            <p>{t("term.eight")}</p>
+            <p>{t("term.nine")}</p>
+            <p>{t("term.ten")}</p>
           </div>
           <div className="term">
-            <h3>{t("terms.other")}</h3>
-            <p>{t("terms.eleven")}</p>
-            <p>{t("terms.twelve")}</p>
+            <h3>{t("term.other")}</h3>
+            <p>{t("term.eleven")}</p>
+            <p>{t("term.twelve")}</p>
           </div>
 
         </div>

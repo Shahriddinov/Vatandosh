@@ -10,6 +10,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { getAllSightseeing } from "../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 import { paginationCount } from "../../../../../helpers/extraFunction";
 import { useTranslation } from "react-i18next";
+import AboutUzbekistanVideos from "../../components/aboutUzbekistanVideos/AboutUzbekistanVideos";
 
 const TouristFacilities = () => {
   const {
@@ -20,6 +21,7 @@ const TouristFacilities = () => {
     allCityLoading,
     allCity,
     dispatch,
+    lan,
   } = useTouristFacilities();
   const { t } = useTranslation();
   const [activeCity, setActiveCity] = useState(1);
@@ -67,6 +69,15 @@ const TouristFacilities = () => {
               <p>{activeMenu?.page_menu_contents[0]?.text}</p>
             </div>
           ) : null}
+          <div className="visual-information__videos">
+            <AboutUzbekistanVideos
+              mediaData={activeMenu?.page_menu_videos}
+              lan={lan}
+              countPagination={countPagination}
+              activePage={activePage}
+              moreData={moreData}
+            />
+          </div>
           <div className="facilities_grid">
             <h1>{t("about_uzbekistan.tourist_sites")}</h1>
             <ul>
@@ -98,13 +109,12 @@ const TouristFacilities = () => {
               </MyButton>
             </div>
           ) : null}
-          <View3D />
-          {activeMenu?.page_menu_contents[1] ? (
+          {/* {activeMenu?.page_menu_contents[1] ? (
             <div className="facilities_intro">
               <h1>{activeMenu?.page_menu_contents[1]?.title}</h1>
               <p>{activeMenu?.page_menu_contents[1]?.text}</p>
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </>
