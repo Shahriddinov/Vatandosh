@@ -101,11 +101,11 @@ export const useAddNewsModalFetching = (id, toast, handleClose) => {
       },
     })
       .then((res) => {
-        toast.success("success sending !", options);
+        toast.success("Success sending!", options);
       })
       .catch((e) => {
         setImageFetchData((prev) => ({ ...prev, error: e.message }));
-        toast.error("error sending !", options);
+        toast.error("Error sending!", options);
       })
       .finally(() => {
         setImageFetchData((prev) => ({ ...prev, loadingNews: false }));

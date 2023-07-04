@@ -673,6 +673,7 @@
   "register": "Зарегистрировано",
   "finishOne":"Архив",
   "informationNone":"На данный момент у нас нет информации",
+  "sendContact":"Ваш запрос принят.",
   "Cabinet" : {
     "online": "онлайн",
     "member": "члены",

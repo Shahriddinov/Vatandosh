@@ -18,6 +18,7 @@ export const useInformationServicesPagination = () => {
   const { pageName } = useParams();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const lan = useSelector((state) => state.language.language);
   const paginationData = useSelector(
     (state) => state.informationServicesSlice.paginationData
   );
@@ -69,7 +70,7 @@ export const useInformationServicesPagination = () => {
       dispatch(portalEvents({ per_page: 6, page: 1 }));
     }
     setPage(1);
-  }, [pageName]);
+  }, [pageName, lan]);
 
   return {
     paginationFetching,

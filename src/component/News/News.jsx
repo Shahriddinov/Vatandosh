@@ -29,16 +29,10 @@ const News = () => {
   }, []);
 
   useEffect(() => {
-    if (!news?.data) {
-      dispatch(portalNews({ paginate: 6, page: 1 }));
-    }
-    if (!events?.data) {
-      dispatch(portalEvents({ per_page: 6, page: 1 }));
-    }
-    if (!projectMenu?.length) {
-      dispatch(getProjectsMenu());
-    }
-  }, [dispatch, lan, news, events, projectMenu]);
+    dispatch(portalNews({ paginate: 6, page: 1 }));
+    dispatch(portalEvents({ per_page: 6, page: 1 }));
+    dispatch(getProjectsMenu());
+  }, [dispatch, lan]);
 
   if (newsError || eventsError) {
     return <p>{newsError || eventsError}</p>;
