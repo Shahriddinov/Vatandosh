@@ -14,6 +14,11 @@ const PortalCard = (props) => {
     navigate(`/hashtag/${e.target.innerText}`);
   };
 
+  let isData = props?.data ? props?.data : props?.date;
+  const date = isData
+    ? isData?.slice(0, 10)?.split("-")?.reverse()?.join(".")
+    : "";
+
   return (
     <div
       className="single-card portalCard"
@@ -67,7 +72,7 @@ const PortalCard = (props) => {
       <div className="card-footer">
         <div className="news-date">
           <BsFillCalendarEventFill />
-          <span>{props?.data}</span>
+          <span>{date}</span>
         </div>
         <div className="news-views">
           <IoEye />

@@ -40,10 +40,15 @@ const IntroSection = ({ data }) => {
                   type === "projects"
                     ? "single-intro-section__project_list"
                     : "single-intro-section__compatriots_list"
-                } `}>
+                } `}
+              >
                 {paginationData["0"].data?.map((el) => (
                   <li className="single-intro-section__item" key={el.id}>
-                    <Card {...el} pathUrl={pageUrl} />
+                    <Card
+                      {...el}
+                      link={el?.image ? el?.image?.split("/")[0] : ""}
+                      pathUrl={pageUrl}
+                    />
                   </li>
                 ))}
               </ul>

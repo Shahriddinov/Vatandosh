@@ -23,6 +23,11 @@ const PortalCard = (props) => {
 
   const image = json ? JSON.parse(props.image) : props.image;
 
+  let isData = props?.data ? props?.data : props?.date;
+  const date = isData
+    ? isData?.slice(0, 10)?.split("-")?.reverse()?.join(".")
+    : "";
+
   return (
     <div
       className="single-card"
@@ -42,7 +47,7 @@ const PortalCard = (props) => {
           <p
             className="news__card-text"
             dangerouslySetInnerHTML={{
-              __html: props.body,
+              __html: props.body ? props.body : props.content,
             }}
           />
         </Link>
@@ -70,18 +75,19 @@ const PortalCard = (props) => {
         <div className="news-date">
           <BsFillCalendarEventFill />
           <span>
-            <span>
-              {getDate(props?.created_at).getDay().length > 2
-                ? getDate(props?.created_at).getDay()
-                : `0${getDate(props?.created_at).getDay()}`}
+            {date}
+            {/* <span>
+              {getDate(props?.date).getDay().length > 1
+                ? getDate(props?.date).getDay()
+                : `0${getDate(props?.date).getDay()}`}
             </span>
             .
             <span>
-              {getDate(props?.created_at).getMonth().length > 2
-                ? getDate(props?.created_at).getMonth()
-                : `0${getDate(props?.created_at).getMonth()}`}
+              {getDate(props?.date).getMonth().length > 1
+                ? getDate(props?.date).getMonth()
+                : `0${getDate(props?.date).getMonth()}`}
             </span>
-            .<span>{getDate(props?.created_at).getFullYear()}</span>
+            .<span>{getDate(props?.date).getFullYear()}</span> */}
           </span>
         </div>
         <div className="news-views">
