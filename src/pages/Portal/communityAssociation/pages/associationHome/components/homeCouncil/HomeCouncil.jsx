@@ -22,13 +22,17 @@ const CommunityHomeCouncil = ({ councilData, allCommunityGet, allRegions }) => {
           {inView ? (
             <>
               <div className="community-home-council__left">
-                <img src={imgSrc} alt={imgAlt} width={770} height={420} />
-                <h3>{filteredText[0].replace(/&nbsp;/g, "")}</h3>
-                <p>
+                <div
+                  className="community-home-council__left_body"
+                  dangerouslySetInnerHTML={{ __html: councilData.body }}
+                />
+                {/* <img src={imgSrc} alt={imgAlt} width={770} height={420} />
+                <h3>{filteredText[0].replace(/&nbsp;/g, "")}</h3> */}
+                {/* <p>
                   {filteredText[1].length > 180
                     ? filteredText[1].slice(0, 180) + "..."
                     : filteredText[1]}
-                </p>
+                </p> */}
                 <div className="community-home-council__left_btn">
                   <Link to={councilData.pathUrl}>{t("expert.detail")}</Link>
                 </div>

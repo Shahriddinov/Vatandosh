@@ -8,6 +8,11 @@
     gap: 70px;
   }
 
+  &__inner-btns {
+    display: flex;
+    gap: 10px;
+  }
+
   &__inner-img {
     width: 360px !important;
     height: 420px;
@@ -72,6 +77,8 @@
     background-color: #065ea9;
     border-radius: 16px;
     transition: all 0.3s linear;
+    border: 0;
+    outline: 0;
   }
 
   &__inner-btn:hover {
@@ -215,6 +222,16 @@
       max-width: 280px !important;
       height: 400px;
       padding: 20px 40px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .journal-home-hero {
+    &__inner-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   }
 }

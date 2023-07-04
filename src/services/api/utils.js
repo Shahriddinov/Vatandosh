@@ -130,6 +130,7 @@ export const GET_MAGAZINE_MENU = "/magazine/get-menu";
 export const GET_MAGAZINE_ONE_MENU = "/magazine/get-one-menu/";
 export const GET_MAGAZINE_TIPS = "/magazine/get-tips";
 export const GET_MAGAZINE_ONE_TIPS = "/magazine/get-one-tips/";
+export const POST_MAGAZINE_ARTICLE = "/telegram/send-message-with-file";
 export const GET_PORTAL_ALL_NEWS = `${portalBaseUrl}/all-news/news`;
 export const GET_PORTAL_ALL_EVENTS = `${portalBaseUrl}/community/all-event`;
 export const GET_VOLUNTEER_USER = "/volunteer/get-one";

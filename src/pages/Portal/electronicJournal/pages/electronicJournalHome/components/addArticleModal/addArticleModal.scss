@@ -1,0 +1,97 @@
+.add-article-modal {
+  .MuiModal-backdrop {
+    padding: 0 20px !important;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 600px !important;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__certificate {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__certificate--span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+
+  &__certificate--box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 12px;
+    background: #ffffff;
+    border: 1px solid #eaedf6;
+    border-radius: 6px;
+  }
+
+  &__certificate--input {
+    display: none;
+  }
+
+  &__certificate--text {
+    font-size: 16px;
+    line-height: 19px;
+    color: #9d9d9d;
+  }
+
+  &__certificate--required {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fb2047;
+  }
+
+  &__btn_roup {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+  }
+
+  &__btn {
+    padding: 12px 22px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    background: #ffffff;
+    border: 2px solid #f0f2f9;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: all 0.3s linear;
+    cursor: pointer;
+  }
+
+  &__btn_white {
+    color: #065ea9;
+  }
+
+  &__btn_primary {
+    background-color: #065ea9;
+    color: #fff;
+  }
+
+  &__btn_primary:hover {
+    background-color: #93c5fd;
+    border: 1px solid #065ea9;
+    transition: all 0.3s linear;
+  }
+
+  &__btn_white:hover {
+    background-color: #e3f0ff;
+    border: 1px solid #065ea9;
+    transition: all 0.3s linear;
+  }
+}

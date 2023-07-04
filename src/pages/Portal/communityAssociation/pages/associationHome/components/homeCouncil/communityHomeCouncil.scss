@@ -10,14 +10,16 @@
   }
 
   &__left {
-    p {
+    &_body {
       width: 100%;
       max-width: 770px;
+      height: 619px;
       margin-bottom: 25px;
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
       color: #434b54;
+      overflow-y: hidden;
     }
     img {
       width: 100%;

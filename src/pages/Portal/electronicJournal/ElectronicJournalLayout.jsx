@@ -21,15 +21,6 @@ const ElectronicJournalLayout = () => {
     contactError,
   } = useElectronicJournalLayout();
 
-  const dispatch = useDispatch();
-  const userToken = getItem("token");
-
-  useEffect(() => {
-    if (!userToken) {
-      dispatch(removeToken());
-    }
-  }, [userToken]);
-
   if (menuLoading || lastMagazineLoading || contactLoading) {
     return <Spinner position="full" />;
   } else if (error || contactError) {
