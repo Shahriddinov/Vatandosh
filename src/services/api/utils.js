@@ -138,7 +138,7 @@ export const GET_VOLUNTEER_USER = "/volunteer/get-one";
 export const GET_CABINET_EXPERT_ACTIVITY = "/expert/show-expert-user";
 
 // Post requests
-export const SEND_CONTACT = `${baseUrl}/sendContact`;
+export const SEND_CONTACT = `${portalBaseUrl}/telegram/send-message`;
 export const SEND_EMAIL = `${authUrl}/send-mail`;
 export const VERIFY_TOKEN = `${authUrl}/validate-token`;
 export const SET_PASSWORD = `${authUrl}/set-password`;

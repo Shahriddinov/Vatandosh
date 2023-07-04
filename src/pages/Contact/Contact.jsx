@@ -6,23 +6,43 @@ import { SiMetrodeparis } from "react-icons/si";
 import { BiWalk } from "react-icons/bi";
 import { RiCloseFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 import {
   getContact,
-  sendContact,
+  sendFullContact,
 } from "../../reduxToolkit/contactSlice/extraReducer";
 import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { useTranslation } from "react-i18next";
+import { resetContact } from "../../reduxToolkit/contactSlice";
 
 export default function Contact() {
   const lan = useSelector((state) => state.language.language);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const formRef = useRef();
-  const [dataContact, setDataContact] = useState({ name: "", phone: "" });
+
+  const options = {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  };
+
   const [activeMapNavigationBar, setactiveMapNavigationBar] = useState(true);
   const contactData = useSelector((state) => state.contactSlice.contactData);
+  const contact = useSelector((state) => state.contactSlice.sendFullData);
   const { t } = useTranslation();
+
+  const [dataContact, setDataContact] = useState({
+    full_name: "",
+    phone: "",
+    text: "",
+  });
 
   useEffect(() => {
     if (pathname.split("/")[2] !== "about-uzbekistan") {
@@ -32,14 +52,34 @@ export default function Contact() {
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    dispatch(sendContact(dataContact));
+    dispatch(sendFullContact(dataContact));
     formRef.current.reset();
   };
+
+  useEffect(() => {
+    if (contact) {
+      toast.success(t("sendContact"), options);
+    }
+
+    dispatch(resetContact());
+  }, [contact]);
 
   return (
     <>
       {pathname.split("/")[1] === "contact" && <Header />}
       <div className="contact">
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="container">
           <div className="contact-wrapper">
             <div className="contact-desc">
@@ -53,9 +93,7 @@ export default function Contact() {
                   <span>{t("contactPage.contactUs")}</span>
                 </div>
               </div>
-              <div className="contact-desc-text">
-                {/* <p>{t("aboutPage.section1.ptext")}</p> */}
-              </div>
+              <div className="contact-desc-text"></div>
             </div>
             <div className="contact-action">
               <div className="contact-action-form-wrapper">
@@ -65,7 +103,8 @@ export default function Contact() {
                 <form
                   className="contact-action-form"
                   ref={formRef}
-                  onSubmit={handleSumbit}>
+                  onSubmit={handleSumbit}
+                >
                   <input
                     className="contact-action-form-nameInput"
                     type="text"
@@ -76,16 +115,18 @@ export default function Contact() {
                     onChange={(e) =>
                       setDataContact((prev) => ({
                         ...prev,
-                        name: e.target.value,
+                        full_name: e.target.value,
                       }))
                     }
                   />
                   <PhoneInput
                     className="contact-action-form-numberInput"
                     placeholder={t("contactPage.yourNumber")}
-                    value={dataContact.phone}
                     onChange={(e) =>
-                      setDataContact((prev) => ({ ...prev, phone: e?.value }))
+                      setDataContact((prev) => ({
+                        ...prev,
+                        phone: e,
+                      }))
                     }
                   />
                   <textarea
@@ -99,7 +140,8 @@ export default function Contact() {
                         ...prev,
                         text: e.target.value,
                       }))
-                    }></textarea>
+                    }
+                  ></textarea>
                   <div className="contact-action-form-btn-wrapper">
                     <button className="contact-action-form-btn" type="submit">
                       {t("contactPage.send")}
@@ -135,11 +177,13 @@ export default function Contact() {
             className="contact-map-iframe"
             src={`https://yandex.uz/map-widget/v1/-/CCUBAVbA3C?scroll=false&lang=${lan}`}
             frameBorder={0}
-            allowFullScreen={true}></iframe>
+            allowFullScreen={true}
+          ></iframe>
           {
             <div
               className="contact-map-navigation"
-              style={!activeMapNavigationBar ? { scale: 0 } : null}>
+              style={!activeMapNavigationBar ? { scale: 0 } : null}
+            >
               <RiCloseFill
                 className="contact-map-navigation-closeIcon"
                 onClick={() => setactiveMapNavigationBar(false)}
@@ -155,7 +199,8 @@ export default function Contact() {
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.220824%2C41.294111&mode=routes&rtext=41.292749%2C69.223505~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=17"
-                    className="contact-map-navigation-marsh-item-link">
+                    className="contact-map-navigation-marsh-item-link"
+                  >
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>610 m</span>
                   </Link>
@@ -166,7 +211,8 @@ export default function Contact() {
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.217282%2C41.289394&mode=routes&rtext=41.283096%2C69.212793~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=15"
-                    className="contact-map-navigation-marsh-item-link">
+                    className="contact-map-navigation-marsh-item-link"
+                  >
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>1.87 km</span>
                   </Link>
@@ -177,7 +223,8 @@ export default function Contact() {
                   <Link
                     target={"_blank"}
                     to="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.227127%2C41.299663&mode=routes&rtext=41.304318%2C69.234868~41.295692%2C69.218247&rtt=pd&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=14.83"
-                    className="contact-map-navigation-marsh-item-link">
+                    className="contact-map-navigation-marsh-item-link"
+                  >
                     <BiWalk className="contact-map-navigation-marsh-item-walkIcon" />
                     <span>2.13 km</span>
                   </Link>
@@ -186,12 +233,14 @@ export default function Contact() {
               <div className="contact-map-navigation-btns">
                 <Link
                   target={"_blank"}
-                  to="https://yandex.uz/maps/10335/tashkent/house/YkAYdAZoS0EAQFprfX54dHpqZg==/inside/?from=mapframe&ll=69.218247%2C41.295693&tab=inside&z=16">
+                  to="https://yandex.uz/maps/10335/tashkent/house/YkAYdAZoS0EAQFprfX54dHpqZg==/inside/?from=mapframe&ll=69.218247%2C41.295693&tab=inside&z=16"
+                >
                   {t("contactPage.houseOrg")}
                 </Link>
                 <Link
                   target={"_blank"}
-                  to="https://yandex.uz/maps/10335/tashkent/?feedback=object%2Fedit&ll=69.218247%2C41.295693&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=16">
+                  to="https://yandex.uz/maps/10335/tashkent/?feedback=object%2Fedit&ll=69.218247%2C41.295693&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIyNTEzMzU1Ei5Pyrt6YmVraXN0b24sIFRvc2hrZW50LCBNdXFpbWl5IGtvyrtjaGFzaSwgMTY2IgoNvm-KQhXJLiVC&z=16"
+                >
                   {t("contactPage.warnUs")}
                 </Link>
               </div>
