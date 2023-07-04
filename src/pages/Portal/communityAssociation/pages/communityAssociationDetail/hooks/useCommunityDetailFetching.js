@@ -31,7 +31,7 @@ export const useCommunityDetailFetching = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllEvents({ per_page: 10, page: 1 }));
+    dispatch(getAllEvents({ per_page: 100, page: 1 }));
     dispatch(getAllRegions());
     dispatch(getAllCommunity({ region_id: params.communityCountry }));
   }, [dispatch, language, params.communityCountry]);

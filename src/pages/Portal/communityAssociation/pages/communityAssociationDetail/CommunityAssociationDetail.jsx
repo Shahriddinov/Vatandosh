@@ -47,6 +47,13 @@ const CommunityAssociationDetail = () => {
     (el) => el.id === communityCountryId * 1
   );
 
+  const eventData =
+    eventsData?.data?.length > 0
+      ? eventsData?.data.filter(
+          (el) => el.community_id === communityCountryId * 1
+        )
+      : [];
+
   return (
     <>
       <ToastContainer
@@ -79,11 +86,13 @@ const CommunityAssociationDetail = () => {
 
         <CommunityFriendshipInfo {...findCommunity} />
         <CommunityAssociationCompanyOffer {...findCommunity} />
-        <PortalMiniSlider
-          title={`${t("events")}`}
-          data={eventsData?.data}
-          fetchUrl="portal-category/community-association/event"
-        />
+        {eventData.length > 0 && (
+          <PortalMiniSlider
+            title={`${t("events")}`}
+            data={eventData}
+            fetchUrl="portal-category/community-association/event"
+          />
+        )}
 
         <AddNewsModal
           open={open}
