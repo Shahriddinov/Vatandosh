@@ -40,7 +40,7 @@ function VictorinaHome() {
         <Nav navData={navData} />
       </div>
       <HeaderTime quizData={quizData.quizzes} />
-      <VictorinaCouncil pageData={pageData} />
+    <VictorinaCouncil pageData={pageData} />
       <Victorina quizData={quizData.quizzes} />
       <ListWinners quizDataWinner={quizData.participants} />
       <News
