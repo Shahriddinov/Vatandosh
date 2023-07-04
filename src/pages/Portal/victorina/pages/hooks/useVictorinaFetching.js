@@ -24,7 +24,7 @@ export const useVictorinaFetching = () => {
   useEffect(() => {
     dispatch(getQuizz({ status: "1" }));
     dispatch(getQuizPage());
-    dispatch(getPortalNews({ type: "quiz", per_page: "10", page: 1 }));
+    dispatch(getPortalNews({ type: "quiz", per_page: "3", page: 1 }));
   }, [dispatch, language]);
   return {
     communityNews,

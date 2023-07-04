@@ -6,6 +6,9 @@ import { imageUrl } from "../../../../../../../services/api/utils";
 import { Link } from "react-router-dom";
 
 function HeaderTime({ quizData }) {
+  const [days, setDays] = useState("00");
+  const [hours, setHours] = useState("00");
+  const [minutes, setMinutes] = useState("00");
   const [slideIndex, setSlideIndex] = useState(1);
   const { t } = useTranslation();
   const filterTime = quizData?.find((evt) => evt?.id === Number(slideIndex));
@@ -26,10 +29,6 @@ function HeaderTime({ quizData }) {
       setSlideIndex(slideIndex + 1);
     }
   };
-
-  const [days, setDays] = useState("00");
-  const [hours, setHours] = useState("00");
-  const [minutes, setMinutes] = useState("00");
 
   useEffect(() => {
     const targetDate = new Date(filterDay);

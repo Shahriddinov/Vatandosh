@@ -19,8 +19,14 @@ import WinnerCardVictorina from "./VictorinaWinner/WinnerCard";
 import { imageUrl } from "../../../../../services/api/utils";
 import { getQuizPage } from "../../../../../reduxToolkit/victorinapage/victorina-page";
 import { Spinner } from "../../../../../component";
+import { timer } from "../../../../../helpers/extraFunction";
 
 export default function VictorinaProject() {
+  const [timeData, setTimeDate] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+  });
   const [PopUp, setPopUp] = useState(false);
   const [PopUpVerify, setPopUpVerify] = useState("");
   const { t } = useTranslation();
@@ -37,6 +43,16 @@ export default function VictorinaProject() {
     if (PopUp) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
   }, [PopUp]);
+
+  useEffect(() => {
+    const { interval } = timer({
+      finishedTime: quizData?.finished_at,
+      setTimeDate: setTimeDate,
+    });
+    return () => {
+      clearInterval(interval);
+    };
+  }, [quizData?.finished_at]);
 
   useEffect(() => {
     dispatch(getByIdQuizz({ id }));
@@ -82,15 +98,15 @@ export default function VictorinaProject() {
                 <>
                   <div className="victorinaproject-main-timer">
                     <div>
-                      <span>{quizData?.finished_at?.slice(9, 11)}</span>
+                      <span>{timeData.days}</span>
                       <span>{t("choices.day")}</span>
                     </div>
                     <div>
-                      <span>{quizData?.finished_at?.slice(11, 13)}</span>
+                      <span>{timeData.hours}</span>
                       <span>{t("choices.hour")}</span>
                     </div>
                     <div>
-                      <span>{quizData?.finished_at?.slice(14, 16)}</span>
+                      <span>{timeData.minutes}</span>
                       <span>{t("choices.minute")}</span>
                     </div>
                   </div>
