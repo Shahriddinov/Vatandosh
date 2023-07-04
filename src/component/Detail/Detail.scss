@@ -71,7 +71,7 @@
         & > img {
           border-radius: 15px;
           width: 100%;
-          object-fit: cover;
+          object-fit: cover !important;
           height: 100%;
         }
       }
@@ -89,7 +89,7 @@
               width: 100%;
               object-fit: cover;
               height: 100%;
-              height: 499px
+              height: 499px;
             }
           }
         }
