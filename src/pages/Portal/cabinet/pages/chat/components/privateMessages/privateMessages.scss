@@ -5,6 +5,17 @@
   overflow: hidden;
   border: 1px solid #e1e2ff;
 
+  &__left {
+    display: none;
+    img {
+      width: 30px;
+    }
+  }
+
+  &__none {
+    border: none;
+  }
+
   &__messages-header {
     width: 100%;
     height: 90px;

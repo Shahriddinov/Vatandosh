@@ -19,6 +19,7 @@ const GroupsChats = ({
   setShowMembers,
   activePage,
   data,
+  activeUser
 }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const GroupsChats = ({
   }, [leaveGroup]);
 
   return (
-    <div className="groups">
+    <div className={`groups ${activeUser ? "groups-none" : "groups-block"}`}>
       {data?.length === 0 ? (
         <p className="groups__no-group">{t("groupNone")}</p>
       ) : (
@@ -88,8 +89,7 @@ const GroupsChats = ({
               className={`groups__one-group ${
                 group.id === activeGroup ? "active" : ""
               }`}
-              onClick={() => handleClick(group, groupImg)}
-            >
+              onClick={() => handleClick(group, groupImg)}>
               <div className="groups__group-image">{groupImg}</div>
               <div className="groups__group-information">
                 <h4>{group.name}</h4>

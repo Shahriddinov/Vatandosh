@@ -686,5 +686,6 @@
     "last_seen": "Last seen",
     "user_online": "Online",
     "start_chat": "Select a chat to start messaging."
-  }
+  },
+  "result": "Your result"
 }

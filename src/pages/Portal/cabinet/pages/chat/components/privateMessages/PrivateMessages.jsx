@@ -19,6 +19,7 @@ import {
 } from "../../../../../../../reduxToolkit/chatSlice/extraReducer";
 import { ChooseMember } from "../../Chat";
 import { useTranslation } from "react-i18next";
+import LeftIcon from "../../../../../../../assets/images/cabinet/left.png";
 
 const PrivateMessages = ({
   showMessages,
@@ -30,6 +31,11 @@ const PrivateMessages = ({
   activePage,
   privateChatRoomId,
   userData,
+  setActiveChat,
+  setShowGroupMessages,
+  setActiveGroup,
+  setShowMessages,
+  setActiveUser,
 }) => {
   const dispatch = useDispatch();
   const inputRef = useRef();
@@ -194,10 +200,24 @@ const PrivateMessages = ({
       messagesData?.users?.find((el) => el.id !== user.user_id.id);
   }
 
+  const handleClick1 = () => {
+    setActiveChat("private");
+    setShowMessages(false);
+    setShowGroupMessages(false);
+    setActiveGroup(null);
+    setActiveUser(null);
+  };
+
   return (
-    <div className="private-message">
+    <div
+      className={`private-message ${
+        activeUser ? "private-message__block" : "private-message__none"
+      }`}>
       {messagesData && showMessages ? (
         <div className="private-message__messages-header">
+          <div className="private-message__left" onClick={handleClick1}>
+            <img src={LeftIcon} alt="LeftIcon" />
+          </div>
           <div className="private-message__picture">
             {privateUser.avatar ? (
               <img
@@ -224,8 +244,7 @@ const PrivateMessages = ({
           </div>
           <div
             className="private-message__docs"
-            onClick={() => handleClick("docs")}
-          >
+            onClick={() => handleClick("docs")}>
             <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
               <path
                 fillRule="evenodd"
@@ -237,8 +256,7 @@ const PrivateMessages = ({
           </div>
           <div
             className="private-message__links"
-            onClick={() => handleClick("links")}
-          >
+            onClick={() => handleClick("links")}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
                 d="M14.4763 0.0586605C14.0974 0.132879 13.5544 0.308661 13.2458 0.468817C12.6364 0.773504 12.4216 0.964911 10.4021 2.98054C8.44895 4.92975 8.43723 4.94147 8.43723 5.10163C8.43723 5.37897 8.51926 5.41804 9.16379 5.46491C9.81223 5.51179 10.1872 5.5821 10.738 5.76569C11.0036 5.85554 11.1833 5.8946 11.2458 5.87897C11.3083 5.86335 11.8904 5.31257 12.7341 4.47663C13.531 3.68366 14.1989 3.05085 14.3005 2.99225C14.9529 2.61725 15.7693 2.62897 16.3747 3.01569C16.6247 3.17194 16.9607 3.54304 17.0857 3.79694C17.3005 4.23444 17.3474 4.78132 17.2068 5.24616C17.0661 5.71491 17.0466 5.73835 14.6404 8.1485C13.0896 9.70319 12.2693 10.4962 12.1247 10.586C11.7849 10.7891 11.5114 10.8673 11.113 10.8751C10.5466 10.8829 10.2263 10.7618 9.69114 10.336C9.32395 10.043 9.1091 9.961 8.70676 9.961C7.68332 9.961 7.07395 11.0157 7.55442 11.9454C7.58957 12.0118 7.71067 12.1563 7.82004 12.2696C8.5427 12.9766 9.47629 13.4258 10.5036 13.5587C11.0739 13.629 11.9997 13.5391 12.5779 13.3516C12.9529 13.2344 13.5661 12.9063 13.9021 12.6524C14.0661 12.5274 15.281 11.3399 16.6052 10.0118C18.613 7.99616 19.0505 7.54304 19.238 7.25397C19.5154 6.8321 19.738 6.3321 19.8708 5.8321C19.9685 5.47663 19.9763 5.39069 19.9763 4.66804C19.9763 3.94538 19.9685 3.85944 19.8708 3.50397C19.4216 1.8321 18.156 0.566473 16.4958 0.128973C16.1755 0.0469418 16.0075 0.0274105 15.4489 0.0156918C14.9724 0.00787926 14.6989 0.019598 14.4763 0.0586605Z"
@@ -269,16 +287,14 @@ const PrivateMessages = ({
             <div
               className={`private-message__messages-container ${
                 show ? "show-messages" : ""
-              }`}
-            >
+              }`}>
               {messages?.map((message) => {
                 const userId = user.user_id ? user.user_id.id : user.id;
                 return message ? (
                   message.user.id !== userId ? (
                     <div
                       key={message.id}
-                      className="private-message__received-container"
-                    >
+                      className="private-message__received-container">
                       <div className="private-message__received-user">
                         <img
                           src={`${PORTAL_IMAGE_URL}${
@@ -295,14 +311,12 @@ const PrivateMessages = ({
                             <a
                               href={`${PORTAL_IMAGE_URL}${message?.message}`}
                               target="_blank"
-                              download
-                            >
+                              download>
                               <svg
                                 width="16"
                                 height="20"
                                 viewBox="0 0 16 20"
-                                fill="none"
-                              >
+                                fill="none">
                                 <path
                                   fillRule="evenodd"
                                   clipRule="evenodd"
@@ -318,14 +332,12 @@ const PrivateMessages = ({
                             <a
                               href={`${message?.message}`}
                               style={{ textDecoration: "underline" }}
-                              target="_black"
-                            >
+                              target="_black">
                               <svg
                                 width="20"
                                 height="20"
                                 viewBox="0 0 20 20"
-                                fill="none"
-                              >
+                                fill="none">
                                 <path
                                   d="M14.4763 0.0586605C14.0974 0.132879 13.5544 0.308661 13.2458 0.468817C12.6364 0.773504 12.4216 0.964911 10.4021 2.98054C8.44895 4.92975 8.43723 4.94147 8.43723 5.10163C8.43723 5.37897 8.51926 5.41804 9.16379 5.46491C9.81223 5.51179 10.1872 5.5821 10.738 5.76569C11.0036 5.85554 11.1833 5.8946 11.2458 5.87897C11.3083 5.86335 11.8904 5.31257 12.7341 4.47663C13.531 3.68366 14.1989 3.05085 14.3005 2.99225C14.9529 2.61725 15.7693 2.62897 16.3747 3.01569C16.6247 3.17194 16.9607 3.54304 17.0857 3.79694C17.3005 4.23444 17.3474 4.78132 17.2068 5.24616C17.0661 5.71491 17.0466 5.73835 14.6404 8.1485C13.0896 9.70319 12.2693 10.4962 12.1247 10.586C11.7849 10.7891 11.5114 10.8673 11.113 10.8751C10.5466 10.8829 10.2263 10.7618 9.69114 10.336C9.32395 10.043 9.1091 9.961 8.70676 9.961C7.68332 9.961 7.07395 11.0157 7.55442 11.9454C7.58957 12.0118 7.71067 12.1563 7.82004 12.2696C8.5427 12.9766 9.47629 13.4258 10.5036 13.5587C11.0739 13.629 11.9997 13.5391 12.5779 13.3516C12.9529 13.2344 13.5661 12.9063 13.9021 12.6524C14.0661 12.5274 15.281 11.3399 16.6052 10.0118C18.613 7.99616 19.0505 7.54304 19.238 7.25397C19.5154 6.8321 19.738 6.3321 19.8708 5.8321C19.9685 5.47663 19.9763 5.39069 19.9763 4.66804C19.9763 3.94538 19.9685 3.85944 19.8708 3.50397C19.4216 1.8321 18.156 0.566473 16.4958 0.128973C16.1755 0.0469418 16.0075 0.0274105 15.4489 0.0156918C14.9724 0.00787926 14.6989 0.019598 14.4763 0.0586605Z"
                                   fill="#065EA9"
@@ -357,8 +369,7 @@ const PrivateMessages = ({
                   ) : (
                     <div
                       key={message.id}
-                      className="private-message__sent-container"
-                    >
+                      className="private-message__sent-container">
                       <div className="private-message__sent-details">
                         <div className="private-message__delete-message">
                           <svg
@@ -366,8 +377,7 @@ const PrivateMessages = ({
                             height="24"
                             viewBox="0 0 12 12"
                             fill="none"
-                            onClick={() => handleDelete(message?.id)}
-                          >
+                            onClick={() => handleDelete(message?.id)}>
                             <path
                               fillRule="evenodd"
                               clipRule="evenodd"
@@ -404,14 +414,12 @@ const PrivateMessages = ({
                               <a
                                 href={`${PORTAL_IMAGE_URL}${message?.message}`}
                                 target="_blank"
-                                download
-                              >
+                                download>
                                 <svg
                                   width="16"
                                   height="20"
                                   viewBox="0 0 16 20"
-                                  fill="none"
-                                >
+                                  fill="none">
                                   <path
                                     fillRule="evenodd"
                                     clipRule="evenodd"
@@ -427,14 +435,12 @@ const PrivateMessages = ({
                               <a
                                 href={`${message?.message}`}
                                 style={{ textDecoration: "underline" }}
-                                target="_black"
-                              >
+                                target="_black">
                                 <svg
                                   width="20"
                                   height="20"
                                   viewBox="0 0 20 20"
-                                  fill="none"
-                                >
+                                  fill="none">
                                   <path
                                     d="M14.4763 0.0586605C14.0974 0.132879 13.5544 0.308661 13.2458 0.468817C12.6364 0.773504 12.4216 0.964911 10.4021 2.98054C8.44895 4.92975 8.43723 4.94147 8.43723 5.10163C8.43723 5.37897 8.51926 5.41804 9.16379 5.46491C9.81223 5.51179 10.1872 5.5821 10.738 5.76569C11.0036 5.85554 11.1833 5.8946 11.2458 5.87897C11.3083 5.86335 11.8904 5.31257 12.7341 4.47663C13.531 3.68366 14.1989 3.05085 14.3005 2.99225C14.9529 2.61725 15.7693 2.62897 16.3747 3.01569C16.6247 3.17194 16.9607 3.54304 17.0857 3.79694C17.3005 4.23444 17.3474 4.78132 17.2068 5.24616C17.0661 5.71491 17.0466 5.73835 14.6404 8.1485C13.0896 9.70319 12.2693 10.4962 12.1247 10.586C11.7849 10.7891 11.5114 10.8673 11.113 10.8751C10.5466 10.8829 10.2263 10.7618 9.69114 10.336C9.32395 10.043 9.1091 9.961 8.70676 9.961C7.68332 9.961 7.07395 11.0157 7.55442 11.9454C7.58957 12.0118 7.71067 12.1563 7.82004 12.2696C8.5427 12.9766 9.47629 13.4258 10.5036 13.5587C11.0739 13.629 11.9997 13.5391 12.5779 13.3516C12.9529 13.2344 13.5661 12.9063 13.9021 12.6524C14.0661 12.5274 15.281 11.3399 16.6052 10.0118C18.613 7.99616 19.0505 7.54304 19.238 7.25397C19.5154 6.8321 19.738 6.3321 19.8708 5.8321C19.9685 5.47663 19.9763 5.39069 19.9763 4.66804C19.9763 3.94538 19.9685 3.85944 19.8708 3.50397C19.4216 1.8321 18.156 0.566473 16.4958 0.128973C16.1755 0.0469418 16.0075 0.0274105 15.4489 0.0156918C14.9724 0.00787926 14.6989 0.019598 14.4763 0.0586605Z"
                                     fill="#fff"
@@ -493,16 +499,14 @@ const PrivateMessages = ({
         <div
           className={`private-message__messages-bottom ${
             (showMessages && show) || chooseMember ? "show-bottom" : ""
-          }`}
-        >
+          }`}>
           <svg
             className="private-message__file"
             width="11"
             height="22"
             viewBox="0 0 11 22"
             fill="none"
-            onClick={() => uploadRef.current.click()}
-          >
+            onClick={() => uploadRef.current.click()}>
             <path
               d="M9.5 5V16.5C9.5 18.71 7.71 20.5 5.5 20.5C3.29 20.5 1.5 18.71 1.5 16.5V4C1.5 2.62 2.62 1.5 4 1.5C5.38 1.5 6.5 2.62 6.5 4V14.5C6.5 15.05 6.05 15.5 5.5 15.5C4.95 15.5 4.5 15.05 4.5 14.5V5H3V14.5C3 15.88 4.12 17 5.5 17C6.88 17 8 15.88 8 14.5V4C8 1.79 6.21 0 4 0C1.79 0 0 1.79 0 4V16.5C0 19.54 2.46 22 5.5 22C8.54 22 11 19.54 11 16.5V5H9.5Z"
               fill="#065EA9"

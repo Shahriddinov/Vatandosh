@@ -68,13 +68,11 @@ const PrivateChats = ({
   const milliseconds = date.getTime();
 
   return (
-    <div className="users">
+    <div className={`users ${activeUser ? "users-none" : "users-block"}`}>
       {data?.length === 0 ? (
         <p className="users__no-users">{t("chatNone")}</p>
       ) : (
         data?.map((chat) => {
-          // console.log(chat);
-
           let profileImg;
           if (chat?.user) {
             if (chat?.user?.avatar_url) {
@@ -99,8 +97,7 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat?.user, profileImg, chat?.id);
                 setIsActive(false);
-              }}
-            >
+              }}>
               <div className="users__user-image">
                 {profileImg}
                 {chat?.user?.last_online_at ? (
@@ -132,8 +129,7 @@ const PrivateChats = ({
               onClick={() => {
                 handleClick(chat, profileImg, chat?.id);
                 setIsActive(true);
-              }}
-            >
+              }}>
               <div className="users__user-image">
                 {profileImg}
                 {chat?.last_online_at ? (
