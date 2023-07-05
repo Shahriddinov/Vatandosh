@@ -130,7 +130,7 @@ const Header = () => {
               alt="music"
             />
           </a>
-          <label className="header_navbar_search">
+          {/* <label className="header_navbar_search">
             <input
               ref={searchRef}
               type="text"
@@ -143,7 +143,7 @@ const Header = () => {
               className="header_navbar_search_icon"
               alt="search"
             />
-          </label>
+          </label> */}
           <button className="header_navbar_eye" onClick={() => grayScale()}>
             <motion.img whileTap={{ scale: 0.6 }} src={Eye} alt="eye" />
           </button>

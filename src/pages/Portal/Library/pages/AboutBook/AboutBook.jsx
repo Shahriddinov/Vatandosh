@@ -108,8 +108,8 @@ const AboutBook = () => {
                 {t("library.published_date")}:{" "}
                 <span>
                   {new Date(ebookData.publication).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
+                    // month: "long",
+                    // day: "numeric",
                     year: "numeric",
                   })}
                 </span>
@@ -129,8 +129,8 @@ const AboutBook = () => {
                 {t("libraryAbout")}:{" "}
                 <span>
                   {new Date(ebookData.created_at).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
+                    // month: "long",
+                    // day: "numeric",
                     year: "numeric",
                   })}
                 </span>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import "./playerModal.scss";
 
@@ -6,6 +6,14 @@ import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
 const PlayerModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
+  const player = useRef(null);
+  const handleClick = () => {
+    if (player.current) {
+      player.current.pause();
+      console.log(player.current.pause());
+    }
+    setShowModal(false);
+  };
   return (
     <div className={`video-modal ${showModal ? "show-modal" : ""}`}>
       <div
@@ -14,10 +22,7 @@ const PlayerModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
       >
         <FiChevronLeft />
       </div>
-      <div
-        className="video-modal__close-btn"
-        onClick={() => setShowModal(false)}
-      >
+      <div className="video-modal__close-btn" onClick={handleClick}>
         <svg
           width="16"
           height="16"
@@ -37,6 +42,7 @@ const PlayerModal = ({ showModal, setShowModal, moveSlide, activeVideo }) => {
             src={`${PORTAL_IMAGE_URL}${activeVideo}`}
             controls
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            ref={player}
           ></video>
         ) : null}
       </div>

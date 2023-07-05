@@ -46,6 +46,13 @@ const authSlice = createSlice({
       if (user.userProfile) {
         state.userData = user.userProfile;
         localStorage.setItem("user", JSON.stringify(user.userProfile));
+        // setTimeout(() => {
+        //   removeItem("token");
+        //   removeItem("user");
+        //   state.token = null;
+        //   state.userData = null;
+        //   navigate("/portal");
+        // }, [60000]);
 
         navigate("/portal-category/cabinet");
       } else {
@@ -136,6 +143,15 @@ const authSlice = createSlice({
           state.userData = action.payload.profile;
           setItem("token", action.payload.token);
           setItem("user", JSON.stringify(action.payload.profile));
+
+          // setTimeout(() => {
+          //   removeItem("token");
+          //   removeItem("user");
+          //   state.token = null;
+          //   state.userData = null;
+          //   window.location.reload(true);
+          //   console.log("sign in");
+          // }, [60000]);
         }
       })
       .addCase(signIn.rejected, (state, action) => {
@@ -193,6 +209,15 @@ const authSlice = createSlice({
         state.userData = action.payload;
         setItem("user", JSON.stringify(action.payload));
         state.registerSuccess = "success";
+
+        // setTimeout(() => {
+        //   removeItem("token");
+        //   removeItem("user");
+        //   state.token = null;
+        //   state.userData = null;
+        //   window.location.reload(true);
+        //   console.log("register");
+        // }, [60000]);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;

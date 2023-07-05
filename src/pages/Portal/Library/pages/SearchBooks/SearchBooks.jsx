@@ -39,8 +39,11 @@ const SearchBooks = () => {
   } = useLibraryFetching(12);
 
   useEffect(() => {
-    searchBook({ search: location.state });
-  }, [location.state, searchBook]);
+    if (location.state) {
+      searchBook({ search: location.state });
+    }
+    console.log(location.state);
+  }, [location.state]);
 
   const handleСlick = ({ sort, type }) => {
     setData((prev) => ({ ...prev, [type]: sort }));
@@ -100,6 +103,10 @@ const SearchBooks = () => {
             <div className="all__books__search__input">
               <Paper
                 component="form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleСlick({ sort: data.search, type: "search" });
+                }}
                 sx={{
                   p: "2px 4px",
                   display: "flex",
@@ -127,12 +134,9 @@ const SearchBooks = () => {
                   onChange={handleInputChange}
                 />
                 <IconButton
-                  type="button"
+                  type="submit"
                   sx={{ p: "10px" }}
                   aria-label="search"
-                  onClick={() =>
-                    handleСlick({ sort: data.search, type: "search" })
-                  }
                 >
                   <CiSearch color="#065EA9" size={24} />
                 </IconButton>

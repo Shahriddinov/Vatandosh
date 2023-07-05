@@ -5,11 +5,12 @@ import {
   getLibrarySlider,
 } from "../../../../reduxToolkit/portalSlices/librarySlice/extraReducer";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export const useLibraryFetching = (count) => {
-    const lang = useSelector((store) => store.language.language);
+  const lang = useSelector((store) => store.language.language);
 
-    const [activPage, setActivePage] = useState(1);
+  const [activPage, setActivePage] = useState(1);
   const [language, setLanguage] = useState("");
   const [genre, setGenre] = useState("");
   const libraryData = useSelector((store) => store.librarySlice.libraryData);
@@ -22,6 +23,7 @@ export const useLibraryFetching = (count) => {
   const librarySliderLoading = useSelector(
     (store) => store.librarySlice.librarySliderLoading
   );
+  const location = useLocation();
 
   const dispatch = useDispatch();
   const changePagination = (value) => {
@@ -150,8 +152,10 @@ export const useLibraryFetching = (count) => {
   };
 
   useEffect(() => {
-    dispatch(getLibraryAll({ count: count }));
-    dispatch(getLibrarySlider());
+    if (!location.state) {
+      dispatch(getLibraryAll({ count: count }));
+      dispatch(getLibrarySlider());
+    }
   }, [lang]);
 
   return {

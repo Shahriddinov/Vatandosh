@@ -33,5 +33,6 @@ export const useCityFetching = () => {
     singleCitySightseeingLoading,
     singleCity3dLoading,
     singleCity3d,
+    idCity,
   };
 };

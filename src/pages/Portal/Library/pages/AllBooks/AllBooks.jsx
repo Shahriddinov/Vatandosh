@@ -88,6 +88,7 @@ const AllBooks = () => {
   }
 
   const totalPagination = paginationCount(libraryData?.total, 12);
+  const text = librarySliderData?.length > 0 ? librarySliderData[0]?.text : "";
 
   return (
     <>
@@ -99,7 +100,7 @@ const AllBooks = () => {
       </div>
       <div className="all__books__container container">
         <div className="all__books__search">
-          <h2>{t("library.main_page_header")}</h2>
+          <h2>{text}</h2>
           <div className="all__books__row">
             <div className="all__books__search__input">
               <Paper
@@ -113,6 +114,10 @@ const AllBooks = () => {
                   border: "1px solid #EAEDF6",
                   borderRadius: "12px",
                   boxShadow: 0,
+                }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleСlick({ sort: data.search, type: "search" });
                 }}
               >
                 <InputBase
@@ -183,14 +188,6 @@ const AllBooks = () => {
                     {t("library.sort_by_language")}
                   </MenuItem>
                   <MenuItem
-                    value={"English"}
-                    onClick={() =>
-                      handleСlick({ sort: "English", type: "lang" })
-                    }
-                  >
-                    {t("english")}
-                  </MenuItem>
-                  <MenuItem
                     value={"O'zbek"}
                     onClick={() =>
                       handleСlick({ sort: "O'zbek", type: "lang" })
@@ -205,6 +202,14 @@ const AllBooks = () => {
                     }
                   >
                     {t("ruskiy")}
+                  </MenuItem>
+                  <MenuItem
+                    value={"English"}
+                    onClick={() =>
+                      handleСlick({ sort: "English", type: "lang" })
+                    }
+                  >
+                    {t("english")}
                   </MenuItem>
                 </Select>
               </FormControl>
