@@ -5,7 +5,6 @@ import FacilitiesCard from "../../components/facilitiesCard/FacilitiesCard";
 import { useTouristFacilities } from "./hooks/useTouristFacilities";
 import { MyButton, Spinner } from "../../../../../component";
 import { useState } from "react";
-import View3D from "../../components/view3D/View3D";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { getAllSightseeing } from "../../../../../reduxToolkit/portalSlices/aboutUzbekistanSlice/aboutUzbekistanSliceAsyncThunks";
 import { paginationCount } from "../../../../../helpers/extraFunction";
@@ -79,7 +78,7 @@ const TouristFacilities = () => {
             />
           </div>
           <div className="facilities_grid">
-            <h1>{t("about_uzbekistan.tourist_sites")}</h1>
+            {/* <h1>{t("about_uzbekistan.tourist_sites")}</h1> */}
             <ul>
               {allCity?.map((item) => (
                 <li

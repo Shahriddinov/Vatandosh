@@ -37,6 +37,8 @@ function Faq(props) {
     return <Spinner />;
   }
 
+  console.log(faqData);
+
   return (
     <>
       <div className="page-about">
@@ -50,21 +52,27 @@ function Faq(props) {
             <Accordion
               expanded={expanded === index}
               key={index}
-              onChange={handleChange(index)}>
+              onChange={handleChange(index)}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon className="faq_textes_icons" />}
                 aria-controls="panel1bh-content"
-                id="panel1bh-header">
+                id="panel1bh-header"
+              >
                 <Typography
                   sx={{ width: "100%", flexShrink: 0 }}
-                  className="faq_textes_oneses">
+                  className="faq_textes_oneses"
+                >
                   {item[`question_${lan}`]}
                 </Typography>
                 {/*<Typography sx={{color: 'text.secondary'}}>I am an accordion</Typography>*/}
               </AccordionSummary>
               <AccordionDetails>
                 <Typography className="faq_textes_twos">
-                  {item[`answer_${lan}`]}
+                  <p
+                    dangerouslySetInnerHTML={{ __html: item[`answer_${lan}`] }}
+                  />
+                  {/* {item[`answer_${lan}`]} */}
                 </Typography>
               </AccordionDetails>
             </Accordion>

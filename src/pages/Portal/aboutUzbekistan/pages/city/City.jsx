@@ -1,7 +1,6 @@
 import React from "react";
 import "./city.scss";
 
-import View3D from "../../components/view3D/View3D";
 import Slider from "../../components/slider/Slider";
 import AboutUzbekistanGallery from "../../components/aboutUzbekistanGallery/AboutUzbekistanGallery";
 import { Spinner } from "../../../../../component";
@@ -12,7 +11,7 @@ import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 import { useTranslation } from "react-i18next";
 
 const City = () => {
-  const { error, singleCitySightseeing, singleCitySightseeingLoading } =
+  const { error, singleCitySightseeing, singleCitySightseeingLoading, idCity } =
     useCityFetching();
   const { t } = useTranslation();
   if (singleCitySightseeingLoading) {
@@ -24,15 +23,22 @@ const City = () => {
   const videoData = singleCitySightseeing[1]?.city_videos;
   const galeresData = singleCitySightseeing[1]?.city_galleries;
   const sightseeingPlaces = singleCitySightseeing[1]?.sightseeing_places;
-  const city_content_infos = singleCitySightseeing[1]?.city_content_infos;
+  // const city_content_infos = singleCitySightseeing[1]?.city_content_infos;
 
+  const heroData =
+    singleCitySightseeing.length > 0 &&
+    singleCitySightseeing[1]?.sightseeing_places?.length > 0
+      ? singleCitySightseeing[1]?.sightseeing_places?.find(
+          (el) => el?.id === idCity * 1
+        )
+      : {};
   return (
     <>
       <div className="city">
         <div
           className="city_hero"
           style={{
-            backgroundImage: `url(${PORTAL_IMAGE_URL}${singleCitySightseeing[0]?.image})`,
+            backgroundImage: `url(${PORTAL_IMAGE_URL}${heroData?.image})`,
           }}
         >
           {/*<h2>{singleCitySightseeing[1]?.name}</h2>*/}

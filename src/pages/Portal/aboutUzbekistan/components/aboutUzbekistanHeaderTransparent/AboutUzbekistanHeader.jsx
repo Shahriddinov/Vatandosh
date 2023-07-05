@@ -131,7 +131,7 @@ const Header = () => {
               alt="music"
             />
           </a>
-          <label className="header_transparent_navbar_search">
+          {/* <label className="header_transparent_navbar_search">
             <input
               ref={searchRef}
               type="text"
@@ -144,7 +144,7 @@ const Header = () => {
               className="hheader_transparent_navbar_search_icon"
               alt="search"
             />
-          </label>
+          </label> */}
           <button
             className="header_transparent_navbar_eye"
             onClick={() => grayScale()}
