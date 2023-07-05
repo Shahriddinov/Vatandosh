@@ -58,7 +58,7 @@ const Associations = () => {
   const pagination = paginationCount(allCommunityGet?.total, 8);
   const data =
     communityData.length > 0
-      ? communityData.sort((a, b) => a?.news - b?.news)
+      ? communityData.sort((a, b) => b?.news - a?.news)
       : [];
 
   return (
