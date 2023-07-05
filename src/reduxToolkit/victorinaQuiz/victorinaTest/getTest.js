@@ -13,13 +13,16 @@ export const getTestQuizz = createAsyncThunk("test/get", async ({ id }) => {
 
 export const sendVictorinaTest = createAsyncThunk(
   "test",
-  async ({ id, data }) => {
+  async ({ id, data, setChecked }) => {
     return await axios
       .post(`${VICTORINA_YOUTUBE}/${id}`, data, {
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => res?.data);
+      .then((res) => res?.data)
+      .then((res) => {
+        localStorage.setItem("check", JSON.stringify(res));
+      });
   }
 );

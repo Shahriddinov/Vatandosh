@@ -363,7 +363,7 @@
     "edubrand": "Eng yaxshi ta’lim brendi",
     "test": "Test",
     "pass_test": "Siz tanlovdan muvafaqqiyatli qatnashdingiz",
-    "back_test":"Tanlovga qaytish",
+    "back_test": "Tanlovga qaytish",
     "return_test": "Testni qayta ishlash"
   },
   "communityAssociation": {
@@ -677,14 +677,15 @@
   "jamoatOne": "Jamoat birlashmalari mavjud emas",
   "active": "Aktiv yani qatnashgan",
   "register": "Registratsiya qigan",
-  "finishOne":"Arxiv",
-  "informationNone":"Hozirda bizda malumot mavjud emas",
-  "sendContact":"Murojaatingiz qabul qilindi.",
-  "Cabinet" : {
+  "finishOne": "Arxiv",
+  "informationNone": "Hozirda bizda malumot mavjud emas",
+  "sendContact": "Murojaatingiz qabul qilindi.",
+  "Cabinet": {
     "online": "ta onlayn",
     "member": "ta a'zo",
     "last_seen": "Oxirgi ko'rilgan",
     "user_online": "Onlayn",
     "start_chat": "Xabar almashishni boshlash uchun suhbatni tanlang."
-  }
+  },
+  "result": "Sizning natijangiz"
 }

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getByIdQuizz } from "../../../../../reduxToolkit/victorinaQuiz/quizbyid/quizid";
 import { Spinner } from "../../../../../component";
+import { getTestQuizz } from "../../../../../reduxToolkit/victorinaQuiz/victorinaTest/getTest";
 
 function VictorinaWinnerWin() {
   const { id } = useParams();
@@ -15,12 +16,16 @@ function VictorinaWinnerWin() {
   const lan = useSelector((state) => state.language.language);
   const quizData = useSelector((state) => state.quizByIdSlice.quizByIdData);
   const quizDataLoading = useSelector((state) => state.quizByIdSlice.loading);
+  const testData = useSelector(
+    (state) => state?.quizTestSlice?.quizTestData?.questions?.length
+  );
 
   useEffect(() => {
     document.body.style.overflow = "auto";
   }, []);
   useEffect(() => {
     dispatch(getByIdQuizz({ id }));
+    dispatch(getTestQuizz({ id }));
   }, [dispatch, id, lan]);
 
   if (quizDataLoading) {
@@ -28,6 +33,12 @@ function VictorinaWinnerWin() {
   }
 
   const title = quizData?.title?.split(" ");
+  const check = JSON.parse(localStorage.getItem("check"));
+  const success = check?.data?.all;
+
+  const result = (success / testData) * 100;
+
+  console.log(result);
   return (
     <div className="winnervictorina">
       <div className="container">
@@ -45,8 +56,7 @@ function VictorinaWinnerWin() {
             <li className="winnervictorina-item">
               <Link
                 to="/portal-category/victorina/victorina-more"
-                className="winnervictorina-link"
-              >
+                className="winnervictorina-link">
                 {t("choices.quizzes")}
               </Link>
             </li>
@@ -56,8 +66,7 @@ function VictorinaWinnerWin() {
             <li className="winnervictorina-item">
               <Link
                 to={`/portal-category/victorina/image-project/${id}`}
-                className="winnervictorina-link"
-              >
+                className="winnervictorina-link">
                 {title?.slice(0, 3)?.join()} {title.length > 3 ? "..." : ""}
               </Link>
             </li>
@@ -73,17 +82,20 @@ function VictorinaWinnerWin() {
           <div className="winnervictorina-left">
             <h2 className="winnervictorina-name">{quizData?.title}</h2>
             <p className="winnervictorina-succes">{t("victorina.pass_test")}</p>
+            <p
+              style={{ marginTop: "-30px" }}
+              className="winnervictorina-succes">
+              {t("result")}: {result}%
+            </p>
             <div className="winnervictorina-btnWrapper">
               <Link
                 to="/portal-category/victorina/victorina-more"
-                className="winnervictorina-prev"
-              >
+                className="winnervictorina-prev">
                 {t("victorina.back_test")}
               </Link>
               <Link
                 to={`/portal-category/victorina/image-project/${id}`}
-                className="winnervictorina-next"
-              >
+                className="winnervictorina-next">
                 {t("victorina.return_test")}
               </Link>
             </div>
