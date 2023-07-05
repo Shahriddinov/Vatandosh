@@ -27,10 +27,12 @@ const ElectronicJournalLayout = () => {
     return <p>{error ? error : contactError}</p>;
   }
 
+  const menuData =
+    menu.length > 0 ? menu.filter((el) => el.id !== undefined) : [];
   return (
     <div className="electronic-journal">
-      <Header navData={menu} />
-      <Outlet context={menu} />
+      <Header navData={menuData} />
+      <Outlet context={menuData} />
       <ElectronicJournalFooter contactData={contactData} />
     </div>
   );
