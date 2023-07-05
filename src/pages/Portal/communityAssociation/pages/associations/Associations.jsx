@@ -56,6 +56,10 @@ const Associations = () => {
   }
 
   const pagination = paginationCount(allCommunityGet?.total, 8);
+  const data =
+    communityData.length > 0
+      ? communityData.sort((a, b) => a?.news - b?.news)
+      : [];
 
   return (
     <div className="associations">
@@ -77,7 +81,7 @@ const Associations = () => {
           </div>
           <div className="associations__grid">
             {communityData.length > 0 ? (
-              communityData.map((item) => (
+              data.map((item) => (
                 <Fragment key={item.id}>
                   <AssociationsCard {...item} allRegions={allRegions} />
                 </Fragment>

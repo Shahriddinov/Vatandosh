@@ -37,8 +37,6 @@ function Faq(props) {
     return <Spinner />;
   }
 
-  console.log(faqData);
-
   return (
     <>
       <div className="page-about">
