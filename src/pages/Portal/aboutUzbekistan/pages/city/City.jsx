@@ -32,6 +32,12 @@ const City = () => {
           (el) => el?.id === idCity * 1
         )
       : {};
+  const cityName = {
+    name:
+      singleCitySightseeing.length > 0 && singleCitySightseeing[1]
+        ? singleCitySightseeing[1]?.name
+        : "Toshkent",
+  };
   return (
     <>
       <div className="city">
@@ -58,7 +64,7 @@ const City = () => {
           {galeresData.length > 0 && (
             <AboutUzbekistanGallery allGallery={galeresData} />
           )}
-          <Slider title={t("others")} data={sightseeingPlaces} />
+          <Slider title={t("others", { cityName })} data={sightseeingPlaces} />
         </div>
       </div>
     </>
