@@ -39,6 +39,8 @@
     max-width: 533px;
     height: 315px;
     border-radius: 15px;
+    object-fit: cover;
+    object-position: center top;
   }
 
   &__content-image:nth-child(2) {
@@ -79,6 +81,7 @@
 
     &__content-image {
       justify-self: center;
+      object-fit: cover !important;
       height: 315px;
     }
 
