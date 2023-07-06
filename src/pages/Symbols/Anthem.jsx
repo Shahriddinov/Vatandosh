@@ -5,7 +5,7 @@ import Madhiya from "../../assets/images/ozbekiston-respublikasi-davlat-madhiyas
 import "./Symbols.scss";
 import ReactAudioPlayer from "react-audio-player";
 import { useTranslation } from "react-i18next";
-function Anthem(props) {
+function Anthem() {
   const { t } = useTranslation();
   return (
     <>
@@ -26,7 +26,6 @@ function Anthem(props) {
           <ReactAudioPlayer
             className="symbol_text_audio"
             src={Madhiya}
-            // autoPlay
             controls
           />
         </div>
