@@ -15,7 +15,7 @@ import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/
 import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function TestPopUp({ setactivePopUp }) {
-  const [currentQuiz, setCurrentQuiz] = useState(1);
+  const [currentQuiz, setCurrentQuiz] = useState({ id: "", active: 1 });
   const [answerId, setAnswerId] = useState("");
   const [questionId, setQuestion] = useState("");
   const [test, setTest] = useState([]);
@@ -38,12 +38,27 @@ export default function TestPopUp({ setactivePopUp }) {
     dispatch(getTestQuizz({ id }));
   }, []);
 
+  useEffect(() => {
+    if (testData?.length > 0) {
+      setCurrentQuiz((prev) => ({ ...prev, id: testData[0].id }));
+    }
+  }, [testData]);
   function prev() {
-    setCurrentQuiz(currentQuiz - 1);
+    const index = testData.findIndex((el) => el.id === currentQuiz.id);
+    setCurrentQuiz((prev) => ({
+      ...prev,
+      id: testData[index - 1].id,
+      active: prev.active - 1,
+    }));
   }
 
   function next() {
-    setCurrentQuiz(currentQuiz + 1);
+    const index = testData.findIndex((el) => el.id === currentQuiz.id);
+    setCurrentQuiz((prev) => ({
+      ...prev,
+      id: testData[index + 1].id,
+      active: prev.active + 1,
+    }));
   }
 
   const handleSubmit = (e) => {
@@ -95,6 +110,11 @@ export default function TestPopUp({ setactivePopUp }) {
     });
   };
 
+  if (!testData?.length) {
+    return null;
+  }
+  console.log(testData);
+
   return (
     <div className="projectImg">
       <div
@@ -105,12 +125,12 @@ export default function TestPopUp({ setactivePopUp }) {
           <div
             key={evt.id}
             className={`victorina-test-wrapper ${
-              currentQuiz === evt?.id ? "active" : ""
+              currentQuiz.id === evt?.id ? "active" : ""
             }`}>
             <p
               className="victorina-test-list-desc"
               dangerouslySetInnerHTML={{
-                __html: evt.question,
+                __html: evt?.question,
               }}
             />
             <div className="victorina-test-list-wrapper">
@@ -137,7 +157,7 @@ export default function TestPopUp({ setactivePopUp }) {
           </div>
         ))}
         <div style={{ padding: "20px" }} className="victorina-test-btn-wrapper">
-          {currentQuiz === 1 ? (
+          {currentQuiz.active === 1 ? (
             <Button
               sx={{ gap: "10px" }}
               variant="contained"
@@ -150,7 +170,7 @@ export default function TestPopUp({ setactivePopUp }) {
               {t("victorina.prev")}
             </Button>
           )}
-          {currentQuiz === testData?.length - 1 ? (
+          {currentQuiz.active === testData?.length - 1 ? (
             <Button
               sx={{ gap: "10px", marginLeft: "15px" }}
               variant="contained"
@@ -167,7 +187,7 @@ export default function TestPopUp({ setactivePopUp }) {
             </Button>
           )}
           <span style={{ marginLeft: "15px" }}>
-            {t("voice")} {currentQuiz} из {testData?.length}
+            {t("voice")} {currentQuiz.active} из {testData?.length}
           </span>
           <Button
             onClick={() => {
