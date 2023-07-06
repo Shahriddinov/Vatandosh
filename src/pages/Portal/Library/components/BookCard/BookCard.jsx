@@ -6,7 +6,7 @@ import EmptyStar from "../../../../../assets/images/library/emptyStar.svg";
 import { Link } from "react-router-dom";
 import { PORTAL_IMAGE_URL } from "../../../../../services/api/utils";
 
-const BookCard = ({ thumbnail, title, author, stars, id }) => {
+const BookCard = ({ thumbnail, title, author, stars, id, viewers }) => {
   const fullStars = Math.floor(stars / 2);
   const emptyStars = 5 - fullStars;
 
@@ -32,7 +32,7 @@ const BookCard = ({ thumbnail, title, author, stars, id }) => {
           <div className="book__rating">
             <p>{stars / 2}</p>
             {starsImg}
-            <span>(421)</span>
+            <span>({viewers})</span>
           </div>
         </div>
       </div>
