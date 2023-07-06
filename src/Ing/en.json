@@ -494,11 +494,11 @@
     "read_online": "Read online"
   },
   "symbols": {
-    "anthem": "State anthem of the Republic of Uzbekistan",
+    "anthem": "The state anthem of the Republic of Uzbekistan",
     "text": "The text and music of the National Anthem of the Republic of Uzbekistan are approved by the Law of the Republic of Uzbekistan dated December 10, 1992 No. 768-XII \"On the National Anthem of the Republic of Uzbekistan\". <p><br/>The National Anthem of the Republic of Uzbekistan is a symbol of the State sovereignty of the Republic of Uzbekistan.</p><p><br/>Respecting the National Anthem of the Republic of Uzbekistan is a patriotic duty of every citizen of the Republic of Uzbekistan. The words of the national anthem were written by Abdulla Oripov, and the music was composed by Mutal Burkhanov.</p>",
     "textsOne": "My country, sunny and free, salvation to your people, <br /> You are a warmhearted companion to the friends <br /> Flourish eternally with knowledge and invention, <br /> May your fame shine as long as the world exists! <br /><br /><b>Refrain:</b><br/> These golden valleys-dear Uzbekistan, <br /> Manly spirit of ancestors is companion to you! <br /> When the great power of people became exuberant <br /> You are the country that amazes the world! <br /><br /> Belief of generous Uzbek does not die out, <br /> Free, young children are a strong wing for you! <br /> The torch of independence, guardian of peace, <br /> Just motherland be eternally prosperous! <br /><br /><b>Refrain:</b><br/> These golden valleys-dear Uzbekistan, <br /> Manly spirit of ancestors is companion to you! <br /> When the great power of people became exuberant <br /> You are the country that amazes the world!<br />",
    
-    "coat": "Coat of arms of the Republic of Uzbekistan",
+    "coat": "The state emblem of the Republic of Uzbekistan",
     "coatAbout": "The state emblem of the Republic of Uzbekistan was approved by the Law of the Republic of Uzbekistan No. 616-XII dated July 2, 1992 \"About the State emblem of the Republic of Uzbekistan\". <p><br/> The state emblem of the Republic presents the image of the rising sun over a flourishing valley. Two rivers run through the valley, representing the Syrdarya and Amudarya. The emblem is bordered by wheat on the right side and branches of cotton with opened cotton bolls on the left side.</p><p><br/>The eight-angle star is at the top of the emblem, symbolizing the unity and confirmation of the republic. The crescent and star inside the eight-pointed star are the sacred. The mythical bird Semurg with outstretched wings is placed in the center of the emblem. At the bottom of the emblem inscribed the word \"Uzbekistan\" written in Uzbek on a ribbon in the national colors of the flag.</p>",
     "coats": " At the top of the coat of arms, an eight-pointed star is depicted as a symbol of the Republican Jeeps: a crescent moon and a star, located within eight edges, are symbols of the salvation of Muslims.",
     "coatCenter": "In the center of the coat of arms is inscribed the wings of the legendary Humo Bird, a symbol of himmat, nobility and self-sacrifice. These symbols and symbols represent the aspirations of our people on the path to peace, good, happiness, prosperity.",
@@ -589,7 +589,7 @@
   "searchResult": " Search results",
   "searchResultOne": "No information found for the word!",
   "BayroqOne": "'Uzbekistan",
-  "BayroqTwo": " State flag of the Republic of Uzbekistan",
+  "BayroqTwo": "The state flag of the Republic of Uzbekistan",
   "BayroqThree":"The state flag was approved by the Law of the Republic of Uzbekistan dated November 18, 1991 No. 407-XII \"On the State Flag of the Republic of Uzbekistan\". <p><br/>The flag of our country is a symbol of the sovereignty of the Republic of Uzbekistan.</p><p><br/>The State flag of the Republic of Uzbekistan is a symbol of the Republic of Uzbekistan in international relations.</p><p><br/>The national flag of the Republic is a right-angled colored cloth of three horizontal stripes: blue, white and green.</p>",
   "event": "Send an event",
   "eventOne": "Image for your offer",

@@ -71,9 +71,14 @@ const GroupMembers = ({
                 <div className="group-members__member-information">
                   <h4>{member.name}</h4>
                   {time_interval > 3 ? (
-                    <p>Last seen {member.last_online_at}</p>
+                    <p>
+                      Last seen{" "}
+                      {member.last_online_at.split(" ")[1].split(":")[0] +
+                        ":" +
+                        member.last_online_at.split(" ")[1].split(":")[1]}
+                    </p>
                   ) : (
-                    <p>Online</p>
+                    <p>{t("Cabinet.user_online")}</p>
                   )}
                 </div>
               </div>
