@@ -89,6 +89,7 @@ const AllBooks = () => {
 
   const totalPagination = paginationCount(libraryData?.total, 12);
   const text = librarySliderData?.length > 0 ? librarySliderData[0]?.text : "";
+  console.log(libraryData.data);
 
   return (
     <>

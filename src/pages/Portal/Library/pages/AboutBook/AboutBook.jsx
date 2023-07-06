@@ -25,8 +25,6 @@ const AboutBook = () => {
     window.open(url, "_blank");
   };
 
-  const ratingCount = 421;
-
   const fullStars = Math.floor(ebookData.stars / 2);
   const emptyStars = 5 - fullStars;
 
@@ -57,7 +55,7 @@ const AboutBook = () => {
             <div className="book__rating">
               <p>{ebookData.stars}</p>
               {stars}
-              <span>({ratingCount})</span>
+              <span>({ebookData.viewers})</span>
             </div>
             <h3>
               {t("library.author")}: <span>{ebookData.author}</span>
