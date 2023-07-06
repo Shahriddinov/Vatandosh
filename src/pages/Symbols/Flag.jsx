@@ -4,7 +4,7 @@ import Flags from "../../assets/images/home/Flags.svg";
 import "./Symbols.scss";
 import { useTranslation } from "react-i18next";
 
-function Flag(props) {
+function Flag() {
   const { t } = useTranslation();
   return (
     <>
