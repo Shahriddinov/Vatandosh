@@ -155,7 +155,6 @@ export default function TestPopUp({ setactivePopUp }) {
                   </li>
                 ))}
               </ul>
-              <img src={`${imageUrl}/${evt?.image}`} alt="error" />
             </div>
           </div>
         ))}
