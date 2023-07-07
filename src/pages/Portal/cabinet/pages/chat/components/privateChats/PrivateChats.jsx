@@ -117,8 +117,9 @@ const PrivateChats = ({
                 ) : (
                   <p>
                     {t("Cabinet.last_seen")}{" "}
-                    {today ===
-                    chat?.user?.last_online_at.split(" ")[0].split("-")[1]
+                    {parseInt(
+                      chat?.user?.last_online_at.split(" ")[0].split("-")[1]
+                    ) === today
                       ? chat?.user?.last_online_at.split(" ")[1].split(":")[0] +
                         ":" +
                         chat?.user?.last_online_at.split(" ")[1].split(":")[1]

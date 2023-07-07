@@ -74,8 +74,9 @@ const GroupMembers = ({
                   {time_interval > 3 ? (
                     <p>
                       {t("Cabinet.last_seen")}{" "}
-                      {today ===
-                      member.last_online_at.split(" ")[0].split("-")[1]
+                      {parseInt(
+                        member.last_online_at.split(" ")[0].split("-")[1]
+                      ) === today
                         ? member.last_online_at.split(" ")[1].split(":")[0] +
                           ":" +
                           member.last_online_at.split(" ")[1].split(":")[1]
