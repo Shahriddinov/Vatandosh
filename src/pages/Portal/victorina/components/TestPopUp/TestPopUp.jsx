@@ -10,9 +10,6 @@ import {
 } from "../../../../../reduxToolkit/victorinaQuiz/victorinaTest/getTest";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
-import { imageUrl } from "../../../../../services/api/utils";
-import { mediaVictorinaImage } from "../../../../../reduxToolkit/victorinaImage/media-upload";
-import mediaFileSlice from "../../../../../reduxToolkit/victorinaImage";
 
 export default function TestPopUp({ setactivePopUp }) {
   const [currentQuiz, setCurrentQuiz] = useState({ id: "", active: 1 });
@@ -28,9 +25,7 @@ export default function TestPopUp({ setactivePopUp }) {
   const communityCreateData = useSelector(
     (store) => store.mediaFileSlice.communityImagePost
   );
-  const [data, setData] = useState({
-    document: communityCreateData.document,
-  });
+
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -39,10 +34,11 @@ export default function TestPopUp({ setactivePopUp }) {
   }, []);
 
   useEffect(() => {
-    if (testData?.length > 0) {
+    if (testData?.length > 0 && currentQuiz.id === "") {
       setCurrentQuiz((prev) => ({ ...prev, id: testData[0].id }));
     }
   }, [testData]);
+
   function prev() {
     const index = testData.findIndex((el) => el.id === currentQuiz.id);
     setCurrentQuiz((prev) => ({
@@ -118,14 +114,16 @@ export default function TestPopUp({ setactivePopUp }) {
     <div className="projectImg">
       <div
         className="victorina-overlay"
-        onClick={() => setactivePopUp(false)}></div>
+        onClick={() => setactivePopUp(false)}
+      ></div>
       <form className="victorina-test" onSubmit={handleSubmit}>
         {testData?.map((evt, index) => (
           <div
             key={evt.id}
             className={`victorina-test-wrapper ${
               currentQuiz.id === evt?.id ? "active" : ""
-            }`}>
+            }`}
+          >
             <p
               className="victorina-test-list-desc"
               dangerouslySetInnerHTML={{
@@ -138,7 +136,8 @@ export default function TestPopUp({ setactivePopUp }) {
                   <li
                     onClick={() => handleQuestion({ q: evt.id, a: el.id })}
                     key={el?.id}
-                    className="victorina-test-list-item">
+                    className="victorina-test-list-item"
+                  >
                     <Checkbox
                       type="checkbox"
                       checked={testResponse === el?.id ? true : false}
@@ -146,6 +145,7 @@ export default function TestPopUp({ setactivePopUp }) {
                       onChange={() => {
                         settestResponse(el?.id);
                       }}
+                      id={evt.id}
                     />
                     <span
                       dangerouslySetInnerHTML={{
@@ -164,7 +164,8 @@ export default function TestPopUp({ setactivePopUp }) {
               sx={{ gap: "10px" }}
               variant="contained"
               disabled
-              onClick={prev}>
+              onClick={prev}
+            >
               {t("victorina.prev")}
             </Button>
           ) : (
@@ -172,18 +173,21 @@ export default function TestPopUp({ setactivePopUp }) {
               {t("victorina.prev")}
             </Button>
           )}
-          {currentQuiz.active === testData?.length - 1 ? (
+          {currentQuiz.active === testData?.length ? (
             <Button
               sx={{ gap: "10px", marginLeft: "15px" }}
               variant="contained"
-              onClick={next}>
+              onClick={next}
+              disabled
+            >
               {t("expert.nextbtn")}
             </Button>
           ) : (
             <Button
               sx={{ gap: "10px", marginLeft: "15px" }}
               variant="contained"
-              onClick={next}>
+              onClick={next}
+            >
               {t("expert.nextbtn")}
             </Button>
           )}
@@ -196,7 +200,8 @@ export default function TestPopUp({ setactivePopUp }) {
             }}
             type="submit"
             sx={{ gap: "10px", marginLeft: "15px" }}
-            variant="contained">
+            variant="contained"
+          >
             {t("finish")}
           </Button>
         </div>
