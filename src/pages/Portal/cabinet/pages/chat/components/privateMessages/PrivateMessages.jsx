@@ -208,6 +208,9 @@ const PrivateMessages = ({
     setActiveUser(null);
   };
 
+  const date = new Date();
+  const today = date.getDate();
+
   return (
     <div
       className={`private-message ${
@@ -238,9 +241,12 @@ const PrivateMessages = ({
                 ) : (
                   <p>
                     {t("Cabinet.last_seen")}{" "}
-                    {privateUser.last_online_at.split(" ")[1].split(":")[0] +
-                      ":" +
-                      privateUser.last_online_at.split(" ")[1].split(":")[1]}
+                    {today ===
+                    privateUser.last_online_at.split(" ")[0].split("-")[1]
+                      ? privateUser.last_online_at.split(" ")[1].split(":")[0] +
+                        ":" +
+                        privateUser.last_online_at.split(" ")[1].split(":")[1]
+                      : privateUser.last_online_at.split(" ")[0]}
                   </p>
                 )}
               </>

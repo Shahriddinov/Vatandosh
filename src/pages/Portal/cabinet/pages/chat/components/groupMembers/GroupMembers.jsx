@@ -32,6 +32,7 @@ const GroupMembers = ({
 
   const date = new Date();
   const milliseconds = date.getTime();
+  const today = date.getDate();
 
   return (
     <div className={`group-members ${showMembers ? "show" : ""}`}>
@@ -72,10 +73,13 @@ const GroupMembers = ({
                   <h4>{member.name}</h4>
                   {time_interval > 3 ? (
                     <p>
-                      Last seen{" "}
-                      {member.last_online_at.split(" ")[1].split(":")[0] +
-                        ":" +
-                        member.last_online_at.split(" ")[1].split(":")[1]}
+                      {t("Cabinet.last_seen")}{" "}
+                      {today ===
+                      member.last_online_at.split(" ")[0].split("-")[1]
+                        ? member.last_online_at.split(" ")[1].split(":")[0] +
+                          ":" +
+                          member.last_online_at.split(" ")[1].split(":")[1]
+                        : member.last_online_at.split(" ")[0]}
                     </p>
                   ) : (
                     <p>{t("Cabinet.user_online")}</p>

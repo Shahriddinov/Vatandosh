@@ -208,14 +208,6 @@ const authSlice = createSlice({
         state.userData = action.payload;
         setItem("user", JSON.stringify(action.payload));
         state.registerSuccess = "success";
-
-        // setTimeout(() => {
-        //   removeItem("token");
-        //   removeItem("user");
-        //   window.location.reload(true);
-        //   // state.token = null;
-        //   // state.userData = null;
-        // }, [60000]);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.registerLoading = false;
