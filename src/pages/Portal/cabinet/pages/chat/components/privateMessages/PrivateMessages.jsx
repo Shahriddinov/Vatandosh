@@ -241,8 +241,9 @@ const PrivateMessages = ({
                 ) : (
                   <p>
                     {t("Cabinet.last_seen")}{" "}
-                    {today ===
-                    privateUser.last_online_at.split(" ")[0].split("-")[1]
+                    {parseInt(
+                      privateUser.last_online_at.split(" ")[0].split("-")[1]
+                    ) === today
                       ? privateUser.last_online_at.split(" ")[1].split(":")[0] +
                         ":" +
                         privateUser.last_online_at.split(" ")[1].split(":")[1]
