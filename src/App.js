@@ -23,6 +23,10 @@ function App({ children }) {
     );
   }
 
+  window.onbeforeunload = () => {
+    localStorage.clear();
+  };
+
   useEffect(() => {
     if (token) {
       socket.onopen = (event) => {

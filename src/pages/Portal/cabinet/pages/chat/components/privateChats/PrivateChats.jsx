@@ -66,6 +66,7 @@ const PrivateChats = ({
 
   const date = new Date();
   const milliseconds = date.getTime();
+  const today = date.getDate();
 
   return (
     <div className={`users ${activeUser ? "users-none" : "users-block"}`}>
@@ -116,9 +117,12 @@ const PrivateChats = ({
                 ) : (
                   <p>
                     {t("Cabinet.last_seen")}{" "}
-                    {chat?.user?.last_online_at.split(" ")[1].split(":")[0] +
-                      ":" +
-                      chat?.user?.last_online_at.split(" ")[1].split(":")[1]}
+                    {today ===
+                    chat?.user?.last_online_at.split(" ")[0].split("-")[1]
+                      ? chat?.user?.last_online_at.split(" ")[1].split(":")[0] +
+                        ":" +
+                        chat?.user?.last_online_at.split(" ")[1].split(":")[1]
+                      : chat?.user?.last_online_at.split(" ")[0]}
                   </p>
                 )}
               </div>
