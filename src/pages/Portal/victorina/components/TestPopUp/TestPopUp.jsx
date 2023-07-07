@@ -113,7 +113,6 @@ export default function TestPopUp({ setactivePopUp }) {
   if (!testData?.length) {
     return null;
   }
-  console.log(testData);
 
   return (
     <div className="projectImg">
@@ -148,7 +147,11 @@ export default function TestPopUp({ setactivePopUp }) {
                         settestResponse(el?.id);
                       }}
                     />
-                    <span>{el.answer}</span>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: el.answer,
+                      }}
+                    />
                   </li>
                 ))}
               </ul>
@@ -180,7 +183,6 @@ export default function TestPopUp({ setactivePopUp }) {
           ) : (
             <Button
               sx={{ gap: "10px", marginLeft: "15px" }}
-              disabled
               variant="contained"
               onClick={next}>
               {t("expert.nextbtn")}
