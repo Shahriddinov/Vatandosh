@@ -59,11 +59,11 @@ $colorGreyText: #656b70;
 .text {
   display: flex;
   flex-direction: column;
-  max-width: 680px !important;
+  max-width: 750px !important;
 
   p {
     width: 100%;
-    max-width: 677px !important;
+    max-width: 750px !important;
     color: $colorGreyText;
   }
 }
@@ -84,8 +84,8 @@ $colorGreyText: #656b70;
 }
 
 .image {
-  width: 400px !important;
-  height: 260px;
+  width: 450px !important;
+  height: 280px;
   object-fit: cover;
   border-radius: 12px;
 
@@ -108,8 +108,12 @@ $colorGreyText: #656b70;
 }
 
 .slick-slide {
-  padding: 10px 10px;
+  padding: 10px 40px;
   transition: all 0.5s linear;
+
+  & > div {
+    width: 100%;
+  }
 }
 
 .slick-slider {
