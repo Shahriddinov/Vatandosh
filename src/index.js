@@ -5,7 +5,6 @@ import store from "./reduxToolkit/store";
 import Routes from "./routes";
 import i18 from "./services/i18n/i18n";
 import GrayContextProvider from "./context/GrayContext";
-import { Spinner } from "./component";
 
 import "swiper/swiper.min.css";
 import "swiper/swiper-bundle.css";
