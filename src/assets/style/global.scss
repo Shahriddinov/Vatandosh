@@ -6,6 +6,7 @@ $ButtonBackground: #eaedf6;
 $colorLight: #ffffff;
 $colorText: #12022f;
 $colorBlack: #10131b;
+$globalBg: url("../../assets/images/body-bg.png");
 
 * {
   padding: 0;
@@ -59,7 +60,7 @@ a {
 }
 
 .home {
-  background-image: url("../images/body-bg.png");
+  background-image: $globalBg;
 }
 
 .registerBackground {
@@ -165,7 +166,7 @@ a {
 }
 
 @media (max-width: 1001px) {
-  html{
+  html {
     font-size: 80%;
   }
   .page-about {

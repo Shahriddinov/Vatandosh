@@ -1,9 +1,11 @@
 @import "../../assets/style/global.scss";
 
 .contact {
+  background-image: $globalBg;
+
   &-desc {
     padding: 30px 0;
-    border-bottom: 1px solid #EAEDF6;
+    border-bottom: 1px solid #eaedf6;
 
     &-title-url {
       margin-bottom: 20px;
@@ -21,13 +23,13 @@
       align-items: center;
       gap: 5px;
 
-      &>a,
+      & > a,
       span {
         text-decoration: none;
         @include fontStyles(700, 14px, 17px, $colorGrey);
       }
 
-      &>span {
+      & > span {
         color: $colorTitle;
       }
     }
@@ -35,7 +37,7 @@
     &-text {
       max-width: 454px;
 
-      &>p {
+      & > p {
         @include fontStyles(400, 14px, 17px, $colorGrey);
       }
     }
@@ -59,11 +61,11 @@
 
       &-btn {
         padding: 12px 22px;
-        background: #065EA9;
+        background: #065ea9;
         border-radius: 16px;
         border: none;
         cursor: pointer;
-        @include fontStyles(500, 14px, 24px, #FFFFFF);
+        @include fontStyles(500, 14px, 24px, #ffffff);
 
         &-wrapper {
           display: flex;
@@ -73,7 +75,7 @@
       & input,
       textarea {
         outline: none;
-        border: 1px solid #EAEDF6;
+        border: 1px solid #eaedf6;
         border-radius: 15px;
         @include fontStyles(400, 14px, 17px, $colorGrey);
 
@@ -93,13 +95,13 @@
         align-items: center;
         height: 48px;
         border-radius: 15px;
-        border: 1px solid #EAEDF6;
+        border: 1px solid #eaedf6;
 
-        &>div {
+        & > div {
           width: 40px;
           height: 40px;
 
-          &>select {
+          & > select {
             display: none;
           }
 
@@ -109,7 +111,7 @@
             width: 40px;
             height: 40px;
 
-            &>svg,
+            & > svg,
             img {
               width: 28px;
               height: 28px;
@@ -119,14 +121,14 @@
           }
         }
 
-        &>input {
+        & > input {
           height: 100%;
           width: 100%;
           border: none;
           border-radius: 0;
         }
 
-        &>img {
+        & > img {
           margin-right: 6px;
           border-radius: 2.5px;
         }
@@ -149,18 +151,18 @@
         display: flex;
         flex-direction: column;
 
-        &>span {
+        & > span {
           margin-bottom: 10px;
           @include fontStyles(400, 18px, 22px, $colorGrey);
         }
 
-        &>strong,
+        & > strong,
         a {
           text-decoration: none;
-          @include fontStyles(700, 18px, 22px, #062A49);
+          @include fontStyles(700, 18px, 22px, #062a49);
         }
 
-        &>strong:not(:last-child),
+        & > strong:not(:last-child),
         a:not(:last-child) {
           margin-bottom: 15px;
         }
@@ -186,7 +188,7 @@
       width: 250px;
       padding: 20px 24px;
       position: absolute;
-      background: #FFFFFF;
+      background: #ffffff;
       z-index: 10;
       top: 50%;
       left: 50%;
@@ -208,13 +210,13 @@
       &-title {
         margin-bottom: 10px;
 
-        &>h3 {
+        & > h3 {
           white-space: nowrap;
           word-break: keep-all;
-          @include fontStyles(600, 16px, 20px, #196DFF);
+          @include fontStyles(600, 16px, 20px, #196dff);
         }
 
-        &>p {
+        & > p {
           padding: 4px 0;
           @include fontStyles(400, 12px, 14px, $colorGrey);
         }
@@ -229,13 +231,13 @@
           align-items: center;
           gap: 5px;
 
-          &>svg {
+          & > svg {
             width: 20px;
             height: 20px;
             color: red;
           }
 
-          &>span {
+          & > span {
             @include fontStyles(500, 14px, 16px, #000000);
           }
 
@@ -246,21 +248,20 @@
             text-decoration: none;
 
             &:hover {
-
-              &>svg,
+              & > svg,
               span {
                 color: red;
               }
             }
 
-            &>span {
-              @include fontStyles(600, 14px, 16px, #196DFF);
+            & > span {
+              @include fontStyles(600, 14px, 16px, #196dff);
             }
 
-            &>svg {
+            & > svg {
               width: 16px;
               height: 16px;
-              color: #196DFF;
+              color: #196dff;
             }
           }
         }
@@ -272,20 +273,19 @@
         flex-direction: column;
         gap: 10px;
 
-        &>a {
+        & > a {
           text-align: center;
           text-decoration: none;
           border-radius: 10px;
-          background-color: #196DFF;
-          @include fontStyles(500, 14px, 32px, #FFFFFF);
+          background-color: #196dff;
+          @include fontStyles(500, 14px, 32px, #ffffff);
         }
 
-        &>a:last-child {
-          background-color: #F3F6FC;
-          color: #196DFF;
+        & > a:last-child {
+          background-color: #f3f6fc;
+          color: #196dff;
         }
       }
-
     }
   }
 }
@@ -300,8 +300,7 @@
       }
 
       &-url {
-
-        &>a,
+        & > a,
         span {
           @include fontStyles(400, 12px, 15px, $colorTitle);
         }
@@ -339,7 +338,7 @@
         @include fontStyles(700, 24px, 29px, $colorTitle);
       }
 
-      &-text>p {
+      &-text > p {
         @include fontStyles(400, 16px, 19px, $colorGrey);
       }
     }
@@ -354,8 +353,7 @@
       }
 
       &-address {
-
-        &-item>strong,
+        &-item > strong,
         a {
           font-size: 16px;
           line-height: 19px;

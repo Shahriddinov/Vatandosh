@@ -125,6 +125,7 @@ const Partners = () => {
           asNavFor={activeslider.nav2}
           ref={(slider) => (sliderRef.current = slider)}
           {...settings}
+          className="my-slider"
         >
           {partnersData?.map((partner) => (
             <div

@@ -1,6 +1,7 @@
 @import "../../assets/style/global";
 
 .about {
+  background-image: $globalBg;
   padding: 0 !important;
   &_card {
     display: flex;
@@ -27,8 +28,8 @@
           display: flex;
           align-items: center;
           letter-spacing: 0.2px;
-          color: $colorGrey ;
-                  }
+          color: $colorGrey;
+        }
 
         &_name {
           font-weight: 700;
