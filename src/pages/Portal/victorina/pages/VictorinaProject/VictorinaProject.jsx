@@ -120,6 +120,11 @@ export default function VictorinaProject() {
                     }}>
                     {t("victorina.joinproject")}
                   </button>
+                  <a
+                    className="victorinaproject-main-btn victorinaproject-main-btnActive"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSd6DTl4kE_OXH4IIdBHRTGIArfe8Ft5FMkj-3fw0Ag_vc0_aA/viewform?vc=0&c=0&w=1&flr=0">
+                    {t("insho")}
+                  </a>
                 </>
               )}
               <div className="victorinaproject-main-desc">
